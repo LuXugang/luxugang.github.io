@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-28T08:43:50.533Z</updated>
+  <updated>2023-09-28T14:19:34.415Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Elasticsearch-8.2</title>
+    <link href="http://example.com/Elasticsearch/2022/0905/Elasticsearch-8-2/"/>
+    <id>http://example.com/Elasticsearch/2022/0905/Elasticsearch-8-2/</id>
+    <published>2022-09-04T16:00:00.000Z</published>
+    <updated>2023-09-28T14:19:34.415Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><a class="link"   href="https://www.amazingkoala.com.cn/elasticsearch/elasticsearch-8.2.html" >点击这里<i class="fas fa-external-link-alt"></i></a></strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;&lt;a class=&quot;link&quot;   href=&quot;https://www.amazingkoala.com.cn/elasticsearch/elasticsearch-8.2.html&quot; &gt;点击这里&lt;i class=&quot;fas fa-external-link</summary>
+      
+    
+    
+    
+    <category term="Elasticsearch" scheme="http://example.com/categories/Elasticsearch/"/>
+    
+    
+    <category term="Elasticsearch" scheme="http://example.com/tags/Elasticsearch/"/>
+    
+  </entry>
   
   <entry>
     <title>IndexSort（一）（Lucene 8.9.0）</title>
@@ -455,7 +479,7 @@
     <published>2018-09-27T09:45:32.000Z</published>
     <updated>2023-09-28T06:46:28.085Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a><a class="link"   href="https://www.amazingkoala.com.cn/" >简单说明<i class="fas fa-external-link-alt"></i></a></h3><ul><li>博客中的Lucene版本是7.5.0，如果是其他版本的会在文章标题体现。</li><li>如果你喜欢我的文章，可以下载每篇文章结尾的附件，附件中的MD文件，强烈推荐使用Typora阅读。</li><li>博客中所有关于Lucene文章的代码大家可以在我的GitHub中找到，地址：<a class="link"   href="https://github.com/luxugang/Lucene-7.5.0" >https://github.com/luxugang/Lucene-7.5.0<i class="fas fa-external-link-alt"></i></a></li><li>本博客中的文章<strong>随意转载</strong>，如果能标注转载地址就最好啦。</li><li>文章中如果有错误，希望朋友们能指出来，邮箱：<a class="link"   href="mailto:&#x6c;&#117;&#x78;&#x75;&#x67;&#97;&#110;&#103;&#64;&#97;&#x70;&#x61;&#99;&#x68;&#101;&#x2e;&#x6f;&#x72;&#103;" >&#x6c;&#117;&#x78;&#x75;&#x67;&#97;&#110;&#103;&#64;&#97;&#x70;&#x61;&#99;&#x68;&#101;&#x2e;&#x6f;&#x72;&#103;<i class="fas fa-external-link-alt"></i></a>，微信：18118868987</li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a><a class="link"   href="https://www.amazingkoala.com.cn/" >简单说明<i class="fas fa-external-link-alt"></i></a></h3><ul><li>博客中的Lucene版本是7.5.0，如果是其他版本的会在文章标题体现。</li><li>如果你喜欢我的文章，可以下载每篇文章结尾的附件，附件中的MD文件，强烈推荐使用Typora阅读。</li><li>博客中所有关于Lucene文章的代码大家可以在我的GitHub中找到，地址：<a class="link"   href="https://github.com/luxugang/Lucene-7.5.0" >https://github.com/luxugang/Lucene-7.5.0<i class="fas fa-external-link-alt"></i></a></li><li>本博客中的文章<strong>随意转载</strong>，如果能标注转载地址就最好啦。</li><li>文章中如果有错误，希望朋友们能指出来，邮箱：<a class="link"   href="mailto:&#x6c;&#x75;&#120;&#x75;&#103;&#x61;&#x6e;&#103;&#64;&#97;&#x70;&#x61;&#x63;&#x68;&#101;&#x2e;&#111;&#x72;&#103;" >&#x6c;&#x75;&#120;&#x75;&#103;&#x61;&#x6e;&#103;&#64;&#97;&#x70;&#x61;&#x63;&#x68;&#101;&#x2e;&#111;&#x72;&#103;<i class="fas fa-external-link-alt"></i></a>，微信：18118868987</li></ul>]]></content>
     
     
       
