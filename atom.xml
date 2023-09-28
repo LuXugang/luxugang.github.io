@@ -58,12 +58,12 @@
   
   <entry>
     <title>前导篇</title>
-    <link href="http://example.com/lucene/2018/0927/%E5%89%8D%E5%AF%BC%E7%AF%87/"/>
-    <id>http://example.com/lucene/2018/0927/%E5%89%8D%E5%AF%BC%E7%AF%87/</id>
+    <link href="http://example.com/lucene/2018/0927/%E5%89%8D%E5%AF%BC/"/>
+    <id>http://example.com/lucene/2018/0927/%E5%89%8D%E5%AF%BC/</id>
     <published>2018-09-27T09:45:32.000Z</published>
     <updated>2023-09-28T06:13:44.801Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a><a class="link"   href="https://www.amazingkoala.com.cn/" >简单说明<i class="fas fa-external-link-alt"></i></a></h3><ul><li>博客中的Lucene版本是7.5.0，如果是其他版本的会在文章标题体现。</li><li>如果你喜欢我的文章，可以下载每篇文章结尾的附件，附件中的MD文件，强烈推荐使用Typora阅读。</li><li>博客中所有关于Lucene文章的代码大家可以在我的GitHub中找到，地址：<a class="link"   href="https://github.com/luxugang/Lucene-7.5.0" >https://github.com/luxugang/Lucene-7.5.0<i class="fas fa-external-link-alt"></i></a></li><li>本博客中的文章<strong>随意转载</strong>，如果能标注转载地址就最好啦。</li><li>文章中如果有错误，希望朋友们能指出来，邮箱：<a class="link"   href="mailto:&#x6c;&#117;&#120;&#117;&#x67;&#97;&#110;&#103;&#x40;&#97;&#112;&#x61;&#x63;&#104;&#101;&#x2e;&#x6f;&#x72;&#103;" >&#x6c;&#117;&#120;&#117;&#x67;&#97;&#110;&#103;&#x40;&#97;&#112;&#x61;&#x63;&#104;&#101;&#x2e;&#x6f;&#x72;&#103;<i class="fas fa-external-link-alt"></i></a>，微信：18118868987</li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a><a class="link"   href="https://www.amazingkoala.com.cn/" >简单说明<i class="fas fa-external-link-alt"></i></a></h3><ul><li>博客中的Lucene版本是7.5.0，如果是其他版本的会在文章标题体现。</li><li>如果你喜欢我的文章，可以下载每篇文章结尾的附件，附件中的MD文件，强烈推荐使用Typora阅读。</li><li>博客中所有关于Lucene文章的代码大家可以在我的GitHub中找到，地址：<a class="link"   href="https://github.com/luxugang/Lucene-7.5.0" >https://github.com/luxugang/Lucene-7.5.0<i class="fas fa-external-link-alt"></i></a></li><li>本博客中的文章<strong>随意转载</strong>，如果能标注转载地址就最好啦。</li><li>文章中如果有错误，希望朋友们能指出来，邮箱：<a class="link"   href="mailto:&#108;&#x75;&#x78;&#117;&#103;&#97;&#110;&#103;&#x40;&#x61;&#112;&#97;&#x63;&#104;&#x65;&#46;&#x6f;&#x72;&#x67;" >&#108;&#x75;&#x78;&#117;&#103;&#97;&#110;&#103;&#x40;&#x61;&#112;&#97;&#x63;&#104;&#x65;&#46;&#x6f;&#x72;&#x67;<i class="fas fa-external-link-alt"></i></a>，微信：18118868987</li></ul>]]></content>
     
     
       
