@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Thu Sep 28 2023 17:25:59 GMT+0800">2023-09-28 17:25:59</span>
+                <span class="pc" data-updated="Fri Sep 29 2023 23:09:54 GMT+0800">2023-09-29 23:09:54</span>
             </span>
         
 
@@ -294,7 +294,7 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89" >近实时搜索NRT（四）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点，阅读本文章需要看过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8A%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章。</p>
+                    <p>&emsp;&emsp;本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89" >近实时搜索NRT（四）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点，阅读本文章需要看过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章。</p>
 <h1 id="openIfChange方法的流程图"><a href="#openIfChange方法的流程图" class="headerlink" title="openIfChange方法的流程图"></a>openIfChange方法的流程图</h1><p>&emsp;&emsp;其中openIfChange的方法一&amp;&amp;方法二、方法三&amp;&amp;方法四的逻辑需要用图1、图2两个流程图展现：</p>
 <p>图1：</p>
 <img  
@@ -334,10 +334,10 @@
 </li>
 <li>条件二：目前没有正在处理的文档，该条件由四个子条件组成，所有子条件都满足视为满足条件二<ul>
 <li>子条件一：numDocsInRAM的值为0<ul>
-<li>每当DWPT处理一篇文档，该值会加一（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8A%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的系列文章），在DWPT生成一个段后，该值会减去DWPT中包含的文档数（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章），如果numDocsInRAM的不为0，说明目前有些DWPT中包含的文档信息还未生成对应的段，也就说明了oldReader需要更新</li>
+<li>每当DWPT处理一篇文档，该值会加一（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的系列文章），在DWPT生成一个段后，该值会减去DWPT中包含的文档数（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章），如果numDocsInRAM的不为0，说明目前有些DWPT中包含的文档信息还未生成对应的段，也就说明了oldReader需要更新</li>
 </ul>
 </li>
-<li>子条件二：全局删除队列deleteQueue（见[文档的增删改（下）（part 2）](<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 2）)）中的结点个数为0<ul>
+<li>子条件二：全局删除队列deleteQueue（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>）中的结点个数为0<ul>
 <li>不满足子条件二说明还有未处理的删除信息，这些删除信息可能会作用（apply）索引目录中已有的段，如果结点个数不为0，说明没有一个DWPT开始执行生成段的工作（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>），也就是没有flush操作（主动flush或者自动flush），也就是索引信息将要变化，oldReader需要更新</li>
 </ul>
 </li>
@@ -363,7 +363,7 @@
 <p>&emsp;&emsp;需要满足条件二、条件三、条件四正是说明了我们重新获得StandardDirectoryReader中包含了未提交（commit操作）的索引信息，所以这种方法属于NRT（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>文章中对NRT的定义）。</p>
 <p>&emsp;&emsp;<strong>为什么需要同时满足上面的四个条件（重要）：</strong></p>
 <ul>
-<li>任何对段进行更改的操作都会更改segmentInfos的版本号Version，所以在单线程下，实际上我们只需要判断Version就能知道索引目录中的索引信息是否发生更改，然而在多线程下，其他线程可能正在执行文档的增删改操作，而这些操作就可以通过条件二、条件三、条件四来判断（至于为什么通过这三个条件判断，我想阅读过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8A%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>以及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章才能明白，无法通过一两句话解释清楚），故在多线程下，如果一个正在执行方法一的线程仅仅判断segmentInfos的版本号Version无法获得实时性较好的StandardDirectoryReader</li>
+<li>任何对段进行更改的操作都会更改segmentInfos的版本号Version，所以在单线程下，实际上我们只需要判断Version就能知道索引目录中的索引信息是否发生更改，然而在多线程下，其他线程可能正在执行文档的增删改操作，而这些操作就可以通过条件二、条件三、条件四来判断（至于为什么通过这三个条件判断，我想阅读过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>以及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>的系列文章才能明白，无法通过一两句话解释清楚），故在多线程下，如果一个正在执行方法一的线程仅仅判断segmentInfos的版本号Version无法获得实时性较好的StandardDirectoryReader</li>
 <li>所以这也是为什么上文中提到，满足这四个条件是<code>依次</code>同时满足，并且判断版本号是第一个判断条件</li>
 </ul>
 <p>&emsp;&emsp;<strong>生成了新的StandardDirectoryReader后，为什么还要跟oldReader比较是否一致（相同）</strong>：</p>
@@ -447,14 +447,14 @@
                             <div class="article-prev">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/Lucene/2020/1106/Changes-8-7-0/"
-                                   title="Changes（Lucene 8.7.0）"
+                                   href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="软删除softDeletes（一）（Lucene 8.4.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
                                       <i class="fas fa-chevron-left"></i>
                                     </span>
                                             <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Changes（Lucene 8.7.0）</span>
+                                        <span class="post-nav-title-item text-ellipsis">软删除softDeletes（一）（Lucene 8.4.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -626,7 +626,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">27.8k</span>
+                    <span class="item-value border-box word">32.5k</span>
                 </span>
             
 

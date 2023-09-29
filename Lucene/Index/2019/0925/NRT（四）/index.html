@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Thu Sep 28 2023 17:21:49 GMT+0800">2023-09-28 17:21:49</span>
+                <span class="pc" data-updated="Fri Sep 29 2023 23:08:29 GMT+0800">2023-09-29 23:08:29</span>
             </span>
         
 
@@ -341,7 +341,7 @@
 <p>&emsp;&emsp;在介绍图3的的流程之前，我们先介绍一下几个预备知识。</p>
 <p>&emsp;&emsp;<strong>段的段名（segName）是什么</strong></p>
 <ul>
-<li>   段名是一个下划线与数字的组合值，其中数值是一个全局同步递增的值，例如”_0”，每当生成一个DWPT（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%AD%EF%BC%89" >文档的增删改（中）<i class="fas fa-external-link-alt"></i></a>），就会生成一个新的段名，在执行flush（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>）的操作后，该DWPT会生成一个段，在flush的阶段（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）会生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件.si<i class="fas fa-external-link-alt"></i></a>，段名用来作为索引文件的前缀来描述他们是同一个段中的索引文件，如图4所示</li>
+<li>   段名是一个下划线与数字的组合值，其中数值是一个全局同步递增的值，例如”_0”，每当生成一个DWPT（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>），就会生成一个新的段名，在执行flush（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>）的操作后，该DWPT会生成一个段，在flush的阶段（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）会生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件.si<i class="fas fa-external-link-alt"></i></a>，段名用来作为索引文件的前缀来描述他们是同一个段中的索引文件，如图4所示</li>
 <li>   另外在commit操作后，一个段的段名会被记录在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8BSegment_N" >索引文件Segment_N<i class="fas fa-external-link-alt"></i></a>中，如图5中红色框标注</li>
 <li>   另外可以在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>的文章中看下段名的另一个作用</li>
 </ul>
@@ -373,7 +373,7 @@
                      
                 >
 
-<p>&emsp;&emsp;当我们每次调用更改索引信息的方法后，例如删除操作、更新操作、软删除操作（这些操作内容见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8A%EF%BC%89" >文档的增删改（上）<i class="fas fa-external-link-alt"></i></a>），索引目录中<strong>每一个段</strong>可能需要被作用（apply）这些删除信息（如何作用删除信息见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>），也就是说在每一个段中，如果段的文档如果满足删除条件，那我们需要处理这些文档，而这个过程就会导致段的信息发生变化。</p>
+<p>&emsp;&emsp;当我们每次调用更改索引信息的方法后，例如删除操作、更新操作、软删除操作（这些操作内容见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>），索引目录中<strong>每一个段</strong>可能需要被作用（apply）这些删除信息（如何作用删除信息见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>），也就是说在每一个段中，如果段的文档如果满足删除条件，那我们需要处理这些文档，而这个过程就会导致段的信息发生变化。</p>
 <p>&emsp;&emsp;在图6中，一个段的完整信息由两部分构成，我们先看第一部分，即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件.si<i class="fas fa-external-link-alt"></i></a>包含的信息，这些信息在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件之si<i class="fas fa-external-link-alt"></i></a>的文章中已经介绍，根据每个字段的具体含义可以看出他们都是固定的信息，我们称之为不可变部分。</p>
 <p>&emsp;&emsp;同样地第二部分中每一个字段的含义在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >索引文件之segments_N<i class="fas fa-external-link-alt"></i></a>的文章中已经介绍，并且可以看出他们不是固定的信息，当段中的文档需要被删除时，DelGen、DeletionCount字段会发生变化，当执行更新DocValues操作时，FieldInfosGen、DocValuesGen会发生变化，我们称之为可变部分。</p>
 <p>&emsp;&emsp;<strong>oldReader对应的段信息跟IndexCommit对应的段信息下面的关系</strong>：</p>
@@ -684,7 +684,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">27.8k</span>
+                    <span class="item-value border-box word">32.5k</span>
                 </span>
             
 

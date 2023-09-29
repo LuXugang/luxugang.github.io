@@ -9,7 +9,7 @@
     
     <title>
         
-            近实时搜索NRT（一） |
+            软删除softDeletes（二）（Lucene 8.4.0） |
         
         Lu Xugang的小屋
     </title>
@@ -193,7 +193,7 @@
             <div class="article-content-bottom border-box">
                 
                     <div class="article-title">
-                        近实时搜索NRT（一）
+                        软删除softDeletes（二）（Lucene 8.4.0）
                     </div>
                 
 
@@ -222,13 +222,13 @@
         
             <span class="meta-info-item article-create-date">
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2019-09-16 00:00:00</span>
-                <span class="mobile">2019-09-16 00:00</span>
+                <span class="pc">2020-06-21 00:00:00</span>
+                <span class="mobile">2020-06-21 00:00</span>
             </span>
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Fri Sep 29 2023 23:06:04 GMT+0800">2023-09-29 23:06:04</span>
+                <span class="pc" data-updated="Fri Sep 29 2023 23:03:39 GMT+0800">2023-09-29 23:03:39</span>
             </span>
         
 
@@ -259,10 +259,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NRT/">NRT</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/softDeletes/">softDeletes</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Search/">Search</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/delete/">delete</a></li>
                         
                     
                 </ul>
@@ -272,7 +272,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
             </span>
         
         
@@ -294,137 +294,150 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;Lucene提供了近实时搜索NRT（near real time）的功能，它描述了索引信息发生改变后，不需要执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>操作或者关闭IndexWriter（调用IndexWriter.close()方法）就能使得这些更改的信息<strong>很快（quickly）</strong>变得可见。</p>
-<p>&emsp;&emsp;”很快”意味着不是马上变得可见，Lucene无法保证更改索引信息后，在<strong>某个确定的时间</strong>之后，使得最新的索引信息变得可见，这取决具体的业务。</p>
-<p>&emsp;&emsp;近实时搜索NRT通过DirectoryReader来实现，故下面的文章中将会介绍DirectoryReader的实现原理。</p>
-<h1 id="DirectoryReader"><a href="#DirectoryReader" class="headerlink" title="DirectoryReader"></a>DirectoryReader</h1><p>&emsp;&emsp;通过DirectoryReader，我们可以读取索引目录中已经提交（执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>操作）或者未提交（执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>操作）的段的信息，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89" >IndexSearcher<i class="fas fa-external-link-alt"></i></a>通过DirectoryReader包含的信息来进行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89" >查询<i class="fas fa-external-link-alt"></i></a>，它是一个抽象类，其类图如下所示，在下面的内容中会详细介绍DirectoryReader如何生成的：</p>
+                    <p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>中我们介绍了软删除的一些应用，从本篇文章开始，将根据索引（index）、flush&#x2F;commit、段的合并、搜索这几个不同的阶段来介绍跟软删除相关的内容。</p>
+<h2 id="索引（index）"><a href="#索引（index）" class="headerlink" title="索引（index）"></a>索引（index）</h2><p>&emsp;&emsp;<strong>阅读本小结内容必须掌握文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中的知识点，故下文中出现的一些名词不会作详细的介绍</strong>。</p>
+<p>&emsp;&emsp;索引（index）这个阶段，即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的阶段，由于软删除属于删除操作，故对应的删除信息会被添加到全局的deleteQueue中，deleteQueue中存放了四种类型的删除信息，这四种删除信息用下图中的Node对象来描述：</p>
 <p>图1：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/1.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/1.png"
                      
                 >
 
-<p>&emsp;&emsp;上图中，DirectoryReader有两个子类StandardDirectoryReader、FilterDirectoryReader，其中StandardDirectoryReader是Lucene7.5.0中默认的DirectoryReader具体实现，FilterDirectoryReader作为一个抽象类，它的两个具体实现ExitableDirectoryReader、SoftDeletesDirectoryReaderWrapper通过封装其他的DirectoryReader对象，来实现功能扩展。下面我们一一介绍图1中的每一个类。</p>
-<h2 id="StandardDirectoryReader"><a href="#StandardDirectoryReader" class="headerlink" title="StandardDirectoryReader"></a>StandardDirectoryReader</h2><p>&emsp;&emsp;StandardDirectoryReader作为Lucene7.5.0中默认且唯一的DirectoryReader类的具体实现，我们需要详细的来了解它，该类的对象可以通过个调用以下四个方法来获得：</p>
+<p>&emsp;&emsp;上图中的四种删除信息通过IndexWriter类中提供的方法生成：</p>
 <ul>
-<li>方法一：DirectoryReader.open(final Directory directory)</li>
-<li>方法二：DirectoryReader.open(final IndexCommit indexCommit)</li>
-<li>方法三：DirectoryReader.open(final IndexWriter indexWriter)</li>
-<li>方法四：DirectoryReader.open(final IndexWriter indexWriter, boolean applyAllDeletes, boolean writeAllDeletes)</li>
+<li>QueryArrayNode：deleteDocuments(Querys)</li>
+<li>TermArrayNode：deleteDocuments(Terms)</li>
+<li>DocValuesUpdatesNode：updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )</li>
+<li>TermNode：updateDocument(Term, Document)、updateDocuments( Term, Documents)</li>
 </ul>
-<p>&emsp;&emsp;<strong>其中通过调用方法三&amp;&amp;方法四的方法实现了NRT功能，而方法一&amp;&amp;方法二则没有,下文将会描述它们之间的差异</strong>。</p>
-<h3 id="获取StandardDirectoryReader对象的流程图"><a href="#获取StandardDirectoryReader对象的流程图" class="headerlink" title="获取StandardDirectoryReader对象的流程图"></a>获取StandardDirectoryReader对象的流程图</h3><p>&emsp;&emsp;尽管提供了4种方法，但这些方法的实现原理都可以在一张流程图中表示：</p>
+<p>&emsp;&emsp;由上文可以看出，软删除对应的删除信息将会由DocValuesUpdatesNode来描述，</p>
+<p>我们通过一个例子来看下DocValuesUpdatesNode中描述了哪些删除信息：</p>
 <p>图2：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/2.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/2.png"
                      
                 >
 
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%80%EF%BC%89/standarddirectoryreader___.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
-<p>&emsp;&emsp;我们先介绍方法一&amp;&amp;方法二的所有流程点。</p>
-<h4 id="统一入口"><a href="#统一入口" class="headerlink" title="统一入口"></a>统一入口</h4><p>图3：</p>
+<p>&emsp;&emsp;图2中，第56行执行了软删除的操作，它对应的删除信息DocValuesUpdatesNode包含如下信息：</p>
+<p>图3：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/3.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/3.png"
                      
                 >
 
-<p>&emsp;&emsp;<strong>IndexCommit是什么</strong>：</p>
+<p>&emsp;&emsp;DocValuesUpdatesNode中包含了两个对象：next、item，其中next用来指向deleteQueue中下一个删除信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），item（<strong>NumericDocValuesUpdate对象</strong>）中的type描述了使用NUMERIC类型的DocValues来描述被软删除的文档，item中的term描述了满足被软删除的文档的条件，即包含域名为”abc”、域值为”document3”的文档都会被软删除。</p>
+<p>&emsp;&emsp;上述DocValuesUpdatesNode的信息我们可以看出，我们获得了满足软删除的条件，但是没有指出软删除的作用范围（作用域），例如在图2中，文档3也满足被软删除的条件，但是这篇文档是在第56行的软删除操作之后添加的，那么这次的软删除不能作用（apply）到这篇文档，即这次的软删除操作只能对文档1生效，故我们还需要<strong>根据DocValuesUpdatesNode的信息</strong>进一步完善删除信息，即添加软删除的作用范围，不同的删除信息在完善删除信息后用下列的容器来描述（<strong>Lucene 7.5.0</strong>）：</p>
 <ul>
-<li>执行一次提交操作（执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>)方法）后，这次提交包含的所有的段的信息用IndexCommit来描述，其中至少包含了两个信息，分别是<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/segments_N" >segment_N<i class="fas fa-external-link-alt"></i></a>文件跟[Directory](<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory%EF%BC%88%E4%B8%8A%EF%BC%89" >https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory（上）<i class="fas fa-external-link-alt"></i></a></li>
+<li>Map&lt;Term,Integer&gt; deleteTerms ：TermArrayNode、TermNode</li>
+<li>Map&lt;Query,Integer&gt; deleteQueries：QueryArrayNode</li>
+<li>Map&lt;String,LinkedHashMap&lt;Term,NumericDocValuesUpdate&gt;&gt; numericUpdates：DocValuesUpdatesNode</li>
+<li>Map&lt;String,LinkedHashMap&lt;Term,BinaryDocValuesUpdate&gt;&gt; binaryUpdate：DocValuesUpdatesNode</li>
 </ul>
-<p>&emsp;&emsp;<strong>如何获得IndexCommit</strong>：</p>
+<p>&emsp;&emsp;BufferedUpdates类、deleteTerms、deleteQueries的内容在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中已经作出了介绍，不赘述。</p>
+<p>&emsp;&emsp;如果DocValuesUpdatesNode中item中的type为NUMERIC，那么对应生成numericUpdates，如果item中的type为BINARY，那么对应生成binaryUpdate。</p>
+<h3 id="numericUpdates"><a href="#numericUpdates" class="headerlink" title="numericUpdates"></a>numericUpdates</h3><p>&emsp;&emsp;numericUpdates容器的key描述的是图3中，item中的field的值，而容器的value则是又一个LinkedHashMap的容器，该容器的key为一个term，例如图3中的item的term的值，而value则是图3中的item。</p>
+<p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89" >构造IndexWriter对象（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，一个IndexWriter通过IndexWriterConfig配置只能设置一个软删除域，并且是个<code>不可变配置</code>，那么为什么numericUpdates使用Map存储，并且key为软删除域的值？</p>
 <ul>
-<li>在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>的文章中，我们提到了一种索引删除策略SnapshotDeletionPolicy，在每次执行提交操作后，我们可以通过主动调用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/[SnapshotDeletionPolicy.java](https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SnapshotDeletionPolicy.java)" >SnapshotDeletionPolicy.snapshot()<i class="fas fa-external-link-alt"></i></a>来实现快照功能，而该方法的返回值就是IndexCommit</li>
+<li>上文中我们说到，IndexWriter类中提供的updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )方法（这三个方法为<strong>更新DocValues的操作</strong>）对应生成的删除信息跟软删除操作softUpdateDocument( )、softUpdateDocuments( )一样都是用DocValuesUpdatesNode来描述，故也使用同一个numericUpdates来完善删除信息，所以numericUpdates容器的key不一定就是软删除的域。</li>
 </ul>
-<h4 id="获取segment-N文件"><a href="#获取segment-N文件" class="headerlink" title="获取segment_N文件"></a>获取segment_N文件</h4><p>图4：</p>
+<p>&emsp;&emsp;我们同样的以一个例子来介绍：</p>
+<p>图4：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/4.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/4.png"
                      
                 >
 
-<p>&emsp;&emsp;该流程只有方法二才会执行，图4中的多个流程，执行它们的最终目的是为了获得索引目录（根据方法二的参数Directory对象获得索引目录）中的segment_N文件。</p>
-<p>&emsp;&emsp;在图4的流程中，Lucene连续两次获取索引目录中的所有文件，获得两个文件名集合file、file2，在分别对file、file2进行排序后，通过比较两个集合是否包含相同的文件名来判断是否当前索引目录是否有频繁的新的写入操作，如果有，那么通过重试的方法，直到file、file2是相同的文件集合，由于这段代码较为简洁，故直接给出：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String files[] = directory.listAll();</span><br><span class="line">String files2[] = directory.listAll();</span><br><span class="line">Arrays.sort(files);</span><br><span class="line">Arrays.sort(files2);</span><br><span class="line"><span class="keyword">if</span> (!Arrays.equals(files, files2)) &#123;</span><br><span class="line"><span class="comment">// listAll() is weakly consistent, this means we hit &quot;concurrent modification exception&quot;</span></span><br><span class="line"><span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在上面的代码中，其中directory即方法二的参数。</p>
-<p>&emsp;&emsp;<strong>从上面的代码我们可以看出哪些信息</strong>：</p>
-<ul>
-<li>信息一：在多线程下，当频繁的有修改索引信息的操作时，获取一个读取索引文件的操作可能会有较高的延迟（files跟files2一直无法相等）</li>
-<li>信息二：从图1的流程中可以看出，方法二的流程并没有同步操作，故即使在某一时候files跟files2相等，跳出图4的重试操作，有可能索引信息马上被别的线程修改了，故在不同步索引修改方法（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>）的前提下，不一定能获得最新的索引信息，该方法至少能保证获得调用方法二之前的索引信息</li>
-</ul>
-<p>&emsp;&emsp;<strong>如何根据文件集合files来获得最后一次提交的segment_N文件</strong>：</p>
-<ul>
-<li>每次提交都会生成segment_N，其中N是一个递增的值，它描述了一个段的编号，即最新的提交对应的N值是最大的，Lucene通过遍历files中的每一个文件名，取出前缀为”segment”，并且段编号最大的文件，该文件即最后一次提交的segment_N文件，图5中，执行了两次提交操作，并采用索引删除策略NoDeletionPolicy（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>），故索引目录中保留了2个segment_N文件，并且最后一次提交的segment_N文件是segment_2</li>
-</ul>
+<p>&emsp;&emsp;图4的例子中，既有updateNumericDocValue()，又有softDocument()的操作，那么这两个操作对应在numericUpdates中的删除信息如下所示：</p>
 <p>图5：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/5.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/5.png"
                      
                 >
 
-<h4 id="获得所有段的信息集合SegmentInfos"><a href="#获得所有段的信息集合SegmentInfos" class="headerlink" title="获得所有段的信息集合SegmentInfos"></a>获得所有段的信息集合SegmentInfos</h4><p>图6：</p>
+<p>&emsp;&emsp;我们接着继续介绍为什么numericUpdates容器的value是一个LinkedHashMap结构，先给出源码中对这种设计的注释：</p>
+<p>图6：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/6.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/6.png"
                      
                 >
 
-<p>&emsp;&emsp;在前面的流程中，无论是方法一还是方法二，到达此流程点时，已经获得了segment_N文件，那在图6的流程中，我们根据segment_N获取段的信息集合segmentInfos，该集合在前面的文章中已经多次介绍，它包含的一个重要信息是一个链表，链表元素是每一个段的信息：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;SegmentCommitInfo&gt; segments = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;SegmentCommitInfo的数据分散在两个索引文件中，如图7所示：</p>
+<p>&emsp;&emsp;注释中讲述了使用LinkedHashMap结构的两个原因：</p>
+<ul>
+<li>原因一：在不同的term之间，即LinkedHashMap的不同的key，如果一篇文档中包含的term满足多个软删除操作中的term条件（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>），那么根据LinkedHashMap的插入有序的特点，这篇文档用最后一个软删除操作中的DocValues来描述该文档被软删除了</li>
+<li>原因二：在相同的term之间，如果多次调用的软删除中的term条件是一样的，那么可以进行去重，并且选取作用范围（作用域）最大的那个（下面的例子会介绍）</li>
+</ul>
+<p>&emsp;&emsp;我们继续用一个例子来介绍上述的原因一：</p>
 <p>图7：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/7.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/7.png"
                      
                 >
 
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%80%EF%BC%89/segment_n.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
-<p>&emsp;&emsp;图7中，两块黄色的框标注的内容即SegmentCommitInfo的信息，在读取segment_N阶段，先读取出SegmentCommitInfo的第一块数据，<strong>然后根据第一块数据的中的SegName（该字段的含义见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/segments_N" >segment_N<i class="fas fa-external-link-alt"></i></a>，生成segment_N的时机见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>）从<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件.si<i class="fas fa-external-link-alt"></i></a>（生成索引文件.si的时机见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）中读取出SegmentCommitInfo的第二块数据</strong>，两块数据组成完整的SegmentCommitInfo的信息，在源码中，这些信息即SegmentCommitInfo类的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SegmentCommitInfo.java" >成员变量<i class="fas fa-external-link-alt"></i></a>。</p>
-<h4 id="获得StandardDirectoryReader"><a href="#获得StandardDirectoryReader" class="headerlink" title="获得StandardDirectoryReader"></a>获得StandardDirectoryReader</h4><p>图8：</p>
+<p>&emsp;&emsp;图7中，第56、61行执行了两次软删除操作，并且文档0都满足这两个软删除的条件，由于第61行的软删除操作晚于第56行，所以文档0将用61行中的域名为”softDeleteField”、域值为4的NumericDocValues来描述它被软删除了，至于使用这个DocValues来描述被软删除的用途，将在后面的文章中介绍。</p>
+<p>&emsp;&emsp;我们接着通过一个例子介绍上述的原因二：</p>
+<p>图8：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/8.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/8.png"
                      
                 >
 
-<p>&emsp;&emsp;在前面的流程中，我们获得了每一个段的SegmentCommitInfo，在Lucene中，将SegmentCommitInfo再次封装为SegmentReader，然后将所有段对应的SegmentReader最后封装为StandardDirectoryReader。</p>
-<h6 id="SegmentReader"><a href="#SegmentReader" class="headerlink" title="SegmentReader"></a>SegmentReader</h6><p>&emsp;&emsp;SegmentReader类不展开作介绍了，我们只需要知道该类描述的是一个段的所有的信息，该信息通过封装的SegmentCommitInfo来描述。</p>
-<h6 id="StandardDirectoryReader-1"><a href="#StandardDirectoryReader-1" class="headerlink" title="StandardDirectoryReader"></a>StandardDirectoryReader</h6><p>&emsp;&emsp;所有段对应的SegmentReader集合以数组方式LeafReader[ ]被封装在StandardDirectoryReader中，如下图所示：</p>
+<p>&emsp;&emsp;图8中，第56、64行执行了两次软删除操作，并且他们的软删除条件是一样的，即被软删除的文档中需要包含域名为”abc”、域值为”document1”的信息，那么第56行的软删除对应的删除信息将被第66行的软删除对应的删除信息替换。</p>
+<p>&emsp;&emsp;<strong>图8中两次软删除对应在numericUpdates容器中的信息有什么不同，为什么会发生替换？</strong></p>
+<p>&emsp;&emsp;我们直接给出这两次软删除的对应在numericUpdates容器中的信息来做介绍：</p>
 <p>图9：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/9.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/9.png"
                      
                 >
 
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%80%EF%BC%89/9.png" >点击<i class="fas fa-external-link-alt"></i></a>查看大图<br>&emsp;&emsp;图9中描述了StandardDirectoryReader中包含的最重要的一些数据，其中LeafReader[ ]数组中的元素个数跟索引文件segment_N中的黑框字段SegmentCommitInfo的个数是一致的。</p>
-<h4 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h4><p>图10：</p>
+<p>图10：</p>
 <img  
                      lazyload
                      alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（一）/10.png"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/10.png"
                      
                 >
 
-<p>&emsp;&emsp;对于方法一&amp;&amp;方法二，严格的来讲，至此我们获得了流程点<code>获得所有段的信息集合SegmentInfos</code>之前索引目录中最新的索引数据，由于其他线程可能通过IndexWriter并发的执行更改索引的操作，所以在多线程下，方法一&amp;&amp;跟方法二并不能实现NRT的功能。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>&emsp;&emsp;基于篇幅，剩余的内容在一篇文章中展开。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%80%EF%BC%89/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+<p>&emsp;&emsp;图9、图10中，docIDUpto描述的是删除信息的作用范围（作用域），图9中docIDUpto的值为2，它描述了从删除信息的作用范围为文档号区间为[0, 2)、图10中的docIDUpto的值为5，它描述了从删除信息的作用范围为文档号区间为[0, 4)，故图10中的作用范围包含了图9中的删除范围，这样就能过滤掉相同term条件的软删除操作。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>&emsp;&emsp;上文中我们说到，updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )的操作在索引期间使用相同的方式来存储删除信息，这使得我们用softUpdateDocument( )需要注意一个问题，如果该方法中用来描述文档被软删除的DocValues的域名不是IndexWriter的配置中定义的软删除域，那么这次软删除操作就会转变为<strong>DocValues的更新操作</strong>，我们通过下面的例子来说明：</p>
+<p>图11：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/11.png"
+                     
+                >
+
+<p>&emsp;&emsp;图11中，如果update为true，那么我们执行软删除操作，注意的是59行用来描述文档被软删除的DocValues的域名”docValuesField”不是38行的设置的软删除域”softDeleteField“，故这次的软删除操作转化为<strong>DocValues的更新操作</strong>，那么文档1中域名为”docValuesFiled”的NumericDocValuesField的域值”5”会被更新为”3”，故搜索结果在按照”docValuesField”排序之后， 如下所示：</p>
+<p>图12：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/12.png"
+                     
+                >
+
+<p>&emsp;&emsp;可见，文档1并没有被软删除，图11的demo看这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java<i class="fas fa-external-link-alt"></i></a> 。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;本文中，我们介绍了Lucene7.5.0版本中，在索引期间跟软删除相关的一些内容，即使用numericUpdates、binaryUpdate两个容器存储删除信息，然而在Lucene8.4.0中，取消了这两个容器，使用了其他的方法存储删除信息，这块内容将在下篇文章中展开。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
 
@@ -436,11 +449,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/NRT/">NRT</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/softDeletes/">softDeletes</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Search/">Search</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/delete/">delete</a>
                                     </li>
                                 
                             </ul>
@@ -494,14 +507,14 @@
                             <div class="article-prev">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89/"
-                                   title="近实时搜索NRT（二）"
+                                   href="/Lucene/2020/1106/Changes-8-7-0/"
+                                   title="Changes（Lucene 8.7.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
                                       <i class="fas fa-chevron-left"></i>
                                     </span>
                                             <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">近实时搜索NRT（二）</span>
+                                        <span class="post-nav-title-item text-ellipsis">Changes（Lucene 8.7.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -511,11 +524,11 @@
                             <div class="article-next">
                                 <a class="next"
                                    rel="next"
-                                   href="/Lucene/DocValues/2019/0412/BinaryDocValues/"
-                                   title="BinaryDocValues"
+                                   href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="软删除softDeletes（一）（Lucene 8.4.0）"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">BinaryDocValues</span>
+                                        <span class="post-nav-title-item text-ellipsis">软删除softDeletes（一）（Lucene 8.4.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                             <span class="right arrow-icon flex-center">
@@ -618,7 +631,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DirectoryReader"><span class="nav-number">1.</span> <span class="nav-text">DirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StandardDirectoryReader"><span class="nav-number">1.1.</span> <span class="nav-text">StandardDirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96StandardDirectoryReader%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">获取StandardDirectoryReader对象的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">统一入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96segment-N%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">获取segment_N文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E6%AE%B5%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9B%86%E5%90%88SegmentInfos"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">获得所有段的信息集合SegmentInfos</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97StandardDirectoryReader"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">获得StandardDirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#SegmentReader"><span class="nav-number">1.1.1.4.0.1.</span> <span class="nav-text">SegmentReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StandardDirectoryReader-1"><span class="nav-number">1.1.1.4.0.2.</span> <span class="nav-text">StandardDirectoryReader</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%EF%BC%88index%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericUpdates"><span class="nav-number">1.1.</span> <span class="nav-text">numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
     </div>
 </div>
 
@@ -811,7 +824,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DirectoryReader"><span class="nav-number">1.</span> <span class="nav-text">DirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StandardDirectoryReader"><span class="nav-number">1.1.</span> <span class="nav-text">StandardDirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96StandardDirectoryReader%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">获取StandardDirectoryReader对象的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">统一入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96segment-N%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">获取segment_N文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%89%80%E6%9C%89%E6%AE%B5%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9B%86%E5%90%88SegmentInfos"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">获得所有段的信息集合SegmentInfos</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97StandardDirectoryReader"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">获得StandardDirectoryReader</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#SegmentReader"><span class="nav-number">1.1.1.4.0.1.</span> <span class="nav-text">SegmentReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StandardDirectoryReader-1"><span class="nav-number">1.1.1.4.0.2.</span> <span class="nav-text">StandardDirectoryReader</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%EF%BC%88index%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericUpdates"><span class="nav-number">1.1.</span> <span class="nav-text">numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
     </div>
 </div>
 
