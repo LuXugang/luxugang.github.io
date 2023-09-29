@@ -770,15 +770,18 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0621/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                            软删除softDeletes（二）（Lucene 8.4.0）
+                        <a href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;在文章软删除softDeletes（一）中我们介绍了软删除的一些应用，从本篇文章开始，将根据索引（index）、flush&#x2F;commit、段的合并、搜索这几个不同的阶段来介绍跟软删除相关的内容。
-索引（index）&...
+                            &emsp;&emsp;在索引阶段，如果某个域的属性中包含store，意味着该域的域值信息将被写入到索引文件fdx&amp;&amp;fdt&amp;&amp;fdm中，域的属性可以通过FieldType来设置，如下所示：
+图1：
+
+
+&emsp;&...
                         
                     </div>
 
@@ -788,7 +791,98 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:03:39 GMT+0800">2023-09-29 23:03:39</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 00:10:47 GMT+0800">2023-09-30 00:10:47</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0709/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E5%85%AD%EF%BC%89/">
+                            软删除softDeletes（六）（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                            &emsp;&emsp;我们接着文章软删除softDeletes（五）继续介绍合并策略SoftDeletesRetentionMergePolicy，在文章近实时搜索NRT（一）中使用方法三&amp;&amp;方法四获取StandardDirecto...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:24:29 GMT+0800">2023-09-29 23:24:29</span>
             </span>
         
 
@@ -839,7 +933,7 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0621/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0709/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E5%85%AD%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -853,16 +947,15 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/">
-                            软删除softDeletes（一）（Lucene 8.4.0）
+                        <a href="/Lucene/Index/2020/0708/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%94%EF%BC%89/">
+                            软删除softDeletes（五）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;在文章文档的增删改（一）中我们介绍了Lucene中提供的几个接口用来实现文档的更新：
-
-updateDocument(Term term, Iterable&lt;? extends IndexableField&gt; do...
+                            &emsp;&emsp;在文章软删除softDeletes（二）中介绍了软删除在索引（index）阶段的相关内容，我们接着介绍在flush&#x2F;commit阶段的内容
+flush&#x2F;commit&emsp;&emsp;在这个阶段，我们首...
                         
                     </div>
 
@@ -872,7 +965,7 @@ updateDocument(Term term, Iterable&lt;? extends IndexableField&gt; do...
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:04:30 GMT+0800">2023-09-29 23:04:30</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:21:36 GMT+0800">2023-09-29 23:21:36</span>
             </span>
         
 
@@ -923,7 +1016,7 @@ updateDocument(Term term, Iterable&lt;? extends IndexableField&gt; do...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0708/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%94%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -937,15 +1030,16 @@ updateDocument(Term term, Iterable&lt;? extends IndexableField&gt; do...
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/0929/NRT%EF%BC%88%E4%BA%94%EF%BC%89/">
-                            近实时搜索NRT（五）
+                        <a href="/Lucene/Index/2020/0629/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E5%9B%9B%EF%BC%89/">
+                            软删除softDeletes（四）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;本文承接近实时搜索NRT（四），继续依次介绍每一个流程点，阅读本文章需要看过文档的增删改、文档提交之flush的系列文章。
-openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
+                            &emsp;&emsp;在文章软删除softDeletes（二）中我们说到，在Lucene 7.5.0版本中，使用了下面两个容器来存储软删除的删除信息、DocValues的更新信息：
+
+Map&lt;String,LinkedHashMap&lt;T...
                         
                     </div>
 
@@ -955,7 +1049,7 @@ openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:09:54 GMT+0800">2023-09-29 23:09:54</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:17:12 GMT+0800">2023-09-29 23:17:12</span>
             </span>
         
 
@@ -989,94 +1083,10 @@ openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NRT/">NRT</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/softDeletes/">softDeletes</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Search/">Search</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2019/0929/NRT%EF%BC%88%E4%BA%94%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89/">
-                            近实时搜索NRT（四）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                            &emsp;&emsp;Lucene7.5.0中提供了以下四种open方法来获得StandardDirectoryReader的对象，这四种方法：
-
-方法一：DirectoryReader.open(final Directory directory...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:08:29 GMT+0800">2023-09-29 23:08:29</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NRT/">NRT</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Search/">Search</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/delete/">delete</a></li>
                         
                     
                 </ul>
@@ -1090,7 +1100,7 @@ openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0629/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E5%9B%9B%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -1112,8 +1122,8 @@ openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
                    type="number"
                    value="1"
                    min="1"
-                   max="2"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">2</span>
+                   max="3"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">3</span>
         </div>
 
 
@@ -1175,7 +1185,7 @@ openIfChange方法的流程图&emsp;&emsp;其中openIfChange的方法一&am...
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">32.5k</span>
+                    <span class="item-value border-box word">49.4k</span>
                 </span>
             
 
