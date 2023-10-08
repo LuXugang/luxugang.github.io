@@ -278,7 +278,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>840 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>852 Words</span>
             </span>
         
         
@@ -301,73 +301,100 @@
                     
 
                     <p>nvd&amp;&amp;nvm用来存储域的标准化值(normalization values)，这两个索引文件记录了每一篇文档中每一种域的标准化值跟索引信息。在Lucene 7.5.0中，标准化值的计算实际就是统计一篇文档中某个域的域值，这个域值经过分词器处理后生成的term的个数，最后将term的个数通过intToByte4()的方法编码为一个 byte类型的值。标准化的过程在本篇文章中不作介绍，可以查看看BM25Similarity中的computeNorm()方法。我们可以自定义自己的Similarity来实现定制化的计算域的标准化值的逻辑。</p>
-<p>我们通过下面的例子来介绍nvd&amp;&amp;nvm文件的数据结构<br>图1：<br><img  
+<p>我们通过下面的例子来介绍nvd&amp;&amp;nvm文件的数据结构<br />
+图1：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/1.png"
                      
                 ></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="nvd"><a href="#nvd" class="headerlink" title="nvd"></a>nvd</h3><p>图2：<br><img  
+<h2 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h2>
+<h3 id="nvd"><a class="markdownIt-Anchor" href="#nvd"></a> nvd</h3>
+<p>图2：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/2.png"
                      
                 ></p>
-<h4 id="FieldData"><a href="#FieldData" class="headerlink" title="FieldData"></a>FieldData</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvd文件在索引阶段按照添加域的顺序地分块地存储每一种域的信息，FieldData描述了一种域的所有信息，在例子中，共有三个FieldData块，分别描述了“content”、“author”、“attachment”三种域的信息。</span><br></pre></td></tr></table></figure>
-<h4 id="DocsWithFieldData"><a href="#DocsWithFieldData" class="headerlink" title="DocsWithFieldData"></a>DocsWithFieldData</h4><p>DocsWithFieldData的数据结构根据包含当前域的文档个数numDocsWithValue分为三种情况</p>
-<h5 id="numDocsWithValue-0"><a href="#numDocsWithValue-0" class="headerlink" title="numDocsWithValue &#x3D;&#x3D; 0"></a>numDocsWithValue &#x3D;&#x3D; 0</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocsWithFieldData无数据，通过nvm文件中存放固定值来描述当前情况。</span><br></pre></td></tr></table></figure>
-<h5 id="numDocsWithValue-maxDoc"><a href="#numDocsWithValue-maxDoc" class="headerlink" title="numDocsWithValue &#x3D;&#x3D; maxDoc"></a>numDocsWithValue &#x3D;&#x3D; maxDoc</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maxDoc表示当前处理的文档总个数，这种情况说明所有文档都含有当前域，DocsWithFieldData无数据，通过在nvm文件中同样存放固定值来描述当前情况。</span><br><span class="line">在本文的例子中，域”author“属于当前情况。</span><br></pre></td></tr></table></figure>
-<h5 id="numDocsWithValue-maxDoc-1"><a href="#numDocsWithValue-maxDoc-1" class="headerlink" title="numDocsWithValue &lt; maxDoc"></a>numDocsWithValue &lt; maxDoc</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这种情况说明并不是所有的文档都包含当前域，所以需要存储所有包含当前域的文档号。</span><br><span class="line">这里使用IndexedDISI类来实现对文档号docID的存储，IndexedDISI类会在随后的博客中介绍，在这里想说明的是，在索引阶段不同的添加document的方式会有不同数据结构的nvd文件产生，导致生成索引跟查询的性能各不相同。在本文的例子中，域&quot;content&quot;、”attachment“的DocsWithFieldData属于当前情况，会用当前的数据结构。</span><br></pre></td></tr></table></figure>
-<p>图3：<br><img  
+<h4 id="fielddata"><a class="markdownIt-Anchor" href="#fielddata"></a> FieldData</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvd文件在索引阶段按照添加域的顺序地分块地存储每一种域的信息，FieldData描述了一种域的所有信息，在例子中，共有三个FieldData块，分别描述了“content”、“author”、“attachment”三种域的信息。</span><br></pre></td></tr></table></figure>
+<h4 id="docswithfielddata"><a class="markdownIt-Anchor" href="#docswithfielddata"></a> DocsWithFieldData</h4>
+<p>DocsWithFieldData的数据结构根据包含当前域的文档个数numDocsWithValue分为三种情况</p>
+<h5 id="numdocswithvalue-0"><a class="markdownIt-Anchor" href="#numdocswithvalue-0"></a> numDocsWithValue == 0</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocsWithFieldData无数据，通过nvm文件中存放固定值来描述当前情况。</span><br></pre></td></tr></table></figure>
+<h5 id="numdocswithvalue-maxdoc"><a class="markdownIt-Anchor" href="#numdocswithvalue-maxdoc"></a> numDocsWithValue == maxDoc</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maxDoc表示当前处理的文档总个数，这种情况说明所有文档都含有当前域，DocsWithFieldData无数据，通过在nvm文件中同样存放固定值来描述当前情况。</span><br><span class="line">在本文的例子中，域”author“属于当前情况。</span><br></pre></td></tr></table></figure>
+<h5 id="numdocswithvalue-maxdoc-2"><a class="markdownIt-Anchor" href="#numdocswithvalue-maxdoc-2"></a> numDocsWithValue &lt; maxDoc</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这种情况说明并不是所有的文档都包含当前域，所以需要存储所有包含当前域的文档号。</span><br><span class="line">这里使用IndexedDISI类来实现对文档号docID的存储，IndexedDISI类会在随后的博客中介绍，在这里想说明的是，在索引阶段不同的添加document的方式会有不同数据结构的nvd文件产生，导致生成索引跟查询的性能各不相同。在本文的例子中，域&quot;content&quot;、”attachment“的DocsWithFieldData属于当前情况，会用当前的数据结构。</span><br></pre></td></tr></table></figure>
+<p>图3：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/3.png"
                      
                 ></p>
-<h4 id="NormsData"><a href="#NormsData" class="headerlink" title="NormsData"></a>NormsData</h4><p>图4：<br><img  
+<h4 id="normsdata"><a class="markdownIt-Anchor" href="#normsdata"></a> NormsData</h4>
+<p>图4：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/4.png"
                      
                 ></p>
-<h5 id="Value"><a href="#Value" class="headerlink" title="Value"></a>Value</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value为当前域在每一篇文档中的标准化值。</span><br></pre></td></tr></table></figure>
-<h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p>图5：<br><img  
+<h5 id="value"><a class="markdownIt-Anchor" href="#value"></a> Value</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value为当前域在每一篇文档中的标准化值。</span><br></pre></td></tr></table></figure>
+<h3 id="nvm"><a class="markdownIt-Anchor" href="#nvm"></a> nvm</h3>
+<p>图5：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/5.png"
                      
                 ></p>
-<h4 id="FieldNumber"><a href="#FieldNumber" class="headerlink" title="FieldNumber"></a>FieldNumber</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域的编号，用来唯一标识一种域。</span><br></pre></td></tr></table></figure>
-<h4 id="DocsWithFieldAddress-DocsWithFieldLength"><a href="#DocsWithFieldAddress-DocsWithFieldLength" class="headerlink" title="DocsWithFieldAddress &amp;&amp; DocsWithFieldLength"></a>DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果numDocsWithValue == maxDoc 或者numDocsWithValue == 0，那么DocsWithFieldAddress跟DocsWithFieldLength会被置为固定值。否则这两个值作为索引来映射nvd中的一块数据区域。</span><br></pre></td></tr></table></figure>
-<p>图6：<br><img  
+<h4 id="fieldnumber"><a class="markdownIt-Anchor" href="#fieldnumber"></a> FieldNumber</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域的编号，用来唯一标识一种域。</span><br></pre></td></tr></table></figure>
+<h4 id="docswithfieldaddress-docswithfieldlength"><a class="markdownIt-Anchor" href="#docswithfieldaddress-docswithfieldlength"></a> DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果numDocsWithValue == maxDoc 或者numDocsWithValue == 0，那么DocsWithFieldAddress跟DocsWithFieldLength会被置为固定值。否则这两个值作为索引来映射nvd中的一块数据区域。</span><br></pre></td></tr></table></figure>
+<p>图6：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/6.png"
                      
                 ></p>
-<h4 id="NumDocsWithField"><a href="#NumDocsWithField" class="headerlink" title="NumDocsWithField"></a>NumDocsWithField</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NumDocsWithField描述了包含当前域的文档个数。</span><br></pre></td></tr></table></figure>
-<h4 id="BytesPerNorm"><a href="#BytesPerNorm" class="headerlink" title="BytesPerNorm"></a>BytesPerNorm</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找出当前域在所有所属文档中的最大跟最小的两个标准化值来判断存储一个标准化值最大需要的字节数，这里还是出于优化索引空间的目的。由于最小值有可能是负数，所以不能仅仅靠最大值来判断存储一个标准化值需要的字节数。比如说最小值min为 -130(需要2个字节)，最大值max为5(需要1个字节)，那么此时需要根据min来决定字节个数。</span><br></pre></td></tr></table></figure>
-<h4 id="NormsAddress"><a href="#NormsAddress" class="headerlink" title="NormsAddress"></a>NormsAddress</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NormsAddress作为索引映射nvd中一块数据区域，这块数据区域即当前域在所有文档中的标准化值。</span><br></pre></td></tr></table></figure>
-<p>图7：<br><img  
+<h4 id="numdocswithfield"><a class="markdownIt-Anchor" href="#numdocswithfield"></a> NumDocsWithField</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NumDocsWithField描述了包含当前域的文档个数。</span><br></pre></td></tr></table></figure>
+<h4 id="bytespernorm"><a class="markdownIt-Anchor" href="#bytespernorm"></a> BytesPerNorm</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找出当前域在所有所属文档中的最大跟最小的两个标准化值来判断存储一个标准化值最大需要的字节数，这里还是出于优化索引空间的目的。由于最小值有可能是负数，所以不能仅仅靠最大值来判断存储一个标准化值需要的字节数。比如说最小值min为 -130(需要2个字节)，最大值max为5(需要1个字节)，那么此时需要根据min来决定字节个数。</span><br></pre></td></tr></table></figure>
+<h4 id="normsaddress"><a class="markdownIt-Anchor" href="#normsaddress"></a> NormsAddress</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NormsAddress作为索引映射nvd中一块数据区域，这块数据区域即当前域在所有文档中的标准化值。</span><br></pre></td></tr></table></figure>
+<p>图7：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/7.png"
                      
                 ></p>
-<h3 id="nvm-nvd映射关系图"><a href="#nvm-nvd映射关系图" class="headerlink" title="nvm&amp;&amp;nvd映射关系图"></a>nvm&amp;&amp;nvd映射关系图</h3><p>图8：<br><img  
+<h3 id="nvmnvd映射关系图"><a class="markdownIt-Anchor" href="#nvmnvd映射关系图"></a> nvm&amp;&amp;nvd映射关系图</h3>
+<p>图8：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/8.png"
                      
                 ></p>
-<h3 id="集合图"><a href="#集合图" class="headerlink" title="集合图"></a>集合图</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">放一起 更直观~~</span><br></pre></td></tr></table></figure>
-<p>图9：<br><img  
+<h3 id="集合图"><a class="markdownIt-Anchor" href="#集合图"></a> 集合图</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">放一起 更直观~~</span><br></pre></td></tr></table></figure>
+<p>图9：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/nvm&&nvd/9.png"
                      
                 ></p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bnvd&&nvm.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bnvd&amp;&amp;nvm.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
 
@@ -569,7 +596,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvd"><span class="nav-number">1.1.</span> <span class="nav-text">nvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FieldData"><span class="nav-number">1.1.1.</span> <span class="nav-text">FieldData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DocsWithFieldData"><span class="nav-number">1.1.2.</span> <span class="nav-text">DocsWithFieldData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-0"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-maxDoc"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-maxDoc-1"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">numDocsWithValue &lt; maxDoc</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NormsData"><span class="nav-number">1.1.3.</span> <span class="nav-text">NormsData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Value"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Value</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm"><span class="nav-number">1.2.</span> <span class="nav-text">nvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FieldNumber"><span class="nav-number">1.2.1.</span> <span class="nav-text">FieldNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DocsWithFieldAddress-DocsWithFieldLength"><span class="nav-number">1.2.2.</span> <span class="nav-text">DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NumDocsWithField"><span class="nav-number">1.2.3.</span> <span class="nav-text">NumDocsWithField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BytesPerNorm"><span class="nav-number">1.2.4.</span> <span class="nav-text">BytesPerNorm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NormsAddress"><span class="nav-number">1.2.5.</span> <span class="nav-text">NormsAddress</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm-nvd%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">nvm&amp;&amp;nvd映射关系图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text">集合图</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvd"><span class="nav-number">1.1.</span> <span class="nav-text"> nvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fielddata"><span class="nav-number">1.1.1.</span> <span class="nav-text"> FieldData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docswithfielddata"><span class="nav-number">1.1.2.</span> <span class="nav-text"> DocsWithFieldData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-0"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-maxdoc"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-maxdoc-2"><span class="nav-number">1.1.2.3.</span> <span class="nav-text"> numDocsWithValue &lt; maxDoc</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#normsdata"><span class="nav-number">1.1.3.</span> <span class="nav-text"> NormsData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#value"><span class="nav-number">1.1.3.1.</span> <span class="nav-text"> Value</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm"><span class="nav-number">1.2.</span> <span class="nav-text"> nvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fieldnumber"><span class="nav-number">1.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docswithfieldaddress-docswithfieldlength"><span class="nav-number">1.2.2.</span> <span class="nav-text"> DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.3.</span> <span class="nav-text"> NumDocsWithField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bytespernorm"><span class="nav-number">1.2.4.</span> <span class="nav-text"> BytesPerNorm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#normsaddress"><span class="nav-number">1.2.5.</span> <span class="nav-text"> NormsAddress</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvmnvd%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text"> nvm&amp;&amp;nvd映射关系图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text"> 集合图</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -624,7 +651,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -762,7 +789,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvd"><span class="nav-number">1.1.</span> <span class="nav-text">nvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FieldData"><span class="nav-number">1.1.1.</span> <span class="nav-text">FieldData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DocsWithFieldData"><span class="nav-number">1.1.2.</span> <span class="nav-text">DocsWithFieldData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-0"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-maxDoc"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numDocsWithValue-maxDoc-1"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">numDocsWithValue &lt; maxDoc</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NormsData"><span class="nav-number">1.1.3.</span> <span class="nav-text">NormsData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Value"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Value</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm"><span class="nav-number">1.2.</span> <span class="nav-text">nvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FieldNumber"><span class="nav-number">1.2.1.</span> <span class="nav-text">FieldNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DocsWithFieldAddress-DocsWithFieldLength"><span class="nav-number">1.2.2.</span> <span class="nav-text">DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NumDocsWithField"><span class="nav-number">1.2.3.</span> <span class="nav-text">NumDocsWithField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BytesPerNorm"><span class="nav-number">1.2.4.</span> <span class="nav-text">BytesPerNorm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NormsAddress"><span class="nav-number">1.2.5.</span> <span class="nav-text">NormsAddress</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm-nvd%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">nvm&amp;&amp;nvd映射关系图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text">集合图</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvd"><span class="nav-number">1.1.</span> <span class="nav-text"> nvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fielddata"><span class="nav-number">1.1.1.</span> <span class="nav-text"> FieldData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docswithfielddata"><span class="nav-number">1.1.2.</span> <span class="nav-text"> DocsWithFieldData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-0"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-maxdoc"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithvalue-maxdoc-2"><span class="nav-number">1.1.2.3.</span> <span class="nav-text"> numDocsWithValue &lt; maxDoc</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#normsdata"><span class="nav-number">1.1.3.</span> <span class="nav-text"> NormsData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#value"><span class="nav-number">1.1.3.1.</span> <span class="nav-text"> Value</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm"><span class="nav-number">1.2.</span> <span class="nav-text"> nvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fieldnumber"><span class="nav-number">1.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docswithfieldaddress-docswithfieldlength"><span class="nav-number">1.2.2.</span> <span class="nav-text"> DocsWithFieldAddress &amp;&amp; DocsWithFieldLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.3.</span> <span class="nav-text"> NumDocsWithField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bytespernorm"><span class="nav-number">1.2.4.</span> <span class="nav-text"> BytesPerNorm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#normsaddress"><span class="nav-number">1.2.5.</span> <span class="nav-text"> NormsAddress</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvmnvd%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text"> nvm&amp;&amp;nvd映射关系图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text"> 集合图</span></a></li></ol></li></ol>
     </div>
 </div>
 

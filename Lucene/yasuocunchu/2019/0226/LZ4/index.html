@@ -259,13 +259,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/lz4/">lz4</a></li>
@@ -300,50 +300,80 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <h2 id="LZ4"><a href="#LZ4" class="headerlink" title="LZ4"></a><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/" >LZ4<i class="fas fa-external-link-alt"></i></a></h2><p>LZ4是一种无损数据压缩算法，着重于压缩和解压的速度，并且应用广泛。在Hadoop、Linux内核、文件系统都有应用，而在Lucene中，则是使用LZ4对倒排表的数据以及词向量（termVector）进行压缩存储。在本篇文章中，介绍LZ4Fast的压缩逻辑在Lucene中的Java实现。</p>
-<h2 id="两种实现"><a href="#两种实现" class="headerlink" title="两种实现"></a>两种实现</h2><p>Lucene中提供了两种LZ4的算法实现，分别是LZ4Fast跟LZ4High：</p>
-<h3 id="LZ4Fast"><a href="#LZ4Fast" class="headerlink" title="LZ4Fast"></a>LZ4Fast</h3><p>本文介绍的就是LZ4Fast，它是原生的LZ4算法的实现，性能跟内存开销小于LZ4High，最多使用16KB的内存。</p>
-<h3 id="LZ4High"><a href="#LZ4High" class="headerlink" title="LZ4High"></a>LZ4High</h3><p>LZ4High相比较LZ4Fast，它的压缩速度较慢，并且占用更多的内存(每个线程占用~256KB)，但是它提供了更高的压缩比，处理很大的数据时更能体现压缩比的优势。可能会随后的博客中更新：）。</p>
-<h4 id="流程简介"><a href="#流程简介" class="headerlink" title="流程简介"></a>流程简介</h4><p>压缩过程分为两步</p>
-<h5 id="步骤一：计算hash，找到相同的数据区间"><a href="#步骤一：计算hash，找到相同的数据区间" class="headerlink" title="步骤一：计算hash，找到相同的数据区间"></a>步骤一：计算hash，找到相同的数据区间</h5><h5 id="步骤二：将相同的数据区间进行压缩存储"><a href="#步骤二：将相同的数据区间进行压缩存储" class="headerlink" title="步骤二：将相同的数据区间进行压缩存储"></a>步骤二：将相同的数据区间进行压缩存储</h5><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>我们通过一个例子，来介绍LZ4Fast的压缩的实现：<br>图1：<br><img  
+                    <h2 id="lz4"><a class="markdownIt-Anchor" href="#lz4"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/" >LZ4<i class="fas fa-external-link-alt"></i></a></h2>
+<p>LZ4是一种无损数据压缩算法，着重于压缩和解压的速度，并且应用广泛。在Hadoop、Linux内核、文件系统都有应用，而在Lucene中，则是使用LZ4对倒排表的数据以及词向量（termVector）进行压缩存储。在本篇文章中，介绍LZ4Fast的压缩逻辑在Lucene中的Java实现。</p>
+<h2 id="两种实现"><a class="markdownIt-Anchor" href="#两种实现"></a> 两种实现</h2>
+<p>Lucene中提供了两种LZ4的算法实现，分别是LZ4Fast跟LZ4High：</p>
+<h3 id="lz4fast"><a class="markdownIt-Anchor" href="#lz4fast"></a> LZ4Fast</h3>
+<p>本文介绍的就是LZ4Fast，它是原生的LZ4算法的实现，性能跟内存开销小于LZ4High，最多使用16KB的内存。</p>
+<h3 id="lz4high"><a class="markdownIt-Anchor" href="#lz4high"></a> LZ4High</h3>
+<p>LZ4High相比较LZ4Fast，它的压缩速度较慢，并且占用更多的内存(每个线程占用~256KB)，但是它提供了更高的压缩比，处理很大的数据时更能体现压缩比的优势。可能会随后的博客中更新：）。</p>
+<h4 id="流程简介"><a class="markdownIt-Anchor" href="#流程简介"></a> 流程简介</h4>
+<p>压缩过程分为两步</p>
+<h5 id="步骤一计算hash找到相同的数据区间"><a class="markdownIt-Anchor" href="#步骤一计算hash找到相同的数据区间"></a> 步骤一：计算hash，找到相同的数据区间</h5>
+<h5 id="步骤二将相同的数据区间进行压缩存储"><a class="markdownIt-Anchor" href="#步骤二将相同的数据区间进行压缩存储"></a> 步骤二：将相同的数据区间进行压缩存储</h5>
+<h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
+<p>我们通过一个例子，来介绍LZ4Fast的压缩的实现：<br />
+图1：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/1.png"
                      
-                ><br>图2：<br><img  
+                ><br />
+图2：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/2.png"
                      
                 ></p>
-<h3 id="找到第一个锚点（anchor）"><a href="#找到第一个锚点（anchor）" class="headerlink" title="找到第一个锚点（anchor）"></a>找到第一个锚点（anchor）</h3><p>刚开始处理时，下标值为0的地方为第一个锚点</p>
-<h3 id="找到第二个锚点（anchor）"><a href="#找到第二个锚点（anchor）" class="headerlink" title="找到第二个锚点（anchor）"></a>找到第二个锚点（anchor）</h3><p>第一个锚点的值为0，我们最终目的是获得第二个锚点的值，第二个锚点跟第一个锚点之间的数据进行压缩处理。在这个区间的数据，有两个子区间的数据是一样的，那么需要对这两个子区间进行压缩存储。由于注意的是，两个字区间可能有重叠部分。</p>
-<h4 id="处理下标值为0的数组元素"><a href="#处理下标值为0的数组元素" class="headerlink" title="处理下标值为0的数组元素"></a>处理下标值为0的数组元素</h4><p>图3：<br><img  
+<h3 id="找到第一个锚点anchor"><a class="markdownIt-Anchor" href="#找到第一个锚点anchor"></a> 找到第一个锚点（anchor）</h3>
+<p>刚开始处理时，下标值为0的地方为第一个锚点</p>
+<h3 id="找到第二个锚点anchor"><a class="markdownIt-Anchor" href="#找到第二个锚点anchor"></a> 找到第二个锚点（anchor）</h3>
+<p>第一个锚点的值为0，我们最终目的是获得第二个锚点的值，第二个锚点跟第一个锚点之间的数据进行压缩处理。在这个区间的数据，有两个子区间的数据是一样的，那么需要对这两个子区间进行压缩存储。由于注意的是，两个字区间可能有重叠部分。</p>
+<h4 id="处理下标值为0的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为0的数组元素"></a> 处理下标值为0的数组元素</h4>
+<p>图3：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/3.png"
                      
-                ><br>encodeArray[] 数组是经过压缩处理的数组。<br>取出下标值为0以及后面的三个数组元素，4个字节组成一个int类型的数值，对这个数值进行散列，如果发生冲突，说明可能之前散列过相同的值，由于这里是第一个数据，所以不会发生这种情况。</p>
-<h4 id="处理下标值为1的数组元素"><a href="#处理下标值为1的数组元素" class="headerlink" title="处理下标值为1的数组元素"></a>处理下标值为1的数组元素</h4><p>图4：<br><img  
+                ><br />
+encodeArray[] 数组是经过压缩处理的数组。<br />
+取出下标值为0以及后面的三个数组元素，4个字节组成一个int类型的数值，对这个数值进行散列，如果发生冲突，说明可能之前散列过相同的值，由于这里是第一个数据，所以不会发生这种情况。</p>
+<h4 id="处理下标值为1的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为1的数组元素"></a> 处理下标值为1的数组元素</h4>
+<p>图4：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/4.png"
                      
-                ><br>同上一步操作，类似滑动窗口的操作，窗口大小为4个字节，每一次右移一个字节，然后我们计算下标值1~下标值4的数组元素组成的int值，同样进行散列。 </p>
-<h4 id="处理下标值为2、3、4的数组元素"><a href="#处理下标值为2、3、4的数组元素" class="headerlink" title="处理下标值为2、3、4的数组元素"></a>处理下标值为2、3、4的数组元素</h4><p>同样的，还是没有发生hash冲突。</p>
-<h4 id="处理下标值为5的数组元素"><a href="#处理下标值为5的数组元素" class="headerlink" title="处理下标值为5的数组元素"></a>处理下标值为5的数组元素</h4><p>图5：<br><img  
+                ><br />
+同上一步操作，类似滑动窗口的操作，窗口大小为4个字节，每一次右移一个字节，然后我们计算下标值1~下标值4的数组元素组成的int值，同样进行散列。</p>
+<h4 id="处理下标值为2-3-4的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为2-3-4的数组元素"></a> 处理下标值为2、3、4的数组元素</h4>
+<p>同样的，还是没有发生hash冲突。</p>
+<h4 id="处理下标值为5的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为5的数组元素"></a> 处理下标值为5的数组元素</h4>
+<p>图5：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/5.png"
                      
-                ><br>此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值0<del>3的数组元素对应的int值是否跟下标值5</del>8的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
-<h5 id="找出相同数据的最大区间"><a href="#找出相同数据的最大区间" class="headerlink" title="找出相同数据的最大区间"></a>找出相同数据的最大区间</h5><p>目前我们找到了 数组中下标值0<del>3跟 5</del>8两个相同的区间R1、R2，接着扩大这两个区间，直到满足两个区间数据相同，且是最大的区间。<br>图6：<br><img  
+                ><br />
+此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值0<sub>3的数组元素对应的int值是否跟下标值5</sub>8的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
+<h5 id="找出相同数据的最大区间"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间"></a> 找出相同数据的最大区间</h5>
+<p>目前我们找到了 数组中下标值0~3跟 5~8两个相同的区间R1、R2，接着扩大这两个区间，直到满足两个区间数据相同，且是最大的区间。<br />
+图6：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/6.png"
                      
-                ><br>注意的是，这里两个区间有重叠的区域，即下标值5~9的区域。</p>
-<h5 id="计算token值"><a href="#计算token值" class="headerlink" title="计算token值"></a>计算token值</h5><p>matchOff：</p>
+                ><br />
+注意的是，这里两个区间有重叠的区域，即下标值5~9的区域。</p>
+<h5 id="计算token值"><a class="markdownIt-Anchor" href="#计算token值"></a> 计算token值</h5>
+<p>matchOff：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即5。</span><br></pre></td></tr></table></figure>
 <p>literalLen：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值0）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值Wie0，所以literalLen的值为5。</span><br></pre></td></tr></table></figure>
@@ -354,27 +384,39 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的literalLen跟matchLen-4的值没有大于0x0F,所以token = (5 &lt;&lt; 4) | (10 - 4), 即 86，二进制就是0b01010110。后面的处理过程中会有literalLen跟matchLen-4的值大于0x0F的情况。</span><br></pre></td></tr></table></figure>
 <p>matchDec：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 5 - 0 = 5。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
-<h5 id="写入token值、anchor至matchOff的数据、matchDec"><a href="#写入token值、anchor至matchOff的数据、matchDec" class="headerlink" title="写入token值、anchor至matchOff的数据、matchDec"></a>写入token值、anchor至matchOff的数据、matchDec</h5><p>图7：<br><img  
+<h5 id="写入token值-anchor至matchoff的数据-matchdec"><a class="markdownIt-Anchor" href="#写入token值-anchor至matchoff的数据-matchdec"></a> 写入token值、anchor至matchOff的数据、matchDec</h5>
+<p>图7：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/7.png"
                      
-                ><br>上图中 原始数据即anchor至matchOff之间的数据。</p>
-<h3 id="找到第三个锚点（anchor）"><a href="#找到第三个锚点（anchor）" class="headerlink" title="找到第三个锚点（anchor）"></a>找到第三个锚点（anchor）</h3><p>上面的流程结束后，更新第二个锚点的值为15。按照同样的逻辑找到第三个锚点。</p>
-<h4 id="处理下标值为15-41的数组元素"><a href="#处理下标值为15-41的数组元素" class="headerlink" title="处理下标值为15~41的数组元素"></a>处理下标值为15~41的数组元素</h4><p>都没有发生hash冲突的情况。</p>
-<h4 id="处理下标值为42的数组元素"><a href="#处理下标值为42的数组元素" class="headerlink" title="处理下标值为42的数组元素"></a>处理下标值为42的数组元素</h4><p>图8：<br><img  
+                ><br />
+上图中 原始数据即anchor至matchOff之间的数据。</p>
+<h3 id="找到第三个锚点anchor"><a class="markdownIt-Anchor" href="#找到第三个锚点anchor"></a> 找到第三个锚点（anchor）</h3>
+<p>上面的流程结束后，更新第二个锚点的值为15。按照同样的逻辑找到第三个锚点。</p>
+<h4 id="处理下标值为15~41的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为15~41的数组元素"></a> 处理下标值为15~41的数组元素</h4>
+<p>都没有发生hash冲突的情况。</p>
+<h4 id="处理下标值为42的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为42的数组元素"></a> 处理下标值为42的数组元素</h4>
+<p>图8：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/8.png"
                      
-                ><br>此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值1<del>4的数组元素对应的int值是否跟下标值42</del>45的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
-<h5 id="找出相同数据的最大区间-1"><a href="#找出相同数据的最大区间-1" class="headerlink" title="找出相同数据的最大区间"></a>找出相同数据的最大区间</h5><p>然后下标值5跟下表值46的数组元素就不相同了，所以相同数据的最大区间如下图的R1跟R2<br>图9：<br><img  
+                ><br />
+此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值1<sub>4的数组元素对应的int值是否跟下标值42</sub>45的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
+<h5 id="找出相同数据的最大区间-2"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间-2"></a> 找出相同数据的最大区间</h5>
+<p>然后下标值5跟下表值46的数组元素就不相同了，所以相同数据的最大区间如下图的R1跟R2<br />
+图9：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/9.png"
                      
                 ></p>
-<h5 id="计算token值-1"><a href="#计算token值-1" class="headerlink" title="计算token值"></a>计算token值</h5><p>matchOff：</p>
+<h5 id="计算token值-2"><a class="markdownIt-Anchor" href="#计算token值-2"></a> 计算token值</h5>
+<p>matchOff：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即42。</span><br></pre></td></tr></table></figure>
 <p>literalLen：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值15）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值为15，所以literalLen的值为27。</span><br></pre></td></tr></table></figure>
@@ -385,26 +427,35 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的literalLen大于0x0F ,所以token = (15 &lt;&lt; 4) | (4 - 4), 即 240，二进制就是0b11110000。</span><br></pre></td></tr></table></figure>
 <p>matchDec：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 42 - 1 = 41。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
-<h5 id="写入token值、anchor至matchOff的数据、matchDec-1"><a href="#写入token值、anchor至matchOff的数据、matchDec-1" class="headerlink" title="写入token值、anchor至matchOff的数据、matchDec"></a>写入token值、anchor至matchOff的数据、matchDec</h5><p>图10：<br><img  
+<h5 id="写入token值-anchor至matchoff的数据-matchdec-2"><a class="markdownIt-Anchor" href="#写入token值-anchor至matchoff的数据-matchdec-2"></a> 写入token值、anchor至matchOff的数据、matchDec</h5>
+<p>图10：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/10.png"
                      
-                ><br>注意encodeArray[]数组中下标值为9的数组元素，由于token值只有高4位用来表示原始数据的长度，即最大值为15，所以literalLen的值超出的部分需要额外的一个字节存储，当前literalLen的值为27，所以额外的值为 27 - 15 &#x3D; 12。</p>
-<h3 id="找到第四个锚点（anchor）"><a href="#找到第四个锚点（anchor）" class="headerlink" title="找到第四个锚点（anchor）"></a>找到第四个锚点（anchor）</h3><p>上面的流程结束后，更新第三个锚点的值为46。按照同样的逻辑找到第四个锚点</p>
-<h4 id="处理下标值为46的数组元素"><a href="#处理下标值为46的数组元素" class="headerlink" title="处理下标值为46的数组元素"></a>处理下标值为46的数组元素</h4><p>图11：<br><img  
+                ><br />
+注意encodeArray[]数组中下标值为9的数组元素，由于token值只有高4位用来表示原始数据的长度，即最大值为15，所以literalLen的值超出的部分需要额外的一个字节存储，当前literalLen的值为27，所以额外的值为 27 - 15 = 12。</p>
+<h3 id="找到第四个锚点anchor"><a class="markdownIt-Anchor" href="#找到第四个锚点anchor"></a> 找到第四个锚点（anchor）</h3>
+<p>上面的流程结束后，更新第三个锚点的值为46。按照同样的逻辑找到第四个锚点</p>
+<h4 id="处理下标值为46的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为46的数组元素"></a> 处理下标值为46的数组元素</h4>
+<p>图11：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/11.png"
                      
                 ></p>
-<h5 id="找出相同数据的最大区间-2"><a href="#找出相同数据的最大区间-2" class="headerlink" title="找出相同数据的最大区间"></a>找出相同数据的最大区间</h5><p>图12：<br><img  
+<h5 id="找出相同数据的最大区间-3"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间-3"></a> 找出相同数据的最大区间</h5>
+<p>图12：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/12.png"
                      
                 ></p>
-<h5 id="计算token值-2"><a href="#计算token值-2" class="headerlink" title="计算token值"></a>计算token值</h5><p>matchOff：</p>
+<h5 id="计算token值-3"><a class="markdownIt-Anchor" href="#计算token值-3"></a> 计算token值</h5>
+<p>matchOff：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即46。</span><br></pre></td></tr></table></figure>
 <p>literalLen：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值46）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值为46，所以literalLen的值为0。说明不用写原始数据到encodeArray[]数组中</span><br></pre></td></tr></table></figure>
@@ -415,28 +466,39 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的matchLen为22，大于0x0F ,所以token = (0 &lt;&lt; 4) | 15, 即 15，二进制就是0b00001111。matchLen多出来的部分需要再用一个字节存储。</span><br></pre></td></tr></table></figure>
 <p>matchDec：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 46 - 15 = 31。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
-<p>图13：<br><img  
+<p>图13：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/13.png"
                      
-                ><br>注意encodeArray[]数组中下标值为42的数组元素，由于token值只有低4位用来表示原始数据matchLen的长度，即最大值为15，所以matchLen的值超出的部分需要额外的一个字节存储，当前matchLen的值为22，所以额外的值为 22 - 15 - 4 &#x3D; 3。<br>另外literalLen的值为0，说明这个区间内的数据已经存储过了。</p>
-<h3 id="最后5个字节的处理"><a href="#最后5个字节的处理" class="headerlink" title="最后5个字节的处理"></a>最后5个字节的处理</h3><p>最后5个字节在上面的流程中不会被处理，LZ4Fast算法会对最后5个字节单独处理。上面的流程结束后，更新第三个锚点的值为68。同样需要存储token，不过token的值的计算方式为 </p>
+                ><br />
+注意encodeArray[]数组中下标值为42的数组元素，由于token值只有低4位用来表示原始数据matchLen的长度，即最大值为15，所以matchLen的值超出的部分需要额外的一个字节存储，当前matchLen的值为22，所以额外的值为 22 - 15 - 4 = 3。<br />
+另外literalLen的值为0，说明这个区间内的数据已经存储过了。</p>
+<h3 id="最后5个字节的处理"><a class="markdownIt-Anchor" href="#最后5个字节的处理"></a> 最后5个字节的处理</h3>
+<p>最后5个字节在上面的流程中不会被处理，LZ4Fast算法会对最后5个字节单独处理。上面的流程结束后，更新第三个锚点的值为68。同样需要存储token，不过token的值的计算方式为</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">token</span> <span class="operator">=</span> Math.min(literalLen, <span class="number">0x0F</span>) &lt;&lt; <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="计算token值-3"><a href="#计算token值-3" class="headerlink" title="计算token值"></a>计算token值</h5><p>还有最后5个字节，所以literalLen的值为5，所以token的值为 （5 &lt;&lt; 4）&#x3D; 80。</p>
-<h5 id="写入token值、最后5个字节的原始数据"><a href="#写入token值、最后5个字节的原始数据" class="headerlink" title="写入token值、最后5个字节的原始数据"></a>写入token值、最后5个字节的原始数据</h5><p>图14：<br><img  
+<h5 id="计算token值-4"><a class="markdownIt-Anchor" href="#计算token值-4"></a> 计算token值</h5>
+<p>还有最后5个字节，所以literalLen的值为5，所以token的值为 （5 &lt;&lt; 4）= 80。</p>
+<h5 id="写入token值-最后5个字节的原始数据"><a class="markdownIt-Anchor" href="#写入token值-最后5个字节的原始数据"></a> 写入token值、最后5个字节的原始数据</h5>
+<p>图14：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/14.png"
                      
-                ><br>至此，array[]数组压缩成encodeArray[]数组的过程结束。</p>
-<h2 id="压缩后的数据结构如下："><a href="#压缩后的数据结构如下：" class="headerlink" title="压缩后的数据结构如下："></a>压缩后的数据结构如下：</h2><p>图15：<br><img  
+                ><br />
+至此，array[]数组压缩成encodeArray[]数组的过程结束。</p>
+<h2 id="压缩后的数据结构如下"><a class="markdownIt-Anchor" href="#压缩后的数据结构如下"></a> 压缩后的数据结构如下：</h2>
+<p>图15：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/15.png"
                      
                 ></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文通过一个例子实现了LZ4Fast的压缩过程，由于篇幅原因上文中如何计算hash的过程并没有给出，并且没有理解源码中提供的hash函数的含义，以及为什么要留最后的5个字节单独处理。在随后的博客中，会介绍解压过程。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>本文通过一个例子实现了LZ4Fast的压缩过程，由于篇幅原因上文中如何计算hash的过程并没有给出，并且没有理解源码中提供的hash函数的含义，以及为什么要留最后的5个字节单独处理。在随后的博客中，会介绍解压过程。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/FST/FST.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
@@ -449,15 +511,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -639,7 +701,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LZ4"><span class="nav-number">1.</span> <span class="nav-text">LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LZ4Fast"><span class="nav-number">2.1.</span> <span class="nav-text">LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LZ4High"><span class="nav-number">2.2.</span> <span class="nav-text">LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E8%AE%A1%E7%AE%97hash%EF%BC%8C%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text">处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text">处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2%E3%80%813%E3%80%814%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text">处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text">处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81anchor%E8%87%B3matchOff%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%81matchDec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text">写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15-41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text">处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text">处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-1"><span class="nav-number">2.6.2.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-1"><span class="nav-number">2.6.2.2.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81anchor%E8%87%B3matchOff%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%81matchDec-1"><span class="nav-number">2.6.2.3.</span> <span class="nav-text">写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text">处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.7.1.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.7.1.2.</span> <span class="nav-text">计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text">最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.8.0.1.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text">写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lz4"><span class="nav-number">1.</span> <span class="nav-text"> LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4fast"><span class="nav-number">2.1.</span> <span class="nav-text"> LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4high"><span class="nav-number">2.2.</span> <span class="nav-text"> LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E8%AE%A1%E7%AE%97hash%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text"> 步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text"> 步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.4.</span> <span class="nav-text"> 找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.5.</span> <span class="nav-text"> 找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2-3-4%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text"> 处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.6.</span> <span class="nav-text"> 找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15~41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.6.2.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.6.2.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec-2"><span class="nav-number">2.6.2.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.7.</span> <span class="nav-text"> 找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text"> 处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-3"><span class="nav-number">2.7.1.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.7.1.2.</span> <span class="nav-text"> 计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text"> 最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-4"><span class="nav-number">2.8.0.1.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text"> 写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -694,7 +756,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -832,7 +894,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LZ4"><span class="nav-number">1.</span> <span class="nav-text">LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LZ4Fast"><span class="nav-number">2.1.</span> <span class="nav-text">LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LZ4High"><span class="nav-number">2.2.</span> <span class="nav-text">LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E8%AE%A1%E7%AE%97hash%EF%BC%8C%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text">处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text">处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2%E3%80%813%E3%80%814%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text">处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text">处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81anchor%E8%87%B3matchOff%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%81matchDec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text">写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15-41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text">处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text">处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-1"><span class="nav-number">2.6.2.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-1"><span class="nav-number">2.6.2.2.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81anchor%E8%87%B3matchOff%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%81matchDec-1"><span class="nav-number">2.6.2.3.</span> <span class="nav-text">写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9%EF%BC%88anchor%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text">处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.7.1.1.</span> <span class="nav-text">找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.7.1.2.</span> <span class="nav-text">计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text">最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.8.0.1.</span> <span class="nav-text">计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC%E3%80%81%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text">写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lz4"><span class="nav-number">1.</span> <span class="nav-text"> LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4fast"><span class="nav-number">2.1.</span> <span class="nav-text"> LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4high"><span class="nav-number">2.2.</span> <span class="nav-text"> LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E8%AE%A1%E7%AE%97hash%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text"> 步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text"> 步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.4.</span> <span class="nav-text"> 找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.5.</span> <span class="nav-text"> 找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2-3-4%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text"> 处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.6.</span> <span class="nav-text"> 找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15~41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.6.2.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.6.2.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec-2"><span class="nav-number">2.6.2.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.7.</span> <span class="nav-text"> 找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text"> 处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-3"><span class="nav-number">2.7.1.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.7.1.2.</span> <span class="nav-text"> 计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text"> 最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-4"><span class="nav-number">2.8.0.1.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text"> 写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

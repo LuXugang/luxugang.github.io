@@ -259,13 +259,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fst/">fst</a></li>
@@ -300,9 +300,9 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <h1 id="FST（二）（Lucene-8-4-0）"><a href="#FST（二）（Lucene-8-4-0）" class="headerlink" title="FST（二）（Lucene 8.4.0）"></a><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/" >FST（二）<i class="fas fa-external-link-alt"></i></a>（Lucene 8.4.0）</h1><p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>（<strong>必须先阅读该篇文章</strong>）中我们通过一个例子，简单的描述了Lucene是如何使用一个字节数组current[ ]存储FST信息的，为了能更好的理解读取过程，我们需要另外给出例子（差别在于把”mop”改成了”mo”），输入数据以及对应FST的信息如下。</p>
+                    <h1 id="fst二"><a class="markdownIt-Anchor" href="#fst二"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/" >FST（二）<i class="fas fa-external-link-alt"></i></a>（Lucene 8.4.0）</h1>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>（<strong>必须先阅读该篇文章</strong>）中我们通过一个例子，简单的描述了Lucene是如何使用一个字节数组current[ ]存储FST信息的，为了能更好的理解读取过程，我们需要另外给出例子（差别在于把&quot;mop&quot;改成了&quot;mo&quot;），输入数据以及对应FST的信息如下。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] inputValues = &#123;&quot;mo&quot;, &quot;moth&quot;, &quot;pop&quot;, &quot;star&quot;, &quot;stop&quot;, &quot;top&quot;&#125;;</span><br><span class="line">long[] outputValues = &#123;100, 91, 72, 83, 54, 55&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>图1：</p>
 <img  
                      lazyload
@@ -310,8 +310,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/1.png"
                      
                 >
-
-<p>&emsp;&emsp;如果用节点跟边的关系来描述图1中的FST信息见下图：</p>
+<p>  如果用节点跟边的关系来描述图1中的FST信息见下图：</p>
 <p>图2：</p>
 <img  
                      lazyload
@@ -319,81 +318,87 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/2.png"
                      
                 >
-
-<p>&emsp;&emsp;由图1可以看出FST的两个特性，相同前缀存储和相同后缀存储:</p>
+<p>  由图1可以看出FST的两个特性，相同前缀存储和相同后缀存储:</p>
 <ul>
-<li>相同前缀存储：<ul>
-<li>mo、moth的相同前缀”mo”</li>
-<li>stop、star的相同前缀”st”</li>
+<li>相同前缀存储：
+<ul>
+<li>mo、moth的相同前缀&quot;mo&quot;</li>
+<li>stop、star的相同前缀&quot;st&quot;</li>
 </ul>
 </li>
-<li>相同后缀存储：<ul>
-<li>pop、top的相同后缀”op”</li>
-<li>pop、top、stop的相同后缀”p”</li>
+<li>相同后缀存储：
+<ul>
+<li>pop、top的相同后缀&quot;op&quot;</li>
+<li>pop、top、stop的相同后缀&quot;p&quot;</li>
 </ul>
 </li>
 </ul>
-<h2 id="读取FST"><a href="#读取FST" class="headerlink" title="读取FST"></a>读取FST</h2><p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，对于某个term的每一个字符对应的FST信息将以一个四元组信息（<strong>至少包含label跟flag</strong>）被写入到current[ ]数组中，即index、output、label、flag，其中flag跟index用于找出这个term的每一个字符在current[ ]数组中的起始读取位置以及读取区间，label是这个字符的ASCII，output则是这个term的完整或部分附加值，当获取了所有的字符后就能获得完整的附加值。例如”mo”这个term，它包含2个字符，这几个字符在图1的数组current[ ]数组中的数据区间如下表所示：</p>
+<h2 id="读取fst"><a class="markdownIt-Anchor" href="#读取fst"></a> 读取FST</h2>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，对于某个term的每一个字符对应的FST信息将以一个四元组信息（<strong>至少包含label跟flag</strong>）被写入到current[ ]数组中，即index、output、label、flag，其中flag跟index用于找出这个term的每一个字符在current[ ]数组中的起始读取位置以及读取区间，label是这个字符的ASCII，output则是这个term的完整或部分附加值，当获取了所有的字符后就能获得完整的附加值。例如&quot;mo&quot;这个term，它包含2个字符，这几个字符在图1的数组current[ ]数组中的数据区间如下表所示：</p>
 <p>表一：</p>
 <table>
 <thead>
 <tr>
-<th align="center">字符</th>
-<th align="center">下标值区间</th>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">下标值区间</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">m</td>
-<td align="center">[35, 38]</td>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">[35, 38]</td>
 </tr>
 <tr>
-<td align="center">o</td>
-<td align="center">[5, 7]</td>
+<td style="text-align:center">o</td>
+<td style="text-align:center">[5, 7]</td>
 </tr>
-</tbody></table>
-<p>&emsp;&emsp;接着我们根据顺序读取跟随机读取两种方式来展开介绍，在此之前我们先介绍下flag：</p>
+</tbody>
+</table>
+<p>  接着我们根据顺序读取跟随机读取两种方式来展开介绍，在此之前我们先介绍下flag：</p>
 <p>表二：</p>
 <table>
 <thead>
 <tr>
-<th align="center">Flag</th>
-<th align="center">Value</th>
-<th align="center">Description</th>
+<th style="text-align:center">Flag</th>
+<th style="text-align:center">Value</th>
+<th style="text-align:center">Description</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">BIT_FINAL_ARC</td>
-<td align="center">1</td>
-<td align="center">arc对应的label是某个term的最后一个字符</td>
+<tbody>
+<tr>
+<td style="text-align:center">BIT_FINAL_ARC</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">arc对应的label是某个term的最后一个字符</td>
 </tr>
 <tr>
-<td align="center">BIT_LAST_ARC</td>
-<td align="center">2</td>
-<td align="center">arc是Node节点中的最后一个Arc，上文中我们说到一个UnCompiledNode状态的Node可以包含多个arc</td>
+<td style="text-align:center">BIT_LAST_ARC</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">arc是Node节点中的最后一个Arc，上文中我们说到一个UnCompiledNode状态的Node可以包含多个arc</td>
 </tr>
 <tr>
-<td align="center">BIT_TARGET_NEXT</td>
-<td align="center">4</td>
-<td align="center">上一个由状态UnCompiledNode转为CompiledNode状态的Node是当前arc的target节点, 它实际是用来描述当前的arc中的label不是输入值的最后一个字符，例如”mop”中，“m”、”o”就不是输入值mop的最后一个字符</td>
+<td style="text-align:center">BIT_TARGET_NEXT</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">上一个由状态UnCompiledNode转为CompiledNode状态的Node是当前arc的target节点, 它实际是用来描述当前的arc中的label不是输入值的最后一个字符，例如&quot;mop&quot;中，“m”、&quot;o&quot;就不是输入值mop的最后一个字符</td>
 </tr>
 <tr>
-<td align="center">BIT_STOP_NODE</td>
-<td align="center">8</td>
-<td align="center">arc的target是一个终止节点</td>
+<td style="text-align:center">BIT_STOP_NODE</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">arc的target是一个终止节点</td>
 </tr>
 <tr>
-<td align="center">BIT_ARC_HAS_OUTPUT</td>
-<td align="center">16</td>
-<td align="center">arc有output值(output不为0)</td>
+<td style="text-align:center">BIT_ARC_HAS_OUTPUT</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">arc有output值(output不为0)</td>
 </tr>
 <tr>
-<td align="center">BIT_ARC_HAS_FINAL_OUTPUT</td>
-<td align="center">32</td>
-<td align="center">某个term的最后一个字符带有附加值output</td>
+<td style="text-align:center">BIT_ARC_HAS_FINAL_OUTPUT</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">某个term的最后一个字符带有附加值output</td>
 </tr>
-</tbody></table>
-<p>&emsp;&emsp;表二中的Flag相比较文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>，多了BIT_ARC_HAS_FINAL_OUTPUT，在那一篇文章中未直接给出的原因在于，那篇文章中的例子的特殊性使得不会使用到该flag，这也是为什么本篇文章我们需要换一个例子。</p>
-<p>&emsp;&emsp;无论哪种读取方式，总是从current[ ]数组中最后一个有效数据，即下标38，的位置开始读取，又因为四元组信息中至少包含flag跟label信息，故直接从最后一个有效数据开始往前读取两个数组元素，获得label的值为”m”、flag的值为16，接着根据flag的值的组合，执行不同的读取逻辑，如下图所示：</p>
+</tbody>
+</table>
+<p>  表二中的Flag相比较文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>，多了BIT_ARC_HAS_FINAL_OUTPUT，在那一篇文章中未直接给出的原因在于，那篇文章中的例子的特殊性使得不会使用到该flag，这也是为什么本篇文章我们需要换一个例子。</p>
+<p>  无论哪种读取方式，总是从current[ ]数组中最后一个有效数据，即下标38，的位置开始读取，又因为四元组信息中至少包含flag跟label信息，故直接从最后一个有效数据开始往前读取两个数组元素，获得label的值为&quot;m&quot;、flag的值为16，接着根据flag的值的组合，执行不同的读取逻辑，如下图所示：</p>
 <p>图3：</p>
 <img  
                      lazyload
@@ -401,9 +406,10 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/3.png"
                      
                 >
-
-<h3 id="顺序读取"><a href="#顺序读取" class="headerlink" title="顺序读取"></a>顺序读取</h3><p>&emsp;&emsp;顺序读取描述的是从FST中最小的term开始，根据字典序依次读取所有的term，在下文中的介绍将会了解到，整个过程相当于一次深度遍历。</p>
-<h4 id="读取”mo”"><a href="#读取”mo”" class="headerlink" title="读取”mo”"></a>读取”mo”</h4><p>&emsp;&emsp;根据下标值38对应的数组元素，即flag，该值为16，该值只包含了BIT_ARC_HAS_OUTPUT（16）那么会执行以下的流程：</p>
+<h3 id="顺序读取"><a class="markdownIt-Anchor" href="#顺序读取"></a> 顺序读取</h3>
+<p>  顺序读取描述的是从FST中最小的term开始，根据字典序依次读取所有的term，在下文中的介绍将会了解到，整个过程相当于一次深度遍历。</p>
+<h4 id="读取mo"><a class="markdownIt-Anchor" href="#读取mo"></a> 读取&quot;mo&quot;</h4>
+<p>  根据下标值38对应的数组元素，即flag，该值为16，该值只包含了BIT_ARC_HAS_OUTPUT（16）那么会执行以下的流程：</p>
 <p>图4：</p>
 <img  
                      lazyload
@@ -411,10 +417,9 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/4.png"
                      
                 >
-
-<p>&emsp;&emsp;图4流程中，结合表二中flag的介绍可以知道，由于不包含BIT_STOP_NODE，说明当前字符不是某个term的最后一个字符；由于不包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符”m”的最近的一个四元组信息（下标值区间为[ 31, 34]）对应的字符不是当前字符”m”的下一个字符，那么此时需要在数组中读取四元组信息中的index，使得能找到下一个字符的起始读取位置，即下标值为7对应的数组元素，它是下一个字符的四元组信息中的flag。</p>
-<p>&emsp;&emsp;根据上面的介绍，我们目前获得了字符”m”、附加值91，以及下一个字符对应的flag，那么根据这个flag继续读取。</p>
-<p>&emsp;&emsp;由于四元组信息至少包含flag和label、所以我们可以知道目前我们正在处理字符”o”，根据flag的值，即39， 包含了BIT_ARC_HAS_FINAL_OUTPUT（32）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），那么它对应的流程图如下所示：</p>
+<p>  图4流程中，结合表二中flag的介绍可以知道，由于不包含BIT_STOP_NODE，说明当前字符不是某个term的最后一个字符；由于不包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符&quot;m&quot;的最近的一个四元组信息（下标值区间为[ 31, 34]）对应的字符不是当前字符&quot;m&quot;的下一个字符，那么此时需要在数组中读取四元组信息中的index，使得能找到下一个字符的起始读取位置，即下标值为7对应的数组元素，它是下一个字符的四元组信息中的flag。</p>
+<p>  根据上面的介绍，我们目前获得了字符&quot;m&quot;、附加值91，以及下一个字符对应的flag，那么根据这个flag继续读取。</p>
+<p>  由于四元组信息至少包含flag和label、所以我们可以知道目前我们正在处理字符&quot;o&quot;，根据flag的值，即39， 包含了BIT_ARC_HAS_FINAL_OUTPUT（32）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），那么它对应的流程图如下所示：</p>
 <p>图5：</p>
 <img  
                      lazyload
@@ -422,10 +427,10 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/5.png"
                      
                 >
-
-<p>&emsp;&emsp;由于包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符”o”的最近的一个四元组信息（下标区间为[3, 4]）对应的字符是当前字符”o”的在某一个term（即”moth”）中的下一个字符，<strong>但是</strong>由于包含BIT_FINAL_ARC，说明当前字符”o”同时是某个term（即”mo”）的最后一个字符，那么我们可以知道存在”mo”以及以”mo”为前缀的term，另外由于包含了BIT_LAST_ARC，意味着不存在其他不以”mo”为前缀的term。</p>
-<h4 id="读取”moth”"><a href="#读取”moth”" class="headerlink" title="读取”moth”"></a>读取”moth”</h4><p>&emsp;&emsp;由于在读取”mo”的字符”o”时，它对应的flag中包含BIT_TARGET_NEXT，意味着最靠近字符”o”对应的四元组信息的字符就是字符”o”的在某一个term的下一个字符，由图1可见，即下标区间[3, 4]对应的字符”t”，它对应的四元组信息中的flag值为6，包含了BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2），对应的流程图同图5。</p>
-<p>&emsp;&emsp;由于包含了BIT_TARGET_NEXT，并且不包含BIT_FINAL_ARC，那么说明”t”不是某个term的最后一个字符，并且下一个字符为离当前字符”t”的最近的一个四元组信息（下标区间为[1, 2]）对应的字符，即字符”h”。字符”h”对应的四元组信息中的flag值为15，包含了BIT_STOP_NODE（8）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），对应的流程图如下：</p>
+<p>  由于包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符&quot;o&quot;的最近的一个四元组信息（下标区间为[3, 4]）对应的字符是当前字符&quot;o&quot;的在某一个term（即&quot;moth&quot;）中的下一个字符，<strong>但是</strong>由于包含BIT_FINAL_ARC，说明当前字符&quot;o&quot;同时是某个term（即&quot;mo&quot;）的最后一个字符，那么我们可以知道存在&quot;mo&quot;以及以&quot;mo&quot;为前缀的term，另外由于包含了BIT_LAST_ARC，意味着不存在其他不以&quot;mo&quot;为前缀的term。</p>
+<h4 id="读取moth"><a class="markdownIt-Anchor" href="#读取moth"></a> 读取&quot;moth&quot;</h4>
+<p>  由于在读取&quot;mo&quot;的字符&quot;o&quot;时，它对应的flag中包含BIT_TARGET_NEXT，意味着最靠近字符&quot;o&quot;对应的四元组信息的字符就是字符&quot;o&quot;的在某一个term的下一个字符，由图1可见，即下标区间[3, 4]对应的字符&quot;t&quot;，它对应的四元组信息中的flag值为6，包含了BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2），对应的流程图同图5。</p>
+<p>  由于包含了BIT_TARGET_NEXT，并且不包含BIT_FINAL_ARC，那么说明&quot;t&quot;不是某个term的最后一个字符，并且下一个字符为离当前字符&quot;t&quot;的最近的一个四元组信息（下标区间为[1, 2]）对应的字符，即字符&quot;h&quot;。字符&quot;h&quot;对应的四元组信息中的flag值为15，包含了BIT_STOP_NODE（8）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），对应的流程图如下：</p>
 <p>图6：</p>
 <img  
                      lazyload
@@ -433,13 +438,14 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/6.png"
                      
                 >
-
-<p>&emsp;&emsp;由于包含了BIT_STOP_NODE，说明没有下一个字符，此时就获得了完整的term，即”moth”’。</p>
-<p>&emsp;&emsp;<strong>字符”h”是最后一个字符了，为什么还有BIT_TARGET_NEXT</strong></p>
-<p>&emsp;&emsp;如果你看过文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>就会知道，它的target是-1，表示没有合法的下一个字符了。</p>
-<p>&emsp;&emsp;通过”mo”、”moth”的介绍已经可以了解读取FST的逻辑，对于BIT_LAST_ARC还需要一点补充，当不包含BIT_LAST_ARC时，说明结点中包含多个Arc，那么在源码中会保留该节点前的字符信息，使得不用重复读取，即实现了深度遍历的逻辑。以图2为例，当读取”star”的字符”a”时，就会知道节点9还有其他的arc，那么此时会保留节点9之前的信息，即字符”s”、”t”的信息，使得读取完”star”后，再读取”stop”时不用再次读取”s”、”t”的信息。</p>
-<h3 id="随机读取"><a href="#随机读取" class="headerlink" title="随机读取"></a>随机读取</h3><p>&emsp;&emsp;随机读取描述的是给定一个term，从FST信息中读取该term的附加值，其基本过程为在每一个节点中进行线性扫描（Linear scan），直到term中每一个字符都能被找到，例如我们给出的输入为”stbae”，结合图2，先在节点1中尝试找到字符”s”，随后在节点8中尝试找到字符”t”，最后在节点9中尝试找到字符”b”，由于节点9中不存在字符”b”对应的arc，那么停止查找并返回，即FST中不存在该term。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;本文简单的介绍了FST信息的基本读取过程，在后面的文章中我们将继续介绍Lucene中生成FST的一些其他特性的使用以及优化读取的内容。</p>
+<p>  由于包含了BIT_STOP_NODE，说明没有下一个字符，此时就获得了完整的term，即&quot;moth&quot;’。</p>
+<p>  <strong>字符&quot;h&quot;是最后一个字符了，为什么还有BIT_TARGET_NEXT</strong></p>
+<p>  如果你看过文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>就会知道，它的target是-1，表示没有合法的下一个字符了。</p>
+<p>  通过&quot;mo&quot;、“moth&quot;的介绍已经可以了解读取FST的逻辑，对于BIT_LAST_ARC还需要一点补充，当不包含BIT_LAST_ARC时，说明结点中包含多个Arc，那么在源码中会保留该节点前的字符信息，使得不用重复读取，即实现了深度遍历的逻辑。以图2为例，当读取&quot;star&quot;的字符&quot;a&quot;时，就会知道节点9还有其他的arc，那么此时会保留节点9之前的信息，即字符&quot;s”、“t&quot;的信息，使得读取完&quot;star&quot;后，再读取&quot;stop&quot;时不用再次读取&quot;s”、&quot;t&quot;的信息。</p>
+<h3 id="随机读取"><a class="markdownIt-Anchor" href="#随机读取"></a> 随机读取</h3>
+<p>  随机读取描述的是给定一个term，从FST信息中读取该term的附加值，其基本过程为在每一个节点中进行线性扫描（Linear scan），直到term中每一个字符都能被找到，例如我们给出的输入为&quot;stbae&quot;，结合图2，先在节点1中尝试找到字符&quot;s&quot;，随后在节点8中尝试找到字符&quot;t&quot;，最后在节点9中尝试找到字符&quot;b&quot;，由于节点9中不存在字符&quot;b&quot;对应的arc，那么停止查找并返回，即FST中不存在该term。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  本文简单的介绍了FST信息的基本读取过程，在后面的文章中我们将继续介绍Lucene中生成FST的一些其他特性的使用以及优化读取的内容。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/FST/FST%EF%BC%88%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
@@ -452,15 +458,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -535,11 +541,11 @@
                             <div class="article-next">
                                 <a class="next"
                                    rel="next"
-                                   href="/Lucene/Index/2020/0709/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E5%85%AD%EF%BC%89/"
-                                   title="软删除softDeletes（六）（Lucene 8.4.0）"
+                                   href="/Lucene/gongjulei/2020/0821/Automaton%EF%BC%88%E4%B8%89%EF%BC%89/"
+                                   title="Automaton（三）（Lucene 8.4.0）"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">软删除softDeletes（六）（Lucene 8.4.0）</span>
+                                        <span class="post-nav-title-item text-ellipsis">Automaton（三）（Lucene 8.4.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                             <span class="right arrow-icon flex-center">
@@ -642,7 +648,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FST%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%88Lucene-8-4-0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">FST（二）（Lucene 8.4.0）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96FST"><span class="nav-number">1.1.</span> <span class="nav-text">读取FST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">顺序读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E2%80%9Dmo%E2%80%9D"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">读取”mo”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E2%80%9Dmoth%E2%80%9D"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">读取”moth”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.2.</span> <span class="nav-text">随机读取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text">结语</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fst%E4%BA%8C"><span class="nav-number">1.</span> <span class="nav-text"> FST（二）（Lucene 8.4.0）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96fst"><span class="nav-number">1.1.</span> <span class="nav-text"> 读取FST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 顺序读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96mo"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 读取&quot;mo&quot;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96moth"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 读取&quot;moth&quot;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 随机读取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text"> 结语</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -697,7 +703,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -835,7 +841,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FST%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%88Lucene-8-4-0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">FST（二）（Lucene 8.4.0）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96FST"><span class="nav-number">1.1.</span> <span class="nav-text">读取FST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">顺序读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E2%80%9Dmo%E2%80%9D"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">读取”mo”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E2%80%9Dmoth%E2%80%9D"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">读取”moth”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.2.</span> <span class="nav-text">随机读取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text">结语</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fst%E4%BA%8C"><span class="nav-number">1.</span> <span class="nav-text"> FST（二）（Lucene 8.4.0）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96fst"><span class="nav-number">1.1.</span> <span class="nav-text"> 读取FST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 顺序读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96mo"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 读取&quot;mo&quot;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96moth"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 读取&quot;moth&quot;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 随机读取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">1.2.</span> <span class="nav-text"> 结语</span></a></li></ol></li></ol>
     </div>
 </div>
 

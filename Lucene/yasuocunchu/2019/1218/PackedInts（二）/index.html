@@ -259,13 +259,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
                     
                 </ul>
@@ -297,8 +297,9 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容。</p>
-<h2 id="压缩实现"><a href="#压缩实现" class="headerlink" title="压缩实现"></a>压缩实现</h2><p>&emsp;&emsp;在上一篇文章中，我们介绍了Lucene 7.5.0中PackedInts提供的几种压缩实现，如下所示：</p>
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容。</p>
+<h2 id="压缩实现"><a class="markdownIt-Anchor" href="#压缩实现"></a> 压缩实现</h2>
+<p>  在上一篇文章中，我们介绍了Lucene 7.5.0中PackedInts提供的几种压缩实现，如下所示：</p>
 <p>表1：</p>
 <table>
  <col width=87 style='width:65pt'>
@@ -351,9 +352,8 @@
   <td class=xl66 width=176 style='width:132pt'>Packed8ThreeBlocks<br>
     Packed16ThreeBlocks</td>
 </table>
-
 <p><strong>我们接着介绍如何选择这些压缩实现</strong>:</p>
-<p>&emsp;&emsp;在源码中Lucene会根据使用者提供的三个参数来选择其中一种压缩实现，即PackedInts类中的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/packed/PackedInts.java" >getMutable(int valueCount, int bitsPerValue,  float acceptableOverheadRatio)<i class="fas fa-external-link-alt"></i></a>方法，参数如下所示：</p>
+<p>  在源码中Lucene会根据使用者提供的三个参数来选择其中一种压缩实现，即PackedInts类中的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/packed/PackedInts.java" >getMutable(int valueCount, int bitsPerValue,  float acceptableOverheadRatio)<i class="fas fa-external-link-alt"></i></a>方法，参数如下所示：</p>
 <ul>
 <li>valueCount：描述待处理的数据集的数量</li>
 <li>bitsPerValue：描述待处理的数据集中的最大值，它的有效数据占用的bit个数</li>
@@ -364,15 +364,13 @@
 <li>bitsPerValue描述了每一个数值占用的bit位个数，acceptableOverheadRatio则是每一个数值额外的空间开销的比例，允许使用比bitsPerValue更多的bit位，我们称之为maxBitsPerValue，来存储每一个数值，计算公式如下所示：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">maxBitsPerValue</span> <span class="operator">=</span> bitsPerValue + (<span class="type">int</span>)(bitsPerValue * acceptableOverheadRatio)</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;例如我们有以下的数据集：</p>
+<p>  例如我们有以下的数据集：</p>
 <p>数组一：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span>[] values = &#123;<span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">18</span>&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;该数组的bitsPerValue为5，如果此时acceptableOverheadRatio的值为7，那么maxBitsPerValue &#x3D; 5 + 5*7 &#x3D; 40，即允许使用40个bit位来存储数组一。</p>
-<p>&emsp;&emsp;当然Lucene并不会真正的使用40个bit来存储一个数值，<strong>maxBitsPerValue只是用来描述使用者可接受的额外开销的程度</strong>。</p>
+<p>  该数组的bitsPerValue为5，如果此时acceptableOverheadRatio的值为7，那么maxBitsPerValue = 5 + 5*7 = 40，即允许使用40个bit位来存储数组一。</p>
+<p>  当然Lucene并不会真正的使用40个bit来存储一个数值，<strong>maxBitsPerValue只是用来描述使用者可接受的额外开销的程度</strong>。</p>
 <p><strong>为什么要使用acceptableOverheadRatio</strong>：</p>
-<p>&emsp;&emsp;<strong>使得在使用者可接受的额外开销前提下，尽量使用读写性能最好的压缩来处理</strong>，我们先看下源码中的部分代码截图：</p>
+<p>  <strong>使得在使用者可接受的额外开销前提下，尽量使用读写性能最好的压缩来处理</strong>，我们先看下源码中的部分代码截图：</p>
 <p>图1：</p>
 <img  
                      lazyload
@@ -380,8 +378,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/PackedInts/PackedInts（二）/1.png"
                      
                 >
-
-<p>&emsp;&emsp;先说明下上图的一些内容，actualBitsPerValues的值在后面的逻辑中用来选择对应的压缩实现，actualBitsPerValues与压缩实现的对应关系如下：</p>
+<p>  先说明下上图的一些内容，actualBitsPerValues的值在后面的逻辑中用来选择对应的压缩实现，actualBitsPerValues与压缩实现的对应关系如下：</p>
 <ul>
 <li>8：Direct8</li>
 <li>16：Direct16</li>
@@ -391,46 +388,49 @@
 <li>48：Packed16ThreeBlocks</li>
 <li>随后先考虑是否能用Packed64SingleBlock*（红框表示），最后才考虑使用Packed64</li>
 </ul>
-<p>&emsp;&emsp;在第250行的if语句判断中，如果bitsPerValues的值小于等于8，并且maxBitsPerValue大于等于8，那么就使用Direct8来处理，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>中我们知道，Direct*的压缩实现是读写性能最好的，可以看出来acceptableOverheadRatio是空间换时间的设计思想，并且压缩实现的选择优先级如下所示：</p>
+<p>  在第250行的if语句判断中，如果bitsPerValues的值小于等于8，并且maxBitsPerValue大于等于8，那么就使用Direct8来处理，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>中我们知道，Direct*的压缩实现是读写性能最好的，可以看出来acceptableOverheadRatio是空间换时间的设计思想，并且压缩实现的选择优先级如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Direct* &gt; Packed*ThreeBlocks &gt; Packed64SingleBlock* &gt; Packed64</span><br></pre></td></tr></table></figure>
-
 <p><strong>acceptableOverheadRatio的取值范围是什么</strong>：</p>
-<p>&emsp;&emsp;Lucene提供了以下几种取值：</p>
+<p>  Lucene提供了以下几种取值：</p>
 <p>表2：</p>
 <table>
 <thead>
 <tr>
-<th align="center">acceptableOverheadRatio</th>
-<th align="center">源码中的描述</th>
+<th style="text-align:center">acceptableOverheadRatio</th>
+<th style="text-align:center">源码中的描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">7</td>
-<td align="center">At most 700% memory overhead, always select a direct implementation.</td>
+<tbody>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">At most 700% memory overhead, always select a direct implementation.</td>
 </tr>
 <tr>
-<td align="center">0.5</td>
-<td align="center">At most 50% memory overhead, always select a reasonably fast implementation</td>
+<td style="text-align:center">0.5</td>
+<td style="text-align:center">At most 50% memory overhead, always select a reasonably fast implementation</td>
 </tr>
 <tr>
-<td align="center">0.25</td>
-<td align="center">At most 25% memory overhead</td>
+<td style="text-align:center">0.25</td>
+<td style="text-align:center">At most 25% memory overhead</td>
 </tr>
 <tr>
-<td align="center">0</td>
-<td align="center">No memory overhead at all, but the returned implementation may be slow.</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">No memory overhead at all, but the returned implementation may be slow.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>acceptableOverheadRatio的值为7</strong></p>
-<p>&emsp;&emsp;如果acceptableOverheadRatio的值为7，那么不管bitsPerValue是区间[1, 64]中的哪一个值，总是会选择Direct*压缩实现。例如bitsPerValue的值为1，那么maxBitsPerValue &#x3D; 1 + 1*7 &#x3D; 8，那么根据图1中第250行的判断，就会使用Direct8来处理，意味着每一个数值使用8个bit位存储，由于每一个数值的有效数据的bit位个数为1，那么每个数值的额外开销为7个bit，即表2中描述的At most 700% memory overhead。</p>
+<p>  如果acceptableOverheadRatio的值为7，那么不管bitsPerValue是区间[1, 64]中的哪一个值，总是会选择Direct*压缩实现。例如bitsPerValue的值为1，那么maxBitsPerValue = 1 + 1*7 = 8，那么根据图1中第250行的判断，就会使用Direct8来处理，意味着每一个数值使用8个bit位存储，由于每一个数值的有效数据的bit位个数为1，那么每个数值的额外开销为7个bit，即表2中描述的At most 700% memory overhead。</p>
 <p><strong>acceptableOverheadRatio的值为0.5</strong></p>
-<p>&emsp;&emsp;如果acceptableOverheadRatio的值为0.5，那么总能保证选择除了Packed64的其他任意一个压缩实现，它们是比较快（reasonably fast）的实现。</p>
+<p>  如果acceptableOverheadRatio的值为0.5，那么总能保证选择除了Packed64的其他任意一个压缩实现，它们是比较快（reasonably fast）的实现。</p>
 <p><strong>acceptableOverheadRatio的值为0.25</strong></p>
-<p>&emsp;&emsp;相对acceptableOverheadRatio的值为0的情况获得更多的非Packed64的压缩实现。</p>
+<p>  相对acceptableOverheadRatio的值为0的情况获得更多的非Packed64的压缩实现。</p>
 <p><strong>acceptableOverheadRatio的值为0</strong></p>
-<p>&emsp;&emsp;没有任何额外的空间开销，虽然读写性能慢，但是因为使用了固定位数按位存储，并且没有填充bit（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>），所以有较高的压缩率。</p>
-<h3 id="Packed64的实现"><a href="#Packed64的实现" class="headerlink" title="Packed64的实现"></a>Packed64的实现</h3><p>&emsp;&emsp;表4中的所有压缩实现，除了Packed64，其他的实现逻辑由于过于简单就不通过文章介绍了，而Packed64的实现核心是BulkOperation，BulkOperation中根据bitsPerValue从1到64的不同取值一共有64种不同的逻辑，但他们的实现原理是类似的，故感兴趣的同学可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>来了解其中的一个实现。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;无</p>
+<p>  没有任何额外的空间开销，虽然读写性能慢，但是因为使用了固定位数按位存储，并且没有填充bit（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>），所以有较高的压缩率。</p>
+<h3 id="packed64的实现"><a class="markdownIt-Anchor" href="#packed64的实现"></a> Packed64的实现</h3>
+<p>  表4中的所有压缩实现，除了Packed64，其他的实现逻辑由于过于简单就不通过文章介绍了，而Packed64的实现核心是BulkOperation，BulkOperation中根据bitsPerValue从1到64的不同取值一共有64种不同的逻辑，但他们的实现原理是类似的，故感兴趣的同学可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>来了解其中的一个实现。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  无</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
@@ -443,15 +443,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
                                     </li>
                                 
                             </ul>
@@ -629,7 +629,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Packed64%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.</span> <span class="nav-text">Packed64的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text"> 压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> Packed64的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -684,7 +684,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -822,7 +822,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Packed64%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.</span> <span class="nav-text">Packed64的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text"> 压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> Packed64的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

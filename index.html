@@ -310,10 +310,11 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            简单说明
+                             简单说明
+
 博客中的Lucene版本是7.5.0，如果是其他版本的会在文章标题体现。
 如果你喜欢我的文章，可以下载每篇文章结尾的附件，附件中的MD文件，强烈推荐使用Typora阅读。
-博客中所有关于Lucene文章的代码大家可以在我的GitHub中找到...
+博客中所有关于Lucene文章的代码大家可以在我的GitHub中...
                         
                     </div>
 
@@ -460,8 +461,8 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;段内排序IndexSort是Lucene在索引（Indexing）阶段提供的一个功能，该功能使得在执行flush、commit或者NRT操作后，新生成的段其包含的文档是有序的，即在索引阶段实现了文档的排序。
-&emsp;&em...
+                              段内排序IndexSort是Lucene在索引（Indexing）阶段提供的一个功能，该功能使得在执行flush、commit或者NRT操作后，新生成的段其包含的文档是有序的，即在索引阶段实现了文档的排序。
+  在之前的一些文章中已经简单的介绍了...
                         
                     </div>
 
@@ -505,10 +506,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IndexSort/">IndexSort</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IndexSort/">IndexSort</a></li>
                         
                     
                 </ul>
@@ -536,6 +537,94 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
+                        <a href="/Lucene/gongjulei/2021/0623/DocIdSet/">
+                            DocIdSet（Lucene 8.9.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              本篇文章将介绍Lucene中用于存储文档号的数据结构DocIdSet，该抽象类的具体实现有以下几种，我们将一一介绍。
+图1：
+
+  图1中，DocsWithFieldSet跟RoaringDocIdSet已经介绍过了。建议先看下文章Roaring...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 14:55:08 GMT+0800">2023-10-08 14:55:08</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/disi/">disi</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docIdSet/">docIdSet</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/gongjulei/2021/0623/DocIdSet/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
                         <a href="/Lucene/Codecs/2021/0115/SIMD/">
                             SIMD（Lucene 8.7.0）
                         </a>
@@ -543,7 +632,7 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;从Lucene 8.4.0开始，在写入&#x2F;读取倒排信息时，即写入&#x2F;读取索引文件.doc、.pos、.pay时，通过巧妙的编码方式（下文中展开）使得C2编译器能生成SIMD（Single Instruction...
+                              从Lucene 8.4.0开始，在写入/读取倒排信息时，即写入/读取索引文件.doc、.pos、.pay时，通过巧妙的编码方式（下文中展开）使得C2编译器能生成SIMD（Single Instruction Multiple Data）指令，从而...
                         
                     </div>
 
@@ -625,7 +714,7 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;在文章BinaryDocValues中我们介绍了Lucene 7.5.0版本的数据结构，并且在文章索引文件的生成（二十一）之dvm&amp;&amp;dvd中介绍了Lucene 8.4.0中其数据结构的生成。阅读本文前建议先看...
+                              在文章BinaryDocValues中我们介绍了Lucene 7.5.0版本的数据结构，并且在文章索引文件的生成（二十一）之dvm&amp;&amp;dvd中介绍了Lucene 8.4.0中其数据结构的生成。阅读本文前建议先看下上述的两篇文章，因...
                         
                     </div>
 
@@ -704,7 +793,10 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;在索引（Indexing）阶段，当某个域被设置为需要记录词向量（term vector）信息后，那么随后在flush阶段，该域对应的词向量将被写入到索引文件.tvd&amp;&amp;tvx&amp;&amp;tvm三个文件中...
+                              在索引（Indexing）阶段，当某个域被设置为需要记录词向量（term vector）信息后，那么随后在flush阶段，该域对应的词向量将被写入到索引文件.tvd&amp;&amp;tvx&amp;&amp;tvm三个文件中。
+图1：
+
+  图...
                         
                     </div>
 
@@ -795,9 +887,10 @@
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;2020年11月3号，Lucene发布了最新的版本8.7.0，本篇文章将会对Change Log中几个变更展开介绍下。
-LUCENE-9510&emsp;&emsp;该issue的原文如下：
-1Indexing with an...
+                              2020年11月3号，Lucene发布了最新的版本8.7.0，本篇文章将会对Change Log中几个变更展开介绍下。
+ LUCENE-9510
+  该issue的原文如下：
+1Indexing with an index sort is now...
                         
                     </div>
 
@@ -868,7 +961,8 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            DirectMonotonicWriter&amp;&amp;Reader&emsp;&emsp;DirectMonotonicWriter类用来存储单调递增的整数序列（monotonically-increasing sequences of in...
+                             DirectMonotonicWriter&amp;&amp;Reader
+  DirectMonotonicWriter类用来存储单调递增的整数序列（monotonically-increasing sequences of integers），...
                         
                     </div>
 
@@ -912,13 +1006,13 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
                     
                 </ul>
@@ -953,7 +1047,7 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            &emsp;&emsp;从Lucene8.6.0开始，用于存储点数据（point value）的索引文件由原先的两个索引文件dim&amp;&amp;dii，改为三个索引文件kdd&amp;kdi&amp;kdm。由于生成kdd&amp;kdi&am...
+                              从Lucene8.6.0开始，用于存储点数据（point value）的索引文件由原先的两个索引文件dim&amp;&amp;dii，改为三个索引文件kdd&amp;kdi&amp;kdm。由于生成kdd&amp;kdi&amp;kdm的过程基本...
                         
                     </div>
 
@@ -1030,101 +1124,6 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">
-                            索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                            &emsp;&emsp;在索引阶段，如果某个域的属性中包含store，意味着该域的域值信息将被写入到索引文件fdx&amp;&amp;fdt&amp;&amp;fdm中，域的属性可以通过FieldType来设置，如下所示：
-图1：
-
-
-&emsp;&...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 00:10:47 GMT+0800">2023-09-30 00:10:47</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -1140,8 +1139,8 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
                    type="number"
                    value="1"
                    min="1"
-                   max="5"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">5</span>
+                   max="6"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">6</span>
         </div>
 
 
@@ -1203,7 +1202,7 @@ LUCENE-9510&emsp;&emsp;该issue的原文如下：
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 

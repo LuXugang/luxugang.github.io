@@ -281,7 +281,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>398 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>405 Words</span>
             </span>
         
         
@@ -304,26 +304,37 @@
                     
 
                     <p>索引文件.liv只有在一个segment中包含被删除的文档时才会生成，它记录了当前段中没有被删除的文档号。这里不会讨论一个segment是如何获得被删除的文档号，在后面的文章中，介绍IndexWriter.flush()时会详细介绍，本篇文章只介绍那些被删除的文档号生成的索引文件的数据结构。</p>
-<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>介绍.liv文件的数据结构前，大家必须得了解Lucene的一个工具类<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>，这个类在源码中有大量的应用，是必须熟悉的一个工具。</p>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>图1：<br><img  
+<h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
+<p>介绍.liv文件的数据结构前，大家必须得了解Lucene的一个工具类<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>，这个类在源码中有大量的应用，是必须熟悉的一个工具。</p>
+<h1 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h1>
+<p>图1：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/liv/1.png"
                      
                 ></p>
-<h2 id="CurrentBits"><a href="#CurrentBits" class="headerlink" title="CurrentBits"></a>CurrentBits</h2><p>CurrentBits占固定8个字节，即写入的是一个long类型的值，每一个CurrentBits分别表示了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>对象中的bits[]数组的元素。</p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>图2：<br><img  
+<h2 id="currentbits"><a class="markdownIt-Anchor" href="#currentbits"></a> CurrentBits</h2>
+<p>CurrentBits占固定8个字节，即写入的是一个long类型的值，每一个CurrentBits分别表示了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>对象中的bits[]数组的元素。</p>
+<h1 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h1>
+<p>图2：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/liv/2.png"
                      
-                ><br>上图中添加了10篇文档，对应文档号0~9，然后在第84、85行执行了删除操作，即满足域名为”content”，域值为”h”或者”f”  的文档都会被删除，即文档号0、4、7会被删除。在删除操作以后，在查询阶段实际可以获得的文档号只有1、2、3、5、6、8、9。<br>由于一共只有10篇文档，所以只要一个long类型的值就可以表示这些文档号，即FixedBitSet对象中的long bit[]数组只有一个元素，数组下标代表了文档号。<br>图3：<br><img  
+                ><br />
+上图中添加了10篇文档，对应文档号0~9，然后在第84、85行执行了删除操作，即满足域名为&quot;content&quot;，域值为&quot;h&quot;或者&quot;f&quot;  的文档都会被删除，即文档号0、4、7会被删除。在删除操作以后，在查询阶段实际可以获得的文档号只有1、2、3、5、6、8、9。<br />
+由于一共只有10篇文档，所以只要一个long类型的值就可以表示这些文档号，即FixedBitSet对象中的long bit[]数组只有一个元素，数组下标代表了文档号。<br />
+图3：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/liv/3.png"
                      
                 ></p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>.liv索引文件非常的简单，只要熟悉<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>的用法，相信其数据结构也一目了然。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>.liv索引文件非常的简单，只要熟悉<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>的用法，相信其数据结构也一目了然。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/liv.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
@@ -530,7 +541,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CurrentBits"><span class="nav-number">2.1.</span> <span class="nav-text">CurrentBits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#currentbits"><span class="nav-number">2.1.</span> <span class="nav-text"> CurrentBits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -585,7 +596,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -723,7 +734,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CurrentBits"><span class="nav-number">2.1.</span> <span class="nav-text">CurrentBits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#currentbits"><span class="nav-number">2.1.</span> <span class="nav-text"> CurrentBits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

@@ -272,7 +272,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
             </span>
         
         
@@ -294,38 +294,44 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <h1 id="近实时搜索NRT（三）"><a href="#近实时搜索NRT（三）" class="headerlink" title="近实时搜索NRT（三）"></a><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/" >近实时搜索NRT（三）<i class="fas fa-external-link-alt"></i></a></h1><p>&emsp;&emsp;在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>的文章中我们提到，Lucene提供了<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DirectoryReader.java" >四种方法<i class="fas fa-external-link-alt"></i></a>来获得StandardDirectoryReader对象，这里先简单总结下这四种open方法获取StandardDirectoryReader的差异：</p>
+                    <h1 id="近实时搜索nrt三"><a class="markdownIt-Anchor" href="#近实时搜索nrt三"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/" >近实时搜索NRT（三）<i class="fas fa-external-link-alt"></i></a></h1>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>的文章中我们提到，Lucene提供了<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DirectoryReader.java" >四种方法<i class="fas fa-external-link-alt"></i></a>来获得StandardDirectoryReader对象，这里先简单总结下这四种open方法获取StandardDirectoryReader的差异：</p>
 <ul>
-<li>方法一：DirectoryReader.open(final Directory directory)<ul>
+<li>方法一：DirectoryReader.open(final Directory directory)
+<ul>
 <li>根据索引目录Directory中N值最大的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >segment_N<i class="fas fa-external-link-alt"></i></a>文件（即最近的一次<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>）获取已经提交的索引信息，未<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>的文档的索引信息无法被读取，即使已经<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>但未提交的文档的索引信息也无法被读取，<strong>故这种获取StandardDirectoryReader的方法<code>不属于</code>NRT</strong></li>
 </ul>
 </li>
-<li>方法二：DirectoryReader.open(final IndexCommit indexCommit)<ul>
+<li>方法二：DirectoryReader.open(final IndexCommit indexCommit)
+<ul>
 <li>我们如果使用封装了索引删除策略NoDeletionPolicy的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >SnapshotDeletionPolicy<i class="fas fa-external-link-alt"></i></a>，我们可以记录每一次的提交，即IndexCommit（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>），在索引目录中会生成多个segment_N文件，使用此方法可以获得任意一次提交的索引信息，可以用来回溯操作，<strong>故这种获取StandardDirectoryReader的方法<code>不属于</code>NRT</strong></li>
 </ul>
 </li>
-<li>方法三：DirectoryReader.open(final IndexWriter indexWriter)<ul>
+<li>方法三：DirectoryReader.open(final IndexWriter indexWriter)
+<ul>
 <li>该方法实际调用了方法四，区别在于另方法四中的两个参数applyAllDeletes为<strong>true</strong>、writeAllDeletes为<strong>false</strong></li>
 </ul>
 </li>
-<li>方法四：DirectoryReader.open(final IndexWriter indexWriter, boolean applyAllDeletes, boolean writeAllDeletes)<ul>
+<li>方法四：DirectoryReader.open(final IndexWriter indexWriter, boolean applyAllDeletes, boolean writeAllDeletes)
+<ul>
 <li>由于在生成IndexWriter对象阶段会先读取索引目录中已有的索引信息（旧的索引信息），并且更改索引（新的索引信息）需要通过IndexWriter对象，故通过IndexWriter对象能获得索引目录中所有的索引信息，<strong>故方法三跟方法四获取StandardDirectoryReader的方法<code>属于</code>NRT</strong></li>
 </ul>
 </li>
 </ul>
-<p>&emsp;&emsp;在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>中我们了解到，无论调用哪一个上述介绍的方法，其相同的逻辑都是将一个段的信息segmentCommitInfo封装为一个LeafReader，最后将多个LeafReader封装为StandardDirectoryReader，当索引目录中的索引信息发生更改时，我们可以通过<strong>重新调用</strong>上述的方法来获得最新的StandardDirectoryReader，但是基于下面的几个考虑，Lucene提供了性能更高的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DirectoryReader.java" >openIfChanged<i class="fas fa-external-link-alt"></i></a>方法来获得最新的StandardDirectoryReader：</p>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>中我们了解到，无论调用哪一个上述介绍的方法，其相同的逻辑都是将一个段的信息segmentCommitInfo封装为一个LeafReader，最后将多个LeafReader封装为StandardDirectoryReader，当索引目录中的索引信息发生更改时，我们可以通过<strong>重新调用</strong>上述的方法来获得最新的StandardDirectoryReader，但是基于下面的几个考虑，Lucene提供了性能更高的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DirectoryReader.java" >openIfChanged<i class="fas fa-external-link-alt"></i></a>方法来获得最新的StandardDirectoryReader：</p>
 <ul>
 <li>只将部分发生更改的段生成LeafReader，即仅替换StandardDirectoryReader中的那些发生变更的LeafReader</li>
 <li>如果索引信息没有发生变化，那么就直接返回StandardDirectoryReader，而不用执行上述四个方法的所有流程</li>
 </ul>
-<p>&emsp;&emsp;Lucene7.5.0中提供了以下四种openIfChange方法，这四种方法：</p>
+<p>  Lucene7.5.0中提供了以下四种openIfChange方法，这四种方法：</p>
 <ul>
-<li>方法一：DirectoryReader.openIfChanged(DirectoryReader oldReader) </li>
+<li>方法一：DirectoryReader.openIfChanged(DirectoryReader oldReader)</li>
 <li>方法二：DirectoryReader.openIfChanged(DirectoryReader oldReader, IndexCommit commit)</li>
-<li>方法三：DirectoryReader openIfChanged(DirectoryReader oldReader, IndexWriter writer) </li>
+<li>方法三：DirectoryReader openIfChanged(DirectoryReader oldReader, IndexWriter writer)</li>
 <li>方法四：DirectoryReader openIfChanged(DirectoryReader oldReader, IndexWriter writer, boolean applyAllDeletes)</li>
 </ul>
-<h1 id="openIfChange方法的流程图"><a href="#openIfChange方法的流程图" class="headerlink" title="openIfChange方法的流程图"></a>openIfChange方法的流程图</h1><p>&emsp;&emsp;其中openIfChange的方法一&amp;&amp;方法二、方法三&amp;&amp;方法四的逻辑需要用两个流程图图1、图2展现：</p>
+<h1 id="openifchange方法的流程图"><a class="markdownIt-Anchor" href="#openifchange方法的流程图"></a> openIfChange方法的流程图</h1>
+<p>  其中openIfChange的方法一&amp;&amp;方法二、方法三&amp;&amp;方法四的逻辑需要用两个流程图图1、图2展现：</p>
 <p>图1：</p>
 <img  
                      lazyload
@@ -333,7 +339,6 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/1.png"
                      
                 >
-
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89/%E6%96%B9%E6%B3%95%E4%B8%80__%E6%96%B9%E6%B3%95%E4%BA%8C.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>图2：</p>
 <img  
@@ -342,9 +347,8 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/2.png"
                      
                 >
-
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89/%E6%96%B9%E6%B3%95%E4%B8%89__%E6%96%B9%E6%B3%95%E5%9B%9B.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
-<p>&emsp;&emsp;在介绍每一个流程点之前，我们先大致先说下图1、图2的流程，两个流程图总体描述了旧的StandardDirectoryReader，即oldReader（DirectoryReader的子类，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>）在经过一系列的流程后，判断是否需要生成新的StandardDirectoryReader，如果不需要那么返回null，否则生成一个新的StandardDirectoryReader，生成的新的StandardDirectoryReader的方法有两个，即图1、图2中用<strong>红色</strong>跟<strong>紫色</strong>标注的两个流程点，而这两种获取新的StandardDirectoryReader的方法即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>介绍的四种open方法，如下图所示：</p>
+<p>  在介绍每一个流程点之前，我们先大致先说下图1、图2的流程，两个流程图总体描述了旧的StandardDirectoryReader，即oldReader（DirectoryReader的子类，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>）在经过一系列的流程后，判断是否需要生成新的StandardDirectoryReader，如果不需要那么返回null，否则生成一个新的StandardDirectoryReader，生成的新的StandardDirectoryReader的方法有两个，即图1、图2中用<strong>红色</strong>跟<strong>紫色</strong>标注的两个流程点，而这两种获取新的StandardDirectoryReader的方法即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>介绍的四种open方法，如下图所示：</p>
 <p>图3：</p>
 <img  
                      lazyload
@@ -352,41 +356,40 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/3.png"
                      
                 >
-
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89/open__.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
-<p>&emsp;&emsp;下面我们先介绍图1中的每一个流程点。</p>
-<h2 id="IndexWriter是否为空？"><a href="#IndexWriter是否为空？" class="headerlink" title="IndexWriter是否为空？"></a>IndexWriter是否为空？</h2><p>图4：</p>
+<p>  下面我们先介绍图1中的每一个流程点。</p>
+<h2 id="indexwriter是否为空"><a class="markdownIt-Anchor" href="#indexwriter是否为空"></a> IndexWriter是否为空？</h2>
+<p>图4：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/4.png"
                      
                 >
-
-<p>&emsp;&emsp;IndexWriter是否为空描述的是旧的StandardDirectoryReader，即oldReader中是否持有IndexWriter对象的引用。</p>
-<p>&emsp;&emsp;<strong>如何判断oldReader中是否持有IndexWriter对象的引用：</strong></p>
+<p>  IndexWriter是否为空描述的是旧的StandardDirectoryReader，即oldReader中是否持有IndexWriter对象的引用。</p>
+<p>  <strong>如何判断oldReader中是否持有IndexWriter对象的引用：</strong></p>
 <ul>
 <li>上文中我们知道四种获取StandardDirectoryReader的open方法中，方法三&amp;&amp;方法四的参数带有IndexWriter对象，故通过这两个方法获得的oldReader中会持有IndexWriter对象的引用，同理，通过方法一&amp;&amp;方法二获得的oldReader中不持有IndexWriter对象的引用</li>
 </ul>
-<h2 id="根据Directory判断索引是否发生变化？"><a href="#根据Directory判断索引是否发生变化？" class="headerlink" title="根据Directory判断索引是否发生变化？"></a>根据Directory判断索引是否发生变化？</h2><p>图5：</p>
+<h2 id="根据directory判断索引是否发生变化"><a class="markdownIt-Anchor" href="#根据directory判断索引是否发生变化"></a> 根据Directory判断索引是否发生变化？</h2>
+<p>图5：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/5.png"
                      
                 >
-
-<p>&emsp;&emsp;如果oldReader是通过open方法中的方法一或者方法二获得的，并且调用openIfChange的方法一，由于该方法没有indexCommit参数，故该方法会执行图5中的流程。</p>
-<p>&emsp;&emsp;方法一只提供了一个oldReader的参数，并且没有持有IndexWriter对象的引用，所以判断是否需要获取新的StandardDirectoryReader的方式为根据索引目录中最后一次commit，对比最后一次commit对应的SegmentInfos对象跟oldReader中的SegmentInfos的版本号Version是否一致，如果不一致，说明索引信息在生成oldReader之后发生了变化，那么我们需要重新生成一个新的StandardDirectoryReader，否则返回null。</p>
-<p>&emsp;&emsp;<strong>SegmentInfos是什么</strong>：</p>
+<p>  如果oldReader是通过open方法中的方法一或者方法二获得的，并且调用openIfChange的方法一，由于该方法没有indexCommit参数，故该方法会执行图5中的流程。</p>
+<p>  方法一只提供了一个oldReader的参数，并且没有持有IndexWriter对象的引用，所以判断是否需要获取新的StandardDirectoryReader的方式为根据索引目录中最后一次commit，对比最后一次commit对应的SegmentInfos对象跟oldReader中的SegmentInfos的版本号Version是否一致，如果不一致，说明索引信息在生成oldReader之后发生了变化，那么我们需要重新生成一个新的StandardDirectoryReader，否则返回null。</p>
+<p>  <strong>SegmentInfos是什么</strong>：</p>
 <ul>
 <li>见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>文章中的关于流程点<code>获得所有段的信息集合SegmentInfos</code>的介绍</li>
 </ul>
-<p>&emsp;&emsp;<strong>SegmentInfos的版本号Version是什么</strong>：</p>
+<p>  <strong>SegmentInfos的版本号Version是什么</strong>：</p>
 <ul>
 <li>SegmentInfos的版本号描述了内存中的SegmentInfos变更状态，内存中的任意一个段发生变化都会增加版本号，当执行了一次commit后，这次commit的对应的SegmentInfos的版本号就被写入到segment_N文件中，如下图所示：</li>
 </ul>
-<p>&emsp;&emsp;<strong>段的什么变化会引起版本号Version的变化</strong>：</p>
+<p>  <strong>段的什么变化会引起版本号Version的变化</strong>：</p>
 <ul>
 <li>这块内容十分重要，由于openIfChange的方法三&amp;&amp;方法四会也会涉及版本号的内容，故我们留到后面的文章介绍，这里先挖个坑</li>
 </ul>
@@ -397,38 +400,38 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/6.png"
                      
                 >
-
-<p>&emsp;&emsp;图6中，红框标注的为某次提交对应的SegmentInfos的版本号。</p>
-<p>&emsp;&emsp;<strong>如何根据最后一次commit获得SegmentInfos</strong>：</p>
+<p>  图6中，红框标注的为某次提交对应的SegmentInfos的版本号。</p>
+<p>  <strong>如何根据最后一次commit获得SegmentInfos</strong>：</p>
 <ul>
 <li>见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>文章中的关于流程点<code>获取segment_N文件</code>、<code>获得所有段的信息集合SegmentInfos</code>的介绍</li>
 </ul>
-<p>&emsp;&emsp;图5中如果根据Directory判断索引发生了变化，那么通过图3的流程获得一个新的StandardDirectoryReader。</p>
-<p>&emsp;&emsp;<strong>如何获得新的StandardDirectoryReader</strong>：</p>
+<p>  图5中如果根据Directory判断索引发生了变化，那么通过图3的流程获得一个新的StandardDirectoryReader。</p>
+<p>  <strong>如何获得新的StandardDirectoryReader</strong>：</p>
 <ul>
 <li>当Version不一致时，说明oldReader中的SegmentInfos跟内存中的SegmentInfos信息不一致，那么需要获得新的StandardDirectoryReader，即图5中的<code>找出变更的LeafReader</code>流程点，由于后面的流程也有该操作，我们留到下一篇文章介绍，这里先挖个坑</li>
 </ul>
-<h2 id="segment-N文件是否一致？"><a href="#segment-N文件是否一致？" class="headerlink" title="segment_N文件是否一致？"></a>segment_N文件是否一致？</h2><p>图7：</p>
+<h2 id="segment_n文件是否一致"><a class="markdownIt-Anchor" href="#segment_n文件是否一致"></a> segment_N文件是否一致？</h2>
+<p>图7：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（三）/7.png"
                      
                 >
-
-<p>&emsp;&emsp;如果oldReader是通过open方法中的方法一或者方法二获得的，并且调用openIfChange的方法二，由于该方法有indexCommit，那么该方法会执行图7中的流程。</p>
-<p>&emsp;&emsp;方法二描述的是根据参数IndexCommit来获得对应的StandardDirectoryReader，另外通过比较oldReader中对应的segment_N文件名是否跟方法二的参数IndexCommit中的segment_N文件名是否相同来判断是否需要获得新的StandardDirectoryReader。</p>
-<p>&emsp;&emsp;<strong>如何通过oldReader获得对应的segment_N文件</strong>：</p>
+<p>  如果oldReader是通过open方法中的方法一或者方法二获得的，并且调用openIfChange的方法二，由于该方法有indexCommit，那么该方法会执行图7中的流程。</p>
+<p>  方法二描述的是根据参数IndexCommit来获得对应的StandardDirectoryReader，另外通过比较oldReader中对应的segment_N文件名是否跟方法二的参数IndexCommit中的segment_N文件名是否相同来判断是否需要获得新的StandardDirectoryReader。</p>
+<p>  <strong>如何通过oldReader获得对应的segment_N文件</strong>：</p>
 <ul>
-<li>oldReader即StandardDirectoryReader类的对象，该类中并没有一个存放segment_N的变量，而是通过StandardDirectoryReader类中的SegmentInfos对象来获得segment_N文件，SegmentInfos对象在上文中已介绍，该对象中有一个lastGeneration，Lucene通过字符串拼接（”segment_lastGeneration”）的方式获得segment_N文件的文件名</li>
+<li>oldReader即StandardDirectoryReader类的对象，该类中并没有一个存放segment_N的变量，而是通过StandardDirectoryReader类中的SegmentInfos对象来获得segment_N文件，SegmentInfos对象在上文中已介绍，该对象中有一个lastGeneration，Lucene通过字符串拼接（“segment_lastGeneration”）的方式获得segment_N文件的文件名</li>
 </ul>
-<p>&emsp;&emsp;<strong>lastGeneration什么时候被赋值的：</strong></p>
+<p>  <strong>lastGeneration什么时候被赋值的：</strong></p>
 <ul>
 <li>在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>的<code>生成新的Segment_N文件</code>流程中我们说到，该流程会生成一个generation用来设置这次提交生成的segment_N的N值，同时generation值会赋值给lastGeneration</li>
 </ul>
-<p>&emsp;&emsp;另外IndexCommit类中有一个变量叫做segmentsFileName，该变量用来保存segment_N的文件名。</p>
-<p>&emsp;&emsp;当判断出segment_N的文件名不一致，那么我们需要重新获得StandardDirectoryReader，即图7中的<code>找出变更的LeafReader</code>流程点，同样的，详细的获得过程在下一篇文章中展开。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>&emsp;&emsp;基于篇幅，剩余的流程点将在下一篇文章中展开。</p>
+<p>  另外IndexCommit类中有一个变量叫做segmentsFileName，该变量用来保存segment_N的文件名。</p>
+<p>  当判断出segment_N的文件名不一致，那么我们需要重新获得StandardDirectoryReader，即图7中的<code>找出变更的LeafReader</code>流程点，同样的，详细的获得过程在下一篇文章中展开。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  基于篇幅，剩余的流程点将在下一篇文章中展开。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
@@ -623,7 +626,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">近实时搜索NRT（三）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openIfChange%E6%96%B9%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">openIfChange方法的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IndexWriter%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">IndexWriter是否为空？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEDirectory%E5%88%A4%E6%96%AD%E7%B4%A2%E5%BC%95%E6%98%AF%E5%90%A6%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">根据Directory判断索引是否发生变化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segment-N%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E4%B8%80%E8%87%B4%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">segment_N文件是否一致？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2nrt%E4%B8%89"><span class="nav-number">1.</span> <span class="nav-text"> 近实时搜索NRT（三）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openifchange%E6%96%B9%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> openIfChange方法的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#indexwriter%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="nav-number">2.1.</span> <span class="nav-text"> IndexWriter是否为空？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEdirectory%E5%88%A4%E6%96%AD%E7%B4%A2%E5%BC%95%E6%98%AF%E5%90%A6%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text"> 根据Directory判断索引是否发生变化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segment_n%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E4%B8%80%E8%87%B4"><span class="nav-number">2.3.</span> <span class="nav-text"> segment_N文件是否一致？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -678,7 +681,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -816,7 +819,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%B8%89%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">近实时搜索NRT（三）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openIfChange%E6%96%B9%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">openIfChange方法的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IndexWriter%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">IndexWriter是否为空？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEDirectory%E5%88%A4%E6%96%AD%E7%B4%A2%E5%BC%95%E6%98%AF%E5%90%A6%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">根据Directory判断索引是否发生变化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segment-N%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E4%B8%80%E8%87%B4%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">segment_N文件是否一致？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2nrt%E4%B8%89"><span class="nav-number">1.</span> <span class="nav-text"> 近实时搜索NRT（三）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openifchange%E6%96%B9%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> openIfChange方法的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#indexwriter%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="nav-number">2.1.</span> <span class="nav-text"> IndexWriter是否为空？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEdirectory%E5%88%A4%E6%96%AD%E7%B4%A2%E5%BC%95%E6%98%AF%E5%90%A6%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text"> 根据Directory判断索引是否发生变化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segment_n%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E4%B8%80%E8%87%B4"><span class="nav-number">2.3.</span> <span class="nav-text"> segment_N文件是否一致？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

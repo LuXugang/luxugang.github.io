@@ -275,7 +275,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
             </span>
         
         
@@ -297,9 +297,9 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;当IndexWriter执行commit()操作后，会生成一个segments_N文件，该文件描述了当前索引目录中所有有效的段信息文件(active segment info)，即之前文章介绍的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >segmentInfo<i class="fas fa-external-link-alt"></i></a>文件，仅仅通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/74.html" >flush()<i class="fas fa-external-link-alt"></i></a>生成的段成为无效的段信息文件。</p>
-<p>&emsp;&emsp;索引目录中可能存在多个Segments_N文件，每个Segment_N文件代表某次<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit()<i class="fas fa-external-link-alt"></i></a>时的索引状态，其中N值最大的Segments_N文件代表最新的一次提交，它包含当前索引目录中所有的索引信息。</p>
-<p>&emsp;&emsp;图1中最新的一次提交生成了Segments_5文件。</p>
+                    <p>  当IndexWriter执行commit()操作后，会生成一个segments_N文件，该文件描述了当前索引目录中所有有效的段信息文件(active segment info)，即之前文章介绍的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >segmentInfo<i class="fas fa-external-link-alt"></i></a>文件，仅仅通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/74.html" >flush()<i class="fas fa-external-link-alt"></i></a>生成的段成为无效的段信息文件。</p>
+<p>  索引目录中可能存在多个Segments_N文件，每个Segment_N文件代表某次<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit()<i class="fas fa-external-link-alt"></i></a>时的索引状态，其中N值最大的Segments_N文件代表最新的一次提交，它包含当前索引目录中所有的索引信息。</p>
+<p>  图1中最新的一次提交生成了Segments_5文件。</p>
 <p>图1：</p>
 <img  
                      lazyload
@@ -307,8 +307,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/1.png"
                      
                 >
-
-<p>&emsp;&emsp;图1中Segments_N文件包含的索引信息关系如下图：</p>
+<p>  图1中Segments_N文件包含的索引信息关系如下图：</p>
 <p>图2：</p>
 <img  
                      lazyload
@@ -316,38 +315,40 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/2.png"
                      
                 >
-
-<p>&emsp;&emsp;一个索引目录中存在多个segments_N文件的原因大体分为两点：</p>
+<p>  一个索引目录中存在多个segments_N文件的原因大体分为两点：</p>
 <ul>
 <li>旧的segments_N暂时不能被删除：原因很多，在后面介绍IndexWriter的文章中会提及</li>
 <li>使用了非默认的IndexDeletionPolicy：IndexDeletionPolicy提供了一个策略，该策略描述了当一个新的commit()提交后，如果处理旧的提交，Lucene7.5.0中默认使用的是KeepOnlyLastCommitDeletionPolicy，它是IndexDeletionPolicy的其中一个实现，即当有新的提交时，删除前面的提交，比如在图1中，就只会保留segments_5文件；例如同样作为IndexDeletionPolicy的另一个实现，NoDeletionPolicy，使用该策略就会保留每次的commit()，这么做的好处就相当于设置了每一个commit()检查点，配合CommitUserData(下文会介绍)，我们可以将索引信息恢复到任意一个检查点，缺点是很明显的，如图2中，每一个segments_N都包含了以往所有的信息，索引目录的大小因此会很大。</li>
 </ul>
-<h1 id="segments-N文件的数据结构"><a href="#segments-N文件的数据结构" class="headerlink" title="segments_N文件的数据结构"></a>segments_N文件的数据结构</h1><p>图3：</p>
+<h1 id="segments_n文件的数据结构"><a class="markdownIt-Anchor" href="#segments_n文件的数据结构"></a> segments_N文件的数据结构</h1>
+<p>图3：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/3.png"
                      
                 >
-
-<h2 id="LuceneVersion"><a href="#LuceneVersion" class="headerlink" title="LuceneVersion"></a>LuceneVersion</h2><p>图4：</p>
+<h2 id="luceneversion"><a class="markdownIt-Anchor" href="#luceneversion"></a> LuceneVersion</h2>
+<p>图4：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/4.png"
                      
                 >
-
-<p>&emsp;&emsp;LuceneVersio描述了当前运行的Lucene版本，比如本文基于Lucene7.5.0写的，那么LuceneVersion的值如下：</p>
+<p>  LuceneVersio描述了当前运行的Lucene版本，比如本文基于Lucene7.5.0写的，那么LuceneVersion的值如下：</p>
 <ul>
 <li>LATEST.major：7</li>
 <li>LATEST.minor：5</li>
 <li>LATEST.bugfix：0</li>
 </ul>
-<h2 id="IndexCreatedVersionMajor"><a href="#IndexCreatedVersionMajor" class="headerlink" title="IndexCreatedVersionMajor"></a>IndexCreatedVersionMajor</h2><p>&emsp;&emsp;IndexCreatedVersionMajor描述的是创建该segment_N文件的Lucene的major值，在读取阶段，该segment_N文件可能被更高版本的Lucene读取，用来检查兼容性。</p>
-<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>&emsp;&emsp;Version描述的是segmentInfos对象发生更改的次数。</p>
-<p>&emsp;&emsp;segmentInfos对象的概念见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>中流程点<code>获得所有段的信息集合SegmentInfos</code>的介绍。</p>
-<h2 id="NameCounter"><a href="#NameCounter" class="headerlink" title="NameCounter"></a>NameCounter</h2><p>&emsp;&emsp;NameCounter用来给新的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >segmentInfo<i class="fas fa-external-link-alt"></i></a>文件提供名字的前缀值，例如下图中 _8 即为前缀值。</p>
+<h2 id="indexcreatedversionmajor"><a class="markdownIt-Anchor" href="#indexcreatedversionmajor"></a> IndexCreatedVersionMajor</h2>
+<p>  IndexCreatedVersionMajor描述的是创建该segment_N文件的Lucene的major值，在读取阶段，该segment_N文件可能被更高版本的Lucene读取，用来检查兼容性。</p>
+<h2 id="version"><a class="markdownIt-Anchor" href="#version"></a> Version</h2>
+<p>  Version描述的是segmentInfos对象发生更改的次数。</p>
+<p>  segmentInfos对象的概念见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>中流程点<code>获得所有段的信息集合SegmentInfos</code>的介绍。</p>
+<h2 id="namecounter"><a class="markdownIt-Anchor" href="#namecounter"></a> NameCounter</h2>
+<p>  NameCounter用来给新的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >segmentInfo<i class="fas fa-external-link-alt"></i></a>文件提供名字的前缀值，例如下图中 _8 即为前缀值。</p>
 <p>图5：</p>
 <img  
                      lazyload
@@ -355,28 +356,29 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/5.png"
                      
                 >
-
-<h2 id="SegCount"><a href="#SegCount" class="headerlink" title="SegCount"></a>SegCount</h2><p>&emsp;&emsp;该字段描述了当前索引目录中的有效的段信息文件(active segment info)。</p>
-<h2 id="MinSegmentLuceneVersion"><a href="#MinSegmentLuceneVersion" class="headerlink" title="MinSegmentLuceneVersion"></a>MinSegmentLuceneVersion</h2><p>图6：</p>
+<h2 id="segcount"><a class="markdownIt-Anchor" href="#segcount"></a> SegCount</h2>
+<p>  该字段描述了当前索引目录中的有效的段信息文件(active segment info)。</p>
+<h2 id="minsegmentluceneversion"><a class="markdownIt-Anchor" href="#minsegmentluceneversion"></a> MinSegmentLuceneVersion</h2>
+<p>图6：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/6.png"
                      
                 >
-
-<p>&emsp;&emsp;索引目录中的.si文件的版本可能各不相同，MinSegmentLuceneVersion记录版本最小的，不详细展开，同图4。</p>
-<h2 id="SegmentCommitInfo"><a href="#SegmentCommitInfo" class="headerlink" title="SegmentCommitInfo"></a>SegmentCommitInfo</h2><p>图7：</p>
+<p>  索引目录中的.si文件的版本可能各不相同，MinSegmentLuceneVersion记录版本最小的，不详细展开，同图4。</p>
+<h2 id="segmentcommitinfo"><a class="markdownIt-Anchor" href="#segmentcommitinfo"></a> SegmentCommitInfo</h2>
+<p>图7：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/7.png"
                      
                 >
-
-<p>&emsp;&emsp;该字段描述了一个segmentInfo文件(.si文件)的信息。</p>
-<h3 id="SegName"><a href="#SegName" class="headerlink" title="SegName"></a>SegName</h3><p>&emsp;&emsp;该字段描述了segmentInfo文件及对应的其他索引文件的名字前缀，图8中，下面所有的文件属于同一个segment，segName的值为”_1”</p>
-<p>&emsp;&emsp;在读取segment_N文件阶段，通过SegName找到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >.si索引文件<i class="fas fa-external-link-alt"></i></a>，结合SegmentCommitInfo就可以获得一个段的完整的信息</p>
+<p>  该字段描述了一个segmentInfo文件(.si文件)的信息。</p>
+<h3 id="segname"><a class="markdownIt-Anchor" href="#segname"></a> SegName</h3>
+<p>  该字段描述了segmentInfo文件及对应的其他索引文件的名字前缀，图8中，下面所有的文件属于同一个segment，segName的值为&quot;_1&quot;</p>
+<p>  在读取segment_N文件阶段，通过SegName找到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >.si索引文件<i class="fas fa-external-link-alt"></i></a>，结合SegmentCommitInfo就可以获得一个段的完整的信息</p>
 <p>图8：</p>
 <img  
                      lazyload
@@ -384,16 +386,24 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/8.png"
                      
                 >
-
-<h3 id="SegID"><a href="#SegID" class="headerlink" title="SegID"></a>SegID</h3><p>&emsp;&emsp;该字段描述了segmentInfo文件的一个唯一标示。</p>
-<h3 id="SegCodec"><a href="#SegCodec" class="headerlink" title="SegCodec"></a>SegCodec</h3><p>&emsp;&emsp;该字段描述了segmentInfo文件编码值，例如”Lucene70”。</p>
-<h3 id="DelGen"><a href="#DelGen" class="headerlink" title="DelGen"></a>DelGen</h3><p>&emsp;&emsp;该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number），它用来命名下一次生成的索引文件.liv，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a>。</p>
-<h3 id="DeletionCount"><a href="#DeletionCount" class="headerlink" title="DeletionCount"></a>DeletionCount</h3><p>&emsp;&emsp;该字段描述了segmentInfo文件中被删除文档的个数。</p>
-<h3 id="FieldInfosGen"><a href="#FieldInfosGen" class="headerlink" title="FieldInfosGen"></a>FieldInfosGen</h3><p>&emsp;&emsp;该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0606/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfnm" >.fnm<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number），它用来命名下一次生成的索引文件.fnm，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a>。</p>
-<h3 id="DocValuesGen"><a href="#DocValuesGen" class="headerlink" title="DocValuesGen"></a>DocValuesGen</h3><p>&emsp;&emsp;该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0218/DocValues/" >.dvm、.dvd<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number）， 它用来命名下一次生成的索引文件.dvd、.dvm，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="SoftDelCount"><a href="#SoftDelCount" class="headerlink" title="SoftDelCount"></a>SoftDelCount</h3><p>&emsp;&emsp;该字段记录软删除的文档个数，软删除的概念后面介绍文档的添加、删除、更新时会给出详细含义。</p>
-<h3 id="FieldInfosFiles"><a href="#FieldInfosFiles" class="headerlink" title="FieldInfosFiles"></a>FieldInfosFiles</h3><p>&emsp;&emsp;如果域的信息发生了变化（更新），那么会记录最新生成的.fnm文件。</p>
-<h3 id="UpdatesFiles"><a href="#UpdatesFiles" class="headerlink" title="UpdatesFiles"></a>UpdatesFiles</h3><p>&emsp;&emsp;记录发生变化的索引文件，比如调用了IndexWriter.updateDocValues(..)的方法后，会生成新的.dvd、.dvm文件，那么域值跟索引文件名字的信息。</p>
+<h3 id="segid"><a class="markdownIt-Anchor" href="#segid"></a> SegID</h3>
+<p>  该字段描述了segmentInfo文件的一个唯一标示。</p>
+<h3 id="segcodec"><a class="markdownIt-Anchor" href="#segcodec"></a> SegCodec</h3>
+<p>  该字段描述了segmentInfo文件编码值，例如&quot;Lucene70&quot;。</p>
+<h3 id="delgen"><a class="markdownIt-Anchor" href="#delgen"></a> DelGen</h3>
+<p>  该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number），它用来命名下一次生成的索引文件.liv，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="deletioncount"><a class="markdownIt-Anchor" href="#deletioncount"></a> DeletionCount</h3>
+<p>  该字段描述了segmentInfo文件中被删除文档的个数。</p>
+<h3 id="fieldinfosgen"><a class="markdownIt-Anchor" href="#fieldinfosgen"></a> FieldInfosGen</h3>
+<p>  该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0606/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfnm" >.fnm<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number），它用来命名下一次生成的索引文件.fnm，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="docvaluesgen"><a class="markdownIt-Anchor" href="#docvaluesgen"></a> DocValuesGen</h3>
+<p>  该字段描述了属于同一个segment的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0218/DocValues/" >.dvm、.dvd<i class="fas fa-external-link-alt"></i></a>文件的迭代编号（generation number）， 它用来命名下一次生成的索引文件.dvd、.dvm，该字段的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象（九）<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="softdelcount"><a class="markdownIt-Anchor" href="#softdelcount"></a> SoftDelCount</h3>
+<p>  该字段记录软删除的文档个数，软删除的概念后面介绍文档的添加、删除、更新时会给出详细含义。</p>
+<h3 id="fieldinfosfiles"><a class="markdownIt-Anchor" href="#fieldinfosfiles"></a> FieldInfosFiles</h3>
+<p>  如果域的信息发生了变化（更新），那么会记录最新生成的.fnm文件。</p>
+<h3 id="updatesfiles"><a class="markdownIt-Anchor" href="#updatesfiles"></a> UpdatesFiles</h3>
+<p>  记录发生变化的索引文件，比如调用了IndexWriter.updateDocValues(…)的方法后，会生成新的.dvd、.dvm文件，那么域值跟索引文件名字的信息。</p>
 <p>图9：</p>
 <img  
                      lazyload
@@ -402,17 +412,18 @@
                      
                 >
 &emsp;&emsp;上图中，先找出包含域名为"content"，域值为"c"的文档，然后更新该文档中的NumericDocValuesField域，更新域名跟域值。此操作后，会生成新的.dvd、dvm文件。
-
-<h2 id="CommitUserData"><a href="#CommitUserData" class="headerlink" title="CommitUserData"></a>CommitUserData</h2><p>&emsp;&emsp;该字段可以通过调用IndexWriter.setLiveCommitData(…)来在commit()时记录自定义的信息，上文中提到，如果使用了NoDeletionPolicy，那么Lucene会保留每一次commit()时的索引文件信息作为检查点，这样我们可以通过CommitUserData跟Segment_N来回退到任意的检查点。</p>
-<h1 id="segments-N文件的总数据结构"><a href="#segments-N文件的总数据结构" class="headerlink" title="segments_N文件的总数据结构"></a>segments_N文件的总数据结构</h1><p>图10：</p>
+<h2 id="commituserdata"><a class="markdownIt-Anchor" href="#commituserdata"></a> CommitUserData</h2>
+<p>  该字段可以通过调用IndexWriter.setLiveCommitData(…)来在commit()时记录自定义的信息，上文中提到，如果使用了NoDeletionPolicy，那么Lucene会保留每一次commit()时的索引文件信息作为检查点，这样我们可以通过CommitUserData跟Segment_N来回退到任意的检查点。</p>
+<h1 id="segments_n文件的总数据结构"><a class="markdownIt-Anchor" href="#segments_n文件的总数据结构"></a> segments_N文件的总数据结构</h1>
+<p>图10：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/10.png"
                      
                 >
-
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>&emsp;&emsp;无</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  无</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/segments_N.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
@@ -611,7 +622,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segments-N%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">segments_N文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LuceneVersion"><span class="nav-number">1.1.</span> <span class="nav-text">LuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IndexCreatedVersionMajor"><span class="nav-number">1.2.</span> <span class="nav-text">IndexCreatedVersionMajor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version"><span class="nav-number">1.3.</span> <span class="nav-text">Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NameCounter"><span class="nav-number">1.4.</span> <span class="nav-text">NameCounter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SegCount"><span class="nav-number">1.5.</span> <span class="nav-text">SegCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MinSegmentLuceneVersion"><span class="nav-number">1.6.</span> <span class="nav-text">MinSegmentLuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SegmentCommitInfo"><span class="nav-number">1.7.</span> <span class="nav-text">SegmentCommitInfo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SegName"><span class="nav-number">1.7.1.</span> <span class="nav-text">SegName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SegID"><span class="nav-number">1.7.2.</span> <span class="nav-text">SegID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SegCodec"><span class="nav-number">1.7.3.</span> <span class="nav-text">SegCodec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DelGen"><span class="nav-number">1.7.4.</span> <span class="nav-text">DelGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeletionCount"><span class="nav-number">1.7.5.</span> <span class="nav-text">DeletionCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldInfosGen"><span class="nav-number">1.7.6.</span> <span class="nav-text">FieldInfosGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DocValuesGen"><span class="nav-number">1.7.7.</span> <span class="nav-text">DocValuesGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SoftDelCount"><span class="nav-number">1.7.8.</span> <span class="nav-text">SoftDelCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldInfosFiles"><span class="nav-number">1.7.9.</span> <span class="nav-text">FieldInfosFiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UpdatesFiles"><span class="nav-number">1.7.10.</span> <span class="nav-text">UpdatesFiles</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommitUserData"><span class="nav-number">1.8.</span> <span class="nav-text">CommitUserData</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#segments-N%E6%96%87%E4%BB%B6%E7%9A%84%E6%80%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">segments_N文件的总数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segments_n%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> segments_N文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#luceneversion"><span class="nav-number">1.1.</span> <span class="nav-text"> LuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexcreatedversionmajor"><span class="nav-number">1.2.</span> <span class="nav-text"> IndexCreatedVersionMajor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#version"><span class="nav-number">1.3.</span> <span class="nav-text"> Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namecounter"><span class="nav-number">1.4.</span> <span class="nav-text"> NameCounter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segcount"><span class="nav-number">1.5.</span> <span class="nav-text"> SegCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minsegmentluceneversion"><span class="nav-number">1.6.</span> <span class="nav-text"> MinSegmentLuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segmentcommitinfo"><span class="nav-number">1.7.</span> <span class="nav-text"> SegmentCommitInfo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#segname"><span class="nav-number">1.7.1.</span> <span class="nav-text"> SegName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segid"><span class="nav-number">1.7.2.</span> <span class="nav-text"> SegID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segcodec"><span class="nav-number">1.7.3.</span> <span class="nav-text"> SegCodec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delgen"><span class="nav-number">1.7.4.</span> <span class="nav-text"> DelGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deletioncount"><span class="nav-number">1.7.5.</span> <span class="nav-text"> DeletionCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldinfosgen"><span class="nav-number">1.7.6.</span> <span class="nav-text"> FieldInfosGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluesgen"><span class="nav-number">1.7.7.</span> <span class="nav-text"> DocValuesGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softdelcount"><span class="nav-number">1.7.8.</span> <span class="nav-text"> SoftDelCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldinfosfiles"><span class="nav-number">1.7.9.</span> <span class="nav-text"> FieldInfosFiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#updatesfiles"><span class="nav-number">1.7.10.</span> <span class="nav-text"> UpdatesFiles</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commituserdata"><span class="nav-number">1.8.</span> <span class="nav-text"> CommitUserData</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#segments_n%E6%96%87%E4%BB%B6%E7%9A%84%E6%80%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> segments_N文件的总数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -666,7 +677,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -804,7 +815,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segments-N%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">segments_N文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LuceneVersion"><span class="nav-number">1.1.</span> <span class="nav-text">LuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IndexCreatedVersionMajor"><span class="nav-number">1.2.</span> <span class="nav-text">IndexCreatedVersionMajor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version"><span class="nav-number">1.3.</span> <span class="nav-text">Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NameCounter"><span class="nav-number">1.4.</span> <span class="nav-text">NameCounter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SegCount"><span class="nav-number">1.5.</span> <span class="nav-text">SegCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MinSegmentLuceneVersion"><span class="nav-number">1.6.</span> <span class="nav-text">MinSegmentLuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SegmentCommitInfo"><span class="nav-number">1.7.</span> <span class="nav-text">SegmentCommitInfo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SegName"><span class="nav-number">1.7.1.</span> <span class="nav-text">SegName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SegID"><span class="nav-number">1.7.2.</span> <span class="nav-text">SegID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SegCodec"><span class="nav-number">1.7.3.</span> <span class="nav-text">SegCodec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DelGen"><span class="nav-number">1.7.4.</span> <span class="nav-text">DelGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeletionCount"><span class="nav-number">1.7.5.</span> <span class="nav-text">DeletionCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldInfosGen"><span class="nav-number">1.7.6.</span> <span class="nav-text">FieldInfosGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DocValuesGen"><span class="nav-number">1.7.7.</span> <span class="nav-text">DocValuesGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SoftDelCount"><span class="nav-number">1.7.8.</span> <span class="nav-text">SoftDelCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldInfosFiles"><span class="nav-number">1.7.9.</span> <span class="nav-text">FieldInfosFiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UpdatesFiles"><span class="nav-number">1.7.10.</span> <span class="nav-text">UpdatesFiles</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommitUserData"><span class="nav-number">1.8.</span> <span class="nav-text">CommitUserData</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#segments-N%E6%96%87%E4%BB%B6%E7%9A%84%E6%80%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">segments_N文件的总数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segments_n%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> segments_N文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#luceneversion"><span class="nav-number">1.1.</span> <span class="nav-text"> LuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexcreatedversionmajor"><span class="nav-number">1.2.</span> <span class="nav-text"> IndexCreatedVersionMajor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#version"><span class="nav-number">1.3.</span> <span class="nav-text"> Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namecounter"><span class="nav-number">1.4.</span> <span class="nav-text"> NameCounter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segcount"><span class="nav-number">1.5.</span> <span class="nav-text"> SegCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minsegmentluceneversion"><span class="nav-number">1.6.</span> <span class="nav-text"> MinSegmentLuceneVersion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#segmentcommitinfo"><span class="nav-number">1.7.</span> <span class="nav-text"> SegmentCommitInfo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#segname"><span class="nav-number">1.7.1.</span> <span class="nav-text"> SegName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segid"><span class="nav-number">1.7.2.</span> <span class="nav-text"> SegID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#segcodec"><span class="nav-number">1.7.3.</span> <span class="nav-text"> SegCodec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delgen"><span class="nav-number">1.7.4.</span> <span class="nav-text"> DelGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deletioncount"><span class="nav-number">1.7.5.</span> <span class="nav-text"> DeletionCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldinfosgen"><span class="nav-number">1.7.6.</span> <span class="nav-text"> FieldInfosGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluesgen"><span class="nav-number">1.7.7.</span> <span class="nav-text"> DocValuesGen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softdelcount"><span class="nav-number">1.7.8.</span> <span class="nav-text"> SoftDelCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldinfosfiles"><span class="nav-number">1.7.9.</span> <span class="nav-text"> FieldInfosFiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#updatesfiles"><span class="nav-number">1.7.10.</span> <span class="nav-text"> UpdatesFiles</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commituserdata"><span class="nav-number">1.8.</span> <span class="nav-text"> CommitUserData</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#segments_n%E6%96%87%E4%BB%B6%E7%9A%84%E6%80%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> segments_N文件的总数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

@@ -278,7 +278,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>973 Words</span>
             </span>
         
         
@@ -300,87 +300,103 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;position在Lucene中描述的是一个term在一篇文档中的位置，并且存在一个或多个position。</p>
-<p>&emsp;&emsp;payload是一个自定义的元数据(mete data)来描述term的某个属性，term在一篇文章中的多个位置可以一一对应多个payload，也可以只有部分位置带有payload。这里提供了一个简单的demo来介绍payload的使用：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java。<i class="fas fa-external-link-alt"></i></a></p>
-<p>&emsp;&emsp;offset是一对整数值(a pair of integers)，即startOffset跟endOffset，它们分别描述了term的第一个字符跟最后一个在文档中的位置。</p>
-<p>&emsp;&emsp;每一个term在所有文档中的position、payload、offset信息在IndexWriter.addDocument()的过程中计算出来，在内存中生成一张倒排表，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>阶段，通过读取倒排表，将position信息写入到.pos文件中，将payload、offset信息写入到.pay文件中。</p>
-<p>&emsp;&emsp;本文介绍的是索引文件.pos、.pay的数据结构，其生成过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pay&&pos" >索引文件的生成（二）<i class="fas fa-external-link-alt"></i></a>。</p>
-<h2 id="pay文件的数据结构"><a href="#pay文件的数据结构" class="headerlink" title="pay文件的数据结构"></a>pay文件的数据结构</h2><p>图1：</p>
+                    <p>  position在Lucene中描述的是一个term在一篇文档中的位置，并且存在一个或多个position。</p>
+<p>  payload是一个自定义的元数据(mete data)来描述term的某个属性，term在一篇文章中的多个位置可以一一对应多个payload，也可以只有部分位置带有payload。这里提供了一个简单的demo来介绍payload的使用：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java。<i class="fas fa-external-link-alt"></i></a></p>
+<p>  offset是一对整数值(a pair of integers)，即startOffset跟endOffset，它们分别描述了term的第一个字符跟最后一个在文档中的位置。</p>
+<p>  每一个term在所有文档中的position、payload、offset信息在IndexWriter.addDocument()的过程中计算出来，在内存中生成一张倒排表，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>阶段，通过读取倒排表，将position信息写入到.pos文件中，将payload、offset信息写入到.pay文件中。</p>
+<p>  本文介绍的是索引文件.pos、.pay的数据结构，其生成过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（二）<i class="fas fa-external-link-alt"></i></a>。</p>
+<h2 id="pay文件的数据结构"><a class="markdownIt-Anchor" href="#pay文件的数据结构"></a> pay文件的数据结构</h2>
+<p>图1：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/1.png"
                      
                 >
-
-<p>&emsp;&emsp;图1中是仅有一个域的.pay文件的数据结构。</p>
-<h3 id="TermPayload"><a href="#TermPayload" class="headerlink" title="TermPayload"></a>TermPayload</h3><p>图2：</p>
+<p>  图1中是仅有一个域的.pay文件的数据结构。</p>
+<h3 id="termpayload"><a class="markdownIt-Anchor" href="#termpayload"></a> TermPayload</h3>
+<p>图2：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/2.png"
                      
                 >
-
-<h4 id="PackedPayBlock"><a href="#PackedPayBlock" class="headerlink" title="PackedPayBlock"></a>PackedPayBlock</h4><p>&emsp;&emsp;每次处理一个term的128个position信息，就会将对应的128个payload信息（不一定每个position都对应一个payload）处理为一个PackedPayBlock。即除了最后一个PackedPayBlock，其他PackedPayBlock中都包含了当前term的128个payload信息。</p>
-<h4 id="PackedPayLengthBlock"><a href="#PackedPayLengthBlock" class="headerlink" title="PackedPayLengthBlock"></a>PackedPayLengthBlock</h4><p>&emsp;&emsp;PackedPayLengthBlock存放了128个payload的长度数据，并且使用了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>进行了压缩存储，在读取阶段能根据长度数据从PayData中获得对应长度的数据（不明白？请阅读系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pos&&pay" >索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay<i class="fas fa-external-link-alt"></i></a>）。</p>
+<h4 id="packedpayblock"><a class="markdownIt-Anchor" href="#packedpayblock"></a> PackedPayBlock</h4>
+<p>  每次处理一个term的128个position信息，就会将对应的128个payload信息（不一定每个position都对应一个payload）处理为一个PackedPayBlock。即除了最后一个PackedPayBlock，其他PackedPayBlock中都包含了当前term的128个payload信息。</p>
+<h4 id="packedpaylengthblock"><a class="markdownIt-Anchor" href="#packedpaylengthblock"></a> PackedPayLengthBlock</h4>
+<p>  PackedPayLengthBlock存放了128个payload的长度数据，并且使用了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>进行了压缩存储，在读取阶段能根据长度数据从PayData中获得对应长度的数据（不明白？请阅读系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay" >索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay<i class="fas fa-external-link-alt"></i></a>）。</p>
 <p><strong>这里注意是由于每一个payload的长度无法保证递增，只能使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>存储原始数据。</strong></p>
-<h4 id="SumPayLength"><a href="#SumPayLength" class="headerlink" title="SumPayLength"></a>SumPayLength</h4><p>&emsp;&emsp;SumPayLength存放了这128个payload的数据长度(字节数)，在读取.pay文件时用来确定128个payload的真实数据在.pay中的数据区间。</p>
-<h4 id="PayData"><a href="#PayData" class="headerlink" title="PayData"></a>PayData</h4><p>&emsp;&emsp;PayData中存放了128个payload的真实数据。</p>
-<h3 id="TermOffset"><a href="#TermOffset" class="headerlink" title="TermOffset"></a>TermOffset</h3><p>图3：</p>
+<h4 id="sumpaylength"><a class="markdownIt-Anchor" href="#sumpaylength"></a> SumPayLength</h4>
+<p>  SumPayLength存放了这128个payload的数据长度(字节数)，在读取.pay文件时用来确定128个payload的真实数据在.pay中的数据区间。</p>
+<h4 id="paydata"><a class="markdownIt-Anchor" href="#paydata"></a> PayData</h4>
+<p>  PayData中存放了128个payload的真实数据。</p>
+<h3 id="termoffset"><a class="markdownIt-Anchor" href="#termoffset"></a> TermOffset</h3>
+<p>图3：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/3.png"
                      
                 >
-
-<h4 id="PackedOffsetBlock"><a href="#PackedOffsetBlock" class="headerlink" title="PackedOffsetBlock"></a>PackedOffsetBlock</h4><p>&emsp;&emsp;跟TermPayload一样的是，都是每次处理一个term的128个position信息后，就会将对应的128个offset信息处理为一个block。</p>
-<h4 id="PackedOffsetStartDeltaBlock"><a href="#PackedOffsetStartDeltaBlock" class="headerlink" title="PackedOffsetStartDeltaBlock"></a>PackedOffsetStartDeltaBlock</h4><p>&emsp;&emsp;offset是一对整数值(a pair of integers)，startOffset跟endOffset分别描述了term的第一个字符跟最后一个在文档中的位置。PackedOffsetStartDeltaBlock存放了128个offset的startOffset值，并且使用了PackedInts进行压缩存储，由于这128个startOffset是个递增的值，所以实际存放了相邻两个offset的startOffset的差值。</p>
-<h4 id="PackedOffsetLengthBlock"><a href="#PackedOffsetLengthBlock" class="headerlink" title="PackedOffsetLengthBlock"></a>PackedOffsetLengthBlock</h4><p>&emsp;&emsp;PackedOffsetLengthBlock存放了128个offset的startOffset跟endOffset差值，同样使用PackedInts进行压缩存储。</p>
-<h2 id="pos文件的数据结构"><a href="#pos文件的数据结构" class="headerlink" title="pos文件的数据结构"></a>pos文件的数据结构</h2><p>图4：</p>
+<h4 id="packedoffsetblock"><a class="markdownIt-Anchor" href="#packedoffsetblock"></a> PackedOffsetBlock</h4>
+<p>  跟TermPayload一样的是，都是每次处理一个term的128个position信息后，就会将对应的128个offset信息处理为一个block。</p>
+<h4 id="packedoffsetstartdeltablock"><a class="markdownIt-Anchor" href="#packedoffsetstartdeltablock"></a> PackedOffsetStartDeltaBlock</h4>
+<p>  offset是一对整数值(a pair of integers)，startOffset跟endOffset分别描述了term的第一个字符跟最后一个在文档中的位置。PackedOffsetStartDeltaBlock存放了128个offset的startOffset值，并且使用了PackedInts进行压缩存储，由于这128个startOffset是个递增的值，所以实际存放了相邻两个offset的startOffset的差值。</p>
+<h4 id="packedoffsetlengthblock"><a class="markdownIt-Anchor" href="#packedoffsetlengthblock"></a> PackedOffsetLengthBlock</h4>
+<p>  PackedOffsetLengthBlock存放了128个offset的startOffset跟endOffset差值，同样使用PackedInts进行压缩存储。</p>
+<h2 id="pos文件的数据结构"><a class="markdownIt-Anchor" href="#pos文件的数据结构"></a> pos文件的数据结构</h2>
+<p>图4：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/4.png"
                      
                 >
-
-<p>&emsp;&emsp;在.pos文件中，TermPosition记录一个term的position信息。</p>
-<h3 id="TermPosition"><a href="#TermPosition" class="headerlink" title="TermPosition"></a>TermPosition</h3><p>图5：</p>
+<p>  在.pos文件中，TermPosition记录一个term的position信息。</p>
+<h3 id="termposition"><a class="markdownIt-Anchor" href="#termposition"></a> TermPosition</h3>
+<p>图5：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/5.png"
                      
                 >
-
-<h3 id="PackedPosBlock"><a href="#PackedPosBlock" class="headerlink" title="PackedPosBlock"></a>PackedPosBlock</h3><p>&emsp;&emsp;每次处理一个term的128个position信息，就会将这些position处理为一个PackedPosBlock。</p>
-<h4 id="PackedPosDeltaBlock"><a href="#PackedPosDeltaBlock" class="headerlink" title="PackedPosDeltaBlock"></a>PackedPosDeltaBlock</h4><p>&emsp;&emsp;PackedPosDeltaBlock存放了128个位置信息，计算相邻两个position的差值后，利用PackedInts压缩存储。</p>
-<h3 id="VIntBlocks-VIntBlock"><a href="#VIntBlocks-VIntBlock" class="headerlink" title="VIntBlocks &amp;&amp; VIntBlock"></a>VIntBlocks &amp;&amp; VIntBlock</h3><p>&emsp;&emsp;如果position的个数不足128个，那么将每一个position处理为一个VIntBlock。(比如说某个term有200个position，那么前128个position处理为一个PackedPosBlock，剩余的72个position处理为72个VIntBlock，72个VIntBlock为一个VIntBlocks)。</p>
-<h4 id="PositionDelta"><a href="#PositionDelta" class="headerlink" title="PositionDelta"></a>PositionDelta</h4><p>&emsp;&emsp;term的position信息，这是一个差值。PositionDelta的最后一位用来标识当前position是否有payload信息。</p>
-<h4 id="PayloadLength"><a href="#PayloadLength" class="headerlink" title="PayloadLength"></a>PayloadLength</h4><p>&emsp;&emsp;当前position对应的payload信息的长度，在读取.pos时，用来确定往后读取的一个字节区间。</p>
-<h4 id="PayloadData"><a href="#PayloadData" class="headerlink" title="PayloadData"></a>PayloadData</h4><p>&emsp;&emsp;当前position对应的payload真实数据。</p>
-<h4 id="OffsetDelta"><a href="#OffsetDelta" class="headerlink" title="OffsetDelta"></a>OffsetDelta</h4><p>&emsp;&emsp;当前position对应的offset的startOffset值，同样是个差值</p>
-<h4 id="OffsetLength"><a href="#OffsetLength" class="headerlink" title="OffsetLength"></a>OffsetLength</h4><p>&emsp;&emsp;当前position对应的offset的endOffset与startOffset的差值。</p>
-<h2 id="多个域的pay文件的数据结构"><a href="#多个域的pay文件的数据结构" class="headerlink" title="多个域的pay文件的数据结构"></a>多个域的pay文件的数据结构</h2><p>图6：</p>
+<h3 id="packedposblock"><a class="markdownIt-Anchor" href="#packedposblock"></a> PackedPosBlock</h3>
+<p>  每次处理一个term的128个position信息，就会将这些position处理为一个PackedPosBlock。</p>
+<h4 id="packedposdeltablock"><a class="markdownIt-Anchor" href="#packedposdeltablock"></a> PackedPosDeltaBlock</h4>
+<p>  PackedPosDeltaBlock存放了128个位置信息，计算相邻两个position的差值后，利用PackedInts压缩存储。</p>
+<h3 id="vintblocks-vintblock"><a class="markdownIt-Anchor" href="#vintblocks-vintblock"></a> VIntBlocks &amp;&amp; VIntBlock</h3>
+<p>  如果position的个数不足128个，那么将每一个position处理为一个VIntBlock。(比如说某个term有200个position，那么前128个position处理为一个PackedPosBlock，剩余的72个position处理为72个VIntBlock，72个VIntBlock为一个VIntBlocks)。</p>
+<h4 id="positiondelta"><a class="markdownIt-Anchor" href="#positiondelta"></a> PositionDelta</h4>
+<p>  term的position信息，这是一个差值。PositionDelta的最后一位用来标识当前position是否有payload信息。</p>
+<h4 id="payloadlength"><a class="markdownIt-Anchor" href="#payloadlength"></a> PayloadLength</h4>
+<p>  当前position对应的payload信息的长度，在读取.pos时，用来确定往后读取的一个字节区间。</p>
+<h4 id="payloaddata"><a class="markdownIt-Anchor" href="#payloaddata"></a> PayloadData</h4>
+<p>  当前position对应的payload真实数据。</p>
+<h4 id="offsetdelta"><a class="markdownIt-Anchor" href="#offsetdelta"></a> OffsetDelta</h4>
+<p>  当前position对应的offset的startOffset值，同样是个差值</p>
+<h4 id="offsetlength"><a class="markdownIt-Anchor" href="#offsetlength"></a> OffsetLength</h4>
+<p>  当前position对应的offset的endOffset与startOffset的差值。</p>
+<h2 id="多个域的pay文件的数据结构"><a class="markdownIt-Anchor" href="#多个域的pay文件的数据结构"></a> 多个域的pay文件的数据结构</h2>
+<p>图6：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/6.png"
                      
                 >
-
-<h2 id="多个域的pos文件的数据结构"><a href="#多个域的pos文件的数据结构" class="headerlink" title="多个域的pos文件的数据结构"></a>多个域的pos文件的数据结构</h2><p>图7：</p>
+<h2 id="多个域的pos文件的数据结构"><a class="markdownIt-Anchor" href="#多个域的pos文件的数据结构"></a> 多个域的pos文件的数据结构</h2>
+<p>图7：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/7.png"
                      
                 >
-
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;.pos、.pay、.doc、.tim、.tip文件都是在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush()<i class="fas fa-external-link-alt"></i></a>阶段通过读取倒排表一起生成的，另外.doc跟.pos、.pay文件还有映射关系，在后面介绍.doc文件时候会涉及。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/pos&&pay.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  .pos、.pay、.doc、.tim、.tip文件都是在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush()<i class="fas fa-external-link-alt"></i></a>阶段通过读取倒排表一起生成的，另外.doc跟.pos、.pay文件还有映射关系，在后面介绍.doc文件时候会涉及。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/pos&amp;&amp;pay.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
 
@@ -582,7 +598,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">pay文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermPayload"><span class="nav-number">1.1.</span> <span class="nav-text">TermPayload</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPayBlock"><span class="nav-number">1.1.1.</span> <span class="nav-text">PackedPayBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPayLengthBlock"><span class="nav-number">1.1.2.</span> <span class="nav-text">PackedPayLengthBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SumPayLength"><span class="nav-number">1.1.3.</span> <span class="nav-text">SumPayLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayData"><span class="nav-number">1.1.4.</span> <span class="nav-text">PayData</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TermOffset"><span class="nav-number">1.2.</span> <span class="nav-text">TermOffset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetBlock"><span class="nav-number">1.2.1.</span> <span class="nav-text">PackedOffsetBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetStartDeltaBlock"><span class="nav-number">1.2.2.</span> <span class="nav-text">PackedOffsetStartDeltaBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetLengthBlock"><span class="nav-number">1.2.3.</span> <span class="nav-text">PackedOffsetLengthBlock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">pos文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermPosition"><span class="nav-number">2.1.</span> <span class="nav-text">TermPosition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PackedPosBlock"><span class="nav-number">2.2.</span> <span class="nav-text">PackedPosBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPosDeltaBlock"><span class="nav-number">2.2.1.</span> <span class="nav-text">PackedPosDeltaBlock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VIntBlocks-VIntBlock"><span class="nav-number">2.3.</span> <span class="nav-text">VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PositionDelta"><span class="nav-number">2.3.1.</span> <span class="nav-text">PositionDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayloadLength"><span class="nav-number">2.3.2.</span> <span class="nav-text">PayloadLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayloadData"><span class="nav-number">2.3.3.</span> <span class="nav-text">PayloadData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OffsetDelta"><span class="nav-number">2.3.4.</span> <span class="nav-text">OffsetDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OffsetLength"><span class="nav-number">2.3.5.</span> <span class="nav-text">OffsetLength</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">多个域的pay文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">多个域的pos文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> pay文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termpayload"><span class="nav-number">1.1.</span> <span class="nav-text"> TermPayload</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedpayblock"><span class="nav-number">1.1.1.</span> <span class="nav-text"> PackedPayBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedpaylengthblock"><span class="nav-number">1.1.2.</span> <span class="nav-text"> PackedPayLengthBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sumpaylength"><span class="nav-number">1.1.3.</span> <span class="nav-text"> SumPayLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paydata"><span class="nav-number">1.1.4.</span> <span class="nav-text"> PayData</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termoffset"><span class="nav-number">1.2.</span> <span class="nav-text"> TermOffset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetblock"><span class="nav-number">1.2.1.</span> <span class="nav-text"> PackedOffsetBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetstartdeltablock"><span class="nav-number">1.2.2.</span> <span class="nav-text"> PackedOffsetStartDeltaBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetlengthblock"><span class="nav-number">1.2.3.</span> <span class="nav-text"> PackedOffsetLengthBlock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> pos文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termposition"><span class="nav-number">2.1.</span> <span class="nav-text"> TermPosition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packedposblock"><span class="nav-number">2.2.</span> <span class="nav-text"> PackedPosBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedposdeltablock"><span class="nav-number">2.2.1.</span> <span class="nav-text"> PackedPosDeltaBlock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vintblocks-vintblock"><span class="nav-number">2.3.</span> <span class="nav-text"> VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#positiondelta"><span class="nav-number">2.3.1.</span> <span class="nav-text"> PositionDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#payloadlength"><span class="nav-number">2.3.2.</span> <span class="nav-text"> PayloadLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#payloaddata"><span class="nav-number">2.3.3.</span> <span class="nav-text"> PayloadData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetdelta"><span class="nav-number">2.3.4.</span> <span class="nav-text"> OffsetDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetlength"><span class="nav-number">2.3.5.</span> <span class="nav-text"> OffsetLength</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text"> 多个域的pay文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text"> 多个域的pos文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -637,7 +653,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -775,7 +791,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">pay文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermPayload"><span class="nav-number">1.1.</span> <span class="nav-text">TermPayload</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPayBlock"><span class="nav-number">1.1.1.</span> <span class="nav-text">PackedPayBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPayLengthBlock"><span class="nav-number">1.1.2.</span> <span class="nav-text">PackedPayLengthBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SumPayLength"><span class="nav-number">1.1.3.</span> <span class="nav-text">SumPayLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayData"><span class="nav-number">1.1.4.</span> <span class="nav-text">PayData</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TermOffset"><span class="nav-number">1.2.</span> <span class="nav-text">TermOffset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetBlock"><span class="nav-number">1.2.1.</span> <span class="nav-text">PackedOffsetBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetStartDeltaBlock"><span class="nav-number">1.2.2.</span> <span class="nav-text">PackedOffsetStartDeltaBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedOffsetLengthBlock"><span class="nav-number">1.2.3.</span> <span class="nav-text">PackedOffsetLengthBlock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">pos文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermPosition"><span class="nav-number">2.1.</span> <span class="nav-text">TermPosition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PackedPosBlock"><span class="nav-number">2.2.</span> <span class="nav-text">PackedPosBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedPosDeltaBlock"><span class="nav-number">2.2.1.</span> <span class="nav-text">PackedPosDeltaBlock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VIntBlocks-VIntBlock"><span class="nav-number">2.3.</span> <span class="nav-text">VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PositionDelta"><span class="nav-number">2.3.1.</span> <span class="nav-text">PositionDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayloadLength"><span class="nav-number">2.3.2.</span> <span class="nav-text">PayloadLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PayloadData"><span class="nav-number">2.3.3.</span> <span class="nav-text">PayloadData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OffsetDelta"><span class="nav-number">2.3.4.</span> <span class="nav-text">OffsetDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OffsetLength"><span class="nav-number">2.3.5.</span> <span class="nav-text">OffsetLength</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">多个域的pay文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">多个域的pos文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> pay文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termpayload"><span class="nav-number">1.1.</span> <span class="nav-text"> TermPayload</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedpayblock"><span class="nav-number">1.1.1.</span> <span class="nav-text"> PackedPayBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedpaylengthblock"><span class="nav-number">1.1.2.</span> <span class="nav-text"> PackedPayLengthBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sumpaylength"><span class="nav-number">1.1.3.</span> <span class="nav-text"> SumPayLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paydata"><span class="nav-number">1.1.4.</span> <span class="nav-text"> PayData</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termoffset"><span class="nav-number">1.2.</span> <span class="nav-text"> TermOffset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetblock"><span class="nav-number">1.2.1.</span> <span class="nav-text"> PackedOffsetBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetstartdeltablock"><span class="nav-number">1.2.2.</span> <span class="nav-text"> PackedOffsetStartDeltaBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packedoffsetlengthblock"><span class="nav-number">1.2.3.</span> <span class="nav-text"> PackedOffsetLengthBlock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> pos文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termposition"><span class="nav-number">2.1.</span> <span class="nav-text"> TermPosition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packedposblock"><span class="nav-number">2.2.</span> <span class="nav-text"> PackedPosBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedposdeltablock"><span class="nav-number">2.2.1.</span> <span class="nav-text"> PackedPosDeltaBlock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vintblocks-vintblock"><span class="nav-number">2.3.</span> <span class="nav-text"> VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#positiondelta"><span class="nav-number">2.3.1.</span> <span class="nav-text"> PositionDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#payloadlength"><span class="nav-number">2.3.2.</span> <span class="nav-text"> PayloadLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#payloaddata"><span class="nav-number">2.3.3.</span> <span class="nav-text"> PayloadData</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetdelta"><span class="nav-number">2.3.4.</span> <span class="nav-text"> OffsetDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetlength"><span class="nav-number">2.3.5.</span> <span class="nav-text"> OffsetLength</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pay%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text"> 多个域的pay文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84pos%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text"> 多个域的pos文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

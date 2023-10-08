@@ -272,7 +272,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
             </span>
         
         
@@ -294,9 +294,10 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>中我们介绍了软删除的一些应用，从本篇文章开始，将根据索引（index）、flush&#x2F;commit、段的合并、搜索这几个不同的阶段来介绍跟软删除相关的内容。</p>
-<h2 id="索引（index）"><a href="#索引（index）" class="headerlink" title="索引（index）"></a>索引（index）</h2><p>&emsp;&emsp;<strong>阅读本小结内容必须掌握文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中的知识点，故下文中出现的一些名词不会作详细的介绍</strong>。</p>
-<p>&emsp;&emsp;索引（index）这个阶段，即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的阶段，由于软删除属于删除操作，故对应的删除信息会被添加到全局的deleteQueue中，deleteQueue中存放了四种类型的删除信息，这四种删除信息用下图中的Node对象来描述：</p>
+                    <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>中我们介绍了软删除的一些应用，从本篇文章开始，将根据索引（index）、flush/commit、段的合并、搜索这几个不同的阶段来介绍跟软删除相关的内容。</p>
+<h2 id="索引index"><a class="markdownIt-Anchor" href="#索引index"></a> 索引（index）</h2>
+<p>  <strong>阅读本小结内容必须掌握文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中的知识点，故下文中出现的一些名词不会作详细的介绍</strong>。</p>
+<p>  索引（index）这个阶段，即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的阶段，由于软删除属于删除操作，故对应的删除信息会被添加到全局的deleteQueue中，deleteQueue中存放了四种类型的删除信息，这四种删除信息用下图中的Node对象来描述：</p>
 <p>图1：</p>
 <img  
                      lazyload
@@ -304,15 +305,14 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/1.png"
                      
                 >
-
-<p>&emsp;&emsp;上图中的四种删除信息通过IndexWriter类中提供的方法生成：</p>
+<p>  上图中的四种删除信息通过IndexWriter类中提供的方法生成：</p>
 <ul>
 <li>QueryArrayNode：deleteDocuments(Querys)</li>
 <li>TermArrayNode：deleteDocuments(Terms)</li>
 <li>DocValuesUpdatesNode：updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )</li>
 <li>TermNode：updateDocument(Term, Document)、updateDocuments( Term, Documents)</li>
 </ul>
-<p>&emsp;&emsp;由上文可以看出，软删除对应的删除信息将会由DocValuesUpdatesNode来描述，</p>
+<p>  由上文可以看出，软删除对应的删除信息将会由DocValuesUpdatesNode来描述，</p>
 <p>我们通过一个例子来看下DocValuesUpdatesNode中描述了哪些删除信息：</p>
 <p>图2：</p>
 <img  
@@ -321,8 +321,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/2.png"
                      
                 >
-
-<p>&emsp;&emsp;图2中，第56行执行了软删除的操作，它对应的删除信息DocValuesUpdatesNode包含如下信息：</p>
+<p>  图2中，第56行执行了软删除的操作，它对应的删除信息DocValuesUpdatesNode包含如下信息：</p>
 <p>图3：</p>
 <img  
                      lazyload
@@ -330,23 +329,23 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/3.png"
                      
                 >
-
-<p>&emsp;&emsp;DocValuesUpdatesNode中包含了两个对象：next、item，其中next用来指向deleteQueue中下一个删除信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），item（<strong>NumericDocValuesUpdate对象</strong>）中的type描述了使用NUMERIC类型的DocValues来描述被软删除的文档，item中的term描述了满足被软删除的文档的条件，即包含域名为”abc”、域值为”document3”的文档都会被软删除。</p>
-<p>&emsp;&emsp;上述DocValuesUpdatesNode的信息我们可以看出，我们获得了满足软删除的条件，但是没有指出软删除的作用范围（作用域），例如在图2中，文档3也满足被软删除的条件，但是这篇文档是在第56行的软删除操作之后添加的，那么这次的软删除不能作用（apply）到这篇文档，即这次的软删除操作只能对文档1生效，故我们还需要<strong>根据DocValuesUpdatesNode的信息</strong>进一步完善删除信息，即添加软删除的作用范围，不同的删除信息在完善删除信息后用下列的容器来描述（<strong>Lucene 7.5.0</strong>）：</p>
+<p>  DocValuesUpdatesNode中包含了两个对象：next、item，其中next用来指向deleteQueue中下一个删除信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），item（<strong>NumericDocValuesUpdate对象</strong>）中的type描述了使用NUMERIC类型的DocValues来描述被软删除的文档，item中的term描述了满足被软删除的文档的条件，即包含域名为&quot;abc&quot;、域值为&quot;document3&quot;的文档都会被软删除。</p>
+<p>  上述DocValuesUpdatesNode的信息我们可以看出，我们获得了满足软删除的条件，但是没有指出软删除的作用范围（作用域），例如在图2中，文档3也满足被软删除的条件，但是这篇文档是在第56行的软删除操作之后添加的，那么这次的软删除不能作用（apply）到这篇文档，即这次的软删除操作只能对文档1生效，故我们还需要<strong>根据DocValuesUpdatesNode的信息</strong>进一步完善删除信息，即添加软删除的作用范围，不同的删除信息在完善删除信息后用下列的容器来描述（<strong>Lucene 7.5.0</strong>）：</p>
 <ul>
 <li>Map&lt;Term,Integer&gt; deleteTerms ：TermArrayNode、TermNode</li>
 <li>Map&lt;Query,Integer&gt; deleteQueries：QueryArrayNode</li>
 <li>Map&lt;String,LinkedHashMap&lt;Term,NumericDocValuesUpdate&gt;&gt; numericUpdates：DocValuesUpdatesNode</li>
 <li>Map&lt;String,LinkedHashMap&lt;Term,BinaryDocValuesUpdate&gt;&gt; binaryUpdate：DocValuesUpdatesNode</li>
 </ul>
-<p>&emsp;&emsp;BufferedUpdates类、deleteTerms、deleteQueries的内容在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中已经作出了介绍，不赘述。</p>
-<p>&emsp;&emsp;如果DocValuesUpdatesNode中item中的type为NUMERIC，那么对应生成numericUpdates，如果item中的type为BINARY，那么对应生成binaryUpdate。</p>
-<h3 id="numericUpdates"><a href="#numericUpdates" class="headerlink" title="numericUpdates"></a>numericUpdates</h3><p>&emsp;&emsp;numericUpdates容器的key描述的是图3中，item中的field的值，而容器的value则是又一个LinkedHashMap的容器，该容器的key为一个term，例如图3中的item的term的值，而value则是图3中的item。</p>
-<p>&emsp;&emsp;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89" >构造IndexWriter对象（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，一个IndexWriter通过IndexWriterConfig配置只能设置一个软删除域，并且是个<code>不可变配置</code>，那么为什么numericUpdates使用Map存储，并且key为软删除域的值？</p>
+<p>  BufferedUpdates类、deleteTerms、deleteQueries的内容在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中已经作出了介绍，不赘述。</p>
+<p>  如果DocValuesUpdatesNode中item中的type为NUMERIC，那么对应生成numericUpdates，如果item中的type为BINARY，那么对应生成binaryUpdate。</p>
+<h3 id="numericupdates"><a class="markdownIt-Anchor" href="#numericupdates"></a> numericUpdates</h3>
+<p>  numericUpdates容器的key描述的是图3中，item中的field的值，而容器的value则是又一个LinkedHashMap的容器，该容器的key为一个term，例如图3中的item的term的值，而value则是图3中的item。</p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89" >构造IndexWriter对象（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，一个IndexWriter通过IndexWriterConfig配置只能设置一个软删除域，并且是个<code>不可变配置</code>，那么为什么numericUpdates使用Map存储，并且key为软删除域的值？</p>
 <ul>
 <li>上文中我们说到，IndexWriter类中提供的updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )方法（这三个方法为<strong>更新DocValues的操作</strong>）对应生成的删除信息跟软删除操作softUpdateDocument( )、softUpdateDocuments( )一样都是用DocValuesUpdatesNode来描述，故也使用同一个numericUpdates来完善删除信息，所以numericUpdates容器的key不一定就是软删除的域。</li>
 </ul>
-<p>&emsp;&emsp;我们同样的以一个例子来介绍：</p>
+<p>  我们同样的以一个例子来介绍：</p>
 <p>图4：</p>
 <img  
                      lazyload
@@ -354,8 +353,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/4.png"
                      
                 >
-
-<p>&emsp;&emsp;图4的例子中，既有updateNumericDocValue()，又有softDocument()的操作，那么这两个操作对应在numericUpdates中的删除信息如下所示：</p>
+<p>  图4的例子中，既有updateNumericDocValue()，又有softDocument()的操作，那么这两个操作对应在numericUpdates中的删除信息如下所示：</p>
 <p>图5：</p>
 <img  
                      lazyload
@@ -363,8 +361,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/5.png"
                      
                 >
-
-<p>&emsp;&emsp;我们接着继续介绍为什么numericUpdates容器的value是一个LinkedHashMap结构，先给出源码中对这种设计的注释：</p>
+<p>  我们接着继续介绍为什么numericUpdates容器的value是一个LinkedHashMap结构，先给出源码中对这种设计的注释：</p>
 <p>图6：</p>
 <img  
                      lazyload
@@ -372,13 +369,12 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/6.png"
                      
                 >
-
-<p>&emsp;&emsp;注释中讲述了使用LinkedHashMap结构的两个原因：</p>
+<p>  注释中讲述了使用LinkedHashMap结构的两个原因：</p>
 <ul>
 <li>原因一：在不同的term之间，即LinkedHashMap的不同的key，如果一篇文档中包含的term满足多个软删除操作中的term条件（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>），那么根据LinkedHashMap的插入有序的特点，这篇文档用最后一个软删除操作中的DocValues来描述该文档被软删除了</li>
 <li>原因二：在相同的term之间，如果多次调用的软删除中的term条件是一样的，那么可以进行去重，并且选取作用范围（作用域）最大的那个（下面的例子会介绍）</li>
 </ul>
-<p>&emsp;&emsp;我们继续用一个例子来介绍上述的原因一：</p>
+<p>  我们继续用一个例子来介绍上述的原因一：</p>
 <p>图7：</p>
 <img  
                      lazyload
@@ -386,9 +382,8 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/7.png"
                      
                 >
-
-<p>&emsp;&emsp;图7中，第56、61行执行了两次软删除操作，并且文档0都满足这两个软删除的条件，由于第61行的软删除操作晚于第56行，所以文档0将用61行中的域名为”softDeleteField”、域值为4的NumericDocValues来描述它被软删除了，至于使用这个DocValues来描述被软删除的用途，将在后面的文章中介绍。</p>
-<p>&emsp;&emsp;我们接着通过一个例子介绍上述的原因二：</p>
+<p>  图7中，第56、61行执行了两次软删除操作，并且文档0都满足这两个软删除的条件，由于第61行的软删除操作晚于第56行，所以文档0将用61行中的域名为&quot;softDeleteField&quot;、域值为4的NumericDocValues来描述它被软删除了，至于使用这个DocValues来描述被软删除的用途，将在后面的文章中介绍。</p>
+<p>  我们接着通过一个例子介绍上述的原因二：</p>
 <p>图8：</p>
 <img  
                      lazyload
@@ -396,10 +391,9 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/8.png"
                      
                 >
-
-<p>&emsp;&emsp;图8中，第56、64行执行了两次软删除操作，并且他们的软删除条件是一样的，即被软删除的文档中需要包含域名为”abc”、域值为”document1”的信息，那么第56行的软删除对应的删除信息将被第66行的软删除对应的删除信息替换。</p>
-<p>&emsp;&emsp;<strong>图8中两次软删除对应在numericUpdates容器中的信息有什么不同，为什么会发生替换？</strong></p>
-<p>&emsp;&emsp;我们直接给出这两次软删除的对应在numericUpdates容器中的信息来做介绍：</p>
+<p>  图8中，第56、64行执行了两次软删除操作，并且他们的软删除条件是一样的，即被软删除的文档中需要包含域名为&quot;abc&quot;、域值为&quot;document1&quot;的信息，那么第56行的软删除对应的删除信息将被第66行的软删除对应的删除信息替换。</p>
+<p>  <strong>图8中两次软删除对应在numericUpdates容器中的信息有什么不同，为什么会发生替换？</strong></p>
+<p>  我们直接给出这两次软删除的对应在numericUpdates容器中的信息来做介绍：</p>
 <p>图9：</p>
 <img  
                      lazyload
@@ -407,7 +401,6 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/9.png"
                      
                 >
-
 <p>图10：</p>
 <img  
                      lazyload
@@ -415,9 +408,9 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/10.png"
                      
                 >
-
-<p>&emsp;&emsp;图9、图10中，docIDUpto描述的是删除信息的作用范围（作用域），图9中docIDUpto的值为2，它描述了从删除信息的作用范围为文档号区间为[0, 2)、图10中的docIDUpto的值为5，它描述了从删除信息的作用范围为文档号区间为[0, 4)，故图10中的作用范围包含了图9中的删除范围，这样就能过滤掉相同term条件的软删除操作。</p>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>&emsp;&emsp;上文中我们说到，updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )的操作在索引期间使用相同的方式来存储删除信息，这使得我们用softUpdateDocument( )需要注意一个问题，如果该方法中用来描述文档被软删除的DocValues的域名不是IndexWriter的配置中定义的软删除域，那么这次软删除操作就会转变为<strong>DocValues的更新操作</strong>，我们通过下面的例子来说明：</p>
+<p>  图9、图10中，docIDUpto描述的是删除信息的作用范围（作用域），图9中docIDUpto的值为2，它描述了从删除信息的作用范围为文档号区间为[0, 2)、图10中的docIDUpto的值为5，它描述了从删除信息的作用范围为文档号区间为[0, 4)，故图10中的作用范围包含了图9中的删除范围，这样就能过滤掉相同term条件的软删除操作。</p>
+<h2 id="注意点"><a class="markdownIt-Anchor" href="#注意点"></a> 注意点</h2>
+<p>  上文中我们说到，updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )的操作在索引期间使用相同的方式来存储删除信息，这使得我们用softUpdateDocument( )需要注意一个问题，如果该方法中用来描述文档被软删除的DocValues的域名不是IndexWriter的配置中定义的软删除域，那么这次软删除操作就会转变为<strong>DocValues的更新操作</strong>，我们通过下面的例子来说明：</p>
 <p>图11：</p>
 <img  
                      lazyload
@@ -425,8 +418,7 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/11.png"
                      
                 >
-
-<p>&emsp;&emsp;图11中，如果update为true，那么我们执行软删除操作，注意的是59行用来描述文档被软删除的DocValues的域名”docValuesField”不是38行的设置的软删除域”softDeleteField“，故这次的软删除操作转化为<strong>DocValues的更新操作</strong>，那么文档1中域名为”docValuesFiled”的NumericDocValuesField的域值”5”会被更新为”3”，故搜索结果在按照”docValuesField”排序之后， 如下所示：</p>
+<p>  图11中，如果update为true，那么我们执行软删除操作，注意的是59行用来描述文档被软删除的DocValues的域名&quot;docValuesField&quot;不是38行的设置的软删除域”softDeleteField“，故这次的软删除操作转化为<strong>DocValues的更新操作</strong>，那么文档1中域名为&quot;docValuesFiled&quot;的NumericDocValuesField的域值&quot;5&quot;会被更新为&quot;3&quot;，故搜索结果在按照&quot;docValuesField&quot;排序之后， 如下所示：</p>
 <p>图12：</p>
 <img  
                      lazyload
@@ -434,9 +426,9 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/12.png"
                      
                 >
-
-<p>&emsp;&emsp;可见，文档1并没有被软删除，图11的demo看这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java<i class="fas fa-external-link-alt"></i></a> 。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;本文中，我们介绍了Lucene7.5.0版本中，在索引期间跟软删除相关的一些内容，即使用numericUpdates、binaryUpdate两个容器存储删除信息，然而在Lucene8.4.0中，取消了这两个容器，使用了其他的方法存储删除信息，这块内容将在下篇文章中展开。</p>
+<p>  可见，文档1并没有被软删除，图11的demo看这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java<i class="fas fa-external-link-alt"></i></a> 。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  本文中，我们介绍了Lucene7.5.0版本中，在索引期间跟软删除相关的一些内容，即使用numericUpdates、binaryUpdate两个容器存储删除信息，然而在Lucene8.4.0中，取消了这两个容器，使用了其他的方法存储删除信息，这块内容将在下篇文章中展开。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
@@ -631,7 +623,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%EF%BC%88index%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericUpdates"><span class="nav-number">1.1.</span> <span class="nav-text">numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95index"><span class="nav-number">1.</span> <span class="nav-text"> 索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericupdates"><span class="nav-number">1.1.</span> <span class="nav-text"> numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text"> 注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -686,7 +678,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -824,7 +816,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%EF%BC%88index%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericUpdates"><span class="nav-number">1.1.</span> <span class="nav-text">numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95index"><span class="nav-number">1.</span> <span class="nav-text"> 索引（index）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numericupdates"><span class="nav-number">1.1.</span> <span class="nav-text"> numericUpdates</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text"> 注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 

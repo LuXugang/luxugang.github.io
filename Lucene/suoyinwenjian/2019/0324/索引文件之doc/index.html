@@ -275,7 +275,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>835 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>841 Words</span>
             </span>
         
         
@@ -297,36 +297,38 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>&emsp;&emsp;索引文件.doc中按块（block）的方式存放了每一个term的文档号、词频，并且保存skip data来实现块之间的快速跳转，本篇只介绍.doc文件的数据结构，其生成过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&&pay&&pos" >索引文件的生成（一）<i class="fas fa-external-link-alt"></i></a>。</p>
-<h2 id="doc文件的数据结构"><a href="#doc文件的数据结构" class="headerlink" title="doc文件的数据结构"></a>doc文件的数据结构</h2><p>图1：<br><img  
+                    <p>  索引文件.doc中按块（block）的方式存放了每一个term的文档号、词频，并且保存skip data来实现块之间的快速跳转，本篇只介绍.doc文件的数据结构，其生成过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）<i class="fas fa-external-link-alt"></i></a>。</p>
+<h2 id="doc文件的数据结构"><a class="markdownIt-Anchor" href="#doc文件的数据结构"></a> doc文件的数据结构</h2>
+<p>图1：<br />
+<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/doc/1.png"
                      
                 ></p>
-<p>&emsp;&emsp;TermFreqs保存了term的所有文档号、词频信息，TermFreqs中按块存储，使用SkipData实现这些块之间的快速跳转。</p>
-<h3 id="TermFreqs"><a href="#TermFreqs" class="headerlink" title="TermFreqs"></a>TermFreqs</h3><p>图2：</p>
+<p>  TermFreqs保存了term的所有文档号、词频信息，TermFreqs中按块存储，使用SkipData实现这些块之间的快速跳转。</p>
+<h3 id="termfreqs"><a class="markdownIt-Anchor" href="#termfreqs"></a> TermFreqs</h3>
+<p>图2：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/doc/2.png"
                      
                 >
-
-<h4 id="PackedBlock"><a href="#PackedBlock" class="headerlink" title="PackedBlock"></a>PackedBlock</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每处理包含term的128篇文档，就将这些文档的信息处理为一个PackedBlock。</span><br></pre></td></tr></table></figure>
-
-<h5 id="PackedDocDeltaBlock"><a href="#PackedDocDeltaBlock" class="headerlink" title="PackedDocDeltaBlock"></a>PackedDocDeltaBlock</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PackedDocDeltaBlock存放了128篇文档的文档号，计算相邻两个文档号的差值后，利用PackedInts压缩存储。</span><br></pre></td></tr></table></figure>
-
-<h5 id="PackedFreqBlock"><a href="#PackedFreqBlock" class="headerlink" title="PackedFreqBlock"></a>PackedFreqBlock</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PackedFreqBlock存放了term分别在128文档中的词频，利用PackedInts压缩存储。</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;<strong>这里注意是由于在每篇文档中的词频值无法保证递增，使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>只能压缩原始的词频值。</strong></p>
-<h4 id="VIntBlocks-VIntBlock"><a href="#VIntBlocks-VIntBlock" class="headerlink" title="VIntBlocks &amp;&amp; VIntBlock"></a>VIntBlocks &amp;&amp; VIntBlock</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果包含term的文档号不足128个，那么将这些文档的信息处理为一个VIntBlocks。(比如包含term的文档数量有200，那么前128篇文档的信息被处理为一个PackedBlock，剩余的72篇文档处理为72个VIntBlock，72个VIntBlock为一个VIntBlocks)</span><br></pre></td></tr></table></figure>
-
-<h5 id="DocDelta"><a href="#DocDelta" class="headerlink" title="DocDelta"></a>DocDelta</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前文档号跟上一个文档号的差值。</span><br></pre></td></tr></table></figure>
-
-<h5 id="Freq"><a href="#Freq" class="headerlink" title="Freq"></a>Freq</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">term在当前文档中的词频。</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在介绍SkipData前先介绍下跳表（SkipList）的概念，<strong>注意的是下图只是跳表的概述，并不是Lucene中的实现</strong>：</p>
+<h4 id="packedblock"><a class="markdownIt-Anchor" href="#packedblock"></a> PackedBlock</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每处理包含term的128篇文档，就将这些文档的信息处理为一个PackedBlock。</span><br></pre></td></tr></table></figure>
+<h5 id="packeddocdeltablock"><a class="markdownIt-Anchor" href="#packeddocdeltablock"></a> PackedDocDeltaBlock</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PackedDocDeltaBlock存放了128篇文档的文档号，计算相邻两个文档号的差值后，利用PackedInts压缩存储。</span><br></pre></td></tr></table></figure>
+<h5 id="packedfreqblock"><a class="markdownIt-Anchor" href="#packedfreqblock"></a> PackedFreqBlock</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PackedFreqBlock存放了term分别在128文档中的词频，利用PackedInts压缩存储。</span><br></pre></td></tr></table></figure>
+<p>  <strong>这里注意是由于在每篇文档中的词频值无法保证递增，使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>只能压缩原始的词频值。</strong></p>
+<h4 id="vintblocks-vintblock"><a class="markdownIt-Anchor" href="#vintblocks-vintblock"></a> VIntBlocks &amp;&amp; VIntBlock</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果包含term的文档号不足128个，那么将这些文档的信息处理为一个VIntBlocks。(比如包含term的文档数量有200，那么前128篇文档的信息被处理为一个PackedBlock，剩余的72篇文档处理为72个VIntBlock，72个VIntBlock为一个VIntBlocks)</span><br></pre></td></tr></table></figure>
+<h5 id="docdelta"><a class="markdownIt-Anchor" href="#docdelta"></a> DocDelta</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前文档号跟上一个文档号的差值。</span><br></pre></td></tr></table></figure>
+<h5 id="freq"><a class="markdownIt-Anchor" href="#freq"></a> Freq</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">term在当前文档中的词频。</span><br></pre></td></tr></table></figure>
+<p>  在介绍SkipData前先介绍下跳表（SkipList）的概念，<strong>注意的是下图只是跳表的概述，并不是Lucene中的实现</strong>：</p>
 <p>图3：</p>
 <img  
                      lazyload
@@ -334,44 +336,45 @@
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/doc/3.png"
                      
                 >
-
-<p>&emsp;&emsp;在每一层中，每3个数据块就会在上一层中添加一个索引，实现了对数级别的时间复杂度。</p>
-<p>&emsp;&emsp;关于跳表的详细介绍可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）之跳表SkipList<i class="fas fa-external-link-alt"></i></a>。</p>
-<h3 id="SkipData"><a href="#SkipData" class="headerlink" title="SkipData"></a>SkipData</h3><p>图5：</p>
+<p>  在每一层中，每3个数据块就会在上一层中添加一个索引，实现了对数级别的时间复杂度。</p>
+<p>  关于跳表的详细介绍可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）之跳表SkipList<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="skipdata"><a class="markdownIt-Anchor" href="#skipdata"></a> SkipData</h3>
+<p>图5：</p>
 <img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/doc/5.png"
                      
                 >
-
-<h4 id="SkipLevelLength"><a href="#SkipLevelLength" class="headerlink" title="SkipLevelLength"></a>SkipLevelLength</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前层的跳表（skipList）数据长度，在读取的时候用来确定往后读取的一段数据区间。</span><br></pre></td></tr></table></figure>
-
-<h4 id="SkipLevel"><a href="#SkipLevel" class="headerlink" title="SkipLevel"></a>SkipLevel</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SkipLevel描述了当前层中的所有跳表真实数据</span><br></pre></td></tr></table></figure>
-
-<h5 id="SkipDatum"><a href="#SkipDatum" class="headerlink" title="SkipDatum"></a>SkipDatum</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前层中每一个跳表信息按块处理为一个SkipDatum。</span><br></pre></td></tr></table></figure>
-
-<h6 id="DocSkip"><a href="#DocSkip" class="headerlink" title="DocSkip"></a>DocSkip</h6><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">描述了当前SkipDatum指向的文档号，不过DocSkip的实际值是当前文档号与上一个SkipDatum的文档号差值，还是使用了差值存储。</span><br></pre></td></tr></table></figure>
-
-<h6 id="DocFPSkip"><a href="#DocFPSkip" class="headerlink" title="DocFPSkip"></a>DocFPSkip</h6><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每当处理128篇文档，在level = 0的跳表中就会生成一个SkipDatum，而DocFPSkip指向的就是存储这128篇文档的PackedBlock的起始位置。</span><br></pre></td></tr></table></figure>
-
-<h6 id="PosFPSkip"><a href="#PosFPSkip" class="headerlink" title="PosFPSkip"></a>PosFPSkip</h6><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PosFPSkip指向了.pos文件中一个位置。这个位置是PackedPosBlock(每128个position信息处理为一个PackedPosBlock)的起始位置</span><br></pre></td></tr></table></figure>
-
-<h6 id="PosBlockOffset"><a href="#PosBlockOffset" class="headerlink" title="PosBlockOffset"></a>PosBlockOffset</h6><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PosBlockOffset描述的是上一条说的PackedPosBlock中的一个偏移位置。</span><br></pre></td></tr></table></figure>
-
-<h5 id="PayLength"><a href="#PayLength" class="headerlink" title="PayLength"></a>PayLength</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PayLength描述的是在.pay文件中的payload的信息，这段payload的信息跟上一条中位置信息是对应的。</span><br></pre></td></tr></table></figure>
-
-<h5 id="PayFPSkip"><a href="#PayFPSkip" class="headerlink" title="PayFPSkip"></a>PayFPSkip</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PayFPSkip指向了.pay文件中一个位置。这个位置是PackedPayBlock(每128个offset信息处理为一个PackedPayBlock)的起始位置。</span><br></pre></td></tr></table></figure>
-
-<h5 id="SkipChildLevelPointer"><a href="#SkipChildLevelPointer" class="headerlink" title="SkipChildLevelPointer"></a>SkipChildLevelPointer</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果当前SkipDatum属于大于level = 0的较高层，那么SkipChildLevelPointer指向了下一层的某个位置。</span><br></pre></td></tr></table></figure>
-
-<h2 id="多个域的doc文件的数据结构"><a href="#多个域的doc文件的数据结构" class="headerlink" title="多个域的doc文件的数据结构"></a>多个域的doc文件的数据结构</h2><p>图6：<img  
+<h4 id="skiplevellength"><a class="markdownIt-Anchor" href="#skiplevellength"></a> SkipLevelLength</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前层的跳表（skipList）数据长度，在读取的时候用来确定往后读取的一段数据区间。</span><br></pre></td></tr></table></figure>
+<h4 id="skiplevel"><a class="markdownIt-Anchor" href="#skiplevel"></a> SkipLevel</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SkipLevel描述了当前层中的所有跳表真实数据</span><br></pre></td></tr></table></figure>
+<h5 id="skipdatum"><a class="markdownIt-Anchor" href="#skipdatum"></a> SkipDatum</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前层中每一个跳表信息按块处理为一个SkipDatum。</span><br></pre></td></tr></table></figure>
+<h6 id="docskip"><a class="markdownIt-Anchor" href="#docskip"></a> DocSkip</h6>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">描述了当前SkipDatum指向的文档号，不过DocSkip的实际值是当前文档号与上一个SkipDatum的文档号差值，还是使用了差值存储。</span><br></pre></td></tr></table></figure>
+<h6 id="docfpskip"><a class="markdownIt-Anchor" href="#docfpskip"></a> DocFPSkip</h6>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每当处理128篇文档，在level = 0的跳表中就会生成一个SkipDatum，而DocFPSkip指向的就是存储这128篇文档的PackedBlock的起始位置。</span><br></pre></td></tr></table></figure>
+<h6 id="posfpskip"><a class="markdownIt-Anchor" href="#posfpskip"></a> PosFPSkip</h6>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PosFPSkip指向了.pos文件中一个位置。这个位置是PackedPosBlock(每128个position信息处理为一个PackedPosBlock)的起始位置</span><br></pre></td></tr></table></figure>
+<h6 id="posblockoffset"><a class="markdownIt-Anchor" href="#posblockoffset"></a> PosBlockOffset</h6>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PosBlockOffset描述的是上一条说的PackedPosBlock中的一个偏移位置。</span><br></pre></td></tr></table></figure>
+<h5 id="paylength"><a class="markdownIt-Anchor" href="#paylength"></a> PayLength</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PayLength描述的是在.pay文件中的payload的信息，这段payload的信息跟上一条中位置信息是对应的。</span><br></pre></td></tr></table></figure>
+<h5 id="payfpskip"><a class="markdownIt-Anchor" href="#payfpskip"></a> PayFPSkip</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PayFPSkip指向了.pay文件中一个位置。这个位置是PackedPayBlock(每128个offset信息处理为一个PackedPayBlock)的起始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="skipchildlevelpointer"><a class="markdownIt-Anchor" href="#skipchildlevelpointer"></a> SkipChildLevelPointer</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果当前SkipDatum属于大于level = 0的较高层，那么SkipChildLevelPointer指向了下一层的某个位置。</span><br></pre></td></tr></table></figure>
+<h2 id="多个域的doc文件的数据结构"><a class="markdownIt-Anchor" href="#多个域的doc文件的数据结构"></a> 多个域的doc文件的数据结构</h2>
+<p>图6：<img  
                      lazyload
                      alt="image"
                      data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/doc/6.png"
                      
                 ></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>&emsp;&emsp;.pos、.pay、.doc、.tim、.tip文件都是通过读取内存倒排表的过程中一起生成的，在处理完每个term的信息并写入.pos、.pay、.doc文件后，开始生成.tim、.tip文件，在最后的文章中会更新这部分内容。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  .pos、.pay、.doc、.tim、.tip文件都是通过读取内存倒排表的过程中一起生成的，在处理完每个term的信息并写入.pos、.pay、.doc文件后，开始生成.tim、.tip文件，在最后的文章中会更新这部分内容。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/doc.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
@@ -570,7 +573,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">doc文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermFreqs"><span class="nav-number">1.1.</span> <span class="nav-text">TermFreqs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedBlock"><span class="nav-number">1.1.1.</span> <span class="nav-text">PackedBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PackedDocDeltaBlock"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">PackedDocDeltaBlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PackedFreqBlock"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">PackedFreqBlock</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VIntBlocks-VIntBlock"><span class="nav-number">1.1.2.</span> <span class="nav-text">VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DocDelta"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DocDelta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Freq"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Freq</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SkipData"><span class="nav-number">1.2.</span> <span class="nav-text">SkipData</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SkipLevelLength"><span class="nav-number">1.2.1.</span> <span class="nav-text">SkipLevelLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SkipLevel"><span class="nav-number">1.2.2.</span> <span class="nav-text">SkipLevel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SkipDatum"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">SkipDatum</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#DocSkip"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">DocSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DocFPSkip"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">DocFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PosFPSkip"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">PosFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PosBlockOffset"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">PosBlockOffset</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PayLength"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">PayLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PayFPSkip"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">PayFPSkip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SkipChildLevelPointer"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">SkipChildLevelPointer</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">多个域的doc文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> doc文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termfreqs"><span class="nav-number">1.1.</span> <span class="nav-text"> TermFreqs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedblock"><span class="nav-number">1.1.1.</span> <span class="nav-text"> PackedBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#packeddocdeltablock"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> PackedDocDeltaBlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#packedfreqblock"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> PackedFreqBlock</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vintblocks-vintblock"><span class="nav-number">1.1.2.</span> <span class="nav-text"> VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docdelta"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> DocDelta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#freq"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> Freq</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skipdata"><span class="nav-number">1.2.</span> <span class="nav-text"> SkipData</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#skiplevellength"><span class="nav-number">1.2.1.</span> <span class="nav-text"> SkipLevelLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skiplevel"><span class="nav-number">1.2.2.</span> <span class="nav-text"> SkipLevel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#skipdatum"><span class="nav-number">1.2.2.1.</span> <span class="nav-text"> SkipDatum</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#docskip"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text"> DocSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#docfpskip"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text"> DocFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#posfpskip"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text"> PosFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#posblockoffset"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text"> PosBlockOffset</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#paylength"><span class="nav-number">1.2.2.2.</span> <span class="nav-text"> PayLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#payfpskip"><span class="nav-number">1.2.2.3.</span> <span class="nav-text"> PayFPSkip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#skipchildlevelpointer"><span class="nav-number">1.2.2.4.</span> <span class="nav-text"> SkipChildLevelPointer</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 多个域的doc文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
@@ -625,7 +628,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">81.7k</span>
+                    <span class="item-value border-box word">85.7k</span>
                 </span>
             
 
@@ -763,7 +766,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">doc文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TermFreqs"><span class="nav-number">1.1.</span> <span class="nav-text">TermFreqs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PackedBlock"><span class="nav-number">1.1.1.</span> <span class="nav-text">PackedBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PackedDocDeltaBlock"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">PackedDocDeltaBlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PackedFreqBlock"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">PackedFreqBlock</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VIntBlocks-VIntBlock"><span class="nav-number">1.1.2.</span> <span class="nav-text">VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DocDelta"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DocDelta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Freq"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Freq</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SkipData"><span class="nav-number">1.2.</span> <span class="nav-text">SkipData</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SkipLevelLength"><span class="nav-number">1.2.1.</span> <span class="nav-text">SkipLevelLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SkipLevel"><span class="nav-number">1.2.2.</span> <span class="nav-text">SkipLevel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SkipDatum"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">SkipDatum</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#DocSkip"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">DocSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DocFPSkip"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">DocFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PosFPSkip"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">PosFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PosBlockOffset"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">PosBlockOffset</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PayLength"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">PayLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PayFPSkip"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">PayFPSkip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SkipChildLevelPointer"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">SkipChildLevelPointer</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">多个域的doc文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> doc文件的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termfreqs"><span class="nav-number">1.1.</span> <span class="nav-text"> TermFreqs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#packedblock"><span class="nav-number">1.1.1.</span> <span class="nav-text"> PackedBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#packeddocdeltablock"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> PackedDocDeltaBlock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#packedfreqblock"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> PackedFreqBlock</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vintblocks-vintblock"><span class="nav-number">1.1.2.</span> <span class="nav-text"> VIntBlocks &amp;&amp; VIntBlock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docdelta"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> DocDelta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#freq"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> Freq</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skipdata"><span class="nav-number">1.2.</span> <span class="nav-text"> SkipData</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#skiplevellength"><span class="nav-number">1.2.1.</span> <span class="nav-text"> SkipLevelLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skiplevel"><span class="nav-number">1.2.2.</span> <span class="nav-text"> SkipLevel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#skipdatum"><span class="nav-number">1.2.2.1.</span> <span class="nav-text"> SkipDatum</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#docskip"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text"> DocSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#docfpskip"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text"> DocFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#posfpskip"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text"> PosFPSkip</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#posblockoffset"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text"> PosBlockOffset</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#paylength"><span class="nav-number">1.2.2.2.</span> <span class="nav-text"> PayLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#payfpskip"><span class="nav-number">1.2.2.3.</span> <span class="nav-text"> PayFPSkip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#skipchildlevelpointer"><span class="nav-number">1.2.2.4.</span> <span class="nav-text"> SkipChildLevelPointer</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%9F%9F%E7%9A%84doc%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 多个域的doc文件的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
     </div>
 </div>
 
