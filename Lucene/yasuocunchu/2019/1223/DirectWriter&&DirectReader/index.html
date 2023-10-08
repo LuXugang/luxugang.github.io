@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sun Oct 08 2023 12:37:13 GMT+0800">2023-10-08 12:37:13</span>
+                <span class="pc" data-updated="Sun Oct 08 2023 21:30:24 GMT+0800">2023-10-08 21:30:24</span>
             </span>
         
 
@@ -299,7 +299,7 @@
 
                     <h1 id="directwriterdirectreader"><a class="markdownIt-Anchor" href="#directwriterdirectreader"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/" >DirectWriter&amp;&amp;DirectReader<i class="fas fa-external-link-alt"></i></a></h1>
 <p>  <strong>阅读本篇文章需要前置内容</strong>：<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>，下文中会列出在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>中涉及的代码，但是不会展开介绍。</p>
-<p>  DirectWriter&amp;&amp;DirectReader两个类用来处理long类型的数据集（数组类型），其中DirectWriter用来在写数据时使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>将long类型的数据转换成byte类型，而DirectReader则是将byte类型的数据恢复成long类型。使用byte类型数据存储的组件都可以使用DirectWriter&amp;&amp;DirectReader实现压缩存储，比如以字节为单位存储索引文件内容的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory(%E4%B8%8A)" >Directory<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  DirectWriter&amp;&amp;DirectReader两个类用来处理long类型的数据集（数组类型），其中DirectWriter用来在写数据时使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >BulkOperationPacked<i class="fas fa-external-link-alt"></i></a>将long类型的数据转换成byte类型，而DirectReader则是将byte类型的数据恢复成long类型。使用byte类型数据存储的组件都可以使用DirectWriter&amp;&amp;DirectReader实现压缩存储，比如以字节为单位存储索引文件内容的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory%EF%BC%88%E4%B8%8A%EF%BC%89" >Directory<i class="fas fa-external-link-alt"></i></a>。</p>
 <h2 id="压缩实现"><a class="markdownIt-Anchor" href="#压缩实现"></a> 压缩实现</h2>
 <p>  在BulkOperation中，根据bitPerValue的值，对应的压缩实现不尽相同，但是DirectWriter只支持下列的bitPerValue：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> SUPPORTED_BITS_PER_VALUE[] = <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;</span><br><span class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">20</span>, <span class="number">24</span>, <span class="number">28</span>, <span class="number">32</span>, <span class="number">40</span>, <span class="number">48</span>, <span class="number">56</span>, <span class="number">64</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -750,7 +750,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">97k</span>
+                    <span class="item-value border-box word">102.6k</span>
                 </span>
             
 
