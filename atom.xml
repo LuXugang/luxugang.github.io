@@ -230,8 +230,6 @@
     <category term="Search" scheme="http://example.com/categories/Lucene/Search/"/>
     
     
-    <category term="point" scheme="http://example.com/tags/point/"/>
-    
     <category term="query" scheme="http://example.com/tags/query/"/>
     
     <category term="dim" scheme="http://example.com/tags/dim/"/>
@@ -239,6 +237,8 @@
     <category term="dii" scheme="http://example.com/tags/dii/"/>
     
     <category term="rangeQuery" scheme="http://example.com/tags/rangeQuery/"/>
+    
+    <category term="point" scheme="http://example.com/tags/point/"/>
     
   </entry>
   
@@ -265,8 +265,6 @@
     <category term="Search" scheme="http://example.com/categories/Lucene/Search/"/>
     
     
-    <category term="point" scheme="http://example.com/tags/point/"/>
-    
     <category term="query" scheme="http://example.com/tags/query/"/>
     
     <category term="dim" scheme="http://example.com/tags/dim/"/>
@@ -274,6 +272,8 @@
     <category term="dii" scheme="http://example.com/tags/dii/"/>
     
     <category term="rangeQuery" scheme="http://example.com/tags/rangeQuery/"/>
+    
+    <category term="point" scheme="http://example.com/tags/point/"/>
     
   </entry>
   
