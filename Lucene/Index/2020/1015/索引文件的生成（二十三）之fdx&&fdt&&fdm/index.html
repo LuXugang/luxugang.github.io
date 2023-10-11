@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"网站处于建设中，现有文章中的链接都是失效状态 || 请访问www.amazingkoala.com.cn","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang-comments","repo_id":"R_kgDOKY8ukg","category":"Announcements","category_id":"DIC_kwDOKY8uks4CZsSn","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang-comments","repo_id":"R_kgDOKY8ukg","category":"Announcements","category_id":"DIC_kwDOKY8uks4CZsSn","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Wed Oct 11 2023 14:19:27 GMT+0800">2023-10-11 14:19:27</span>
+                <span class="pc" data-updated="Wed Oct 11 2023 18:07:37 GMT+0800">2023-10-11 18:07:37</span>
             </span>
         
 
@@ -275,7 +275,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
             </span>
         
         
@@ -325,7 +325,7 @@
                 >
 <p>  当开始处理一篇文档（Document）时，我们需要记录对存储域的域值，图1的例子中有两篇文档，在执行了流程点<code>处理存储域的域值</code>之后，域值信息将被写入到一个字节数组bufferedDocs[ ]数组（在源码中bufferedDocs其实是一个对象，它用来将数据写入到字节数组buffer[ ]中，为了便于介绍，所以我们直接认为bufferedDocs是一个字节数组）中，域值信息中包含两类信息：</p>
 <ul>
-<li>FieldNumAndType：该信息是<strong>域的编号</strong>跟<strong>域值的值类型</strong>的long类型的组合值，组合公式为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>i</mi><mi>e</mi><mi>l</mi><mi>d</mi><mi>N</mi><mi>u</mi><mi>m</mi><mi>A</mi><mi>n</mi><mi>d</mi><mi>T</mi><mi>y</mi><mi>p</mi><mi>e</mi><mo>=</mo><mo stretchy="false">(</mo><mtext>域的编号</mtext><mo>&lt;</mo><mo>&lt;</mo><mn>3</mn><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mtext>域值的值类型</mtext></mrow><annotation encoding="application/x-tex">FieldNumAndType = (域的编号 &lt;&lt; 3) | 域值的值类型</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">i</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal">A</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">p</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord cjk_fallback">域</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mord">∣</span><span class="mord cjk_fallback">域</span><span class="mord cjk_fallback">值</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">值</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">型</span></span></span></span>，也就是说long类型的FieldNumAndType，低3位用来存储域值的值类型，高61位用来存储域的编号
+<li>FieldNumAndType：该信息是<strong>域的编号</strong>跟<strong>域值的值类型</strong>的long类型的组合值，组合公式为：FieldNumAndType = (域的编号 &lt;&lt; 3) | 域值的值类型，也就是说long类型的FieldNumAndType，低3位用来存储域值的值类型，高61位用来存储域的编号
 <ul>
 <li>域的编号是一个从开0开始的递增值，每种域名有唯一的一个编号，根据域名来获得一个域的编号，例如图3中域名”content“是第一个被处理的域名，所以该域的编号为0，同理域名”attachment“、&quot;author&quot;的编号分别为1、2。</li>
 <li>域值的值类型共有以下几种，例如图3中第54行的域值的值类型是STRING类型，第56行的域值的值类型是NUMERIC_INT类型
@@ -657,7 +657,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">304.8k</span>
+                    <span class="item-value border-box word">301k</span>
                 </span>
             
 
