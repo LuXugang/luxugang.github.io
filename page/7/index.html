@@ -191,14 +191,16 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&&dii/">
-                            索引文件的生成（八）之dim&amp;&amp;dii（Lucene 8.4.0）
+                        <a href="/Lucene/Index/2020/0621/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                            软删除softDeletes（二）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              在前面的文章中，我们介绍了在Lucene7.5.0中索引文件.dim&amp;&amp;.dii的数据结构，从本篇文章开始介绍其生成索引文件.dim&amp;&amp;.dii的内容，注意的是，由于是基于Lucene8.4.0来描述其生成过程，故...
+                              在文章软删除softDeletes（一）中我们介绍了软删除的一些应用，从本篇文章开始，将根据索引（index）、flush/commit、段的合并、搜索这几个不同的阶段来介绍跟软删除相关的内容。
+ 索引（index）
+  阅读本小结内容必须掌握文...
                         
                     </div>
 
@@ -208,7 +210,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:19:11 GMT+0800">2023-10-11 11:19:11</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:03:39 GMT+0800">2023-09-29 23:03:39</span>
             </span>
         
 
@@ -242,10 +244,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/delete/">delete</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/softDeletes/">softDeletes</a></li>
                         
                     
                 </ul>
@@ -259,7 +261,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&&dii/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0621/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -273,21 +275,442 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的生成（七）之tim&amp;&amp;tip
+                        <a href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/">
+                            软删除softDeletes（一）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接索引文件的生成（六）继续介绍剩余的内容，下面先给出生成索引文件.tim、.tip的流程图。
- 生成索引文件.tim、.tip的流程图
+                              在文章文档的增删改（一）中我们介绍了Lucene中提供的几个接口用来实现文档的更新：
+
+updateDocument(Term term, Iterable&lt;? extends IndexableField&gt; doc)
+updateD...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:04:30 GMT+0800">2023-09-29 23:04:30</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/delete/">delete</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/softDeletes/">softDeletes</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（二十一）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              索引文件.dvm&amp;&amp;.dvd中根据文档中包含的不同类型的DocValuesFields，包含下面的DocValues信息：
+
+BinaryDocValues：
+NumericDocValues：见文章索引文件的生成（十五）之dvm...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:13:24 GMT+0800">2023-10-11 14:13:24</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0602/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（二十）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              本文承接文章索引文件的生成（十九）之dvm&amp;&amp;dvd继续介绍剩余的内容。
+ 生成索引文件.dvd、.dvm之SortedDocValues、SortedSetDocValues
+  生成索引文件.dvd、.dvm之SortedDo...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:11:24 GMT+0800">2023-10-11 14:11:24</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0602/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0531/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B9%9D%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（十九）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在文章索引文件的生成（十八）之dvm&amp;&amp;dvd中，我们介绍了Lucene在索引阶段跟flush阶段收集到的SortedDocValues、SortedSetDocValues信息，这些信息将作为生成索引文件.dvm、dvd的依据。...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:09:47 GMT+0800">2023-10-11 14:09:47</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0531/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B9%9D%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0528/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AB%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（十八）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              索引文件.dvm&amp;&amp;.dvd中根据文档中包含的不同类型的DocValuesFields，包含下面的DocValues信息：
+
+BinaryDocValues
+NumericDocValues：见文章索引文件的生成（十五）之dvm&...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:04:32 GMT+0800">2023-10-11 14:04:32</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0528/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AB%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0526/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（十七）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              本文承接索引文件的生成（十六）之dvm&amp;&amp;dvd继续介绍剩余的内容，先给出流程图：
+ 生成索引文件.dvd、.dvm之NumericDocValues的流程图
 图1：
 
- 统计每一个term的信息
+ 使用域值映射存储
 图2：
 
-  执行到该流程，我们需要将当前term的一些信息（图1...
+  介绍本流程点之前，先介绍下...
                         
                     </div>
 
@@ -297,7 +720,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:13:28 GMT+0800">2023-10-11 11:13:28</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:00:57 GMT+0800">2023-10-11 14:00:57</span>
             </span>
         
 
@@ -331,10 +754,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
                         
                     
                 </ul>
@@ -348,7 +771,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0526/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -362,18 +785,14 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的生成（六）之tim&amp;&amp;tip
+                        <a href="/Lucene/Index/2020/0518/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89%E4%B9%8Bdvm&&dvd/">
+                            索引文件的生成（十六）之dvm&amp;&amp;dvd（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接索引文件的生成（五）继续介绍剩余的内容，下面先给出生成索引文件.tim、.tip的流程图。
- 生成索引文件.tim、.tip的流程图
-图1：
-
-  上一篇文章中，我们介绍了执行生成一个或多个NodeBlock的触发条件，本文就其实现过程展...
+                              在文章索引文件的生成（十五）之dvm&amp;&amp;dvd中，我们介绍了在索引（index）阶段收集文档的NumericDocValues信息的内容，随后在flush阶段，会根据收集到的信息生成索引文件.dvd&amp;&amp;.dvm。如...
                         
                     </div>
 
@@ -383,7 +802,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:10:25 GMT+0800">2023-10-11 11:10:25</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 13:59:21 GMT+0800">2023-10-11 13:59:21</span>
             </span>
         
 
@@ -417,10 +836,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
                         
                     
                 </ul>
@@ -434,7 +853,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0518/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89%E4%B9%8Bdvm&&dvd/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -448,15 +867,15 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0110/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的生成（五）之tim&amp;&amp;tip
+                        <a href="/Lucene/gongjulei/2020/0514/IndexedDISI%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                            IndexedDISI（二）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              在前面的四篇文章中，我们介绍了生成索引文件.tim、.tip、.doc、.pos、.pay中.doc、.pos、.pay这三个索引文件的内容，接着我们继续图1中剩余的内容，即流程点生成索引文件.tim、.tip。
- 生成索引文件.tim、.tip...
+                             IndexedDISI（二）（Lucene 8.4.0）
+  在文章IndexedDISI（一）（阅读本文中之前，需要该前置文章）中我们介绍了在Lucene7.5.0中IndexedDISI的实现原理， 本文基于Lucene 8.4.0，将介绍优化...
                         
                     </div>
 
@@ -466,7 +885,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:07:17 GMT+0800">2023-10-11 11:07:17</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 21:00:41 GMT+0800">2023-10-08 21:00:41</span>
             </span>
         
 
@@ -487,7 +906,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Index/">Index</a>
+                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
                             </li>
                         
                     
@@ -500,94 +919,15 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/disi/">disi</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
                         
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2020/0110/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0106/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">
-                            索引文件的生成（四）之跳表SkipList
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              在文章索引文件的生成（三）中我们介绍了在Lucene中生成跳表SkipList的流程，通过流程图的方法介绍了源码中的实现方式，而对于读取SkipList的内容，决定直接以例子的方式来介绍其读取过程，下文中出现的名词如果没有作出介绍，请先阅读文章索...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:40:41 GMT+0800">2023-10-11 11:40:41</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/skipList/">skipList</a></li>
-                        
-                    
                 </ul>
             </span>
         
@@ -599,7 +939,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0106/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/gongjulei/2020/0514/IndexedDISI%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -613,14 +953,14 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">
-                            索引文件的生成（三）之跳表SkipList
+                        <a href="/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89/">
+                            IndexedDISI（一）（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              在文章索引文件的生成（一）中我们说到，在生成索引文件.doc、.pos、.pay的过程中，当处理了128篇文档后会生成一个PackedBlock，并将这个PackedBlock的信息写入到跳表skipList中，使得在读取阶段能根据文档号快速跳转...
+                              IndexedDISI工具类在Lucene中用来存储Norm/DovValues对应的文档号，其实现原理借鉴了roaring bitmaps（见文章RoaringDocIdSet），本文先通过介绍在Lucene7.5.0中的实现来理解其原理，接着...
                         
                     </div>
 
@@ -630,7 +970,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:00:59 GMT+0800">2023-10-11 11:00:59</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 20:56:53 GMT+0800">2023-10-08 20:56:53</span>
             </span>
         
 
@@ -651,7 +991,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Index/">Index</a>
+                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
                             </li>
                         
                     
@@ -663,13 +1003,16 @@
             <span class="article-tag meta-info-item border-box">
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/disi/">disi</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
+                        
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/skipList/">skipList</a></li>
-                        
-                    
                 </ul>
             </span>
         
@@ -681,369 +1024,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">
-                            索引文件的生成（二）之doc&amp;&amp;pay&amp;&amp;pos
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接索引文件的生成（一），继续介绍剩余的内容。
- 生成索引文件.tim、.tip、.doc、.pos、.pay的流程图
-图1：
-
-  我们继续介绍流程点生成索引文件.doc、.pos、.pay。
- 生成索引文件.doc、.pos、.pay的流...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 10:48:17 GMT+0800">2023-10-11 10:48:17</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">
-                            索引文件的生成（一）之doc&amp;&amp;pay&amp;&amp;pos
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              在执行flush()的过程中，Lucene会将内存中的索引信息生成索引文件，其生成的时机点如下图红色框标注：
-图1：
-
-  图一中的流程是flush()阶段的其中一个流程点，完整的flush()过程可以看系列文章文档提交之flush，索引文件的生...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 10:42:44 GMT+0800">2023-10-11 10:42:44</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/yasuocunchu/2019/1223/DirectWriter&&DirectReader/">
-                            DirectWriter&amp;&amp;DirectReader
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                             DirectWriter&amp;&amp;DirectReader
-  阅读本篇文章需要前置内容：BulkOperationPacked，下文中会列出在文章BulkOperationPacked中涉及的代码，但是不会展开介绍。
-  DirectW...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 21:30:24 GMT+0800">2023-10-08 21:30:24</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/yasuocunchu/2019/1223/DirectWriter&&DirectReader/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/yasuocunchu/2019/1218/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                            PackedInts（二）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接PackedInts（一），继续介绍剩余的内容。
- 压缩实现
-  在上一篇文章中，我们介绍了Lucene 7.5.0中PackedInts提供的几种压缩实现，如下所示：
-表1：
-
- 
- 
- 
- 
- 
-  数据分布
-  是否有填充bit
- ...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 13:07:28 GMT+0800">2023-10-08 13:07:28</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/yasuocunchu/2019/1218/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -1065,8 +1046,8 @@
                    type="number"
                    value="7"
                    min="1"
-                   max="15"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">15</span>
+                   max="18"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">18</span>
         </div>
 
 
@@ -1128,7 +1109,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">255.3k</span>
+                    <span class="item-value border-box word">304.8k</span>
                 </span>
             
 

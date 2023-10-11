@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            MergeScheduler |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"网站处于建设中，现有文章中的链接都是失效状态 || 请访问www.amazingkoala.com.cn","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang-comments","repo_id":"R_kgDOKY8ukg","category":"Announcements","category_id":"DIC_kwDOKY8uks4CZsSn","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        MergeScheduler
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-05-19 00:00:00</span>
+                <span class="mobile">2019-05-19 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 11 2023 16:23:47 GMT+0800">2023-10-11 16:23:47</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mergePolicy/">mergePolicy</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.8k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  MergeScheduler用来定义如何执行一个或多个段的合并，当合并策略<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0516/TieredMergePolicy" >TieredMergePolicy<i class="fas fa-external-link-alt"></i></a>提供了一个或多个OneMerge(这个名词的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >LogMergePolicy<i class="fas fa-external-link-alt"></i></a>已经介绍，不赘述)后，MergeScheduler来安排这些OneMerge的合并，比如执行先后顺序，磁盘IO限制。</p>
+<p>  Lucene7.5.0中有三种MergeScheduler的实现，分别是NoMergeScheduler、SerialMergeScheduler、ConcurrentMergeScheduler，其中ConcurrentMergeScheduler是默认的MergeScheduler。</p>
+<p>图1：<br />
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/1.png"
+                     
+                ></p>
+<h2 id="nomergescheduler"><a class="markdownIt-Anchor" href="#nomergescheduler"></a> NoMergeScheduler</h2>
+<p>  如果你不希望执行任何的段合并，那么可以使用这种MergeScheduler，即使你定义了合并策略，也不会执行段合并，当然如果你的合并策略是NoMergePolicy（NoMergePolicy不会返回任何的OneMerge），那么使用任意的MergeScheduler也能达到一样的效果。</p>
+<p>  在实际业务中，出于自身业务需要， 希望某个时间段内不要执行段的合并，那么就可以使用该MergeScheduler，因为MergeScheduler可以通过LiveIndexWriterConfig在索引阶段随时切换，不过你得重新生成一个新的IndexWriter对象，如果你还是想使用原来的IndexWriter，那么只能通过LiveIndexWriterConfig更改合并策略为NoMergePolicy。</p>
+<h2 id="serialmergescheduler"><a class="markdownIt-Anchor" href="#serialmergescheduler"></a> SerialMergeScheduler</h2>
+<p>  从这个MergeScheduler字面意思就可以看出，当有多个OneMerge时，顺序执行段合并：</p>
+<ul>
+<li>多个OneMerge间的顺序：由于可能存在多个线程使用同一个IndexWriter对象来生成索引，所以当他们分别执行flush、commit操作后，就各自的(separately)从合并策略中得到MergeSpecification，如果你看过了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0516/TieredMergePolicy" >TieredMergePolicy<i class="fas fa-external-link-alt"></i></a>或者<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >LogMergePolicy<i class="fas fa-external-link-alt"></i></a>，就能知道调用完合并策略后，可以获得一个或多个OneMerge的集合，该集合即MergeSpecification，接着MergeSpecification中的OneMerge被添加到pendingMerges中，pendingMerges是一个有序列表，IndexWriter通过synchronized关键字有序的将所有线程中获得的OneMerge添加到pendingMerges链表中，故OneMerge被执行的顺序取决于被添加到pendingMerges中的顺序</li>
+</ul>
+<p>图2：<br />
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/2.png"
+                     
+                ></p>
+<p>图3：<br />
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/3.png"
+                     
+                ></p>
+<ul>
+<li>获取OneMerge：当IndexWriter执行合并操作时，从pendingMerges中取出一个OneMerge进行合并。同样的，合并操作也有可能是多个线程同时调用，SerialMergeScheduler通过synchronized关键字来使得同一时间只允许一个线程执行合并操作，该线程依次取出OneMerge执行合并，当pendingMerges为空后该线程才会退出，实现了OneMerge的顺序合并，此时其他等待合并的线程允许执行合并操作，但由于pendingMerges中OneMerge都已经被上一个线程处理了，所以可以直接退出。</li>
+</ul>
+<h2 id="concurrentmergescheduler"><a class="markdownIt-Anchor" href="#concurrentmergescheduler"></a> ConcurrentMergeScheduler</h2>
+<p>  ConcurrentMergeScheduler作为默认的MergeScheduler，它允许多个线程并行的执行合并操作，并且通过一些参数来控制每个线程的执行进度。</p>
+<h3 id="concurrentmergescheduler的一些参数"><a class="markdownIt-Anchor" href="#concurrentmergescheduler的一些参数"></a> ConcurrentMergeScheduler的一些参数</h3>
+<h4 id="maxthreadcount可配置"><a class="markdownIt-Anchor" href="#maxthreadcount可配置"></a> maxThreadCount(可配置)</h4>
+<p>  maxThreadCount：正在执行合并的线程最多并发数。</p>
+<p>  IndexWriter执行合并操作后，会根据pendingMerges中的OneMerge个数生成对应个数的子线程，我们称之为<strong>OneMergeThread</strong>，去掌管(handle)每一个OneMerge，但是只有最多maxThreadCount个OneMergeThread同时执行合并操作。</p>
+<p>  第一个至第maxThreadCount个OneMergeThread掌管OneMerge后可以开始合并操作，但当第maxThreadCount + 1 个OneMergeThread掌管OneMerge以后，由于当前OneMergeThread个数大于 maxThreadCount，就会暂停(pause)那些掌管较大OneMerge size的OneMergeThread的运行，使得只能最多maxThreadCount个OneMergeThread执行合并操作，这属于<strong>合并线程的I/O节流</strong>(I/O Throttle)的一种处理方式，还有其他的方式会在下文中会详细介绍。</p>
+<h4 id="maxmergecount可配置"><a class="markdownIt-Anchor" href="#maxmergecount可配置"></a> maxMergeCount(可配置)</h4>
+<p>  maxMergeCount：限制生成新的OneMergeThread前，允许最大OneMergeThread的个数(Max number of merges we accept before forcefully throttling the incoming threads)</p>
+<p>  掌管IndexWriter的线程，我们称之为<strong>IndexWriterThread</strong>，它调用合并操作后，会根据pendingMerges中的OneMerge个数生成对应个数的子线程OneMergeThread去掌管OneMerge，直到为每一个OneMerge生成一个OneMergeThread才会<strong>退出</strong>。当OneMergeThread个数达到maxMergeCount后，那么之后会拖延(stall)IndexWriterThread生成子线程的速度，这属于<strong>合并线程的生成节流</strong>(Creation Throttle)，下文中会详细介绍。</p>
+<h4 id="auto_detect_merges_and_threads不可配置"><a class="markdownIt-Anchor" href="#auto_detect_merges_and_threads不可配置"></a> AUTO_DETECT_MERGES_AND_THREADS(不可配置)</h4>
+<p>AUTO_DETECT_MERGES_AND_THREADS默认值为-1，用来判断用户是否自定义了maxThreadCount跟maxMergeCount的值，如果没有，那么Lucene会根据当前的操作系统以及磁盘种类来初始化maxThreadCount跟maxMergeCount的值。</p>
+<p>在Lucene7.5.0中，AUTO_DETECT_MERGES_AND_THREADS仅支持对<a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Linux%E5%8F%91%E8%A1%8C%E7%89%88%E5%88%97%E8%A1%A8" >Linux发行版<i class="fas fa-external-link-alt"></i></a>的操作系统，如果是其他类型的操作系统，那么默认操作系统使用的磁盘种类是传统的旋转存储(traditional rotational storage)，即机械硬盘。否则根据Directory对象来检测是否为非机械硬盘，比如说固态硬盘。如何根据Directory来判断磁盘类型在本篇文章中不展开，在以后的文章中介绍Directory时会涉及。</p>
+<ul>
+<li>机械硬盘：maxThreadCount = 1、maxMergeCount = 6</li>
+<li>固态硬盘：maxThreadCount = Math.max(1, Math.min(4, coreCount/2))、maxMergeCount = maxThreadCount+5，其中coreCount描述的是JVM可用的处理器核心数(the number of processors available to the Java virtual machine)</li>
+</ul>
+<h4 id="doautoiothrottle可配置"><a class="markdownIt-Anchor" href="#doautoiothrottle可配置"></a> doAutoIOThrottle(可配置)</h4>
+<p>  doAutoIOThrottle描述了是否需要对每一个合并线程OneMergeThread执行<strong>合并线程的I/O节流</strong>(下文中会详细介绍)，OneMergeThread在创建时，它允许写入磁盘的大小是Double.POSITIVE_INFINITY，即没有写入数量的限制，而在doAutoIOThrottle为true的情况下，磁盘的写入量在运行期间可能会被修改多次(别急，下文会详细介绍😁)。</p>
+<h4 id="min_big_merge_mb不可配置"><a class="markdownIt-Anchor" href="#min_big_merge_mb不可配置"></a> MIN_BIG_MERGE_MB(不可配置)</h4>
+<p>  默认值50M，用来定义OneMerge是否为一个<strong>大合并</strong>(big Merge)，即判断OneMerge中所有段的索引大小，我们称之为<strong>OneMergeSize</strong>，总和是否超过50M。</p>
+<h4 id="min_merge_mb_per_sec不可配置"><a class="markdownIt-Anchor" href="#min_merge_mb_per_sec不可配置"></a> MIN_MERGE_MB_PER_SEC(不可配置)</h4>
+<p>  默认值5M，在doAutoIOThrottle = true的情况下，被节流的OneMergeThread最少能保证写入5M，但如果OneMergeThread中的OneMerge大小OneMergeSize ＜ MIN_BIG_MERGE_MB，那么不会受到<strong>合并线程的I/O节流</strong>的限制，即Double.POSITIVE_INFINITY。</p>
+<h4 id="max_merge_mb_per_sec不可配置"><a class="markdownIt-Anchor" href="#max_merge_mb_per_sec不可配置"></a> MAX_MERGE_MB_PER_SEC(不可配置)</h4>
+<p>  默认值10G，在doAutoIOThrottle = true的情况下，被节流的OneMergeThread最多允许写入10G。</p>
+<h4 id="start_mb_per_sec不可配置"><a class="markdownIt-Anchor" href="#start_mb_per_sec不可配置"></a> START_MB_PER_SEC(不可配置)</h4>
+<p>  默认值20M，它只用来初始化在targetMBPerSec。</p>
+<h4 id="targetmbpersec不可配置"><a class="markdownIt-Anchor" href="#targetmbpersec不可配置"></a> targetMBPerSec(不可配置)</h4>
+<p>  最初的值为START_MB_PER_SEC，在doAutoIOThrottle = true的情况下，刚刚创建结束的OneMergeThread的磁盘的写入量会被置为targetMBPerSec，而targetMBPerSec的值在每一次新增一个OneMergeThread后发生变化，或变大或减少，在合并线程的I/O节流下也会用到该值，影响正在运行的OneMergeThread的最大磁盘可写入量，同样地，下文会详细介绍😄。</p>
+<h4 id="forcemergembpersec可配置"><a class="markdownIt-Anchor" href="#forcemergembpersec可配置"></a> forceMergeMBPerSec(可配置)</h4>
+<p>  默认值当Double.POSITIVE_INFINITY，IndexWriter执行forceMerge时，即使OneMerge是一个大合并，也不会受到合并线程的I/O节流的限制。</p>
+<h1 id="concurrentmergescheduler流程图"><a class="markdownIt-Anchor" href="#concurrentmergescheduler流程图"></a> ConcurrentMergeScheduler流程图</h1>
+<p>图4：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/4.png"
+                     
+                >
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/4.png" >点击下载<i class="fas fa-external-link-alt"></i></a>图4</p>
+<h2 id="开始"><a class="markdownIt-Anchor" href="#开始"></a> 开始</h2>
+<p>图5：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/5.png"
+                     
+                >
+<p>  IndexWriter的多种行为都会触发合并流程，例如commit()、flush()、close()、NRT(nearly real time) Reader open等，这些内容在后面介绍IndexWriter的时候会涉及。</p>
+<h2 id="初始化"><a class="markdownIt-Anchor" href="#初始化"></a> 初始化</h2>
+<p>图6：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/6.png"
+                     
+                >
+<p>  初始化的过程即上文中提到的根据AUTO_DETECT_MERGES_AND_THREADS初始化maxThreadCount，maxMergeCount。</p>
+<h2 id="是否执行合并线程的生成节流"><a class="markdownIt-Anchor" href="#是否执行合并线程的生成节流"></a> 是否执行合并线程的生成节流</h2>
+<p>图7：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/7.png"
+                     
+                >
+<p>  执行合并线程的生成节流的条件需要同时满足两个：</p>
+<ul>
+<li>pendingMerges链表中还有未处理的OneMerge</li>
+<li>mergeThreadCount ≥ maxMergeCount：mergeThreadCount即当前OneMergeThread的线程个数，注意的是处于abort状态的OneMergeThread不会纳入计数，所以mergeThreadCount是一个小于等于maxThreadCount的值，abort是IndexWriter执行回滚操作的概念，这里不展开</li>
+</ul>
+<p>  满足了合并线程的生成节流条件意味着当前段合并的进度远远落后（merging has fallen too far behind），即合并速度赶不上OneMerge的生成速度，如果不考虑abort的情况，那么说明已经有maxThreadCount个OneMergeThread正在执行段的合并操作，还有<strong>至少</strong>(maxMergeCount - maxThreadCount)个OneMergeThread线程由于合并线程的I/O节流处于暂停状态(Thread.sleep(…)方法实现)。</p>
+<h2 id="当前线程是否不是onemergethread"><a class="markdownIt-Anchor" href="#当前线程是否不是onemergethread"></a> 当前线程是否不是OneMergeThread?</h2>
+<p>图8：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/8.png"
+                     
+                >
+<p>  在上一步流程中，如果需要执行合并线程的生成节流，那么还要根据当前线程是否为OneMergeThread来作不同的处理。</p>
+<p>  从图4的流程图可以看到，进入该流程的线程有两种类型：</p>
+<ul>
+<li>执行commit()、flush()、close()、NRT(nearly real time) Reader open的线程：该线程不断的从pendingMerges链表中取出ONeMerge，直到pendingMerges为空才退出</li>
+<li>完成了合并任务OneMergeThread：当OneMergeThread完成了合并任务，它不直接退出，而是重新返回到流程中执行同样的操作</li>
+</ul>
+<h2 id="调整部分运行中的onemergethread的最大磁盘写入量"><a class="markdownIt-Anchor" href="#调整部分运行中的onemergethread的最大磁盘写入量"></a> 调整部分运行中的OneMergeThread的最大磁盘写入量</h2>
+<p>图9：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/9.png"
+                     
+                >
+<p>  到此流程说明需要执行合并线程的生成节流并且当前线程是OneMergeThread，由于当前合并进度很慢，所以通过让OneMergeThread退出的方式来减少新的OneMergeThread的生成，由于OneMergeThread退出，需要调节正在执行合并操作的部分或所有OneMergeThread的最大磁盘写入量</p>
+<p>  执行合并任务的OneMergeThread集合中发生任意的变化后都需要执行调整操作，变化可以有以下几种情况：</p>
+<ul>
+<li>IndexWriter调用了close()</li>
+<li>执行完合并任务的OneMergeThread退出</li>
+<li>切换doAutoIOThrottle的值</li>
+<li>新增一个OneMergeThread</li>
+</ul>
+<p>  调整部分运行中的OneMergeThread的最大磁盘写入量的流程图如下：</p>
+<h3 id="流程图"><a class="markdownIt-Anchor" href="#流程图"></a> 流程图</h3>
+<p>图10：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/10.png"
+                     
+                >
+<h4 id="开始-2"><a class="markdownIt-Anchor" href="#开始-2"></a> 开始</h4>
+<p>  每次新增一个OneMergeThread，会被添加到一个集合中，我们称之为<strong>mergeThreadsSet</strong></p>
+<h4 id="onemergethread集合排序"><a class="markdownIt-Anchor" href="#onemergethread集合排序"></a> OneMergeThread集合排序</h4>
+<p>  对mergeThreadsSet中的元素排序</p>
+<ul>
+<li>排序规则：ONeMergeThread掌管的OneMerge的大小，即OneMergeSize</li>
+<li>排序算法：TimSort</li>
+<li>排序顺序：从大到小</li>
+</ul>
+<h4 id="统计出bigmergecount"><a class="markdownIt-Anchor" href="#统计出bigmergecount"></a> 统计出bigMergeCount</h4>
+<p>  如果OneMergeSize ≥ MIN_BIG_MERGE_MB(50M)，那么认为它是一个大合并(big merge)，bigMergeCount描述了mergeThreadsSet中大合并的数量。</p>
+<h4 id="是否还有未处理的onemergethread"><a class="markdownIt-Anchor" href="#是否还有未处理的onemergethread"></a> 是否还有未处理的OneMergeThread？</h4>
+<p>  每次从mergeThreadsSet中取出一个OneMergeThread，调整最大磁盘写入量，当所有的OneMergeThread处理结束，流程退出。</p>
+<h4 id="获得调整值"><a class="markdownIt-Anchor" href="#获得调整值"></a> 获得调整值</h4>
+<p>  OneMergeThread获得一个新的最大磁盘写入量，我们称之为<strong>newMBPerSec</strong>，该值根据不同的情况可以获得下面几种值：</p>
+<ul>
+<li>0：如果当前bigMergeCount ≥ maxThreadCount，并且OneMergeThread掌管的OneMerge是一个大合并，那么意味着OneMergeThread不允许写入，进入暂停(pause)状态，暂停时间与OneMergeThread已写入的字节数成正比，这里不具体展开，<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/MergeRateLimiter.java" >MergeRateLimiter.java<i class="fas fa-external-link-alt"></i></a>的maybePause(long, long)方法有 字节数 换算 暂时时间 的逻辑。newMBPerSec置为0的目的是使得OneMergeSize较小的OneMerge先执行合并(smaller merges are guaranteed to run before larger ones)</li>
+<li>forceMergeMBPerSec：IndexWriter执行forceMerge时，即使OneMerge是一个大合并，也不会受到合并线程的I/O节流的限制，该值默认值是Double.POSITIVE_INFINITY</li>
+<li>Double.POSITIVE_INFINITY：如果doAutoIOThrottle为false，即使OneMerge是一个大合并，也不会受到合并线程的I/O节流的限制，或者OneMergeThread中的OneMerge不是一个大合并</li>
+<li>targetMBPerSec：如果达不到上面几种newMBPerSec的值，那么就调整为targetMBPerSec</li>
+</ul>
+<p>一个OneMergeThread的newMBPerSec值按照上面列出顺序依次判断来获得，公式如下：</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>e</mi><mi>w</mi><mi>M</mi><mi>B</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>S</mi><mi>e</mi><mi>c</mi><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo separator="true">,</mo><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mi>b</mi><mi>i</mi><mi>g</mi><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>C</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mo>≥</mo><mi>m</mi><mi>a</mi><mi>x</mi><mi>T</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mi>C</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mspace width="2em"/><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="2em"/><mi>O</mi><mi>n</mi><mi>e</mi><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>&gt;</mo><mn>50</mn><mi>M</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>M</mi><mi>B</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>S</mi><mi>e</mi><mi>c</mi><mo separator="true">,</mo><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mi>W</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>l</mi><mi>o</mi><mi>s</mi><mi>e</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>无限制</mtext><mo separator="true">,</mo><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mi>d</mi><mi>o</mi><mi>A</mi><mi>u</mi><mi>t</mi><mi>o</mi><mi>I</mi><mi>O</mi><mi>T</mi><mi>h</mi><mi>r</mi><mi>o</mi><mi>t</mi><mi>t</mi><mi>l</mi><mi>e</mi><mo>=</mo><mi>f</mi><mi>a</mi><mi>l</mi><mi>s</mi><mi>e</mi><mspace width="2em"/><mi>o</mi><mi>r</mi><mspace width="2em"/><mi>O</mi><mi>n</mi><mi>e</mi><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>S</mi><mi>i</mi><mi>z</mi><mi>e</mi><mo>≤</mo><mn>50</mn><mi>M</mi><mspace width="2em"/></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi><mi>M</mi><mi>B</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>S</mi><mi>e</mi><mi>c</mi><mo separator="true">,</mo><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mspace width="2em"/><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+newMBPerSec = \begin{cases} 0, \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad bigMergeCount ≥ maxThreadCount\qquad and \qquad OneMergeSize &gt; 50M \\ forceMergeMBPerSec,\qquad\qquad\qquad indexWriter.close() \\ 无限制, \qquad \qquad \qquad \qquad \qquad \qquad \qquad doAutoIOThrottle = false \qquad or \qquad OneMergeSize ≤ 50M\qquad  \\ targetMBPerSec,\qquad \qquad \qquad \qquad other\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:5.76em;vertical-align:-2.63em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9500200000000008em;"><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-1.5949900000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.8899900000000003em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-2.1849900000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-2.2049900000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.29501em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.59001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.885010000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.905010000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.20002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.45002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1300000000000003em;"><span style="top:-5.130000000000001em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:2em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:2em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span><span style="top:-3.6900000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">.</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mclose">)</span></span></span><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord cjk_fallback">无</span><span class="mord cjk_fallback">限</span><span class="mord cjk_fallback">制</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">A</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:2em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:2em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:2em;"></span></span></span><span style="top:-0.8100000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.63em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<h2 id="执行非onemergethread合并线程的生成节流"><a class="markdownIt-Anchor" href="#执行非onemergethread合并线程的生成节流"></a> 执行非OneMergeThread合并线程的生成节流</h2>
+<p>图11：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/11.png"
+                     
+                >
+<p>  不是OneMergeThread的线程的节流方式相对简单，就是执行简单的Object.wait(250)方法，即等待0.25秒后再去下一步流程。</p>
+<p>  为什么同样是合并线程的生成节流，OneMergeThread选择直接退出，而不是等待0.25秒，因为拖延OneMergeThread实际上就是拖延了该线程的结束，该线程的结束过程首先是从mergeThreadsSet移除，然后调整部分运行中的OneMergeThread的最大磁盘写入量，拖延该线程并不能对缓解段合并进度缓慢的问题。</p>
+<h2 id="是否还有onemerge"><a class="markdownIt-Anchor" href="#是否还有onemerge"></a> 是否还有OneMerge？</h2>
+<p>图12：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/12.png"
+                     
+                >
+&emsp;&emsp;创建一个子线程OneMergeThread来掌管一个OneMerge。
+<h2 id="是否执行合并线程的io节流"><a class="markdownIt-Anchor" href="#是否执行合并线程的io节流"></a> 是否执行合并线程的I/O节流？</h2>
+<p>图13：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/13.png"
+                     
+                >
+&emsp;&emsp;如果doAutoIOThrottle = false，那么就不需要执行合并线程的I/O节流，也就是刚创建的OneMergeThread允许的最大磁盘写入量是不受限制的。
+<h2 id="调整onemergethread最大磁盘写入量"><a class="markdownIt-Anchor" href="#调整onemergethread最大磁盘写入量"></a> 调整OneMergeThread最大磁盘写入量</h2>
+<p>图14：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/14.png"
+                     
+                >
+&emsp;&emsp;每当新增一个OneMergeThread，那么就要重新调整targetMBPerSec的值，targetMBPerSec不但会定义当前这条新增的OneMergeThread的最大磁盘的写入量，还会影响其正在运行的部分OneMergeThread。调整OneMergeThread最大磁盘写入量的流程图如下：
+<h3 id="流程图-2"><a class="markdownIt-Anchor" href="#流程图-2"></a> 流程图</h3>
+<p>图15：</p>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/MergeScheduler/15.png"
+                     
+                >
+<h4 id="onemerge"><a class="markdownIt-Anchor" href="#onemerge"></a> OneMerge</h4>
+<p>  从pendingMerges链表中取出一个OneMerge交给OneMergeThread线程掌管。</p>
+<h4 id="doautoiothrottle为true"><a class="markdownIt-Anchor" href="#doautoiothrottle为true"></a> doAutoIOThrottle为true？</h4>
+<p>  如果doAutoIOThrottle不为true，那么可以直接退出，即掌管当前OneMerge的OneMergeThread允许的写入量是没有上限限制的。</p>
+<h4 id="onemergesize不小于50m"><a class="markdownIt-Anchor" href="#onemergesize不小于50m"></a> OneMergeSize不小于50M？</h4>
+<p>  如果oneMerge的大小oneMergeSize小于50M，即小于MIN_BIG_MERGE_MB，那么也不用限制其I/O。</p>
+<h4 id="onemerge处于积压状态"><a class="markdownIt-Anchor" href="#onemerge处于积压状态"></a> OneMerge处于积压状态？</h4>
+<p>  对于单个OneMerge来讲，满足下面的条件，那么该OneMerge被认为是处于积压（backlog）状态：</p>
+<ul>
+<li>mergeThreadsSet集合中，至少有一个OneMergeThread运行时间已经超过了3秒(固定值，不可变)，并且该OneMergeThread掌管的OneMerge的OneMergeSize跟当前流程中的OneMerge的OneMergeSize差不多大（similar size），即两者的OneMergeSize的比例(ratio)在区间[0.3，3.0]内</li>
+</ul>
+<p>  如果满足上面的条件，说明当前段的合并进度落后（falling behind）了，上述条件中的3秒，描述的是从添加到mergeThreadsSet开始已经过了3秒，这个段还是没有合并结束，原因是总有优先级更高（OneMergeSize较小）的OneMergeThread添加到mergeThreadsSet中，那么我们需要提高当前最大磁盘写入量，即提高targetMBPerSec的值。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi><mi>M</mi><mi>B</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>S</mi><mi>e</mi><mi>c</mi><mo>=</mo><mi>M</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi><mi>M</mi><mi>B</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>S</mi><mi>e</mi><mi>c</mi><mo>∗</mo><mn>1.2</mn><mtext>，</mtext><mn>10</mn><mi>G</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">targetMBPerSec = Min(targetMBPerSec * 1.2，10G)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">2</span><span class="mord cjk_fallback">，</span><span class="mord">1</span><span class="mord">0</span><span class="mord mathnormal">G</span><span class="mclose">)</span></span></span></span></span></p>
+<p>  其中10G即MAX_MERGE_MB_PER_SEC。</p>
+<h4 id="mergethreadsset的元素个数大于等于maxthreadcount"><a class="markdownIt-Anchor" href="#mergethreadsset的元素个数大于等于maxthreadcount"></a> mergeThreadsSet的元素个数大于等于maxThreadCount？</h4>
+<p>  流程中的OneMerge不处于积压状态，那么如果mergeThreadsSet的元素个数大于等于maxThreadCount，说明当前运行中的mergeThreadsSet处于积压状态，强调的是，这里的积压状态描述的是mergeThreadsSet，而不是上文中某个OneMerge的积压状态，此时不改变targetMBPerSec的值。</p>
+<h4 id="运行中的onemerge有处于积压状态"><a class="markdownIt-Anchor" href="#运行中的onemerge有处于积压状态"></a> 运行中的OneMerge有处于积压状态？</h4>
+<p>  如果运行中的OneMerge存在积压状态，不改变targetMBPerSec的值。否则就降低当前最大磁盘写入量。</p>
+<h4 id="设置掌管onemerge的onemergethread的最大磁盘写入量"><a class="markdownIt-Anchor" href="#设置掌管onemerge的onemergethread的最大磁盘写入量"></a> 设置掌管OneMerge的OneMergeThread的最大磁盘写入量</h4>
+<p>  将最新的targetMBPerSec设置为流程中的OneMergeThread的最大磁盘写入量。</p>
+<p>  调整OneMergeThread最大磁盘写入量的流程图可以看出，提高targetMBPerSec只考虑新增的OneMerge的情况，降低targetMBPerSec是为了减少段合并的I/O使用，可见在正常的段合并的情况下总体上不是那么要求尽快完成合并，而在forceMerge的情况下，不会考虑OneMerge的OneMergeSize，都是一视同仁的置targetMBPerSec为forceMergeMBPerSec，此时是希望尽快完成所有的段合并，正如上文中介绍的，比如IndexWriter.close()调用就会调用forceMerge。</p>
+<h2 id="执行段的合并"><a class="markdownIt-Anchor" href="#执行段的合并"></a> 执行段的合并</h2>
+<p>  在调整OneMergeThread最大磁盘写入量后， 子线程OneMergeThread就可以开始执行段的合并， 段的合并这一块在后面的文章会介绍，这里不展开。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>本文章介绍了在IndexWriter从合并策略那边获得待合并的段集后，MergeScheduler如何去安排执行段的合并，在介绍玩段的合并后，会把整个从合并策略-&gt;MergeScheduler-&gt;合并进行一次总结，来加强熟悉整体逻辑。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/merge/">merge</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mergePolicy/">mergePolicy</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Store/2019/0604/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81LockFactory/"
+                                   title="索引文件锁LockFactory"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件锁LockFactory</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0516/TieredMergePolicy/"
+                                   title="TieredMergePolicy"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">TieredMergePolicy</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang-comments');
+              script.setAttribute("data-repo-id", 'R_kgDOKY8ukg');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY8uks4CZsSn');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nomergescheduler"><span class="nav-number">1.</span> <span class="nav-text"> NoMergeScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serialmergescheduler"><span class="nav-number">2.</span> <span class="nav-text"> SerialMergeScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrentmergescheduler"><span class="nav-number">3.</span> <span class="nav-text"> ConcurrentMergeScheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concurrentmergescheduler%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> ConcurrentMergeScheduler的一些参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maxthreadcount%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text"> maxThreadCount(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maxmergecount%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text"> maxMergeCount(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#auto_detect_merges_and_threads%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.3.</span> <span class="nav-text"> AUTO_DETECT_MERGES_AND_THREADS(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doautoiothrottle%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.4.</span> <span class="nav-text"> doAutoIOThrottle(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min_big_merge_mb%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.5.</span> <span class="nav-text"> MIN_BIG_MERGE_MB(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min_merge_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.6.</span> <span class="nav-text"> MIN_MERGE_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#max_merge_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.7.</span> <span class="nav-text"> MAX_MERGE_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#start_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.8.</span> <span class="nav-text"> START_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#targetmbpersec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.9.</span> <span class="nav-text"> targetMBPerSec(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forcemergembpersec%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.10.</span> <span class="nav-text"> forceMergeMBPerSec(可配置)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concurrentmergescheduler%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number"></span> <span class="nav-text"> ConcurrentMergeScheduler流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.</span> <span class="nav-text"> 开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text"> 初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%89%A7%E8%A1%8C%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E6%88%90%E8%8A%82%E6%B5%81"><span class="nav-number">3.</span> <span class="nav-text"> 是否执行合并线程的生成节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E5%89%8D%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%90%A6%E4%B8%8D%E6%98%AFonemergethread"><span class="nav-number">4.</span> <span class="nav-text"> 当前线程是否不是OneMergeThread?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E9%83%A8%E5%88%86%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84onemergethread%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text"> 调整部分运行中的OneMergeThread的最大磁盘写入量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.</span> <span class="nav-text"> 流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B-2"><span class="nav-number">5.1.1.</span> <span class="nav-text"> 开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemergethread%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="nav-number">5.1.2.</span> <span class="nav-text"> OneMergeThread集合排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E5%87%BAbigmergecount"><span class="nav-number">5.1.3.</span> <span class="nav-text"> 统计出bigMergeCount</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84onemergethread"><span class="nav-number">5.1.4.</span> <span class="nav-text"> 是否还有未处理的OneMergeThread？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E8%B0%83%E6%95%B4%E5%80%BC"><span class="nav-number">5.1.5.</span> <span class="nav-text"> 获得调整值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%9D%9Eonemergethread%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E6%88%90%E8%8A%82%E6%B5%81"><span class="nav-number">6.</span> <span class="nav-text"> 执行非OneMergeThread合并线程的生成节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89onemerge"><span class="nav-number">7.</span> <span class="nav-text"> 是否还有OneMerge？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%89%A7%E8%A1%8C%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84io%E8%8A%82%E6%B5%81"><span class="nav-number">8.</span> <span class="nav-text"> 是否执行合并线程的I&#x2F;O节流？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4onemergethread%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">9.</span> <span class="nav-text"> 调整OneMergeThread最大磁盘写入量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE-2"><span class="nav-number">9.1.</span> <span class="nav-text"> 流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onemerge"><span class="nav-number">9.1.1.</span> <span class="nav-text"> OneMerge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doautoiothrottle%E4%B8%BAtrue"><span class="nav-number">9.1.2.</span> <span class="nav-text"> doAutoIOThrottle为true？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemergesize%E4%B8%8D%E5%B0%8F%E4%BA%8E50m"><span class="nav-number">9.1.3.</span> <span class="nav-text"> OneMergeSize不小于50M？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemerge%E5%A4%84%E4%BA%8E%E7%A7%AF%E5%8E%8B%E7%8A%B6%E6%80%81"><span class="nav-number">9.1.4.</span> <span class="nav-text"> OneMerge处于积压状态？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mergethreadsset%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8Emaxthreadcount"><span class="nav-number">9.1.5.</span> <span class="nav-text"> mergeThreadsSet的元素个数大于等于maxThreadCount？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84onemerge%E6%9C%89%E5%A4%84%E4%BA%8E%E7%A7%AF%E5%8E%8B%E7%8A%B6%E6%80%81"><span class="nav-number">9.1.6.</span> <span class="nav-text"> 运行中的OneMerge有处于积压状态？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%8E%8C%E7%AE%A1onemerge%E7%9A%84onemergethread%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">9.1.7.</span> <span class="nav-text"> 设置掌管OneMerge的OneMergeThread的最大磁盘写入量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-number">10.</span> <span class="nav-text"> 执行段的合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2023
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">304.8k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nomergescheduler"><span class="nav-number">1.</span> <span class="nav-text"> NoMergeScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serialmergescheduler"><span class="nav-number">2.</span> <span class="nav-text"> SerialMergeScheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrentmergescheduler"><span class="nav-number">3.</span> <span class="nav-text"> ConcurrentMergeScheduler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concurrentmergescheduler%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> ConcurrentMergeScheduler的一些参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maxthreadcount%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text"> maxThreadCount(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maxmergecount%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text"> maxMergeCount(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#auto_detect_merges_and_threads%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.3.</span> <span class="nav-text"> AUTO_DETECT_MERGES_AND_THREADS(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doautoiothrottle%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.4.</span> <span class="nav-text"> doAutoIOThrottle(可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min_big_merge_mb%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.5.</span> <span class="nav-text"> MIN_BIG_MERGE_MB(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min_merge_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.6.</span> <span class="nav-text"> MIN_MERGE_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#max_merge_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.7.</span> <span class="nav-text"> MAX_MERGE_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#start_mb_per_sec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.8.</span> <span class="nav-text"> START_MB_PER_SEC(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#targetmbpersec%E4%B8%8D%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.9.</span> <span class="nav-text"> targetMBPerSec(不可配置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forcemergembpersec%E5%8F%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.10.</span> <span class="nav-text"> forceMergeMBPerSec(可配置)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concurrentmergescheduler%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number"></span> <span class="nav-text"> ConcurrentMergeScheduler流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.</span> <span class="nav-text"> 开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text"> 初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%89%A7%E8%A1%8C%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E6%88%90%E8%8A%82%E6%B5%81"><span class="nav-number">3.</span> <span class="nav-text"> 是否执行合并线程的生成节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E5%89%8D%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%90%A6%E4%B8%8D%E6%98%AFonemergethread"><span class="nav-number">4.</span> <span class="nav-text"> 当前线程是否不是OneMergeThread?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E9%83%A8%E5%88%86%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84onemergethread%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text"> 调整部分运行中的OneMergeThread的最大磁盘写入量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">5.1.</span> <span class="nav-text"> 流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B-2"><span class="nav-number">5.1.1.</span> <span class="nav-text"> 开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemergethread%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="nav-number">5.1.2.</span> <span class="nav-text"> OneMergeThread集合排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E5%87%BAbigmergecount"><span class="nav-number">5.1.3.</span> <span class="nav-text"> 统计出bigMergeCount</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84onemergethread"><span class="nav-number">5.1.4.</span> <span class="nav-text"> 是否还有未处理的OneMergeThread？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E8%B0%83%E6%95%B4%E5%80%BC"><span class="nav-number">5.1.5.</span> <span class="nav-text"> 获得调整值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%9D%9Eonemergethread%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E6%88%90%E8%8A%82%E6%B5%81"><span class="nav-number">6.</span> <span class="nav-text"> 执行非OneMergeThread合并线程的生成节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89onemerge"><span class="nav-number">7.</span> <span class="nav-text"> 是否还有OneMerge？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%89%A7%E8%A1%8C%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B%E7%9A%84io%E8%8A%82%E6%B5%81"><span class="nav-number">8.</span> <span class="nav-text"> 是否执行合并线程的I&#x2F;O节流？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4onemergethread%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">9.</span> <span class="nav-text"> 调整OneMergeThread最大磁盘写入量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE-2"><span class="nav-number">9.1.</span> <span class="nav-text"> 流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onemerge"><span class="nav-number">9.1.1.</span> <span class="nav-text"> OneMerge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doautoiothrottle%E4%B8%BAtrue"><span class="nav-number">9.1.2.</span> <span class="nav-text"> doAutoIOThrottle为true？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemergesize%E4%B8%8D%E5%B0%8F%E4%BA%8E50m"><span class="nav-number">9.1.3.</span> <span class="nav-text"> OneMergeSize不小于50M？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onemerge%E5%A4%84%E4%BA%8E%E7%A7%AF%E5%8E%8B%E7%8A%B6%E6%80%81"><span class="nav-number">9.1.4.</span> <span class="nav-text"> OneMerge处于积压状态？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mergethreadsset%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8Emaxthreadcount"><span class="nav-number">9.1.5.</span> <span class="nav-text"> mergeThreadsSet的元素个数大于等于maxThreadCount？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84onemerge%E6%9C%89%E5%A4%84%E4%BA%8E%E7%A7%AF%E5%8E%8B%E7%8A%B6%E6%80%81"><span class="nav-number">9.1.6.</span> <span class="nav-text"> 运行中的OneMerge有处于积压状态？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%8E%8C%E7%AE%A1onemerge%E7%9A%84onemergethread%E7%9A%84%E6%9C%80%E5%A4%A7%E7%A3%81%E7%9B%98%E5%86%99%E5%85%A5%E9%87%8F"><span class="nav-number">9.1.7.</span> <span class="nav-text"> 设置掌管OneMerge的OneMergeThread的最大磁盘写入量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-number">10.</span> <span class="nav-text"> 执行段的合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

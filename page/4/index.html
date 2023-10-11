@@ -191,14 +191,18 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0911/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bdoc&&pos&&pay/">
-                            索引文件的读取（十三）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）
+                        <a href="/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接文章索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay，继续介绍剩余的内容。索引文件.doc、.pos、.pay的读取过程相比索引文件.tim&amp;&amp;.tip较为简单，核心部分为如何通过读取这三...
+                              从本篇文章开始介绍索引文件合并的过程，其中合并策略、合并调度在之前的文章中已经介绍，没有阅读过这些文章并不会影响对本篇文章的理解。
+  由于本篇文章是索引文件的合并的开篇文章，故我们先给出各类索引文件合并的先后顺序，如下所示：
+图1：
+
+  图1...
                         
                     </div>
 
@@ -208,7 +212,268 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 14:16:45 GMT+0800">2023-10-09 14:16:45</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:14:13 GMT+0800">2023-10-11 15:14:13</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/DocValues/2020/1121/BinaryDocValues-8-7-0/">
+                            BinaryDocValues（Lucene 8.7.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在文章BinaryDocValues中我们介绍了Lucene 7.5.0版本的数据结构，并且在文章索引文件的生成（二十一）之dvm&amp;&amp;dvd中介绍了Lucene 8.4.0中其数据结构的生成。阅读本文前建议先看下上述的两篇文章，因...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Thu Sep 28 2023 14:42:35 GMT+0800">2023-09-28 14:42:35</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/DocValues/">DocValues</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DocValues/">DocValues</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/DocValues/2020/1121/BinaryDocValues-8-7-0/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/suoyinwenjian/2020/1117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvd&&tvx&&tvm/">
+                            索引文件之tvd&amp;&amp;tvx&amp;&amp;tvm（Lucene 8.7.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在索引（Indexing）阶段，当某个域被设置为需要记录词向量（term vector）信息后，那么随后在flush阶段，该域对应的词向量将被写入到索引文件.tvd&amp;&amp;tvx&amp;&amp;tvm三个文件中。
+图1：
+
+  图...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 14:06:52 GMT+0800">2023-09-30 14:06:52</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvd/">tvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvx/">tvx</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvm/">tvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvd&&tvx&&tvm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件的读取（十五）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              本文承接文章索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm，继续介绍剩余的内容。为了更好的理解下文中的内容，建议先阅读文章DirectMonotonicWriter&amp;&amp;Reader。下面先给出读...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 14:31:31 GMT+0800">2023-10-09 14:31:31</span>
             </span>
         
 
@@ -245,13 +510,13 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
                         
                     
                 </ul>
@@ -265,7 +530,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/0911/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bdoc&&pos&&pay/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -279,14 +544,17 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pos&&pay/">
-                            索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）
+                        <a href="/Lucene/2020/1106/Changes-8-7-0/">
+                            Changes（Lucene 8.7.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              在前几篇索引文件的读取的系列文章中，我们介绍索引文件tim&amp;&amp;tip的读取时机点时说到，在生成StandardDirectoryReader对象期间，会生成SegmentReader对象，该对象中的FieldsProducer信息...
+                              2020年11月3号，Lucene发布了最新的版本8.7.0，本篇文章将会对Change Log中几个变更展开介绍下。
+ LUCENE-9510
+  该issue的原文如下：
+1Indexing with an index sort is now...
                         
                     </div>
 
@@ -296,7 +564,78 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:58:01 GMT+0800">2023-10-09 13:58:01</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Thu Sep 28 2023 16:20:57 GMT+0800">2023-09-28 16:20:57</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Changes/">Changes</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/2020/1106/Changes-8-7-0/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在前几篇索引文件的读取的系列文章中，我们介绍索引文件tim&amp;&amp;tip的读取时机点时说到，在生成StandardDirectoryReader对象期间，会生成SegmentReader对象，该对象中的StoredFieldsRead...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 14:26:11 GMT+0800">2023-10-09 14:26:11</span>
             </span>
         
 
@@ -333,13 +672,13 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
                         
                     
                 </ul>
@@ -353,7 +692,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pos&&pay/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -367,15 +706,15 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/gongjulei/2020/0821/Automaton%EF%BC%88%E4%B8%89%EF%BC%89/">
-                            Automaton（三）（Lucene 8.4.0）
+                        <a href="/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&&Reader/">
+                            DirectMonotonicWriter&amp;&amp;Reader
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                            点击这里
-
+                             DirectMonotonicWriter&amp;&amp;Reader
+  DirectMonotonicWriter类用来存储单调递增的整数序列（monotonically-increasing sequences of integers），...
                         
                     </div>
 
@@ -385,7 +724,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 14:37:06 GMT+0800">2023-10-08 14:37:06</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 12:32:34 GMT+0800">2023-10-08 12:32:34</span>
             </span>
         
 
@@ -406,7 +745,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
                             </li>
                         
                     
@@ -418,19 +757,16 @@
             <span class="article-tag meta-info-item border-box">
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/">自动机</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/prefix/">prefix</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/wildcard/">wildcard</a></li>
-                        
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
+                        
+                    
                 </ul>
             </span>
         
@@ -442,7 +778,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/gongjulei/2020/0821/Automaton%EF%BC%88%E4%B8%89%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&&Reader/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -456,18 +792,14 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0819/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的读取（十一）之tim&amp;&amp;tip（Lucene 8.4.0）
+                        <a href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&kdi&kdm/">
+                            索引文件之kdd&amp;kdi&amp;kdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              在上一篇文章索引文件的读取（十）之tim&amp;&amp;tip中我们遗留了一个问题：
-  为什么要根据是否达到阈值使用不同的处理方式：
-  这个问题可以分解为两个小问题：
-
-问题一：为什么达到阈值后不使用BooleanQuery的方式做文档号...
+                              从Lucene8.6.0开始，用于存储点数据（point value）的索引文件由原先的两个索引文件dim&amp;&amp;dii，改为三个索引文件kdd&amp;kdi&amp;kdm。由于生成kdd&amp;kdi&amp;kdm的过程基本...
                         
                     </div>
 
@@ -477,7 +809,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:48:06 GMT+0800">2023-10-09 13:48:06</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 13:28:14 GMT+0800">2023-09-30 13:28:14</span>
             </span>
         
 
@@ -498,7 +830,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Search/">Search</a>
+                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
                             </li>
                         
                     
@@ -514,10 +846,16 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdd/">kdd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdi/">kdi</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdm/">kdm</a></li>
                         
                     
                 </ul>
@@ -531,7 +869,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/0819/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&kdi&kdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -545,19 +883,18 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0812/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的读取（十）之tim&amp;&amp;tip（Lucene 8.4.0）
+                        <a href="/Lucene/Index/2020/1016/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件的生成（二十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                             索引文件的读取（十）（Lucene 8.4.0）
-  本文承接文章索引文件的读取（九）之tim&amp;&amp;tip，继续介绍剩余的流程点，先给出流程图：
- 获取满足TermRangeQuery查询条件的term集合的流程图
+                              本文承接文章索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm，继续介绍剩余的内容，先给出生成索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的流程图：
 图1：
 
- 收集T...
+ 索引阶段
+ 是否生成一个ch...
                         
                     </div>
 
@@ -567,7 +904,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:44:29 GMT+0800">2023-10-09 13:44:29</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:22:48 GMT+0800">2023-10-11 14:22:48</span>
             </span>
         
 
@@ -588,7 +925,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Search/">Search</a>
+                                <a href="/categories/Lucene/Index/">Index</a>
                             </li>
                         
                     
@@ -601,13 +938,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
                         
                     
                 </ul>
@@ -621,7 +958,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/0812/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/1016/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -635,21 +972,17 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0810/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的读取（九）之tim&amp;&amp;tip（Lucene 8.4.0）
+                        <a href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
+                            索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接文章索引文件的读取（八）之tim&amp;&amp;tip，继续介绍剩余的流程点，先给出流程图：
- 获取满足TermRangeQuery查询条件的term集合的流程图
+                              从本篇文章开始介绍用于描述存储域（存储域的概念见文章索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm）的索引文件.fdx、.fdt、.fdm的生成过程，直接给出流程图：
 图1：
 
- 获取迭代器IntersectTermsEnum
-图2：
-
-...
+  从图1中可以看出，生成完整的索引文件.fd...
                         
                     </div>
 
@@ -659,7 +992,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:40:59 GMT+0800">2023-10-09 13:40:59</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:19:27 GMT+0800">2023-10-11 14:19:27</span>
             </span>
         
 
@@ -680,7 +1013,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Search/">Search</a>
+                                <a href="/categories/Lucene/Index/">Index</a>
                             </li>
                         
                     
@@ -693,13 +1026,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
                         
                     
                 </ul>
@@ -713,367 +1046,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/0810/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0805/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的读取（八）之tim&amp;&amp;tip（Lucene 8.4.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接文章索引文件的读取（七）之tim&amp;&amp;tip，继续介绍剩余的流程点，先给出流程图：
- 获取满足TermRangeQuery查询条件的term集合的流程图
-图1：
-
- BlockTreeTermsReader
-  在上一篇文章...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:36:56 GMT+0800">2023-10-09 13:36:56</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Search/2020/0805/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0804/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">
-                            索引文件的读取（七）之tim&amp;&amp;tip（Lucene 8.4.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本篇文章开始介绍索引文件tim&amp;&amp;tip的读取，通过TermRangeQuery的例子来介绍如何从索引文件.tim&amp;&amp;.tip中获取满足查询条件的所有term。
-  为了便于介绍，使用了文章Automaton（二）...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 13:38:00 GMT+0800">2023-10-09 13:38:00</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Search/2020/0804/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/gongjulei/2020/0727/Automaton%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                            Automaton（二）（Lucene 8.4.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                            点击这里
-
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 14:36:33 GMT+0800">2023-10-08 14:36:33</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/">自动机</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/prefix/">prefix</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/wildcard/">wildcard</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/gongjulei/2020/0727/Automaton%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Search/2020/0723/RangeField%EF%BC%88%E4%B8%80%EF%BC%89/">
-                            RangeField（一）（Lucene 8.4.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文将介绍Lucene中提供的范围域（RangeField），以及基于该域实现的范围查询。
- 范围域（RangeField）
-  RangeField使得一个域有了空间的概念，并且最多支持到四维（4 dimensions）：
-
-1 dimensi...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 11:00:16 GMT+0800">2023-10-10 11:00:16</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/point/">point</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/range/">range</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/field/">field</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Search/2020/0723/RangeField%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -1095,8 +1068,8 @@
                    type="number"
                    value="4"
                    min="1"
-                   max="15"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">15</span>
+                   max="18"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">18</span>
         </div>
 
 
@@ -1158,7 +1131,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">255.3k</span>
+                    <span class="item-value border-box word">304.8k</span>
                 </span>
             
 
