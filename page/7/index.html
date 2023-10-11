@@ -191,19 +191,14 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1203/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89/">
-                            构造IndexWriter对象（八）
+                        <a href="/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&&dii/">
+                            索引文件的生成（八）之dim&amp;&amp;dii（Lucene 8.4.0）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接构造IndexWriter对象（七），继续介绍调用IndexWriter的构造函数的流程。
- 调用IndexWriter的构造函数的流程图
-图1：
-
- 生成对象IndexFileDeleter
-  我们紧接上一篇文章，继续介绍剩余的流程点...
+                              在前面的文章中，我们介绍了在Lucene7.5.0中索引文件.dim&amp;&amp;.dii的数据结构，从本篇文章开始介绍其生成索引文件.dim&amp;&amp;.dii的内容，注意的是，由于是基于Lucene8.4.0来描述其生成过程，故...
                         
                     </div>
 
@@ -213,7 +208,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:32:23 GMT+0800">2023-10-10 22:32:23</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:19:11 GMT+0800">2023-10-11 11:19:11</span>
             </span>
         
 
@@ -247,7 +242,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
                         
                     
                 </ul>
@@ -261,7 +259,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1203/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&&dii/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -275,105 +273,21 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1202/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89/">
-                            构造IndexWriter对象（七）
+                        <a href="/Lucene/Index/2020/0117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">
+                            索引文件的生成（七）之tim&amp;&amp;tip
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接构造IndexWriter对象（六），继续介绍调用IndexWriter的构造函数的流程。
- 调用IndexWriter的构造函数的流程图
+                              本文承接索引文件的生成（六）继续介绍剩余的内容，下面先给出生成索引文件.tim、.tip的流程图。
+ 生成索引文件.tim、.tip的流程图
 图1：
 
- 生成对象IndexFileDeleter
-  在文章构造IndexWriter对象（六...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:30:02 GMT+0800">2023-10-10 22:30:02</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2019/1202/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1127/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AD%EF%BC%89/">
-                            构造IndexWriter对象（六）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接构造IndexWriter对象（五），继续介绍调用IndexWriter的构造函数的流程。
- 调用IndexWriter的构造函数的流程图
-图1：
-
- 生成对象BufferedUpdatesStream
+ 统计每一个term的信息
 图2：
 
-  介绍该对象会涉及很多...
+  执行到该流程，我们需要将当前term的一些信息（图1...
                         
                     </div>
 
@@ -383,7 +297,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:27:01 GMT+0800">2023-10-10 22:27:01</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:13:28 GMT+0800">2023-10-11 11:13:28</span>
             </span>
         
 
@@ -417,7 +331,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
                         
                     
                 </ul>
@@ -431,7 +348,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1127/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AD%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -445,19 +362,18 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1126/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%94%EF%BC%89/">
-                            构造IndexWriter对象（五）
+                        <a href="/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&&tip/">
+                            索引文件的生成（六）之tim&amp;&amp;tip
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接构造IndexWriter对象（四），继续介绍调用IndexWriter的构造函数的流程。
- 调用IndexWriter的构造函数的流程图
+                              本文承接索引文件的生成（五）继续介绍剩余的内容，下面先给出生成索引文件.tim、.tip的流程图。
+ 生成索引文件.tim、.tip的流程图
 图1：
 
- 根据不同的OpenMode执行对应的工作
-  在上一篇文章中，我们介绍了执行APPEN...
+  上一篇文章中，我们介绍了执行生成一个或多个NodeBlock的触发条件，本文就其实现过程展...
                         
                     </div>
 
@@ -467,7 +383,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:20:30 GMT+0800">2023-10-10 22:20:30</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:10:25 GMT+0800">2023-10-11 11:10:25</span>
             </span>
         
 
@@ -501,7 +417,10 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
                         
                     
                 </ul>
@@ -515,7 +434,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1126/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%94%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -529,19 +448,266 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89/">
-                            构造IndexWriter对象（四）
+                        <a href="/Lucene/Index/2020/0110/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Btim&&tip/">
+                            索引文件的生成（五）之tim&amp;&amp;tip
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              本文承接构造IndexWriter对象（三），继续介绍调用IndexWriter的构造函数的流程。
- 调用IndexWriter的构造函数的流程图
+                              在前面的四篇文章中，我们介绍了生成索引文件.tim、.tip、.doc、.pos、.pay中.doc、.pos、.pay这三个索引文件的内容，接着我们继续图1中剩余的内容，即流程点生成索引文件.tim、.tip。
+ 生成索引文件.tim、.tip...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:07:17 GMT+0800">2023-10-11 11:07:17</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tim/">tim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tip/">tip</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0110/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Btim&&tip/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0106/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">
+                            索引文件的生成（四）之跳表SkipList
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在文章索引文件的生成（三）中我们介绍了在Lucene中生成跳表SkipList的流程，通过流程图的方法介绍了源码中的实现方式，而对于读取SkipList的内容，决定直接以例子的方式来介绍其读取过程，下文中出现的名词如果没有作出介绍，请先阅读文章索...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:40:41 GMT+0800">2023-10-11 11:40:41</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/skipList/">skipList</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0106/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">
+                            索引文件的生成（三）之跳表SkipList
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              在文章索引文件的生成（一）中我们说到，在生成索引文件.doc、.pos、.pay的过程中，当处理了128篇文档后会生成一个PackedBlock，并将这个PackedBlock的信息写入到跳表skipList中，使得在读取阶段能根据文档号快速跳转...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 11:00:59 GMT+0800">2023-10-11 11:00:59</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/skipList/">skipList</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">
+                            索引文件的生成（二）之doc&amp;&amp;pay&amp;&amp;pos
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              本文承接索引文件的生成（一），继续介绍剩余的内容。
+ 生成索引文件.tim、.tip、.doc、.pos、.pay的流程图
 图1：
 
- 根据不同的OpenMode执行对应的工作
-  在上一篇文章中，我们介绍了执行CREAT...
+  我们继续介绍流程点生成索引文件.doc、.pos、.pay。
+ 生成索引文件.doc、.pos、.pay的流...
                         
                     </div>
 
@@ -551,7 +717,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:17:28 GMT+0800">2023-10-10 22:17:28</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 10:48:17 GMT+0800">2023-10-11 10:48:17</span>
             </span>
         
 
@@ -585,7 +751,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
                         
                     
                 </ul>
@@ -599,7 +771,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -613,20 +785,17 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89/">
-                            构造IndexWriter对象（三）
+                        <a href="/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">
+                            索引文件的生成（一）之doc&amp;&amp;pay&amp;&amp;pos
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              构造一个IndexWriter对象的流程总体分为下面三个部分：
+                              在执行flush()的过程中，Lucene会将内存中的索引信息生成索引文件，其生成的时机点如下图红色框标注：
+图1：
 
-设置索引目录Directory
-设置IndexWriter的配置信息IndexWriterConfig
-调用IndexWriter的构造函数
-
-  大家可以查看文章构造IndexW...
+  图一中的流程是flush()阶段的其中一个流程点，完整的flush()过程可以看系列文章文档提交之flush，索引文件的生...
                         
                     </div>
 
@@ -636,7 +805,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:09:55 GMT+0800">2023-10-10 22:09:55</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 10:42:44 GMT+0800">2023-10-11 10:42:44</span>
             </span>
         
 
@@ -670,7 +839,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
                         
                     
                 </ul>
@@ -684,7 +859,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&&pay&&pos/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -698,20 +873,16 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1114/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                            构造IndexWriter对象（二）
+                        <a href="/Lucene/yasuocunchu/2019/1223/DirectWriter&&DirectReader/">
+                            DirectWriter&amp;&amp;DirectReader
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              构造一个IndexWriter对象的流程总体分为下面三个部分：
-
-设置索引目录Directory
-设置IndexWriter的配置信息IndexWriterConfig
-调用IndexWriter的构造函数
-
-  在文章构造IndexWriter...
+                             DirectWriter&amp;&amp;DirectReader
+  阅读本篇文章需要前置内容：BulkOperationPacked，下文中会列出在文章BulkOperationPacked中涉及的代码，但是不会展开介绍。
+  DirectW...
                         
                     </div>
 
@@ -721,7 +892,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 22:03:56 GMT+0800">2023-10-10 22:03:56</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 21:30:24 GMT+0800">2023-10-08 21:30:24</span>
             </span>
         
 
@@ -742,7 +913,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Index/">Index</a>
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
                             </li>
                         
                     
@@ -755,7 +926,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
                         
                     
                 </ul>
@@ -769,7 +946,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1114/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/yasuocunchu/2019/1223/DirectWriter&&DirectReader/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -783,20 +960,26 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89/">
-                            构造IndexWriter对象（一）
+                        <a href="/Lucene/yasuocunchu/2019/1218/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                            PackedInts（二）
                         </a>
                     </h3>
 
                     <div class="home-article-content keep-markdown-body">
                         
-                              该系列文章将会介绍构造一个IndexWriter对象的流程，该流程总体分为下面三个部分：
+                              本文承接PackedInts（一），继续介绍剩余的内容。
+ 压缩实现
+  在上一篇文章中，我们介绍了Lucene 7.5.0中PackedInts提供的几种压缩实现，如下所示：
+表1：
 
-设置索引目录Directory
-设置IndexWriter的配置信息IndexWriterConfig
-调用IndexWriter的构造函数
-
- 设置索引...
+ 
+ 
+ 
+ 
+ 
+  数据分布
+  是否有填充bit
+ ...
                         
                     </div>
 
@@ -806,7 +989,7 @@
     <div class="article-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Tue Oct 10 2023 21:49:08 GMT+0800">2023-10-10 21:49:08</span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 13:07:28 GMT+0800">2023-10-08 13:07:28</span>
             </span>
         
 
@@ -827,7 +1010,7 @@
                                 
                                     <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
                                 
-                                <a href="/categories/Lucene/Index/">Index</a>
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
                             </li>
                         
                     
@@ -840,7 +1023,13 @@
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
                         
                     
                 </ul>
@@ -854,178 +1043,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/gongjulei/2019/1008/RoaringDocIdSet/">
-                            RoaringDocIdSet
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              RoaringDocIdSet的设计灵感来源于RoaringBitmap，Lucene根据自身需求有着自己的的实现方法，来实现对文档号的处理（存储，读取）。
- RoaringBitmap
-  位集合（bitsets）通常也被成为位图（bitMap...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 21:13:53 GMT+0800">2023-10-08 21:13:53</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docIdSet/">docIdSet</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RoaringDocIdSet/">RoaringDocIdSet</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/gongjulei/2019/1008/RoaringDocIdSet/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2019/0929/NRT%EF%BC%88%E4%BA%94%EF%BC%89/">
-                            近实时搜索NRT（五）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接近实时搜索NRT（四），继续依次介绍每一个流程点，阅读本文章需要看过文档的增删改、文档提交之flush的系列文章。
- openIfChange方法的流程图
-  其中openIfChange的方法一&amp;&amp;方法二、方法三&amp...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Fri Sep 29 2023 23:09:54 GMT+0800">2023-09-29 23:09:54</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NRT/">NRT</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Search/">Search</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2019/0929/NRT%EF%BC%88%E4%BA%94%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/yasuocunchu/2019/1218/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
     
 </div>
 
@@ -1047,8 +1065,8 @@
                    type="number"
                    value="7"
                    min="1"
-                   max="14"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">14</span>
+                   max="15"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">15</span>
         </div>
 
 
@@ -1110,7 +1128,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">231.9k</span>
+                    <span class="item-value border-box word">255.3k</span>
                 </span>
             
 
