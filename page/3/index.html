@@ -191,6 +191,94 @@
                 <div class="home-article-item-bottom border-box">
                     
                     <h3 class="home-article-title border-box">
+                        <a href="/Lucene/Index/2021/0603/ForceMerge%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                            ForceMerge（二）（Lucene 8.8.0）
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content keep-markdown-body">
+                        
+                              我们紧接文章ForceMerge（一），继续介绍剩余的内容，先给出强制合并的流程图：
+图1：
+
+ 是否存在可以合并的段？
+图2：
+
+  当前流程点的内容对应为源码中IndexWriter类的updatePendingMerges(…)方法，如下所...
+                        
+                    </div>
+
+                    
+
+<div class="article-meta-info-container border-box home">
+    <div class="article-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:54:00 GMT+0800">2023-10-11 15:54:00</span>
+            </span>
+        
+
+
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/forceMerge/">forceMerge</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/Lucene/Index/2021/0603/ForceMerge%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <div class="home-article-item-bottom border-box">
+                    
+                    <h3 class="home-article-title border-box">
                         <a href="/Lucene/Index/2021/0527/ForceMerge%EF%BC%88%E4%B8%80%EF%BC%89/">
                             ForceMerge（一）（Lucene 8.8.0）
                         </a>
@@ -948,95 +1036,6 @@
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <div class="home-article-item-bottom border-box">
-                    
-                    <h3 class="home-article-title border-box">
-                        <a href="/Lucene/Index/2020/1203/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
-                            索引文件的合并（三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0）
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content keep-markdown-body">
-                        
-                              本文承接文章索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm，继续介绍剩余的内容，下面先给出索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图。
- 索引文件fdx&amp;&amp;fd...
-                        
-                    </div>
-
-                    
-
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:23:52 GMT+0800">2023-10-11 15:23:52</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/Lucene/Index/2020/1203/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -1115,7 +1114,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">302.9k</span>
+                    <span class="item-value border-box word">304.8k</span>
                 </span>
             
 
