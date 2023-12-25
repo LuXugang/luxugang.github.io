@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -307,21 +307,11 @@
 <p>  本文介绍的是索引文件.pos、.pay的数据结构，其生成过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（二）<i class="fas fa-external-link-alt"></i></a>。</p>
 <h2 id="pay文件的数据结构"><a class="markdownIt-Anchor" href="#pay文件的数据结构"></a> pay文件的数据结构</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/1.png">
 <p>  图1中是仅有一个域的.pay文件的数据结构。</p>
 <h3 id="termpayload"><a class="markdownIt-Anchor" href="#termpayload"></a> TermPayload</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/2.png">
 <h4 id="packedpayblock"><a class="markdownIt-Anchor" href="#packedpayblock"></a> PackedPayBlock</h4>
 <p>  每次处理一个term的128个position信息，就会将对应的128个payload信息（不一定每个position都对应一个payload）处理为一个PackedPayBlock。即除了最后一个PackedPayBlock，其他PackedPayBlock中都包含了当前term的128个payload信息。</p>
 <h4 id="packedpaylengthblock"><a class="markdownIt-Anchor" href="#packedpaylengthblock"></a> PackedPayLengthBlock</h4>
@@ -333,12 +323,7 @@
 <p>  PayData中存放了128个payload的真实数据。</p>
 <h3 id="termoffset"><a class="markdownIt-Anchor" href="#termoffset"></a> TermOffset</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/3.png">
 <h4 id="packedoffsetblock"><a class="markdownIt-Anchor" href="#packedoffsetblock"></a> PackedOffsetBlock</h4>
 <p>  跟TermPayload一样的是，都是每次处理一个term的128个position信息后，就会将对应的128个offset信息处理为一个block。</p>
 <h4 id="packedoffsetstartdeltablock"><a class="markdownIt-Anchor" href="#packedoffsetstartdeltablock"></a> PackedOffsetStartDeltaBlock</h4>
@@ -347,21 +332,11 @@
 <p>  PackedOffsetLengthBlock存放了128个offset的startOffset跟endOffset差值，同样使用PackedInts进行压缩存储。</p>
 <h2 id="pos文件的数据结构"><a class="markdownIt-Anchor" href="#pos文件的数据结构"></a> pos文件的数据结构</h2>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/4.png">
 <p>  在.pos文件中，TermPosition记录一个term的position信息。</p>
 <h3 id="termposition"><a class="markdownIt-Anchor" href="#termposition"></a> TermPosition</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/5.png">
 <h3 id="packedposblock"><a class="markdownIt-Anchor" href="#packedposblock"></a> PackedPosBlock</h3>
 <p>  每次处理一个term的128个position信息，就会将这些position处理为一个PackedPosBlock。</p>
 <h4 id="packedposdeltablock"><a class="markdownIt-Anchor" href="#packedposdeltablock"></a> PackedPosDeltaBlock</h4>
@@ -380,20 +355,10 @@
 <p>  当前position对应的offset的endOffset与startOffset的差值。</p>
 <h2 id="多个域的pay文件的数据结构"><a class="markdownIt-Anchor" href="#多个域的pay文件的数据结构"></a> 多个域的pay文件的数据结构</h2>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/6.png">
 <h2 id="多个域的pos文件的数据结构"><a class="markdownIt-Anchor" href="#多个域的pos文件的数据结构"></a> 多个域的pos文件的数据结构</h2>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/pos&&pay/7.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  .pos、.pay、.doc、.tim、.tip文件都是在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush()<i class="fas fa-external-link-alt"></i></a>阶段通过读取倒排表一起生成的，另外.doc跟.pos、.pay文件还有映射关系，在后面介绍.doc文件时候会涉及。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/pos&amp;&amp;pay.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
@@ -653,7 +618,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -828,10 +793,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

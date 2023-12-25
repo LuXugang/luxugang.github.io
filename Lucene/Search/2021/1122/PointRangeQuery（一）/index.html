@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -306,35 +306,20 @@
                     <p>  该系列文章开始介绍数值类型的范围查询PointRangeQuery，该类数据在Lucene中被称为点数据Point Value。</p>
 <p>  点数据按照基本类型（primitive type）可以划分IntPoint、LongPoint、FloatPoint、DoublePoint。点数据可以是多维度的，即一个点数据可以用多个维度值来描述。下图中我们分别定义了一维、二维、三维的点数据。可以理解为oneDim是直线上的一个点，twoDim是平面上的一个点，而threeDim是一个三维空间中的一个点。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/1.png">
 <h2 id="相关文章"><a class="markdownIt-Anchor" href="#相关文章"></a> 相关文章</h2>
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >索引文件之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&amp;kdi&amp;kdm" >索引文件之kdd&amp;kdi&amp;kdm<i class="fas fa-external-link-alt"></i></a>中介绍了存储点数据对应的索引文件；在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（八）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十四）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>以及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0427/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的读取（一）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0506/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的读取（四）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中分别介绍了索引文件的生成、读取过程。另外在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0422/Bkd-Tree" >Bkd-Tree<i class="fas fa-external-link-alt"></i></a>中介绍存储点数据使用的数据结构以及通过一个例子概述了生成一颗BKD树的过程。</p>
 <h2 id="relation"><a class="markdownIt-Anchor" href="#relation"></a> Relation</h2>
 <h3 id="minpackedvalue-maxpackedvalue"><a class="markdownIt-Anchor" href="#minpackedvalue-maxpackedvalue"></a> MinPackedValue、MaxPackedValue</h3>
 <p>  在一个段Segment中，所有的点数据按照<strong>点数据域</strong>（Point Field，即图1中的oneDim、twoDim、threeDim）进行划分，对于某个点数据域，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&amp;kdi&amp;kdm" >索引文件.kdm<i class="fas fa-external-link-alt"></i></a>中会存储下面两个字段MinPackedValue、MaxPackedValue：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/2.png">
 <p>  MinPackedValue描述的是这个点数据域中<strong>每个维度</strong>的最小值，同理MaxPackedValue描述的是这个点数据域中每个维度的最大值。例如有某个点数据域中包含如下的二维点数据：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">6</span>, <span class="number">2</span>&#125;, &#123;<span class="number">7</span>, <span class="number">6</span>&#125;, &#123;<span class="number">8</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">4</span>&#125;, &#123;<span class="number">3</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>  可以看出在这个点数据集合中，第一个维度的最小值是2，第二个维度最小值是2，故MinPackedValue的值为{2, 2}，同理，第一个维度的最大值是8，第二个维度的最大值是6，故MaxPackedValue的值为{8, 6}。</p>
 <p>  如果我们把这个点数据集放到一个平面上，如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/3.png">
 <p>  由图3可知，MinPackedValue、MaxPackedValue<strong>不一定</strong>是索引中的数据。同时可以看出，Lucene使用这两个值生成一个矩形，索引中所有的点数据都在这个矩形内。</p>
 <h3 id="lowervalue-uppervalue"><a class="markdownIt-Anchor" href="#lowervalue-uppervalue"></a> lowerValue、upperValue</h3>
 <p>  我们在定义一个PointRangeQuery时，需要指定两个参数lowerValue、upperValue，分别表示我们这次范围查询的上界跟下界。</p>
@@ -342,55 +327,25 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lowerValue = &#123;<span class="number">1</span>, <span class="number">1</span>&#125;</span><br><span class="line">upperValue = &#123;<span class="number">7</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>  同MinPackedValue、MaxPackedValue一样，lowerValue、upperValue这两个点也可以形成一个矩形：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/4.png">
 <p>  所以从图4可以看出，对于二维的点数据，PointRangeQuery的查询核心原理即：找出两个矩形相交（重叠）部分的所有点数据。</p>
 <p>  这两个矩形的相交关系在源码中使用Relation定义，它描述了三种相交关系：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/5.png">
 <h3 id="cell_outside_query"><a class="markdownIt-Anchor" href="#cell_outside_query"></a> CELL_OUTSIDE_QUERY</h3>
 <p>  CELL_OUTSIDE_QUERY描述的是查询条件跟索引中点数据的数值范围没有交集，即没有重叠（overlap），如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/6.png">
 <h3 id="cell_crosses_query"><a class="markdownIt-Anchor" href="#cell_crosses_query"></a> CELL_CROSSES_QUERY</h3>
 <p>  CELL_CROSSES_QUERY描述的是查询条件跟索引中点数据的数值范围部分重叠（partially overlaps）。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/7.png">
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/8.png">
 <h3 id="cell_inside_query"><a class="markdownIt-Anchor" href="#cell_inside_query"></a> CELL_INSIDE_QUERY</h3>
 <p>  CELL_INSIDE_QUERY描述的是查询条件的数值范围包含索引中所有的点数据。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/9.png">
 <h3 id="基于relation访问节点"><a class="markdownIt-Anchor" href="#基于relation访问节点"></a> 基于Relation访问节点</h3>
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0410/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十一）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们说到，在生成BKD树的过程中，每次生成一个内部节点（inner node），都需要计算这个节点对应的MinPackedValue、MaxPackedValue，他们描述了这个内部节点对应的所有叶子节点（leave node）中的点数据都在MinPackedValue、MaxPackedValue对应的矩形内。</p>
 <p>  那么当我们从根节点开始深度遍历后，查询条件跟每一个内部节点的MinPackedValue、MaxPackedValue在计算Relation后，会采取不同的方式访问其子节点。</p>
@@ -410,20 +365,10 @@
 <h4 id="条件一"><a class="markdownIt-Anchor" href="#条件一"></a> 条件一</h4>
 <p>  如果<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&amp;kdi&amp;kdm" >索引文件.kdm<i class="fas fa-external-link-alt"></i></a>中的DocCount字段的值跟<strong>段中的文档数量segSize</strong>相同，那么满足条件一：段中每一篇文档都包含某个域的点数据。</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/10.png">
 <p>  在生成索引文件.kdm期间，会使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>来收集文档号，FixedBitSet使用类似bitmap原理存储文档号，所以它不会重复存储相同的文档号。DocCount字段描述的是包含某个点数据域的文档数量，所以即使一篇文档中定义了多个相同域名的点数据域，对于DocCount只会执行+1操作。</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/PointRangeQuery/PointRangeQuery（一）/11.png">
 <p>  另外，段中的文档号数量segSize通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0428/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件.si<i class="fas fa-external-link-alt"></i></a>获得，在代码中可以通过reader.maxDoc()方法获得。</p>
 <h4 id="条件二"><a class="markdownIt-Anchor" href="#条件二"></a> 条件二</h4>
 <p>  通过比较图10中的MinPackedValue、MaxPackedValue与查询条件的上下界进行比较，如果他们的Relation为CELL_INSIDE_QUERY，那么满足条件二：索引中某个域的点数据都满足查询条件。</p>
@@ -718,7 +663,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -893,10 +838,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

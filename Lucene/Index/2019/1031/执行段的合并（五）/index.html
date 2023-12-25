@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -296,12 +296,7 @@
 
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1030/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E5%9B%9B%EF%BC%89" >执行段的合并（四）<i class="fas fa-external-link-alt"></i></a>，继续介绍执行段的合并的剩余的流程，下面先给出执行段的合并的流程图：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%94%EF%BC%89/merge.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="提交合并"><a class="markdownIt-Anchor" href="#提交合并"></a> 提交合并</h2>
 <h3 id="mergestate"><a class="markdownIt-Anchor" href="#mergestate"></a> MergeState</h3>
@@ -324,19 +319,9 @@
 <p>  执行任务一的目的其实是为了任务二准备的，因为只有每一个待合并的段是段内有序的，才能实现将这些段合并为一个段内有序的新段。</p>
 <p>  我们先通过一个例子来介绍段内排序对搜索结果的影响：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/2.png">
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/3.png">
 <p>  图2中描述了IndexWriter的段内排序规则，定义了两个排序规则：</p>
 <ul>
 <li>sortField1：根据域名为&quot;age&quot;的域值进行从小到大排序</li>
@@ -344,19 +329,9 @@
 </ul>
 <p>  图2中的第45行代码，定义SortField[]数组时，sortField1相比sortField2有更小的数组下标，故总的排序规则为先按照sortField1进行排序，如果无法通过sortField1比较出两篇文档的先后关系，那么再使用sortField2来区分，如果两个排序规则都无法区分文档的先后关系，那么根据文档被添加的先后顺序来判断，即图3中 文档0、文档1的编号。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/4.png">
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/5.png">
 <p>  图3中的文档都被添加到索引之后会生成一个段，我们通过图4的代码来打印该段的文档信息，即图5的内容，可以看出当使用了IndexSort后，段内的文档按照图2中的排序规则正确的排序了，通过图5我们可以知道下面的内容：</p>
 <ul>
 <li>docId为0的文档，它对应图3中的文档4，由于这篇文档没有&quot;age&quot;、“lable&quot;的DocValues域，故它被认为是&quot;最小的”，即排在最前面</li>
@@ -366,12 +341,7 @@
 </ul>
 <p>  如果我们不设置IndexSort，图4的打印结果如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/6.png">
 <p>  从图6中可以看出，如果不设置IndexSort，那么段内的文档顺序就是文档被添加的顺序。</p>
 <p>  另外在设置了IndexSort后，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector<i class="fas fa-external-link-alt"></i></a>的collect(int doc)方法依次收到的文档号也是排序的，故如果业务中对查询性能有较高要求，并且返回的结果有固定的排序规则的要求，那么我们可以将这个排序规则通过IndexSort来实现，将排序的开销扔到索引阶段。</p>
 <p>  上文的例子demo可以点这里查看：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/docValues/SegmentInnerSort.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/docValues/SegmentInnerSort.java<i class="fas fa-external-link-alt"></i></a> 。</p>
@@ -383,64 +353,29 @@
 <h5 id="段内排序流程图"><a class="markdownIt-Anchor" href="#段内排序流程图"></a> 段内排序流程图</h5>
 <p>  为了便于描述，图7中的流程图是按照从小到大的顺序进行排序。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/7.png">
 <h6 id="段内文档"><a class="markdownIt-Anchor" href="#段内文档"></a> 段内文档</h6>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/8.png">
 <p>  待排序的对象是段内所有的文档。</p>
 <h6 id="判断段内文档是否已经有序"><a class="markdownIt-Anchor" href="#判断段内文档是否已经有序"></a> 判断段内文档是否已经有序</h6>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/9.png">
 <p>  从段内的第二篇文档（因为要跟上一篇文档进行比较）开始，根据IndexWriter提供的段内排序规则比较当前文档是否小于上一篇文档，如果所有的文档都满足这个关系，说明段内已经有序，那么直接退出即可，否则只要有某任意两篇文档不满足上述关系，说明段内不是按照IndexWriter提供的段内排序规则有序的，故需要进行排序。</p>
 <h6 id="生成映射newtoold"><a class="markdownIt-Anchor" href="#生成映射newtoold"></a> 生成映射newToOld</h6>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/10.png">
 <p>  如果待排序的文档没有按照IndexWriter提供的段内排序规则有序，那么需要进行排序，并且这里使用TimSort进行排序，本篇文章中不会对介绍TimSort的逻辑，我们只关心排序结束后，会生成一个映射newToOld，当然在源码中它是一个经过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >压缩处理<i class="fas fa-external-link-alt"></i></a>的对象，为了便于介绍，我们可以简单的理解为newToOld是一个数组，对于图3中的例子，它对应的newToOld数组如下所示：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/11.png">
 <p>  new指的是数组下标值，old指的是数组元素，newToOld数组实现了new到old的映射，所以段内排序并没有真正的去&quot;移动&quot;文档。如果图3中的文档都满足搜索条件，那么<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector<i class="fas fa-external-link-alt"></i></a>的collect(int doc)方法依次收到的文档号即图11中的docId。</p>
 <p>  另外，如果阅读过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的系列文章，图11中的数组元素，即文档编号，它是根据文档被添加到DWPT（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>）中的顺序赋值的，即文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中的numDocsInRAM。</p>
 <h6 id="生成映射oldtonew"><a class="markdownIt-Anchor" href="#生成映射oldtonew"></a> 生成映射oldToNew</h6>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/12.png">
 <p>  根据映射newToOld生成一个相反的映射，如下所示：</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（五）/13.png">
 <h4 id="任务二对合并后的新段进行段内排序"><a class="markdownIt-Anchor" href="#任务二对合并后的新段进行段内排序"></a> 任务二：对合并后的新段进行段内排序</h4>
 <p>  该任务的逻辑相对复杂，基于篇幅，在下一篇文档中展开介绍。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
@@ -694,7 +629,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -869,10 +804,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

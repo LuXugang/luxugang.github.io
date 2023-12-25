@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,12 +299,7 @@
 
                     <p>  本篇文章将介绍Lucene中用于存储文档号的数据结构DocIdSet，该抽象类的具体实现有以下几种，我们将一一介绍。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/1.png">
 <p>  图1中，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >DocsWithFieldSet<i class="fas fa-external-link-alt"></i></a>跟<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>已经介绍过了。建议先看下文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>，因为该实现中会使用到图1中的其他DocIdSet对象，有助于理解。</p>
 <p>  无论在索引阶段还是搜索阶段，都会用到DocIdSet来存储文档号。例如在索引阶段，使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >DocsWithFieldSet<i class="fas fa-external-link-alt"></i></a>收集正排信息对应的文档号、使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>存储查询缓存；在查询阶段，使用IntArrayDocIdSet或者BitDocIdSet来存储满足数值范围查询（PointRangeQuery）条件的文档号等等。</p>
 <p>  DocIdSet不仅定义了存储文档号集合使用的数据结构，还定义了如何读取文档号集合的功能，即迭代器。</p>
@@ -312,61 +307,31 @@
 <p>  这里说的迭代器即源码中的DocIdSetIterator类，该类定义了四个抽象方法描述了迭代器所能提供的功能。</p>
 <h3 id="第一个方法获取下一个文档号"><a class="markdownIt-Anchor" href="#第一个方法获取下一个文档号"></a> 第一个方法：获取下一个文档号</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/2.png">
 <p>  当我们使用迭代器遍历文档号集合时，调用该方法会返回一个<strong>合法</strong>的文档号，如果返回的文档号的值为Integer.MAX_VALUE，说明迭代器中合法的文档号已经读取结束。</p>
 <p><strong>上文中的&quot;合法&quot;是什么意思</strong></p>
 <p>  &quot;<strong>下一个</strong>&quot;的含义在不同的子类有不同的定义方式，如果某个子类根据自身规则能返回一个文档号，说明这个文档号是合法的。</p>
 <h3 id="第二个方法获取某个文档号的下一个文档号"><a class="markdownIt-Anchor" href="#第二个方法获取某个文档号的下一个文档号"></a> 第二个方法：获取某个文档号的下一个文档号</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/3.png">
 <p>  文档号集合中的文档号是有前后关系的，该方法通过指定一个参数target，该参数指定了一个文档号，返回这个文档号的下一个文档号。同样的，文档号之间的前后关系也是因不同的子类实现而异。</p>
 <h3 id="第三个方法获取当前的文档号"><a class="markdownIt-Anchor" href="#第三个方法获取当前的文档号"></a> 第三个方法：获取当前的文档号</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/4.png">
 <p>  在调用了第一个跟第二个方法后会获得一个文档号，那么通过调用第三个方法可以获得这个文档号。</p>
 <h3 id="第四个方法获取迭代器的开销"><a class="markdownIt-Anchor" href="#第四个方法获取迭代器的开销"></a> 第四个方法：获取迭代器的开销</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/5.png">
 <p>  正如这个方法注释描述那样，一般情况下（即一般的子类实现）迭代器的开销描述的是迭代器中的文档号集合中的文档数量，但还是取决于不同的子类如何定义开销的计算方式。</p>
 <h2 id="docidset的子类实现"><a class="markdownIt-Anchor" href="#docidset的子类实现"></a> DocIdSet的子类实现</h2>
 <p>  接着我们开始介绍图1中的各个子类，介绍每一个子类使用哪种数据结构存储文档号集合以及如何实现迭代器的功能。</p>
 <h3 id="intarraydocidset"><a class="markdownIt-Anchor" href="#intarraydocidset"></a> IntArrayDocIdSet</h3>
 <p>  从这个子类的命名方式就可以大致了解存储文档号集合的数据结构的类型了，即Int类型数组：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/6.png">
 <p>  由于目前IntArrayDocIdSet只有在<strong>DocIdSetBuilder</strong>（根据文档号集合的疏密程度，构建不同DocIdSet对象的类，在写完这篇文章后会介绍它）中使用，所以IntArrayDocIdSet的设计不具有通用性，这也是为什么构造函数没有用public修饰（图6代码第33行）。我们以一个例子来介绍在源码中该类是如何被使用的。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/7.png">
 <p>  在DocIdSetBuilder中收集了一个文档号集合后，首先根据文档号从小到大排序，最终该集合有两种类型：有序单值、有序多值。</p>
 <ul>
 <li>有序单值：docs数组中不存在重复的文档号。</li>
@@ -384,12 +349,7 @@
 <h3 id="bitdocidset"><a class="markdownIt-Anchor" href="#bitdocidset"></a> BitDocIdSet</h3>
 <p>  该子类实现使用BitSet对象存储文档号，FixedBitSet是BitSet的一种实现方式。可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/45.html" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>了解其存储文档号的方式。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/8.png">
 <h4 id="bitdocidset的迭代器实现"><a class="markdownIt-Anchor" href="#bitdocidset的迭代器实现"></a> BitDocIdSet的迭代器实现</h4>
 <p>  简单的介绍下BitDocIdSet的迭代器实现：</p>
 <ul>
@@ -401,12 +361,7 @@
 <h3 id="shortarraydocidset"><a class="markdownIt-Anchor" href="#shortarraydocidset"></a> ShortArrayDocIdSet</h3>
 <p>  同IntArrayDocIdSet一样，从这个子类的命名方式就可以大致了解存储文档号集合的数据结构的类型了，即short类型数组：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/9.png">
 <h4 id="shortarraydocidset的迭代器实现"><a class="markdownIt-Anchor" href="#shortarraydocidset的迭代器实现"></a> ShortArrayDocIdSet的迭代器实现</h4>
 <p>  简单的介绍下ShortArrayDocIdSet的迭代器实现：</p>
 <ul>
@@ -422,12 +377,7 @@
 <p>  NotDocIdSet中存储的文档号集合实际是一个&quot;<strong>反文档号集合</strong>&quot;。如果图10中的参数maxDoc的值为10000，并且<strong>合法的文档号集合</strong>为[0~9997]，那么图10中的参数DocIdSet中实际存放的只有9998、9999两个文档号。</p>
 <p>  该子类目前只在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>中使用，<strong>当block中的文档号集合稠密时，会使用ShortArrayDocIdSet存储&quot;反文档号集合&quot;，然后用NotDocIdSet封装</strong>。由于每个block的空间为2<sup>16此方法，故maxDoc的值为2</sup>16。</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/10.png">
 <h4 id="notdocidset的迭代器实现"><a class="markdownIt-Anchor" href="#notdocidset的迭代器实现"></a> NotDocIdSet的迭代器实现</h4>
 <p>  简单的介绍下NotDocIdSet的迭代器实现：</p>
 <ul>
@@ -439,12 +389,7 @@
 <h3 id="roaringdocidset"><a class="markdownIt-Anchor" href="#roaringdocidset"></a> RoaringDocIdSet</h3>
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>已经详细的介绍了RoaringDocIdSet。在本文内容的基础上，我们可以进一步更详细的介绍下RoaringDocIdSet存储文档号集合的方式。</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/DocIdSet/11.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/1008/RoaringDocIdSet" >RoaringDocIdSet<i class="fas fa-external-link-alt"></i></a>中我们说到，存储方式按照block划分，int类型的文档号的前16bit用于判断属于哪个block，即前16bit用作图11中DocIdSet[ ]数组的下标值，然后根据block中文档号集合的稀疏/稠密类型会进一步使用不同的DocIdSet子类存储文档号的低16bit。</p>
 <h4 id="roaringdocidset的迭代器实现"><a class="markdownIt-Anchor" href="#roaringdocidset的迭代器实现"></a> RoaringDocIdSet的迭代器实现</h4>
 <p>  取决于每个block中的DocIdSet的子类类型。另外第四个方法，即迭代器的开销为文档号数量。</p>
@@ -703,7 +648,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -878,10 +823,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

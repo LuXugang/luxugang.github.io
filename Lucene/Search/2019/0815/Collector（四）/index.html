@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,12 +297,7 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>，继续介绍其他的收集器。</p>
 <p>  图1是Lucene常用的几个Collector：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/1.png">
 <h1 id="topdocscollector"><a class="markdownIt-Anchor" href="#topdocscollector"></a> TopDocsCollector</h1>
 <h2 id="topfieldcollector"><a class="markdownIt-Anchor" href="#topfieldcollector"></a> TopFieldCollector</h2>
 <p>  根据过滤（filtering）规则，TopFieldCollector派生出的两个子类：</p>
@@ -313,12 +308,7 @@
 <h3 id="simplefieldcollector"><a class="markdownIt-Anchor" href="#simplefieldcollector"></a> SimpleFieldCollector</h3>
 <p>  SimpleFieldCollector的collect(int doc)方法的流程图：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector%EF%BC%88%E5%9B%9B%EF%BC%89/simplefieldcollector.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  在介绍每个流程之前，先介绍下TopFieldCollector中的几个变量：</p>
 <ul>
@@ -329,40 +319,20 @@
 <p>  如果业务中不需要用到文档的打分值或者maxScore，强烈建议另这两个参数为false，因为找出maxScore或者文档的打分值需要遍历所有满足查询条件的文档，无法提前结束Collector工作（canEarlyTerminate），在满足查询提交的文档数量较大的情况下，提前结束Collector的收集工作能显著提高查询性能。canEarlyTerminate会在下文中介绍</p>
 <h4 id="记录文档打分值最高的文档"><a class="markdownIt-Anchor" href="#记录文档打分值最高的文档"></a> 记录文档打分值最高的文档</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/3.png">
 <p>  如果参数trackMaxScore为true，那么Collector每处理一篇文档，就要记录该文档的打分值score，如果score大于当前maxScore的值，则更新maxScore的值。</p>
 <h4 id="添加文档信息"><a class="markdownIt-Anchor" href="#添加文档信息"></a> 添加文档信息</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/4.png">
 <p>  使用优先级队列PriorityQueue来存放满足搜索条件的文档信息（<strong>文档信息至少包含了文档打分score以及文档号docId</strong>），分数最低的文档信息位于堆顶，堆的大小默认为段中的文档总数（用户也可以指定堆的大小，即用户期望的返回结果TopN的N值）。</p>
 <p>  如果堆没有满，那么将文档号交给FieldComparator，FieldComparator的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0415/FieldComparator&amp;&amp;LeafFieldComparator" >FieldComparator<i class="fas fa-external-link-alt"></i></a>的文章中介绍了，不赘述，它用来描述文档间的排序关系（<strong>从代码层面讲，通过FieldComparator实现了优先级队列<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java" >PriorityQueue的lessThan()<i class="fas fa-external-link-alt"></i></a>方法</strong>），接着添加文档信息到堆中。</p>
 <h4 id="设置bottom值"><a class="markdownIt-Anchor" href="#设置bottom值"></a> 设置bottom值</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/5.png">
 <p>  在<code>添加文档信息到堆中</code>流程后，如果此时堆正好满了，那么我们需要设置bottom的值，即从我们已经处理的文档中找出最差的（the weakest，sorted last），使得当处理下一篇文档时，只需要跟这个最差的文档进行比较即可。</p>
 <h4 id="仅统计满足查询条件的文档个数"><a class="markdownIt-Anchor" href="#仅统计满足查询条件的文档个数"></a> 仅统计满足查询条件的文档个数</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/6.png">
 <p>  在堆满的情况的下，并且collectedAllCompetitiveHits为true，直接可以退出，尽管直接退出了，还是统计了totalHits的值，所以从collectedAllCompetitiveHits的命名方式也可以看出来只是统计了totalHits。</p>
 <p>  <strong>满足下面条件的情况下，collectedAllCompetitiveHits会为true</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canEarlyStopComparing == <span class="literal">true</span> &amp;&amp; canEarlyTerminate == <span class="literal">false</span></span><br></pre></td></tr></table></figure>
@@ -375,40 +345,20 @@
 <p>  如果条件不满足，即canEarlyTerminate的值为false，那么尽管我们已经收集了Top5的数据（查询结果不会再变化），但是要继续遍历处理剩余的9995篇文档，因为我们需要记录totalHits（如果trackTotalHits为true）或者需要获得打分值最大的文档（如果trackMaxScore为true），所以此时collectedAllCompetitiveHits为true，继续处理下一篇文档</p>
 <h4 id="更新最差的the-weakestsorted-last文档"><a class="markdownIt-Anchor" href="#更新最差的the-weakestsorted-last文档"></a> 更新最差的（the weakest，sorted last）文档</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/7.png">
 <p>  通过与域比较器（FieldComparator）的bottom值比较，如果比该值更好（competitive），那么先替换bottom，然后重新算出新的bottom，随后还要替换堆顶元素，然后调整堆，算出新的堆顶元素，最后退出继续处理下一篇文档。</p>
 <h4 id="无法提前结束域比较"><a class="markdownIt-Anchor" href="#无法提前结束域比较"></a> 无法提前结束域比较</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/8.png">
 <p>  由于通过域比较后，当前文档比bottom还要差，那么先通过canEarlyStopComparing判断出能不能提前结束比较，如果canEarlyStopComparing为false，则退出并处理下一篇文档。</p>
 <p>  canEarlyStopComparing为false说明段中的文档没有按照搜索期间的排序规则进行排序，所以当前已经收集的TopN未必是最终的搜索结果，所以退出处理下一篇文档。</p>
 <h4 id="设置collectedallcompetitivehits为true"><a class="markdownIt-Anchor" href="#设置collectedallcompetitivehits为true"></a> 设置collectedAllCompetitiveHits为true</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/9.png">
 <p>  可以提前结束域比较，即canEarlyStopComparing为true，并且不可以提前结束Collector的收集工作，即canEarlyTerminate为false，那么同时满足这两个条件就可以设置collectedAllCompetitiveHits为true了。使得处理下一篇文档时就可以走图6中的流程了。</p>
 <h4 id="提前结束collector的收集工作"><a class="markdownIt-Anchor" href="#提前结束collector的收集工作"></a> 提前结束Collector的收集工作</h4>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/10.png">
 <p>  可以提前结束Collector的收集工作，那么我们先估算剩余满足查询条件的文档数量，通过线性估算出实现，估算方法不展开介绍，没有实际意义。</p>
 <p>  接着设置一个earlyTerminated的值为true，用户在得到查询结果后可以通过该值来了解Collector提前结束收集工作这个事件。</p>
 <p>  通过抛出<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/CollectionTerminatedException.java" >CollectionTerminatedException<i class="fas fa-external-link-alt"></i></a>异常的方式来实现，大家可以点击链接看下源码中对这个异常的解释。</p>
@@ -416,12 +366,7 @@
 <p>  PagingFieldCollector同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>中的PagingTopScoreDocCollector一样，相对于SimpleFieldCollector实现了分页功能，分页功能的介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>，不赘述，collect(int doc)的流程图是相似的，并且用红圈标记出不同处。</p>
 <p>  PagingFieldCollector的collect(int doc)方法的流程图：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/11.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector%EF%BC%88%E5%9B%9B%EF%BC%89/pagingfieldcollector.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="是否已经被收集了"><a class="markdownIt-Anchor" href="#是否已经被收集了"></a> 是否已经被收集了</h4>
 <p>  <code>是否已经被收集了</code>描述的是该文档号是否已经在前面的搜索中被收集了，判断的条件如下，如果为true，说明该文档已经被收集了：</p>
@@ -681,7 +626,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -856,10 +801,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -310,142 +310,57 @@
 <p>  未达到阈值的情况下，会根据每个term从<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件.doc<i class="fas fa-external-link-alt"></i></a>中获取包含这个term的文档号集合，并且用一个long类型的数组docBuffer[ ]来存储文档号集合。<strong>注意的是，数组docBuffer[ ]实际上只会存储一个block（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件之doc<i class="fas fa-external-link-alt"></i></a>）中的文档号集合，当这个block中的文档号信息读取结束后，会载入下一个block的文档号信息，并写入到数组docBuffer[ ]中，这里为了便于描述，我们假设数组docBuffer[ ]中存储了所有的文档号</strong>。</p>
 <p>  接着使用一个优先级队列<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/search/DisiPriorityQueue.java" >DisiPriorityQueue<i class="fas fa-external-link-alt"></i></a>来存储每个term对应的<strong>正在被读取</strong>的文档号，该队列的排序规则为比较文档号的大小，在执行了排序后，堆顶元素的文档号是最小的，通过排序，更新term对应<strong>正在被读取</strong>的文档号，直到所有term对应的正在被读取的文档号为Integer.MAX_VALUE，最终文档号按照从小到大的顺序都被取出，我们这里通过一个例子简单介绍下该原理。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/1.png">
 <p>  根据图1中74行的查询条件<strong>肉眼可知</strong>，域值bcd、ga、gc、gch满足查询条件，这几个term对应的文档号集合，如下所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/2.png">
 <p>  获取过程：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/3.png">
 <p>  在最开始，四个docBuffer[ ]数组的第一个数组元素作为每个term正在被读取的文档号存储到优先级队列中，调整堆后如上所示，此时堆顶元素1为满足查询的文档号，它是域值&quot;gc&quot;对应docBuffer[ ]的第一个元素（<strong>这里由于域值&quot;bcd&quot;对应的文档号数量多，在源码中用cost来描述，当元素相同时，cost越小，排序位置就越靠前，故尽管它对应的docBuff[ ]的第一个元素也是1，但是堆顶元素选择了域值&quot;gc&quot;对应docBuffer[ ]的第一个元素</strong>），随后域值&quot;gc&quot;对应的正在被读取的文档号<strong>更新</strong>为dcoBuff[ ]数组的下一个数组元素，即文档号3，<strong>替换</strong>当前的堆顶元素，如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/4.png">
 <p>  由于栈顶元素被更新了，故需要执行调整堆的操作，调整后的堆如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/5.png">
 <p>  调整堆之后，堆顶元素为文档号1，由于在图3中，我们已经收集了该文档号，故不需要重复收集。接着域值&quot;bcd&quot;对应的正在被读取的文档号<strong>更新</strong>为dcoBuff[ ]数组的下一个数组元素，即文档号3，<strong>替换</strong>当前的堆顶元素1，如图6所示，由于栈顶元素被更新了，故需要执行调整堆的操作，如图7所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/6.png">
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/7.png">
 <p>  调整堆以后，堆顶元素为文档号2，并且该文档号还没有被处理过，故它为满足查询的文档号。</p>
 <p>  至此相信大家已经理解了其原理，下面直接给出下一次执行了调整堆操作以后的状态：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/8.png">
 <p>  图8中，堆顶元素文档号3为满足查询的文档号，接着更新、调整堆的操作，如下所示：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/9.png">
 <p>  按照上文描述的处理逻辑，下一步应该更新域值&quot;gc&quot;对应的正在被读取的文档号，由于它对应的文档号都已经取出，故在源码中通过另下一个正在被读取的文档号为Integer.MAX_VALUE，在排序之后如下所示：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/10.png">
 <p>  接着我们直接给出剩下的更新、堆排序后的状态：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/11.png">
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/12.png">
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/13.png">
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/14.png">
 <p>  在图14中，直到所有term对应的正在被读取的文档号的值为Integer.MAX_VALUE，那么获取满足查询条件的文档号集合的过程就完成了。</p>
 <p>  上文中的逻辑可以简单的用更新堆顶元素、调整堆两个步骤来归纳，源码中的核心实现位于<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/search/DisjunctionDISIApproximation.java" >DisjunctionDISIApproximation<i class="fas fa-external-link-alt"></i></a>类中的nextDoc()方法，如下所示：</p>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/15.png">
 <h3 id="达到阈值"><a class="markdownIt-Anchor" href="#达到阈值"></a> 达到阈值</h3>
 <p>  达到阈值的情况下，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0812/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（十）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>中我们说到，所有term对应的文档号总是优先使用数组存储（数组中可能会有重复的文档号），当达到某个阈值后，会使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>存储，如果最终使用数组存储，那么在收集结束后对数组进行排序、去重操作后就能获取满足查询条件的文档号集合即可，我们详细的介绍下使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>存储时，如何收集以及读取文档号。</p>
 <p>  为了便于描述我们还是以图1的例子为例，每个term对应的文档号集合如下所示：</p>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/16.png">
 <h4 id="构造fixedbitset对象"><a class="markdownIt-Anchor" href="#构造fixedbitset对象"></a> 构造FixedBitSet对象</h4>
 <p>  我们首先了解下FixedBitSet是如何存储文档号的，这块内容在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >工具类之FixedBitSet<i class="fas fa-external-link-alt"></i></a>已经介绍过了，我们这里再简单的说明下：该对象中包含一个long类型的数组bits[ ]，其中每一个数组元素，即一个long类型的值，使用该值的每个bit用来代表一篇文档号，那么一个long类型的值可以用来描述64篇文档号，故bits[ ]数组的第一个数组元素描述的是文档号0<sub>63，第二个数组元素描述的是文档号64</sub>127，以此类推。</p>
 <p>  例如我们有以下的文档号，用bits[ ]数组存储后如下所示：</p>
 <p>图17：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/17.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/17.png">
 <p>  图17中，bit为1描述了存储了对应的文档号，文档号跟bit的映射关系通过下面的公式来描述：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">wordNum</span> <span class="operator">=</span> docId &gt;&gt; <span class="number">6</span>;      <span class="comment">// 步骤一</span></span><br><span class="line"><span class="type">long</span> <span class="variable">bitmask</span> <span class="operator">=</span> <span class="number">1L</span> &lt;&lt; docId;    <span class="comment">// 步骤二</span></span><br><span class="line">bits[wordNum] |= bitmask;      <span class="comment">// 步骤三</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -457,12 +372,7 @@
 <h5 id="fixedbitset存储文档号"><a class="markdownIt-Anchor" href="#fixedbitset存储文档号"></a> FixedBitSet存储文档号</h5>
 <p>  存储文档号的总流程可以用一句话概括：依次处理每一个term，将每一个term对应的文档号写入到FixedBitSet中，对于图16的例子，term的处理顺序为：“bcd” —&gt; “ga” —&gt; “gc” —&gt; “gch”。</p>
 <p>图18：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/18.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/18.png">
 <p>  bits[ ]数组的最大长度为 ((maxDoc - 1) &gt;&gt; 6) + 1。</p>
 <h5 id="fixedbitset读取文档号"><a class="markdownIt-Anchor" href="#fixedbitset读取文档号"></a> FixedBitSet读取文档号</h5>
 <p>  获取某个文档号的值，需要上一个文档号的值target才能获取，target的初始值为0，由于代码比较简单，我们直接给出：</p>
@@ -481,12 +391,7 @@
 </ul>
 <p>  在执行TermRangeQuery时，获取满足查询的文档号的时机点是不同的，取决于满足查询的term数量是否达到阈值，时机点如下图所示，该流程图的介绍见系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89" >查询原理（一）<i class="fas fa-external-link-alt"></i></a>：</p>
 <p>图19：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/19.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十一）/19.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  无</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -742,7 +647,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -917,10 +822,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

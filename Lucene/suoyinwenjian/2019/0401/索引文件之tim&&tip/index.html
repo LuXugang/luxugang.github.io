@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -305,28 +305,13 @@
 <p>  本文直接介绍了索引文件中每个字段的含义，其具体的生成过程见系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）<i class="fas fa-external-link-alt"></i></a>。</p>
 <h2 id="tim文件的数据结构"><a class="markdownIt-Anchor" href="#tim文件的数据结构"></a> tim文件的数据结构</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/1.png">
 <p>  在tim文件中NodeBlock中包含了至少25个entries，每一个entries中包含了一个term（或者有相同前缀的term集合）的相关数据，FieldSummary中记录了域的一些信息。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/2.png">
 <p>  NodeBlock有两种类型，如上图所示，第一种是 OuterNode，第二种是 InnerNode。这两种类型的NodeBlock在数据结构上有细微的差别（详情见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）<i class="fas fa-external-link-alt"></i></a>），我们先介绍OuterNode的数据，然后再介绍他们之间的差别以及为什么NodeBlock为什么需要两种类型。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/3.png">
 <h3 id="outernode"><a class="markdownIt-Anchor" href="#outernode"></a> OuterNode</h3>
 <p>  OuterNode中包含了所有term的一些信息(后面会详细介绍包含哪些信息)，在Lucene7.5.0版本的源码中，按照term的大小顺序处理，并且用3个RAMOutputStream对象，即suffixWriter、statsWriter、bytesWriter来记录每一个term的Suffix信息、TermStats信息、TermMetadata信息。在所有的term处理结束后，将3个RAMOutputStream对象中的内容合并写入到.tim文件中。</p>
 <h4 id="entrycount"><a class="markdownIt-Anchor" href="#entrycount"></a> EntryCount</h4>
@@ -336,12 +321,7 @@
 <p>  不过SuffixLength是一个组合值，该值的最低的一个bit位描述了当前NodeBlock是否包含sub block（OuterNode即sub block，下文会介绍），即当前NodeBlock为OuterNode还是InnerNode。</p>
 <h4 id="suffix"><a class="markdownIt-Anchor" href="#suffix"></a> Suffix</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/4.png">
 <h5 id="length"><a class="markdownIt-Anchor" href="#length"></a> Length</h5>
 <p>  term的后缀长度。</p>
 <h5 id="suffixvalue"><a class="markdownIt-Anchor" href="#suffixvalue"></a> SuffixValue</h5>
@@ -349,24 +329,14 @@
 <p>  <strong>注意的是</strong>：下文中InnerNode中的Suffix字段将会额外多出一个index字段，该字段的介绍见下文。</p>
 <h4 id="termstats"><a class="markdownIt-Anchor" href="#termstats"></a> TermStats</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/5.png">
 <h5 id="docfreq"><a class="markdownIt-Anchor" href="#docfreq"></a> DocFreq</h5>
 <p>  DocFreq描述了包含当前term的文档个数。</p>
 <h5 id="totaltermfreq"><a class="markdownIt-Anchor" href="#totaltermfreq"></a> TotalTermFreq</h5>
 <p>  TotalTermFreq描述了term在文档中出现的总数，实际存储了与DocFreq的差值，目的是尽可能压缩存储，即使用差值存储。</p>
 <h4 id="termmetadata"><a class="markdownIt-Anchor" href="#termmetadata"></a> TermMetadata</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/6.png">
 <h5 id="singletondocid"><a class="markdownIt-Anchor" href="#singletondocid"></a> SingletonDocID</h5>
 <p>  如果只有一篇文档包含当前term，那么SingletonDocID被赋值这篇文档号，如果不止一篇文档包含当前term，那么SingletonDocID不会写入到.tim文件中。</p>
 <h5 id="lastposblockoffset"><a class="markdownIt-Anchor" href="#lastposblockoffset"></a> LastPosBlockOffset</h5>
@@ -382,38 +352,18 @@
 <h3 id="innernode"><a class="markdownIt-Anchor" href="#innernode"></a> InnerNode</h3>
 <p>  介绍InnerNode具体的数据结构之前，我们先给出一个场景，如果我们需要处理的term值为下面的情况：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/7.png">
 <p>  遍历每一个term，将具有相同前缀&quot;ab&quot;的，并且个数超过25个的term先处理为一个OuterNode，接着前缀值&quot;ab&quot;作为一个term与剩余的term处理为一个InnerNode。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/8.png">
 <p>  由于InnerNode中的前缀为&quot;ab&quot;的所有term的Suffix、TermStats、TermMetadata已经存放在.tim文件中，所以在InnerNode只要记录在.tim文件中的偏移位置，即上图中的红色标注的index。所以通过图8与图3就可以看出InnerNode跟OuterNode的数据结构的差异。</p>
 <h3 id="fieldsummary"><a class="markdownIt-Anchor" href="#fieldsummary"></a> FieldSummary</h3>
 <p>  介绍FieldSummary之前，先要声明的是在图1中，只是单个域的.tim文件数据结构，下面是多个域的.tim数据结构。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/9.png">
 <p>  下面是FieldSummary的数据结构。</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/10.png">
 <p>  图10 中的Field的个数与位置图9中的Field一一对应。</p>
 <h5 id="numfields"><a class="markdownIt-Anchor" href="#numfields"></a> NumFields</h5>
 <p>  NumFields描述了.tim文件中的有多少种域。</p>
@@ -441,12 +391,7 @@
 <p>  DirOffset记录了FieldSummary的信息在.tim文件中的起始位置。</p>
 <h2 id="tip文件的数据结构"><a class="markdownIt-Anchor" href="#tip文件的数据结构"></a> tip文件的数据结构</h2>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tim&&tip/11.png">
 <h3 id="fstindex"><a class="markdownIt-Anchor" href="#fstindex"></a> FSTIndex</h3>
 <p>  FSTIndex记录了NodeBlock在.tim文件中一些信息，比如说fp为NodeBlock在.tim文件中的起始位置，hasTerms描述NodeBlock中是否包含pendingTerm对象, isFloor表示是否为floor block，然后将这些信息用FST算法存储，在前面的博客中有介绍FST的存储过程。</p>
 <h3 id="indexstartfp"><a class="markdownIt-Anchor" href="#indexstartfp"></a> IndexStartFP</h3>
@@ -712,7 +657,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -887,10 +832,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

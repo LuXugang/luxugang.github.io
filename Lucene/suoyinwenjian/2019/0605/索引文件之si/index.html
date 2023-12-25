@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -300,21 +300,11 @@
                     <p>  当生成一个新的segment时（执行flush、commit、merge、addIndexes(facet)），会生成一个描述段文件信息（segmentInfo）的.si索引文件。</p>
 <h1 id="si文件的数据结构"><a class="markdownIt-Anchor" href="#si文件的数据结构"></a> si文件的数据结构</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/1.png">
 <h2 id="segversion"><a class="markdownIt-Anchor" href="#segversion"></a> SegVersion</h2>
 <p>  SegVersion描述了该segment的版本信息。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/2.png">
 <h3 id="createdmajor-createdminor-createdbugfix"><a class="markdownIt-Anchor" href="#createdmajor-createdminor-createdbugfix"></a> Created.major、Created.minor、Created.bugfix</h3>
 <p>  Created描述的是segment创建版本。major、minor、bugfix三者组成了一个版本号，比如本文介绍的就是Lucene7.5.0版本，所以major = 7、minor = 5、bugfix = 0。</p>
 <h3 id="标志位"><a class="markdownIt-Anchor" href="#标志位"></a> 标志位</h3>
@@ -327,20 +317,10 @@
 <p>  该字段描述了segment对应的索引文件是否使用组合文件，在索引文件中生成不同的文件</p>
 <p>  不使用组合文件会生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0301/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt" >.fdx、.fdt<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0429/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvx&amp;&amp;tvd" >.tvd、tvx<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >.dim、.dii<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >tim、.tip<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0305/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bnvd&amp;&amp;nvm" >nvd、.nvm<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0218/DocValues/" >.dvm、,dvd<i class="fas fa-external-link-alt"></i></a>：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/3.png">
 <p>  使用组合文件：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/4.png">
 <h2 id="diagnostics"><a class="markdownIt-Anchor" href="#diagnostics"></a> Diagnostics</h2>
 <p>  该字段描述了以下信息：</p>
 <ul>
@@ -357,12 +337,7 @@
 <h2 id="indexsort"><a class="markdownIt-Anchor" href="#indexsort"></a> IndexSort</h2>
 <p>  该字段用来对segment内的文档进行排序（用法见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>中的<strong>预备知识</strong>及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中的<strong>sortMap</strong>），该值在IndexWriterConfig对象中设置排序规则，可以提供多个Sort对象。</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/5.png">
 <h3 id="numsortfields"><a class="markdownIt-Anchor" href="#numsortfields"></a> NumSortFields</h3>
 <p>  该字段描述了排序规则的个数。</p>
 <h3 id="fieldname"><a class="markdownIt-Anchor" href="#fieldname"></a> FieldName</h3>
@@ -407,12 +382,7 @@
 <p>  当缺失值标志位为1，那么需要记录缺失值。这里需要特别说明的是，如果域值是String类型，那么它的缺失值只能是固定的 “SortField.STRING_LAST&quot;或者&quot;SortField.STRING_FIRST”，表示没有排序规则的文档要么在序列最后面，要么在序列最前面，其他域值类型需要提供一个明确的缺失值。</p>
 <h1 id="si文件总数据结构"><a class="markdownIt-Anchor" href="#si文件总数据结构"></a> si文件总数据结构</h1>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/si/6.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/si.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
 
                 </div>
@@ -666,7 +636,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -841,10 +811,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

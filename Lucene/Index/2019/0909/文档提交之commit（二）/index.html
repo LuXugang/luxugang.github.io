@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,21 +297,11 @@
                     <p>  本篇文章承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之commit（一）<i class="fas fa-external-link-alt"></i></a>，继续介绍文档提交之commit的剩余流程点。</p>
 <h1 id="文档提交之commit的整体流程图"><a class="markdownIt-Anchor" href="#文档提交之commit的整体流程图"></a> 文档提交之commit的整体流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89/commit___.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="生成新的segment_n文件"><a class="markdownIt-Anchor" href="#生成新的segment_n文件"></a> 生成新的Segment_N文件</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/2.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之commit（一）<i class="fas fa-external-link-alt"></i></a>中，我们介绍了图1的<code>执行同步磁盘工作</code>的流程点，在这个流程点中，最重要的一个任务是保证所有的索引文件被持久化到磁盘上，另外还需要生成一个pending_segments_N文件，其中N描述了当前索引目录中索引文件的被提交的最新的一个迭代数（generation），这是一个从数值1开始递增的值，例如我们第一次执行两阶段提交之第一阶段后，会生成pending_segments_1，第二次执行两阶段提交之第一阶段后，会生成pending_segments_2，以此类推，由于图1的两个同步机制，使得N在临界区内递增，所以更新并获得N值的实现很简单：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">long</span> <span class="title function_">getNextPendingGeneration</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// generation == -1 说明是第一次执行两阶段提交之第一阶段</span></span><br><span class="line">    <span class="keyword">if</span> (generation == -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> generation+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>  <strong>pending_segments_N文件是什么</strong>：</p>
@@ -329,21 +319,11 @@
 <p>  为了便于理解，我们先介绍操作二：执行索引删除策略（IndexDeletionPolicy） 。</p>
 <p>  IndexDeletionPolicy描述了当新的提交发生后，如何处理旧的提交，下图给出了Lucene7.5.0中核心包core中的IndexDeletionPolicy类的类图：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/3.png">
 <h4 id="nodeletionpolicy"><a class="markdownIt-Anchor" href="#nodeletionpolicy"></a> NoDeletionPolicy</h4>
 <p>  该策略描述了无论有多少次新的提交，旧的提交都不会被删除，下图展示了执行5次IndexWriter.commit()方法后索引目录中部分文件：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/4.png">
 <p>  使用这种索引删除策略的优点在于，配合segments_N文件和commitUserData（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之commit（一）<i class="fas fa-external-link-alt"></i></a>）我们可以将索引信息恢复到任意一个提交状态；缺点在于索引目录需要保留大量的索引文件，特别是多线程下执行flush()操作较多的场景下，如果你看过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的系列文章，索引文件的数量与DPWT对象的个数成正比。</p>
 <h4 id="keeponlylastcommitdeletionpolicy"><a class="markdownIt-Anchor" href="#keeponlylastcommitdeletionpolicy"></a> KeepOnlyLastCommitDeletionPolicy</h4>
 <p>  该策略是Lucene7.5.0中默认的策略，它描述了当有新的提交，则<strong>删除</strong>上一个提交，即索引目录中最多只存在一个segment_N文件。</p>
@@ -352,48 +332,23 @@
 <h4 id="persistentsnapshotdeletionpolicy"><a class="markdownIt-Anchor" href="#persistentsnapshotdeletionpolicy"></a> PersistentSnapshotDeletionPolicy</h4>
 <p>  该策略跟SnapshotDeletionPolicy一样提供快照功能，区别在于SnapshotDeletionPolicy的快照信息保留在内存中，而该策略则持久化（persist）到磁盘，并且生成snapshot_N文件，该文件中描述了快照信息，不展开介绍：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/5.png">
 <p>  另外SnapshotDeletionPolicy跟PersistentSnapshotDeletionPolicy都可以设置多个快照，只需要在每次提交后，执行<a href="%5BSnapshotDeletionPolicy.java%5D(https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SnapshotDeletionPolicy.java)">SnapshotDeletionPolicy.snapshot()</a>方法即可。</p>
 <p>  使用了封装KeepOnlyLastCommitDeletionPolicy的SnapshotDeletionPolicy或者PersistentSnapshotDeletionPolicy策略，控制了KeepOnlyLastCommitDeletionPolicy处理上一个提交的方式，上文中我们说到，每当一个新的提交产生，根据KeepOnlyLastCommitDeletionPolicy，旧的提交就会删除，即引目录中最多只存在一个segment_N文件文件，通过封装后，在每次执行IndexWriter.commit()后，主动调用了<a href="%5BSnapshotDeletionPolicy.java%5D(https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SnapshotDeletionPolicy.java)">SnapshotDeletionPolicy.snapshot()</a>的方法后，能使得上一个提交不再被删除，<strong>即保留旧的segment_N文件，这既是快照的实现本质</strong>。</p>
 <h5 id="例子1"><a class="markdownIt-Anchor" href="#例子1"></a> 例子1</h5>
 <p>  图6中，我们只使用KeepOnlyLastCommitDeletionPolicy策略，并且执行三次commit()操作：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/6.png">
 <p>  图7为图6中执行了三次commit()操作后索引目录中segment_N文件，由于使用了KeepOnlyLastCommitDeletionPolicy策略，故segment_1、segment_2文件分别被删除，只留下segments_3：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/7.png">
 <h6 id="例子2"><a class="markdownIt-Anchor" href="#例子2"></a> 例子2</h6>
 <p>  图6中，我们使用了封装KeepOnlyLastCommitDeletionPolicy的PersistentSnapshotDeletionPolicy策略，并且执行三次commit()操作，并且当count == 2时不生成快照，也就是不对segment_2生成快照：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/8.png">
 <p>  图9为图8中执行了三次commit()操作后索引目录中segment_N文件，由于使用了PersistentSnapshotDeletionPolicy策略，故只有segment_2被删除，留下segments_1跟segments_3：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/9.png">
 <p>  通过上面的例子我们可以看出以下的内容：</p>
 <ul>
 <li>可以选择性的执行快照功能：图8中我们没有对segments_2执行快照功能</li>
@@ -412,23 +367,13 @@
 <p>  基于索引删除策略，当旧的提交被删除后，通过减少其对应的索引文件的计数引用来正确删除索引目录中的部分索引文件。</p>
 <h2 id="设置rollbacksegments"><a class="markdownIt-Anchor" href="#设置rollbacksegments"></a> 设置rollbackSegments</h2>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/10.png">
 <p>  这里对本次提交对应的索引信息进行备份，使得可以实现回滚操作，该操作在后面的文章中会介绍，rollbackSegments的定义如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;SegmentCommitInfo&gt; rollbackSegments; </span><br></pre></td></tr></table></figure>
 <p>  该流程将pendingCommit（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之commit（一）<i class="fas fa-external-link-alt"></i></a>）中最重要的信息备份到rollbackSegments中。</p>
 <h2 id="更新索引文件的计数引用"><a class="markdownIt-Anchor" href="#更新索引文件的计数引用"></a> 更新索引文件的计数引用</h2>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之commit（二）/11.png">
 <p>  从图1中的流程中我们知道，本次提交对应的索引文件一共增加了两次计数引用，到此流程点时，我们已经完成了commit的工作，故需要减少本次提交对应的索引文件的计数引用。</p>
 <p>  另外释放对象锁，使得其他线程可以执行commit()的操作，至此二阶段提交之第二阶段的流程都已完成。</p>
 <h2 id="尝试段合并"><a class="markdownIt-Anchor" href="#尝试段合并"></a> 尝试段合并</h2>
@@ -682,7 +627,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -857,10 +802,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

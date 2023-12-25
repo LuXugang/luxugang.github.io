@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -298,20 +298,10 @@
 <p>  图1是文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0519/MergeScheduler" >MergeScheduler<i class="fas fa-external-link-alt"></i></a>中的调度策略ConcurrentMergeScheduler的流程图，其中红色框标注的流程点描述的是一个线程执行段的合并的过程，然而基于篇幅我们并没有展开介绍，故从本篇文章开始，将通过数篇文章来介绍该流程点的逻辑：</p>
 <p>  为了能更好的理解图1中每一个流程点，强烈建议先看下<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>系列文章。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/1.png">
 <h1 id="执行段的合并的流程图"><a class="markdownIt-Anchor" href="#执行段的合并的流程图"></a> 执行段的合并的流程图</h1>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89/thirdpart.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  我们首先概述下图2中三个阶段：</p>
 <ul>
@@ -326,12 +316,7 @@
 <li>List&lt;SegmentCommitInfo&gt; segments：使用一个链表存放所有待合并的段信息SegmentCommitInfo，其中SegmentCommitInfo用来描述一个段的完整信息（除了删除信息），它包含的信息以及对应在索引文件的内容如下图所示：</li>
 </ul>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/3.png">
 <p>  SegmentCommitInfo的信息由图3中黄框标注的两部分组成，其中根据<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >索引文件segments_N<i class="fas fa-external-link-alt"></i></a>中红框标注的SegName（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >索引文件segments_N<i class="fas fa-external-link-alt"></i></a>）找到对应的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件si<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>  图3中两个索引文件中的字段已经在前面的文章中介绍，在这里不赘述。</p>
 <ul>
@@ -360,12 +345,7 @@
 <li>链表segments中存放的是SegmentCommitInfo，上文中说道SegmentCommitInfo即一个段的完整信息（除了删除信息），段的合并策略（<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0516/TieredMergePolicy" >TieredMergePolicy<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >LogMergePolicy<i class="fas fa-external-link-alt"></i></a>）根据IndexWriter对象中的SegmentInfos对象中的链表segments中找出满足合并条件的一个或多个段的集合OneMerge，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>的<code>发布FlushedSegment的流程图</code>中，详细的介绍了一个段的信息SegmentCommitInfo被添加到链表segments的时机点，下图中用红色框标注：</li>
 </ul>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（一）/4.png">
 <p>  <strong>子问题二：为什么段中的删除信息在这个流程点可能还未作用删除信息：</strong></p>
 <ul>
 <li>从图4中可以看到，处理删除信息的方式为将全局删除信息跟私有删除信息作为一个<code>事件</code>添加到eventQueue中，等待线程去执行eventQueue中的事件，即并不是马上作用（apply）删除信息，故当我们从链表segments 中得到待合并的段后，并不意味保证作用删除信息了，为了防止合并后删除信息的丢失，需要先作用删除信息</li>
@@ -624,7 +604,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -799,10 +779,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

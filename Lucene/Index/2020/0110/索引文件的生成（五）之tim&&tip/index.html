@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,30 +297,15 @@
                     <p>  在前面的四篇文章中，我们介绍了生成索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >.tim、.tip<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>中.doc、.pos、.pay这三个索引文件的内容，接着我们继续图1中剩余的内容，即流程点<code>生成索引文件.tim、.tip</code>。</p>
 <h2 id="生成索引文件tim-tip-doc-pos-pay的流程图"><a class="markdownIt-Anchor" href="#生成索引文件tim-tip-doc-pos-pay的流程图"></a> 生成索引文件.tim、.tip、.doc、.pos、.pay的流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/1.png">
 <p>  对于图1的流程图的介绍，可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）之doc&amp;&amp;pay&amp;&amp;pos<i class="fas fa-external-link-alt"></i></a>，我们同样以流程图的方法来介绍生成索引文件.tim、.tip的逻辑。</p>
 <h2 id="生成索引文件tim-tip的流程图"><a class="markdownIt-Anchor" href="#生成索引文件tim-tip的流程图"></a> 生成索引文件.tim、.tip的流程图</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/2.png">
 <p>  图2的流程描述的是一个域生成索引文件.tim、.tip的流程图。</p>
 <h3 id="准备数据"><a class="markdownIt-Anchor" href="#准备数据"></a> 准备数据</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/3.png">
 <p>  将包含当前term的文档号docId，以及在这些文档内的出现频率frequency，位置信息position、payload信息、偏移信息offset写入到索引文件.doc、.pay、.pos之后，会生成IntBlockTermState对象，该对象包含了以下的信息作为处理索引文件.tim、.tip的准备数据：</p>
 <ul>
 <li>singletonDocID：该值如果不为-1，说明只有一篇文档包含当前term，那么singletonDocID的值为对应的文档号，singletonDocID的存在会影响索引文件的数据结构，在<code>生成InnerNode</code>流程点会介绍该值的影响</li>
@@ -332,12 +317,7 @@
 </ul>
 <p>  上述值在索引文件中的位置如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/4.png">
 <p>  索引文件.tim又称为 Term Dictionary，所以在读取阶段，我们是先通过读取索引文件.tim来得到在索引文件.doc、.pos、pay的信息。</p>
 <ul>
 <li>docFreq：包含当前term的文档数量</li>
@@ -345,31 +325,16 @@
 </ul>
 <p>  上述的两个信息是在生成索引文件.doc、.pay、.pos的过程中记录的，其记录的时机点如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/5.png">
 <h3 id="生成nodeblock"><a class="markdownIt-Anchor" href="#生成nodeblock"></a> 生成NodeBlock</h3>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/6.png">
 <p>  每当处理一个新的term之前，我们先要<code>统计term栈中的prefixTopSize</code>。</p>
 <p><strong>term栈跟prefixTopSize是什么</strong></p>
 <p>  term栈即存放term的栈，prefixTopSize是跟栈顶term有相同前缀的term数量，例如待处理的term集合如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">term集合 = &#123;<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;acc&quot;</span>, <span class="string">&quot;acd&quot;</span>, <span class="string">&quot;acea&quot;</span>, <span class="string">&quot;aceb&quot;</span>, <span class="string">&quot;acee&quot;</span>, <span class="string">&quot;acef&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/7.png">
 <p>  从图7可以看出跟栈顶元素有最长相同前缀的term数量为4，前缀值为&quot;ace&quot;，那么此时prefixTopSize的值为4，如果prefixTopSize超过minItemsInBlock，那么就生成一个NodeBlock。</p>
 <p><strong>minItemsInBlock是什么</strong>：</p>
 <p>  minItemsInBlock是一个Lucene中的默认建议值（Suggested default value），默认值为25，它描述了至少有minItemsInBlock个有相同前缀的term才能生成一个NodeBlock。</p>
@@ -380,22 +345,12 @@
 <li>如果新的term为&quot;aceg&quot;，那么将&quot;aceg&quot;添加到term栈以后如下图所示：</li>
 </ul>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/8.png">
 <ul>
 <li>如果新的term为&quot;acfg&quot;，那么将&quot;acfg&quot;添加到term栈以后如下图所示：</li>
 </ul>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/9.png">
 <p><strong>为什么是生成一个或多个NodeBlock</strong>：</p>
 <p>  前面我们说到term栈就是存放term的栈，这种说法只是为了便于介绍上文中的内容，term栈里面实际存放了两种类型的信息，在源码中的对应的变量名如下所示，另外term栈在源码中对应的是pending链表：</p>
 <ul>
@@ -404,20 +359,10 @@
 </ul>
 <p>  我们另<strong>minItemsInBlock的值为3</strong>（强调的是上文中minItemsInBlock的值为5），<strong>我们以图7为例</strong>，如果我们插入一个新的term，例如“ba”，由于此时prefixTopSize的值为4，那么就可以将&quot;acea&quot;, “aceb”, “acee”, &quot;acef&quot;这四个term的信息生成一个NodeBlock，生成NodeBlock的过程将在下一篇文章介绍，在这里我们只需要知道在生成NodeBlock之后，它就会生成一个以&quot;ace&quot;为前缀的PendingBlock，并且会添加到term栈中，如下所示：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/10.png">
 <p>  由图10可，在生成以&quot;ace&quot;为前缀的NodeBlock之后，还可以生成以&quot;ac&quot;为前缀的NodeBlock，如下所示：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（五）/11.png">
 <p>  图10、图11生成NodeBlock的条件的判断逻辑是这样的：</p>
 <ul>
 <li>计算当前栈顶term的长度i</li>
@@ -676,7 +621,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -851,10 +796,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

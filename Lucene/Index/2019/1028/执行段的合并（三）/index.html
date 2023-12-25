@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,31 +297,16 @@
                     <h1 id="执行段的合并三"><a class="markdownIt-Anchor" href="#执行段的合并三"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/" >执行段的合并（三）<i class="fas fa-external-link-alt"></i></a></h1>
 <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1024/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89" >执行段的合并（二）<i class="fas fa-external-link-alt"></i></a>，继续介绍执行段的合并的剩余的流程，下面先给出执行段的合并的流程图：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89/merge.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="获取segmentreader的集合mergereader"><a class="markdownIt-Anchor" href="#获取segmentreader的集合mergereader"></a> 获取SegmentReader的集合MergeReader</h2>
 <p>  我们在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1025/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89" >执行段的合并（二）<i class="fas fa-external-link-alt"></i></a>介绍<code>更新待合并的段集合OneMerge</code>的内容中提到，我们需要更新OneMerge中的一个变量List&lt;SegmentReader&gt; readers，readers中的每一个SegmentReader描述的是某个待合并的段的信息，而在此流程点，我们需要对readers中的每一个SegmentReader再封装为FilterCodecReader，封装后的SegmentReader用集合MergeReader描述，如下图所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/2.png">
 <p>  不过该流程只有在使用了软删除（soft delete）的机制后才会执行上述的操作，在后面的文章中会专门介绍软删除机制，届时再详细介绍当前流程。</p>
 <p>  如果不使用软删除机制，那么MergeReader中的SegmentReader跟OneMerge中的是一致的，即无需进行封装，如下图所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/3.png">
 <h2 id="生成segmentmerger"><a class="markdownIt-Anchor" href="#生成segmentmerger"></a> 生成SegmentMerger</h2>
 <p>  在此流程点，我们用在前面的流程中生成的信息来生成一个SegmentMerger，SegmentMerger包含的主要信息如下所示：</p>
 <ul>
@@ -331,22 +316,12 @@
 </ul>
 <p>  在后面的流程中，将通过MergeReader中包含的索引信息，将合并后的索引信息写入到SegmentInfo对象中。另外如果使用了软删除的机制，那么在上一个流程点执行结束后，我们就获得了被标记为软删除的文档的数量softDeleteCount，此时需要将softDeleteCount写入到SegmentCommitInfo对象（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89" >近实时搜索NRT（四）<i class="fas fa-external-link-alt"></i></a>中关于SegmentCommitInfo对象的介绍）中。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/4.png">
 <h2 id="执行索引文件的合并"><a class="markdownIt-Anchor" href="#执行索引文件的合并"></a> 执行索引文件的合并</h2>
 <p>  此流程开始真正的对每一个待合并的段中包含的索引文件执行合并操作，图5只列出索引文件间的合并先后顺序，每一种索引的详细合并过程不展开介绍，这里提供了该流程在源码中的入口，感兴趣的可以看看：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SegmentMerger.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SegmentMerger.java<i class="fas fa-external-link-alt"></i></a> 中的下面这个方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MergeState <span class="title function_">merge</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    ... ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/5.png">
 <p>  对索引文件结构感兴趣的同学可以看这个链接：<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/categories/Lucene/suoyinwenjian/" >Lucene7.50 索引文件介绍<i class="fas fa-external-link-alt"></i></a>。</p>
 <h2 id="设置新段包含的索引文件名"><a class="markdownIt-Anchor" href="#设置新段包含的索引文件名"></a> 设置新段包含的索引文件名</h2>
 <p>  在上一个流程执行结束后，我们就获得了合并后的新的索引文件集合，那么在当前流程我们需要将这些新的索引文件名写入到新段中，即写入到新段的SegmentInfo对象中。</p>
@@ -356,22 +331,12 @@
 </ul>
 <p>  新的索引文件名在索引文件si中的位置如下所示，用红框标注：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/6.png">
 <h2 id="生成复合索引文件"><a class="markdownIt-Anchor" href="#生成复合索引文件"></a> 生成复合索引文件</h2>
 <p>  无论待合并的段是否使用了复合索引文件，无论是否通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setUseCompoundFile<i class="fas fa-external-link-alt"></i></a>方法设置生成复合索引文件，合并生成的新段需要额外的判断方法来决定是否生成复合索引文件，判断流程图如下：</p>
 <h3 id="是否使用复合索引文件流程图"><a class="markdownIt-Anchor" href="#是否使用复合索引文件流程图"></a> 是否使用复合索引文件流程图</h3>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/7.png">
 <p>  在介绍图7的流程之前，我们先对图中出现的名词做下解释：</p>
 <ul>
 <li>mergedInfoSize：该值为合并后的新段的大小，根据不同的合并策略，mergedInfoSize的含义各不相同
@@ -397,24 +362,14 @@
 <li>通过一个段对应的索引文件计算出的新段大小mergedInfoSize中是包含被删除的文档的索引大小的，所以只需要计算出被删除文档的数量numDelete占总的文档数量maxDoc就可以算出索引大小，其中numDelete跟maxDoc在索引文件中的位置如下所示：</li>
 </ul>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/8.png">
 <p>  图8中，<a class="link"   target="_blank" rel="noopener" href="http://xn--SegName-oc5k3e175ap6ek4swpime032b84bh26a4sbk3pj7cyi390bp06f04za9vhx39arwnef7e.si" >蓝色箭头描述的是根据SegName可以映射到对应索引文件.si<i class="fas fa-external-link-alt"></i></a>，原因在前面的文章中已经介绍，不赘述，另外numDelete和maxDoc的值分别对应DeletionCount和SegSize，mergedInfoSize的计算公式为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mergedInfoSize*(<span class="number">1.0</span> - numDelete/maxDoc)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果使用软删除机制，并且使用了SoftDeletesRetentionMergePolicy合并策略，那么numDelete为DeletionCount跟SoftDelCount的差值，maxDoc为SegSize：</li>
 </ul>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（三）/9.png">
 <p>  至于为什么使用软删除机制后，导致numDelete的差异性，将在后面介绍软删除的文章中展开，本篇文章中我们只需要知道它会影响mergedInfoSize的计算就行了。</p>
 <p>  在熟悉了图7中的名词后，应该不需要介绍展开介绍每一个流程点了。</p>
 <p>  如果需要使用复合索引文件，那么生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe" >复合索引文件cfs&amp;&amp;cfe<i class="fas fa-external-link-alt"></i></a>即可。</p>
@@ -671,7 +626,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -846,10 +801,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

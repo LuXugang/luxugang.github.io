@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -300,118 +300,53 @@
                     <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0805/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（八）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的流程点，先给出流程图：</p>
 <h2 id="获取满足termrangequery查询条件的term集合的流程图"><a class="markdownIt-Anchor" href="#获取满足termrangequery查询条件的term集合的流程图"></a> 获取满足TermRangeQuery查询条件的term集合的流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/1.png">
 <h3 id="获取迭代器intersecttermsenum"><a class="markdownIt-Anchor" href="#获取迭代器intersecttermsenum"></a> 获取迭代器IntersectTermsEnum</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/2.png">
 <p>  IntersectTermsEnum类继承于抽象类TermsEnum，TermsEnum在Lucene中到处可见，它封装了一个段中term的相关操作，下面罗列了TermsEnum类中的几个常用/常见的方法：</p>
 <h4 id="termsenum"><a class="markdownIt-Anchor" href="#termsenum"></a> TermsEnum</h4>
 <h5 id="判断段中是否存在某个term"><a class="markdownIt-Anchor" href="#判断段中是否存在某个term"></a> 判断段中是否存在某个term</h5>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/3.png">
 <p>  seekExact(BytesRef text)方法用来判断term是否在当前段中，其中参数text即term，<strong>下文中参数text统称为term</strong>。</p>
 <h5 id="获取迭代状态"><a class="markdownIt-Anchor" href="#获取迭代状态"></a> 获取迭代状态</h5>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/4.png">
 <p>  根据某个term判断当前迭代状态，一共有三种迭代状态，如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/5.png">
 <h5 id="根据ord判断段中是否存在某个term"><a class="markdownIt-Anchor" href="#根据ord判断段中是否存在某个term"></a> 根据ord判断段中是否存在某个term</h5>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/6.png">
 <p>  根据ord值判断段中是否存在某个term，ord描述了term之间的大小关系，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0714/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Bdvd&amp;&amp;dvm" >索引文件的读取（五）之dvd&amp;&amp;dvm<i class="fas fa-external-link-alt"></i></a>中我们介绍了ord跟term的内容，这里不赘述。</p>
 <h5 id="获取当前term-的ord值"><a class="markdownIt-Anchor" href="#获取当前term-的ord值"></a> 获取当前term 的ord值</h5>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/7.png">
 <p>  根据迭代器目前迭代位置对应的term找到该term对应的ord值。</p>
 <h5 id="获取当前term的docfreq-totaltermfreq"><a class="markdownIt-Anchor" href="#获取当前term的docfreq-totaltermfreq"></a> 获取当前term的docFreq、totalTermFreq</h5>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/8.png">
 <p>  docFreq即包含当前term的文档数量，totalTermFreq为当前term在每一篇文档中出现的次数的总和。</p>
 <h4 id="intersecttermsenum"><a class="markdownIt-Anchor" href="#intersecttermsenum"></a> IntersectTermsEnum</h4>
 <p>  在获取迭代器IntersectTermsEnum的过程中，即在IntersectTermsEnum的构造函数中，本篇文章中我们只关心其中的一个逻辑，那就是初始化IntersectTermsEnumFrame对象，它用来描述段中第一个term所在的NodeBlock（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >索引文件tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>）的信息，生成该对象的过程即读取<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >索引文件tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>的过程：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/9.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0804/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（七）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>中我们说到，索引文件.tim&amp;&amp;.tip中的RootCodeLength跟RootCodeValue字段会用于生成FiledReader对象，在构造该对象期间，会根据这两个字段计算出long类型的rootBlockFP，它就是前缀为&quot;[ ]&quot;的PendingBlock合并信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>），当rootBLockFP执行右移两个bit的操作后，就获得了fp，它指向了段中第一个term所属的NodeBlock在索引文件.tim中的起始读取位置，随后读取NodeBlock中的信息，这些信息用于生成IntersectTermsEnumFrame对象。</p>
 <h3 id="获取term并判断是否满足查询条件"><a class="markdownIt-Anchor" href="#获取term并判断是否满足查询条件"></a> 获取Term并判断是否满足查询条件</h3>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/10.png">
 <p>  在这个两个流程点中核心的两个步骤为<strong>获取term</strong>跟<strong>判断term是否满足查询条件</strong>。</p>
 <h4 id="获取term"><a class="markdownIt-Anchor" href="#获取term"></a> 获取term</h4>
 <p>  在图9中，我们已经获得了第一个term所属的NodeBlock，如果想要获取下一个term，根据Suffix字段的数据结构，获取方式有所不同，我们先看下图9中Suffix字段的数据结构，它具有两种类型：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/11.png">
 <p>  当读取到类型一的数据结构时，意味着term的信息都在<strong>当前NodeBlock</strong>中，当读取到类型二的数据结构，意味着term信息在<strong>其他NodeBlock</strong>中，<strong>注意的是：Length字段是一个组合编码，该字段最后一个bit为0时说明Suffix为类型一，为1时候Suffix为类型二</strong>。</p>
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >索引文件tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>中已经给出了例子，我们这里再次列出：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/12.png">
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/13.png">
 <p>  图13中可以看出，前缀为&quot;ab&quot;的信息在另一个NodeBlock中，至于为什么会分布在另一个NodeBlock中，见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>的介绍。</p>
 <h4 id="判断term是否满足查询条件"><a class="markdownIt-Anchor" href="#判断term是否满足查询条件"></a> 判断term是否满足查询条件</h4>
 <p>  判断的逻辑用一句话可以总结：<strong>在DFA（Deterministic Finite Automaton）中，如果term的每个字符（label）能根据转移函数从当前状态转移到下一个状态，并且要求字符的当前状态为前一个字符的下一个状态，并且最后一个字符对应的下一个状态为可接受状态，那么term满足查询条件</strong>。</p>
@@ -419,12 +354,7 @@
 <p>  到这里，我们应该会提出这样的疑问，既然知道了TermRangeQuery的查询范围minValue、maxValue，为什么不直接通过简单的字符比较来判断term是否满足查询条件，简单的字符比较例如<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/util/FutureArrays.java" >FutureArrays.compareUnsigned<i class="fas fa-external-link-alt"></i></a>方法，从最高位的字符开始按照字典序进行比较，这块内容将在下一篇文章中展开。</p>
 <h3 id="收集term"><a class="markdownIt-Anchor" href="#收集term"></a> 收集Term</h3>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（九）/14.png">
 <p>  收集满足查询条件的term后，如果term的数量超过某个阈值，处理方式也是不同的，在源码中，通过BOOLEAN_REWRITE_TERM_COUNT_THRESHOLD定义阈值，默认值为<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-6458" >16<i class="fas fa-external-link-alt"></i></a>。</p>
 <h4 id="未达到阈值"><a class="markdownIt-Anchor" href="#未达到阈值"></a> 未达到阈值</h4>
 <p>  term的数量不大于16，那么TermRangeQuery转变为BooleanQuery，其中每个term生成TermQuery，作为BooleanQuery的子查询，并且TermQuery之间的关系为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2018/1211/BooleanQuery" >SHOULD<i class="fas fa-external-link-alt"></i></a>。</p>
@@ -685,7 +615,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -860,10 +790,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

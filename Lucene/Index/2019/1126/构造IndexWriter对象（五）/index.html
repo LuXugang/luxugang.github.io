@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -294,30 +294,15 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89" >构造IndexWriter对象（四）<i class="fas fa-external-link-alt"></i></a>，继续介绍调用IndexWriter的构造函数的流程。</p>
 <h1 id="调用indexwriter的构造函数的流程图"><a class="markdownIt-Anchor" href="#调用indexwriter的构造函数的流程图"></a> 调用IndexWriter的构造函数的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/1.png">
 <h2 id="根据不同的openmode执行对应的工作"><a class="markdownIt-Anchor" href="#根据不同的openmode执行对应的工作"></a> 根据不同的OpenMode执行对应的工作</h2>
 <p>  在上一篇文章中，我们介绍了执行APPEND模式下的工作的部分流程点，故继续对剩余的流程进行介绍。</p>
 <h3 id="执行append模式下的工作的流程图"><a class="markdownIt-Anchor" href="#执行append模式下的工作的流程图"></a> 执行APPEND模式下的工作的流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/2.png">
 <h4 id="用索引目录中最新的提交初始化一个新segmentinfos对象"><a class="markdownIt-Anchor" href="#用索引目录中最新的提交初始化一个新segmentinfos对象"></a> 用索引目录中最新的提交初始化一个新SegmentInfos对象</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/3.png">
 <p>  由于StandardDirectoryReader为空，那么就从索引目录中初始化一个新SegmentInfos对象（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89" >构造IndexWriter对象（三）<i class="fas fa-external-link-alt"></i></a>），即通过找到索引目录中的segments_N文件读取索引信息。</p>
 <p>  <strong>当索引目录中有多个segments_N文件时该如何选择</strong>：</p>
 <ul>
@@ -325,12 +310,7 @@
 </ul>
 <h4 id="indexcommit是否为空"><a class="markdownIt-Anchor" href="#indexcommit是否为空"></a> IndexCommit是否为空？</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/4.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89" >构造IndexWriter对象（四）<i class="fas fa-external-link-alt"></i></a>文章中我们说到，图2中StandardDirectoryReader为空的情况分为下面两种：</p>
 <ul>
 <li>用户没有设置IndexCommit</li>
@@ -339,86 +319,41 @@
 <p>  如果是第一种情况的进入到当前流程点，那么当前流程点的出口为是，那么以APPEND模式打开的IndexWriter追加的索引信息为索引目录中最新的一次提交。</p>
 <h4 id="配置检查3"><a class="markdownIt-Anchor" href="#配置检查3"></a> 配置检查3</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/5.png">
 <p>  如果IndexCommit不为空，那么IndexCommit必定是CommitPoint或者SnapshotCommitPoint对象，接着就需要执行下面的配置检查：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (commit.getDirectory() != directoryOrig) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;IndexCommit&#x27;s directory doesn&#x27;t match my directory, expected=&quot;</span> + directoryOrig + <span class="string">&quot;, got=&quot;</span> + commit.getDirectory());</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
 <p>  其中commit即IndexCommit对象、directoryOrg为IndexWriter的工作目录，这个配置检查意味着要求当前构造的IndexWriter的工作目录必须和IndexCommit对应的索引信息所在的目录必须一致</p>
 <h4 id="用indexcommit更新segmentinfos对象"><a class="markdownIt-Anchor" href="#用indexcommit更新segmentinfos对象"></a> 用IndexCommit更新SegmentInfos对象</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/6.png">
 <p>  通过IndexCommit读取对应的索引信息，然后更新到上文中已经完成初始化的SegmentInfos对象中。</p>
 <h4 id="更新segmentinfos的version"><a class="markdownIt-Anchor" href="#更新segmentinfos的version"></a> 更新SegmentInfos的version</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/7.png">
 <p>  对一个已经初始化的SegmentInfos进行更新操作必然需要更新version，version的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89" >构造IndexWriter对象（三）<i class="fas fa-external-link-alt"></i></a>的文章中介绍，这里不赘述。</p>
 <p>  至此，我们介绍完了分别在CREATE、APPEND、CREATE_AND_APPEND模式下的执行流程，接着我们根据图1介绍剩余的流程点。</p>
 <h2 id="检查indexsort合法性"><a class="markdownIt-Anchor" href="#检查indexsort合法性"></a> 检查IndexSort合法性</h2>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/8.png">
 <p>  如果设置了IndexSort，那么在生成一个段的过程中，Lucene会根据用户提供的排序规则对段内的文档进行排序，关于IndexSort的详细介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89" >构造IndexWriter对象（一）<i class="fas fa-external-link-alt"></i></a>， 如果用户通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setIndexSort(Sort sort)<i class="fas fa-external-link-alt"></i></a>设置了IndexSort配置，那么需要对参数Sort进行合法性检查，检查逻辑如下所示：</p>
 <h3 id="检查indexsort合法性的流程图"><a class="markdownIt-Anchor" href="#检查indexsort合法性的流程图"></a> 检查IndexSort合法性的流程图</h3>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/9.png">
 <h4 id="segmentinfos对象"><a class="markdownIt-Anchor" href="#segmentinfos对象"></a> SegmentInfos对象</h4>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/10.png">
 <p><strong>为什么检查IndexSort合法性的准备数据是SegmentInfos对象</strong>：</p>
 <p>  SegmentInfos对象是索引文件segments_N跟.si文件在内存中的描述，如下图所示：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/11.png">
 <p>  由图11可以看出，我们只能通过SegmentInfos找到每一个段（图11中的SegmentCommitInfo）的段内排序规则IndexSort（图11总红色标注）。</p>
 <h4 id="是否还有未处理的segmentcommitinfo"><a class="markdownIt-Anchor" href="#是否还有未处理的segmentcommitinfo"></a> 是否还有未处理的SegmentCommitInfo？</h4>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/12.png">
 <p>  对每一个SegmentCommitInfo（见图11）进行IndexSort合法性检查，只要有一个段判断为非法，那么就抛出异常，即构造IndexWriter对象失败。</p>
 <h4 id="比较lucene版本"><a class="markdownIt-Anchor" href="#比较lucene版本"></a> 比较Lucene版本</h4>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/13.png">
 <p>  如果通过图11的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >索引文件.si<i class="fas fa-external-link-alt"></i></a>中的IndexSort字段来判断出段中没有排序规则，那么需要判断生成该段的Lucene版本号，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (segmentIndexSort == <span class="literal">null</span> &amp;&amp; info.info.getVersion().onOrAfter(Version.LUCENE_6_5_0))&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CorruptIndexException</span>(<span class="string">&quot;segment not sorted with indexSort=&quot;</span> + segmentIndexSort, info.info.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  上述代码中，segmentIndexSort为段中的排序规则，info.info.getVersion( )中，第一个info是SegmentCommitInfo，第二个info为segmentInfo对象（即索引文件.si在内存中的描述），getVersion( )获得值即图11中SegVersion。</p>
@@ -431,12 +366,7 @@
 </ul>
 <h4 id="比较排序规则"><a class="markdownIt-Anchor" href="#比较排序规则"></a> 比较排序规则</h4>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（五）/14.png">
 <p>  如果旧索引中的段包含排序规则，那么需要判断是否与正在构造中的IndexWriter设置的排序规则一致，不一致则抛出异常，如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (segmentIndexSort != <span class="literal">null</span> &amp;&amp; indexSort.equals(segmentIndexSort) == <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;cannot change previous indexSort=&quot;</span> + segmentIndexSort + <span class="string">&quot; (from segment=&quot;</span> + info + <span class="string">&quot;) to new indexSort=&quot;</span> + indexSort);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  其中segmentIndexSort为段中的排序规则，indexSort为IndexWriter配置的排序规则。</p>
@@ -687,7 +617,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -862,10 +792,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

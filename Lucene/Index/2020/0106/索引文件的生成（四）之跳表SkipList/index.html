@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -298,12 +298,7 @@
 <h2 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h2>
 <p>  直接给出一个生成后的跳表：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/1.png">
 <p>  在图1中，为了便于介绍，我们处理的是文档号0~3455的3456篇文档，我们另skipInterval为128，即每处理128篇文档生成一个PackedBlock，对应一个datum；另skipMultiplier为3（源码中默认值为8），即每生成3个datum就在上一层生成一个新的索引，新的索引也是一个datum，它是3个datum中的最后一个，并且增加了一个索引值SkipChildLevelPointer来实现映射关系（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）<i class="fas fa-external-link-alt"></i></a>），每一层的数值为PackedBlock中的最后一篇文档的文档号，例如level=2的三个数值1151、2303、3455。</p>
 <h3 id="哨兵数组skipdoc"><a class="markdownIt-Anchor" href="#哨兵数组skipdoc"></a> 哨兵数组skipDoc</h3>
 <p>  哨兵数组skipDoc的定义如下所示：</p>
@@ -344,12 +339,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] skipDoc = &#123;<span class="number">127</span>, <span class="number">383</span>, <span class="number">1151</span>, <span class="number">3455</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>  当前skipDoc数组对应的SkipList如下所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/2.png">
 <p>  由于文档号23小于skipDoc数组中的所有哨兵值，故不需要更新skipDoc数组中的哨兵值，那么直接遍历docDeltaBuffer，判断文档号23是否在该数组中即可。</p>
 <h4 id="文档号700"><a class="markdownIt-Anchor" href="#文档号700"></a> 文档号：700</h4>
 <p>  更新前的skipDoc数组如下所示：</p>
@@ -358,29 +348,14 @@
 <p>  对于level=1层，在执行了步骤二后，更新后的skipDoc数组如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] skipDoc = &#123;<span class="number">127</span>, <span class="number">767</span>, <span class="number">1151</span>, <span class="number">3455</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/3.png">
 <p>  随后更新level=0层，在执行了步骤二后，更新后的skipDoc数组如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] skipDoc = &#123;<span class="number">767</span>, <span class="number">767</span>, <span class="number">1151</span>, <span class="number">3455</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/4.png">
 <p>  这里要注意的是，level=0层的datum更新过程如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/5.png">
 <p>  从图5中可以看出，在更新的过程中，<strong>跳过了两个datum</strong>，其原因是在图3中，当更新完level=1的datum之后，该datum通过它包含的<strong>SkipChildLevelPointer</strong>字段（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）<i class="fas fa-external-link-alt"></i></a>）重新设置在level=0层的哨兵值，随后在处理level=0时，根据待处理的文档号继续更新哨兵值。</p>
 <h4 id="文档号701"><a class="markdownIt-Anchor" href="#文档号701"></a> 文档号：701</h4>
 <p>  更新前的skipDoc数组如下所示：</p>
@@ -390,12 +365,7 @@
 <p>  不重复用文字描述其更新过程了，直接以下图给出每一层最终的哨兵值以及更新过程，自己品…，更新后的skipDoc数组如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] skipDoc = &#123;<span class="number">3071</span>, <span class="number">3071</span>, <span class="number">3455</span>, <span class="number">3455</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（四）/6.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  可以看出，SkipList在Lucene中的实现适用于存储有序递增的文档号，性能上取决于待处理的文档号在datum的分布，分布在越少的datum，性能越高。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -647,7 +617,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -822,10 +792,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -303,40 +303,20 @@
 <p>  本篇文章不会对RoaringBitmap展开介绍，因为Lucene有着自己的实现方法，感兴趣的同学可以看这两个链接：<a class="link"   target="_blank" rel="noopener" href="http://roaringbitmap.org" >http://roaringbitmap.org<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://github.com/RoaringBitmap/RoaringBitmap%E3%80%82" >https://github.com/RoaringBitmap/RoaringBitmap。<i class="fas fa-external-link-alt"></i></a></p>
 <h1 id="roaringdocidset存储文档号流程图"><a class="markdownIt-Anchor" href="#roaringdocidset存储文档号流程图"></a> RoaringDocIdSet存储文档号流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/roaringdocidset_____.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="文档号集合"><a class="markdownIt-Anchor" href="#文档号集合"></a> 文档号集合</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/2.png">
 <p>  RoaringDocIdSet只允许处理按照文档号从小到大递增的文档号集合，每当处理一个新的文档号，称之为docId，会判断与上一个处理的文档号lastDocId的大小，如果小于等于lastDocId，说明文档号集合不满足要求，抛出如下的异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (docId &lt;= lastDocId) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Doc ids must be added in-order, got &quot;</span> + docId + <span class="string">&quot; which is &lt;= lastDocID=&quot;</span> + lastDocId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="是否还有未处理的文档号"><a class="markdownIt-Anchor" href="#是否还有未处理的文档号"></a> 是否还有未处理的文档号？</h2>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/3.png">
 <p>  我们从最小的文档号开始，逐个处理文档号集合中的文档号，当处理完所有的文档号，那么就完成了图1所示的流程。</p>
 <h2 id="是否处理上一个blocklastblock"><a class="markdownIt-Anchor" href="#是否处理上一个blocklastblock"></a> 是否处理上一个block（lastBLock）？</h2>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/4.png">
 <p>  <strong>block是什么</strong>：</p>
 <ul>
 <li>根据规则将文档号划分到一个或多个block中处理，在同一个block中的所有文档号会以同一种方式存储（存储的方式在下文中会介绍），不同block之间的存储方式没有相互联系。</li>
@@ -350,31 +330,16 @@
 <li>由上面的规则可以看出文档号从0开始，每65536个文档号被划分为一个block，如果我们有下面的文档号集合：</li>
 </ul>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/5.png">
 <ul>
 <li>划分后的block如下所示，根据规则，可以知道一个block中最多可以包含65536个文档号：</li>
 </ul>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/6.png">
 <p>  我们以图5中的文档号集合为例，当处理到文档号65536时，该文档号会被划分到第二个block中，那么此时我们就需要处理第一个block，此时第一个block成为图4中的lastBlock，同时第二个block成为currentBlock。</p>
 <h2 id="根据block中的文档号数量选择存储方式"><a class="markdownIt-Anchor" href="#根据block中的文档号数量选择存储方式"></a> 根据block中的文档号数量选择存储方式</h2>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/7.png">
 <p>  上文中我们说到使用block来存储文档号，并且一个block中最多存储65536个文档号，但是并没有给出block的数据结构，原因是block的数据结构取决于block中包含的文档号数量。</p>
 <h3 id="block的数据结构"><a class="markdownIt-Anchor" href="#block的数据结构"></a> block的数据结构</h3>
 <p>  block一共有两种数据结构：</p>
@@ -389,12 +354,7 @@
 </ul>
 <h2 id="处理上一个blocklastblock"><a class="markdownIt-Anchor" href="#处理上一个blocklastblock"></a> 处理上一个block（lastBlock）</h2>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/8.png">
 <p>  根据block中包含的文档号的数量来判断稠密度：</p>
 <ul>
 <li>稀疏：block中<strong>存储</strong>的文档号数量<strong>小于等于</strong>4096个认为是稀疏的</li>
@@ -409,28 +369,13 @@
 </ul>
 <p>  例如我们以下的文档号集合：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/9.png">
 <p>  图10描述了将图9中的文档号划分到不同的block，<strong>其中第一个block中包含了0~65533共65534个文档号</strong>：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/10.png">
 <p>  图11描述了进行了稠密度计算后，将处理后的block添加到block数组中，第一个block包含了65534个文档号，故认为是稠密的，由于一个block最多只能存储65536个，那么计算出那些未存储的文档号，即65534跟65535两个文档号，然后存储它们两个，而第二个block跟第三个block都只包含了2个文档号，所以认为是稀疏的，直接存储即可：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/11.png">
 <h1 id="roaringdocidset读取文档号"><a class="markdownIt-Anchor" href="#roaringdocidset读取文档号"></a> RoaringDocIdSet读取文档号</h1>
 <p>  RoaringDocIdSet提供了两种方法来读取文档号:</p>
 <ul>
@@ -693,7 +638,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -868,10 +813,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

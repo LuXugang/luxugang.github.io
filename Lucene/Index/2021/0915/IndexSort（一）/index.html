@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -300,19 +300,9 @@
 <h2 id="indexsort的应用"><a class="markdownIt-Anchor" href="#indexsort的应用"></a> IndexSort的应用</h2>
 <p>  我们先通过一个例子来了解如何使用IndexSort这个功能。完整的demo地址见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.9.0/src/main/java/index/IndexSortTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.9.0/src/main/java/index/IndexSortTest.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/1.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/1.png">
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/2.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/2.png">
 <p>  图1中的第44、45行代码定义了两个排序规则。在继续展开介绍之前，我们先简单的说下Lucene中正排索引SortedSetDocValuesField（见图2）的一些概念。</p>
 <h3 id="sortedsetdocvaluesfield"><a class="markdownIt-Anchor" href="#sortedsetdocvaluesfield"></a> SortedSetDocValuesField</h3>
 <p>  使用SortedSetDocValuesField可以使得我们在同一篇文档中定义一个或多个具有<strong>相同域名</strong>、<strong>不同域值</strong>的SortedSetDocValuesField域。这种域的其中一个应用方式即在索引阶段，对于一篇文档，我们可以选择其包含的SortedSetDocValuesField域的某一个域值参与段内排序。</p>
@@ -320,12 +310,7 @@
 <h4 id="sortedsetselectortype"><a class="markdownIt-Anchor" href="#sortedsetselectortype"></a> SortedSetSelector.Type</h4>
 <p>  图2中SortedSetSelector.Type.MIN规定了使用最小的域值参与段内排序。SortedSetSelector.Type的所有选项如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/3.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/3.png">
 <p>  图3中MIN、MAX就不做介绍了，我们说下MIDDLE_MIN跟MIDDLE_MAX。</p>
 <h5 id="middle_min-middle_max"><a class="markdownIt-Anchor" href="#middle_min-middle_max"></a> MIDDLE_MIN、MIDDLE_MAX</h5>
 <p>  如果域值的数量是<strong>奇数</strong>，那么MIDDLE_MIN、MIDDLE_MAX具有相同的作用，比如有以下的域值：</p>
@@ -339,19 +324,9 @@
 <p>  我们接着看下图1。图1中定义了两个规则，那么在段内排序的过程中，先按照&quot;sort0&quot;进行排序，当无法比较出先后关系时，接着按照&quot;sort1&quot;进行排序，如果两个排序规则都无法比较出先后关系，则最终比较文档的添加顺序。</p>
 <h3 id="文档之间的排序比较方式"><a class="markdownIt-Anchor" href="#文档之间的排序比较方式"></a> 文档之间的排序比较方式</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/4.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/4.png">
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/5.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/5.png">
 <p>  图4中，<strong>我们的搜索条件没有对结果增加额外的排序规则，那么查询结果将会按照段内排序后的顺序输出</strong>。</p>
 <p>  我们结合图2，分别介绍下一些文档之间排序比较的方式。</p>
 <h4 id="文档0"><a class="markdownIt-Anchor" href="#文档0"></a> 文档0</h4>
@@ -364,30 +339,15 @@
 <h3 id="搜索阶段的排序"><a class="markdownIt-Anchor" href="#搜索阶段的排序"></a> 搜索阶段的排序</h3>
 <p>  上文中说到SortedSetDocValuesField可以用于在索引阶段排序，同样的它也可以用于搜索阶段的排序。在设置了图1中的排序规则前提下，如果我们在搜索阶段提供了以下的排序规则：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/6.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/6.png">
 <p>  其查询结果如下所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/7.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/7.png">
 <p>  其排序的比较过程跟IndexSort是一样的，这里就不赘述了。</p>
 <h3 id="用于排序的域"><a class="markdownIt-Anchor" href="#用于排序的域"></a> 用于排序的域</h3>
 <p>  下图中列出了其他可以用于段内排序的域：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/8.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/段内排序IndexSort/段内排序IndexSort（一）/8.png">
 <p>  这些域的使用方法可以通过查看每个类的注释就可以完全理解，故不展开介绍了。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  下一篇文章中，我们将介绍段内排序在索引阶段的排序方式、排序时机点以及其他相关内容。</p>
@@ -640,7 +600,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -815,10 +775,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

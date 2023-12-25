@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -301,20 +301,10 @@
 <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0810/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（九）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的流程点，先给出流程图：</p>
 <h2 id="获取满足termrangequery查询条件的term集合的流程图"><a class="markdownIt-Anchor" href="#获取满足termrangequery查询条件的term集合的流程图"></a> 获取满足TermRangeQuery查询条件的term集合的流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/1.png">
 <h3 id="收集term"><a class="markdownIt-Anchor" href="#收集term"></a> 收集Term</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/2.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0810/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（九）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>中我们说到，在查询期间，满足查询条件的term数量<strong>未达到</strong>阈值（默认值16）跟<strong>达到</strong>阈值后的处理方式是不同的。</p>
 <h4 id="未达到阈值"><a class="markdownIt-Anchor" href="#未达到阈值"></a> 未达到阈值</h4>
 <p>  当满足查询条件的term数量<strong>未达到</strong>阈值（默认值16），会将TermRangeQuery转变为BooleanQuery，其中每个term生成一个TermQuery，作为BooleanQuery的子查询，并且TermQuery之间的关系为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2018/1211/BooleanQuery" >SHOULD<i class="fas fa-external-link-alt"></i></a>，其后续的查询过程可以阅读<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0821/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89" >查询原理<i class="fas fa-external-link-alt"></i></a>系列文章，不过在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0821/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89" >查询原理（二）<i class="fas fa-external-link-alt"></i></a>中，我们只是简单的介绍TermContext对象（Lucene 7.5.0）中包含的信息，这里我们详细的介绍下TermContext中的信息是在<strong>何时生成</strong>、<strong>如何获取</strong>、<strong>为什么要获取</strong>。</p>
@@ -322,37 +312,17 @@
 <p>  在执行完图1的流程点<code>是否满足查询条件</code>后，如果term满足查询条件，那么接着马上去索引文件.tim中获取该term的信息，即TermContext中包含的信息：</p>
 <h5 id="如何获取"><a class="markdownIt-Anchor" href="#如何获取"></a> 如何获取</h5>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/3.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%EF%BC%89/tim.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  由图3可见TermContext所需要的信息都在索引文件.tim的TermStat跟TermMetaData字段中，另外需要注意的是，TermMetadata字段的不总是包含上述六个字段，我们这里看下DocStartFP、PosStartFP、以及PayStartFP这三个字段，其中PosStartFP、以及PayStartFP是否存在取决与在索引期间某个域的IndexOptions属性，如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/4.png">
 <p>  假设我们有以下的例子：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/5.png">
 <p>  图5中， 对于&quot;content&quot;域来说，设置了IndexOptions.DOCS_AND_FREQS意味着不用存储term的位置position跟offset信息，即不会生成索引文件.pos、索引文件.pay，那么在TermMetadata字段中就不需要PosStartFP、以及PayStartFP字段，因为TermMetadata字段中的信息描述了该term的信息在索引文件.doc、索引文件.pay、索引文件.pos中起始读取位置，如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十）/6.png">
 <p>  图3中<font color=red>红框</font>标注的字段longSize描述了在读取阶段应该读取几个FP，以图5为例，由于&quot;content&quot;域的TermMetadata只存在DocStartFP，故longSize的值为1，根据上文的描述也可以知道longSize的可选的值区间为[1, 3]。</p>
 <p>  <strong>为什么要获取</strong></p>
 <p>  回顾图1的流程点，整个流程结束后，我们得到的是term以及term的相关信息（Lucene 8.4.0的源码中用TermStates对象描述），但查询的最终目的是找到满足查询条件的文档号，从上文中我们知道，我们获得了满足查询的term的TermMetadata，它包含了DocStarFP，使得我们能后续的流程中能通过DocStarFP在索引文件.doc中找到包含这个term的文档号。</p>
@@ -628,7 +598,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -803,10 +773,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

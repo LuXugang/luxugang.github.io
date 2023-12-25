@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -293,12 +293,7 @@
 
                     <p>本篇文章只是介绍NumericDocValues在.dvd、.dvm文件中的数据结构，NumericDocValues的应用跟概念介绍不会在本篇文章中赘述，大家可以参考官方文档给出的介绍。.dvd、.dvm文件存放了所有DocValues的信息，所以如果在索引阶段，还添加了其他DocValues的Document，那么他们在.dvd、.dvm文件中的布局如下图：<br />
 图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/1.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/1.png"><br />
 DocValues之间的前后关系则是根据IndexWriter的添加对应的域的先后关系来确定。同理在.dvm文件中，不赘述。</p>
 <h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
 <p>在详细介绍数据结构前，先介绍在处理NumericDocValues的过程中会碰到的一些知识点。</p>
@@ -363,12 +358,7 @@ DocValues之间的前后关系则是根据IndexWriter的添加对应的域的先
 <h2 id="dvd"><a class="markdownIt-Anchor" href="#dvd"></a> dvd</h2>
 <p>在下图中给出了只有NumericDocValues的.dvd、.dvm文件的数据结构。<br />
 图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/2.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/2.png"><br />
 DocIdData描述了包含NumericDocValues数据的文档号的信息。<br />
 FieldValues描述了域值信息。</p>
 <h3 id="dociddata"><a class="markdownIt-Anchor" href="#dociddata"></a> DocIdData</h3>
@@ -384,21 +374,11 @@ FieldValues描述了域值信息。</p>
 <p>多个block存储方式根据域值是否都是一样生成两种数据结构。</p>
 <h5 id="域值都相同"><a class="markdownIt-Anchor" href="#域值都相同"></a> 域值都相同</h5>
 <p>图3：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/3.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/3.png"><br />
 由于域值都相同，只要往.dvd文件中写入一个固定的标记值0跟其中一个域值即可。</p>
 <h5 id="域值不都相同"><a class="markdownIt-Anchor" href="#域值不都相同"></a> 域值不都相同</h5>
 <p>图4：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/4.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/4.png"></p>
 <h6 id="bitspervalue"><a class="markdownIt-Anchor" href="#bitspervalue"></a> bitsPerValue</h6>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">存储每一个域值需要的bit位的个数。</span><br></pre></td></tr></table></figure>
 <h6 id="min"><a class="markdownIt-Anchor" href="#min"></a> min</h6>
@@ -409,12 +389,7 @@ FieldValues描述了域值信息。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前block中的所有域值，并且使用了 PackedInt进行编码存储。</span><br></pre></td></tr></table></figure>
 <h2 id="dvm"><a class="markdownIt-Anchor" href="#dvm"></a> dvm</h2>
 <p>图5：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/5.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/5.png"></p>
 <h3 id="fieldnumber"><a class="markdownIt-Anchor" href="#fieldnumber"></a> FieldNumber</h3>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域的编号。</span><br></pre></td></tr></table></figure>
 <h3 id="docvaluestype"><a class="markdownIt-Anchor" href="#docvaluestype"></a> DocValuesType</h3>
@@ -423,21 +398,11 @@ FieldValues描述了域值信息。</p>
 <p>DocIdIndex是对.dvd文件的一个索引，用来描述 .dvd文件中DocIdData在.dvd文件中的开始跟结束位置。</p>
 <h4 id="情况1"><a class="markdownIt-Anchor" href="#情况1"></a> 情况1：</h4>
 <p>图6：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/6.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/6.png"><br />
 如果IndexWriter添加的document中都包含当前域，那么只需要在DocIdIndex中添加标志信息即可。</p>
 <h4 id="情况2"><a class="markdownIt-Anchor" href="#情况2"></a> 情况2：</h4>
 <p>图7：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/7.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/7.png"><br />
 如果IndexWriter添加的document中不都包含当前域，那么.dvd文件中需要将包含当前的域的文档号信息都记录下来。</p>
 <h5 id="offset"><a class="markdownIt-Anchor" href="#offset"></a> offset</h5>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.dvd文件中存放文档号的DocIdData在文件中的开始位置。</span><br></pre></td></tr></table></figure>
@@ -450,21 +415,11 @@ FieldValues描述了域值信息。</p>
 <h4 id="情况1-2"><a class="markdownIt-Anchor" href="#情况1-2"></a> 情况1</h4>
 <p>如果处理的域值都是相同的，那么只要写入标志信息即可。<br />
 图8：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/8.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/8.png"></p>
 <h4 id="情况2-2"><a class="markdownIt-Anchor" href="#情况2-2"></a> 情况2</h4>
 <p>如果处理的域值满足上文介绍的 域值种类个数小于256的优化。<br />
 图9：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/9.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/9.png"></p>
 <h5 id="length-3"><a class="markdownIt-Anchor" href="#length-3"></a> length</h5>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域值的种类的个数。在上文中，我们给出的例子是 5、6、5、6、3000，那么length的值就是3。</span><br></pre></td></tr></table></figure>
 <h5 id="fieldvalue-2"><a class="markdownIt-Anchor" href="#fieldvalue-2"></a> FieldValue</h5>
@@ -478,12 +433,7 @@ FieldValues描述了域值信息。</p>
 <h3 id="fieldvaluesindex"><a class="markdownIt-Anchor" href="#fieldvaluesindex"></a> FieldValuesIndex</h3>
 <p>FieldValuesIndex是对.dvd文件的一个索引，用来描述 .dvd文件中FieldValues在.dvd文件中的开始跟结束位置。<br />
 图10：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/10.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/NumericDocValues/10.png"></p>
 <h4 id="offset-2"><a class="markdownIt-Anchor" href="#offset-2"></a> offset</h4>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.dvd文件中存放文档号的FieldValues在文件中的开始位置。</span><br></pre></td></tr></table></figure>
 <h4 id="length-4"><a class="markdownIt-Anchor" href="#length-4"></a> length</h4>
@@ -736,7 +686,7 @@ FieldValues描述了域值信息。</p>
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -911,10 +861,6 @@ FieldValues描述了域值信息。</p>
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

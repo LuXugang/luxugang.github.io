@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,12 +299,7 @@
 <p>  <strong>阅读本小结内容必须掌握文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中的知识点，故下文中出现的一些名词不会作详细的介绍</strong>。</p>
 <p>  索引（index）这个阶段，即<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的阶段，由于软删除属于删除操作，故对应的删除信息会被添加到全局的deleteQueue中，deleteQueue中存放了四种类型的删除信息，这四种删除信息用下图中的Node对象来描述：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/1.png">
 <p>  上图中的四种删除信息通过IndexWriter类中提供的方法生成：</p>
 <ul>
 <li>QueryArrayNode：deleteDocuments(Querys)</li>
@@ -315,20 +310,10 @@
 <p>  由上文可以看出，软删除对应的删除信息将会由DocValuesUpdatesNode来描述，</p>
 <p>我们通过一个例子来看下DocValuesUpdatesNode中描述了哪些删除信息：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/2.png">
 <p>  图2中，第56行执行了软删除的操作，它对应的删除信息DocValuesUpdatesNode包含如下信息：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/3.png">
 <p>  DocValuesUpdatesNode中包含了两个对象：next、item，其中next用来指向deleteQueue中下一个删除信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），item（<strong>NumericDocValuesUpdate对象</strong>）中的type描述了使用NUMERIC类型的DocValues来描述被软删除的文档，item中的term描述了满足被软删除的文档的条件，即包含域名为&quot;abc&quot;、域值为&quot;document3&quot;的文档都会被软删除。</p>
 <p>  上述DocValuesUpdatesNode的信息我们可以看出，我们获得了满足软删除的条件，但是没有指出软删除的作用范围（作用域），例如在图2中，文档3也满足被软删除的条件，但是这篇文档是在第56行的软删除操作之后添加的，那么这次的软删除不能作用（apply）到这篇文档，即这次的软删除操作只能对文档1生效，故我们还需要<strong>根据DocValuesUpdatesNode的信息</strong>进一步完善删除信息，即添加软删除的作用范围，不同的删除信息在完善删除信息后用下列的容器来描述（<strong>Lucene 7.5.0</strong>）：</p>
 <ul>
@@ -347,28 +332,13 @@
 </ul>
 <p>  我们同样的以一个例子来介绍：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/4.png">
 <p>  图4的例子中，既有updateNumericDocValue()，又有softDocument()的操作，那么这两个操作对应在numericUpdates中的删除信息如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/5.png">
 <p>  我们接着继续介绍为什么numericUpdates容器的value是一个LinkedHashMap结构，先给出源码中对这种设计的注释：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/6.png">
 <p>  注释中讲述了使用LinkedHashMap结构的两个原因：</p>
 <ul>
 <li>原因一：在不同的term之间，即LinkedHashMap的不同的key，如果一篇文档中包含的term满足多个软删除操作中的term条件（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>），那么根据LinkedHashMap的插入有序的特点，这篇文档用最后一个软删除操作中的DocValues来描述该文档被软删除了</li>
@@ -376,56 +346,26 @@
 </ul>
 <p>  我们继续用一个例子来介绍上述的原因一：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/7.png">
 <p>  图7中，第56、61行执行了两次软删除操作，并且文档0都满足这两个软删除的条件，由于第61行的软删除操作晚于第56行，所以文档0将用61行中的域名为&quot;softDeleteField&quot;、域值为4的NumericDocValues来描述它被软删除了，至于使用这个DocValues来描述被软删除的用途，将在后面的文章中介绍。</p>
 <p>  我们接着通过一个例子介绍上述的原因二：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/8.png">
 <p>  图8中，第56、64行执行了两次软删除操作，并且他们的软删除条件是一样的，即被软删除的文档中需要包含域名为&quot;abc&quot;、域值为&quot;document1&quot;的信息，那么第56行的软删除对应的删除信息将被第66行的软删除对应的删除信息替换。</p>
 <p>  <strong>图8中两次软删除对应在numericUpdates容器中的信息有什么不同，为什么会发生替换？</strong></p>
 <p>  我们直接给出这两次软删除的对应在numericUpdates容器中的信息来做介绍：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/9.png">
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/10.png">
 <p>  图9、图10中，docIDUpto描述的是删除信息的作用范围（作用域），图9中docIDUpto的值为2，它描述了从删除信息的作用范围为文档号区间为[0, 2)、图10中的docIDUpto的值为5，它描述了从删除信息的作用范围为文档号区间为[0, 4)，故图10中的作用范围包含了图9中的删除范围，这样就能过滤掉相同term条件的软删除操作。</p>
 <h2 id="注意点"><a class="markdownIt-Anchor" href="#注意点"></a> 注意点</h2>
 <p>  上文中我们说到，updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )的操作在索引期间使用相同的方式来存储删除信息，这使得我们用softUpdateDocument( )需要注意一个问题，如果该方法中用来描述文档被软删除的DocValues的域名不是IndexWriter的配置中定义的软删除域，那么这次软删除操作就会转变为<strong>DocValues的更新操作</strong>，我们通过下面的例子来说明：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/11.png">
 <p>  图11中，如果update为true，那么我们执行软删除操作，注意的是59行用来描述文档被软删除的DocValues的域名&quot;docValuesField&quot;不是38行的设置的软删除域”softDeleteField“，故这次的软删除操作转化为<strong>DocValues的更新操作</strong>，那么文档1中域名为&quot;docValuesFiled&quot;的NumericDocValuesField的域值&quot;5&quot;会被更新为&quot;3&quot;，故搜索结果在按照&quot;docValuesField&quot;排序之后， 如下所示：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/软删除softDeletes/软删除softDeletes（二）/12.png">
 <p>  可见，文档1并没有被软删除，图11的demo看这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/softDeletes/SoftDeletesTest3.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  本文中，我们介绍了Lucene7.5.0版本中，在索引期间跟软删除相关的一些内容，即使用numericUpdates、binaryUpdate两个容器存储删除信息，然而在Lucene8.4.0中，取消了这两个容器，使用了其他的方法存储删除信息，这块内容将在下篇文章中展开。</p>
@@ -678,7 +618,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -853,10 +793,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,20 +297,10 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）<i class="fas fa-external-link-alt"></i></a>继续介绍剩余的内容，下面先给出生成索引文件.tim、.tip的流程图。</p>
 <h2 id="生成索引文件tim-tip的流程图"><a class="markdownIt-Anchor" href="#生成索引文件tim-tip的流程图"></a> 生成索引文件.tim、.tip的流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/1.png">
 <h3 id="统计每一个term的信息"><a class="markdownIt-Anchor" href="#统计每一个term的信息"></a> 统计每一个term的信息</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/2.png">
 <p>  执行到该流程，我们需要将当前term的一些信息（图1中的IntBlockTermState，见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0110/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（五）<i class="fas fa-external-link-alt"></i></a>）的汇总到所属域的信息中（这里先提一下的是，这些信息在后面使用FieldMetaData封装），图2中出现的字段的含义如下：</p>
 <ul>
 <li>sumDocFreq：包含当前域的所有term的文档数量总和，注意的是当前域可能有多个term在同一文档中</li>
@@ -321,12 +311,7 @@
 </ul>
 <p>  例如我们有如下几篇文档：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/3.png">
 <p>  其中用<font color=Red>红色</font>标注的term属于域名为&quot;content&quot;的域，那么在处理完&quot;content&quot;之后，图2中的字段的值如下所示：</p>
 <ul>
 <li>sumDocFreq：b（2）+ c（3）+ f（1）+ h（1）= 7</li>
@@ -337,65 +322,30 @@
 </ul>
 <p>  再处理完所有域之后，上述的信息在索引文件.tim中的位置如下：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/4.png">
 <h3 id="生成nodeblock"><a class="markdownIt-Anchor" href="#生成nodeblock"></a> 生成NodeBlock</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/5.png">
 <p>  当前域的所有term处理结束后，那么将term栈中剩余未处理的PendingEntry生成NodeBlock（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）<i class="fas fa-external-link-alt"></i></a>）。</p>
 <h3 id="记录当前域的信息在tip文件中的起始位置indexstartfp"><a class="markdownIt-Anchor" href="#记录当前域的信息在tip文件中的起始位置indexstartfp"></a> 记录当前域的信息在.tip文件中的起始位置indexStartFP</h3>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/6.png">
 <p>  到此流程，Lucene将要在索引文件.tip中写入当前域的FSTIndex信息，在读取阶段，通过读取索引文件.tip中的FSTIndex信息来获取当前域在索引文件.tim的内容，而所有域的FSTIndex信息连续的存储在索引文件.tip中，那么需要indexStartFP来实现&quot;索引&quot;功能，如下图所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/7.png">
 <h3 id="生成当前域的fstindex信息"><a class="markdownIt-Anchor" href="#生成当前域的fstindex信息"></a> 生成当前域的FSTIndex信息</h3>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/8.png">
 <p>  在图5的流程中，当前域的所有term处理结束后，term栈中剩余未处理的PendingEntry会被处理为NodeBlock，最终只会生成一个PendingBlock（没明白？见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）<i class="fas fa-external-link-alt"></i></a>），并且PendingBlock中的index信息，即FST信息将会被写入到FSTIndex中，数据结构如下：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/9.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST算法（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，inputValues跟outputValues作为输入将被用于生成FST，在那篇文章的例子中，inputValues数组中每一个数组元素inputValue都不是&quot;[ ]“，如果inputValues数组中第一个inputvalue为”[ ]“，由于它不能生成node，那么这种情况将被特殊处理，”[ ]“对应的outputValue将使用图9中的emptyOutputBtes字段存储，同时使用emptyLen字段描述emptyOutputBtes占用的字节数，在源码中，这种特殊情况被称为&quot;empty string”、“empty input”。</p>
 <h4 id="标志位"><a class="markdownIt-Anchor" href="#标志位"></a> 标志位</h4>
 <p>  该字段的可取值为 0、1，用于描述FSTIndex两种不用的数据结构，使得在读取阶段能正确的读取字段值。</p>
 <h4 id="inputtype"><a class="markdownIt-Anchor" href="#inputtype"></a> inputType</h4>
 <p>  inputType可选值有三个，分别描述了label（lable的概念见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST算法（一）<i class="fas fa-external-link-alt"></i></a>）占用的字节数量：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/10.png">
 <ul>
 <li>BYTE1：一个字节</li>
 <li>BYTE2：两个字节</li>
@@ -409,23 +359,13 @@
 <p>  该字段描述的是current数组中所有元素，也就是在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0115/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的生成（六）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>中所有PendingBlock中的prefix（除了prefix为&quot;[ ]&quot;的信息，它使用emptyOutputBytes存储）对应的FST的inputValue。</p>
 <h3 id="生成fieldmetadata"><a class="markdownIt-Anchor" href="#生成fieldmetadata"></a> 生成FieldMetaData</h3>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/11.png">
 <p>  由于Lucene的处理逻辑是先处理所有的域，最后把这些域的信息写入一次性到索引文件.tip中，故在处理完一个域后，要将该域的信息通过FieldMetaData来存储下，当所有的域处理结束后，遍历所有的FieldMetaData，将这些信息依次到索引文件.tip中，故有了图7中的数据结构，FieldMetaData中只有一个信息需要介绍下，其他信息可以自行看源码中<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/codecs/blocktree/BlockTreeTermsWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/codecs/blocktree/BlockTreeTermsWriter.java<i class="fas fa-external-link-alt"></i></a> 的内部类FieldMetaData：</p>
 <ul>
 <li>docCount：该值描述的是包含当前域的文档号数量，以图3为例，三篇文档都包含了域名为&quot;content&quot;的文档，所以docCount = 3，该值是在生成索引文件.doc、pos、pay（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）<i class="fas fa-external-link-alt"></i></a>）的过程中统计的，统计的时机点如下图<font color=Red>红框</font>标注的流程点：</li>
 </ul>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（七）/12.png">
 <p>  至此，生成索引文件.tim、.tip的流程介绍完毕。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  相信看完这七篇的系列文章后，大家对于索引文件.doc、.pos、.pay、.tim、tip的生成以及他们之间的关系有了深刻的了解，自己品。</p>
@@ -678,7 +618,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -853,10 +793,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

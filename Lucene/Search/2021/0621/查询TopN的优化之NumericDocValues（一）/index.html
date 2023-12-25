@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -302,28 +302,13 @@
 
                     <p>  在索引阶段，我们可以在每一篇文档中添加一条或多条DocValues信息（正排），使得在查询阶段，当收集器<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector<i class="fas fa-external-link-alt"></i></a>收集到满足查询条件的文档号后，可以根据文档号找到对应的正排信息，并依据正排信息对查询结果进行排序。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/1.png">
 <p>  图1中添加了3篇文档，<font color=red>红框</font>标注即正排信息，我们在查询条件中设置一个排序规则：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/2.png">
 <p>  在图2的排序规则下，返回的结果为：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/3.png">
 <h2 id="查询topn的性能优化前"><a class="markdownIt-Anchor" href="#查询topn的性能优化前"></a> 查询TopN的性能（优化前）</h2>
 <p>  基于目前Lucene的查询模块设计，整个查询过程可以按照<code>获取迭代器</code>和<code>收集器处理文档</code>的这两个大的功能块进行划分。</p>
 <h3 id="获取迭代器"><a class="markdownIt-Anchor" href="#获取迭代器"></a> 获取迭代器</h3>
@@ -335,19 +320,9 @@
 <h2 id="查询topn的性能优化后"><a class="markdownIt-Anchor" href="#查询topn的性能优化后"></a> 查询TopN的性能（优化后）</h2>
 <p>  在Lucene8.6.0后，当使用NumericDocValues实现TopN的查询时，可以跳过那些没有竞争力（uncompetitive）的文档集合，快速实现TopN的查询。我们先给出一个例子，比较下优化前后的性能差别，demo的地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.9.0/src/main/java/index/NumericDocValuesTopNOptimization.java%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.9.0/src/main/java/index/NumericDocValuesTopNOptimization.java。<i class="fas fa-external-link-alt"></i></a></p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/4.png">
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/5.png">
 <h2 id="开启优化"><a class="markdownIt-Anchor" href="#开启优化"></a> 开启优化</h2>
 <p>  开启优化需要满足以下两点：定义相同域名的PointValues、显示指定开启优化</p>
 <ul>
@@ -355,12 +330,7 @@
 <li>显示指定开启优化：在图4中的第64行，该方法描述的是允许使用排序优化，具体内容看图6中的注释</li>
 </ul>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/查询TopN的优化之NumericDocValues/查询TopN的优化之NumericDocValues（一）/6.png">
 <p>  图6的注释说到：使用域名相同的doc values跟points存储相同的数值，就可以使用排序优化。图4中的第53、54行的代码IntPoint跟NumericDocValuesField存储了相同的数值sortValue。</p>
 <h2 id="优化"><a class="markdownIt-Anchor" href="#优化"></a> 优化</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Informs the comparator that the skipping of documents should be disabled. This function is</span></span><br><span class="line"><span class="comment">  * called by TopFieldCollector in cases when the skipping functionality should not be applied or</span></span><br><span class="line"><span class="comment">  * not necessary. An example could be when search sort is a part of the index sort, and can be</span></span><br><span class="line"><span class="comment">  * already efficiently handled by TopFieldCollector, and doing extra work for skipping in the</span></span><br><span class="line"><span class="comment">  * comparator is redundant.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">disableSkipping</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
@@ -627,7 +597,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -802,10 +772,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

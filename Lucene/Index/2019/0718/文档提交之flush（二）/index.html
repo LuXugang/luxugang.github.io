@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,40 +297,20 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="文档提交之flush的流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的流程图"></a> 文档提交之flush的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89/flush.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="执行dwpt的doflush"><a class="markdownIt-Anchor" href="#执行dwpt的doflush"></a> 执行DWPT的doFlush()</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/2.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>的文章中，我们知道，执行主动flush并完成流程点<code>收集所有达到flush条件的DWPT</code>之后，具有相同删除队列deleteQueue的DWPT都被添加到了flushQueue中，而在当前流程点中，则是从flushQueue中依次去取出每一个DWPT，执行doFlush( )操作。</p>
 <p>  从图1中可以知道除了主动flush，自动flush的DWPT也会执行doFlush( )，由于两种情况使用同一个流程点，但实际流程点中的具体逻辑还是有所区别。</p>
 <h3 id="执行dwpt的doflush的流程图"><a class="markdownIt-Anchor" href="#执行dwpt的doflush的流程图"></a> 执行DWPT的doFlush()的流程图</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/3.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89/____dwpt_doflush__.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="取出一个dwpt"><a class="markdownIt-Anchor" href="#取出一个dwpt"></a> 取出一个DWPT</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/4.png">
 <p>  图4中，尽管主动flush跟自动flush都是执行DWPT的doFlush( )，但是DWPT的来源是不一样的。</p>
 <p>  在全局flush触发的情况下，如果此时自动flush处理的DWPT跟全局flush的DWPT类型不一致（只可能存在两种不同类型的DWPT，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>），那么主动flush跟自动flush的线程不能同时进入<code>执行DWPT的doFlush()的流程图</code>（该流程点的入口对应源码中DocumentsWriter.doFlush(DocumentsWriterPerThread)），反之如果自动flush处理的DWPT跟全局flush的DWPT类型是一致的，那么允许并发的执行<code>执行DWPT的doFlush()</code>。</p>
 <p>  <strong>什么情况下自动flush处理的DWPT跟全局flush的DWPT类型会不一致：</strong></p>
@@ -362,21 +342,11 @@
 </ul>
 <h4 id="更新拖延状态"><a class="markdownIt-Anchor" href="#更新拖延状态"></a> 更新拖延状态</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/5.png">
 <p>  如果是从flushQueue中取出的DWPT，说明正在执行主动flush或者刚刚结束，那么需要更新拖延状态，其更新的原因在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/74.html" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>文章关于updateStallState的概念已经作了介绍，不赘述。</p>
 <h4 id="处理全局bufferedupdates-更新dwpt的私有bufferedupdates"><a class="markdownIt-Anchor" href="#处理全局bufferedupdates-更新dwpt的私有bufferedupdates"></a> 处理全局BufferedUpdates、更新DWPT的私有BufferedUpdates</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/6.png">
 <p>  从图5中的流程点<code>是否新增删除信息</code>可以看出，这个流程点只针对于自动flush，因为在主动flush阶段，新增的删除信息会被添加到新的全局删除队列newQueue中（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>），所以主动flush使用的删除队列flushingQueue不会新增删除信息。</p>
 <p>  首先回顾下之前讲的内容，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>的文章中我们提到，每个DWPT有一个私有的deleteSlice，该deleteSlice描述了作用于DWPT中的文档的删除信息，该删除信息最后会保存在DWPT的私有BufferedUpdates中，另外我们还介绍了一个全局的删除队列deleteQueue，它描述了所有的删除信息，该删除信息会被保存在全局BufferedUpdates（源码中的变量名是globalBufferedUpdates）中。</p>
 <h5 id="生成frozenbufferedupdates并清空全局bufferedupdates"><a class="markdownIt-Anchor" href="#生成frozenbufferedupdates并清空全局bufferedupdates"></a> 生成FrozenBufferedUpdates并清空全局BufferedUpdates</h5>
@@ -403,20 +373,10 @@
 <p>  有两个线程ThreadA、ThreadB，他们都是执行添加文档的操作，并且假设他们在执行完添加操作后两个线程中的DWPT都会生成一个段，并且全局删除队列deleteQueue为空。</p>
 <p>  ThreadA在执行完添加操作之后，其他线程新增了一个删除信息（对应图6中的TermNode）到全局删除队列deleteQueue中，当ThreadA中的DWPT执行doFlush时，更新DWPT私有的deleteSlice（即更新deleteSlice中的sliceTail，deleteSlice的概念见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），并且全局的删除信息会被冻结到全局FrozenBufferedUpdates（包含TermNode对应的删除信息），我们称之为F1，即删除信息TermNode将要作用于<strong>已有的段中的文档</strong>。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/7.png">
 <p>ThreadB在执行完添加操作之后，其他线程新增了一个删除信息（对应图7中的QueryArrayNode）到全局删除队列deleteQueue中，当ThreadB中的DWPT执行doFlush时，更新DWPT私有的deleteSlice，并且全局的删除信息会被冻结到全局FrozenBufferedUpdates（包含QueryArrayNode、TermNode对应的删除信息），我们称之为F2，即删除信息QueryArrayNode、TermNode将要作用于<strong>已有的段中的文档</strong>。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/8.png">
 <p>  如果此时ThreadB优先ThreadA先生成一个段，那么F2中的删除信息，即QueryNode无法作用于ThreadA中的DWPT对应的段中的文档，并且在上面的例子中，F1中的删除信息还会错误的作用到ThreadB中的DWPT对应的段中的文档。</p>
 <p>  如果能同步两个线程的操作，那么在上面的例子中ThreadA中的DWPT会先生成一个段，并且F1中的删除信息TermNode作用于已有的段中的文档，然后清空全局BufferedUpdates，接着ThreadB中的DWPT会先生成一个段，并且F2中的删除信息QueryArrayNode（注意F2包含的删除信息只有一个QueryArrayNode）能作用于ThreadA中的DWPT对应生成的段以及其他已有的段中的文档，最后清空全局BufferedUpdates。</p>
 <p>  上面的描述同时解释了为什么不允许主动flush跟自动flush同时进入<code>执行DWPT的doFlush()的流程图</code>这个流程点，自动flush中的删除信息可能会无法作用于主动flush中所有的DWPT对应的段中的文档。</p>
@@ -671,7 +631,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -846,10 +806,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

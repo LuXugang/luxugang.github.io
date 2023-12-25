@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -296,12 +296,7 @@
 
                     <p>  从本篇文章开始介绍Lucene中提供的基于内存的搜索引擎的内容。我们通过MemoryIndex类的注释简单的了解下。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/1.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/1.png">
 <p>  图1中中包含了两个重点内容：</p>
 <ul>
 <li>单文档：使用MemoryIndex生成的索引是单文档（single-document）的，所有的索引数据都在同一篇文档中</li>
@@ -309,29 +304,14 @@
 </ul>
 <h2 id="内存索引"><a class="markdownIt-Anchor" href="#内存索引"></a> 内存索引</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/2.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/2.png">
 <p>  从图1中可以看出，内存索引的层次结构首先按照域名划分，属于同一个域名的索引又按照Posting、Terms、PointValues、FIeldInfo、Norm、DocValues划分（<strong>只列出了部分关键内容</strong>）。</p>
 <p>  在源码层面，使用了一个Map来存放所有的内存索引：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/3.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/3.png">
 <p>  图3中的TreeMap的key跟value跟图2中的关系如下所示，即域名为key，该域名对应的索引信息为value，在代码中用Info对象存储：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/4.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/4.png">
 <h2 id="内存索引的数据结构"><a class="markdownIt-Anchor" href="#内存索引的数据结构"></a> 内存索引的数据结构</h2>
 <p>  接着我们对图4中用<font color=Blue>蓝色虚线框</font>标注的几个不同类型索引信息分别介绍下其数据结构。</p>
 <h3 id="posting"><a class="markdownIt-Anchor" href="#posting"></a> Posting</h3>
@@ -340,20 +320,10 @@
 <p>  对于IntBlockPool类，实际上使用了一个int类型的二维数组buffers来存储Posting。</p>
 <p>  对于某个域名对应的Posting，其数据结构如下：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/5.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/5.png">
 <p>  由于偏移offset、负载payload可以分别使用参数来决定是否存储，如下所示。故在不同参数下，一共有图5中三种Posting的数据结构。</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/6.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/6.png">
 <p>  另外在图5中可以看到，并没有真正的存储payload的值，而是存放了一个索引值payloadIndex，该索引值指向另一个数据结构中的某个位置，在那个位置存放着payload的值，后面的文章中会详细展开。如果没有payload值，那么payloadIndex的值置为-1。</p>
 <h4 id="哨兵值"><a class="markdownIt-Anchor" href="#哨兵值"></a> 哨兵值</h4>
 <p>  将term的Posing信息写入到二维数组buffers之前，会在二维数组buffers中预分配一段空间连续的分片，哨兵值位于分片中的最后一个位置。</p>
@@ -409,12 +379,7 @@
 <p>  在介绍了termId之后，我们就可以介绍上文中提到的term的词频frequency的存储方式。</p>
 <p>  由于有了termId的概念，故使用了一个名字为freq的int 类型的数组存储即可。其中数组下标为termId，数组元素为term的词频frequency。该数组在代码中的定义如下所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/7.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/7.png">
 <p>  图7中的SliceByteStartArray对象实际也是Info（见图4）对象中的一个变量。</p>
 <p>  SliceByteStartArray对象中的另外两个数组，start[ ]跟end[ ]数组，他们的<strong>数组下标同样是termId</strong>，数组元素分别描述了term的Posting信息在二维数组buffers（见图5）的开始跟结束位置。因为<strong>所有term</strong>的Posting信息都存放在同一个二维数组buffers中，故在读取阶段，通过start[ ]跟end[ ]数组获得某个term的Posting信息在二维数组buffers中的起始读取位置跟结束位置。下文会通过例子详细介绍SliceByteStartArray对象。</p>
 <h4 id="bytesrefhash"><a class="markdownIt-Anchor" href="#bytesrefhash"></a> BytesRefHash</h4>
@@ -422,12 +387,7 @@
 <h4 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h4>
 <p>  我们通过一个例子来介绍term的倒排信息是如何存储的。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/8.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/8.png">
 <p>  图8中，<font color=Red>红框标注</font>的两个参数都是true，意思是存储偏移offset跟负载payload的值。</p>
 <h5 id="写入逻辑"><a class="markdownIt-Anchor" href="#写入逻辑"></a> 写入逻辑</h5>
 <p>  在介绍例子之前，我们先概述下写入的逻辑的核心过程：</p>
@@ -488,75 +448,35 @@
 <h5 id="添加第一个termjay"><a class="markdownIt-Anchor" href="#添加第一个termjay"></a> 添加第一个term：jay</h5>
 <p>  由于jay这个term第一次处理，故在二维数组buffers中预分配大小为2个数组元素大小的连续空间：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/9.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/9.png">
 <h6 id="写入位置position"><a class="markdownIt-Anchor" href="#写入位置position"></a> 写入位置position</h6>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/10.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/10.png">
 <h6 id="写入偏移offset-payload"><a class="markdownIt-Anchor" href="#写入偏移offset-payload"></a> 写入偏移Offset、payload</h6>
 <p>  由于当前分片的下一个写入位置是个哨兵值，故先进行分片再分配，新的分片的大小固定为4个数组元素大小。接着当前分片的哨兵值被替换为一个索引值index，用来描述新的分片在二维数组buffers中的起始位置，即2，然后写入偏移Offset的startOffset跟endOffset：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/11.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/11.png">
 <h6 id="写入slicebytestartarray"><a class="markdownIt-Anchor" href="#写入slicebytestartarray"></a> 写入SliceByteStartArray</h6>
 <p>  在写入Posting的过程中，会将当前处理的term在二维数组buffers中的起始、结束位置、词频frequency写入到SliceByteStartArray对象（见图7）中：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/12.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/12.png">
 <h5 id="添加termlily"><a class="markdownIt-Anchor" href="#添加termlily"></a> 添加term：lily</h5>
 <p>  添加的过程跟添加第一个jay是一样的，故直接给出结果：</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/13.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/13.png">
 <h5 id="添加第二个termjay"><a class="markdownIt-Anchor" href="#添加第二个termjay"></a> 添加第二个term：jay</h5>
 <h6 id="写入位置position-2"><a class="markdownIt-Anchor" href="#写入位置position-2"></a> 写入位置position</h6>
 <p>  由图13可知，当前分片无法存储更多的数据，故先分配一个新的固定大小为4的分片，当前分片的哨兵值更新为12，然后写入位置position。注意的是SliceByteStartArray对象中的信息在写完便宜offset、负载payload后才更新</p>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/14.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/14.png">
 <h6 id="写入偏移offset-payload-2"><a class="markdownIt-Anchor" href="#写入偏移offset-payload-2"></a> 写入偏移Offset、payload</h6>
 <p>  由图3可知，写入偏移offset、payload需要3个数组元素大小，故在写完偏移offset后，先分配新的分配，修改哨兵值为16，然后写入payloadIndex，最后更新SliceByteStartArray中的end、freq数组：</p>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/15.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/15.png">
 <h5 id="添加termlucy"><a class="markdownIt-Anchor" href="#添加termlucy"></a> 添加term：lucy</h5>
 <p>emsp; 添加的过程跟添加第一个jay是一样的，故直接给出结果：</p>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/16.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/16.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  本文简单的介绍了MemoryIndex的概念，以及如何存储倒排信息的内容。在随后的文章将进一步介绍term自身的值、负载payload，以及其他类型索引文件的内容。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/attachment/Lucene/Index/MemoryIndex/MemoryIndex%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -808,7 +728,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -983,10 +903,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

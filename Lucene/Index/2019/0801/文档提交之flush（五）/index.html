@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,20 +297,10 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="文档提交之flush的整体流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的整体流程图"></a> 文档提交之flush的整体流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/1.png">
 <h2 id="更新删除信息"><a class="markdownIt-Anchor" href="#更新删除信息"></a> 更新删除信息</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/2.png">
 <p>  在执行<code>更新删除信息</code>的流程点之前，我们需要等待所有<code>执行DWPT的doFlush()</code>的线程执行完毕。</p>
 <p>  <strong>为什么会有多线程执行<code>执行DWPT的doFlush()</code>的流程</strong>：</p>
 <ul>
@@ -346,12 +336,7 @@
 </ul>
 <h2 id="强制发布生成的段"><a class="markdownIt-Anchor" href="#强制发布生成的段"></a> 强制发布生成的段</h2>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/3.png">
 <p>  <code>发布生成的段</code>分为<code>强制</code>跟<code>尝试</code>两种情况，其区别在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>已介绍，不赘述，在本篇文章中主要介绍<code>发布生成的段</code>的流程。</p>
 <p>  <strong>为什么在这个阶段要强制执行发布生成的段</strong>：</p>
 <ul>
@@ -359,20 +344,10 @@
 </ul>
 <h3 id="发布生成的段的流程图"><a class="markdownIt-Anchor" href="#发布生成的段的流程图"></a> 发布生成的段的流程图</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/4.png">
 <h4 id="强制-尝试发布生成的段"><a class="markdownIt-Anchor" href="#强制-尝试发布生成的段"></a> 强制、尝试发布生成的段</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/5.png">
 <p>  图5中，<code>是否强制执行</code>的<code>是</code>与<code>否</code>分别对应了<code>强制发布生成的段</code>以及<code>尝试发布生成的段</code></p>
 <ul>
 <li>强制发布生成的段：多线程执行<code>发布生成的段</code>，会等待获得锁</li>
@@ -384,12 +359,7 @@
 </ul>
 <h4 id="取出允许发布publish的flushticket"><a class="markdownIt-Anchor" href="#取出允许发布publish的flushticket"></a> 取出允许发布（publish）的FlushTicket</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/6.png">
 <p>  图6中，从队列中取出一个FlushTicket，队列即Queue&lt;FlushTicket&gt; queue（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>  源码中判断FlushTicket是否能发布的条件如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">canPublish</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hasSegment == <span class="literal">false</span> || segment != <span class="literal">null</span> || failed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -400,12 +370,7 @@
 </ul>
 <h4 id="发布frozenbufferedupdates-flushedsegment"><a class="markdownIt-Anchor" href="#发布frozenbufferedupdates-flushedsegment"></a> 发布FrozenBufferedUpdates、FlushedSegment</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（五）/7.png">
 <p>  图7中FlushedSegment和FrozenBufferedUpdates同时为空的条件的条件即上文中FlushTicket的状态三。</p>
 <p>  由于篇幅原因，<code>发布FrozenBufferedUpdates</code>、<code>FlushedSegment</code>的流程将在下篇文章中展开介绍。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
@@ -659,7 +624,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -834,10 +799,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

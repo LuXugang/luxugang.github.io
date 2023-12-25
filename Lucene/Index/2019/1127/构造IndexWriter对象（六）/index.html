@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -294,20 +294,10 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1126/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%94%EF%BC%89" >构造IndexWriter对象（五）<i class="fas fa-external-link-alt"></i></a>，继续介绍调用IndexWriter的构造函数的流程。</p>
 <h1 id="调用indexwriter的构造函数的流程图"><a class="markdownIt-Anchor" href="#调用indexwriter的构造函数的流程图"></a> 调用IndexWriter的构造函数的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/1.png">
 <h2 id="生成对象bufferedupdatesstream"><a class="markdownIt-Anchor" href="#生成对象bufferedupdatesstream"></a> 生成对象BufferedUpdatesStream</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/2.png">
 <p>  <strong>介绍该对象会涉及很多在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>系列文章中的知识点，故如果没有看过或者不熟悉flush流程的同学可以跳过下面的内容，只需要知道该对象的生成时机就行了</strong>。</p>
 <p>  BufferedUpdatesStream用来追踪（track）FrozenBufferedUpdates，主要负责执行FrozenBufferedUpdates的两个工作：</p>
 <ul>
@@ -324,30 +314,15 @@
 </ul>
 <p>  <strong>获得nextGen</strong>的执行时机点在flush的流程中的位置如下所示，用红框标注：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/3.png">
 <p>  图3的流程图的每个流程点的详细介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>  <strong>作用（apply）删除信息</strong>的执行时机点在flush的流程中的位置如下所示，用红框标注：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/4.png">
 <p>  从图3的流程中可以知道，在FrozenBufferedUpdates获得nextGen之后就被添加到了eventQueue（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>中的介绍）中，故该<strong>作用（apply）删除信息</strong>的执行时机点在图4的<code>IndexWriter处理事件</code>的流程中。</p>
 <h2 id="生成对象documentswriter"><a class="markdownIt-Anchor" href="#生成对象documentswriter"></a> 生成对象DocumentsWriter</h2>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/5.png">
 <p>  DocumentsWriter对象主要负责下面的三个工作：</p>
 <ul>
 <li>文档的增删改：用户通过IndexWriter对象执行文档的增删改的任务，实际都是IndexWriter通过调用DocumentsWriter对象来实现的，文档的增删改的详细过程可以看<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改<i class="fas fa-external-link-alt"></i></a>的系列文章</li>
@@ -373,12 +348,7 @@
 <p>  生成一个SegmentReader对象的开销是极大的，原因是读取索引信息为磁盘I/O操作，故使用ReaderPool来缓存SegmentReader，当需要作用（apply）删除信息、更新DocValues信息时，只需要从ReaderPool中取出该段对应的SegmentReader（如果不存在则先添加到ReaderPool），并且只修改SegmentReader中会发生变更的索引信息。</p>
 <p>  在flush()阶段，DWPT（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>）被flush为一个段后，并不会马上被添加到ReaderPool中（lazy init机制），而是当该段需要被作用（apply）删除信息、更新DocValues信息时，被添加到ReaderPool的时机点在下图中用红框标注：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/6.png">
 <p>  图6的流程图在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0807/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89" >文档提交之flush（七）<i class="fas fa-external-link-alt"></i></a>中做了详细介绍，感兴趣的同学可以看一看。</p>
 <h3 id="执行合并"><a class="markdownIt-Anchor" href="#执行合并"></a> 执行合并</h3>
 <p>  执行段的合并的过程是通过每个段对应的SegmentReader中包含的索引信息进行合并（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1028/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89" >执行段的合并（三）<i class="fas fa-external-link-alt"></i></a>），故在合并期间需要获取待合并段的SegmentReader，而获取的方式就是从ReaderPool获取。</p>
@@ -394,23 +364,13 @@
 <p>  其中通过方法三，方法四能获得具有NRT功能的StandardDirectoryReader（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0920/NRT%EF%BC%88%E4%B8%89%EF%BC%89" >近实时搜索NRT（三）<i class="fas fa-external-link-alt"></i></a>），并且在这两个方法的实现过程中，会将StandardDirectoryReader中的SegmentReader缓存到ReaderPool中，这样的做法使得当再次通过方法三、方法四或者性能更高的OpenIfChange()方法（<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89" >近实时搜索NRT（四）<i class="fas fa-external-link-alt"></i></a>）获得StandardDirectoryReader时，能先从ReaderPool中获得缓存的SegmentReader，即所谓的&quot;分发&quot;。</p>
 <p>  实时（real time）的StandardDirectoryReader缓存到ReaderPool的时机点如下红框标注所示所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/7.png">
 <p>  图7的流程图的详细介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0917/NRT%EF%BC%88%E4%BA%8C%EF%BC%89" >近实时搜索NRT（二）<i class="fas fa-external-link-alt"></i></a>。</p>
 <h4 id="readerpool的构造函数"><a class="markdownIt-Anchor" href="#readerpool的构造函数"></a> ReaderPool的构造函数</h4>
 <p>  另外还要说下的是，在ReaderPool的构造函数中，会将图1中流程点<code>获取IndexCommit对应的StandardDirectoryReader</code>获得的StandardDirectoryReader中的SegmentReader缓存到ReaderPool中。</p>
 <h3 id="生成对象indexfiledeleter"><a class="markdownIt-Anchor" href="#生成对象indexfiledeleter"></a> 生成对象IndexFileDeleter</h3>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（六）/8.png">
 <p>  IndexFileDeleter用来追踪SegmentInfos是否还&quot;活着（live）&quot;，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89" >构造IndexWriter对象（四）<i class="fas fa-external-link-alt"></i></a>中我们介绍了SegmentInfos对象跟索引文件segments_N的关系，简单的概括就是SegmentInfos对象是索引文件segments_N和索引文件.si在内存中的表示。</p>
 <p>  当执行索引删除策略时，例如默认的索引删除策略<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >KeepOnlyLastCommitDeletionPolicy<i class="fas fa-external-link-alt"></i></a>，新的提交生成后（即生成新的segments_N文件）需要删除上一次提交，即需要删除上一次提交对应的所有索引信息，而用来描述所有索引信息的正是SegmentInfos，删除SegmentInfos的真正目的是为了删除对应在索引目录中的索引文件，但这些索引文件如果正在被其他SegmentInfos引用，那么就不能被删除，IndexFileDeleter真正的工作就是判断索引目录中的索引文件是否允许被删除。</p>
 <p><strong>IndexFileDeleter如何判断索引目录中的索引文件是否允许被删除</strong></p>
@@ -664,7 +624,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -839,10 +799,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

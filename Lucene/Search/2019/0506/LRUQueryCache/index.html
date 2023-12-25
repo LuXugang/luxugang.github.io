@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -304,38 +304,18 @@
 <p>当然，我们可以自定义maxCachedQueries跟maxRamBytesUsed的值。</p>
 <h1 id="lruquerycache流程图"><a class="markdownIt-Anchor" href="#lruquerycache流程图"></a> LRUQueryCache流程图</h1>
 <p>图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/1.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/1.png"></p>
 <h2 id="开始"><a class="markdownIt-Anchor" href="#开始"></a> 开始</h2>
 <p>图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/2.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/2.png"><br />
 在执行查询时，如果我们使用了一个不需要打分的Collector，那么该Query就可以进入LRUQueryCache的流程之中，比如说TermsCollector、TotalHitCountCollector等等。默认的查询使用的是TopScoreDocCollector，他需要打分，所以无法使用LRUQueryCache的功能。</p>
 <h2 id="query"><a class="markdownIt-Anchor" href="#query"></a> Query</h2>
 <p>图3：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/3.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/3.png"><br />
 查询定义的Query对象。</p>
 <h2 id="允许缓存"><a class="markdownIt-Anchor" href="#允许缓存"></a> 允许缓存？</h2>
 <p>图4：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/4.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/4.png"><br />
 允许缓存受限于诸多条件，下面一一列出：</p>
 <h3 id="query条件"><a class="markdownIt-Anchor" href="#query条件"></a> Query条件</h3>
 <p>有些Query不需要缓存：</p>
@@ -366,20 +346,10 @@
 <h2 id="不存在缓存"><a class="markdownIt-Anchor" href="#不存在缓存"></a> 不存在缓存？</h2>
 <p>当满足缓存条件后，继续下面的流程<br />
 图5：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/5.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/5.png"><br />
 如果存在缓存，那么直接取出缓存就可以退出了，需要重复的是，返回的结果只是文档号集。<br />
 图6：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/6.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/6.png"><br />
 如果不存在缓存，那么我们需要增加缓存，但是增加缓存还存在一些额外条件：</p>
 <h3 id="允许增加缓存条件"><a class="markdownIt-Anchor" href="#允许增加缓存条件"></a> 允许增加缓存条件</h3>
 <h4 id="query条件-2"><a class="markdownIt-Anchor" href="#query条件-2"></a> Query条件</h4>
@@ -395,12 +365,7 @@
 <p>当满足允许增加缓存条件后，就可以执行一次常规的查询，获得查询结果后，即文档号集，存放到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>，即缓存。</p>
 <h2 id="执行lru"><a class="markdownIt-Anchor" href="#执行lru"></a> 执行LRU?</h2>
 <p>图7：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/7.png"
-                     
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/QueryCache/LRUQueryCache/7.png"><br />
 上文中提到，缓存的个数跟占用内存量是有上限限制的，每当添加一个缓存后，会判断是否需要执行LRU算法来剔除某个旧的缓存或者直接添加新的缓存。在随后的文章中会详细介绍在Lucene中LRU算法的实现，因为这不是LRUQueryCache专有的功能，它属于一个Util类，出于正确分类目的，会另外写一篇文章。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>文章中一些细节并没有详细介绍，比如说 为什么有些IndexReader不允许缓存、哪些IndexReader不允许缓存、为什么段文件更新后不允许缓存，在后面的文章中会解释这些问题。</p>
@@ -653,7 +618,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -828,10 +793,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

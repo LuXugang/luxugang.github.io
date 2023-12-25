@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,59 +299,29 @@
 
                     <p>  在执行flush()的过程中，Lucene会将内存中的索引信息生成索引文件，其生成的时机点如下图红色框标注：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/1.png">
 <p>  图一中的流程是flush()阶段的其中一个流程点，完整的flush()过程可以看系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush<i class="fas fa-external-link-alt"></i></a>，<code>索引文件的生成</code>系列文章将会介绍图一中红框标注的每一个流程点，本篇文章先介绍<code>生成索引文件 .tim、.tip、.doc、.pos、.pay</code>流程点。</p>
 <h2 id="生成索引文件tim-tip-doc-pos-pay"><a class="markdownIt-Anchor" href="#生成索引文件tim-tip-doc-pos-pay"></a> 生成索引文件.tim、.tip、.doc、.pos、.pay</h2>
 <p>  在添加文档阶段，一篇文档中的term所属文档号docId，在文档内的出现次数frequency，位置信息position、payload信息、偏移信息offset，会先被存放到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89" >倒排表<i class="fas fa-external-link-alt"></i></a>中，随后在flush()阶段，读取倒排表的信息，将这些信息写入到索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >.tim、.tip<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>中。</p>
 <h3 id="生成索引文件tim-tip-doc-pos-pay的流程图"><a class="markdownIt-Anchor" href="#生成索引文件tim-tip-doc-pos-pay的流程图"></a> 生成索引文件.tim、.tip、.doc、.pos、.pay的流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/2.png">
 <h4 id="写入索引文件的顺序"><a class="markdownIt-Anchor" href="#写入索引文件的顺序"></a> 写入索引文件的顺序</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/3.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89" >倒排表<i class="fas fa-external-link-alt"></i></a>中我们知道，倒排表中的内容按照域进行划分，域之间可能存在相同的term，但是一个域内term是唯一的，故其写入索引文件的顺序如图3所示， 域间（between filed）根据域名（field name）的字典序处理，域内（inner field）按照term的字典序进行处理。</p>
 <h4 id="生成索引文件doc-pos-pay"><a class="markdownIt-Anchor" href="#生成索引文件doc-pos-pay"></a> 生成索引文件.doc、.pos、.pay</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/4.png">
 <p>  我们先介绍在<strong>一个域内</strong>，生成索引文件.doc、.pos、.pay的逻辑。</p>
 <h5 id="生成索引文件doc-pos-pay的流程图"><a class="markdownIt-Anchor" href="#生成索引文件doc-pos-pay的流程图"></a> 生成索引文件.doc、.pos、.pay的流程图</h5>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/5.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89/__docpospay___.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  图5描述的是同一个域内处理一个term，生成索引文件.doc、.pos、.pay的过程。</p>
 <h6 id="执行处理前的初始化的工作"><a class="markdownIt-Anchor" href="#执行处理前的初始化的工作"></a> 执行处理前的初始化的工作</h6>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/6.png">
 <p>  依次处理当前域中所有的term，并且是按照term的字典序处理。</p>
 <p><strong>为什么要按照term的字典序处理</strong>：</p>
 <ul>
@@ -365,57 +335,27 @@
 <li>重置跳表信息：该信息在后面介绍跳表时再展开介绍</li>
 </ul>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/7.png">
 <p>  图7中，如果<strong>当前开始处理第二个term</strong>，那么此时docStartFP（docStart File Pointer缩写）、posStartFP、payStartFP如上所示，这几个信息将会被写入到索引文件.tim、.tip中，本文中我们只需要知道生成的时机点，这些信息的作用将在后面的文章中介绍。</p>
 <h6 id="是否还有文档包含当前term"><a class="markdownIt-Anchor" href="#是否还有文档包含当前term"></a> 是否还有文档包含当前term？</h6>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/8.png">
 <p>  按照文档号从小到大，依次处理当前term在一篇文档中的信息，这些文档中都包含当前term。</p>
 <h6 id="记录当前文档号到docseen"><a class="markdownIt-Anchor" href="#记录当前文档号到docseen"></a> 记录当前文档号到docSeen</h6>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/9.png">
 <p>  使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>对象docSeen来记录当前的文档号，docSeen在生成<a href="(https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip)">索引文件.tim、tip</a>时会用到，这里我们只要知道它生成的时间点就行。</p>
 <h6 id="记录term所有文档中的词频totaltermfreq"><a class="markdownIt-Anchor" href="#记录term所有文档中的词频totaltermfreq"></a> 记录term所有文档中的词频totalTermFreq</h6>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/10.png">
 <p>  这里说的所有文档指的是包含当前term的文档，一篇文档中可能包含多个当前term，那么每处理一篇包含当前term的文档，term在这篇文档中出现的次数增量到totalTermFreq，totalTermFreq中存储了term在所有文档中出现的次数，同样增量统计docFreq，它描述了包含当前term的文档数量。</p>
 <p>  totalTermFreq、docFreq将会被存储到<a href="(https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip)">索引文件.tim、tip</a>中，在搜索阶段，totalTermFreq、docFreq该值用来参与打分计算（见系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89" >查询原理<i class="fas fa-external-link-alt"></i></a>）。</p>
 <h6 id="是否生成了packedblock"><a class="markdownIt-Anchor" href="#是否生成了packedblock"></a> 是否生成了PackedBlock?</h6>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/11.png">
 <p>  每当处理128篇包含当前term的文档，就需要将term在这些文档中的信息，即文档号docId跟词频frequency，使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackeInts<i class="fas fa-external-link-alt"></i></a>进行压缩存储，生成一个PackedBlock。</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/12.png">
 <p>  图12中，红框标注的即PackedBlock，关于PackedBlock的介绍以及几个问题在后面的流程中会介绍，这里先抛出这几个问题：</p>
 <ul>
 <li>为什么要生成PackedBlock</li>
@@ -423,21 +363,11 @@
 </ul>
 <h6 id="写入到跳表skiplist中"><a class="markdownIt-Anchor" href="#写入到跳表skiplist中"></a> 写入到跳表skipList中</h6>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/13.png">
 <p>  如果生成了一个PackedBlock，那么需要生成跳表，使得能在读取阶段能快速跳转到指定的PackedBlock，跳表skipList的介绍将在后面的文章中详细介绍，这里只要知道生成的时机点即可。</p>
 <h6 id="记录文档号跟词频信息"><a class="markdownIt-Anchor" href="#记录文档号跟词频信息"></a> 记录文档号跟词频信息</h6>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/14.png">
 <p>  将文档号跟term在当前文档中的词频frequency分别记录到两个数组docDeltaBuffer、freqBuffer中，注意的是由于文档号是按照从小到大的顺序处理的，所以docDeltaBuffer数组存放的是与上一个文档号的差值，但是term在每个文档中的词频frequency是无序的，所以无法使用差值存储词频frequency，故在freqBuffer数组中，数组元素是原始的词频值。</p>
 <p><strong>为什么使用差值存储</strong>：</p>
 <p>  能降低存储空间的使用量，如果我们有下面的待处理的文档号集合，数组中按照文档号从小到大有序：</p>
@@ -447,20 +377,10 @@
 <p>  docIds数组中最大值为4，二进制位00000<font color=Red>100</font>，那么所有数组元素使用3个bit位存储，共需要3*7 = 21个bit，可见能有效的降低存储空间。</p>
 <h6 id="生成block"><a class="markdownIt-Anchor" href="#生成block"></a> 生成Block</h6>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/15.png">
 <p>  当数组docDeltaBuffer中的数组元素个数达到128个以后，意味着已经处理了128篇文档，此时需要生成Block，即将数组docDeltaBuffer、freqBuffer中的数据经过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackeInts<i class="fas fa-external-link-alt"></i></a>处理后生成一个PackedBlock，如下所示：</p>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（一）/16.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  基于篇幅，剩余的流程将在下一篇文档中展开。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -716,7 +636,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -891,10 +811,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

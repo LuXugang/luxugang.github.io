@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -294,31 +294,16 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1203/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89" >构造IndexWriter对象（八）<i class="fas fa-external-link-alt"></i></a>，继续介绍调用IndexWriter的构造函数的流程。</p>
 <h1 id="调用indexwriter的构造函数的流程图"><a class="markdownIt-Anchor" href="#调用indexwriter的构造函数的流程图"></a> 调用IndexWriter的构造函数的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/1.png">
 <h2 id="生成对象indexfiledeleter"><a class="markdownIt-Anchor" href="#生成对象indexfiledeleter"></a> 生成对象IndexFileDeleter</h2>
 <p>  我们紧接上一篇文章，继续介绍剩余的流程点，下面先给出IndexFileDeleter的构造函数流程图：</p>
 <h3 id="indexfiledeleter的构造函数流程图"><a class="markdownIt-Anchor" href="#indexfiledeleter的构造函数流程图"></a> IndexFileDeleter的构造函数流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89/indexfiledeleter.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="更新segmentinfos的metadata"><a class="markdownIt-Anchor" href="#更新segmentinfos的metadata"></a> 更新SegmentInfos的metaData</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/3.png">
 <p>  我们先介绍下需要更新SegmentInfos的哪些metaData：</p>
 <ul>
 <li>generation：该值该值是一个迭代编号（generation number），用来命名下一次commit()生成的segments_N的N值</li>
@@ -328,86 +313,36 @@
 </ul>
 <p>  我们通过下面的例子来介绍上面的metaData的用途，图4的例子使用的索引删除策略为NoDeletionPolicy，完整的demo见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/InflateGenerationTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/InflateGenerationTest.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/4.png">
 <p>  图4中的例子描述的是，在代码第67行执行IndexWriter.commitI()之后生成一个段，该段的索引信息对应为索引目录中以_0为前缀的索引文件，如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/5.png">
 <p>  随后执行了图4中的第70行的DocValues的更新操作，由于以_0为前缀的段中的文档满足该更新条件，即该段中包含域名为&quot;author&quot;、域值为&quot;Lily&quot;的文档，故在执行完第72行的IndexWriter.commit()操作后，索引目录中的索引文件如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/6.png">
 <p>  图6中的三个索引文件_0_1.fnm、_0_1.Lucene70_0.dvd、_0_1.Lucene70_0.dvm描述了第一次的DocValue更新后以_0为前缀的段中的DocValues信息，随后继续执行图4中第75行的DocValues的更新操作，同样的以_0为为前缀的段中的文档仍然满足该更新条件，故在执行完第77行的IndexWriter.commit()操作后，索引目录中的索引文件如下所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/7.png">
 <p>  图7中的三个索引文件_0_2.fnm、_0_2.Lucene70_0.dvd、_0_2.Lucene70_0.dvm描述了第二次的DocValue更新后以_0为前缀的段中的DocValues信息。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/8.png">
 <p>  我们以两次生成索引文件.fnm为例，nextWriteFieldInfosGen用来命名下次生成索引文件.fnm，图8中红框标注的两个值即迭代编号（generation number）通过nextWriteFieldInfosGen来命名，<strong>在生成图8的两个索引文件.fnm后，此时nextWriteFieldInfosGen的值变为3，为下一次生成索引文件.fnm作准备</strong>，nextWriteDocValuesGen是同样的意思，用来命名索引文件.dvd、.dvm。</p>
 <p>  我们再给出下面的例子来介绍下nextWriteDelGen，完整demo见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/MultiDeleteTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/MultiDeleteTest.java<i class="fas fa-external-link-alt"></i></a> 。：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/9.png">
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/10.png">
 <p>  图10为图9的例子执行结束后的索引目录的内容，可以发现它跟nextWriteFieldInfosGen、nextWriteDocValuesGen是一样的用法。</p>
 <p>  我们换一个例子来介绍segments_N文件跟迭代编号之间的关系，该例子的完整demo见 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/MultiDeleteUpdateTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/MultiDeleteUpdateTest.java<i class="fas fa-external-link-alt"></i></a> ，本文就不贴出来了，直接给出运行结束后索引目录中的内容：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/11.png">
 <p>  我们以图11中的segments_3为例，介绍生成的索引文件.fnm、.dvd、.dvm的迭代编号在segments_N文件中的描述：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/12.png">
 <p>  图12中，DelGen即图11中索引文件_0_2.liv的迭代编号，FieldInfosGen即图11中索引文件_0_2.fnm的迭代编号，DocValuesGen即图11中索引文件  _0_2_Lucene70_0.dvd、  _0_2_Lucene70_0.dvm的迭代编号，而FieldInfosFiles中描述的是以_0为前缀的段的域信息对应的索引文件名，UpdatesFiles中描述的是以_0为前缀的段的DocValues的信息对应的索引文件名。</p>
 <p>  继续给出segment_2的例子，不作多余的介绍：</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/13.png">
 <p><strong>接着我们继续介绍为什么要执行更新SegmentInfos的metaData的操作</strong>：</p>
 <p>  先给出源码中的注释，该流程点对应在源码中的方法为：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexFileDeleter.java" >IndexFileDeleter.inflateGens(…)<i class="fas fa-external-link-alt"></i></a> 。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set all gens beyond what we currently see in the directory, to avoid double-write in cases where the previous IndexWriter did not gracefully close/rollback (e.g. os/machine crashed or lost power)</span><br></pre></td></tr></table></figure>
@@ -420,12 +355,7 @@
 </ul>
 <p>  该demo运行结束后，索引目录中的文件如下所示：</p>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/14.png">
 <p>  从图14可以看出，IndexWriter成功的执行了一次commit()操作，即生成了segments_1文件，当再次执行commit()操作时，只成功执行了二阶段提交的第一阶段，即只生成了pending_segments_2文件。</p>
 <ul>
 <li>修改了索引目录中的内容，但是没有commit：执行了文档的增删改之后，但是没有执行commit()操作就异常退出了，那么上一次commit之后的生成的索引文件都是“不优雅”的</li>
@@ -435,34 +365,19 @@
 <p><strong>问题二：为什么新的IndexWriter生成的索引文件的文件名可能会与索引目录中的相同</strong>：</p>
 <p>  我们先给出SegmentCommitInfo对象的构造函数：</p>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/15.png">
 <p>  我们以图11为例，如果我们另segments_2中的内容作为IndexCommit来构造一个新的IndexWriter，此时以_0为前缀的段的delGen、fieldInfosGen、docValuesGen都为1，那么根据图15的构造函数，nextWriteDelGen、nextWriteFieldInfosGen、nextWriteDocValuesGen都会被初始化为2，也就说如果以_0为前缀的段在后续的操作中满足删除或者DocValues的更新操作，新生成的.fnm、.dvd、.dvm的迭代编号就是2，那么就会出现与图11中的索引文件有相同的文件名</p>
 <p><strong>问题三：新的IndexWriter生成的索引文件的文件名与索引目录中的相同（即double-write）可能会引起哪些问题</strong>：</p>
 <p>  其中一个问题是即将生成的某个索引文件的文件名与索引目录中某个无法删除的索引文件的文件名是一致的，那必然会出问题，另外在Linux平台，如果挂载的文件系统是CIFS（Common Internet File System），也是有可能出现文件无法删除的情况。</p>
 <p>  综上所述，能避免这些问题的最好方式就是根据索引目录中索引文件找到gens的各自的最大值N，使得随后生成的索引文件的迭代编号从N+1开始，使得新生成的索引文件不可能与索引目录中的任何索引文件重名。</p>
 <h4 id="删除计数为0的索引文件"><a class="markdownIt-Anchor" href="#删除计数为0的索引文件"></a> 删除计数为0的索引文件</h4>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/16.png">
 <p>  该流程用来删除索引目录中那些计数为0的索引文件，那么问题就来了：</p>
 <p><strong>索引目录中哪些索引文件的计数会为0呢：</strong>：</p>
 <p>  我们在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1203/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89" >构造IndexWriter对象（八）<i class="fas fa-external-link-alt"></i></a>中说道，在图17的流程中，会根据索引目录中的segments_N文件，找到对应的所有索引文件，然后增加了这些索引文件的计数，所以他们是不会被删除的，即下面用红框标注的流程点：</p>
 <p>图17：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/17.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/17.png">
 <p>  除去segments_N对应的索引文件，那么此时索引目录中还剩下两种类型的索引文件：</p>
 <ul>
 <li>“不优雅”的索引文件：这些文件的计数肯定为0</li>
@@ -470,21 +385,11 @@
 </ul>
 <h4 id="执行索引删除策略"><a class="markdownIt-Anchor" href="#执行索引删除策略"></a> 执行索引删除策略</h4>
 <p>图18：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/18.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/18.png">
 <p>  仍旧以图11中的索引目录为例，如果上一个IndexWriter执行了close()方法后，索引目录中的内容如图11所示，如果我们用segments_2对应的IndexCommit作为新的IndexWriter的配置，那么当执行到当前流程点后，实际是让用户来选择如何处理segments_1跟segments_3这两次的提交，这两次都是有效的提交。根据新的IndexWriter使用的索引删除策略来处理这两个提交。</p>
 <h4 id="执行检查点checkpoint工作"><a class="markdownIt-Anchor" href="#执行检查点checkpoint工作"></a> 执行检查点（checkPoint）工作</h4>
 <p>图19：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/19.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（九）/19.png">
 <p>  这里的流程点的逻辑跟图17中蓝色标注的流程点是一致的，具体的执行流程在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1203/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89" >构造IndexWriter对象（八）<i class="fas fa-external-link-alt"></i></a>已介绍，不赘述。</p>
 <p><strong>为什么这里还要执行一次checkPoint的工作</strong>：</p>
 <p>  介绍这个问题需要介绍执行索引删除策略的完整流程才能理解，故基于篇幅，剩余的内容将在下一篇文章中展开。</p>
@@ -735,7 +640,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -910,10 +815,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

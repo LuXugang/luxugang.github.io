@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -306,30 +306,15 @@
 <h2 id="sorteddocvalues"><a class="markdownIt-Anchor" href="#sorteddocvalues"></a> SortedDocValues</h2>
 <p>  SortedDocValues信息对应的是在文档中SortedDocValuesField域中的信息，它同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>一样，在一篇文档中，相同域名的SortedDocValuesField只能有一个，否则就会报错，如下所示：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/1.png">
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/2.png">
 <p>  图1中，在一篇文档中有两个域名为&quot;level&quot;的SortedDocValuesField，那么会抛出图2中的错误，如果你期望支持多值，那么可以使用SortedSetDocValues，下文中会详细介绍。</p>
 <h3 id="收集文档的sorteddocvalues信息"><a class="markdownIt-Anchor" href="#收集文档的sorteddocvalues信息"></a> 收集文档的SortedDocValues信息</h3>
 <p>  收集SortedDocValues信息的代码入口方法为：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/SortedDocValuesWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/SortedDocValuesWriter.java<i class="fas fa-external-link-alt"></i></a> 的 addValue(int docID, BytesRef value)方法，收集的信息有：<strong>DocId、TermId、pending、sortedValues[ ]数组、ord、ordMap[ ]数组</strong>。</p>
 <p>  我们根据一个例子来介绍上述收集的信息：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/3.png">
 <h4 id="docid"><a class="markdownIt-Anchor" href="#docid"></a> DocId</h4>
 <p>  DocId即包含SortedDocValuesField域的文档的文档号，并且使用DocsWithFieldSet存储，DocsWithFieldSet存储文档号的过程在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>已经介绍，不赘述。</p>
 <h4 id="termid"><a class="markdownIt-Anchor" href="#termid"></a> TermId</h4>
@@ -364,41 +349,21 @@
 <h4 id="pending"><a class="markdownIt-Anchor" href="#pending"></a> pending</h4>
 <p>  pending是PackedLongValues.Builder对象，这个对象我们不需要具体了解，我们只需要知道，在这个对象有一个currentValues[ ]数组，它用来收集每篇文档中SortedDocValuesField域的域值对应的termId，图3的例子对应的currentValues[ ]如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/4.png">
 <p>  图4中，注意的是currentValues[ ]数组的数组下标描述的不是文档号。</p>
 <h4 id="sortedvalues-数组-ord"><a class="markdownIt-Anchor" href="#sortedvalues-数组-ord"></a> sortedValues[ ]数组 &amp;&amp; ord</h4>
 <p>  sortedValues[ ]数组的数组元素是termId（去重），数组下标为ord。下面的一句话很重要：数组元素是有序的，但是排序规则不是根据termId的值，而是根据termId对应的域值的字典序，图3的例子对应的sortedValues[ ]数组如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/5.png">
 <h4 id="ordmap-数组"><a class="markdownIt-Anchor" href="#ordmap-数组"></a> ordMap[ ]数组</h4>
 <p>  sortedValues[]数组中实现了 数组下标ord 到 数组元素termId的映射，而ordMap[]数组则是实现了 数组下标termId 到 数组元素 ord的映射，图3的例子对应的ordMap[ ]数组如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/6.png">
 <p>  以上就是索引（index）阶段以及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>阶段收集的内容，至于收集这些信息的作用，将在后续的文章中提及。</p>
 <h2 id="sortedsetdocvalues"><a class="markdownIt-Anchor" href="#sortedsetdocvalues"></a> SortedSetDocValues</h2>
 <p>  SortedSetDocValues信息对应的是在文档中SortedSetDocValuesField域中的信息，它跟SortedDocValues不用的是，一篇文章中允许多个相同域名的SortedSetDocValuesField，使得在搜索阶段，能提供更灵活的排序，同样我们以一个例子来介绍所谓的更灵活的排序。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/7.png">
 <p>  在搜索阶段，对于某一个SortedSetDocValues，可以支持四种方式的排序：</p>
 <ul>
 <li>MIN：选取文档中域值最小的参与排序</li>
@@ -408,20 +373,10 @@
 </ul>
 <p>  以下是源码中对上述的解释：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/8.png">
 <p>  如果在搜索阶段，我们定义了MIDDLE_MAX的排序规则，如下所示：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/9.png">
 <p>  对于上述排序规则，由于图6中每篇文档中的SortedSetDocValuesField数量为偶数，那么选取中间值较大的域值参与排序，如下所示：</p>
 <table>
 <thead>
@@ -451,12 +406,7 @@
 </table>
 <p>  那么搜索出来的文档是有序的，如下所示：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/10.png">
 <p>  上述的demo见 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/lucene/DcoValues/SortedSetDocValuesTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/lucene/DcoValues/SortedSetDocValuesTest.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <h3 id="收集文档的sortedsetdocvalues信息"><a class="markdownIt-Anchor" href="#收集文档的sortedsetdocvalues信息"></a> 收集文档的SortedSetDocValues信息</h3>
 <p>  介绍完SortedDocValues用法之后，我们继续介绍在索引（index）阶段以及<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>阶段，收集SortedDocValues信息的内容，收集信息的代码入口方法为：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java<i class="fas fa-external-link-alt"></i></a> 的 addValue(int docID, BytesRef value)方法，需要收集的信息，包括：<strong>DocId、TermId、sortedValues[ ]数组、ord、ordMap[ ]数组、pending、pendingCounts</strong>。</p>
@@ -464,12 +414,7 @@
 <h4 id="pending-2"><a class="markdownIt-Anchor" href="#pending-2"></a> pending</h4>
 <p>  同样使用pending中的currentValues[ ]数组收集每篇文档中SortedSetDocValues域的域值对应的termId，注意的是一篇文档中可能包含多个域值，<strong>并且可能还是重复的域值</strong>，为了能更好的理解pending，我们需要重新写一个例子：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/11.png">
 <p>  图11的例子对应的termId如下所示：</p>
 <table>
 <thead>
@@ -499,12 +444,7 @@
 </table>
 <p>  图11的例子对应的currentValues[ ]数组如下所示：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/12.png">
 <p>  对于上述的currentValues[ ]数组，需要说明两个重点：</p>
 <ul>
 <li>重点一：如果一篇文档中包含重复的域值，那么只需要记录一个即可，例如文档0中，有两个域值为&quot;b&quot;的SortedSetDocValuesField</li>
@@ -513,12 +453,7 @@
 <h4 id="pendingcounts"><a class="markdownIt-Anchor" href="#pendingcounts"></a> pendingCounts</h4>
 <p>  pendingCounts跟pending一样都是PackedLongValues.Builder对象，所以同样我们只需要关系pendingCounts中的currentValues[ ]数组，它存储了每篇文档中包含的termId的数量，图11的例子对应的currentValues[ ]数组如下所示：</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十八）/13.png">
 <p>  同样的，收集SortedSetDocValues信息的作用，将在介绍生成索引文件.dvd、.dvm之SortedDocValues、SortedSetDocValues的文章中。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  无。</p>
@@ -771,7 +706,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -946,10 +881,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

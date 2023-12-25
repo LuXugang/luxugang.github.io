@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -294,77 +294,37 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1202/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89" >构造IndexWriter对象（七）<i class="fas fa-external-link-alt"></i></a>，继续介绍调用IndexWriter的构造函数的流程。</p>
 <h1 id="调用indexwriter的构造函数的流程图"><a class="markdownIt-Anchor" href="#调用indexwriter的构造函数的流程图"></a> 调用IndexWriter的构造函数的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/1.png">
 <h2 id="生成对象indexfiledeleter"><a class="markdownIt-Anchor" href="#生成对象indexfiledeleter"></a> 生成对象IndexFileDeleter</h2>
 <p>  我们紧接上一篇文章，继续介绍剩余的流程点，下面先给出IndexFileDeleter的构造函数流程图：</p>
 <h3 id="indexfiledeleter的构造函数流程图"><a class="markdownIt-Anchor" href="#indexfiledeleter的构造函数流程图"></a> IndexFileDeleter的构造函数流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AB%EF%BC%89/indexfiledeleter.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="执行检查点checkpoint工作"><a class="markdownIt-Anchor" href="#执行检查点checkpoint工作"></a> 执行检查点（checkPoint）工作</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/3.png">
 <p>  在介绍当前流程点之前，我们先通过下面的流程图来介绍<code>执行检查点的工作</code>这个流程点做了哪些事情。</p>
 <p>  另外<code>执行检查点（checkPoint）工作</code>在源码中对应的方法方法定义：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">checkpoint</span><span class="params">(SegmentInfos segmentInfos, <span class="type">boolean</span> isCommit)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    ... ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="执行检查点checkpoint工作的流程图"><a class="markdownIt-Anchor" href="#执行检查点checkpoint工作的流程图"></a> 执行检查点（checkPoint）工作的流程图</h5>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/4.png">
 <h6 id="准备数据"><a class="markdownIt-Anchor" href="#准备数据"></a> 准备数据</h6>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/5.png">
 <p>  图4流程图的准备数据就是checkPoint方法的两个参数SegmentInfos以及boolean。</p>
 <h6 id="增加segmentinfos对应的索引文件的计数引用"><a class="markdownIt-Anchor" href="#增加segmentinfos对应的索引文件的计数引用"></a> 增加SegmentInfos对应的索引文件的计数引用</h6>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/6.png">
 <p>  在后面的流程中，可能会执行索引文件的删除，如果某些索引文件被SegmentInfos引用，那么这些索引文件不应该被删除，防止被删除的方法就是增加SegmentInfos对应的索引文件的计数引用。</p>
 <h6 id="当iscommit为true时的处理流程"><a class="markdownIt-Anchor" href="#当iscommit为true时的处理流程"></a> 当isCommit为true时的处理流程</h6>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/7.png">
 <p>  在执行commit()操作时，也会执行checkPoint的操作，那么此时的isCommit是位true的，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>中介绍了这个流程，不赘述。</p>
 <h6 id="当iscommit为false时的处理流程"><a class="markdownIt-Anchor" href="#当iscommit为false时的处理流程"></a> 当isCommit为false时的处理流程</h6>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/8.png">
 <p>  lastFiles是一个IndexFileDeleter类的成员变量，它用来存放上次执行checkPoint的SegmentInfos中对应的索引文件定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; lastFiles = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 <p>  所以当isCommit为false时，先尝试删除lastFiles中的索引文件，删除的方式就是减少每一个索引文件的计数引用，如果计数值为0，那么该索引文件就要被删除，否则不删除，最后清空lastFiles中的索引文件后，将这次SegmentInfos对应的索引文件添加到lastFiles中。</p>
@@ -380,44 +340,19 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Incoming SegmentInfos may have NRT changes not yet visible in the latest commit, so we have to protect its files from deletion too:</span></span><br></pre></td></tr></table></figure>
 <p>  我们用一个例子来介绍上文的注释所描述的场景，完整代码见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/CheckPointInIndexFileDeleter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/index/CheckPointInIndexFileDeleter.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/9.png">
 <p>  图9中当第62行的oldIndexWriter.commit()操作执行结束后，索引目录中的索引文件如下所示：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/10.png">
 <p>  接着执行完第64行的代码后，我们获得了一个NRT的Reader（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0920/NRT%EF%BC%88%E4%B8%89%EF%BC%89" >近实时搜索NRT（三）<i class="fas fa-external-link-alt"></i></a>的介绍），接着第70行代码结束后，oldIndexWriter新增了一篇文档2，注意的是并没有执行commit()操作（即没有生成新的segments_N文件），随后通过第72行的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0925/NRT%EF%BC%88%E5%9B%9B%EF%BC%89" >openIfChange()<i class="fas fa-external-link-alt"></i></a>方法获得一个包含最新索引信息的reader（即StandardDirectoryReader），通过该reader获得一个IndexCommit，IndexCommit中包含了第70行代码增加的索引信息，即图11中以_1为前缀的索引文件，并且在第76行通过IndexWriterConfig.setIndexommit()方法将IndexCommit成为newIndexWriter的配置，在执行完第78行代码后，索引目录中的索引文件如下所示：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/11.png">
 <p>  从图11可以看出，以_1为前缀的索引文件无法被最后的一次commit()可见，即Incoming SegmentInfos may have NRT changes not yet visible in the latest commit，那么在下面的用红色标注的流程中，就无法通过segments_N文件来增加_1.cfe、_1.cfs、_1.si的计数，这些索引文件就是通过NRT changes获得的，在后面的流程中，我们将会知道计数为0的文件都会被删除：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/12.png">
 <h4 id="对commits集合进行排序"><a class="markdownIt-Anchor" href="#对commits集合进行排序"></a> 对commits集合进行排序</h4>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（八）/13.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1202/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89" >构造IndexWriter对象（七）<i class="fas fa-external-link-alt"></i></a>中，根据索引目录中的segments_N文件，将对应的segments_N对应的SegmentInfos生成CommitPoint，并且添加到CommitPoint集合commits中，添加的过程是无序的，如果构造中的IndexWriter对象使用的是默认的索引删除策略<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >KeepOnlyLastCommitDeletionPolicy<i class="fas fa-external-link-alt"></i></a>，那么就无法正确的处理 了，所以需要按照从旧到新的提交顺序来排序。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
@@ -666,7 +601,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -841,10 +776,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

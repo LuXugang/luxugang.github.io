@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -302,48 +302,23 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">set</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="comment">// 将index根据64进行划分，比如 0~63都属于一个wordNum, 64~127属于另一个wordNum</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">wordNum</span> <span class="operator">=</span> index &gt;&gt; <span class="number">6</span>;      <span class="comment">// div 64</span></span><br><span class="line">        <span class="comment">// 计算出当前文档号应该放到64个bit位(long类型)的哪一位</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">bitmask</span> <span class="operator">=</span> <span class="number">1L</span> &lt;&lt; index;</span><br><span class="line">        <span class="comment">// bits[]是个long类型的数据</span></span><br><span class="line">        bits[wordNum] |= bitmask;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子：</h3>
 <p>图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/1.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/1.png"></p>
 <h4 id="添加-3"><a class="markdownIt-Anchor" href="#添加-3"></a> 添加 3</h4>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根据set()方法的逻辑：</span><br><span class="line">1. 计算出wordNum的值：3 &gt;&gt; 6,即wordNum = 0，说明3应该存放在bit[]数组下标为0的元素中。</span><br><span class="line">2. 计算出bitmask的值，即计算出在64个bit位中的偏移，bitmask = 0b1000。</span><br><span class="line">3. 与bit[0]的值执行或操作。</span><br></pre></td></tr></table></figure>
 <p>图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/2.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/2.png"></p>
 <h4 id="添加-67"><a class="markdownIt-Anchor" href="#添加-67"></a> 添加 67</h4>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根据set()方法的逻辑：</span><br><span class="line">1. 计算出wordNum的值：67 &gt;&gt; 6,即wordNum = 1，说明67应该存放在bit[]数组下标为1的元素中。</span><br><span class="line">2. 计算出bitmask的值，即计算出在64个bit位中的偏移，bitmask = 0b1000。</span><br><span class="line">3. 与bit[1]的值执行或操作。</span><br></pre></td></tr></table></figure>
 <p>图3：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/3.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/3.png"></p>
 <h4 id="添加-120"><a class="markdownIt-Anchor" href="#添加-120"></a> 添加 120</h4>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根据set()方法的逻辑：</span><br><span class="line">1. 计算出wordNum的值：120 &gt;&gt; 6,即wordNum = 1，说明120应该存放在bit[]数组下标为1的元素中。</span><br><span class="line">2. 计算出bitmask的值，即计算出在64个bit位中的偏移，bitmask = 0b00000001_00000000_00000000_00000000_00000000_00000000_00000000_00000000。</span><br><span class="line">3. 与bit[1]的值执行或操作。</span><br></pre></td></tr></table></figure>
 <p>图4：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/4.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/4.png"></p>
 <h4 id="添加179-195-313"><a class="markdownIt-Anchor" href="#添加179-195-313"></a> 添加179、195、313</h4>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不赘述，大家可以自己算下是不是跟下图中一致。</span><br></pre></td></tr></table></figure>
 <p>图5：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/5.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FixedBitSet/5.png"></p>
 <p>通过上面的例子可以看到，如果我们存储的是连续的值，那么压缩率是很高的。当然同时可以看出无法处理有相同值的问题。</p>
 <h2 id="boolean-getint-index方法"><a class="markdownIt-Anchor" href="#boolean-getint-index方法"></a> boolean get(int index)方法</h2>
 <p>get()方法可以实现随机访问，来确定index的值是否在bit[]数组中。</p>
@@ -599,7 +574,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -774,10 +749,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -298,12 +298,7 @@
 <h1 id="lockfactory的具体实现类"><a class="markdownIt-Anchor" href="#lockfactory的具体实现类"></a> LockFactory的具体实现类</h1>
 <p>  LockFactory是一个抽象类，提供了以下几种子类，即NoLockFactory、SingleInstanceLockFactory、SimpleFSLockFactory、NativeFSLockFactory、VerifyingLockFactory，下面一一介绍。</p>
 <p>图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/1.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/1.png"></p>
 <h2 id="nolockfactory"><a class="markdownIt-Anchor" href="#nolockfactory"></a> NoLockFactory</h2>
 <p>  该类的功能同类名一样，即不会对索引文件进行加锁，如果使用者有把握（certain）使得IndexWriter对象总是能互斥更改索引文件，那么可以不对索引文件所在的目录进行加锁。</p>
 <h2 id="singleinstancelockfactory"><a class="markdownIt-Anchor" href="#singleinstancelockfactory"></a> SingleInstanceLockFactory</h2>
@@ -314,12 +309,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> HashSet&lt;String&gt; locks = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试获得索引文件锁，如果已经占用则抛出异常</span></span><br><span class="line"><span class="keyword">public</span> Lock <span class="title function_">obtainLock</span><span class="params">(Directory dir, String lockName)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">  <span class="keyword">synchronized</span> (locks) &#123;</span><br><span class="line">    <span class="keyword">if</span> (locks.add(lockName)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SingleInstanceLock</span>(lockName);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">LockObtainFailedException</span>(<span class="string">&quot;lock instance already obtained: (dir=&quot;</span> + dir + <span class="string">&quot;, lockName=&quot;</span> + lockName + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  在IndexWriter类中，定义了一个不可更改的lockName，使得无论哪个线程通过IndexWriter来获得索引文件锁时，lockName的值都是相同的，这样就能通过判断该lockName是否在locks容器中来实现互斥，lockName在IndexWriter类中的定义如下：</p>
 <p>图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/2.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/2.png"></p>
 <h3 id="释放索引文件锁"><a class="markdownIt-Anchor" href="#释放索引文件锁"></a> 释放索引文件锁</h3>
 <p>  释放锁的过程即从locks容器(HashSet对象)中移除键值为write.lock的元素。</p>
 <h2 id="fslockfactory"><a class="markdownIt-Anchor" href="#fslockfactory"></a> FSLockFactory</h2>
@@ -617,7 +607,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -792,10 +782,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

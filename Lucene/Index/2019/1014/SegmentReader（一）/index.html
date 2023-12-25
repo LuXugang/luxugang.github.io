@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -296,21 +296,11 @@
 
                     <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT<i class="fas fa-external-link-alt"></i></a>的系列文章中，我们知道用于读取索引目录中所有索引信息的StandardDirectoryReader实际是使用了一个LeafReader数组封装了一个或者多个SegmentReader，而每一个SegmentReader则对应一个段中的索引信息，如下图所示：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/1.png">
 <p>  本篇文章将会介绍在生成SegmentReader的过程中，它获取了哪些具体的索引信息信息，<strong>更重要的是，我们还会了解到为什么通过DirectoryReader.openIfChange()（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0920/NRT%EF%BC%88%E4%B8%89%EF%BC%89" >近实时搜索NRT（三）<i class="fas fa-external-link-alt"></i></a>）重新打开一个StandardDirectoryReader的开销会远远的小于DirectoryReader.open()方法（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>）</strong>。</p>
 <h1 id="生成segmentreader的流程图"><a class="markdownIt-Anchor" href="#生成segmentreader的流程图"></a> 生成SegmentReader的流程图</h1>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/2.png">
 <h2 id="获取segmentreader的元数据leafmetadata"><a class="markdownIt-Anchor" href="#获取segmentreader的元数据leafmetadata"></a> 获取SegmentReader的元数据LeafMetaData</h2>
 <p>  LeafMetaData包含的信息如下：</p>
 <ul>
@@ -320,12 +310,7 @@
 </ul>
 <p>  下图描述了LeafMetaData包含的信息对应在索引文件中的信息：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/3.png">
 <p>  图3中的蓝色箭头描述的是我们可以通过segName找到索引目录中的.si索引文件，可以点击<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>查看segName更详细的介绍。</p>
 <h2 id="获取不会发生变更的segmentcorereaders"><a class="markdownIt-Anchor" href="#获取不会发生变更的segmentcorereaders"></a> 获取不会发生变更的SegmentCoreReaders</h2>
 <p>  我们首先介绍下SegmentCoreReaders包含了哪些主要信息：</p>
@@ -342,28 +327,13 @@
 <p>  不过这里得提一下，使用和不使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe" >复合索引文件cfs&amp;&amp;cfe<i class="fas fa-external-link-alt"></i></a>时，读取索引文件的区别：</p>
 <p>  图4、图5分别是不使用复合索引文件和使用复合索引文件时索引目录中的文件列表：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/4.png">
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/5.png">
 <p>  在不使用复合索引文件的情况下，获得SegmentCoreReaders只需要根据<code>段的前缀名</code>从索引目录中分别找到每一个非复合索引文件，随后读取即可，而在使用复合索引文件的情况下，我们需要先根据复合索引文件cfs&amp;&amp;cfe，才能读取每一个非复合索引文件的信息。</p>
 <p>  根据图4、图5的例子，复合索引文件的数据结构如下图所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/6.png">
 <p>  图6中每一个字段的含义已经在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe" >索引文件之cfs&amp;&amp;cfe<i class="fas fa-external-link-alt"></i></a>的文章中介绍，不赘述。</p>
 <p>  SegmentCoreReaders中包含的索引信息中StoredFieldsReader、TermVectorsReader、PointsReader、NormsProducer是不会发生更改的内容，使得SegmentCoreReaders能够被复用，如果在未来的操作，该段中的索引信息发生更改，那么段中变更的索引信息会以其他索引文件来描述，这便是<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件之liv<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0218/DocValues/" >索引文件值.dvm、.dvd<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0606/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfnm" >索引文件之fnm<i class="fas fa-external-link-alt"></i></a>，索引信息发生变更的情况以及描述变更的方式如下所示：</p>
 <ul>
@@ -384,32 +354,17 @@
 </ul>
 <p>  有效的文档号集合Bits通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件之liv<i class="fas fa-external-link-alt"></i></a>获得。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/7.png">
 <p>  图7中，代码的第84、85行，删除了包含&quot;h&quot;的文档号，那么文档0、4、7三篇文档会被删除，即上文中的无效的文档号，那么对应的.liv索引文件如下所示：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/8.png">
 <p>  图8中各个字段的名字在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件之liv<i class="fas fa-external-link-alt"></i></a>中已经介绍，不赘述，图8中的索引信息随后被读取到有效的文档号集合Bits中。</p>
 <h2 id="获取段中有效的文档号的数量numdocs"><a class="markdownIt-Anchor" href="#获取段中有效的文档号的数量numdocs"></a> 获取段中有效的文档号的数量numDocs</h2>
 <p>  numDocs的值描述的是段中有效的文档号的数量，它的计算方式如下：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numDocs = maxDoc - delCount;</span><br></pre></td></tr></table></figure>
 <p>  上述的计算方式中，maxDoc描述的是DWPT处理的文档总数（包含添加出错的文档），delCount描述的是无效的文档个数，这两个值在索引文件中的位置如下所示：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/SegmentReader/SegmentReader（一）/9.png">
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  基于篇幅，剩余的内容在下一篇文档中展开介绍。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/SegmentReader/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -661,7 +616,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -836,10 +791,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

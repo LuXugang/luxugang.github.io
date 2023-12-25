@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,38 +297,18 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0801/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%94%EF%BC%89" >文档提交之flush（五）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="文档提交之flush的整体流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的整体流程图"></a> 文档提交之flush的整体流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/1.png">
 <h2 id="强制发布生成的段"><a class="markdownIt-Anchor" href="#强制发布生成的段"></a> <code>强制发布生成的段</code></h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/2.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%94%EF%BC%89" >文档提交之flush（五）<i class="fas fa-external-link-alt"></i></a>中我们还剩余<code>发布FlushedSegment</code>跟<code>发布FlushedSegment</code>两个流程点未介绍。</p>
 <h3 id="发布flushedsegment的流程图"><a class="markdownIt-Anchor" href="#发布flushedsegment的流程图"></a> <code>发布FlushedSegment</code>的流程图</h3>
 <p>  图3的流程图描述的是一个<strong>FlushTicket</strong>执行<code>发布FlushedSegment</code>流程所涉及的处理过程。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/3.png">
 <h4 id="处理全局删除信息"><a class="markdownIt-Anchor" href="#处理全局删除信息"></a> 处理全局删除信息</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/4.png">
 <p>  首先给出FlushTicket类，类中包含的主要变量如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">FlushTicket</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FrozenBufferedUpdates frozenUpdates;</span><br><span class="line">    <span class="keyword">private</span> FlushedSegment segment;</span><br><span class="line">    ... ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  从前面的文章（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>）中我们了解到，不是每一个FlushTicket都有全局删除信息，即FrozenBufferedUpdates可能为null。如果不为空，我们首先要获得一个nextGen。</p>
@@ -340,32 +320,17 @@
 <p>  由于根据nextGen能保证正确的处理删除信息，所以真正的从别的段中处理删除信息的操作，即<code>处理删除信息</code>，就可以作为一个事件添加到eventQueue（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>），使得可以多线程并发执行，在下篇文章中我们将会了解到，<code>处理删除信息</code>的过程是开销较大的工作。</p>
 <h4 id="处理段内的删除信息"><a class="markdownIt-Anchor" href="#处理段内的删除信息"></a> 处理段内的删除信息</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/5.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0730/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89" >文档提交之flush（四）<i class="fas fa-external-link-alt"></i></a>中我们简单介绍了FlushTicket 中的FlushedSegment中包含的几个信息，至少包含了一个DWPT处理的文档对应的索引信息（SegmentCommitInfo）、段中被删除的文档信息（<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>对象）、未处理的删除信息FrozenBufferedUpdates（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）、Sorter.DocMap对象，以上内容在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>的文章中已介绍。在当前流程点，FlushedSegment中的FrozenBufferedUpdates（非FlushTicket中的FrozenBufferedUpdates）中包含了段内的删除信息。</p>
 <p>  另外，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中我们介绍了，在生成索引文件的过程中，我们只处理了部分满足删除信息（见下文<code>处理丢弃的段</code>的介绍）的文档，到此流程点，我们需要处理剩余的删除信息。</p>
 <p>  无论当前FlushTicket中是否还有段内删除信息，当前段都需要获得一个nextGen，之后任何大于nextGen值的删除信息都需要作用到当前段。</p>
 <h4 id="将当前段的segmentcommitinfo添加到segmentinfos中"><a class="markdownIt-Anchor" href="#将当前段的segmentcommitinfo添加到segmentinfos中"></a> 将当前段的SegmentCommitInfo添加到SegmentInfos中</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/6.png">
 <p>  将FlushedSegment中的SegmentCommitInfo，即索引信息添加到SegmentInfos中。SegmentInfos即所有段的索引信息的集合， 在commit( )阶段，SegmentInfos中的信息对应生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/65.html" >Segment_N<i class="fas fa-external-link-alt"></i></a>的索引文件。</p>
 <h4 id="处理丢弃的段"><a class="markdownIt-Anchor" href="#处理丢弃的段"></a> 处理丢弃的段</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/7.png">
 <p>  如果当前段中的文档的总个数maxDoc与被标记为删除的（deleted）文档的个数相同，那么该段需要被丢弃，判断条件如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delCount + softDelCount == maxDoc</span><br></pre></td></tr></table></figure>
 <ul>
@@ -376,12 +341,7 @@
 <p>  从上文介绍中我们知道，当前段的SegmentCommitInfo已经被添加到SegmentInfos中，由于段的合并跟flush是异步操作，故运行到此流程点时，当前段可能正在执行段的合并。如果正在合并当前段，那么就不处理，在合并结束后，会自动丢弃该段，否则将此段对应SegmentCommitInfo从SegmentInfos中移除。</p>
 <h4 id="执行flush后的工作"><a class="markdownIt-Anchor" href="#执行flush后的工作"></a> 执行flush后的工作</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（六）/8.png">
 <p>  同图1中的<code>执行flush前的工作</code>的流程点,Lucene在此流程点预留了一个钩子函数（hook function），使用者可以实现在此实现自己的方法。</p>
 <h4 id="结束"><a class="markdownIt-Anchor" href="#结束"></a> 结束</h4>
 <p>  至此，<code>强制发布生成的段</code>中的<code>发布FlushedSegment</code>流程介绍结束，另外<code>发布FrozenBufferedUpdates</code>的流程逻辑即上文中的<code>处理全局删除信息</code>。</p>
@@ -662,7 +622,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -837,10 +797,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

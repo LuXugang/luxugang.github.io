@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -389,45 +389,20 @@
 <h2 id="计算shallow-size"><a class="markdownIt-Anchor" href="#计算shallow-size"></a> 计算shallow size</h2>
 <p>  shallow size描述的是对象自身占用的内存大小，我们先通过一个例子来介绍下通过JProfiler计算出的shallow size，然后再介绍在Lucene中的计算shallow size的逻辑 。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/1.png">
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/2.png">
 <p>  使用JProfiler后，我们观察下图1中第27行的RamUsageEstimatorTest对象ramUsageEstimator的shallow size是多少，如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/3.png">
 <p>  由图3<font color=Blue>蓝色框</font>标注的内容可以看出RamUsageEstimatorTest类中参与shallow size计算的只有非静态变量，即实例域，<font color=Green>绿色框</font>标注的内容为Retained size，它将object1对象的大小也参与到ramUsageEstimator对象的大小计算中，而在shallow size中，只将引用object1的大小，即NUM_BYTES_OBJECT_REF的值纳入计算。</p>
 <p>  接下来我们看下Lucene中计算shallow size的逻辑：</p>
 <h3 id="lucene计算shallow-size流程图"><a class="markdownIt-Anchor" href="#lucene计算shallow-size流程图"></a> Lucene计算shallow size流程图</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/4.png">
 <h4 id="object"><a class="markdownIt-Anchor" href="#object"></a> Object</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/5.png">
 <p>  该流程描述的是哪些准备数据可以用来计算shallow size，至少包含下面的种类：</p>
 <ul>
 <li>种类一：基本类型的数组，例如整型数组int[ ]，浮点型数组floag[ ]</li>
@@ -438,55 +413,25 @@
 <p>  另外通过Class.isArray()方法判断准备数据Object是属于array class还是普通对象，即not array class。</p>
 <h4 id="计算数组元素为基本类型的shallow-size"><a class="markdownIt-Anchor" href="#计算数组元素为基本类型的shallow-size"></a> 计算数组元素为基本类型的shallow size</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/6.png">
 <p>  该计算方式在上文的<strong>数组计算方式</strong>章节已经介绍，不赘述。</p>
 <h4 id="计算数组元素为对象的shallow-size"><a class="markdownIt-Anchor" href="#计算数组元素为对象的shallow-size"></a> 计算数组元素为对象的shallow size</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/7.png">
 <p>  该计算方式在上文的<strong>数组计算方式</strong>章节已经介绍，不赘述。</p>
 <h4 id="获取对象所有实例域"><a class="markdownIt-Anchor" href="#获取对象所有实例域"></a> 获取对象所有实例域</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/8.png">
 <p>  这里所谓的&quot;所有&quot;实例域，指的是对象对应的类的继承链（inheritance chain）上实例域都参与shallow size计算。</p>
 <p>  例如这么一个类的继承链：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/9.png">
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/10.png">
 <p>  基于图10的例子，GrandSonClass对象grandSon的shallowSize的值如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">作者的运行环境中对齐值NUM_BYTES_OBJECT_ALIGNMENT为<span class="number">8</span>，NUM_BYTES_OBJECT_HEADER为<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 对其计算前的和值 = NUM_BYTES_OBJECT_HEADER + fatherData1(<span class="number">8</span>) + fatherData2(<span class="number">4</span>) + sonData(<span class="number">8</span>) + grandSonData(<span class="number">4</span>) = <span class="number">36</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 对其计算后的和值 = <span class="number">40</span>，即找到比<span class="number">36</span>大，且最小的NUM_BYTES_OBJECT_ALIGNMENT的倍数的值</span><br></pre></td></tr></table></figure>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RamUsageEstimator/11.png">
 <p>  图11给出的是通过JProfiler算出的GrandSonClass对象grandSon的shallowSize的值，同样为40。</p>
 <p>  另外我们可以看出，非实例域是不会参数shallow size的计算，例如图10中的几个静态域。</p>
 <h1 id="lucene中对象大小计算"><a class="markdownIt-Anchor" href="#lucene中对象大小计算"></a> Lucene中对象大小计算</h1>
@@ -752,7 +697,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -927,10 +872,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

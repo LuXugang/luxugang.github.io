@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -296,12 +296,7 @@
 
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1024/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89" >执行段的合并（三）<i class="fas fa-external-link-alt"></i></a>，继续介绍执行段的合并的剩余的流程，下面先给出执行段的合并的流程图：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E5%9B%9B%EF%BC%89/merge.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="生成indexreaderwarmer"><a class="markdownIt-Anchor" href="#生成indexreaderwarmer"></a> 生成IndexReaderWarmer</h2>
 <p>  在前面流程中我们了解到，合并后生成的新段已经包含了<strong>所有固定的索引信息</strong>及<strong>部分删除信息</strong>，故在当前流程点，我们可以生成该段对应的SegmentReader对象，并将该对象添加到ReadPool（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1025/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89" >执行段的合并（二）<i class="fas fa-external-link-alt"></i></a>）中，这便是生成IndexReaderWarmer的过程。</p>
@@ -341,29 +336,14 @@
 <p>  在介绍每一个任务前，我们首先介绍下在初始化IndexWriter对象的过程中段内排序的非法检查的流程（见源码中的<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriter.java" >validateIndexSort()<i class="fas fa-external-link-alt"></i></a>方法），如果通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setIndexSort(Sort)<i class="fas fa-external-link-alt"></i></a>设置了段内排序，那么每次flush后生成的段，它包含的文档（document）是按照参数Sort排序的，并且如果IndexWriter对象需要读取旧的索引，即不是该IndexWriter对象生成的索引，那么需要检查旧的索引中所有段的段内排序规则，判断过程如下所示：</p>
 <h3 id="初始化indexwriter对象的过程中段内排序的非法检查流程图"><a class="markdownIt-Anchor" href="#初始化indexwriter对象的过程中段内排序的非法检查流程图"></a> 初始化IndexWriter对象的过程中段内排序的非法检查流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/2.png">
 <h4 id="indexwriter没有设置indexsort"><a class="markdownIt-Anchor" href="#indexwriter没有设置indexsort"></a> IndexWriter没有设置IndexSort</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/3.png">
 <p>  如果IndexWriter没有设置IndexSort，那么不需要对旧索引中的段的段内排序规则进行非法检查，同时在合并阶段只需要执行任务三。</p>
 <h4 id="旧的索引集合segmentinfos"><a class="markdownIt-Anchor" href="#旧的索引集合segmentinfos"></a> 旧的索引集合SegmentInfos</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/4.png">
 <p>  IndexWriter读取索引目录中的内容时，默认总是只读取最后一次提交对应的索引信息，即只读索引文件名segment_N，N值最大的那个，通过segment_N文件获取到旧的索引集合SegmentInfos，SegmentInfos中包含的一个重要的信息就是一个存放SegmentCommitInfo的链表：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;SegmentCommitInfo&gt; segments = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 <p>  <strong>索引目录中为什么可能会有多个segment_N文件：</strong></p>
@@ -375,52 +355,27 @@
 <li>通过索引文件segment_N的数据结构一目了然，如下所示：</li>
 </ul>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/5.png">
 <p>  图5中，根据索引文件segment_N就可以找到这次提交对应的所有段的信息（除了删除信息），即蓝色框标注的SegmentCommitInfo。</p>
 <p>  另外图5中蓝色箭头描述的是，<a class="link"   target="_blank" rel="noopener" href="http://xn--Segname-m43kw0ctg1g549a6zflx6a3xao01at8bea52jl73bl6ovf2gq8b486dja0915j92b.si" >通过Segname就可以从索引目录中找到对应的索引文件.si<i class="fas fa-external-link-alt"></i></a>，SegName为一个段的段命</p>
 <h4 id="依次处理每一个段"><a class="markdownIt-Anchor" href="#依次处理每一个段"></a> 依次处理每一个段</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/6.png">
 <p>  从SegmentInfos中依次取出SegmentCommitInfo，当所有的SegmentCommitInfo都处理结束后退出。</p>
 <h4 id="获取一个段的段内排序规则"><a class="markdownIt-Anchor" href="#获取一个段的段内排序规则"></a> 获取一个段的段内排序规则</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/7.png">
 <p>  在图5中，索引文件.si中红框标注的IndexSort就是一个段的段内排序规则，如果该字段不为空，说明该段设置了段内排序规则。</p>
 <h4 id="处理设置了段内排序的段"><a class="markdownIt-Anchor" href="#处理设置了段内排序的段"></a> 处理设置了段内排序的段</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/8.png">
 <p>  如果该段的段内排序规则跟IndexWriter设置的不一致，那么无法初始化IndexWriter，并且抛出如下的异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;cannot change previous indexSort=&quot;</span> + segmentIndexSort + <span class="string">&quot; (from segment=&quot;</span> + info + <span class="string">&quot;) to new indexSort=&quot;</span> + indexSort);</span><br></pre></td></tr></table></figure>
 <p>  上述的异常中， segmentIndexSort是段的段内排序规则，IndexSort是IndexWriter设置的排序规则，info是该段对应的SegmentCommitInfo。</p>
 <p>  处理旧索引中的任意一个段时发生异常退出都会导致IndexWriter无法初始化。</p>
 <h4 id="处理未设置段内排序的段"><a class="markdownIt-Anchor" href="#处理未设置段内排序的段"></a> 处理未设置段内排序的段</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/执行段的合并/执行段的合并（四）/9.png">
 <p>  如果一个段未设置段内排序，并且生成该段的Lucene版本号大于等于6.0.0，那么无法初始化IndexWriter，并且抛出如下的异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CorruptIndexException</span>(<span class="string">&quot;segment not sorted with indexSort=&quot;</span> + segmentIndexSort, info.info.toString());</span><br></pre></td></tr></table></figure>
 <p>  上述的异常中， segmentIndexSort是段的段内排序规则，info.info描述的是该段对应的索引文件.si信息。</p>
@@ -685,7 +640,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -860,10 +815,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

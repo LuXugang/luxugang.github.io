@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -303,77 +303,37 @@
 <h2 id="点数据"><a class="markdownIt-Anchor" href="#点数据"></a> 点数据</h2>
 <p>点数据(Point Data)，源码中又称为点值(Point Value)，它是由多个数值类型组成。<br />
 图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/1.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/1.png"></p>
 <p>上图中由4个int类型数值组成一个点数据/点值，并且根据点数据中的数值个数定义了维度个数。上图中即有四个维度。同一个域名的点数据必须有相同的维度个数，并且在当前7.5.0版本中，维度个数最多为8个。</p>
 <h2 id="int-numpoints"><a class="markdownIt-Anchor" href="#int-numpoints"></a> int numPoints</h2>
 <p>numPoints是一个从0开始递增的值，可以理解为是每一个点数据的一个唯一编号，并且通过这个编号能映射出该点数据属于哪一个文档(document)。映射关系则是通过docIDs[ ]数组实现。</p>
 <h2 id="int-docids-数组"><a class="markdownIt-Anchor" href="#int-docids-数组"></a> int docIDs[ ]数组</h2>
 <p>docIDs[ ]数组在PointValuesWriter.java中定义，数组下标是点数据的编号numPoint，数组元素是点数据所属的文档号。由于一篇文档中可以有多个点数据，所以相同的数组元素对应的多个数组下标值，即numPoints，即点数据，都是属于同一个文档。<br />
 图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/2.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/2.png"></p>
 <p>上图中只添加了2篇文档，处理顺序按照文档号的顺序，所以文档0的点数据的numPoints的值为0，另外一篇文档可以有多个点数，所以numPoints的值分别为1、2。生成的docIDs[]数组如下：<br />
 图3：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/3.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/3.png"></p>
 <h2 id="int-ord-数组"><a class="markdownIt-Anchor" href="#int-ord-数组"></a> int ord[ ]数组</h2>
 <p>ord数组的数组元素为numPoints，下面的一句话很重要：ord数组中的元素是有序的，排序规则<strong>不是</strong>按照numPoints的值，而是按照numPoints对应的点数据的值。这里ord数组的用法跟<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/Lucene/DocValues/2019/0219/SortedDocValues" >SortedDocValues<i class="fas fa-external-link-alt"></i></a>中的sortedValues[]数组是一样的用法。例如根据图2中的点数据，如果我们按照第三个维度的值，即&quot;99&quot;、“23”、&quot;12&quot;来描述点数据的大小关系，那么ord数组如下图所示：<br />
 图4：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/4.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/4.png"></p>
 <p>这里先提一句，在生成BKD-Tree之后，叶子节点中的点数据会根据某个维度进行排序的，并且所有叶子节点中的点数据的大小关系就存放在ord[]数组中，后面的内容会详细介绍这过程。</p>
 <h1 id="流程图"><a class="markdownIt-Anchor" href="#流程图"></a> 流程图</h1>
 <p>一句话概括整个流程的话就是：根据某一个维度将点数据集划分为两部分，递归式将两部分的点数据子集进行划分，最终生成一个<strong>满二叉树</strong>。<br />
 图5：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/5.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/5.png"></p>
 <h2 id="点数据集"><a class="markdownIt-Anchor" href="#点数据集"></a> 点数据集</h2>
 <p>图6：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/6.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/6.png"></p>
 <p>点数据集即为待处理的点数据集合。</p>
 <h2 id="是否要切分"><a class="markdownIt-Anchor" href="#是否要切分"></a> 是否要切分？</h2>
 <p>图7：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/7.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/7.png"></p>
 <p>如果数据集的个数大于1024个，那么需要进行拆分。在源码中并不是通过判断数据集的个数，而是在建立Bkd-Tree之前就预先计算出当前数据会对应生成节点(node)的个数（可以认为每个节点中的数据都是空的），然后采用深度遍历方式处理每一个节点，通过节点编号来判断是否为叶子节点。如果不是叶子节点，说明要切分(节点赋值)。</p>
 <h2 id="选出切分维度"><a class="markdownIt-Anchor" href="#选出切分维度"></a> 选出切分维度</h2>
 <p>图8：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/8.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/8.png"></p>
 <p>一个点数据中有多个维度，例如图1中就有四个维度。</p>
 <ol>
 <li>先计算出切分次数最多的那个维度，切分次数记为maxNumSplits，如果有一个维度的切分次数小于 (maxNumSplits  / 2) ，并且该维度中的最大跟最小值不相同，那么令该维度为切分维度。</li>
@@ -382,31 +342,16 @@
 <p>条件1优先条件2。</p>
 <h2 id="点数据集排序"><a class="markdownIt-Anchor" href="#点数据集排序"></a> 点数据集排序</h2>
 <p>图9：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/9.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/9.png"></p>
 <p>当确定了切分维度后，我们对当前节点中的点数据集进行排序，排序规则根据该每个点数据中的该维度的值，排序算法使用最大有效位的基数排序(MSB radix sort)。</p>
 <h2 id="切分出左子树点数据集-切分出右子树点数据集"><a class="markdownIt-Anchor" href="#切分出左子树点数据集-切分出右子树点数据集"></a> 切分出左子树点数据集、切分出右子树点数据集</h2>
 <p>图10：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/10.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/10.png"></p>
 <p>执行完排序操作后，当前节点中的点数据集数量为N，那么将前 (N / 2)个的点数据集划分为左子树，剩余的划分为右子树。<br />
 <strong>这么划分的目的使得无论初始的点数据集是哪种数据分布，总是能生成一颗满二叉树</strong>。</p>
 <h2 id="是否退出"><a class="markdownIt-Anchor" href="#是否退出"></a> 是否退出</h2>
 <p>图11：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/11.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/11.png"></p>
 <p>当前节点不需要切分，需要判断下算法是否需要退出。</p>
 <h3 id="结束"><a class="markdownIt-Anchor" href="#结束"></a> 结束</h3>
 <ul>
@@ -421,12 +366,7 @@
 <p>Lucene 7.5.0版本源码中当一个节点中的点数据个数大于1024才会进行切分，为了能简单示例，例子中假设一个节点中的点数据个数大于2个才会进行切分，并且点数据的维度为2。</p>
 <h2 id="点数据集-2"><a class="markdownIt-Anchor" href="#点数据集-2"></a> 点数据集</h2>
 <p>图12：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/12.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/12.png"></p>
 <p>上图中一共有8个点数据，每个点数据有两个维度。为了描述方便，下面统称为x维度，跟y维度。</p>
 <h3 id="处理节点1"><a class="markdownIt-Anchor" href="#处理节点1"></a> 处理节点1</h3>
 <ul>
@@ -440,12 +380,7 @@
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">左子树：&#123;1,2&#125;、&#123;4,3&#125;、&#123;3,4&#125;、&#123;4,6&#125;</span><br><span class="line">右子树：&#123;6,7&#125;、&#123;2,8&#125;、&#123;8,9&#125;、&#123;7,11&#125;</span><br></pre></td></tr></table></figure>
 <p>图13：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/13.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/13.png"></p>
 <h3 id="处理节点2"><a class="markdownIt-Anchor" href="#处理节点2"></a> 处理节点2</h3>
 <ul>
 <li>是否要切分：节点2中有4个数据，大于节点切分的条件值2，所以需要切分。</li>
@@ -458,12 +393,7 @@
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">左子树：&#123;1,2&#125;、&#123;4,3&#125;</span><br><span class="line">右子树：&#123;3,4&#125;、&#123;4,6&#125;</span><br></pre></td></tr></table></figure>
 <p>图14：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/14.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/14.png"></p>
 <h3 id="处理节点4-5"><a class="markdownIt-Anchor" href="#处理节点4-5"></a> 处理节点4、5</h3>
 <p>源码中对叶子结点还有一些处理，目的是为了生成索引文件作准备，在随后的介绍索引文件.dii、.dim时候会介绍跟叶子节点相关的知识，这篇文章主要介绍生成Bkd-Tree的过程。</p>
 <h3 id="处理节点3"><a class="markdownIt-Anchor" href="#处理节点3"></a> 处理节点3</h3>
@@ -478,12 +408,7 @@
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">左子树：&#123;2,8&#125;、&#123;6,7&#125;</span><br><span class="line">右子树：&#123;7,11&#125;、&#123;8,9&#125;</span><br></pre></td></tr></table></figure>
 <p>图15：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/15.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/BKD/15.png"></p>
 <h3 id="处理节点6-7"><a class="markdownIt-Anchor" href="#处理节点6-7"></a> 处理节点6、7</h3>
 <p>同节点4、5</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
@@ -741,7 +666,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -916,10 +841,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

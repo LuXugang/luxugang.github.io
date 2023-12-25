@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -307,29 +307,14 @@
 <p>  另外索引文件.dim、dii的生成过程见系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（八）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>。</p>
 <h1 id="dim文件的数据结构"><a class="markdownIt-Anchor" href="#dim文件的数据结构"></a> dim文件的数据结构</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/1.png">
 <p>  上图中是单个域的.dim文件数据结构，下图为存在多个域的数据结构图。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/2.png">
 <h2 id="leafnodedata"><a class="markdownIt-Anchor" href="#leafnodedata"></a> LeafNodeData</h2>
 <p>  当所有的点数据生成一颗满二叉树后，点数据会被分布到不同的叶子节点上，而LeafNodeData正是描述了一个叶子节点上的点数据的相关信息。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/3.png">
 <h3 id="count"><a class="markdownIt-Anchor" href="#count"></a> Count</h3>
 <p>  当前叶子节点中有多少个点数据。</p>
 <h3 id="docids"><a class="markdownIt-Anchor" href="#docids"></a> DocIds</h3>
@@ -338,12 +323,7 @@
 <h4 id="文档号有序"><a class="markdownIt-Anchor" href="#文档号有序"></a> 文档号有序</h4>
 <p>  叶子节点中的点数据是按照某个维度排序的，如果排序后的点数据对应的文档号正好也是有序的，那么会使用下面的数据结构。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/4.png">
 <h5 id="固定值0"><a class="markdownIt-Anchor" href="#固定值0"></a> 固定值：0</h5>
 <p>  这是一个标志位，在读取阶段可以知道当前叶子节点中的点数据对应的文档号是有序的。</p>
 <h5 id="deltadocid"><a class="markdownIt-Anchor" href="#deltadocid"></a> DeltaDocId</h5>
@@ -351,23 +331,13 @@
 <h4 id="文档号无序"><a class="markdownIt-Anchor" href="#文档号无序"></a> 文档号无序</h4>
 <p>  在文档号无序的前提下，先计算出最大的文档号<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>o</mi><mi>c</mi><mi>I</mi><mi>d</mi><mtext> </mtext><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">DocId~max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">d</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span></span></span></span>可以最少用多少个字节表示。如果<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>o</mi><mi>c</mi><mi>I</mi><mi>d</mi><mtext> </mtext><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">DocId~max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">d</span><span class="mspace nobreak"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span></span></span></span> ≤ 0xffffff，那么使用3个字节存储每一个文档号（图5），否则使用4个字节存储（图6）。</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/5.png">
 <h5 id="固定值24"><a class="markdownIt-Anchor" href="#固定值24"></a> 固定值：24</h5>
 <p>  这是一个标志位，在读取阶段可以知道当前叶子节点中的点数据对应的文档号是无序的，并且每一个文档号占用固定3个字节。</p>
 <h5 id="docid高2个字节-docid低1个字节"><a class="markdownIt-Anchor" href="#docid高2个字节-docid低1个字节"></a> DocId高2个字节、DocId低1个字节</h5>
 <p>  由于使用固定3个字节存储一个文档号，所以高2个字节用short类型存储，低1个字节用byte字节存储。</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/6.png">
 <h5 id="固定值32"><a class="markdownIt-Anchor" href="#固定值32"></a> 固定值：32</h5>
 <p>  这是一个标志位，在读取阶段可以知道当前叶子节点中的点数据对应的文档号是无序的，并且每一个文档号占用4个字节。</p>
 <h5 id="docid"><a class="markdownIt-Anchor" href="#docid"></a> DocId</h5>
@@ -375,20 +345,10 @@
 <h3 id="pointvalues"><a class="markdownIt-Anchor" href="#pointvalues"></a> PointValues</h3>
 <p>  当前叶子节点中的点数据。</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/7.png">
 <h4 id="commonprefixes"><a class="markdownIt-Anchor" href="#commonprefixes"></a> commonPrefixes</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/8.png">
 <h5 id="length"><a class="markdownIt-Anchor" href="#length"></a> Length</h5>
 <p>  计算出所有点数据的某个维度值的相同前缀的长度。</p>
 <h5 id="value"><a class="markdownIt-Anchor" href="#value"></a> Value</h5>
@@ -397,50 +357,25 @@
 <p>  BlockPackedValues中存储了叶子节点中每个点数据的每个维度的值。</p>
 <p>  如果叶子节点中的点数据都是一样的，那么数据结构如下：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/9.png">
 <h5 id="固定值-1"><a class="markdownIt-Anchor" href="#固定值-1"></a> 固定值 -1</h5>
 <p>  这是一个标志位，在读取阶段可以知道当前叶子节点中的点数据都是一样的， 并且点数据的值可以根据commonPrefixes的数据获得。</p>
 <p>图10：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/10.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/10.png"></p>
 <h5 id="actualbounds"><a class="markdownIt-Anchor" href="#actualbounds"></a> ActualBounds</h5>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/11.png">
 <p>  ActualBounds保存了当前叶子节点中每一种维度的最大值跟最小值，并且只保存后缀值，在读取阶段通过跟commonPrefixes就可以拼出原始值。</p>
 <h5 id="sorteddim"><a class="markdownIt-Anchor" href="#sorteddim"></a> SortedDim</h5>
 <p>  叶子节点中的点数据是有序，选取其中一个维度作为排序规则，这个维度就是SortedDim。</p>
 <h5 id="packedvalues"><a class="markdownIt-Anchor" href="#packedvalues"></a> PackedValues</h5>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/12.png">
 <p>  由于叶子节点中的是按照点数据的SortedDim维度排序的，源码中采取了一种方式，目的是为了能尽可能的减少空间存储。这种方式就是：遍历SortedDim维度的值，比如当前遍历到第n个维度值，然后跟第n + 1个维度值比较<strong>一个字节</strong>，判断这两个字节是否相同，如果是相同的，那么这两个维度值是属于同一个<strong>PackedValuesRange</strong>(图12)的，<strong>而这个字节就是SortedDim维度的所有维度值的相同前缀的下一个字节，并且这个字节就是图12中的PrefixByte。</strong></p>
 <h6 id="packedvaluesrange-prefixbyte-runlen-packedvalue"><a class="markdownIt-Anchor" href="#packedvaluesrange-prefixbyte-runlen-packedvalue"></a> PackedValuesRange、PrefixByte、RunLen、PackedValue</h6>
 <p>  同一个PackedValuesRange中的点数据，它们不但拥有commonPrefixes中的SortedDim维度的长度为Length的相同前缀Value，而且还拥有一个额外的字节PrefixByte也是相同的，并且这个PrefixByte是SortedDim维度的所有维度值的相同前缀的下一个字节。</p>
 <p>图13：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/13.png"
-                     
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/13.png"></p>
 <p>  在图13中，假设一个叶子节点只有4个点数据，并且维度0为SortedDim，那么4个点数据按照SortedDim进行排序，并且生成3个PackedValuesRange：</p>
 <ul>
 <li>点数据(2,4)为第一个PackedValuesRange</li>
@@ -451,12 +386,7 @@
 <p>  PackedValue即存储了某个PackedValuesRange中的所有点数据的所有维度值，当然维度值只存储后缀值。</p>
 <h2 id="bdk"><a class="markdownIt-Anchor" href="#bdk"></a> BDK</h2>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/14.png">
 <h3 id="numdims"><a class="markdownIt-Anchor" href="#numdims"></a> NumDims</h3>
 <p>  点数据的维度个数。</p>
 <h3 id="countperleaf"><a class="markdownIt-Anchor" href="#countperleaf"></a> CountPerLeaf</h3>
@@ -477,12 +407,7 @@
 <h3 id="packedindex"><a class="markdownIt-Anchor" href="#packedindex"></a> PackedIndex</h3>
 <p>  PackedIndex存放了非叶节点的信息。</p>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/15.png">
 <h4 id="length-2"><a class="markdownIt-Anchor" href="#length-2"></a> Length</h4>
 <p>  用来描述PackedIndexValue的长度，在读取阶段用来确定从.dim文件读取的数据区间。</p>
 <h4 id="packedindexvalue"><a class="markdownIt-Anchor" href="#packedindexvalue"></a> PackedIndexValue</h4>
@@ -495,21 +420,11 @@
 <li>非叶节点的子树不是叶子节点，并且它是父节点的右子树：RightSubtreeHasNotLeafChild</li>
 </ul>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/16.png">
 <p>  上图中对这颗满二叉树进行前序遍历，将所有的非叶节点信息的写入到PackedIndexValue中。</p>
 <h4 id="rightsubtreehasleafchild"><a class="markdownIt-Anchor" href="#rightsubtreehasleafchild"></a> RightSubtreeHasLeafChild</h4>
 <p>图17：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/17.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/17.png">
 <p>  当前非叶节点的左右子树是叶子节点，同时它是父节点的右子树：</p>
 <h6 id="leftleafblockfp"><a class="markdownIt-Anchor" href="#leftleafblockfp"></a> LeftLeafBlockFP</h6>
 <p>  当前非叶节点的左子树是叶子节点，LeftLeafBlockFP为叶子节点的的信息在.dim文件中的偏移值。</p>
@@ -529,34 +444,19 @@
 <p>  当前非叶节点的右子树是叶子节点，LeftLeafBlockFP为叶子节点的的信息在.dim文件中的偏移值。</p>
 <h4 id="leftsubtreehasleafchild"><a class="markdownIt-Anchor" href="#leftsubtreehasleafchild"></a> LeftSubtreeHasLeafChild</h4>
 <p>图18：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/18.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/18.png">
 <p>  当前非叶节点的左右子树是叶子节点，同时它是父节点的左子树：</p>
 <p>  字段含义同上。</p>
 <h4 id="leftsubtreehasnotleafchild"><a class="markdownIt-Anchor" href="#leftsubtreehasnotleafchild"></a> LeftSubtreeHasNotLeafChild</h4>
 <p>图19：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/19.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/19.png">
 <p>  当前非叶节点的左右子树不是叶子节点，同时它是父节点的左子树：</p>
 <p>  Code、SPlitValue字段含义同上。</p>
 <h5 id="leftnumbytes"><a class="markdownIt-Anchor" href="#leftnumbytes"></a> LeftNumBytes</h5>
 <p>  当前非叶节点的所有子树的信息大小，在读取阶段，通过该字段从.dim中读取一个数据区间。</p>
 <h4 id="rightsubtreehasnotleafchild"><a class="markdownIt-Anchor" href="#rightsubtreehasnotleafchild"></a> RightSubtreeHasNotLeafChild</h4>
 <p>图20：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/20.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/20.png">
 <p>  当前非叶节点的左右子树不是叶子节点，同时它是父节点的右子树：</p>
 <p>  Code、SPlitValue、LeftNumBytes字段含义同上。</p>
 <h5 id="leftleafblockfp-2"><a class="markdownIt-Anchor" href="#leftleafblockfp-2"></a> LeftLeafBlockFP</h5>
@@ -564,21 +464,11 @@
 <h1 id="dim文件总数据结构"><a class="markdownIt-Anchor" href="#dim文件总数据结构"></a> dim文件总数据结构</h1>
 <p>  下面的数据结构不是唯一的.dim文件结构，我们选取了其中一种：</p>
 <p>图21：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/21.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/21.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/dim&amp;&amp;dii/dim.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图。</p>
 <h1 id="dii文件的数据结构"><a class="markdownIt-Anchor" href="#dii文件的数据结构"></a> dii文件的数据结构</h1>
 <p>图22：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/22.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/dim&&dii/22.png">
 <h2 id="count-2"><a class="markdownIt-Anchor" href="#count-2"></a> Count</h2>
 <p>  这次的IndexWriter写入的点数据域的种类数量。</p>
 <h2 id="fieldnumber"><a class="markdownIt-Anchor" href="#fieldnumber"></a> FieldNumber</h2>
@@ -844,7 +734,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -1019,10 +909,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

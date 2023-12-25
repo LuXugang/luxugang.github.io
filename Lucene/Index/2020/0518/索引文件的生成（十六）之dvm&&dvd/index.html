@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,20 +297,10 @@
                     <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>中，我们介绍了在索引（index）阶段收集文档的NumericDocValues信息的内容，随后在flush阶段，会根据收集到的信息生成索引文件.dvd&amp;&amp;.dvm。如果已经阅读了文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>，那么能快的理解本文的内容，注意的是那篇文章中，是基于Lucene 7.5.0，下文中的内容基于Lucene 8.4.0，不一致（优化）的地方会特别说明。</p>
 <h2 id="生成索引文件dvd-dvm之numericdocvalues的流程图"><a class="markdownIt-Anchor" href="#生成索引文件dvd-dvm之numericdocvalues的流程图"></a> 生成索引文件.dvd、.dvm之NumericDocValues的流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/1.png">
 <h3 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/2.png">
 <p>  根据在索引阶段收集的文档的NumericDocValuses信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>），在当前流程点需要执行一些准备工作，即计算出下面的信息：</p>
 <ul>
 <li>gcd（greatest common divisor）</li>
@@ -347,20 +337,10 @@
 <p>  为了判断出使用单个block和多个block存储域值时，哪一种方式有更低的存储开销。</p>
 <p>  例如我们有以下域值集合，为了便于描述，计算blockMinMax时，每处理<strong>3个域值</strong>就作为一个block。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/3.png">
 <p>  图2中，对于minMax，域值集合的全量数据下的min、max分别为1、18，并且有9个，那么spaceInBits = (bitCount(18 - 1)) * 9，数值17的二进制为0b000<font color=Red>10001</font>，有效的bit数量为5个，故spaceInBits的值为5*9 = 45。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/4.png">
 <p>  图3中，对于blockMinMax，域值集合被分为3个block，每个block的spaceInBits的和值作为blockMinMax的spaceInBits，故spaceInBits = (bitCount(2 -1)) * 3 + (bitCount(18 -16)) * 3 + (bitCount(8 -5)) * 3 = 3 + 6 + 9 = 18。</p>
 <p>  源码中，如果blockMinMax和minMax的spaceInBits满足下面的条件，那么就使用多个block存储域值：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="type">double</span>) blockMinMax.spaceInBits / minMax.spaceInBits &lt;= <span class="number">0.9</span></span><br></pre></td></tr></table></figure>
@@ -372,12 +352,7 @@
 <p>  numDocsWithValue用来描述包含当前域名的文档数量，在后面的流程中它将作为一个判断条件，用于选择使用哪种数据结构来存储包含当前域的文档号集合。</p>
 <h3 id="写入文档号信息"><a class="markdownIt-Anchor" href="#写入文档号信息"></a> 写入文档号信息</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/5.png">
 <p>  文档号信息包含两个信息：</p>
 <ul>
 <li>文档号的值信息：文档号的值将被写入到索引文件dvd中</li>
@@ -387,64 +362,29 @@
 <h4 id="0-numdocswithvalue-maxdoc"><a class="markdownIt-Anchor" href="#0-numdocswithvalue-maxdoc"></a> 0 &lt; numDocsWithValue &lt; maxDoc</h4>
 <p>  maxDoc的值为段中的文档数量，在下文中会介绍该值，如果numDocsWithValue的值在区间(0, maxDoc)，文档索引信息将会被存储到索引文件.dvm中的DocIdIndex字段，文档号的值信息将被存储到索引文件.dvd中的DocIdData字段：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/6.png">
 <p>   图6中，文档号的索引信息包含offset跟length，它们描述了文档号的值信息在索引文件.dvd中的值区间，其他字段的解释见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>，我们再看Lucene 8.4.0中的数据结构：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/7.png">
 <p>   在Lucene 8.4.0版本中，DocIdIndex字段中多了jumpTableEntryCount跟denseRankPower两个信息，在读取阶段，通过这两个信息能获得查找表（lookup table）的信息，jumpTableEntryCount跟denseRankPower以及查找表的概念在系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI<i class="fas fa-external-link-alt"></i></a>已经介绍，这里不赘述。</p>
 <h4 id="numdocswithvalue-0"><a class="markdownIt-Anchor" href="#numdocswithvalue-0"></a> numDocsWithValue == 0</h4>
 <p>  如果numDocsWithValue == 0，那么将固定的信息写入到索引文件.dvm中，固定信息在索引文件.dvm中的位置如下所示：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/8.png">
 <p>  图8中，offset跟length被置为固定信息，在读取阶段，当读取到offset的值为-2时，就知道numDocsWithValue == 0，下面给出Lucene 8.4.0的索引文件.dvm，由于numDocsWithValue == 0，文档号的值信息不用写入到索引文件.dvd中：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/9.png">
 <p>  同样的查找表的信息用固定信息填充。</p>
 <h4 id="numdocswithvalue-maxdoc"><a class="markdownIt-Anchor" href="#numdocswithvalue-maxdoc"></a> numDocsWithValue == maxDoc</h4>
 <p>  如果numDocsWithValue == maxDoc，说明正在执行flush的段中的每篇文档都包含当前域的信息，意味着我们也不用存储文档号的值信息，因为在读取阶段，文档号的值就是 [0, maxDoc]区间内的所有值，故同样只要将固定的信息写入到索引文件.dvm中：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/10.png">
 <p>  在读取阶段，当读取到offset的值为-1时，就知道numDocsWithValue == maxDoc，同样地给出Lucene 8.4.0的数据结构：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/11.png">
 <p>  在写入了文档号信息之后，将域值数量写入到索引文件.dvm中，域值数量在上文中的minMax中numValues获得，如下所示：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/12.png">
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
@@ -696,7 +636,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -871,10 +811,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

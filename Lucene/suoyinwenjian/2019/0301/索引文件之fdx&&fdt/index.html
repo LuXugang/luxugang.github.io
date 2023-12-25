@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -304,24 +304,14 @@
 <h1 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h1>
 <h2 id="fdt"><a class="markdownIt-Anchor" href="#fdt"></a> .fdt</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/1.png">
 ### ChunkSize
 <p>  ChunkSize作为一个参数，用来判断是否要生成一个Chunk，以及用来描述压缩存储域值信息的方式，后面会详细介绍。</p>
 <h3 id="packedintsversion"><a class="markdownIt-Anchor" href="#packedintsversion"></a> PackedIntsVersion</h3>
 <p>  PackedIntsVersion描述了压缩使用的方式，当前版本中是VERSION_MONOTONIC_WITHOUT_ZIGZAG。</p>
 <h3 id="chunk"><a class="markdownIt-Anchor" href="#chunk"></a> Chunk</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/2.png">
 <p>  在处理每一篇文档的过程中，如果满足以下任意一个条件，那么就将已处理的文档的域值信息生成一个chunk：</p>
 <ul>
 <li>已处理的文档数量达到128</li>
@@ -331,12 +321,7 @@
 <p>  当前chunk中第一个文档的文档号（该文档号为段内文档号），因为根据这个文档号来差值存储，在读取的阶段需要根据该值恢复其他文档号。</p>
 <h4 id="chunkdocs"><a class="markdownIt-Anchor" href="#chunkdocs"></a> ChunkDocs</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/3.png">
 <p>  ChunkDocs是一个numBufferedDocs跟slicedBit的组合值。ChunkDocs = (numBufferedDocs |slicedBit )。</p>
 <h5 id="numbuffereddocs"><a class="markdownIt-Anchor" href="#numbuffereddocs"></a> numBufferedDocs</h5>
 <p>  numBufferedDocs描述了当前chunk中的文档数量。numBufferedDocs是一个 ≤ 128的值。</p>
@@ -346,65 +331,30 @@
 <p>  根据chunk中包含的文档个数numBufferedDocs、每篇文档包含的存储域的数量numStoredFields分为不同的情况。</p>
 <h5 id="numbuffereddocs的个数为1"><a class="markdownIt-Anchor" href="#numbuffereddocs的个数为1"></a> numBufferedDocs的个数为1</h5>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/4.png">
 ##### numBufferedDocs的个数＞ 1 并且每篇文档中的numStoredFields都是相同的
 图5：
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/5.png">
 <p>  只要存储一个numStoredFields的值就行啦。</p>
 <h5 id="numbuffereddocs的个数-1-并且每篇文档中的numstoredfields不都相同的"><a class="markdownIt-Anchor" href="#numbuffereddocs的个数-1-并且每篇文档中的numstoredfields不都相同的"></a> numBufferedDocs的个数＞ 1 并且每篇文档中的numStoredFields不都相同的</h5>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/6.png">
 <p>  使用PackedInt来存储所有的numStoredFields，这里不赘述了，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >点击这里<i class="fas fa-external-link-alt"></i></a>可以看其中的一种压缩方式。</p>
 <h4 id="doclengths"><a class="markdownIt-Anchor" href="#doclengths"></a> DocLengths</h4>
 <p>  同DocFieldCounts类似，据chunk中包含的文档个数numBufferedDocs、每篇文档中域值信息的长度分为不同的情况。</p>
 <h5 id="numbuffereddocs的个数为1-2"><a class="markdownIt-Anchor" href="#numbuffereddocs的个数为1-2"></a> numBufferedDocs的个数为1</h5>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/7.png">
 <h5 id="numbuffereddocs的个数-1-并且每篇文档中的域值信息长度都是相同的"><a class="markdownIt-Anchor" href="#numbuffereddocs的个数-1-并且每篇文档中的域值信息长度都是相同的"></a> numBufferedDocs的个数＞ 1 并且每篇文档中的域值信息长度都是相同的</h5>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/8.png">
 ##### numBufferedDocs的个数＞ 1 并且每篇文档中的域值信息长度不都是相同的
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/9.png">
 <p>  使用PackedInt来存储所有的域值信息长度，这里不赘述了，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0213/BulkOperationPacked" >点击这里<i class="fas fa-external-link-alt"></i></a>可以看其中的一种压缩方式。</p>
 <h4 id="compresseddocs"><a class="markdownIt-Anchor" href="#compresseddocs"></a> CompressedDocs</h4>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/10.png">
 <p>  CompressedDocs中使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>算法将域值信息压缩存储。域值信息包含如下内容，字段Doc的数量对应为一个chunk中包含的文档数量：</p>
 <ul>
 <li>域的编号</li>
@@ -414,39 +364,19 @@
 </ul>
 <h2 id="fdt整体数据结构"><a class="markdownIt-Anchor" href="#fdt整体数据结构"></a> .fdt整体数据结构</h2>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/11.png">
 <p>  上图中是其中一种 .fdt文件数据结构。</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/12.png">
 <h3 id="block"><a class="markdownIt-Anchor" href="#block"></a> Block</h3>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/13.png">
 <p>  在.fdt中，每当chunk的个数达到1024(blockSzie)，在.fdx文件中就会生成一个block，block中的信息作为索引来映射.fdt中的数据区间。</p>
 <h4 id="blockchunks"><a class="markdownIt-Anchor" href="#blockchunks"></a> BlockChunks</h4>
 <p>  block中包含的chunk的个数，即1024个。</p>
 <h4 id="docbases"><a class="markdownIt-Anchor" href="#docbases"></a> DocBases</h4>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/14.png">
 <p>  DocBases中描述了文档号的信息。</p>
 <h5 id="docbase-2"><a class="markdownIt-Anchor" href="#docbase-2"></a> DocBase</h5>
 <p>  block中第一个文档的文档号。用来在读取阶段，恢复所有chunk中其他被编码的文档号。</p>
@@ -458,12 +388,7 @@
 <p>  一个block中用docBaseDeltas[]数组来存放每个chunk中的文档个数，而每一个chunk中的文档个数是不一样的，出于最大化优化空间存储，不直接对文档数量值进行存储，而是存储差值docDelta。又因为docBaseDeltas[]数组又不能保证数组元素递增，所以不能使用相邻数组元素的差值来作为docDelta，Lucene提供的方法就是计算docBaseDeltas[]中数组元素平均值avgChunkDocs，对每一个数组元素存储一个docDelta的值，docDelta的计算公式为：docDelta = ( docBase - avgChunkDocs * i), 其中i为数组的下标值，docBase是下标值为i的数组元素前所有的数组元素之和，然后对所有docDelta使用PackedInts进行压缩编码，即DocBaseDeltas。</p>
 <h4 id="startpointers"><a class="markdownIt-Anchor" href="#startpointers"></a> StartPointers</h4>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/15.png">
 <p>  StartPointers中描述了.fdt文件中每一个chunk的索引映射信息。</p>
 <h5 id="startpointerbase"><a class="markdownIt-Anchor" href="#startpointerbase"></a> StartPointerBase</h5>
 <p>  当前block中第一个chunk的索引值。</p>
@@ -479,12 +404,7 @@
 <p>在索引阶段，如果还有一些文档未被写入到索引文件中，那么在flush阶段会强制写入，并用该字段记录。</p>
 <h2 id="fdx整体数据结构"><a class="markdownIt-Anchor" href="#fdx整体数据结构"></a> .fdx整体数据结构</h2>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/fdt&&fdx/16.png">
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  没啥要讲的。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/fdx&amp;&amp;fdt.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
@@ -744,7 +664,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -919,10 +839,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

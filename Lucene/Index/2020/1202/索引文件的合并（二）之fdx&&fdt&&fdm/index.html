@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -303,29 +303,14 @@
                     <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容，下面先给出索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图。</p>
 <h2 id="索引文件fdxfdtfdm的合并流程图"><a class="markdownIt-Anchor" href="#索引文件fdxfdtfdm的合并流程图"></a> 索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图</h2>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/1.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/1.png">
 <h3 id="docmap-数组"><a class="markdownIt-Anchor" href="#docmap-数组"></a> DocMap[ ]数组</h3>
 <p>  继续介绍图1的流程点之前，我们先介绍下DocMap[ ]数组，如果合并后的段是段内排序的，那么需要在构造MergeState（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>的介绍）对象期间生成DocMap[ ]数组，数组中的数组元素描述了某个待合并的段的一个映射关系，它描述了段中文档号到新段文档号的映射关系。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/2.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/2.png">
 <p>  图2中描述了待合并的段中的文档号映射到新段后的文档号。其中待合并的第一个段中的文档号3以及待合并的第二个段的文档号2用<font color=#FF0000>红框</font>额外标注，它们表示这两篇文档号是被标记为删除的，在合并后的新段中不会出现这两个文档号映射关系（代码中其实有删除文档号到新段文档号的映射，只是在合并的过程中会通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件之liv<i class="fas fa-external-link-alt"></i></a>过滤，所以相当于没有映射关系）。图2中的映射关系使用DocMap[ ]数组存储：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/3.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/3.png">
 <p><strong>图2中的映射关系是如何生成的：</strong></p>
 <p>  回答这个问题前必须再次强调在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中的内容：待合并的段中的文档号是段内有序的，并且所有的段的排序规则都是相同的。</p>
 <p>  生成图2的映射关系的大概逻辑就是：</p>
@@ -336,21 +321,11 @@
 </ul>
 <p>  详细的过程可以看源码，实现方式易读易懂：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/MultiSorter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/MultiSorter.java<i class="fas fa-external-link-alt"></i></a>  。虽然是Lucene 8.4.0的链接，但是跟Lucene 8.7.0中的实现是一样的。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/4.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/4.png">
 <p>  我们看下MultiSorter的注释，它提到所有的leaf reader必须是有序的并且使用相同的排序规则，即上文中提到的待合并的段中的文档号是段内有序的，并且所有的段的排序规则都是相同的。</p>
 <h3 id="初始化优先级队列"><a class="markdownIt-Anchor" href="#初始化优先级队列"></a> 初始化优先级队列</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/5.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/5.png">
 <p>  当前流程点需要初始化了一个优先级队列，目的在于随后的剩余的流程中我们将通过这个优先级队列有序的取出获得一个文档号，它对应的索引文件信息将被写入到新的索引文件。</p>
 <p>  初始化优先级队列的大概逻辑为：</p>
 <ul>
@@ -359,21 +334,11 @@
 </ul>
 <h3 id="是否每个段中的域名信息都相同"><a class="markdownIt-Anchor" href="#是否每个段中的域名信息都相同"></a> 是否每个段中的域名信息都相同？</h3>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/6.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/6.png">
 <p>  域名信息的概念在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中以及介绍，不赘述。如果当前流程点为true，那么能使用比naive merger性能较高的optimized merge。</p>
 <h3 id="执行naive-merge"><a class="markdownIt-Anchor" href="#执行naive-merge"></a> 执行naive merge</h3>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/7.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/7.png">
 <p>  <font color=blue>naive merge</font>同图2中的<font color=green>optimized merge</font>、<font color=red>bulk merge</font>属于索引文件的合并方式。由于索引文件的合并实际是读取旧的索引文件以及生成新的索引文件的过程，所以我们结合<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的生成<i class="fas fa-external-link-alt"></i></a>过程来介绍这几种合并方式的差异。</p>
 <p>  执行naive merge的过程可以划分下面几个步骤：</p>
 <h4 id="第一步从图5的优先级队列中找到优先级最高的段对应的文档号"><a class="markdownIt-Anchor" href="#第一步从图5的优先级队列中找到优先级最高的段对应的文档号"></a> 第一步：从图5的优先级队列中找到优先级最高的段对应的文档号</h4>
@@ -381,32 +346,17 @@
 <h4 id="第二步根据文档号从索引文件fdt中读取一个chunk然后这个chunk中找到这个文档号对应的存储域信息"><a class="markdownIt-Anchor" href="#第二步根据文档号从索引文件fdt中读取一个chunk然后这个chunk中找到这个文档号对应的存储域信息"></a> 第二步：根据文档号从索引文件.fdt中读取一个Chunk，然后这个Chunk中找到这个文档号对应的存储域信息</h4>
 <p>  其读取过程正如文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中的内容，按照下面的流程图读取：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/8.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/8.png">
 <p>  图8中根据文档号从一个段中取出了对应的存储域的信息，Document描述。</p>
 <h4 id="第三步将存储域的信息写入到新的索引文件中"><a class="markdownIt-Anchor" href="#第三步将存储域的信息写入到新的索引文件中"></a> 第三步：将存储域的信息写入到新的索引文件中</h4>
 <p>  其写入过程正如文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中的内容，按照下面的流程图写入：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/9.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/9.png">
 <p>  图9中用<font color=red>红框</font>标注的流程点描述了当前步骤需要执行的写入操作。这里标注的目的是为了与其他的合并方式相比较，下文中会展开介绍。</p>
 <p>  重复上述3个步骤，直到所有待合并的段中的文档号都被处理结束。</p>
 <h3 id="执行optimized-merge"><a class="markdownIt-Anchor" href="#执行optimized-merge"></a> 执行optimized merge</h3>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/10.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/10.png">
 <p>  执行optimized merge的过程同naive merge一样可以划分为下面的步骤：</p>
 <h4 id="第一步从图5的优先级队列中找到优先级最高的段对应的文档号-2"><a class="markdownIt-Anchor" href="#第一步从图5的优先级队列中找到优先级最高的段对应的文档号-2"></a> 第一步：从图5的优先级队列中找到优先级最高的段对应的文档号</h4>
 <p>  同naive merge。</p>
@@ -415,30 +365,15 @@
 <h4 id="第三步将存储域的信息写入到新的索引文件中-2"><a class="markdownIt-Anchor" href="#第三步将存储域的信息写入到新的索引文件中-2"></a> 第三步：将存储域的信息写入到新的索引文件中</h4>
 <p>  其写入过程正如文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中的内容，按照下面的流程图写入：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/11.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/11.png">
 <p>  相比较图9，发现optimized merge不需要执行<code>处理存储域的域值信息</code>这步骤。</p>
 <p><strong>为什么不用执行<code>处理存储域的域值信息</code>这两个流程：</strong></p>
 <p>  我们先看下存储域的域值信息包含了什么信息，如下所示：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/12.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/12.png">
 <p>  图12中，使用bufferedDocs[ ]数组存放存储域的域值信息（该数组的详细介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>），可见包含了<font color=red>红框</font>标注的域的编号的信息。如果待合并的段集合中某一个或多个段的域的编号信息跟MergeState中的域的编号mergeFieldInfos（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1130/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（一）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>的图4）不一致，就需要重新获取域的编号信息，意味着图12中的存储域的域值信息会发生变化。反之，如果某个待合并的段中的域的编号跟MergeState中的域的编号信息一致，则可以<strong>复用</strong>图12中的域值信息。那么只要<strong>拷贝</strong>文档对应在图12中的存储域的域值信息（字节流）到新段的bufferedDoc[ ]数组中即可，即不用通过执行<code>处理存储域的域值信息</code>给新段的bufferedDoc[ ]数组赋值。</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/13.png"
-                     
-                >
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（二）/13.png">
 <p>  上文中我们提到合并过程是依次处理段中的每篇文档，那么如何根据某个待合并的段中的文档号，找到它对应的存储域的域值信息呢，即如果当前处理的文档号0，如何从找到图13中找到文档号0的存储域的域值信息在索引文件.fdx的数据区间呢？</p>
 <p>  在图8中，当我们执行了流程点<code>读取一个Chunk</code>之后，即获得了图13中的DocFieldCounts以及DocLengths字段信息，根据这两个信息就可以获得某篇文档的存储域的信息在索引文件.fdx的数据区间。感兴趣的朋友可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中的介绍，本文中不赘述。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
@@ -700,7 +635,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -875,10 +810,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

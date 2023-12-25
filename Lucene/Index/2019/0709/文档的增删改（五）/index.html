@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -328,76 +328,36 @@
 <h1 id="文档的增删改流程图"><a class="markdownIt-Anchor" href="#文档的增删改流程图"></a> 文档的增删改流程图</h1>
 <p>  我们继续介绍最后的 删除文档的<code>处理删除信息</code>与添加/更新文档的<code>处理文档后的工作</code>的流程点，添加/更新文档的<code>处理删除信息</code>的内容已经在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>介绍了。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/1.png">
 <h2 id="删除文档之处理删除信息"><a class="markdownIt-Anchor" href="#删除文档之处理删除信息"></a> 删除文档之<code>处理删除信息</code></h2>
 <p>  删除文档即deleteDocuments(Querys)、deleteDocuments(Terms)，不同于添加/更新文档，删除文档没有DWPT的概念，即没有私有DeleteSlice的概念。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/2.png">
 <h3 id="添加删除信息到deletequeue中"><a class="markdownIt-Anchor" href="#添加删除信息到deletequeue中"></a> 添加删除信息到DeleteQueue中</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/3.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中我们已经介绍了如何将一个删除信息添加到DeleteQueue中，故这里不赘述。</p>
 <h3 id="执行flush策略设置flushdeletes"><a class="markdownIt-Anchor" href="#执行flush策略设置flushdeletes"></a> 执行flush策略，设置flushDeletes</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/4.png">
 <p>  如果更新文档、删除文档的操作较多，堆积的删除信息占用的内存也不能被忽视，所以在添加到DeleteQueue后，需要判断DeleteQueue中的删除信息大小是否超过ramBufferSizeMB（ramBufferSizeMB描述了索引信息被写入到磁盘前暂时缓存在内存中允许的最大使用内存值，可以通过LiveIndexWriterConfig自定义配置），如果超过那么设置flushDeletes为True。</p>
 <h3 id="记录待处理的删除信息"><a class="markdownIt-Anchor" href="#记录待处理的删除信息"></a> 记录待处理的删除信息</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/5.png">
 <p>  如果此时其他线程已经触发了全局flush，那么该线程会处理删除信息，故当前线程就不用重复的处理删除信息了，否则将删除信息添加到<code>待处理队列</code>中，生成一个<code>事件</code>，之后IndexWriter会处理该事件，<code>待处理队列</code>跟<code>事件</code>的概念在介绍flush时候会展开。</p>
 <h2 id="添加更新之处理文档后的工作"><a class="markdownIt-Anchor" href="#添加更新之处理文档后的工作"></a> 添加/更新之<code>处理文档后的工作</code></h2>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/6.png">
 <p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 3）/添加_更新之处理文档后的工作.html)查看大图</p>
 <h3 id="统计处理文档占用的内存使用量"><a class="markdownIt-Anchor" href="#统计处理文档占用的内存使用量"></a> 统计处理文档占用的内存使用量</h3>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/7.png">
 <p>  DWPT处理完一篇文档后，需要将这篇文档对应的索引信息占用的内存添加到全局的flushBytes或activeBytes，如果ThreadState被置为flushPending了，那么添加到flushBytes，否则添加到activeBytes。</p>
 <p>  为什么在这个流程点，ThreadState可能是flushPending的状态：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这种情况只发生在索引占用的内存(包括删除信息)达到ramBufferSizeMB的情况，如果线程1中的ThreadState处理完一篇文档后，索引占用的内存超过阈值，那么会从DWPTP中找到一个持有DWPT，并且该DWPT收集的索引信息量最大的ThreadState，将其置为flushPending，如果此时正好线程2开始执行添加/更新的操作，那么可能会从DWPTP中取出该ThreadState。</span><br></pre></td></tr></table></figure>
 <h3 id="执行flush策略"><a class="markdownIt-Anchor" href="#执行flush策略"></a> 执行flush策略</h3>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/8.png">
 <p>  如果当前的ThreadState没有被置为flushPending(内存索引未达到ramBufferSizeMB前ThreadState都是flushPending为false的状态)，那么需要执行flush策略，目前Lucene7.5.0中有且仅有一种flush策略：FlushByRamOrCountsPolicy。用户可以实现自己的flush策略并通过IndexWriterConfig自定义设置。</p>
 <p>  flush策略用来判断执行完增删改的操作后，是否要执行flush，这里的介绍是对<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>的补充：</p>
 <ul>
@@ -408,74 +368,34 @@
 <p>  另外每一个DWPT允许收集的索引信息量最大值为perThreadHardLimitMB （默认值为1945MB），当达到该阈值时，ThreadState会被置为flushPending，同样的可以通过IndexWriterConfig自定义设置，所以即使ramBufferSizeMB设置的很大时，也有可能因为达到了perThreadHardLimitMB而自动触发flush。</p>
 <h3 id="将当前threadstate持有的dwpt添加到blockedflushes中"><a class="markdownIt-Anchor" href="#将当前threadstate持有的dwpt添加到blockedflushes中"></a> 将当前ThreadState持有的DWPT添加到blockedFlushes中</h3>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/9.png">
 <p>  此时其他线程触发了全局flush，那么当前ThreadState如果没有被置为flushPending，说明其持有的DWPT没有达到flush的条件，ThreadState在随后释放锁后，其DWPT会被其他线程添加到fullFlushBuffer中，等待执行doFlush( )，否则该DWPT被添加到blockedFlushes中，然后从flushQueue中取出一个DWPT，目的就是尽可能先让flushQueue中的DWPT执行doFlush( )，只有这样，blockedFlushes中的DWPT才能随着尽快执行doFlush( )。</p>
 <h3 id="取出当前threadstate持有的dwpt"><a class="markdownIt-Anchor" href="#取出当前threadstate持有的dwpt"></a> 取出当前ThreadState持有的DWPT</h3>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/10.png">
 <p>  全局flush未被触发，如果当前ThreadState被置为flushPending，那么取出其持有的DWPT，在随后执行doFlush( )操作。</p>
 <h3 id="处理删除信息"><a class="markdownIt-Anchor" href="#处理删除信息"></a> 处理删除信息</h3>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/11.png">
 <p>  添加/更新操在处理完文档后，需要跟删除操作之<code>处理删除信息</code>一样，因为更新操作、其他线程的删除操作都会改变DeleteQueue。这一段逻辑在上文中已介绍，不赘述。</p>
 <h3 id="dwpt为空的情况"><a class="markdownIt-Anchor" href="#dwpt为空的情况"></a> DWPT为空的情况</h3>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/12.png">
 <p>  这里的描述不太好，在上面的流程中DWPT收集的索引信息未达到flush要求，故不需要处理该DWPT，故描述为DWPT为空，下图中的红线是DWPT为空的流程线。</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/13.png">
 <p>  如果DWPT为空，那么我们这个线程需要&quot;帮助&quot;(help out)那些已经可以生成一个段的DWPT执行doFlush( )。帮助的方式是先尝试从flushQueue中找到一个DWPT，如果没有，那么从DWPTP中找，前提是其他线程没有触发全局flush，因为在全局flush的情况下，执行全局flush的线程会去DWPTP中找到所有已经收集过文档的DWPT，无论DWPT对应的ThreadState是否被置为flushPending，所以如果此时能从DWPTP中得到一个被置为flushPending的ThreadState，说明在其他线程中的ThreadState持有的DWPT刚刚执行完添加文档的任务，就被当前线程”抢夺“了DWPT，让DWPT提前执行了doFlush()。在DocumentsWriterFlushControl.java的tryCheckoutForFlush()方法抢夺了&quot;DWPT&quot;。方法定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> DocumentsWriterPerThread <span class="title function_">tryCheckoutForFlush</span><span class="params">(</span></span><br><span class="line"><span class="params">    ThreadState perThread)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> perThread.flushPending ? internalTryCheckOutForFlush(perThread) : <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="dwpt不为空的情况"><a class="markdownIt-Anchor" href="#dwpt不为空的情况"></a> DWPT不为空的情况</h3>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/14.png">
 <p>  DWPT不为空也就是下图中的两种情况，那么随后执行DWPT的doFlush( )：</p>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/15.png">
 <h3 id="完整的单文档操作流程图"><a class="markdownIt-Anchor" href="#完整的单文档操作流程图"></a> 完整的单文档操作流程图</h3>
 <p>结合前几篇文章，单文档操作的流程图如下：</p>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/16.png">
 <p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 3）/单文档操作全图.html)查看大图</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  文档的增删改系列正式介绍完毕，如果你准备深入源码理解，那么必须结合全局flush的源码一起看，否则有些流程点很难理解，比如说上文中提高的三个容器，还有为什么ThreadState设计成继承可重入锁的类等等。</p>
@@ -725,7 +645,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -900,10 +820,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

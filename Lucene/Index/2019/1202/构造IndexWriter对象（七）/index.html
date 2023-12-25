@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -294,50 +294,25 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1127/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AD%EF%BC%89" >构造IndexWriter对象（六）<i class="fas fa-external-link-alt"></i></a>，继续介绍调用IndexWriter的构造函数的流程。</p>
 <h1 id="调用indexwriter的构造函数的流程图"><a class="markdownIt-Anchor" href="#调用indexwriter的构造函数的流程图"></a> 调用IndexWriter的构造函数的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/1.png">
 <h2 id="生成对象indexfiledeleter"><a class="markdownIt-Anchor" href="#生成对象indexfiledeleter"></a> 生成对象IndexFileDeleter</h2>
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1127/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%85%AD%EF%BC%89" >构造IndexWriter对象（六）<i class="fas fa-external-link-alt"></i></a>中，我们简单介绍了IndexFileDeleter作用，即用来删除索引目录中的索引文件，本文根据IndexFileDeleter的构造函数的实现来介绍关于计数引用、删除无效（Invalid）索引文件的内容。</p>
 <h3 id="indexfiledeleter的构造函数流程图"><a class="markdownIt-Anchor" href="#indexfiledeleter的构造函数流程图"></a> IndexFileDeleter的构造函数流程图</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89/indexfiledeleter.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="segmentinfos"><a class="markdownIt-Anchor" href="#segmentinfos"></a> SegmentInfos</h4>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/3.png">
 <p>  构造 IndexFileDeleter最重要的一个对象就是SegmentInfos，它是在图1的<code>生成对象IndexFileDeleter</code>流程点之前通过用户配置的IndexCommit或者索引目录中的旧索引生成的SegmentInfos对象（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89" >构造IndexWriter对象（三）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89" >构造IndexWriter对象（四）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1126/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%94%EF%BC%89" >构造IndexWriter对象（五）<i class="fas fa-external-link-alt"></i></a>中关于生成SegmentInfos的介绍），并作为 IndexFileDeleter的构造函数的参数之一。</p>
 <h4 id="是否能获得索引文件segments_n的文件名"><a class="markdownIt-Anchor" href="#是否能获得索引文件segments_n的文件名"></a> 是否能获得索引文件segments_N的文件名？</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/4.png">
 <p>  构造IndexWriter对象里面调用 IndexFileDeleter的构造函数时，总是能通过SegmentInfos获得一个segments_N的文件名，并且通过下面的方法来获得segments_N的文件名，那么当前流程点的判断结果总是为true，由于该方法可能会返回null，所以在这里会有一个判断。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SegmentInfos.getSegmentsFileName()</span><br></pre></td></tr></table></figure>
 <h4 id="判断索引文件是否满足要求"><a class="markdownIt-Anchor" href="#判断索引文件是否满足要求"></a> 判断索引文件是否满足要求</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/5.png">
 <p>  接着就是从索引目录依次取出索引文件，然后判断是否满足某个要求。</p>
 <p><strong>需要满足什么要求：</strong></p>
 <p>  先给出该要求对应的代码：</p>
@@ -354,12 +329,7 @@
 </li>
 </ul>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/6.png">
 <ul>
 <li>子要求二：fileName.startsWith(IndexFileNames.SEGMENTS)
 <ul>
@@ -374,12 +344,7 @@
 </ul>
 <h4 id="初始化索引文件的计数引用"><a class="markdownIt-Anchor" href="#初始化索引文件的计数引用"></a> 初始化索引文件的计数引用</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/7.png">
 <p>  如果索引文件满足上文中的要求，那么我们初始化这些索引文件的计数引用。</p>
 <p><strong>Lucene中如何实现对索引文件的计数引用</strong>：</p>
 <p>  通过一个HashMap对象refCounts以及一个RefCount类实现，他们的定义如下所示：</p>
@@ -388,31 +353,16 @@
 <p>  上述的RefCount类的具体内容可以查看这个链接：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexFileDeleter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexFileDeleter.java<i class="fas fa-external-link-alt"></i></a> 。</p>
 <h4 id="索引文件是否为segments_n"><a class="markdownIt-Anchor" href="#索引文件是否为segments_n"></a> 索引文件是否为segments_N？</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/8.png">
 <p>  如果是segments_N文件，那么需要对该文件进行额外的处理，判断方法同上文中的子要求二。</p>
 <h4 id="处理索引目录中所有的segments_n"><a class="markdownIt-Anchor" href="#处理索引目录中所有的segments_n"></a> 处理索引目录中所有的segments_N</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/9.png">
 <p>  索引目录中可能存在多个segments_N文件，那么这些文件都需要被处理，其中只有一个segments_N对应的SegmentInfos为构造IndexFileDeleter对象的参数，即图2中<code>SegmentInfos</code>流程点的segmentInfos。</p>
 <p><strong>为什么索引目录中会存在多个segments_N文件</strong>：</p>
 <p>  原因主要取决于上一个IndexWriter对象使用了哪种索引删除策略IndexDeletionPolicy（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>关于IndexDeletionPolicy的介绍），比如使用了索引删除策略<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/NoDeletionPolicy.java" >NoDeletionPolicy<i class="fas fa-external-link-alt"></i></a>，那么每次提交都会保留，又比如使用了默认的索引删除策略KeepOnlyLastCommitDeletionPolicy，那么只会保留最后一次提交。</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/10.png">
 <p>  在图10中，使用不同的索引删除策略对相同的数据进行索引，在执行了4次commit提交后，对于NODeletetionPolicy来说，它会保留所有的提交，而对于KeepOnlyLastCommitDeletionPolicy，当生成segments_2时，会删除segments_1，生成segments_3时，会删除segments_2，以此类推，即只保留最后一次提交。</p>
 <p><strong>为什么要根据每一个segments_N对应的SegmentInfos生成CommitPoint，并且添加到CommitPoint集合commits中</strong>：</p>
 <ul>
@@ -427,12 +377,7 @@
 <p>  最后我们需要增加每一个segments_N对应的SegmentInfos中对应的索引文件的计数引用，其原因是在后面的流程中能判断能否能删除索引文件。</p>
 <h4 id="是否处理异常"><a class="markdownIt-Anchor" href="#是否处理异常"></a> 是否处理异常</h4>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（七）/11.png">
 <p>  这里考虑的异常是使用NFS（Network File System）网络文件系统的场景，使用该文件系统可能会导致下面的情况：我们能通过构造IndexFileDeleter的参数获得SegmentInfos对象，并且通过SegmentInfos获得segments_N的文件名（注意只是文件名），那么segments_N文件必定是在索引目录中（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1126/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%94%EF%BC%89" >构造IndexWriter对象（五）<i class="fas fa-external-link-alt"></i></a>/<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1125/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E5%9B%9B%EF%BC%89" >构造IndexWriter对象（四）<i class="fas fa-external-link-alt"></i></a>/<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1118/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%89%EF%BC%89" >构造IndexWriter对象（三）<i class="fas fa-external-link-alt"></i></a>不同的打开模式OpenMode的内容），但是我们在图9的流程中，如果没有读取到segments_N文件（通过是否获得currentCommitPoint对象来判断），那么有可能就是NFS导致的，例如目录缓存机制的影响，那么可以根据segment_N文件名，通过重试机制来获得它对应的SegmentInfos对象，并且生成currentCommitPoint对象，如果还是读取不到，那么就会抛出下面的异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CorruptIndexException</span>(<span class="string">&quot;unable to read current segments_N file&quot;</span>, currentSegmentsFile, e);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
@@ -682,7 +627,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -857,10 +802,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

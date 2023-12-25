@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -307,12 +307,7 @@
 <li>第二个查找表使用rank结构（structure）<strong>实现在block的稠密度为DENSE中的word之间的跳转</strong>，数组的变量名为rank</li>
 </ul>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/1.png">
 <h2 id="第一个查找表jumps"><a class="markdownIt-Anchor" href="#第一个查找表jumps"></a> 第一个查找表jumps</h2>
 <p>  我们先看实现block之间跳转的查找表jumps数组，在jumps数组中，index跟offset作为一对（pair）来描述一个跳转信息：</p>
 <ul>
@@ -322,28 +317,13 @@
 <h3 id="生成jumps"><a class="markdownIt-Anchor" href="#生成jumps"></a> 生成jumps</h3>
 <p>  我们通过一个例子来理解第一个查找表，如果我们以下的文档号集合：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/2.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI（一）<i class="fas fa-external-link-alt"></i></a>我们说到，每个block用来描述<strong>最多</strong>2^16个文档号信息，例如第一个block中描述的文档号取值范围为[0, 2^16 - 1]，第二个block描述的文档号取值范围为[2^16, 2^17 - 1]，第三个block描述的文档号取值范围为[2^17, 2^18 - 1]，故图1中的文档号集合将会由3个block来存储如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/3.png">
 <p> 对于图3的情况，生成的jumps数组如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/4.png">
 <p>  从图4可以看出，index描述的的确是block中第一个文档号的段内编号，例如在第三个block中，index的值为5003，意味着这个block中存储的第一个文档号的段内编是5003，至于为什么要存储index，我们将在系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvdl" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>中作出解释。</p>
 <h3 id="读取jumps"><a class="markdownIt-Anchor" href="#读取jumps"></a> 读取jumps</h3>
 <p>  同样通过一个例子来介绍如果通过jumps实现block之间的跳转。如果我们有一个待查询的文档号为131082，由于每个block中描述的文档号的最多为2^16个，那么通过下面的公式获得结果，我们称之为inRangeBlockIndex（源码中的变量名），可以计算出文档号131082应该由哪个block来描述，在代码中：</p>
@@ -352,22 +332,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> jumpTable.readInt(inRangeBlockIndex*Integer.BYTES*<span class="number">2</span>);</span><br><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">offset</span> <span class="operator">=</span> jumpTable.readInt(inRangeBlockIndex*Integer.BYTES*<span class="number">2</span>+Integer.BYTES);</span><br></pre></td></tr></table></figure>
 <p>  上述公式中Integer.BYTES的值为4，jumpTable为存储jumps[ ]数组的字节流，故我们以jumps[ ]数组的第一个数组元素作为起始位置，偏移值为inRangeBlockIndex*Integer.BYTES*2 + Integer.BYTES的位置就可以读取offset，即文档号131082用第二个block来描述，至于在不在这个block中，需要进一步进行判断，下文中会展开介绍：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/5.png">
 <p>  在文章开头我们就说道，jumps数组是int类型，故4个数组元素占用16个字节。</p>
 <h2 id="第二个查找表rank"><a class="markdownIt-Anchor" href="#第二个查找表rank"></a> 第二个查找表rank</h2>
 <p>  在一个block内部，我们根据block的稠密度使用不同的数据类型存储，只有稠密度为DENSE时，会使用第二个查找表rank数组来实现word之间的跳转：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/6.png">
 <h3 id="生成rank"><a class="markdownIt-Anchor" href="#生成rank"></a> 生成rank</h3>
 <p>  生成rank数组前，需要指定denseRankPower，该值描述的是block中每n个文档号就生成一个rank，对应关系如下：</p>
 <p>表1：</p>
@@ -420,28 +390,13 @@
 <p>  表一中，如果denseRankPower为7，那么block中每128个文档号就生成一个rank，由于一个word能最多表示64个文档号，意味着每2个word就生成一个rank，即图6中描述的那样。</p>
 <p>  在图6中，每处理两个word，就将这两个word中包含的文档数量，即bitCount写入到rank数组中，<strong>注意的是bitCount是一个累加值</strong>，在介绍完下面的例子后会发现，rank数组中的bitCount用来表示的是一个rank中第一个文档号的段内编号，例子中denseRankPower为7：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/7.png">
 <p>  假设图6中的第一个block中存储了上述的文档号，其中图7中<code>文档号的数量</code>说明这个block的稠密度为DENSE（见文章p;在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI（一）<i class="fas fa-external-link-alt"></i></a>），那么上述文档号在使用word存储后如下所示：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/8.png">
 <p>  由于denseRankPower为7，意味着每两个word就要生成一个rank，并且两个word的bitCount和值记录到rank数组中：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（二）/9.png">
 <p>  图9中，每个word的bitCount描述的是它存储的文档号数量，例如第一个word中存储了文档号1、56、61共三个文档号，故bitCount的值为3，由于两个word生成一个rank，所以两个word的bitCount的和值写入到rank数组的下标值为0的位置，即<font color=Red>红框</font>圈出的两个bitCount的和值，另外在继续处理了第三个、第四个共两个word后，我们此时需要生成第二个rank，不仅仅要获得这，两个word中的bitCount和值，还要累加上第一个跟第二个word的和值，即3 + 2 + 3 + 2 = 10，写入到rank数组的下标值为1的位置。</p>
 <p>  图6中的HEB、LEB是 高八位 high eight bit、 lower eight bit的缩写，由于一个block中最多有65536个文档号，意味着bitCount的值最大值为65535，需要16个bit字节才能表示，加上rank数组是字节数组，所以需要两个数组元素即2个字节才能表示bitCount的最大值，故第一个字节用来表示高8位，第二个字节用来表示低8位。</p>
 <h3 id="读取rank"><a class="markdownIt-Anchor" href="#读取rank"></a> 读取rank</h3>
@@ -703,7 +658,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -878,10 +833,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

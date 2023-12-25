@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -305,32 +305,17 @@
 
                     <p>  在索引（Indexing）阶段，当某个域被设置为需要记录词向量（term vector）信息后，那么随后在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>阶段，该域对应的词向量将被写入到索引文件.tvd&amp;&amp;tvx&amp;&amp;tvm三个文件中。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/1.png">
 <p>  图1中，域名&quot;content&quot;跟&quot;title&quot;都被设置为需要记录词向量信息，而域名&quot;author&quot;则没有。</p>
 <h1 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h1>
 <h2 id="索引文件tvd"><a class="markdownIt-Anchor" href="#索引文件tvd"></a> 索引文件.tvd</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/2.png">
 <h3 id="packedintsversion"><a class="markdownIt-Anchor" href="#packedintsversion"></a> PackedIntsVersion</h3>
 <p>  PackedIntsVersion描述了压缩使用的方式，当前版本中是VERSION_MONOTONIC_WITHOUT_ZIGZAG。</p>
 <h3 id="chunk"><a class="markdownIt-Anchor" href="#chunk"></a> Chunk</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/3.png">
 <p>  在索引阶段，每当处理128篇文档或者已经处理的域值的总长度达到4096，就生成一个chunk。</p>
 <h4 id="docbase"><a class="markdownIt-Anchor" href="#docbase"></a> DocBase</h4>
 <p>  该字段描述的是chunk中第一篇文档的文档号。</p>
@@ -341,32 +326,17 @@
 <p>  根据Chunk中包含的文档数量，NumFields字段的数据结构各不相同</p>
 <h5 id="chunk中只包含一篇文档"><a class="markdownIt-Anchor" href="#chunk中只包含一篇文档"></a> Chunk中只包含一篇文档</h5>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/4.png">
 <p>  如果图1所示，那么NumFields的值为2，<strong>并且不会使用压缩存储</strong>。</p>
 <h5 id="chunk中包含多篇文档"><a class="markdownIt-Anchor" href="#chunk中包含多篇文档"></a> Chunk中包含多篇文档</h5>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/5.png">
 <p>  当包含多篇文档，那么需要记录每一篇文档中记录词向量的域的数量，然后<strong>使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>存储</strong>。</p>
 <h4 id="fieldnums"><a class="markdownIt-Anchor" href="#fieldnums"></a> FieldNums</h4>
 <p>  该字段描述的是Chunk中记录词向量的域的种类，根据域的编号来获得域的种类。</p>
 <h5 id="域的种类-1-7"><a class="markdownIt-Anchor" href="#域的种类-1-7"></a> (域的种类 - 1) ≤ 7</h5>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/6.png">
 <h6 id="token"><a class="markdownIt-Anchor" href="#token"></a> token</h6>
 <p>  token是一个组合值，并且大小是一个<strong>字节</strong>：</p>
 <ul>
@@ -379,12 +349,7 @@
 <p>  FieldNum即域的编号， 用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts<i class="fas fa-external-link-alt"></i></a>存储。</p>
 <h5 id="域的种类-1-7-2"><a class="markdownIt-Anchor" href="#域的种类-1-7-2"></a> (域的种类 - 1) &gt; 7</h5>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/7.png">
 <h6 id="token-2"><a class="markdownIt-Anchor" href="#token-2"></a> token</h6>
 <p>  token是一个组合值，并且大小是一个字节：</p>
 <ul>
@@ -394,20 +359,10 @@
 </ul>
 <h4 id="fieldnumoffs"><a class="markdownIt-Anchor" href="#fieldnumoffs"></a> FieldNumOffs</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/8.png">
 <p>  FieldNumOffs中存放了chunk中每一篇文档包含的所有域的编号的索引值<strong>FieldNumIndex</strong>，并且使用PackedInts存储。该索引其实就是fieldNums[ ]数组的下标值，fieldNums[ ]数组的数组元素是Chunk中的域的编号，数组长度是域的种类数。通过这种方式使得不直接存储域的编号，因为域的编号可能跨度很大，由于使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >固定位数按位存储<i class="fas fa-external-link-alt"></i></a>，每个域的编号占用的bit数量取决编号最大的，那会导致较大的存储空间，而存储下标值就缓解这个问题。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/9.png">
 <p>  图9中有4个域的编号，如果直接存储域的编号，其中域的编号最大值为255，占用8个bit，故需要 8 *4 = 32个bit。若只存储索引值，那么需要 1 (0) + 1 (1) + 2 (2) + 2 (3) = 6个bit位。</p>
 <h4 id="flags"><a class="markdownIt-Anchor" href="#flags"></a> Flags</h4>
 <p>  Flags用来描述记录词向量的域具体记录哪些信息，这些信息包括：位置position、偏移offset、负载payload信息。flag的值可以是下面3个值的组合：</p>
@@ -419,40 +374,20 @@
 <p>  比如说 flag = 3，二进制即0b00000011，即该域会记录位置跟偏移信息。</p>
 <p>  根据同一个域名在不同的文档中是否有相同的Flag分为不同的情况：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/10.png">
 <p>  图10中，域名&quot;content&quot;、&quot;title&quot;在文档0中会记录位置position、偏移offset、负载payload信息，然而在文档1中只记录位置position、负载payload信息。那么这种情况就称为<strong>相同的域名有不相同的flag</strong>，反之如果所有记录词向量的域在所有文档中对应的flag都是相同的，那么这种情况称为<strong>相同的域名有相同的flag</strong>。</p>
 <h5 id="相同的域名有相同的flag"><a class="markdownIt-Anchor" href="#相同的域名有相同的flag"></a> 相同的域名有相同的flag</h5>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/11.png">
 <p>  对于某个记录词向量的域名来说，无论它在哪个文档中都记录相同的flag信息，所以只要只要记录一次即可，并且用PackedInts存储，固定值0为标志位，在读取阶段用来区分Flags的不同数据结构。图11中每个flag字段对应一种域，<strong>即flag的数量等于记录词向量的域的种类数量</strong>。</p>
 <h5 id="相同的域名有不相同的flag"><a class="markdownIt-Anchor" href="#相同的域名有不相同的flag"></a> 相同的域名有不相同的flag</h5>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/12.png">
 <p>  对于一个域名来说，它在不同文档中的flag可能不一样（例如当前文档中，某个记录词向量的域名只记录位置信息，而在下一篇文档中，该域名记录了位置信息跟偏移信息），那么只能所有文档中的所有域的flag，并且用PackedInts存储，固定值1为标志位，在读取阶段用来区分Flags的不同数据结构。图12中，每个Flag对应为某篇文档中的某个记录词向量的域。</p>
 <h4 id="termdata"><a class="markdownIt-Anchor" href="#termdata"></a> TermData</h4>
 <p>  TermData记录了域值以及Payload信息。</p>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/13.png">
 <h5 id="numterms"><a class="markdownIt-Anchor" href="#numterms"></a> NumTerms</h5>
 <p>  NumTerms描述了每一篇文档的每一个域包含的term个数，使用PackedInts存储。</p>
 <h5 id="termlengths"><a class="markdownIt-Anchor" href="#termlengths"></a> TermLengths</h5>
@@ -469,29 +404,14 @@
 <p>  使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>算法存储每一篇文档的每一个域中的每一个term值跟payload(如果有的话)。</p>
 <h2 id="索引文件tvd整体数据结构"><a class="markdownIt-Anchor" href="#索引文件tvd整体数据结构"></a> 索引文件.tvd整体数据结构</h2>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/14.png">
 <h2 id="索引文件tvx"><a class="markdownIt-Anchor" href="#索引文件tvx"></a> 索引文件.tvx</h2>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/15.png">
 <p>  索引文件.tvx中的字段含义同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm-8.6.0" >索引文件.fdx<i class="fas fa-external-link-alt"></i></a>， 不赘述。</p>
 <h2 id="索引文件tvm"><a class="markdownIt-Anchor" href="#索引文件tvm"></a> 索引文件.tvm</h2>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/tvd&&tvx&&tvm/16.png">
 <p>  索引文件.tvm中的字段含义同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm-8.6.0" >索引文件.fdm<i class="fas fa-external-link-alt"></i></a>， 不赘述。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  看完这篇文章后，如果感到一脸懵逼， 木有关系，在随后的文章将会详细介绍索引文件tvd&amp;&amp;tvx&amp;&amp;tvm的生成过程。</p>
@@ -756,7 +676,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -931,10 +851,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

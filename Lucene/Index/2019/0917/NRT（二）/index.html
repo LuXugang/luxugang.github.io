@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,23 +297,13 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT（一）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="获取standarddirectoryreader对象的流程图"><a class="markdownIt-Anchor" href="#获取standarddirectoryreader对象的流程图"></a> 获取StandardDirectoryReader对象的流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/1.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%BA%8C%EF%BC%89/flow.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  我们继续介绍方法三&amp;&amp;方法四的所有流程点。</p>
 <p>  这两种是业务中最常使用，通过IndexWriter实现NRT功能的方法，在构造IndexWriter对象期间，会读取Directory，即索引目录中的已存在的索引信息（旧的索引信息），而对索引信息的更改（新的索引信息）都需要通过IndexWriter对象，故通过IndexWriter对象，我们能获得Directory中新旧索引信息，实现NRT。</p>
 <p>  我们将方法三&amp;&amp;方法四的流程从图1中拆解出来，并且跟<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>的流程进行对比，如下图所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/2.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT/%E8%BF%91%E5%AE%9E%E6%97%B6%E6%90%9C%E7%B4%A2NRT%EF%BC%88%E4%BA%8C%EF%BC%89/nrt__flush.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  图2中两个流程图中用红色标注的描述了他们具有具有相同的流程。</p>
 <p>  <strong>为什么获取StandardDirectoryReader需要执行flush的操作</strong>：</p>
@@ -331,40 +321,20 @@
 </ul>
 <h2 id="获得standarddirectoryreader"><a class="markdownIt-Anchor" href="#获得standarddirectoryreader"></a> 获得StandardDirectoryReader</h2>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/3.png">
 <p>  在图2中红色标注的流程执行结束后，新旧索引信息都生成了SegmentCommitInfo，那么我们就可以获得StandardDirectoryReader了，其获得过程跟方法一&amp;&amp;方法二的<code>获得StandardDirectoryReader</code>是一致的，不赘述。</p>
 <h2 id="执行flush后的工作"><a class="markdownIt-Anchor" href="#执行flush后的工作"></a> 执行flush后的工作</h2>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/4.png">
 <p>  该流程在前面的文章已经介绍，在源码中调用<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DocumentsWriterFlushControl.java" >DocumentsWriterFlushControl.finishFullFlush( )<i class="fas fa-external-link-alt"></i></a>的方法，详细的介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>文章中的IndexWriter处理事件章节的内容。</p>
 <h2 id="执行获得reader后的工作"><a class="markdownIt-Anchor" href="#执行获得reader后的工作"></a> 执行获得reader后的工作</h2>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/5.png">
 <p>  Lucene在当前流程点提供一个钩子函数doAfterFlush()方法，用户可以实现自己的业务逻辑，定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A hook for extending classes to execute operations after pending added and</span></span><br><span class="line"><span class="comment"> * deleted documents have been flushed to the Directory but before the change</span></span><br><span class="line"><span class="comment"> * is committed (new segments_N file written).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doAfterFlush</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="尝试段合并"><a class="markdownIt-Anchor" href="#尝试段合并"></a> 尝试段合并</h2>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/近实时搜索NRT/近实时搜索NRT（二）/6.png">
 <p>  由于执行了flush的操作，故索引可能发生了变化，在每一次索引发生变化后，都需要尝试判断是否需要执行段的合并操作，其判断条件依据不同的合并策略而有所不同，合并策略的文章可以看这里：<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >LogMergePolicy<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0516/TieredMergePolicy" >TieredMergePolicy<i class="fas fa-external-link-alt"></i></a>。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  我们通过调用图1中的四个方法来获得索引目录中最新的索引信息，无论哪一种方法，目的就是将索引目录中每一个段的信息生成一个LeafReader，最后将LeafReader封装为StandardDirectoryReader，然而这四种方法还存在性能问题，故Lucene提供了openIfChange的方法来提高NRT的性能，具体内容将在下篇文章中展开介绍。</p>
@@ -617,7 +587,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -792,10 +762,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

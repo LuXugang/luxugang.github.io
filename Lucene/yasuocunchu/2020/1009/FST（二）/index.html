@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -304,20 +304,10 @@
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>（<strong>必须先阅读该篇文章</strong>）中我们通过一个例子，简单的描述了Lucene是如何使用一个字节数组current[ ]存储FST信息的，为了能更好的理解读取过程，我们需要另外给出例子（差别在于把&quot;mop&quot;改成了&quot;mo&quot;），输入数据以及对应FST的信息如下。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] inputValues = &#123;&quot;mo&quot;, &quot;moth&quot;, &quot;pop&quot;, &quot;star&quot;, &quot;stop&quot;, &quot;top&quot;&#125;;</span><br><span class="line">long[] outputValues = &#123;100, 91, 72, 83, 54, 55&#125;;</span><br></pre></td></tr></table></figure>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/1.png">
 <p>  如果用节点跟边的关系来描述图1中的FST信息见下图：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/2.png">
 <p>  由图1可以看出FST的两个特性，相同前缀存储和相同后缀存储:</p>
 <ul>
 <li>相同前缀存储：
@@ -400,44 +390,24 @@
 <p>  表二中的Flag相比较文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>，多了BIT_ARC_HAS_FINAL_OUTPUT，在那一篇文章中未直接给出的原因在于，那篇文章中的例子的特殊性使得不会使用到该flag，这也是为什么本篇文章我们需要换一个例子。</p>
 <p>  无论哪种读取方式，总是从current[ ]数组中最后一个有效数据，即下标38，的位置开始读取，又因为四元组信息中至少包含flag跟label信息，故直接从最后一个有效数据开始往前读取两个数组元素，获得label的值为&quot;m&quot;、flag的值为16，接着根据flag的值的组合，执行不同的读取逻辑，如下图所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/3.png">
 <h3 id="顺序读取"><a class="markdownIt-Anchor" href="#顺序读取"></a> 顺序读取</h3>
 <p>  顺序读取描述的是从FST中最小的term开始，根据字典序依次读取所有的term，在下文中的介绍将会了解到，整个过程相当于一次深度遍历。</p>
 <h4 id="读取mo"><a class="markdownIt-Anchor" href="#读取mo"></a> 读取&quot;mo&quot;</h4>
 <p>  根据下标值38对应的数组元素，即flag，该值为16，该值只包含了BIT_ARC_HAS_OUTPUT（16）那么会执行以下的流程：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/4.png">
 <p>  图4流程中，结合表二中flag的介绍可以知道，由于不包含BIT_STOP_NODE，说明当前字符不是某个term的最后一个字符；由于不包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符&quot;m&quot;的最近的一个四元组信息（下标值区间为[ 31, 34]）对应的字符不是当前字符&quot;m&quot;的下一个字符，那么此时需要在数组中读取四元组信息中的index，使得能找到下一个字符的起始读取位置，即下标值为7对应的数组元素，它是下一个字符的四元组信息中的flag。</p>
 <p>  根据上面的介绍，我们目前获得了字符&quot;m&quot;、附加值91，以及下一个字符对应的flag，那么根据这个flag继续读取。</p>
 <p>  由于四元组信息至少包含flag和label、所以我们可以知道目前我们正在处理字符&quot;o&quot;，根据flag的值，即39， 包含了BIT_ARC_HAS_FINAL_OUTPUT（32）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），那么它对应的流程图如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/5.png">
 <p>  由于包含BIT_TARGET_NEXT，说明在current[ ]数组中，离当前字符&quot;o&quot;的最近的一个四元组信息（下标区间为[3, 4]）对应的字符是当前字符&quot;o&quot;的在某一个term（即&quot;moth&quot;）中的下一个字符，<strong>但是</strong>由于包含BIT_FINAL_ARC，说明当前字符&quot;o&quot;同时是某个term（即&quot;mo&quot;）的最后一个字符，那么我们可以知道存在&quot;mo&quot;以及以&quot;mo&quot;为前缀的term，另外由于包含了BIT_LAST_ARC，意味着不存在其他不以&quot;mo&quot;为前缀的term。</p>
 <h4 id="读取moth"><a class="markdownIt-Anchor" href="#读取moth"></a> 读取&quot;moth&quot;</h4>
 <p>  由于在读取&quot;mo&quot;的字符&quot;o&quot;时，它对应的flag中包含BIT_TARGET_NEXT，意味着最靠近字符&quot;o&quot;对应的四元组信息的字符就是字符&quot;o&quot;的在某一个term的下一个字符，由图1可见，即下标区间[3, 4]对应的字符&quot;t&quot;，它对应的四元组信息中的flag值为6，包含了BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2），对应的流程图同图5。</p>
 <p>  由于包含了BIT_TARGET_NEXT，并且不包含BIT_FINAL_ARC，那么说明&quot;t&quot;不是某个term的最后一个字符，并且下一个字符为离当前字符&quot;t&quot;的最近的一个四元组信息（下标区间为[1, 2]）对应的字符，即字符&quot;h&quot;。字符&quot;h&quot;对应的四元组信息中的flag值为15，包含了BIT_STOP_NODE（8）、BIT_TARGET_NEXT（4）、BIT_LAST_ARC（2）、BIT_FINAL_ARC（1），对应的流程图如下：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST（二）/6.png">
 <p>  由于包含了BIT_STOP_NODE，说明没有下一个字符，此时就获得了完整的term，即&quot;moth&quot;’。</p>
 <p>  <strong>字符&quot;h&quot;是最后一个字符了，为什么还有BIT_TARGET_NEXT</strong></p>
 <p>  如果你看过文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89" >FST（一）<i class="fas fa-external-link-alt"></i></a>就会知道，它的target是-1，表示没有合法的下一个字符了。</p>
@@ -703,7 +673,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -878,10 +848,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -293,22 +293,12 @@
 
                     <p>  本篇文章介绍在查询阶段，<a class="link"   target="_blank" rel="noopener" href="https://github.com/apache/lucene/blob/f527eb3b12df6d052d1b6dd107b56ab705a95ab1/lucene/core/src/java/org/apache/lucene/search/BulkScorer.java" >BulkScorer<i class="fas fa-external-link-alt"></i></a>相关的知识点，在查询流程中的流程点如下<font color="red">红框</font>所示：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/1.png"
-                       width="700"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/1.png"  width="700">
 <h2 id="父类bulkscorer"><a class="markdownIt-Anchor" href="#父类bulkscorer"></a> 父类BulkScorer</h2>
 <p>  BulkScorer类的定位是一个对满足查询条件的所有文档号进行收集的最初入口。在执行完该类的方法一后，Lucene就完成了一个段中文档号的收集工作。我们仅关注下BulkScorer类中下面的两个方法，如下所示：</p>
 <h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/2.png"
-                        width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/2.png"   width="800">
 <p>  该方法说的是在某个文档号区间内，即参数<code>min</code>和<code>max</code>组成的区间，进行文档号的收集，同时使用参数<code>acceptDocs</code>过滤掉被删除的文档号，最终满足查询条件的文档号使用参数<code>collector</code>收集存储。</p>
 <h4 id="acceptdocs"><a class="markdownIt-Anchor" href="#acceptdocs"></a> acceptDocs</h4>
 <p>  <code>acceptDocs</code>是一个基于<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >位图<i class="fas fa-external-link-alt"></i></a>实现，用来描述被删除的文档号信息的对象。由于在Lucene中执行删除文档操作时，并不会去修改现有的索引文件，而是额外的在名为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>的索引文件中记录被删除的文档号。</p>
@@ -319,39 +309,19 @@
 <p>  min和max用于指定一个待遍历的文档号区间，在有些子类实现中如果根据某些条件可以尽可能的降低区间的范围，那么可以降低整个查询时间（在介绍ReqExclBulkScorer时会介绍）。默认的实现中，min的值为0，max的值为Integer.MAX_VALUE。</p>
 <h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/3.png"
-                      width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/3.png" width="800">
 <p>  该方法描述的是遍历所有满足查询条件的文档号的开销，这个取决于不同的BulkScorer子类实现，在下文中再展开介绍。</p>
 <h2 id="bulkscorer的子类"><a class="markdownIt-Anchor" href="#bulkscorer的子类"></a> BulkScorer的子类</h2>
 <p>  主要介绍下这几个最常见的子类：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/4.png"
-                       width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/4.png"  width="800">
 <h3 id="defaultbulkscorer"><a class="markdownIt-Anchor" href="#defaultbulkscorer"></a> DefaultBulkScorer</h3>
 <p>  DefaultBulkScorer子类中实现图2中方法一的流程图如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/5.png"
-                       align = "left"  
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/5.png"  align = "left"  >
 <h4 id="从scorer中获取scoreriterator"><a class="markdownIt-Anchor" href="#从scorer中获取scoreriterator"></a> 从Scorer中获取scorerIterator</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/6.png"
-                        width="500"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/6.png"   width="500">
 <p>  Scorer的概念会在以后的文章中详细介绍，在本篇文章中我们只需要暂时知道，该对象会提供一个DocIdSetIterator抽象类（<strong>下文中简称为DISI</strong>）的对象scorerIterator，通过该对象我们就可以获取到满足查询条件的所有文档号，并且在DocIdSetIterator类的不同实现中，获取每一个文档号的逻辑也是不同的。</p>
 <h5 id="docidsetiterator"><a class="markdownIt-Anchor" href="#docidsetiterator"></a> DocIdSetIterator</h5>
 <p>  DISI是一个有状态的，对non-decreasing类型的文档号集合进行遍历的迭代器，并且集合中的文档号都是满足查询条件的（被删除的文档号也在集合中）。non-decreasing指的是集合中的每个文档号都大于等于排在它前面的文档号。例如下面的集合就是non-decreasing：</p>
@@ -359,67 +329,32 @@
 <p>  这个类中有四个核心的方法：</p>
 <h6 id="方法一disi"><a class="markdownIt-Anchor" href="#方法一disi"></a> 方法一（DISI）</h6>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/7.png"
-                        width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/7.png"   width="800">
 <p>  该方法体现出DISI是具有状态的，它返回DISI当前的状态值，即目前遍历到的文档号。</p>
 <p>  注释中说到，如果在调用<code>nextDoc()</code>或者<code>advance(int)</code>方法前就调用当前方法，会返回-1，意思是DISI的最初的状态值是-1，也就是文档号为-1，当然了，该值不是一个合法的文档号。另外如果遍历完所有的文档号，那么当前方法会返回一个<code>NO_MORE_DOCS</code>作为结束标志，该值即Integer.MAX_VALUE。</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/11.png"
-                      width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/11.png" width="800">
 <h6 id="方法二disi"><a class="markdownIt-Anchor" href="#方法二disi"></a> 方法二（DISI）</h6>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/8.png"
-                       width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/8.png"  width="800">
 <p>  该方法会基于<code>docID()</code>中的文档号（当前状态值），返回在集合中排在它后面，下一个位置的文档号，随后将状态值更新为该位置的文档号。</p>
 <p>  如果DISI当前的状态值已经是集合中的最后一个文档号，那么调用该方法会返回<code>NO_MORE_DOCS</code>，并且将状态值更新为<code>NO_MORE_DOCS</code>。注意的是，不应该在这种情况下继续调用该方法，否则会导致不可预测行为。</p>
 <h6 id="方法三disi"><a class="markdownIt-Anchor" href="#方法三disi"></a> 方法三（DISI）</h6>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/9.png"
-                       align = "middle"  width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/9.png"  align = "middle"  width="800">
 <p>  该方法会返回集合中第一个大于等于target的文档号，并且将状态值更新为这个文档号。</p>
 <p>  如果未在集合中找到，那么会返回<code>NO_MORE_DOCS</code>。并且将状态值更新为<code>NO_MORE_DOCS</code>。</p>
 <h6 id="方法四disi"><a class="markdownIt-Anchor" href="#方法四disi"></a> 方法四（DISI）</h6>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/10.png"
-                       width="800"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/10.png"  width="800">
 <p>  该方法描述的是遍历DISI中的文档号集合的开销，在有些子类实现中该值就是集合中文档号数量的一个准确值，然而在有些实现则是一个估计值。</p>
 <h5 id="docidsetiterator的子类"><a class="markdownIt-Anchor" href="#docidsetiterator的子类"></a> DocIdSetIterator的子类</h5>
 <p>  下图给出的是实现比较简单的一个子类：</p>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/12.png"
-                      align = "middle"  width="500"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/12.png" align = "middle"  width="500">
 <h4 id="是否可以获取实现skip-docs的disi"><a class="markdownIt-Anchor" href="#是否可以获取实现skip-docs的disi"></a> 是否可以获取实现Skip Docs的DISI？</h4>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/13.png"
-                       width="500"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/13.png"  width="500">
 <p>  如果从数据集的角度去思考如何提高查询性能，通常可以通过以下两种方式实现：</p>
 <ol>
 <li>减少数据集的规模</li>
@@ -432,21 +367,11 @@
 <p>  目前Lucene中有基于BKD树（<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9280" >LUCENE-9280<i class="fas fa-external-link-alt"></i></a>）以及基于倒排（<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-10633" >LUCENE-10633<i class="fas fa-external-link-alt"></i></a>）来获得competitiveIterator。见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2021/0621/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%B8%80%EF%BC%89" >查询TopN的优化之NumericDocValues（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2021/0629/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%BA%8C%EF%BC%89" >查询TopN的优化之NumericDocValues（二）<i class="fas fa-external-link-alt"></i></a>了解基于BKD树获取competitiveIterator。</p>
 <p>  下面的例子中，<strong>主要是表达优化思想，并不是真实的实现逻辑</strong>：</p>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/14.png">
 <p>  图14中假设是Top3的查询，如果没能获取competitiveIterator，那么需要遍历集合中所有的文档号。优化后，在收集完Top3后，根据Top3中的竞争力最小的信息（基于排序规则对应的域值）获取一个集合为[7, 99]的competitiveIterator，意思是根据排序规则，在这个集合区间范围外的文档是没有竞争力（non-competitive），也就是没有必要去处理这些文档号。随后在处理完第56篇文档号，再次更新了competitiveIterator。</p>
 <h4 id="遍历filterediterator"><a class="markdownIt-Anchor" href="#遍历filterediterator"></a> 遍历filteredIterator</h4>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/15.png">
 <h5 id="docid是否在区间内"><a class="markdownIt-Anchor" href="#docid是否在区间内"></a> docId是否在区间内</h5>
 <p>  这里的区间指的是<a href="###%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a>中参数<code>max</code>跟<code>min</code>组成的区间，由于从filteredIterator中依次获得的文档号是递增的，所以当出现文档号不在区间内时，就可以直接退出遍历。</p>
 <h5 id="docid不是被删除的文档号并且满足二阶段遍历"><a class="markdownIt-Anchor" href="#docid不是被删除的文档号并且满足二阶段遍历"></a> docId不是被删除的文档号并且满足二阶段遍历？</h5>
@@ -702,7 +627,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -877,10 +802,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

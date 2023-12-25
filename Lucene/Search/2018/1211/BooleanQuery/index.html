@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -331,34 +331,19 @@
 当有多个相同的TermQuery，并且是SHOULD，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑七</span></span><br><span class="line"><span class="comment">// 这段代码的逻辑跟 逻辑八 一毛一样，往下找一找^-^,就不赘述了</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.SHOULD).size() &gt; <span class="number">0</span> &amp;&amp; minimumNumberShouldMatch &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">      Map&lt;Query, Double&gt; shouldClauses = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span> (Query query : clauseSets.get(Occur.SHOULD)) &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">boost</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (query <span class="keyword">instanceof</span> BoostQuery) &#123;</span><br><span class="line">          <span class="type">BoostQuery</span> <span class="variable">bq</span> <span class="operator">=</span> (BoostQuery) query;</span><br><span class="line">          boost *= bq.getBoost();</span><br><span class="line">          query = bq.getQuery();</span><br><span class="line">        &#125;</span><br><span class="line">        shouldClauses.put(query, shouldClauses.getOrDefault(query, <span class="number">0d</span>) + boost);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (shouldClauses.size() != clauseSets.get(Occur.SHOULD).size()) &#123;</span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder()</span><br><span class="line">            .setMinimumNumberShouldMatch(minimumNumberShouldMatch);</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Query,Double&gt; entry : shouldClauses.entrySet()) &#123;</span><br><span class="line">          <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">          <span class="type">float</span> <span class="variable">boost</span> <span class="operator">=</span> entry.getValue().floatValue();</span><br><span class="line">          <span class="keyword">if</span> (boost != <span class="number">1f</span>) &#123;</span><br><span class="line">            query = <span class="keyword">new</span> <span class="title class_">BoostQuery</span>(query, boost);</span><br><span class="line">          &#125;</span><br><span class="line">          builder.add(query, Occur.SHOULD);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (clause.getOccur() != Occur.SHOULD) &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/3.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/3.png" style="zoom:50%"></p>
 <h3 id="should至少一个和must至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must至少一个的termquery"></a> SHOULD(至少一个)和MUST(至少一个)的TermQuery</h3>
 <h4 id="重写第一步-3"><a class="markdownIt-Anchor" href="#重写第一步-3"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
 <h4 id="重写第二步可选-2"><a class="markdownIt-Anchor" href="#重写第二步可选-2"></a> 重写第二步(可选)</h4>
 <p>同样先要执行 逻辑七，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/2.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/2.png" style="zoom:50%"></p>
 <h4 id="重写第三步"><a class="markdownIt-Anchor" href="#重写第三步"></a> 重写第三步</h4>
 <p>当有多个相同的TermQuery，并且是MUST，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑八</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.MUST).size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      Map&lt;Query, Double&gt; mustClauses = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">      <span class="comment">// 这里遍历所有的MUST的Clause，如果有重复的Clause，boost值就加1，描述了这个关键字的重要性</span></span><br><span class="line">      <span class="keyword">for</span> (Query query : clauseSets.get(Occur.MUST)) &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">boost</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (query <span class="keyword">instanceof</span> BoostQuery) &#123;</span><br><span class="line">          <span class="type">BoostQuery</span> <span class="variable">bq</span> <span class="operator">=</span> (BoostQuery) query;</span><br><span class="line">          boost *= bq.getBoost();</span><br><span class="line">          query = bq.getQuery();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 调用getOrDefault()查看是否有相同的clause，如果有，那么取出boost，然后对boost进行+1后，覆盖已经存在的clause。</span></span><br><span class="line">        mustClauses.put(query, mustClauses.getOrDefault(query, <span class="number">0d</span>) + boost);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 运行至此，如果BooleanQuery有相同的query，并且是MUST，那么将这些MUST的query合并为一个query，并且增加boost的值。</span></span><br><span class="line">      <span class="comment">// if语句为true：说明有重复的clause(MUST), 那么需要对boost不等于1的query重写，然后跟其他的query一起写到新的BooleanQuery中。</span></span><br><span class="line">      <span class="keyword">if</span> (mustClauses.size() != clauseSets.get(Occur.MUST).size()) &#123;</span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder()</span><br><span class="line">                .setMinimumNumberShouldMatch(minimumNumberShouldMatch);</span><br><span class="line">        <span class="comment">// 这个for循环是将那些boost值不等于1的query重写为BoostQuery。</span></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Query,Double&gt; entry : mustClauses.entrySet()) &#123;</span><br><span class="line">          <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">          <span class="type">float</span> <span class="variable">boost</span> <span class="operator">=</span> entry.getValue().floatValue(); </span><br><span class="line">          <span class="keyword">if</span> (boost != <span class="number">1f</span>) &#123;</span><br><span class="line">            <span class="comment">// 重写为BoostQuery。</span></span><br><span class="line">            query = <span class="keyword">new</span> <span class="title class_">BoostQuery</span>(query, boost);</span><br><span class="line">          &#125;</span><br><span class="line">          builder.add(query, Occur.MUST);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把其他不是MUST的clause重写添加到新的BooleanQuery中。</span></span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (clause.getOccur() != Occur.MUST) &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/1.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/1.png" style="zoom:50%"></p>
 <h3 id="多个must的termquery"><a class="markdownIt-Anchor" href="#多个must的termquery"></a> 多个MUST的TermQuery</h3>
 <h4 id="重写第一步-4"><a class="markdownIt-Anchor" href="#重写第一步-4"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
@@ -373,12 +358,7 @@
 <h4 id="重写第三步-2"><a class="markdownIt-Anchor" href="#重写第三步-2"></a> 重写第三步</h4>
 <p>当有多个相同的TermQuery，并且是MUST，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。然后执行逻辑八，已说明，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/4.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/4.png" style="zoom:50%"></p>
 <h3 id="should至少一个和must_not至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must_not至少一个的termquery"></a> SHOULD(至少一个)和MUST_NOT(至少一个)的TermQuery</h3>
 <h4 id="重写第一步-6"><a class="markdownIt-Anchor" href="#重写第一步-6"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
@@ -387,12 +367,7 @@
 <h4 id="重写第三步可选"><a class="markdownIt-Anchor" href="#重写第三步可选"></a> 重写第三步(可选)</h4>
 <p>执行逻辑七，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/5.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/5.png" style="zoom:50%"></p>
 <h3 id="should至少一个和must至少一个和must_not至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must至少一个和must_not至少一个的termquery"></a> SHOULD(至少一个)和MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</h3>
 <h4 id="重写第一步-7"><a class="markdownIt-Anchor" href="#重写第一步-7"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
@@ -403,12 +378,7 @@
 <h4 id="重写第四步"><a class="markdownIt-Anchor" href="#重写第四步"></a> 重写第四步</h4>
 <p>执行逻辑八，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/6.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/6.png" style="zoom:50%"></p>
 <h3 id="should至少一个和filter至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和filter至少一个的termquery"></a> SHOULD(至少一个)和FILTER(至少一个)的TermQuery</h3>
 <h4 id="重写第一步-8"><a class="markdownIt-Anchor" href="#重写第一步-8"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
@@ -420,12 +390,7 @@
 <h4 id="重写第四步-2"><a class="markdownIt-Anchor" href="#重写第四步-2"></a> 重写第四步</h4>
 <p>执行逻辑八，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/7.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/7.png" style="zoom:50%"></p>
 <h3 id="must至少一个和filter至少一个的termquery"><a class="markdownIt-Anchor" href="#must至少一个和filter至少一个的termquery"></a> MUST(至少一个)和FILTER(至少一个)的TermQuery</h3>
 <h4 id="重写第一步-9"><a class="markdownIt-Anchor" href="#重写第一步-9"></a> 重写第一步</h4>
 <p>同样先要执行 逻辑二，不赘述。</p>
@@ -435,12 +400,7 @@
 <h4 id="重写第三步-3"><a class="markdownIt-Anchor" href="#重写第三步-3"></a> 重写第三步</h4>
 <p>执行逻辑八，不赘述。<br />
 下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/8.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/8.png" style="zoom:50%"></p>
 <h3 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h3>
 <p>BooleanQuery类中最重要的方法就是rewrite()方法，上面的例子中列举了最常用的几种BooleanQuery的情况，MUST，SHOULD，FILTER，MUST_NOT的他们之间不同数量的组合有着不一样的rewrite过程，无法一一详细列出。BooleanQuery中的rewrite一共有9个逻辑，都在关键处给出了注释，大家可以到我们的GitHub看这个类的源码<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/BooleanQuery.java%E3%80%82" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/BooleanQuery.java。<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/BooleanQuery/BooleanQuery.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
@@ -688,7 +648,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -863,10 +823,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

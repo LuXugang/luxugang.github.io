@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -295,107 +295,52 @@
 <h2 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h2>
 <p>  在Lucene 8.5.0之前，BinaryDocValues的数据结构如下所示，以Lucene 7.5.0为例：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/1.png">
 <p>  图1中，TermsValue字段中的每个term存储时既不使用前缀存储，也不进行去重处理，更没有使用压缩存储，这种设计的初衷在与读取阶段能避免解码以及解压的操作，使得有更高的读取性能。然而这必然在某些场景下导致索引文件.dvd较大。</p>
 <p>  在Lucene8.5.0中，<a class="link"   target="_blank" rel="noopener" href="https://github.com/markharwood" >Mark Harwood<i class="fas fa-external-link-alt"></i></a>在对TermsValue使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>进行压缩存储后，发现其索引文件.dvd的磁盘占用能大幅度降低，并且居然索引（Indexing）以及搜索的性能并没有降低，反而有更大的提升。它在一次<a class="link"   target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr/pull/1234" >RP<i class="fas fa-external-link-alt"></i></a>中给出了测试数据。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/2.png">
 <p>  图2中，通过比较主分支以及PR可以明显看出使用压缩存储后，读写性能居然提高不少，大佬<a class="link"   target="_blank" rel="noopener" href="https://www.linkedin.com/in/mikemccand/" >Mike McCandless<i class="fas fa-external-link-alt"></i></a>看到后的反应感觉也是受到了点惊吓呀：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/3.png">
 <p>  不过随后在Lucene专用的benchmark中，发现其读写性能并没有显著提高。图2中的测试数据被认为是一种特殊的场景。既然没有影响读写性能，并且的确能减少索引文件.dvd的磁盘占用，由于TermsValue中的term集合中不是去重的，那么当使用LZ4时能有较高的压缩率，因为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>的核心原理就是找出相同的数据流进行压缩。</p>
 <p>  使用Lucene专用的benchmark的讨论以及测试数据可以见阅读这个issue： <a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9211%E3%80%82" >https://issues.apache.org/jira/browse/LUCENE-9211。<i class="fas fa-external-link-alt"></i></a></p>
 <h3 id="termsvalue的压缩存储"><a class="markdownIt-Anchor" href="#termsvalue的压缩存储"></a> TermsValue的压缩存储</h3>
 <p>  在索引阶段，每处理32（32这个值的选择是对各种候选值测试后的较优解）个BinaryDocValue的域值，就生成一个block。所有的域值以字节流的方式写入到这个block中，并且通过DocLengths字段来描述每一个域值的长度，即占用的字节数量，使得读取阶段能从字节流中准确的读取出每一个域值，如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/4.png">
 <p>  图4中，每处理32个域值就就生成一个Block。</p>
 <h4 id="doclengths"><a class="markdownIt-Anchor" href="#doclengths"></a> DocLengths</h4>
 <p>  该字段根据这个32个域值的长度是否<strong>都相等</strong>有不同的两种数据结构：</p>
 <h5 id="所有term的长度都相等"><a class="markdownIt-Anchor" href="#所有term的长度都相等"></a> 所有Term的长度都相等</h5>
 <p>  长度相等描述的是term占用的字节数量相同，此时DocLengths的数据结构如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/5.png">
 <p>  既然所有term的长度都相等，那么只要记录第一个term的长度即可，将这个term的长度和固定值1实现组合存储写入到DocLengths字段，固定值1用来在读取阶段区分DocLengths的数据结构。</p>
 <h5 id="至少有一个term跟其他term的长度不相等"><a class="markdownIt-Anchor" href="#至少有一个term跟其他term的长度不相等"></a> 至少有一个Term跟其他Term的长度不相等</h5>
 <p>  这种情况下，需要记录所有term的长度：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/6.png">
 <p>  除了第一个term长度，它需要跟固定值0实现组合存储外，其他term的长度依次写到DocLengths中。固定值0用来在读取阶段区分DocLengths的数据结构。</p>
 <h4 id="compressedterms"><a class="markdownIt-Anchor" href="#compressedterms"></a> CompressedTerms</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/7.png">
 <p>  该字段中，所有term使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>压缩存储。</p>
 <h3 id="termsindex"><a class="markdownIt-Anchor" href="#termsindex"></a> TermsIndex</h3>
 <p>  上文中说到，每处理32个BinaryDocValue的域值，就生成一个block。在处理的过程中，会使用临时文件记录每个block在索引文件.dvd中的起始读取位置，随后这些信息将被写入到TermsIndex中。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/8.png">
 <p>  图8中，<font color=Red>红框</font>标注的即临时文件。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/9.png">
 <p>  图9中的Address就是临时文件记录的信息，不过这些Address是通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&amp;&amp;Reader" >DirectMonotonicWriter&amp;&amp;Reader<i class="fas fa-external-link-alt"></i></a>编码处理，故<a href="%5BDirectMonotonicWriter&amp;&amp;Reader%5D(https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&amp;&amp;Reader)">编码元数据</a>保存到索引文件.dvm。在读取阶段，结合索引文件.dvd中的的Address信息以及索引文件.dvm中的编码元数据，就能获取到Block在索引文件.dvd中的起始读取位置。</p>
 <h3 id="索引文件dvm"><a class="markdownIt-Anchor" href="#索引文件dvm"></a> 索引文件.dvm</h3>
 <p>  我们先看下索引文件.dvm中的TermsValueMeta字段跟索引文件.dvd的关系：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/10.png">
 <p>  接着我们先看下索引文件.dvm中的TermsIndexMeta字段跟索引文件.dvd的关系：</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues870/11.png">
 <p>  图11中，TotalChunks跟BINARY_BLOCK_SHIFT是相比较Lucene8.5.0之前新增的字段。另外Offset跟TermsIndexLength两个字段用来描述索引文件.dvd中TermsIndex的数据区间。</p>
 <h4 id="totalchunks"><a class="markdownIt-Anchor" href="#totalchunks"></a> TotalChunks</h4>
 <p>  该字段描述的是图10中，索引文件.dvd中TermsValue中的Block的数量。</p>
@@ -650,7 +595,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -825,10 +770,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,80 +299,40 @@
 <h2 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h2>
 <p>添加10篇文档到索引中。如下图：<br />
 图1：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/1.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/1.png" style="zoom:50%"></p>
 <p>使用WhiteSpaceAnalyzer进行分词。<br />
 查询条件如下图。<strong>MinimumNumberShouldMatch的值为2，表示满足查询条件的文档中必须至少包含&quot;a&quot;、“b”、“c”、&quot;e&quot;中的任意两个。</strong><br />
 图2：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/2.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/2.png" style="zoom:50%"></p>
 <h2 id="文档号合并"><a class="markdownIt-Anchor" href="#文档号合并"></a> 文档号合并</h2>
 <p>本篇文章中不会介绍如何根据关键字找到对应文档的过程，只介绍了如何合并(筛选)文档号的过程。<br />
 首先给出一个Bucket[]数组，Bucket[]数组下标为文档号，数组元素为文档出现的频率，然后分别统计包含&quot;a&quot;、“b”、“c”、&quot;e&quot;的文档数，将文档出现的次数写入到Bucket[]数组。</p>
 <h3 id="处理包含关键字a的文档"><a class="markdownIt-Anchor" href="#处理包含关键字a的文档"></a> 处理包含关键字“a”的文档</h3>
 <p>将包含“a”的文档号记录到Bucket[]数组中。<br />
 图3：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/3.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/3.png" style="zoom:50%"></p>
 <h3 id="处理包含关键字b的文档"><a class="markdownIt-Anchor" href="#处理包含关键字b的文档"></a> 处理包含关键字“b”的文档</h3>
 <p>将包含“b”的文档号记录到Bucket[]数组中，文档号9第二次出现，所以计数加1。<br />
 图4：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/4.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/4.png" style="zoom:50%"></p>
 <h3 id="处理包含关键字c的文档"><a class="markdownIt-Anchor" href="#处理包含关键字c的文档"></a> 处理包含关键字“c”的文档</h3>
 <p>将包含“c”的文档号记录到Bucket[]数组中，文档号3、6、8再次出现，所以对应计数都分别加1；<br />
 图5：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/5.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/5.png" style="zoom:50%"></p>
 <h3 id="处理包含关键字e的文档"><a class="markdownIt-Anchor" href="#处理包含关键字e的文档"></a> 处理包含关键字“e”的文档</h3>
 <p>将包含“e”的文档号记录到Bucket[]数组中<br />
 图6：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/6.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/6.png" style="zoom:50%"></p>
 <h3 id="统计文档号"><a class="markdownIt-Anchor" href="#统计文档号"></a> 统计文档号</h3>
 <p>在Bucket数组中，下标值代表了文档号，当我们处理所有关键字后，我们需要遍历文档号，然后判断每一个文档号出现的次数是否满足MinimumNumberShouldMatch，为了使得只对出现的文档号进行遍历，Lucene使用了一个matching数组记录了上面出现的文档号。matching数组记录文档号的原理跟<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/45.html" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>一样，都是用一个bit位来记录文档号。不赘述。</p>
 <p>在当前的例子中，我们只要用到matching[]的第一个元素，第一个元素的值是879(为什么只要用到第一个元素跟第一个元素的是怎么得来的，在BooleanScorer类中我加了详细的注释，这里省略)<br />
 图7：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/7.png"
-                      style="zoom:50%"
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/7.png" style="zoom:50%"><br />
 根据二进制中bit位的值为1，这个bit位的位置来记录包含查询关键字的文档号，包含查询关键字的文档号只有0，1，2，3，5，6，8，9一共8篇文档，接着根据这些文档号，把他们作为bucket[]数组的下标，去找到每一个数组元素中的值，如果元素的值大于等于minShouldMatch，对应的文档就是我们最终的结果，我们的例子中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">builder.setMinimumNumberShouldMatch(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p>所以根据最终的bucket[]<br />
 图8：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/8.png"
-                      style="zoom:50%"
-                ><br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个SHOULD文档号合并/8.png" style="zoom:50%"><br />
 只有文档号3，文档号5，文档6，文档8，文档9对应元素值大于minShouldMatch，满足查询要求。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>本文介绍了使用BooleanQuery并且所有的TermQuery之间是SHOULD关系的文档号合并原理，在后面的文章中会依次介绍 SHOULD、MUST、MUST_NOT、FILTER的TermQuery的文档号合并原理。</p>
@@ -625,7 +585,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -800,10 +760,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,12 +299,7 @@
 <p>  多个Node对象通过next实现了队列结构，其中item为队列中某个结点(Node)的删除信息，每当DWPT处理一个删除信息，就会将该删除信息作为一个item加入到队列中，即deleteQueue。</p>
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>我们已经介绍了删除的几种方式，其删除信息会生成不同的Node子类：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/1.png">
 <ul>
 <li>QueryArrayNode：deleteDocuments(Querys)</li>
 <li>TermArrayNode：deleteDocuments(Terms)</li>
@@ -314,12 +309,7 @@
 <h2 id="deletequeue"><a class="markdownIt-Anchor" href="#deletequeue"></a> deleteQueue</h2>
 <p>  在多线程（持有相同IndexWriter对象的引用）执行删除操作时，多个DWPT将自己携带的删除信息生成Node对象，并添加到deleteQueue中，deleteQueue是一个全局的变量：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/2.png">
 <p>  为什么上图的队列有 &quot;多线程&quot;的前提：因为单线程的话每当添加一个Node到队列中，该Node的信息会马上被添加到BufferedUpdates（下文中会介绍）中，故在单线程下，不会出现结点数量大于1个的队列。</p>
 <h2 id="tail"><a class="markdownIt-Anchor" href="#tail"></a> tail</h2>
 <p>  该变量的定义如下：</p>
@@ -341,43 +331,23 @@
 <li>步骤一：获得一个ThreadState，新生成一个DWPT对象，初始化私有的DeleteSlice，由于deleteQueue未添加任何的删除结点，所以此时的deleteQueue的状态如下图, <strong>其中红圈 tail、sliceHead (ThreadA)、sliceTail (ThreadA) 三个具有相同的对象引用：</strong></li>
 </ul>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/3.png">
 <ul>
 <li>步骤二：添加TermNode结点到deleteQueue中，sliceTail (ThreadA) 跟tail 的对象引用更新为TermNode对象</li>
 </ul>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/4.png">
 <h4 id="threadb添加结点"><a class="markdownIt-Anchor" href="#threadb添加结点"></a> ThreadB添加结点</h4>
 <ul>
 <li>获得一个ThreadState，新生成一个DWPT对象，初始化私有的DeleteSlice，即让sliceHead(ThreadB)、sliceTail(ThreadB)跟tail指向相同的对象。</li>
 </ul>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/5.png">
 <ul>
 <li>添加QueryArrayNode结点到deleteQueue中,sliceTail (ThreadB) 跟tail 的对象引用更新为QueryArrayNode的对象</li>
 </ul>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/6.png">
 <p>  图6中，deleteQueue反映了两个情况：</p>
 <ul>
 <li>情况1：ThreadA的删除操作，即TermNode不会作用于ThreadB添加的文档</li>
@@ -388,19 +358,9 @@
 <p>  由于DWPT初始化私有的DeleteSlice跟添加到删除结点到deleteQueue 这两个操作不是一个临界区内的两个操作，只有添加到deleteQueue是线程同步操作（synchronized），所以根据CPU调度的不同，同样是例子1中两个线程的删除操作，生成的deleteQueue不总是一样，下面例子的一个假设前提是deleteQueue为空。</p>
 <p>  例如图7跟图8是ThreadA跟ThreadB初始化各自私有的DeleteSlice，并且DeleteQueue还没有删除结点，ThreadA和ThreadB<code>分别先</code>将删除结点添加到DeleteQueue中：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/7.png">
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/8.png">
 <h2 id="bufferedupdates类"><a class="markdownIt-Anchor" href="#bufferedupdates类"></a> BufferedUpdates类</h2>
 <p>  上文中提到一个DWPT从生成到flush到一个段，在这段期间其私有的DeleteSlice会记录所有的删除操作，这些删除操作会作用于(apply)DWPT添加的文档，即删除那些满足删除要求的文档，然而对于某一个删除操作来说，它只能作用于该删除操作前DWPT已添加的文档，其随后新添加的文档不能被apply，BufferedUpdates类就是通过以下几个Map对象来描述 某一个删除操作的作用范围(apply scope)：</p>
 <ul>
@@ -424,12 +384,7 @@
 <h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
 <p>  下面的例子介绍了当出现多个更新操作，并且存在相同删除操作的情况下，deleteTerms如何处理：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/9.png">
 <ul>
 <li>第一个更新操作：第87行，需要删除包含term1的文档，此时deleteTerms中key为term1，value为1,因为当前添加了两篇文档（注意：更新操作是 先添加 后删除 的操作，故此时文档1已经被添加），value的值为1，表示该删除作用范围是文档号在[0, 1)左闭右开的区间内的文档</li>
 <li>第二个更新操作：第97行，需要删除包含term2的文档，此时deleteTerms中key为还是term1（term1跟term2的hash值是一样的），value<code>更新</code>为3，表示该删除作用范围是文档号在[0, 3)左闭右开的区间内的文档</li>
@@ -437,56 +392,26 @@
 </ul>
 <p>  故最终deleteTerms中包含了两条删除信息：<br />
 图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/10.png">
 <h1 id="文档的增删改流程图"><a class="markdownIt-Anchor" href="#文档的增删改流程图"></a> 文档的增删改流程图</h1>
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>的文章中，我们给出了文档的增删改流程图，我们紧接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的两个流程点：处理删除信息、处理文档后的工作。</p>
 <p>图11：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/11.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/11.png">
 <h2 id="处理删除信息"><a class="markdownIt-Anchor" href="#处理删除信息"></a> 处理删除信息</h2>
 <p>图12：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/12.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/12.png">
 <p>  文档的增删改都需要处理删除信息。</p>
 <h3 id="添加文档"><a class="markdownIt-Anchor" href="#添加文档"></a> 添加文档</h3>
 <h4 id="添加文档处理删除信息的流程图"><a class="markdownIt-Anchor" href="#添加文档处理删除信息的流程图"></a> 添加文档处理删除信息的流程图</h4>
 <p>图13：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/13.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/13.png">
 <h5 id="更新deleteslice"><a class="markdownIt-Anchor" href="#更新deleteslice"></a> 更新DeleteSlice</h5>
 <p>图14：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/14.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/14.png">
 <p>  检查其他线程是否新增了删除操作，这些删除操作要作用于DWPT已经添加的文档，判断方式通过判断DWPT的私有DeleteSlice对象中的sliceTail是否跟tail有相同的对象引用，如果不是，那么更新私有DeleteSlice，即另sliceTail引用跟tail相同的对象。</p>
 <h5 id="重置deleteslice"><a class="markdownIt-Anchor" href="#重置deleteslice"></a> 重置DeleteSlice</h5>
 <p>图15：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/15.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/15.png">
 <p>  通过DWPT的numDocsInRAM是否大于0来判断是否已经添加过文档：</p>
 <ul>
 <li>没有添加过文档：只有DWPT第一次执行添加/更新的操作，该值才会为0，由于上一个流程点，该DWPT的私有DeleteSlice可能被更新了，但由于DWPT中没有添加过任何的文档，所以私有DeleteSlice中不需要删除信息，故需要重置DeleteSlice，重置的方法即将另私有DeleteSlice的sliceHead引用跟sliceTail相同的对象，当sliceHead跟sliceTail引用相同的对象时，表示DWPT的私有DeleteSlice没有删除信息</li>
@@ -494,22 +419,12 @@
 </ul>
 <h5 id="更新numdocsinram"><a class="markdownIt-Anchor" href="#更新numdocsinram"></a> 更新numDocsInRAM</h5>
 <p>图16：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/16.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/16.png">
 <p>  到达此流程点说明我们添加了一篇文档，故更新numDocsInRAM的值，即执行numDocsInRAM++的操作。</p>
 <h3 id="更新文档"><a class="markdownIt-Anchor" href="#更新文档"></a> 更新文档</h3>
 <h4 id="添加文档处理删除信息的流程图-2"><a class="markdownIt-Anchor" href="#添加文档处理删除信息的流程图-2"></a> 添加文档处理删除信息的流程图</h4>
 <p>图17：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/17.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/17.png">
 <p>  将DWPT自己的删除信息添加到DeleteQueue中，然后更新BufferedUpdates，注意的是，在上文中我们知道，当前DWPT添加到DeleteQueue时可能有其他的线程先添加了新的删除信息，故可能会更新自己以及其他线程的删除信息到BufferedUpdates。</p>
 <h3 id="删除文档"><a class="markdownIt-Anchor" href="#删除文档"></a> 删除文档</h3>
 <p>  由于删除文档的<code>处理删除信息</code>的流程与添加/更新文档的<code>处理文档后的工作</code>的流程有很多的相似点，又因为剩余的内容会导致本篇文章的篇幅过长，故在下一篇文章中展开。</p>
@@ -760,7 +675,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -935,10 +850,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

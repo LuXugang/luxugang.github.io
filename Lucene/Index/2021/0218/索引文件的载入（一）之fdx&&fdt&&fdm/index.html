@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -305,12 +305,7 @@
 
                     <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89" >SegmentReader（一）<i class="fas fa-external-link-alt"></i></a>中，我们介绍了SegmentReader对象，它用于描述一个段中的索引信息，并且说到SegmentReader对象中包含了一个SegmentCoreReaders对象。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/1.png">
 <p>  图1中，<font color=blue>蓝框</font>标注的两个对象用于描述DocValues的索引信息，而<font color=red>红框</font>标注的SegmentCoreReader则描述了下面的索引信息，注意的是在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89" >SegmentReader（一）<i class="fas fa-external-link-alt"></i></a>中是基于Lucene 7.5.0的：</p>
 <p>表一：</p>
 <table>
@@ -352,20 +347,10 @@
 <h2 id="索引文件的载入顺序"><a class="markdownIt-Anchor" href="#索引文件的载入顺序"></a> 索引文件的载入顺序</h2>
 <p>  在SegmentCoreReader类的构造函数中可以看出表一中对应的索引文件的载入顺序：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/2.png">
 <p>  上文中说到，SegmentCoreReader对象是被包含在SegmentReader对象中，故在SegmentReader类的构造函数中，还可以看出DocValues对应的索引文件跟SegmentCoreReader对象中包含的索引文件的载入顺序：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/3.png">
 <p>  从图3可以看出，在构造SegmentReader对象时，先载入SegmentCoreReader对象，即表一中包含的索引文件， 随后再载入DocValues对应的索引文件。</p>
 <p>  <strong>为什么图3中第98行处又载入了索引文件.fnm，在图2中不是已经载入过了吗？</strong></p>
 <p>  图3跟图2中载入的索引信息是不相同的，他们的区别在于索引文件.fnm的版本不同。这两个索引文件的区别在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1205/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B9%9D%EF%BC%89" >构造IndexWriter对象<i class="fas fa-external-link-alt"></i></a>中介绍流程点<code>更新SegmentInfos的metaData</code>中详细介绍了，不赘述。</p>
@@ -378,59 +363,29 @@
 <h3 id="索引文件fdt的载入"><a class="markdownIt-Anchor" href="#索引文件fdt的载入"></a> 索引文件.fdt的载入</h3>
 <p>  索引文件.fdt中存放了存储域的信息，载入过程中只会将部分信息读入到内存，如下所示：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/4.png">
 <p>  图4中，<font color=red>红框</font>标注的字段将会被读取到内存中。</p>
 <p>  对于Header、ChunkSize、PackedIntsVersion字段，可以从索引文件的第一个字节依次读取出这三个字段。下面是读取这三个字段的代码：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/5.png">
 <p>  <strong>图4中的Footer字段如何读取？</strong></p>
 <p>  由于Footer占用固定的16个字节，随后根据索引文件.fdt的总长度，那么这两者的差值就是Footer字段在索引文件.fdt中的起始读取位置。</p>
 <h3 id="索引文件fdm的载入"><a class="markdownIt-Anchor" href="#索引文件fdm的载入"></a> 索引文件.fdm的载入</h3>
 <p>  索引文件.fdm中的内容将被全量读取到内存中，如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/6.png">
 <h3 id="索引文件fdx的载入"><a class="markdownIt-Anchor" href="#索引文件fdx的载入"></a> 索引文件.fdx的载入</h3>
 <p>  索引文件.fdx的Header、PackedIntsVersion、Footer先被读取到内存中：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/7.png">
 <p>  在图6中，从索引文件.fdm中读取了NumDocsIndex、StartPointsIndex字段，这两个字段用来描述图7中的NumDocs字段在索引文件.fdx中的位置区间。同理图6中读取的StartPointsIndex、SPEndPointer用来描述图7中StartPoints字段在索引文件.fdx中的位置区间。随后将NumDocs、StartPoints这两个字段的信息读取到内存中。</p>
 <p>  所以索引文件.fdx也是全量读取到内存的。</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/8.png">
 <h3 id="索引文件fdt的载入-2"><a class="markdownIt-Anchor" href="#索引文件fdt的载入-2"></a> 索引文件.fdt的载入</h3>
 <p>  图4中，索引文件.fdt的ChunkCount、DirtyChunkCount字段也要被读取到内存中，通过图6中从索引文件.fdm中读取的maxPointer来获取这两个字段在索引文件.fdt中的起始读取位置：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的载入/索引文件的载入（一）/9.png">
 <p>  至此可以看出，对于描述存储域的索引文件fdx&amp;&amp;fdt&amp;&amp;fdm，除了索引文件.fdt的Chunk字段，其他索引文件的所有字段都会被读取到内存中。</p>
 <p>  对于索引文件fdx&amp;&amp;fdt&amp;&amp;fdm详细的读取过程可以阅读系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>，该系列的文章介绍了索引文件.fdt的Chunk字段的读取方式。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
@@ -695,7 +650,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -870,10 +825,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

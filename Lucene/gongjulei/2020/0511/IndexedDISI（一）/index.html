@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -302,12 +302,7 @@
 <h3 id="block"><a class="markdownIt-Anchor" href="#block"></a> Block</h3>
 <p>  使用IndexDISI存储的数据结构如下所示：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/1.png">
 <p>  图1中，每个block用来描述<strong>最多</strong>2^16个文档号信息，例如第一个block中描述的文档号集合为[0, 2^16 - 1]，在处理某个文档号时，根据下面的公式来找到存储该文档号对应的block：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">block</span> <span class="operator">=</span> docId &gt;&gt;&gt; <span class="number">16</span></span><br></pre></td></tr></table></figure>
 <p>  如果当前处理的文档号为 3，那么根据上面的公式 block = 3 &gt;&gt;&gt; 16 = 0，那么文档号3将被存储在第一个block中，如果当前处理的文档号为 65538，根据上面的公式 block = 65538 &gt;&gt;&gt; 16 = 1，那么文档号65538将被存储在第二个block中。</p>
@@ -322,21 +317,11 @@
 <h4 id="dense"><a class="markdownIt-Anchor" href="#dense"></a> DENSE</h4>
 <p>  该稠密度对应的block的数据结构如下所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/2.png">
 <h5 id="blockid"><a class="markdownIt-Anchor" href="#blockid"></a> BlockId</h5>
 <p>  BlockId为block的编号，例如图1中，第一个block的编号为0，第二个block的编号为2。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/3.png">
 <p>  上文中我们说到，每个block中描述了2<sup>16个文档号，另外通过图3可知，blockId最大值为65535，可见IndexDISI最多描述2</sup>32个文档号。</p>
 <p>  <strong>BlockId的作用</strong>：</p>
 <p>  blockId用于计算baseId，计算公式为：</p>
@@ -348,22 +333,12 @@
 <p>  word是一个long类型的值，long类型的数值占用64个bit，每一个bit用来描述一个文档号，另外上文中说到block中最多描述2^16个文档号，那么图2中word的数量就是固定的 65536/64，即1024个。</p>
 <p>  对于blockId为0的block中的第一个word，该word描述的文档号范围为 0 ~ 63，第二个word描述的文档号范围为 64 ~ 127，看下面的例子：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/4.png">
 <p>  图4中，block的编号为0的第一个word中存储了3个文档号{3, 57, 60}，如果没看懂，建议先阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/45.html" >工具类之FixedBitSet<i class="fas fa-external-link-alt"></i></a> 。</p>
 <h4 id="sparse"><a class="markdownIt-Anchor" href="#sparse"></a> SPARSE</h4>
 <p>  该稠密度对应的block的数据结构如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/5.png">
 <p>  稠密度为SPARSE时，文档号直接用short类型数组存储即可，在上文中说到，块内文档号的取值范围为0 ~ 65535，那么文档号的最大值需要16bit才能表示，而short类型的值占用2个字节，故采用short类型的数组存储。</p>
 <h2 id="indexeddisi读取文档号"><a class="markdownIt-Anchor" href="#indexeddisi读取文档号"></a> IndexedDISI读取文档号</h2>
 <p>  我们接着介绍IndexedDISI读取文档号的过程，在介绍了其读取过程后就可以明白为什么从Lucene8.0.0版本开始，对IndexedDISI的写入进行了优化。</p>
@@ -378,12 +353,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">block</span> <span class="operator">=</span> docId &gt;&gt;&gt; <span class="number">16</span></span><br></pre></td></tr></table></figure>
 <p>  该过程也就是计算出上文中提到的block编号blockId，通过逐个比较block中的BlockId字段找到所属block，可见找到所属block的时间复杂度为O(n)，如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IndexedDISI/IndexedDISI（一）/6.png">
 <h3 id="步骤二判断block是否包含此文档号"><a class="markdownIt-Anchor" href="#步骤二判断block是否包含此文档号"></a> 步骤二：判断block是否包含此文档号</h3>
 <p>  当找到所属block之后，我们继续在块内寻找，根据不同的稠密度，查找方式也各不相同。</p>
 <h4 id="dense-2"><a class="markdownIt-Anchor" href="#dense-2"></a> DENSE</h4>
@@ -650,7 +620,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -825,10 +795,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

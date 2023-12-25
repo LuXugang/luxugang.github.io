@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -307,38 +307,18 @@
 <h1 id="文档的增删改流程图"><a class="markdownIt-Anchor" href="#文档的增删改流程图"></a> 文档的增删改流程图</h1>
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>的文章中，我们给出了文档的增删改流程图，这篇文章对该流程图的每一个流程点进行介绍，由于当文档跟多文档的增删改流程是雷同的，故下文中只介绍单文档的增删改流程图：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/1.png">
 <p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 1）/单文档操作.html)查看大图</p>
 <h2 id="添加更新文档"><a class="markdownIt-Anchor" href="#添加更新文档"></a> 添加/更新文档</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/2.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>中我们知道，updateDocument( )、softUpdateDocument( )的操作分为<code>删除</code>跟<code>添加</code>，其中<code>添加</code>的逻辑跟addDocument( )是一致，故这三种方法使用相同的流程先处理文档的<code>添加</code>操作，而不同点在于处理<code>删除</code>的操作，下文会详细介绍。</p>
 <h2 id="处理文档前的工作"><a class="markdownIt-Anchor" href="#处理文档前的工作"></a> 处理文档前的工作</h2>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/3.png">
 <h3 id="处理文档前的工作的流程图"><a class="markdownIt-Anchor" href="#处理文档前的工作的流程图"></a> 处理文档前的工作的流程图</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/4.png">
 <p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 1）/处理文档前的工作.html)查看大图</p>
 <p>  这个在源码中即调用DocumentWriter的preUpdate( )方法。在处理文当前，如果满足下面的两种条件之一，需要执行上图的流程：</p>
 <ul>
@@ -347,21 +327,11 @@
 </ul>
 <h4 id="是否执行flush"><a class="markdownIt-Anchor" href="#是否执行flush"></a> 是否执行flush？</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/5.png">
 <p>  是否执行flush的条件即上文提到的两种条件。</p>
 <h4 id="处理flushqueue中的dwpt"><a class="markdownIt-Anchor" href="#处理flushqueue中的dwpt"></a> 处理flushQueue中的DWPT</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/6.png">
 <p>  该流程点从flushQueue中依次取出每一个DWPT，依次执行以下两个操作：</p>
 <ul>
 <li>更新stall：重新计算(activeBytes + flushBytes) &gt; limit &amp;&amp; activeBytes &lt; limit，更新stall的值</li>
@@ -369,12 +339,7 @@
 </ul>
 <h4 id="处理dwptp中状态为flushpending的threadstate"><a class="markdownIt-Anchor" href="#处理dwptp中状态为flushpending的threadstate"></a> 处理DWPTP中状态为flushPending的ThreadState</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/7.png">
 <p>  该流程点从DWPTP（DocumentsWriterPerThreadPool）中取出每一个被标记为flushPending的ThreadState，将其持有的DWPT对象引用执行doFlush的操作。</p>
 <p>  为什么要处理DWPTP中状态为flushPending的ThreadState：</p>
 <ul>
@@ -382,30 +347,15 @@
 </ul>
 <h4 id="阻塞添加更新操作"><a class="markdownIt-Anchor" href="#阻塞添加更新操作"></a> 阻塞添加/更新操作</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/8.png">
 <p>  由于上面执行了更新stall的操作，所以在该流程点，stall的值可能被置为了false，就不用阻塞等待，反之需要等待1秒。</p>
 <h4 id="再次判断判断flushqueue中是否又有了新的dwpt"><a class="markdownIt-Anchor" href="#再次判断判断flushqueue中是否又有了新的dwpt"></a> 再次判断判断flushQueue中是否又有了新的DWPT</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/9.png">
 <p>  同样地，由于没有事务操作，当执行到该流程点可能又存在新的待flush的DWPT，这个流程点说明了当需要进行flush(满足flush的两个条件之一)时，Lucene会尽可能先将待flush的DWPT执行doFlush( )操作。</p>
 <h2 id="处理文档document"><a class="markdownIt-Anchor" href="#处理文档document"></a> 处理文档（Document）</h2>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 1）/10.png">
 <p>  在该流程点，我们先获得一个ThreadState，然后开始处理文档的操作，获得ThreadState的流程在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>已经介绍，不赘述。而处理文档的逻辑则在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0521/%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8B%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5" >两阶段生成索引文件之第一阶段<i class="fas fa-external-link-alt"></i></a>中已经介绍。在这篇文档中，详细的介绍了收集并生成.fdx、fdt、.tvd、tvm的过程，其他索引文件信息的收集流程会在随后介绍两阶段生成索引文件之第二阶段中详细展开，总之当处理文档（Document）的流程结束后，DWPT就收集到了所有的索引信息，基于这些信息生成索引文件。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  由于处理删除信息跟处理文档后的工作这两个流程点涉及的知识点较多，会造成本篇文章篇幅过长，故在挪到下篇文章中介绍</p>
@@ -654,7 +604,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -829,10 +779,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

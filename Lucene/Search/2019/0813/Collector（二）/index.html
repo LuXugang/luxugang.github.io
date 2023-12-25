@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -298,12 +298,7 @@
 <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector（一）<i class="fas fa-external-link-alt"></i></a>，继续介绍其他的收集器。</p>
 <p>  图1是Lucene常用的几个Collector：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/1.png">
 <h1 id="filtercollector"><a class="markdownIt-Anchor" href="#filtercollector"></a> FilterCollector</h1>
 <p>  FilterCollector类是一个抽象类，它用来封装其他的Collector来提供额外的功能。</p>
 <h2 id="positivescoresonlycollector"><a class="markdownIt-Anchor" href="#positivescoresonlycollector"></a> PositiveScoresOnlyCollector</h2>
@@ -322,28 +317,13 @@
 <h3 id="cachingcollector缓存流程图"><a class="markdownIt-Anchor" href="#cachingcollector缓存流程图"></a> CachingCollector缓存流程图</h3>
 <p>  图2是Collector处理文档的过程，每个流程点在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector（一）<i class="fas fa-external-link-alt"></i></a>已作介绍，不赘述：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/2.png">
 <p>  CachingCollector缓存流程图跟图2类似，故用红框标记出不同处：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/3.png">
 <h3 id="cachingcollector复用流程图"><a class="markdownIt-Anchor" href="#cachingcollector复用流程图"></a> CachingCollector复用流程图</h3>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/4.png">
 <p>  另外，CachingCollector可以设置允许缓存文档个数最大值。</p>
 <p>  在缓存阶段，当缓存的个数超过阈值，那么清空此前缓存的所有数据，另变量cache的值为false，即这次的缓存操作置为失败，故在复用CachingCollector时需先检查cache的值是否为true。</p>
 <h1 id="topdocscollector"><a class="markdownIt-Anchor" href="#topdocscollector"></a> TopDocsCollector</h1>
@@ -384,20 +364,10 @@
 <h3 id="simpletopscoredoccollector"><a class="markdownIt-Anchor" href="#simpletopscoredoccollector"></a> SimpleTopScoreDocCollector</h3>
 <p>  SimpleTopScoreDocCollector的collect(int doc)流程图：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/5.png">
 <h4 id="score是否大于堆顶元素的score"><a class="markdownIt-Anchor" href="#score是否大于堆顶元素的score"></a> score是否大于堆顶元素的score?</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/6.png">
 <p>  使用优先级队列PriorityQueue来存放满足搜索条件的文档信息（<strong>文档信息至少包含了文档打分score以及文档号docId</strong>），分数最低的文档信息位于堆顶，堆的大小默认为段中的文档总数（用户也可以指定堆的大小，即用户期望的返回结果TopN的N值）。</p>
 <p>  <strong>为什么判断条件是score等于堆顶元素的score的情况下也不满足</strong>：</p>
 <ul>
@@ -405,12 +375,7 @@
 </ul>
 <h4 id="调整堆"><a class="markdownIt-Anchor" href="#调整堆"></a> 调整堆</h4>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/7.png">
 <p>  <code>替换堆顶元素</code>后，我们需要调整堆重新找到分数最低的文档信息，调整的规则同样按照“先分数，后文档号”。</p>
 <h3 id="pagingtopscoredoccollector"><a class="markdownIt-Anchor" href="#pagingtopscoredoccollector"></a> PagingTopScoreDocCollector</h3>
 <p>  PagingTopScoreDocCollector是带有过滤规则的Collector，用来实现分页功能。</p>
@@ -419,21 +384,11 @@
 <p>  score为上文N篇文档中分数最低的打分值，doc为对应的文档号，在下文中会介绍如何使用ScoreDoc作为过滤规则来实现分页功能。</p>
 <p>  PagingTopScoreDocCollector的collect(int doc)流程图：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/8.png">
 <p>  除了红色的流程点，其他流程点跟SimpleTopScoreDocCollector是一样的，不赘述。</p>
 <h4 id="是否已经被收集了"><a class="markdownIt-Anchor" href="#是否已经被收集了"></a> 是否已经被收集了？</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（二）/9.png">
 <p>  <code>是否已经被收集了</code>描述的是该文档号是否已经在前面的搜索中被收集了，判断的条件如下，如果为true，说明该文档已经被收集了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">score &gt; after.score || (score == after.score &amp;&amp; doc &lt;= after.doc)</span><br></pre></td></tr></table></figure>
 <ul>
@@ -694,7 +649,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -869,10 +824,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -296,62 +296,27 @@
 
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容，为了便于下文的介绍，先给出<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >生成索引文件.dim&amp;&amp;.dii<i class="fas fa-external-link-alt"></i></a>的流程图以及流程点<code>构建BKD树的节点值（node value）</code>的流程图：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/1.png">
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/2.png">
 <h2 id="第一次更新parentsplits数组"><a class="markdownIt-Anchor" href="#第一次更新parentsplits数组"></a> 第一次更新parentSplits数组</h2>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/3.png">
 <p>  parentSplits数组的数组元素数量跟点数据的维度数量相同，下标值为0的数组元素描述的是维度编号（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>）为0的维度值在祖先节点中作为<code>切分维度</code>(见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>)的次数（累加值）：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/4.png">
 <p>  如果某一时刻，parentSplits数组如上述所示，说明当前处理的点数据的维度为3（数组大小），并且维度编号为1（数组下标为1）的维度在祖先节点中已经3次作为切分维度，如果执行完图2的流程点<code>选出切分维度</code>后，维度编号1再次作为了切分维度，那么在当前流程点，我们就需要<code>第一次更新parentSplits数组</code>，更新后的parentSplits数组如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/5.png">
 <p>  <strong>为什么要更新parentSplits数组</strong></p>
 <p>  如果当前节点划分后的左右子树还是内部节点，那么左右子树需要根据parentSplits数组提供执行流程点<code>选出切分维度</code>的条件判断依据。</p>
 <h2 id="设置左子树的准备数据-设置右子树的准备数据"><a class="markdownIt-Anchor" href="#设置左子树的准备数据-设置右子树的准备数据"></a> 设置左子树的准备数据、设置右子树的准备数据</h2>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/6.png">
 <p>  执行到当前流程点，内部节点的处理工作差不多已经全部完成（除了流程点<code>第二次更新parentSplits数组</code>），当前流程点开始为后续的左右子树的处理做一些准备数据，根据当前的节点编号（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>），即将生成的左右子树可能仍然是内部节点，或者是叶子节点。这两种情况对应的准备数据是有差异的，我们会一一介绍。另外根据满二叉树的性质，如果当前节点编号为n，那么左右子树的节点编号必然为2*n、2*n + 1，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们说到，根据节点编号就能判断属于内部节点（非叶节点）还是叶子节点，不赘述。</p>
 <p>  处理节点（叶子节点或者内部节点）需要的准备数据有好几个，这些准备数据在源码中其实就是 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/util/bkd/BKDWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/util/bkd/BKDWriter.java<i class="fas fa-external-link-alt"></i></a> 类中的build(…)方法的参数：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/7.png">
 <p>  图6中的nodeID参数即节点编号，leafNodeOffset参数即最左叶子节点的节点编号值，其他的参数在下文中会部分介绍。</p>
 <h3 id="左右子树为内部节点"><a class="markdownIt-Anchor" href="#左右子树为内部节点"></a> 左右子树为内部节点</h3>
 <p>  如果节点编号nodeId小于最左叶子节点的节点编号leafNodeOffset，那么当前节点是内部节点，对于内部节点的处理，主要关心的参数是minPackedValue、maxPackedValue。</p>
@@ -363,30 +328,15 @@
 <p>  在图2的执行完流程点<code>选出切分维度</code>、<code>内部节点的排序</code>之后，我们就获得了当前内部节点划分维度编号n，并且当前节点中点数据集合的每一个点数据按照维度编号n对应的维度值进行了排序（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>），如果我们另排序后的点数据都有一个从0开始递增的序号，假设有N个点数据，那么序号为 0~ (N/2 - 1)的点数据将作为当前节点的左子树的点数据集合，序号为 N/2 ~ N 的点数据将作为当前节点的右子树的点数据集合。</p>
 <p>  例如当前内部节点有如下的点数据集合，数量为7，并且假设按照维度编号2进行了排序：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/8.png">
 <p>  根据图8，当前的minPackedValue、maxPackedValue以及左右子树的minPackedValue、maxPackedValue如下所示：</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/9.png">
 <p>  从图9可以看出左子树的maxPackedValue跟右子树的minPackedValue的维度编号为2的值被更新为同一个新值，而该值就是序号为(N/2 -1) 的点数据的维度编号为2（父节点的排序维度）对应的维度值，即图8中<font color=Red>红色</font>标注的维度值。</p>
 <p>  对于左右子树来说，如果他们还是内部节点，那么执行图1的<code>选出切分维度</code>的流程时就会使用到父节点提供给它们的参数minPackedValue、maxPackedValue。</p>
 <p>  回看上文中内部节点给左右子树的准备参数minPackedValue、maxPackedValue是有点问题的，比如左子树的点数据集合以及minPackedValue、maxPackedValue如下所示：</p>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十一）/10.png">
 <p>  图10中，左子树节点<strong>实际</strong>的minPackedValue、maxPackedValue应该是：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">minPackedValue:&#123;3, 5, 2&#125;</span><br><span class="line">maxPackedValue:&#123;8, 3, 4&#125;</span><br></pre></td></tr></table></figure>
 <p>  而即将在流程点<code>选出切分维度</code>使用的minPackedValue、maxPackedValue是父节点提供的信息，即图10中的值，所以在执行<code>选出切分维度</code>的算法时，可能无法能得到最好的一个切分维度。</p>
@@ -651,7 +601,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -826,10 +776,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

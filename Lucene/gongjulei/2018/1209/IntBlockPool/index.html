@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -372,59 +372,24 @@
 </table>
 <h5 id="添加第一个termtales"><a class="markdownIt-Anchor" href="#添加第一个termtales"></a> 添加第一个term：Tales</h5>
 <p>“Tales” 第一次添加到二维数组 buffers中，那么先分配一个大小2的分片(slice)，并将posIncr添加到buffers中，由于在MemoryIndex中，存储startOffset，endOffset，payload是可选项，所以当只要存放posIncr时，只要分配2个数组元素大小的分片即可，如下图：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/1.png"
-                      style="zoom:50%"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/1.png" style="zoom:50%">
 <p>上图中，level的值指的是当需要继续添加“Tales”的其他数据时，我们需要再分配新的分片，并且下一个新分片的大小等级是1, 作为 LEVEL_SIZE_ARRAY[] 中的下标值，那么新的分片的大小就是4，我们继续添加“Tales”的其他数据。<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/2.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/2.png" style="zoom:50%"></p>
 <p>上图中，数组下标值为1对应的元素值由1改成了2，表示新的分片起始位置是2(下标值)。由于同一个term的多个分片分散在二维数组的不同位置，在搜索阶段，当我们读取完一个分片后，通过这个分片的最后一个值来确定下一个分片在二维数组中的位置。接着依次把startOffset，endOffset，payload的值分别存放进去。新分片的最后一个值还是用来存放分片等级。</p>
 <h5 id="添加第二个termof"><a class="markdownIt-Anchor" href="#添加第二个termof"></a> 添加第二个term：of</h5>
 <p>“of”同样是第一次添加，所以分配一个大小为2个的分片，然后将posIncr跟分片等级level写入分片中，如下图：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/3.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/3.png" style="zoom:50%"></p>
 <p>然后将“of”的其他数据继续写入， 同样的，需要分配新的分片，并且更改数组下标值7对应的元素值，由1变为8，表示新的分片从下标值8的位置开始，并且另新的分片的最后一个元素(下标值为11)值为1(分片层级)，如下图：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/4.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/4.png" style="zoom:50%"></p>
 <h5 id="添加第三个termtales"><a class="markdownIt-Anchor" href="#添加第三个termtales"></a> 添加第三个term：Tales</h5>
 <p>“Tales”已经存储过了，所以我们找到最后一个分片中最后一个使用的位置(在上图中就是下标值为5的位置)。这时候我们我们的分片没有剩余空间了，那么需要分配一个新的分片，并且这个新分配的位置是在下标值为12的地方，如下图：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/5.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/5.png" style="zoom:50%"></p>
 <p>当我们给“Tales”分配了一个新的分片，并且成功的将posIncr，startOffset，endOffset写入到分片中，但是没有多余的空间存储payload了，所以我们这时候还要再分配一个分片级别为1(大小为4)的新分片，如下图：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/6.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/6.png" style="zoom:50%"></p>
 <p>payload成功的存储到新的分片中，下标值17跟18位置的数组元素用来存放下一个“Tales”的数据(如果有的话)。</p>
 <h5 id="添加第四个termjames"><a class="markdownIt-Anchor" href="#添加第四个termjames"></a> 添加第四个term：James</h5>
 <p>“James”同样是第一次添加，所以分配一个大小为2个的分片，然后由于要添加startOffset，endOffset，payload又要再分配大小为4的分片，过程跟添加“of”是一样的，所以最后一个term添加后的图如下：<br />
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/7.png"
-                      style="zoom:50%"
-                ></p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/7.png" style="zoom:50%"></p>
 <h5 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h5>
 <p>上面的例子中，还有一些问题，如果感兴趣可以结合MemoryIndex的索引跟查询来了解，比如说，如何知道 “Tales of Tales James” 中的第一个“Tales”是第一次存储，如何知道第二个“Tales”已经存储过了，还有就是添加“of”跟“James”时，如何知道应该从二维数组中的哪个位置开始存储。</p>
 <p>至于读取二维数组的过程就不通过例子赘述了，从写入的逻辑就很容易看出如何读取。</p>
@@ -673,7 +638,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -848,10 +813,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -301,74 +301,34 @@
 <h2 id="通过索引文件dvd-dvm之binarydocvalues获取排序关系的流程图"><a class="markdownIt-Anchor" href="#通过索引文件dvd-dvm之binarydocvalues获取排序关系的流程图"></a> 通过索引文件.dvd、.dvm之BinaryDocValues获取排序关系的流程图</h2>
 <p>  获取文档之间的排序关系的过程实际就是根据文档号，通过索引文件.dvm&amp;&amp;dvd读取DocValues的域值，域值之间排序关系来描述文档之间的排序关系，流程图如下：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/1.png">
 <h3 id="返回段内编号index"><a class="markdownIt-Anchor" href="#返回段内编号index"></a> 返回段内编号index</h3>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/2.png">
 <p>  图2的流程跟SortedDocValues是一致的，本文不赘述这几个流程点的内容，详细过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0714/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Bdvd&amp;&amp;dvm" >索引文件的读取（五）之dvd&amp;&amp;dvm<i class="fas fa-external-link-alt"></i></a>。</p>
 <h3 id="根据index从termsindex中获取startoffset"><a class="markdownIt-Anchor" href="#根据index从termsindex中获取startoffset"></a> 根据index从TermsIndex中获取startOffset</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/3.png">
 <p>  先给出索引文件.dvm、dvd之BinaryDocValues的数据结构：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/4.png">
 <p>  为了便于描述，我们这里可以简单的将图4中的TermsIndex字段认为是一个数组，在图2的流程中获得的index（段内编号）就是这个数组的下标值，接着根据index在TermsIndex中获得address的值，<strong>address的值即startOffset</strong>，它描述了域值信息TermsValue中的起始读取位置，但是至此我们还无法获得域值，因为读取一个域值需要域值在TermsValue的起始读取位置以及域值的长度length。</p>
 <h3 id="从termsindex中获得term的长度length"><a class="markdownIt-Anchor" href="#从termsindex中获得term的长度length"></a> 从TermsIndex中获得term的长度length</h3>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/5.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（二十一）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>中我们知道，在TermsIndex中相邻两个address的差值就是term的长度，故只需要获得段内编号index + 1和段内编号index对应的两个address，它们的差值就是段内编号index对应的域值的长度。</p>
 <h3 id="根据length跟startoffset从termsvalues中获取域值"><a class="markdownIt-Anchor" href="#根据length跟startoffset从termsvalues中获取域值"></a> 根据length跟startOffset从TermsValues中获取域值</h3>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/6.png">
 <p>  在当前流程点，根据图3、图5获得的startOffset跟length，就可以在TermsValue确定一个数据区间，该区间中的内容就是域值。</p>
 <p>  在Collector中，获得了用于排序的DocValues的域值后，接着使用字典序就可以比较出排序关系，即文档的排序关系。</p>
 <p>  至此我们可以发现，BinaryDocValues通过域值的字典序进行排序，而SortedDocValues/SortedSetDocValues则是通过ord值的数值大小进行比较，根据源码中的注释，通过BinaryDocValues实现排序的性能通常较差：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/7.png">
 <h2 id="binarydocvalues-vs-sorteddocvalues"><a class="markdownIt-Anchor" href="#binarydocvalues-vs-sorteddocvalues"></a> BinaryDocValues VS SortedDocValues</h2>
 <p>  虽然通过BinaryDocValues进行排序的性能相比较SortedValues/SortedSetDocValues通常情况下较差，但是通过比较两者的数据结构，可以看出BinaryDocValues的优点：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（六）/8.png">
 <h3 id="根据文档号获得域值"><a class="markdownIt-Anchor" href="#根据文档号获得域值"></a> 根据文档号获得域值</h3>
 <p>  图8可以看出，对于SortedDocValues，通过address只能确定域值属于某个block，在block中获得该域值则必须从第一个域值开始遍历，直到对应的ord，即最坏的情况下需要在block遍历16次才能找到对应域值，并且需要&quot;拼接&quot;出前15个域值（前缀存储），而对于BinaryDocValues，只需要获得两个address就能获得域值，可见通过文档号找DocValues对应的域值，BinaryDocValues性能通常较好。</p>
 <h3 id="判断docvalues中是否包含某个域值"><a class="markdownIt-Anchor" href="#判断docvalues中是否包含某个域值"></a> 判断DocValues中是否包含某个域值</h3>
@@ -632,7 +592,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -807,10 +767,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

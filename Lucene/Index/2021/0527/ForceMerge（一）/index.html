@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -298,82 +298,37 @@
 <h3 id="forcemerge概述"><a class="markdownIt-Anchor" href="#forcemerge概述"></a> ForceMerge概述</h3>
 <p>  本篇文章将基于IndexWriter类中的下面两个方法来介绍下强制合并的内容。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/1.png">
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/2.png">
 <p>  在图1中的方法实际是另参数doWait为true，随后调用了图2中的方法。该参数的作用在下文中会展开。</p>
 <p>我们先通过源码中该方法的部分注释来描述下ForceMerge的概念：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/3.png">
 <p>  图3中的注释说到，强制合并ForceMerge是通过合并策略进行段的合并，并将段的数量减少到maxNumSegments以下，maxNumSegments即图1中的参数，即用户期望的合并后的段的数量。</p>
 <p>  接着还提到了一方面ForceMerge操作是开销极大的，特别是maxNumSe gments的值被设置的很小的场景。另一方面建议最好是对那些不会再发生更改的段进行强制合并。在随后的介绍中我们将会明白这段注释的含义。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/4.png">
 <p>  图4中的注释说到，如果使用了索引文件采用了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe" >复合模式<i class="fas fa-external-link-alt"></i></a>，那么在ForceMerge期间，索引目录中要求额外2倍的存储空间，如果没有采用复合模式，那么需要额外的3倍的存储空间。</p>
 <p>  接着还提到建议在ForceMerge后执行一次commit操作，能减少索引目录的存储占用。原因是在ForceMerge后，被合并的段仍然会被保留在索引目录中，故索引目录中同时存在新段跟旧段，意味着索引目录中有冗余的索引数据。但是在执行了commit后，会对索引目录进行检查（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89/" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>中的<code>执行检查点(checkPoint)工作</code>介绍），如果旧段（被合并的段）不被任何reader占用，IndexWriter会删除这些旧段，达到free up disk space的目的。</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/5.png">
 <p>  图5中的注释说到，一般情况下，强制合并后可以降低索引的大小，一方面是小段被合并了，另一方面是那些段中被标记为删除的文档会<strong>真正</strong>的从段中移除（不明白？请看<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件之liv<i class="fas fa-external-link-alt"></i></a>的介绍）。</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/6.png">
 <p>  图5中的注释说到，强制合并开始后，其他线程新增的段不会参与这次的强制合并。同样的，下文中将会解释这段注释的含义。</p>
 <h3 id="forcemerge的流程图"><a class="markdownIt-Anchor" href="#forcemerge的流程图"></a> ForceMerge的流程图</h3>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/7.png">
 <h4 id="执行flush"><a class="markdownIt-Anchor" href="#执行flush"></a> 执行flush</h4>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/8.png">
 <p>  该流程点执行了一次flush，该流程点操作跟直接调用IndexWriter.flush()方法是一致的，其详细过程可以阅读系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>。</p>
 <p><strong>为什么在强制合并前要执行一次flush操作</strong></p>
 <p>  其最重要的一个原因是，在多线程下，其他线程的文档增删改操作可能尚未flush成段，这些操作中可能包含删除信息（文档删除信息、DocValues的更新信息），并且这些删除信息可能会作用（apply）到索引目录中的段，有助于在随后的合并中能生成更小的段。当然这是一个try best的过程，因为在执行了当前流程点后可能其他线程又会产生新的删除信息，这也是解释了为什么图3的注释中建议只对不会再发生变化的段进行强制合并。</p>
 <h4 id="收集所有的段"><a class="markdownIt-Anchor" href="#收集所有的段"></a> 收集所有的段</h4>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/ForceMerge/ForceMerge（一）/9.png">
 <p>  介绍该流程点前，我们需要先了解三个知识点：oneMerge、pendingMerges、runningMerges。</p>
 <h5 id="onemerge"><a class="markdownIt-Anchor" href="#onemerge"></a> oneMerge</h5>
 <p>  oneMerge的概念在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >LogMergePolicy<i class="fas fa-external-link-alt"></i></a>已经详细介绍，这里我们可以简单的理解为：在段的合并过程中，根据<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0513/LogMergePolicy" >段的合并策略<i class="fas fa-external-link-alt"></i></a>会从索引目录中找到n个待合并的段集合，其中每个待合并的段集合用一个oneMerge来描述。换句话说就是oneMerge的数量描述了IndexWriter需要执行合并的次数，每个oneMerge中包含了将要合并为一个新段(New Segment)的段集合。</p>
@@ -648,7 +603,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -823,10 +778,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

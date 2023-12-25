@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -293,30 +293,15 @@
 
                     <p>  本篇文章我们继续介绍BulkScorer的其他子类，下图为BulkScorer主要的几个子类，其中<code>DefaultBulkScorer</code>的介绍可以见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2023/0707/BulkScorer%EF%BC%88%E4%B8%80%EF%BC%89" >BulkScorer（一）<i class="fas fa-external-link-alt"></i></a>：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/1.png"
-                       width="700"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/1.png"  width="700">
 <h2 id="reqexclbulkscorer"><a class="markdownIt-Anchor" href="#reqexclbulkscorer"></a> ReqExclBulkScorer</h2>
 <h3 id="实现逻辑"><a class="markdownIt-Anchor" href="#实现逻辑"></a> 实现逻辑</h3>
 <p>  ReqExclBulkScorer中包含了两个成员，一个是名为<code>req</code>的BulkScorer对象，另一个是名为<code>excl</code>的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2023/0707/BulkScorer%EF%BC%88%E4%B8%80%EF%BC%89" >DocIdSetIterator<i class="fas fa-external-link-alt"></i></a>对象，它包含了在查询条件中指定的不需要返回的文档号集合（MUST_NOT）。</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/2.png">
 <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2023/0707/BulkScorer%EF%BC%88%E4%B8%80%EF%BC%89" >BulkScorer（一）<i class="fas fa-external-link-alt"></i></a>中我们说到，BulkScorer的score()方法描述的是对某个文档号区间进行遍历，期间过滤掉被删除的文档号，最后使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector<i class="fas fa-external-link-alt"></i></a>收集文档号。在子类ReqExclBulkScorer的实现中，则是根据<code>excl</code>中的文档号将<code>req</code>的文档号集合划分为一个或多个更小的集合。</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/3.png">
 <p>  图2中，excl中的文档号将req中待遍历的结合划分为3个区间。<strong>在源码实现中，每一个区间对应一次BulkScorer的score()方法的调用</strong>，差别在于不同的文档号区间范围。</p>
 <h3 id="使用场景"><a class="markdownIt-Anchor" href="#使用场景"></a> 使用场景</h3>
 <p>  例如在使用BooleanQuery时，特定查询条件下会使用到ReqExclBulkScorer，其具体逻辑会在介绍BooleanQuery中获取BulkScorer的文章中展开介绍。</p>
@@ -324,28 +309,13 @@
 <p>  TimeLimitingBulkScorer用于为BulkScorer设定一个超时时间，查询超时后通过抛出异常的方式结束BulkScorer的scorer方法的调用。</p>
 <p>  TimeLimitingBulkScorer封装了一个名为<code>in</code>的BulkScorer对象，允许用户设定一个名为<code>queryTimeout</code>的QueryTimeout对象作为查询超时条件。</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/4.png"
-                      width="1000"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/4.png" width="1000">
 <p>  QueryTimeout类很简单，类中就包含一个<code>shouldExit</code>的方法，下文中会介绍该方法在何时会被调用。</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/5.png"
-                      width="1000"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/5.png" width="1000">
 <p>  超时条件通过IndexSearcher类中的setTimeout()方法设定。</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/6.png"
-                      width="1000"
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/6.png" width="1000">
 <h3 id="实现逻辑-2"><a class="markdownIt-Anchor" href="#实现逻辑-2"></a> 实现逻辑</h3>
 <p>  TimeLimitingBulkScorer实现BulkScorer的score()的逻辑中，跟ReqExclBulkScorer相似的地方是将封装的BulkScorer对象（图3中的<code>in</code>）的遍历区间拆封成多个一个或多个区间，每遍历完一个区间就调用图4中的<code>shouldExit()</code>方法判断是否已经超时。区间的划分规则则是基于根据文档号数量，每个区间中的文档号数量为interval，其公式如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">interval</span> <span class="operator">=</span> LastInterval + (LastInterval &gt;&gt; <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
@@ -356,12 +326,7 @@
 <li>第三个区间中的文档号数量：(150 + 150 &gt;&gt; 2) = 225</li>
 </ul>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（二）/7.png">
 <h4 id="使用场景-2"><a class="markdownIt-Anchor" href="#使用场景-2"></a> 使用场景</h4>
 <p>  当在IndexSearcher对象中指定了setTimeout()方法后，所有的BulkScorer对象都会进行超时判断。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
@@ -611,7 +576,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -786,10 +751,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

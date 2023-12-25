@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -299,12 +299,7 @@
 <h2 id="收集文档的点数据信息"><a class="markdownIt-Anchor" href="#收集文档的点数据信息"></a> 收集文档的点数据信息</h2>
 <p>  在源码中，通过PointValuesWriter对象来实现文档的点数据的收集，并且具有相同域名的点数据使用同一个PointValuesWriter对象来收集，例如下图中添加三篇文档：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/1.png">
 <p>  在图1中，由于第49行、50行、55行。60行、61行，添加了具有相同的域名“content”的点数据，故他们三个的点数据信息会使用同一个PointValuesWriter对象来收集，同理第51行、56行。</p>
 <p>  PointValuesWriter对象收集的内容主要包括以下信息：</p>
 <h3 id="numpoints"><a class="markdownIt-Anchor" href="#numpoints"></a> numPoints：</h3>
@@ -312,12 +307,7 @@
 <h3 id="docids"><a class="markdownIt-Anchor" href="#docids"></a> docIDs</h3>
 <p>  int类型数组，每添加一条点数据，会将该点数据所属文档号作为数组元素添加到docIDs数组中 ，并且数组下标为该点数据对应的numPoints，对于域名为&quot;content&quot;的点数据，在完成三篇文档的添加后，docIds数组如下所示：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/2.png">
 <h3 id="numdocs"><a class="markdownIt-Anchor" href="#numdocs"></a> numDocs</h3>
 <p>  该值描述的是对于某个点数据域，包含它的文档数量，例如在图1中，域名为&quot;content&quot;的点数据，包含该域的文档有文档0、文档1、文档2，故numDocs的值为3，同理对于域名为&quot;titile&quot;的点数据，numDocs的值为1。</p>
 <h3 id="bytes"><a class="markdownIt-Anchor" href="#bytes"></a> bytes</h3>
@@ -333,60 +323,30 @@
 <h5 id="步骤二写入到数组大小为4的字节数组中"><a class="markdownIt-Anchor" href="#步骤二写入到数组大小为4的字节数组中"></a> 步骤二：写入到数组大小为4的字节数组中</h5>
 <p>  由于int类型的数值占用4个字节，所以只需要数组大小为4的字节数组存储即可，如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/3.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89/inttobyte.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p><strong>为什么要执行异或操作</strong>：</p>
 <ul>
 <li>当转化为字节数组后，可以通过比较两个字节数组的相同下标对应的数组元素大小来描述这两个字节数组的大小关系，使得转化后的字节数组依然能具有数值类型的比较功能（大小比较），比如说有两个数值类型3和4，<font color=Red>假设不执行上文中的步骤一，即不跟0x80000000执行异或操作</font>，转化后的字节数组如下所示：</li>
 </ul>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/4.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89/compare3__4.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  图4中，从第0个字节开始，我们依次比较两个字节数组相同下标对应的数组元素，显而易见，第0个、第1个、第2个字节都是相同的，当比较到第3个字节时，能区分出大小关系，如果我们比较的两个数值是-5、7，<font color=Red>假设不执行上文中的步骤一，即不跟0x80000000执行异或操作</font>，转化后的字节数组如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/5.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89/compare-5__7false.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  从图5可知，由于在Java中使用补码来表示负数，所以当比较第0个字节时，会得出-5比7大的错误结果，<font color=Red>如果我们先执行上文中的步骤一，即跟0x80000000执行异或操作</font>，那么数值-5跟7转化后的字节数组如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/6.png">
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89/compare-5__7true.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  由图6可知，可以正确的比较-5与7的大小关系了。</p>
 <p>  上文中我们说到，ByteBlockPool类型的变量bytes使用字节数组buff来存储点数据的域值，存储的过程十分简单，就是<strong>将点数据的域值转化为字节数组后，拷贝到bytes的字节数组buff中</strong>，例如有下面的例子，同图1：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/7.png">
 <p>  我们将要介绍在添加了3篇文档后，域名为&quot;content&quot;的点数据的域值在字节数组buff中的数据分布，如下所示：</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（八）/8.png">
 <p>  由图8可以看出，在字节数组buff[ ]中，下标0<sub>7对应的数组元素存储的是图7中代码第49行的点数据的域值，下标24</sub>31对应的数组元素存储的是图7中代码第60行的点数据的域值。</p>
 <p>  生成索引文件.dim&amp;&amp;.dii阶段，会读取buff中的域值，其读取的过程将会在后面的文章中介绍。</p>
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
@@ -640,7 +600,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -815,10 +775,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

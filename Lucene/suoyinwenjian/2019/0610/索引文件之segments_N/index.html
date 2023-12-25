@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -301,20 +301,10 @@
 <p>  索引目录中可能存在多个Segments_N文件，每个Segment_N文件代表某次<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit()<i class="fas fa-external-link-alt"></i></a>时的索引状态，其中N值最大的Segments_N文件代表最新的一次提交，它包含当前索引目录中所有的索引信息。</p>
 <p>  图1中最新的一次提交生成了Segments_5文件。</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/1.png">
 <p>  图1中Segments_N文件包含的索引信息关系如下图：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/2.png">
 <p>  一个索引目录中存在多个segments_N文件的原因大体分为两点：</p>
 <ul>
 <li>旧的segments_N暂时不能被删除：原因很多，在后面介绍IndexWriter的文章中会提及</li>
@@ -322,20 +312,10 @@
 </ul>
 <h1 id="segments_n文件的数据结构"><a class="markdownIt-Anchor" href="#segments_n文件的数据结构"></a> segments_N文件的数据结构</h1>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/3.png">
 <h2 id="luceneversion"><a class="markdownIt-Anchor" href="#luceneversion"></a> LuceneVersion</h2>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/4.png">
 <p>  LuceneVersio描述了当前运行的Lucene版本，比如本文基于Lucene7.5.0写的，那么LuceneVersion的值如下：</p>
 <ul>
 <li>LATEST.major：7</li>
@@ -350,42 +330,22 @@
 <h2 id="namecounter"><a class="markdownIt-Anchor" href="#namecounter"></a> NameCounter</h2>
 <p>  NameCounter用来给新的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >segmentInfo<i class="fas fa-external-link-alt"></i></a>文件提供名字的前缀值，例如下图中 _8 即为前缀值。</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/5.png">
 <h2 id="segcount"><a class="markdownIt-Anchor" href="#segcount"></a> SegCount</h2>
 <p>  该字段描述了当前索引目录中的有效的段信息文件(active segment info)。</p>
 <h2 id="minsegmentluceneversion"><a class="markdownIt-Anchor" href="#minsegmentluceneversion"></a> MinSegmentLuceneVersion</h2>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/6.png">
 <p>  索引目录中的.si文件的版本可能各不相同，MinSegmentLuceneVersion记录版本最小的，不详细展开，同图4。</p>
 <h2 id="segmentcommitinfo"><a class="markdownIt-Anchor" href="#segmentcommitinfo"></a> SegmentCommitInfo</h2>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/7.png">
 <p>  该字段描述了一个segmentInfo文件(.si文件)的信息。</p>
 <h3 id="segname"><a class="markdownIt-Anchor" href="#segname"></a> SegName</h3>
 <p>  该字段描述了segmentInfo文件及对应的其他索引文件的名字前缀，图8中，下面所有的文件属于同一个segment，segName的值为&quot;_1&quot;</p>
 <p>  在读取segment_N文件阶段，通过SegName找到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi" >.si索引文件<i class="fas fa-external-link-alt"></i></a>，结合SegmentCommitInfo就可以获得一个段的完整的信息</p>
 <p>图8：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/8.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/8.png">
 <h3 id="segid"><a class="markdownIt-Anchor" href="#segid"></a> SegID</h3>
 <p>  该字段描述了segmentInfo文件的一个唯一标示。</p>
 <h3 id="segcodec"><a class="markdownIt-Anchor" href="#segcodec"></a> SegCodec</h3>
@@ -405,23 +365,13 @@
 <h3 id="updatesfiles"><a class="markdownIt-Anchor" href="#updatesfiles"></a> UpdatesFiles</h3>
 <p>  记录发生变化的索引文件，比如调用了IndexWriter.updateDocValues(…)的方法后，会生成新的.dvd、.dvm文件，那么域值跟索引文件名字的信息。</p>
 <p>图9：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/9.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/9.png">
 &emsp;&emsp;上图中，先找出包含域名为"content"，域值为"c"的文档，然后更新该文档中的NumericDocValuesField域，更新域名跟域值。此操作后，会生成新的.dvd、dvm文件。
 <h2 id="commituserdata"><a class="markdownIt-Anchor" href="#commituserdata"></a> CommitUserData</h2>
 <p>  该字段可以通过调用IndexWriter.setLiveCommitData(…)来在commit()时记录自定义的信息，上文中提到，如果使用了NoDeletionPolicy，那么Lucene会保留每一次commit()时的索引文件信息作为检查点，这样我们可以通过CommitUserData跟Segment_N来回退到任意的检查点。</p>
 <h1 id="segments_n文件的总数据结构"><a class="markdownIt-Anchor" href="#segments_n文件的总数据结构"></a> segments_N文件的总数据结构</h1>
 <p>图10：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/10.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/索引文件/segments_N/10.png">
 <h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
 <p>  无</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/segments_N.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
@@ -677,7 +627,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -852,10 +802,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

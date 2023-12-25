@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -308,12 +308,7 @@
 <p>  由于本人在指令集方面有限的知识储备，只能泛泛而谈，无法准确识别上文中可能出现的错误，欢迎该方面的大佬勘误。如果能将勘误内容写到<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0%E7%9A%84issue%E4%B8%AD%E5%B0%B1%E6%9B%B4%E5%A5%BD%E5%95%A6%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0的issue中就更好啦。<i class="fas fa-external-link-alt"></i></a></p>
 <p>  SIMD指令集使得CPU能同时对多个值执行相同的操作：</p>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/1.png">
 <p>  图1选自论文<a class="link"   target="_blank" rel="noopener" href="http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf%E3%80%82" >http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf。<i class="fas fa-external-link-alt"></i></a> 上图中，X、Y的值存放在128bit的寄存器中，其中X、Y的值占32bit。通过SIMD，使得可以同时计算四次运算（operand）。</p>
 <h2 id="自动向量化automatic-vectorization"><a class="markdownIt-Anchor" href="#自动向量化automatic-vectorization"></a> 自动向量化（Automatic Vectorization）</h2>
 <p>  先贴出Wiki的原文：</p>
@@ -333,12 +328,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SIMDTest</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">LENGTH</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="title function_">profile</span><span class="params">(<span class="type">float</span>[] x, <span class="type">float</span>[] y)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">t</span> <span class="operator">=</span> System.nanoTime();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; LENGTH; i++) &#123;</span><br><span class="line">            y[i] = y[i] * x[i];</span><br><span class="line">        &#125;</span><br><span class="line">        t = System.nanoTime() - t;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">float</span>[] x = <span class="keyword">new</span> <span class="title class_">float</span>[LENGTH];</span><br><span class="line">        <span class="type">float</span>[] y = <span class="keyword">new</span> <span class="title class_">float</span>[LENGTH];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// to let the JIT compiler do its work, repeatedly invoke</span></span><br><span class="line">        <span class="comment">// the method under test and then do a little nap</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">minDuration</span> <span class="operator">=</span> Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">duration</span> <span class="operator">=</span> profile(x, y);</span><br><span class="line">            minDuration = Math.min(minDuration, duration);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;duration: &quot;</span> + minDuration + <span class="string">&quot;ns&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  下图是重复执行二十次获得的duration的最小值：</p>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/2.png">
 <p>  图2中Y轴的单位为ns，通过虚拟机参数-XX:UseSSE=0 -XX:UseAVX=0 -XX:-UseSuperWord来关闭C2编译器的自动向量化。</p>
 <h2 id="simd-in-lucene"><a class="markdownIt-Anchor" href="#simd-in-lucene"></a> SIMD In Lucene</h2>
 <p>  在这个<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9027" >issue<i class="fas fa-external-link-alt"></i></a>中，详细的介绍了基于SIMD写入/读取倒排表信息的所有相关信息。其核心为在写入/读取阶段，通过巧妙的编码方式，使得能让编译器识别这段代码应该使用SIMD指令。</p>
@@ -352,12 +342,7 @@
 <p>  我们以一个例子继续介绍倒排表信息的压缩。</p>
 <p>  如果有一个待压缩的词频信息集合，并且bitsPerValue的值为4，我们用long类型的数组来描述这个集合，并且该集合中有128个词频信息，如下所示：</p>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/3.png">
 <p>  压缩的过程为两次收缩（collapse）操作：</p>
 <h4 id="第一次收缩操作"><a class="markdownIt-Anchor" href="#第一次收缩操作"></a> 第一次收缩操作</h4>
 <p>  根据bitsPerValue的值使用对应三种收缩方式中的一种：</p>
@@ -388,46 +373,26 @@
 <p>  收缩方式collapse8描述的是对于bitsPerValue &lt;= 8的待压缩的数据，对每个数据按照固定的8个bit进行压缩，这个过程为<strong>第一次收缩操作</strong>。</p>
 <p>  我们先对照collapse8的代码做一个简单的介绍：</p>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/4.png">
 <p>  图4中，第84行的参数arr即包含128个long类型数值的数组，并且数组中的最大值不超过256，即bitsPerValue &lt;= 8。</p>
 <p>  另外第85行的循环次数为16，因为第86行中，每一次循环的会同时处理8个数值，由于一共有128个数值，故需要循环16次。</p>
 <p>  图4中的第86行代码，我们会提出两个疑问，如下所示：</p>
 <p>  <strong>疑问一：为什么一次循环处理8个数值？</strong></p>
 <p>  正如上文介绍的，第一次收缩操作的目的是将每个数据按照固定的8个bit进行压缩，由于数组arr[ ]是long类型，那么一个占64个bit的long类型的数组元素就可以存储8个占用8个bit的数据，即将8个数组元素塞到一个数组元素中，如下所示：</p>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/5.png">
 <p>  由于画图界面有限，图5中仅给出8个数值中的4个进行收缩操作。可见在第一次循环中，对8个数据各自取低位的8个bit，组合到了一个占64个bit的long类型的数组元素中。</p>
 <p>  图5中第一个数组元素的值未显示是因为数值对应的十进制位数较多，会影响图的美感。</p>
 <p>  <strong>疑问二：每次循环如何选择8个数值？</strong></p>
 <p>  从图4跟图5可以看出，第一次循环选择的8个数值为数组下标为0、8、16、32 … 112的数组元素。为什么要按照这种方式选择，或者说为什么不选择下标值0~8的前8个数组元素呢以及其他方式？对于该疑问我请教了实现该方法的PMC（Project Management Committee），如下所示：</p>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/6.png">
 <p>  正如<a class="link"   target="_blank" rel="noopener" href="https://github.com/jpountz" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>回复的那样，按照图4中的选择方式可以让C2编译器生成SIMD指令。至于为什么采用这种方式就能生成SIMD指令，在<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9027" >issue<i class="fas fa-external-link-alt"></i></a>中说到，作者是受到这篇文章的启发：<a class="link"   target="_blank" rel="noopener" href="https://fulmicoton.com/posts/bitpacking/" >https://fulmicoton.com/posts/bitpacking/<i class="fas fa-external-link-alt"></i></a>  （如果链接失效，可以看附件中的文章Of bitpacking with or without SSE3）。感兴趣的朋友可以阅读下，本文不展开介绍。在Java中，可以通过运行期间生成的汇编代码判断是否生成了SIMD指令。</p>
 <h4 id="第二次收缩操作"><a class="markdownIt-Anchor" href="#第二次收缩操作"></a> 第二次收缩操作</h4>
 <p>  图5中，以数组的第一个数组元素为例，在进行了第一次收缩操作后，该数组元素中存储了8个数据，每个数据占用8个bit，又因为该数组的bitsPerValue的值为4，所以每个数据还有4个bit（高4位）是无效的，<strong>无效</strong>指的是这些bit不参与描述一个数据。那么随后会通过第二次收缩操作消除这些bit。</p>
 <p>  图3的数组在经过第一次收缩操作后，128个数据分布在了前16个数组元素中，即下标值0~15的数组元素存放了原始的128个数据。还是以第一个数组元素为例，该数组元素64个bit中有32个bit是无效的，那么我们通过下面的方式将这些无效的bit变成有效的，如下所示：</p>
 <p>图7：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/7.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/7.png">
 <p>   图7中，第一个数组元素，即下标值为0的数组元素，先执行第一步的左移4个bit，然后跟下标值8的数组元素进行第二步的或操作。注意的是下标值为8的数组元素不需要位移操作。第二步的或操作结束后，下标值为8的数组元素中的有效bit就覆盖了第一个数组元素中的<strong>无效的</strong>bit了，意味着存储了16个数据。</p>
 <p>  两次收缩操作使得用来描述数据的long类型的值中所有的bit都是有效的，即都会参与用于描述数据。最终128个long类型的数据被压缩成8个long类型的数值。</p>
 <p>  <strong>为什么选择下标值8的数组元素跟第一个数组元素进行或操作？</strong></p>
@@ -683,7 +648,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -858,10 +823,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">

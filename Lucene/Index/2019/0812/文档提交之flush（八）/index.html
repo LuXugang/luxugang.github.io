@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -297,20 +297,10 @@
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0807/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89" >文档提交之flush（七）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点，本篇文章是介绍文档提交之flush流程的最后一篇文章。</p>
 <h1 id="文档提交之flush的整体流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的整体流程图"></a> 文档提交之flush的整体流程图</h1>
 <p>图1：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/1.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/1.png">
 <h2 id="更新readerpool"><a class="markdownIt-Anchor" href="#更新readerpool"></a> 更新ReaderPool</h2>
 <p>图2：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/2.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/2.png">
 <p>  在执行<code>更新ReaderPool</code>流程之前，我们需要等待所有<code>发布生成的段中的处理删除信息事件</code>执行结束。</p>
 <p>  <strong>为什么需要等待</strong>：</p>
 <ul>
@@ -335,12 +325,7 @@
 </ul>
 <h3 id="更新readerpool的流程图"><a class="markdownIt-Anchor" href="#更新readerpool的流程图"></a> 更新ReaderPool的流程图</h3>
 <p>图3：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/3.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/3.png">
 <p>  <strong>ReaderPool是什么</strong>：</p>
 <ul>
 <li>ReaderPool描述了所有SegmentCommitInfo的信息，在本篇文章中我们只需要知道，ReaderPool类中包含了一个容器，其定义如下，其中ReaderAndUpdates的介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0807/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89" >文档提交之flush（七）<i class="fas fa-external-link-alt"></i></a></li>
@@ -349,32 +334,17 @@
 <p>  故<code>更新ReaderPool</code>的过程就是更新每一个SegmentCommitInfo对应的ReadersAndUpdates的过程。</p>
 <h4 id="取出一个segmentcommitinfo"><a class="markdownIt-Anchor" href="#取出一个segmentcommitinfo"></a> 取出一个SegmentCommitInfo</h4>
 <p>图4：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/4.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/4.png">
 <p>  从IndexWriter的全局变量<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriter.java" >segmentInfos<i class="fas fa-external-link-alt"></i></a>中依次取出每一个SegmentCommitInfo：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> SegmentInfos segmentInfos;</span><br></pre></td></tr></table></figure>
 <h4 id="处理每一个segmentcommitinfo"><a class="markdownIt-Anchor" href="#处理每一个segmentcommitinfo"></a> 处理每一个SegmentCommitInfo</h4>
 <p>图5：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/5.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/5.png">
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0807/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89" >文档提交之flush（七）<i class="fas fa-external-link-alt"></i></a>中我们了解到全局FrozenBufferedUpdates中的删除信息会作用到segmentInfos中的每一个SegmentCommitInfo中，同时段内FrozenBufferedUpdates中的删除信息会作用到本段的SegmentCommitInfo，即当作用（apply）了删除信息后，每一个段中的删除信息<strong>可能</strong>会发生变化。如果一个段中有新的被标记为删除的文档产生，那么被删除的文档会被记录到<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>索引文件中，如果该段已经存在.liv索引文件，那么先生成一个新的.liv索引文件，然后删除旧的.liv索引文件（通过索引文件计数引用来判断是否能删除该索引文件，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0807/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89" >文档提交之flush（七）<i class="fas fa-external-link-alt"></i></a>）。</p>
 <p>  如果存在更改DocValues域的操作，那么需要更新DocValues域，这部分在后面介绍软删除的文章中会展开介绍。</p>
 <h4 id="处理需要被丢弃的段"><a class="markdownIt-Anchor" href="#处理需要被丢弃的段"></a> 处理需要被丢弃的段</h4>
 <p>图6：</p>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/6.png"
-                     
-                >
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（八）/6.png">
 <p>  在上面的流程中，通过.liv索引文件确定了每一个段中的被删除的文档集合，如果一个段中所有文档都被标记为删除的，那么需要丢弃该段。</p>
 <p>  在执行完<code>更新ReaderPool</code>流程之后，Lucene还提供了一个钩子函数，用户可以根据具体业务来实现这个接口，这个接口同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>中的图3中<code>执行flush后的工作</code>流程是同一个钩子函数。</p>
 <h2 id="尝试段合并"><a class="markdownIt-Anchor" href="#尝试段合并"></a> 尝试段合并</h2>
@@ -631,7 +601,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">307.4k</span>
+                    <span class="item-value border-box word">308.5k</span>
                 </span>
             
 
@@ -806,10 +776,6 @@
 
 
 <!-- lazyload -->
-
-    
-<script src="/js/lazyload.js"></script>
-
 
 
 <div class="">
