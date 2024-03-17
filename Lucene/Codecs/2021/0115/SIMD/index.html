@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            SIMD（Lucene 8.7.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        SIMD（Lucene 8.7.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2021-01-15 00:00:00</span>
+                <span class="mobile">2021-01-15 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Thu Sep 28 2023 15:43:31 GMT+0800">2023-09-28 15:43:31</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Codecs/">Codecs</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Codecs/">Codecs</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/simd/">simd</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.6k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  从Lucene 8.4.0开始，在写入/读取倒排信息时，即写入/读取<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>时，通过巧妙的编码方式（下文中展开）使得<a class="link"   target="_blank" rel="noopener" href="http://openjdk.java.net/groups/hotspot/docs/HotSpotGlossary.html" >C2编译器<i class="fas fa-external-link-alt"></i></a>能生成SIMD（Single Instruction Multiple Data）指令，从而提高了写入/读取速度。</p>
+<h2 id="simdsingle-instruction-multiple-data"><a class="markdownIt-Anchor" href="#simdsingle-instruction-multiple-data"></a> SIMD（Single Instruction Multiple Data）</h2>
+<p>  下文中关于SIMD的介绍基于以下的一些资料，如果链接失效，可以阅读文章底部附件中的备份：</p>
+<ul>
+<li>文章一：<a class="link"   target="_blank" rel="noopener" href="http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf" >http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf<i class="fas fa-external-link-alt"></i></a></li>
+<li>文章二：<a class="link"   target="_blank" rel="noopener" href="http://daniel-strecker.com/blog/2020-01-14_auto_vectorization_in_java/#Output%20Interpretation" >http://daniel-strecker.com/blog/2020-01-14_auto_vectorization_in_java/#Output Interpretation<i class="fas fa-external-link-alt"></i></a></li>
+<li>文章三：<a class="link"   target="_blank" rel="noopener" href="http://www.songho.ca/misc/sse/sse.html" >http://www.songho.ca/misc/sse/sse.html<i class="fas fa-external-link-alt"></i></a></li>
+<li>文章四：<a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59725341/java-auto-vectorization-example" >https://stackoverflow.com/questions/59725341/java-auto-vectorization-example<i class="fas fa-external-link-alt"></i></a></li>
+<li>文章五：<a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SIMD" >https://en.wikipedia.org/wiki/SIMD<i class="fas fa-external-link-alt"></i></a></li>
+<li>文章六：<a class="link"   target="_blank" rel="noopener" href="https://prestodb.rocks/code/simd" >https://prestodb.rocks/code/simd<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>  由于本人在指令集方面有限的知识储备，只能泛泛而谈，无法准确识别上文中可能出现的错误，欢迎该方面的大佬勘误。如果能将勘误内容写到<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0%E7%9A%84issue%E4%B8%AD%E5%B0%B1%E6%9B%B4%E5%A5%BD%E5%95%A6%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0的issue中就更好啦。<i class="fas fa-external-link-alt"></i></a></p>
+<p>  SIMD指令集使得CPU能同时对多个值执行相同的操作：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/1.png">
+<p>  图1选自论文<a class="link"   target="_blank" rel="noopener" href="http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf%E3%80%82" >http://www1.cs.columbia.edu/~kar/pubsk/simd.pdf。<i class="fas fa-external-link-alt"></i></a> 上图中，X、Y的值存放在128bit的寄存器中，其中X、Y的值占32bit。通过SIMD，使得可以同时计算四次运算（operand）。</p>
+<h2 id="自动向量化automatic-vectorization"><a class="markdownIt-Anchor" href="#自动向量化automatic-vectorization"></a> 自动向量化（Automatic Vectorization）</h2>
+<p>  先贴出Wiki的原文：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Automatic vectorization, in parallel computing, is a special case of automatic parallelization, where a computer program is converted from a scalar implementation, which processes a single pair of operands at a time, to a vector implementation, which processes one operation on multiple pairs of operands at once</span><br></pre></td></tr></table></figure>
+<p>  上文的大意为在一次处理过程中，由只能执行一对运算（operand）变成执行多对运算成为自动向量化。</p>
+<p>  在写完一个Java程序后，Java代码会被编译为字节码并且存放到class文件中，随后在运行之前或运行期间，字节码将再次被编译。这次字节码将被编译为机器码（native machine code）这个过程即<a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Just-in-time_compilation" >JIT编译<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  不同于<a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.blog/2020/07/08/improving-performance-with-simd-intrinsics-in-three-use-cases/" >C/C++<i class="fas fa-external-link-alt"></i></a>，在编写Java代码时，没有显示的接口或者方式来指定向量计算，在Java中，完全是通过C2编译器来判断某段代码是否需要向量化。</p>
+<h2 id="simd-in-java"><a class="markdownIt-Anchor" href="#simd-in-java"></a> SIMD In Java</h2>
+<p>  Java程序中，可以通过指定虚拟机参数查看运行期间生成的汇编指令。</p>
+<h3 id="虚拟机参数"><a class="markdownIt-Anchor" href="#虚拟机参数"></a> 虚拟机参数</h3>
+<p>  添加两个虚拟机参数：-XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly。</p>
+<p>  另外需要下载hsdis-amd64.dylib（见附件），在Mac系统中，并将其放到<code>/Library/Java/JavaVirtualMachines/jdk-12.jdk/Contents/Home/lib</code>目录中即可。</p>
+<h3 id="例子1"><a class="markdownIt-Anchor" href="#例子1"></a> 例子1</h3>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="http://daniel-strecker.com/blog/2020-01-14_auto_vectorization_in_java/" >http://daniel-strecker.com/blog/2020-01-14_auto_vectorization_in_java/<i class="fas fa-external-link-alt"></i></a> 中详细的介绍了如何判断Java程序运行时是否使用了SIMD，这里不赘述展开。</p>
+<h3 id="例子2"><a class="markdownIt-Anchor" href="#例子2"></a> 例子2</h3>
+<p>  通过下面的例子做一个粗糙的性能比较（JDK8），demo地址见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.7.0/src/main/java/io/simd/SIMDTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.7.0/src/main/java/io/simd/SIMDTest.java<i class="fas fa-external-link-alt"></i></a> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SIMDTest</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">LENGTH</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="title function_">profile</span><span class="params">(<span class="type">float</span>[] x, <span class="type">float</span>[] y)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">t</span> <span class="operator">=</span> System.nanoTime();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; LENGTH; i++) &#123;</span><br><span class="line">            y[i] = y[i] * x[i];</span><br><span class="line">        &#125;</span><br><span class="line">        t = System.nanoTime() - t;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">float</span>[] x = <span class="keyword">new</span> <span class="title class_">float</span>[LENGTH];</span><br><span class="line">        <span class="type">float</span>[] y = <span class="keyword">new</span> <span class="title class_">float</span>[LENGTH];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// to let the JIT compiler do its work, repeatedly invoke</span></span><br><span class="line">        <span class="comment">// the method under test and then do a little nap</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">minDuration</span> <span class="operator">=</span> Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">duration</span> <span class="operator">=</span> profile(x, y);</span><br><span class="line">            minDuration = Math.min(minDuration, duration);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;duration: &quot;</span> + minDuration + <span class="string">&quot;ns&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  下图是重复执行二十次获得的duration的最小值：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/2.png">
+<p>  图2中Y轴的单位为ns，通过虚拟机参数-XX:UseSSE=0 -XX:UseAVX=0 -XX:-UseSuperWord来关闭C2编译器的自动向量化。</p>
+<h2 id="simd-in-lucene"><a class="markdownIt-Anchor" href="#simd-in-lucene"></a> SIMD In Lucene</h2>
+<p>  在这个<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9027" >issue<i class="fas fa-external-link-alt"></i></a>中，详细的介绍了基于SIMD写入/读取倒排表信息的所有相关信息。其核心为在写入/读取阶段，通过巧妙的编码方式，使得能让编译器识别这段代码应该使用SIMD指令。</p>
+<p>  我们通过介绍倒排表信息的压缩/解压来介绍这个巧妙的编码方式。</p>
+<h3 id="倒排表信息的压缩"><a class="markdownIt-Anchor" href="#倒排表信息的压缩"></a> 倒排表信息的压缩</h3>
+<p>  倒排表信息即索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>中的内容，其中索引文件.doc中的文档号、词频信息，索引文件.pos中位置信息，索引文件.pay中的payload、偏移信息都会在压缩后再写入到索引文件中。</p>
+<p>  其压缩的核心思想就是bitPacking，也就是在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>中提到的<code>固定位数按位存储</code>的方式，通过bitPacking对128个long类型的整数进行压缩处理。</p>
+<p>  <code>固定位数按位存储</code>描述的是对于一组待处理的数据集合，每一个数据都用固定数量的bit存储，我们称之为bitsPerValue，并且bitsPerValue的大小取决于数据集合中的最大值所需要的bit数量，如果有以下的数据集合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>  上述集合中的最大值为9，它对应的二进制为0b0000<font color=red>1001</font>,可见有效的bit数量为4，即bitsPerValue的值为4，那么只需要存储<font color=red>1001</font>就可以来描述数值9。根据上述<code>固定位数按位存储</code>的概念，以数值2为例，故需要存储0010来描述它。</p>
+<p>  我们以一个例子继续介绍倒排表信息的压缩。</p>
+<p>  如果有一个待压缩的词频信息集合，并且bitsPerValue的值为4，我们用long类型的数组来描述这个集合，并且该集合中有128个词频信息，如下所示：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/3.png">
+<p>  压缩的过程为两次收缩（collapse）操作：</p>
+<h4 id="第一次收缩操作"><a class="markdownIt-Anchor" href="#第一次收缩操作"></a> 第一次收缩操作</h4>
+<p>  根据bitsPerValue的值使用对应三种收缩方式中的一种：</p>
+<p>表一</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">bitsPerValue</th>
+<th style="text-align:center">收缩方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">bitsPerValue &lt;= 8</td>
+<td style="text-align:center">collapse8</td>
+</tr>
+<tr>
+<td style="text-align:center">8 &lt; bitsPerValue &lt;= 16</td>
+<td style="text-align:center">collapse16</td>
+</tr>
+<tr>
+<td style="text-align:center">bitsPerValue &gt; 16</td>
+<td style="text-align:center">collapse32</td>
+</tr>
+</tbody>
+</table>
+<p>  表一中的三种收缩方式大同小异，故这里我们只以collapse8为例展开介绍。</p>
+<p>  收缩方式collapse8描述的是对于bitsPerValue &lt;= 8的待压缩的数据，对每个数据按照固定的8个bit进行压缩，这个过程为<strong>第一次收缩操作</strong>。</p>
+<p>  我们先对照collapse8的代码做一个简单的介绍：</p>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/4.png">
+<p>  图4中，第84行的参数arr即包含128个long类型数值的数组，并且数组中的最大值不超过256，即bitsPerValue &lt;= 8。</p>
+<p>  另外第85行的循环次数为16，因为第86行中，每一次循环的会同时处理8个数值，由于一共有128个数值，故需要循环16次。</p>
+<p>  图4中的第86行代码，我们会提出两个疑问，如下所示：</p>
+<p>  <strong>疑问一：为什么一次循环处理8个数值？</strong></p>
+<p>  正如上文介绍的，第一次收缩操作的目的是将每个数据按照固定的8个bit进行压缩，由于数组arr[ ]是long类型，那么一个占64个bit的long类型的数组元素就可以存储8个占用8个bit的数据，即将8个数组元素塞到一个数组元素中，如下所示：</p>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/5.png">
+<p>  由于画图界面有限，图5中仅给出8个数值中的4个进行收缩操作。可见在第一次循环中，对8个数据各自取低位的8个bit，组合到了一个占64个bit的long类型的数组元素中。</p>
+<p>  图5中第一个数组元素的值未显示是因为数值对应的十进制位数较多，会影响图的美感。</p>
+<p>  <strong>疑问二：每次循环如何选择8个数值？</strong></p>
+<p>  从图4跟图5可以看出，第一次循环选择的8个数值为数组下标为0、8、16、32 … 112的数组元素。为什么要按照这种方式选择，或者说为什么不选择下标值0~8的前8个数组元素呢以及其他方式？对于该疑问我请教了实现该方法的PMC（Project Management Committee），如下所示：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/6.png">
+<p>  正如<a class="link"   target="_blank" rel="noopener" href="https://github.com/jpountz" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>回复的那样，按照图4中的选择方式可以让C2编译器生成SIMD指令。至于为什么采用这种方式就能生成SIMD指令，在<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9027" >issue<i class="fas fa-external-link-alt"></i></a>中说到，作者是受到这篇文章的启发：<a class="link"   target="_blank" rel="noopener" href="https://fulmicoton.com/posts/bitpacking/" >https://fulmicoton.com/posts/bitpacking/<i class="fas fa-external-link-alt"></i></a>  （如果链接失效，可以看附件中的文章Of bitpacking with or without SSE3）。感兴趣的朋友可以阅读下，本文不展开介绍。在Java中，可以通过运行期间生成的汇编代码判断是否生成了SIMD指令。</p>
+<h4 id="第二次收缩操作"><a class="markdownIt-Anchor" href="#第二次收缩操作"></a> 第二次收缩操作</h4>
+<p>  图5中，以数组的第一个数组元素为例，在进行了第一次收缩操作后，该数组元素中存储了8个数据，每个数据占用8个bit，又因为该数组的bitsPerValue的值为4，所以每个数据还有4个bit（高4位）是无效的，<strong>无效</strong>指的是这些bit不参与描述一个数据。那么随后会通过第二次收缩操作消除这些bit。</p>
+<p>  图3的数组在经过第一次收缩操作后，128个数据分布在了前16个数组元素中，即下标值0~15的数组元素存放了原始的128个数据。还是以第一个数组元素为例，该数组元素64个bit中有32个bit是无效的，那么我们通过下面的方式将这些无效的bit变成有效的，如下所示：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Codecs/SIMD/7.png">
+<p>   图7中，第一个数组元素，即下标值为0的数组元素，先执行第一步的左移4个bit，然后跟下标值8的数组元素进行第二步的或操作。注意的是下标值为8的数组元素不需要位移操作。第二步的或操作结束后，下标值为8的数组元素中的有效bit就覆盖了第一个数组元素中的<strong>无效的</strong>bit了，意味着存储了16个数据。</p>
+<p>  两次收缩操作使得用来描述数据的long类型的值中所有的bit都是有效的，即都会参与用于描述数据。最终128个long类型的数据被压缩成8个long类型的数值。</p>
+<p>  <strong>为什么选择下标值8的数组元素跟第一个数组元素进行或操作？</strong></p>
+<p>  或者说可以选择其他数组元素进行或操作吗，答案是可以的，但是源码中的选择方式可以使得C2编译器在运行期间生成SIMD指令。同样的，想深入理解这种选择方式的话可以阅读<a class="link"   target="_blank" rel="noopener" href="https://fulmicoton.com/posts/bitpacking/" >https://fulmicoton.com/posts/bitpacking/<i class="fas fa-external-link-alt"></i></a> 这篇文章。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  无。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Codecs/SIMD.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Codecs/">Codecs</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/simd/">simd</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2021/0201/Lucene%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="Lucene核心技术（一）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Lucene核心技术（一）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2020/1222/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8Bkdd&amp;kdi&amp;kdm/"
+                                   title="索引文件的合并（四）之kdd&amp;kdi&amp;kdm（Lucene 8.7.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的合并（四）之kdd&amp;kdi&amp;kdm（Lucene 8.7.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#simdsingle-instruction-multiple-data"><span class="nav-number">1.</span> <span class="nav-text"> SIMD（Single Instruction Multiple Data）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%90%91%E9%87%8F%E5%8C%96automatic-vectorization"><span class="nav-number">2.</span> <span class="nav-text"> 自动向量化（Automatic Vectorization）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simd-in-java"><span class="nav-number">3.</span> <span class="nav-text"> SIMD In Java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> 虚拟机参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901"><span class="nav-number">3.2.</span> <span class="nav-text"> 例子1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%902"><span class="nav-number">3.3.</span> <span class="nav-text"> 例子2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simd-in-lucene"><span class="nav-number">4.</span> <span class="nav-text"> SIMD In Lucene</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%92%E6%8E%92%E8%A1%A8%E4%BF%A1%E6%81%AF%E7%9A%84%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.1.</span> <span class="nav-text"> 倒排表信息的压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%B6%E7%BC%A9%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 第一次收缩操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%94%B6%E7%BC%A9%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.2.</span> <span class="nav-text"> 第二次收缩操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#simdsingle-instruction-multiple-data"><span class="nav-number">1.</span> <span class="nav-text"> SIMD（Single Instruction Multiple Data）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%90%91%E9%87%8F%E5%8C%96automatic-vectorization"><span class="nav-number">2.</span> <span class="nav-text"> 自动向量化（Automatic Vectorization）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simd-in-java"><span class="nav-number">3.</span> <span class="nav-text"> SIMD In Java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> 虚拟机参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901"><span class="nav-number">3.2.</span> <span class="nav-text"> 例子1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%902"><span class="nav-number">3.3.</span> <span class="nav-text"> 例子2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simd-in-lucene"><span class="nav-number">4.</span> <span class="nav-text"> SIMD In Lucene</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%92%E6%8E%92%E8%A1%A8%E4%BF%A1%E6%81%AF%E7%9A%84%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.1.</span> <span class="nav-text"> 倒排表信息的压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%B6%E7%BC%A9%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 第一次收缩操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%94%B6%E7%BC%A9%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.2.</span> <span class="nav-text"> 第二次收缩操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

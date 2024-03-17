@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件的生成（十二）之dim&amp;&amp;dii（Lucene 8.4.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件的生成（十二）之dim&amp;&amp;dii（Lucene 8.4.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-04-15 00:00:00</span>
+                <span class="mobile">2020-04-15 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 11 2023 11:33:24 GMT+0800">2023-10-11 11:33:24</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0410/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十一）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容，为了便于下文的介绍，先给出生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >索引文件.dim&amp;&amp;.dii<i class="fas fa-external-link-alt"></i></a>的流程图以及流程点<code>构建BKD树的节点值（node value）</code>的流程图：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/1.png">
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/2.png">
+<p>  在前面的文章中，我们介绍了图2中处理内部节点的所有流程点，在介绍处理叶子节点前，我们先填个坑，即当某个内部节点划分后生成的左右子树为叶子节点时，内部节点为左右子树提供哪些准备数据，即流程点<code>设置左子树的准备数据</code>、<code>设置右子树的准备数据</code>。</p>
+<h2 id="设置左子树的准备数据-设置右子树的准备数据"><a class="markdownIt-Anchor" href="#设置左子树的准备数据-设置右子树的准备数据"></a> 设置左子树的准备数据、设置右子树的准备数据</h2>
+<h3 id="左右子树为叶子节点"><a class="markdownIt-Anchor" href="#左右子树为叶子节点"></a> 左右子树为叶子节点</h3>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0410/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十一）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们提到，处理节点（叶子节点或者内部节点）需要的准备数据有好几个，这些准备数据在源码中其实就是 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/util/bkd/BKDWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/util/bkd/BKDWriter.java<i class="fas fa-external-link-alt"></i></a> 类中的build(…)方法的参数：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/3.png">
+<p>  对于左右子树为叶子节点的情况，我们只需要关心图3中的leafBlockFPs数组。</p>
+<h4 id="leafblockfps数组"><a class="markdownIt-Anchor" href="#leafblockfps数组"></a> leafBlockFPs数组</h4>
+<p>  每当处理完一个叶子节点，我们需要将叶子节点对应的信息写入到索引文件.dim中，又因为所有叶子节点对应的信息以字节流形式存储在索引文件.dim中，leafBlockFPs数组正是用来记录每一个叶子节点对应的信息在索引文件.dim中的起始位置，同样具体的内容将在下文中展开。</p>
+<h2 id="选出叶子节点的排序维度"><a class="markdownIt-Anchor" href="#选出叶子节点的排序维度"></a> 选出叶子节点的排序维度</h2>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/4.png">
+<p>  选出叶子节点的排序维度前需要先计算两个数组：commonPrefixLengths数组以及usedBytes数组。</p>
+<h3 id="commonprefixlengths数组"><a class="markdownIt-Anchor" href="#commonprefixlengths数组"></a> commonPrefixLengths数组</h3>
+<p>  commonPrefixLengths为int类型的数组，该数组的下标用来描述维度编号（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>），数组元素描述的是维度编号对应的所有维度值的最长公共前缀的长度。</p>
+<h3 id="usedbytes数组"><a class="markdownIt-Anchor" href="#usedbytes数组"></a> usedBytes数组</h3>
+<p>  usedBytes为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>类型数组，如果你不熟悉FixedBitSet对象也没关系，我们只需要知道usedBytes数组的下标同样用来表示维度编号，数组元素描述的是维度编号的对应的所有维度值的公共前缀后的<strong>下一个字节</strong>的种类数量（按照字节的不同值作为种类的划分），只是种类数量用FixedBitSet来统计而已。</p>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/5.png">
+<p>  假设叶子节点中有3个点数据，我们以维度编号2为例，图4中，点数据<font color=Blue>蓝色</font>部分的字节是相同的，即点数据在这个维度的维度值的最长公共前缀的长度为2（2个字节），即在commonPrefixLengths数组中，下标值为2的数组元素的值为2，其他维度同理，故commonPrefixLengths数组如下所示：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/6.png">
+<p>  同样以维度编号2为例，除去相同的2个前缀字节的下一个字节的种类数量如图4中<font color=Green>绿框</font>与<font color=Red>红框</font>标注共有2个种类，即有两种，其他维度同理，故usedBytes数组如下所示：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/7.png">
+<p>  在源码实现上，需要先计算出commonPrefixLengths数组，利用该数组再计算出usedBytes数组。</p>
+<p>  在计算出usedBytes数组之后，遍历该数组，找到<strong>第一个</strong>数组元素最小的值，对应的数组下标，即维度编号，作为叶子节点的排序维度，在图6中，编号维度1将作为排序维度。</p>
+<h2 id="叶子节点的排序"><a class="markdownIt-Anchor" href="#叶子节点的排序"></a> 叶子节点的排序</h2>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/8.png">
+<p>  使用<strong>内省排序（IntroSorter）<strong>对叶子节点中的点数据进行排序，而不是在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中提到的内部节点排序使用的</strong>最大有效位的基数排序(MSB radix sort)</strong>，源码中也给出了注释：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No need for a fancy radix sort here, this is called on the leaves only so there are not many values to sort</span><br></pre></td></tr></table></figure>
+<p>  简单来说就是叶子节点中的点数据的数量相对于内部节点较少而选择使用<strong>内省排序（IntroSorter）</strong>。</p>
+<p>  <strong>叶子节点中的点数据数量的取值范围是什么</strong></p>
+<p>  先给出源码中的注释：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The tree is fully balanced, which means the leaf nodes will have between 50% and 100% of the requested maxPointsInLeafNode</span><br></pre></td></tr></table></figure>
+<p>  上述注释中的maxPointsInLeafNode指的是叶子节点中最多包含的点数据数量，默认是1024，也就说当内部节点中的点数据数量大于1024个时就需要继续切分，那么叶子节点中包含的点数据的数量区间为 [512, 1024]。</p>
+<p>  同内部节点的排序一样，叶子节点中点数据之间的排序关系同样用ord数组（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>）来描述，不赘述。</p>
+<h2 id="更新leafblockfps数组"><a class="markdownIt-Anchor" href="#更新leafblockfps数组"></a> 更新leafBlockFPs数组</h2>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/9.png">
+<p>  到此流程点，我们即将开始把叶子节点的信息写入到索引文件.dim中，故需要将索引文件.dim当前可写入的位置记录到leafBlockFPs数组中，在读取阶段，就可以通过leafBlockFPs数组找到当前叶子节点的信息在索引文件.dim中的起始读取位置，如下所示：</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/10.png">
+<p>  图10中，leafNodeData为叶子节点的信息，leafBlockFPs数组的下标值为叶子节点的<strong>差值节点编号</strong>。</p>
+<p>  <strong>差值节点编号是什么</strong></p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>我们介绍了节点编号的概念以及最左叶子节点的节点编号的获得方式，差值节点编号值的就是叶子节点编号跟最左叶子节点的节点编号的差值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leafBlockFPs[nodeID - leafNodeOffset]</span><br></pre></td></tr></table></figure>
+<p>  上述代码中，nodeID即节点编号，leafNodeOffset为最左叶子节点的节点编号，如果当前处理的是最左叶子节点，那么差值节点编号为0 ，即下标值为0，那么对应的数组元素描述的就是最左叶子节点的信息在索引文件.dim中的起始读取位置。</p>
+<h2 id="写入文档号信息到索引文件dim中"><a class="markdownIt-Anchor" href="#写入文档号信息到索引文件dim中"></a> 写入文档号信息到索引文件.dim中</h2>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/11.png">
+<p>  该流程点描述是将叶子节点中的点数据对应的文档号写入到索引文件.dim中。</p>
+<p>  <strong>如果获得每个点数据对应的文档号</strong></p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（八）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们说到，在点数据的收集阶段，使用了 docIDs数组存储了文档号信息，该数组的数组元素为文档号，下标值为numPoints，那么我们只需要知道点数据对应的numPoints就可以获取点数据对应的文档号，而在ord数组（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0408/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>）中，数组元素正是numPoints，所以我们只要遍历ord数组就能获得当前叶子节点中的文档号信息，并且这些文档号是有序的，注意的是：<strong>不是文档号的值有序，而是文档号对应的点数据是有序，排序规则即上文中的流程点<code>选出叶子节点的排序维度</code>、<code>叶子节点的排序</code>中的内容</strong>。</p>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/12.png">
+<p>  叶子节点中包含的文档号信息在索引文件.dim中的位置如下所示：</p>
+<p>图13：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/13.png">
+<p>  上图中，<font color=Red>红框</font>标注的两个字段为当前流程点写入的信息，其中Count描述的是文档号的数量，DocIds为文档号的集合。DocIds的详细数据结构见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >索引文件之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a> 。</p>
+<h2 id="写入相同前缀信息到索引文件dim中"><a class="markdownIt-Anchor" href="#写入相同前缀信息到索引文件dim中"></a> 写入相同前缀信息到索引文件.dim中</h2>
+<p>图14：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/14.png">
+<p>  在当前流程点，我们根据在上文中计算出的commonPrefixLengths数组，将每个维度的最长相同前缀的值写入到索引文件.dim中，对应在索引文件.dim中的位置如下所示：</p>
+<p>图15：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十二）/15.png">
+<p>  上图中，Length描述的每一个维度的最长公共前缀的长度，Value为最长公共前缀的值，在读取阶段就可以根据Length的值确定Values在索引文件.dim中的位置区间。</p>
+<p>  以图5的维度编号2为例，Length跟Value的值如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Length: <span class="number">2</span></span><br><span class="line">Value: &#123;<span class="number">10000000</span>, <span class="number">00000000</span>&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dim/">dim</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dii/">dii</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2020/0418/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii/"
+                                   title="索引文件的生成（十三）之dim&amp;&amp;dii（Lucene 8.4.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的生成（十三）之dim&amp;&amp;dii（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2020/0410/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii/"
+                                   title="索引文件的生成（十一）之dim&amp;&amp;dii（Lucene 8.4.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的生成（十一）之dim&amp;&amp;dii（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%B7%A6%E5%AD%90%E6%A0%91%E7%9A%84%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE-%E8%AE%BE%E7%BD%AE%E5%8F%B3%E5%AD%90%E6%A0%91%E7%9A%84%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text"> 设置左子树的准备数据、设置右子树的准备数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E5%AD%90%E6%A0%91%E4%B8%BA%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text"> 左右子树为叶子节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#leafblockfps%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.1.</span> <span class="nav-text"> leafBlockFPs数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E5%87%BA%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%8E%92%E5%BA%8F%E7%BB%B4%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text"> 选出叶子节点的排序维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#commonprefixlengths%E6%95%B0%E7%BB%84"><span class="nav-number">2.1.</span> <span class="nav-text"> commonPrefixLengths数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usedbytes%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text"> usedBytes数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text"> 叶子节点的排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0leafblockfps%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text"> 更新leafBlockFPs数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E6%A1%A3%E5%8F%B7%E4%BF%A1%E6%81%AF%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dim%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text"> 写入文档号信息到索引文件.dim中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E7%9B%B8%E5%90%8C%E5%89%8D%E7%BC%80%E4%BF%A1%E6%81%AF%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dim%E4%B8%AD"><span class="nav-number">6.</span> <span class="nav-text"> 写入相同前缀信息到索引文件.dim中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%B7%A6%E5%AD%90%E6%A0%91%E7%9A%84%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE-%E8%AE%BE%E7%BD%AE%E5%8F%B3%E5%AD%90%E6%A0%91%E7%9A%84%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text"> 设置左子树的准备数据、设置右子树的准备数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E5%AD%90%E6%A0%91%E4%B8%BA%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text"> 左右子树为叶子节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#leafblockfps%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.1.</span> <span class="nav-text"> leafBlockFPs数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E5%87%BA%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%8E%92%E5%BA%8F%E7%BB%B4%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text"> 选出叶子节点的排序维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#commonprefixlengths%E6%95%B0%E7%BB%84"><span class="nav-number">2.1.</span> <span class="nav-text"> commonPrefixLengths数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usedbytes%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text"> usedBytes数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text"> 叶子节点的排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0leafblockfps%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text"> 更新leafBlockFPs数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E6%A1%A3%E5%8F%B7%E4%BF%A1%E6%81%AF%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dim%E4%B8%AD"><span class="nav-number">5.</span> <span class="nav-text"> 写入文档号信息到索引文件.dim中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E7%9B%B8%E5%90%8C%E5%89%8D%E7%BC%80%E4%BF%A1%E6%81%AF%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dim%E4%B8%AD"><span class="nav-number">6.</span> <span class="nav-text"> 写入相同前缀信息到索引文件.dim中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

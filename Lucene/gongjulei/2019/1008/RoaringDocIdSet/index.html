@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            RoaringDocIdSet |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        RoaringDocIdSet
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-10-08 00:00:00</span>
+                <span class="mobile">2019-10-08 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 21:13:53 GMT+0800">2023-10-08 21:13:53</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docIdSet/">docIdSet</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RoaringDocIdSet/">RoaringDocIdSet</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  RoaringDocIdSet的设计灵感来源于<a class="link"   target="_blank" rel="noopener" href="http://roaringbitmap.org" >RoaringBitmap<i class="fas fa-external-link-alt"></i></a>，Lucene根据自身需求有着自己的的实现方法，来实现对文档号的处理（存储，读取）。</p>
+<h1 id="roaringbitmap"><a class="markdownIt-Anchor" href="#roaringbitmap"></a> RoaringBitmap</h1>
+<p>  位集合（bitsets）通常也被成为位图（bitMaps），它是一种常用的快速数据结构（fast data structures），但由于它对内存的开销较大，所以我们通常会使用经过压缩处理的bitMaps，而这便是RoaringBitmap。</p>
+<p>  本篇文章不会对RoaringBitmap展开介绍，因为Lucene有着自己的实现方法，感兴趣的同学可以看这两个链接：<a class="link"   target="_blank" rel="noopener" href="http://roaringbitmap.org" >http://roaringbitmap.org<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://github.com/RoaringBitmap/RoaringBitmap%E3%80%82" >https://github.com/RoaringBitmap/RoaringBitmap。<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="roaringdocidset存储文档号流程图"><a class="markdownIt-Anchor" href="#roaringdocidset存储文档号流程图"></a> RoaringDocIdSet存储文档号流程图</h1>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/1.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/roaringdocidset_____.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<h2 id="文档号集合"><a class="markdownIt-Anchor" href="#文档号集合"></a> 文档号集合</h2>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/2.png">
+<p>  RoaringDocIdSet只允许处理按照文档号从小到大递增的文档号集合，每当处理一个新的文档号，称之为docId，会判断与上一个处理的文档号lastDocId的大小，如果小于等于lastDocId，说明文档号集合不满足要求，抛出如下的异常：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (docId &lt;= lastDocId) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Doc ids must be added in-order, got &quot;</span> + docId + <span class="string">&quot; which is &lt;= lastDocID=&quot;</span> + lastDocId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="是否还有未处理的文档号"><a class="markdownIt-Anchor" href="#是否还有未处理的文档号"></a> 是否还有未处理的文档号？</h2>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/3.png">
+<p>  我们从最小的文档号开始，逐个处理文档号集合中的文档号，当处理完所有的文档号，那么就完成了图1所示的流程。</p>
+<h2 id="是否处理上一个blocklastblock"><a class="markdownIt-Anchor" href="#是否处理上一个blocklastblock"></a> 是否处理上一个block（lastBLock）？</h2>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/4.png">
+<p>  <strong>block是什么</strong>：</p>
+<ul>
+<li>根据规则将文档号划分到一个或多个block中处理，在同一个block中的所有文档号会以同一种方式存储（存储的方式在下文中会介绍），不同block之间的存储方式没有相互联系。</li>
+</ul>
+<p>  <strong>规则是什么</strong>：</p>
+<ul>
+<li>规则如下:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docId &gt;&gt;&gt; <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>由上面的规则可以看出文档号从0开始，每65536个文档号被划分为一个block，如果我们有下面的文档号集合：</li>
+</ul>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/5.png">
+<ul>
+<li>划分后的block如下所示，根据规则，可以知道一个block中最多可以包含65536个文档号：</li>
+</ul>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/6.png">
+<p>  我们以图5中的文档号集合为例，当处理到文档号65536时，该文档号会被划分到第二个block中，那么此时我们就需要处理第一个block，此时第一个block成为图4中的lastBlock，同时第二个block成为currentBlock。</p>
+<h2 id="根据block中的文档号数量选择存储方式"><a class="markdownIt-Anchor" href="#根据block中的文档号数量选择存储方式"></a> 根据block中的文档号数量选择存储方式</h2>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/7.png">
+<p>  上文中我们说到使用block来存储文档号，并且一个block中最多存储65536个文档号，但是并没有给出block的数据结构，原因是block的数据结构取决于block中包含的文档号数量。</p>
+<h3 id="block的数据结构"><a class="markdownIt-Anchor" href="#block的数据结构"></a> block的数据结构</h3>
+<p>  block一共有两种数据结构：</p>
+<ul>
+<li>short类型数组：当block中包含的文档号数量小于4096个时，使用该数据结构</li>
+<li>FixedBitSet：当block中包含的文档号大于等于4096个时，使用该数据结构，FixedBitSet在前面的文章中已经介绍，这里不赘述，感兴趣的可以点击链接查看：<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/45.html" >https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/45.html<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>  <strong>short类型数组向FixedBitSet的转化（重要）</strong>：</p>
+<ul>
+<li>上文中我们说到，从图2中的文档号集合中依次处理每一个文档号，该文档号总是先用short类型数组存储，该数组的变量名为buffer，当该数组中的元素超过4096个时，那么如果下一个文档号仍然属于同一个block，<strong>那么需要先将short类型数组中所有元素存放到FixedBitSet对象中</strong>，该对象的变量名为denseBuffer，并且后续属于同一个block的文档号都使用denseBuffer存放，这就是转化的过程</li>
+<li>**（重要）**图7的流程没有描述转化的过程，会让读者误以为使用了两种数据结构存储了同一个block中的文档号集合</li>
+</ul>
+<h2 id="处理上一个blocklastblock"><a class="markdownIt-Anchor" href="#处理上一个blocklastblock"></a> 处理上一个block（lastBlock）</h2>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/8.png">
+<p>  根据block中包含的文档号的数量来判断稠密度：</p>
+<ul>
+<li>稀疏：block中<strong>存储</strong>的文档号数量<strong>小于等于</strong>4096个认为是稀疏的</li>
+<li>稠密：block中<strong>未存储</strong>的文档号数量<strong>小于</strong>4096个认为是稠密度，一个block最多可以存储65536个文档号，即稠密的block中<strong>存储</strong>的文档号数量大于等于61440个文档号</li>
+<li>既不稀疏也不稠密：block中<strong>存储</strong>的文档号数量大于4095并且小于61440个认为是既不稀疏也不稠密</li>
+</ul>
+<p>  <strong>不同稠密度的文档号集合如何存储：</strong></p>
+<ul>
+<li>稀疏：使用short类型数组存储</li>
+<li>稠密：计算出那些未存储的文档号，然后使用short类型数组存储</li>
+<li>既不稀疏也不稠密：使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>存储</li>
+</ul>
+<p>  例如我们以下的文档号集合：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/9.png">
+<p>  图10描述了将图9中的文档号划分到不同的block，<strong>其中第一个block中包含了0~65533共65534个文档号</strong>：</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/10.png">
+<p>  图11描述了进行了稠密度计算后，将处理后的block添加到block数组中，第一个block包含了65534个文档号，故认为是稠密的，由于一个block最多只能存储65536个，那么计算出那些未存储的文档号，即65534跟65535两个文档号，然后存储它们两个，而第二个block跟第三个block都只包含了2个文档号，所以认为是稀疏的，直接存储即可：</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/RoaringDocIdSet/11.png">
+<h1 id="roaringdocidset读取文档号"><a class="markdownIt-Anchor" href="#roaringdocidset读取文档号"></a> RoaringDocIdSet读取文档号</h1>
+<p>  RoaringDocIdSet提供了两种方法来读取文档号:</p>
+<ul>
+<li>获取所有文档号：这种方法只需要逐个block数组的每一个元素，如果block使用short类型数组存储，那么顺序遍历该数组中的元素，如果使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>存储，其遍历方法见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet<i class="fas fa-external-link-alt"></i></a></li>
+<li>判断某个文档号是否存在：根据下面的规则，找到该文档号属于block数组中的哪一个block，如果block使用short类型数组存储，那么使用<strong>二分法</strong>尝试在该数组中找，如果使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>存储，其查找方法见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docId &gt;&gt;&gt; <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  个人觉得直接看源码应该比看我写的文章能更快的了解RoaringDocIdSet😁，所以点击这个链接看下吧：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/RoaringDocIdSet.java%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/RoaringDocIdSet.java。<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/RamUsageEstimator/RamUsageEstimator.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docId/">docId</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docIdSet/">docIdSet</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/RoaringDocIdSet/">RoaringDocIdSet</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="SegmentReader（一）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SegmentReader（一）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0929/NRT%EF%BC%88%E4%BA%94%EF%BC%89/"
+                                   title="近实时搜索NRT（五）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">近实时搜索NRT（五）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringbitmap"><span class="nav-number">1.</span> <span class="nav-text"> RoaringBitmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringdocidset%E5%AD%98%E5%82%A8%E6%96%87%E6%A1%A3%E5%8F%B7%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> RoaringDocIdSet存储文档号流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8F%B7%E9%9B%86%E5%90%88"><span class="nav-number">2.1.</span> <span class="nav-text"> 文档号集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.2.</span> <span class="nav-text"> 是否还有未处理的文档号？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%A4%84%E7%90%86%E4%B8%8A%E4%B8%80%E4%B8%AAblocklastblock"><span class="nav-number">2.3.</span> <span class="nav-text"> 是否处理上一个block（lastBLock）？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEblock%E4%B8%AD%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7%E6%95%B0%E9%87%8F%E9%80%89%E6%8B%A9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text"> 根据block中的文档号数量选择存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.4.1.</span> <span class="nav-text"> block的数据结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8A%E4%B8%80%E4%B8%AAblocklastblock"><span class="nav-number">2.5.</span> <span class="nav-text"> 处理上一个block（lastBlock）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringdocidset%E8%AF%BB%E5%8F%96%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text"> RoaringDocIdSet读取文档号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringbitmap"><span class="nav-number">1.</span> <span class="nav-text"> RoaringBitmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringdocidset%E5%AD%98%E5%82%A8%E6%96%87%E6%A1%A3%E5%8F%B7%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> RoaringDocIdSet存储文档号流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8F%B7%E9%9B%86%E5%90%88"><span class="nav-number">2.1.</span> <span class="nav-text"> 文档号集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.2.</span> <span class="nav-text"> 是否还有未处理的文档号？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%A4%84%E7%90%86%E4%B8%8A%E4%B8%80%E4%B8%AAblocklastblock"><span class="nav-number">2.3.</span> <span class="nav-text"> 是否处理上一个block（lastBLock）？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEblock%E4%B8%AD%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7%E6%95%B0%E9%87%8F%E9%80%89%E6%8B%A9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text"> 根据block中的文档号数量选择存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.4.1.</span> <span class="nav-text"> block的数据结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8A%E4%B8%80%E4%B8%AAblocklastblock"><span class="nav-number">2.5.</span> <span class="nav-text"> 处理上一个block（lastBlock）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roaringdocidset%E8%AF%BB%E5%8F%96%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text"> RoaringDocIdSet读取文档号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

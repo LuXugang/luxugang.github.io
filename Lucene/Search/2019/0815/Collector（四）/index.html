@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            Collector（四） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        Collector（四）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-08-15 00:00:00</span>
+                <span class="mobile">2019-08-15 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 15:47:41 GMT+0800">2023-10-09 15:47:41</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/collector/">collector</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexSort/">indexSort</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>，继续介绍其他的收集器。</p>
+<p>  图1是Lucene常用的几个Collector：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/1.png">
+<h1 id="topdocscollector"><a class="markdownIt-Anchor" href="#topdocscollector"></a> TopDocsCollector</h1>
+<h2 id="topfieldcollector"><a class="markdownIt-Anchor" href="#topfieldcollector"></a> TopFieldCollector</h2>
+<p>  根据过滤（filtering）规则，TopFieldCollector派生出的两个子类：</p>
+<ul>
+<li>SimpleFieldCollector：无过滤规则</li>
+<li>PagingFieldCollector：有过滤规则，具体内容在下文展开</li>
+</ul>
+<h3 id="simplefieldcollector"><a class="markdownIt-Anchor" href="#simplefieldcollector"></a> SimpleFieldCollector</h3>
+<p>  SimpleFieldCollector的collect(int doc)方法的流程图：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/2.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector%EF%BC%88%E5%9B%9B%EF%BC%89/simplefieldcollector.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  在介绍每个流程之前，先介绍下TopFieldCollector中的几个变量：</p>
+<ul>
+<li>trackMaxScore：该值是TopFieldCollector类的构造参数，用来描述是否需要记录所有满足查询条件的文档集合中最高的文档打分值，用maxScore用来记录该最大值</li>
+<li>trackDocScores：该值是TopFieldCollector类的构造参数，用来描述是否需要记录所有满足查询条件的文档的文档打分值</li>
+<li>totalHits：该值描述了Collector处理的满足搜索条件的文档数量，每当进入图2的流程，该值就递增一次。</li>
+</ul>
+<p>  如果业务中不需要用到文档的打分值或者maxScore，强烈建议另这两个参数为false，因为找出maxScore或者文档的打分值需要遍历所有满足查询条件的文档，无法提前结束Collector工作（canEarlyTerminate），在满足查询提交的文档数量较大的情况下，提前结束Collector的收集工作能显著提高查询性能。canEarlyTerminate会在下文中介绍</p>
+<h4 id="记录文档打分值最高的文档"><a class="markdownIt-Anchor" href="#记录文档打分值最高的文档"></a> 记录文档打分值最高的文档</h4>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/3.png">
+<p>  如果参数trackMaxScore为true，那么Collector每处理一篇文档，就要记录该文档的打分值score，如果score大于当前maxScore的值，则更新maxScore的值。</p>
+<h4 id="添加文档信息"><a class="markdownIt-Anchor" href="#添加文档信息"></a> 添加文档信息</h4>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/4.png">
+<p>  使用优先级队列PriorityQueue来存放满足搜索条件的文档信息（<strong>文档信息至少包含了文档打分score以及文档号docId</strong>），分数最低的文档信息位于堆顶，堆的大小默认为段中的文档总数（用户也可以指定堆的大小，即用户期望的返回结果TopN的N值）。</p>
+<p>  如果堆没有满，那么将文档号交给FieldComparator，FieldComparator的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0415/FieldComparator&amp;&amp;LeafFieldComparator" >FieldComparator<i class="fas fa-external-link-alt"></i></a>的文章中介绍了，不赘述，它用来描述文档间的排序关系（<strong>从代码层面讲，通过FieldComparator实现了优先级队列<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java" >PriorityQueue的lessThan()<i class="fas fa-external-link-alt"></i></a>方法</strong>），接着添加文档信息到堆中。</p>
+<h4 id="设置bottom值"><a class="markdownIt-Anchor" href="#设置bottom值"></a> 设置bottom值</h4>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/5.png">
+<p>  在<code>添加文档信息到堆中</code>流程后，如果此时堆正好满了，那么我们需要设置bottom的值，即从我们已经处理的文档中找出最差的（the weakest，sorted last），使得当处理下一篇文档时，只需要跟这个最差的文档进行比较即可。</p>
+<h4 id="仅统计满足查询条件的文档个数"><a class="markdownIt-Anchor" href="#仅统计满足查询条件的文档个数"></a> 仅统计满足查询条件的文档个数</h4>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/6.png">
+<p>  在堆满的情况的下，并且collectedAllCompetitiveHits为true，直接可以退出，尽管直接退出了，还是统计了totalHits的值，所以从collectedAllCompetitiveHits的命名方式也可以看出来只是统计了totalHits。</p>
+<p>  <strong>满足下面条件的情况下，collectedAllCompetitiveHits会为true</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canEarlyStopComparing == <span class="literal">true</span> &amp;&amp; canEarlyTerminate == <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>canEarlyStopComparing：该值描述了是否可以提前结束域比较，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>我们提到，当索引期间通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setIndexSort(Sort sort)<i class="fas fa-external-link-alt"></i></a>设置的排序规则与搜索期间提供的排序规则一致时，Collector收到的文档集合已经是有序的，在堆已满的情况下，后面处理的文档号就没有比较的必要性了，那么canEarlyStopComparing的值会被true，每次获取一个段的信息时设置canEarlyStopComparing，即调用getLeafCollector(LeafReaderContext context) 时候设置（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89" >Collector（一）<i class="fas fa-external-link-alt"></i></a>）。</li>
+<li>canEarlyTerminate：该值描述了是否可以提前结束Collector的收集工作，canEarlyTerminate设置为true需要满足下面的条件：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trackTotalHits == false &amp;&amp; trackMaxScore == false &amp;&amp; canEarlyStopComparing</span><br></pre></td></tr></table></figure>
+<p>  如果满足上面的条件，Lucene会通过抛出异常的方式结束Collector，该异常会被IndexSearcher捕获。这样的好处在于能提高查询性能。比如说某一次查询，我们需要返回Top5，但是满足搜索条件的文档数量有10000W条，那么在Collector中当处理了5篇文档后（文档在段中是有序的），就可以直接返回结果了。</p>
+<p>  如果条件不满足，即canEarlyTerminate的值为false，那么尽管我们已经收集了Top5的数据（查询结果不会再变化），但是要继续遍历处理剩余的9995篇文档，因为我们需要记录totalHits（如果trackTotalHits为true）或者需要获得打分值最大的文档（如果trackMaxScore为true），所以此时collectedAllCompetitiveHits为true，继续处理下一篇文档</p>
+<h4 id="更新最差的the-weakestsorted-last文档"><a class="markdownIt-Anchor" href="#更新最差的the-weakestsorted-last文档"></a> 更新最差的（the weakest，sorted last）文档</h4>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/7.png">
+<p>  通过与域比较器（FieldComparator）的bottom值比较，如果比该值更好（competitive），那么先替换bottom，然后重新算出新的bottom，随后还要替换堆顶元素，然后调整堆，算出新的堆顶元素，最后退出继续处理下一篇文档。</p>
+<h4 id="无法提前结束域比较"><a class="markdownIt-Anchor" href="#无法提前结束域比较"></a> 无法提前结束域比较</h4>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/8.png">
+<p>  由于通过域比较后，当前文档比bottom还要差，那么先通过canEarlyStopComparing判断出能不能提前结束比较，如果canEarlyStopComparing为false，则退出并处理下一篇文档。</p>
+<p>  canEarlyStopComparing为false说明段中的文档没有按照搜索期间的排序规则进行排序，所以当前已经收集的TopN未必是最终的搜索结果，所以退出处理下一篇文档。</p>
+<h4 id="设置collectedallcompetitivehits为true"><a class="markdownIt-Anchor" href="#设置collectedallcompetitivehits为true"></a> 设置collectedAllCompetitiveHits为true</h4>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/9.png">
+<p>  可以提前结束域比较，即canEarlyStopComparing为true，并且不可以提前结束Collector的收集工作，即canEarlyTerminate为false，那么同时满足这两个条件就可以设置collectedAllCompetitiveHits为true了。使得处理下一篇文档时就可以走图6中的流程了。</p>
+<h4 id="提前结束collector的收集工作"><a class="markdownIt-Anchor" href="#提前结束collector的收集工作"></a> 提前结束Collector的收集工作</h4>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/10.png">
+<p>  可以提前结束Collector的收集工作，那么我们先估算剩余满足查询条件的文档数量，通过线性估算出实现，估算方法不展开介绍，没有实际意义。</p>
+<p>  接着设置一个earlyTerminated的值为true，用户在得到查询结果后可以通过该值来了解Collector提前结束收集工作这个事件。</p>
+<p>  通过抛出<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/CollectionTerminatedException.java" >CollectionTerminatedException<i class="fas fa-external-link-alt"></i></a>异常的方式来实现，大家可以点击链接看下源码中对这个异常的解释。</p>
+<h3 id="pagingfieldcollector"><a class="markdownIt-Anchor" href="#pagingfieldcollector"></a> PagingFieldCollector</h3>
+<p>  PagingFieldCollector同<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>中的PagingTopScoreDocCollector一样，相对于SimpleFieldCollector实现了分页功能，分页功能的介绍见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>，不赘述，collect(int doc)的流程图是相似的，并且用红圈标记出不同处。</p>
+<p>  PagingFieldCollector的collect(int doc)方法的流程图：</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector（四）/11.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/Collector/Collector%EF%BC%88%E5%9B%9B%EF%BC%89/pagingfieldcollector.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<h4 id="是否已经被收集了"><a class="markdownIt-Anchor" href="#是否已经被收集了"></a> 是否已经被收集了</h4>
+<p>  <code>是否已经被收集了</code>描述的是该文档号是否已经在前面的搜索中被收集了，判断的条件如下，如果为true，说明该文档已经被收集了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">topCmp &gt; <span class="number">0</span> || (topCmp == <span class="number">0</span> &amp;&amp; doc &lt;= afterDoc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>topCmp：该值描述的当前文档与FileComparator的top值进行比较后的值，top值描述的是之前所有分页搜索的结果中最差的文档，在初始化PagingFieldCollector对象时需要用户提供该值（通过上一次的查询结果就能获得），并设置top的值。如果topCmp &gt; 0，说明当前文档比最差的文档好（competitive），必定该篇文档已经在前面某次分页搜索中被收集过了。</li>
+<li>afterDoc：该值描述的是之前所有分页搜索的结果中最差的文档的文档号，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>中我们说到，如果域比较无法区得出排序结果，由于文档号是唯一的，所以再根据文档号进行比较，文档号大的比文档号小的差（uncompetitive），所以在topCmp == 0 情况下，如果当前文档号小于等于afterDoc，必定该篇文档已经在前面某次分页搜索中被收集过了。</li>
+</ul>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  在下一篇文档中，我们将继续介绍最后一个Collector，即DiversifiedTopDocsCollector，这将是Collector系列文章的最后一篇。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/Collector/Collector%EF%BC%88%E5%9B%9B%EF%BC%89/Collector%EF%BC%88%E5%9B%9B%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/collector/">collector</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/indexSort/">indexSort</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%94%EF%BC%89/"
+                                   title="查询原理（五）终"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">查询原理（五）终</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89/"
+                                   title="Collector（三）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Collector（三）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#topdocscollector"><span class="nav-number">1.</span> <span class="nav-text"> TopDocsCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#topfieldcollector"><span class="nav-number">1.1.</span> <span class="nav-text"> TopFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefieldcollector"><span class="nav-number">1.1.1.</span> <span class="nav-text"> SimpleFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3%E6%89%93%E5%88%86%E5%80%BC%E6%9C%80%E9%AB%98%E7%9A%84%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 记录文档打分值最高的文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 添加文档信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEbottom%E5%80%BC"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"> 设置bottom值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%85%E7%BB%9F%E8%AE%A1%E6%BB%A1%E8%B6%B3%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%96%87%E6%A1%A3%E4%B8%AA%E6%95%B0"><span class="nav-number">1.1.1.4.</span> <span class="nav-text"> 仅统计满足查询条件的文档个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%9C%80%E5%B7%AE%E7%9A%84the-weakestsorted-last%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.1.5.</span> <span class="nav-text"> 更新最差的（the weakest，sorted last）文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E6%8F%90%E5%89%8D%E7%BB%93%E6%9D%9F%E5%9F%9F%E6%AF%94%E8%BE%83"><span class="nav-number">1.1.1.6.</span> <span class="nav-text"> 无法提前结束域比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEcollectedallcompetitivehits%E4%B8%BAtrue"><span class="nav-number">1.1.1.7.</span> <span class="nav-text"> 设置collectedAllCompetitiveHits为true</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E7%BB%93%E6%9D%9Fcollector%E7%9A%84%E6%94%B6%E9%9B%86%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.1.8.</span> <span class="nav-text"> 提前结束Collector的收集工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pagingfieldcollector"><span class="nav-number">1.1.2.</span> <span class="nav-text"> PagingFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%94%B6%E9%9B%86%E4%BA%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> 是否已经被收集了</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#topdocscollector"><span class="nav-number">1.</span> <span class="nav-text"> TopDocsCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#topfieldcollector"><span class="nav-number">1.1.</span> <span class="nav-text"> TopFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefieldcollector"><span class="nav-number">1.1.1.</span> <span class="nav-text"> SimpleFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3%E6%89%93%E5%88%86%E5%80%BC%E6%9C%80%E9%AB%98%E7%9A%84%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 记录文档打分值最高的文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 添加文档信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEbottom%E5%80%BC"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"> 设置bottom值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%85%E7%BB%9F%E8%AE%A1%E6%BB%A1%E8%B6%B3%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%96%87%E6%A1%A3%E4%B8%AA%E6%95%B0"><span class="nav-number">1.1.1.4.</span> <span class="nav-text"> 仅统计满足查询条件的文档个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%9C%80%E5%B7%AE%E7%9A%84the-weakestsorted-last%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.1.5.</span> <span class="nav-text"> 更新最差的（the weakest，sorted last）文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E6%8F%90%E5%89%8D%E7%BB%93%E6%9D%9F%E5%9F%9F%E6%AF%94%E8%BE%83"><span class="nav-number">1.1.1.6.</span> <span class="nav-text"> 无法提前结束域比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEcollectedallcompetitivehits%E4%B8%BAtrue"><span class="nav-number">1.1.1.7.</span> <span class="nav-text"> 设置collectedAllCompetitiveHits为true</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E7%BB%93%E6%9D%9Fcollector%E7%9A%84%E6%94%B6%E9%9B%86%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.1.8.</span> <span class="nav-text"> 提前结束Collector的收集工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pagingfieldcollector"><span class="nav-number">1.1.2.</span> <span class="nav-text"> PagingFieldCollector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%94%B6%E9%9B%86%E4%BA%86"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> 是否已经被收集了</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

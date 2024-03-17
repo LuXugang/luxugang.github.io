@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            构造IndexWriter对象（一） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        构造IndexWriter对象（一）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-11-11 00:00:00</span>
+                <span class="mobile">2019-11-11 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Tue Oct 10 2023 21:49:08 GMT+0800">2023-10-10 21:49:08</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexWriter/">indexWriter</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  该系列文章将会介绍构造一个IndexWriter对象的流程，该流程总体分为下面三个部分：</p>
+<ul>
+<li>设置索引目录Directory</li>
+<li>设置IndexWriter的配置信息IndexWriterConfig</li>
+<li>调用IndexWriter的构造函数</li>
+</ul>
+<h1 id="设置索引目录directory"><a class="markdownIt-Anchor" href="#设置索引目录directory"></a> 设置索引目录Directory</h1>
+<p>  Directory用来维护索引目录中的索引文件，定义了<code>创建</code>、<code>打开</code>、<code>删除</code>、<code>读取</code>、<code>重命名</code>、<code>同步</code>(持久化索引文件至磁盘)、<code>校验和</code>（checksum computing）等抽象方法，索引目录中不存在多级目录，即不存在子文件夹的层次结构(no sub-folder hierarchy)，另外Directory的具体内容已经在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory%EF%BC%88%E4%B8%8A%EF%BC%89" >Directory<i class="fas fa-external-link-alt"></i></a>系列文章中介绍，这里不赘述。</p>
+<h1 id="设置indexwriter的配置信息indexwriterconfig"><a class="markdownIt-Anchor" href="#设置indexwriter的配置信息indexwriterconfig"></a> 设置IndexWriter的配置信息IndexWriterConfig</h1>
+<p>  在调用IndexWriter的构造函数之前，我们需要先初始化IndexWriter的配置信息IndexWriterConfig，IndexWriterConfig中的配置信息按照可以分为两类：</p>
+<ul>
+<li>不可变配置（unmodifiable configuration）：在实例化IndexWriter对象后，这些配置不可更改，即使更改了，也不会生效，因为仅在IndexWriter的构造函数中应用一次这些配置</li>
+<li>可变配置（modifiable configuration）：在实例化IndexWriter对象后，这些配置可以随时更改</li>
+</ul>
+<h2 id="不可变配置"><a class="markdownIt-Anchor" href="#不可变配置"></a> 不可变配置</h2>
+<p>  不可变配置包含的内容有：OpenMode、IndexDeletionPolicy、IndexCommit、Similarity、MergeScheduler、Codec、DocumentsWriterPerThreadPool、ReaderPooling、FlushPolicy、RAMPerThreadHardLimitMB、InfoStream、IndexSort、SoftDeletesField，下面我们一一介绍这些不可变配置。</p>
+<h3 id="openmode"><a class="markdownIt-Anchor" href="#openmode"></a> OpenMode</h3>
+<p>  OpenMode描述了在IndexWriter的初始化阶段，如何处理索引目录中的已有的索引文件，这里称之为旧的索引，OpenMode一共定义了三种模式，即：CREATE、APPEND、CREATE_OR_APPEND。</p>
+<ul>
+<li>CREATE：如果索引目录中已经有旧的索引（根据<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >Segment_N<i class="fas fa-external-link-alt"></i></a>文件读取旧的索引信息），那么会覆盖（Overwrite）这些旧的索引，但注意的是新的提交（commit）生成的Segment_N的N值是旧索引中最后一次提交生成的Segment_N的N值加一后的值，如下所示：</li>
+</ul>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（一）/1.png">
+<p>  图1为索引目录中的旧的索引，并且有三个Segment_N文件，即segments_1、segments_2、segments_3。</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/IndexWriter/构造IndexWriter对象（一）/2.png">
+<p>  接着我们通过CREATE打开图1的索引目录，并且执行了一次commit操作后，可以看出旧的索引信息被删除了（_0.cfe、_0.cfs、_0.si、_1.cfe、_1.cfs、_1.si、_2.cfe、_2.cfs、_2.si被删除了），并且新的提交（commit）生成的Segment_N（segment_4）的N值是旧索引中最后一次提交生成的Segment_N（segment_3）的N值加一后的值。</p>
+<ul>
+<li>APPEND：该打开模式打开索引目录会先读取索引目录中的旧索引，新的提交操作不会删除旧的索引，注意的是如果索引目录没有旧的索引（找不到任何的Segment_N文件），并且使用当前模式打开则会报错，报错信息如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IndexNotFoundException</span>(<span class="string">&quot;no segments* file found in &quot;</span> + directory + <span class="string">&quot;: files: &quot;</span> + Arrays.toString(files));</span><br></pre></td></tr></table></figure>
+<p>  上述的异常中，directory即上文提到的索引目录Directory，而Arrays.toString(files)用来输出索引目录中的所有文件。</p>
+<ul>
+<li>CREATE_OR_APPEND：该打开模式会先判断索引目录中是否有旧的索引，如果存在旧的索引，那么相当于APPEND模式，否则相当于CREATE模式</li>
+</ul>
+<p>  OpenMode可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setOpenMode(OpenMode openMode)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为CREATE_OR_APPEND。</p>
+<h3 id="indexdeletionpolicy"><a class="markdownIt-Anchor" href="#indexdeletionpolicy"></a> IndexDeletionPolicy</h3>
+<p>  IndexDeletionPolicy是索引删除策略，该策略用来描述当一个新的提交生成后，如何处理上一个提交，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>的文章中详细介绍了几种索引删除策略，这里不赘述。</p>
+<h3 id="indexcommit"><a class="markdownIt-Anchor" href="#indexcommit"></a> IndexCommit</h3>
+<p>  执行一次提交操作（执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >commit<i class="fas fa-external-link-alt"></i></a>方法）后，这次提交包含的所有的段的信息用IndexCommit来描述，其中至少包含了两个信息，分别是<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0610/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsegments_N" >segment_N<i class="fas fa-external-link-alt"></i></a>文件跟<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Store/2019/0613/Directory%EF%BC%88%E4%B8%80%EF%BC%89" >Directory<i class="fas fa-external-link-alt"></i></a>，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0909/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之commit（二）<i class="fas fa-external-link-alt"></i></a>的文章中，我们提到了一种索引删除策略SnapshotDeletionPolicy，在每次执行提交操作后，我们可以通过主动调用SnapshotDeletionPolicy.snapshot()来实现快照功能，而该方法的返回值就是IndexCommit。</p>
+<p>  如果设置了IndexCommit，那么在构造IndexWriter对象期间，会先读取IndexCommit中的索引信息，IndexCommit可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setIndexCommit(IndexCommit commit)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为null。</p>
+<p>  另外IndexCommit的更多的用法见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >近实时搜索NRT<i class="fas fa-external-link-alt"></i></a>系列文章。</p>
+<h3 id="similarity"><a class="markdownIt-Anchor" href="#similarity"></a> Similarity</h3>
+<p>  Similarity描述了Lucene打分的组成部分，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0820/%E6%9F%A5%E8%AF%A2%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89" >查询原理<i class="fas fa-external-link-alt"></i></a>系列文章中详细介绍了Lucene如何使用BM25算法实现对文档的打分，这里不赘述。</p>
+<p>  Similarity可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setSimilarity(Similarity similarity)<i class="fas fa-external-link-alt"></i></a>方法设置，默认使用BM25。</p>
+<h3 id="mergescheduler"><a class="markdownIt-Anchor" href="#mergescheduler"></a> MergeScheduler</h3>
+<p>  MergeScheduler即段的合并调度策略，用来定义如何执行一个或多个段的合并，比如并发执行多个段的合并任务时的执行先后顺序，磁盘IO限制，Lucene7.5.0中提供了三种可选的段的合并调度策略，见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0519/MergeScheduler" >MergeScheduler<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  MergeScheduler可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setMergeScheduler(MergeScheduler mergeScheduler)<i class="fas fa-external-link-alt"></i></a>方法设置，默认使用ConcurrentMergeScheduler。</p>
+<h3 id="codec"><a class="markdownIt-Anchor" href="#codec"></a> Codec</h3>
+<p>  Codec定义了索引文件的数据结构，即描述了每一种索引文件需要记录哪些信息，以及如何存储这些信息，在索引文件的专栏中介绍了所有索引文件的数据结构，这里不赘述。</p>
+<p>  Codec可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setCodec(Codec codec)<i class="fas fa-external-link-alt"></i></a>方法设置，在Lucene7.5.0版本中，默认使用Lucene70Codec。</p>
+<h3 id="documentswriterperthreadpool"><a class="markdownIt-Anchor" href="#documentswriterperthreadpool"></a> DocumentsWriterPerThreadPool</h3>
+<p>  DocumentsWriterPerThreadPool是一个逻辑上的线程池，它实现了类似Java线程池的功能，在Java的线程池中，新来的一个任务可以从<a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html" >ExecutorService<i class="fas fa-external-link-alt"></i></a>中获得一个线程去处理该任务，而在DocumentsWriterPerThreadPool中，每当IndexWriter要添加文档，会从DocumentsWriterPerThreadPool中获得一个ThreadState去执行，故在多线程（持有相同的IndexWriter对象引用）执行添加文档操作时，每个线程都会获得一个ThreadState对象，DocumentsWriterPerThreadPool以及ThreadState的具体介绍可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>，这里不赘述。</p>
+<p>  如果不是深度使用Lucene，应该不会去调整这个配置吧。。。</p>
+<h3 id="readerpooling"><a class="markdownIt-Anchor" href="#readerpooling"></a> ReaderPooling</h3>
+<p>  ReaderPooling该值是一个布尔值，用来描述是否允许共用（pool）<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89" >SegmentReader<i class="fas fa-external-link-alt"></i></a>，共用（pool）可以理解为缓存，在第一次读取一个段的信息时，即获得该段对应的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89" >SegmentReader<i class="fas fa-external-link-alt"></i></a>，并且使用ReaderPool（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1025/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89" >执行段的合并（二）<i class="fas fa-external-link-alt"></i></a>中关于ReaderPool的介绍）来缓存这些SegmentReader，使得在处理删除信息（删除操作涉及多个段时效果更突出）、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0916/NRT%EF%BC%88%E4%B8%80%EF%BC%89" >NRT<i class="fas fa-external-link-alt"></i></a>搜索时可以提供更好的性能，至于为什么共用/缓存SegmentReader能提高性能见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1014/SegmentReader%EF%BC%88%E4%B8%80%EF%BC%89" >SegmentReader（一）<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  ReaderPooling可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setReaderPooling(boolean readerPooling)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为true。</p>
+<h3 id="flushpolicy"><a class="markdownIt-Anchor" href="#flushpolicy"></a> FlushPolicy</h3>
+<p>  FlushPolicy即flush策略，准确的说应该称为 自动flush策略，因为flush分为自动flush跟主动flush（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>），即显式调用IndexWriter.flush( )方法，FlushPolicy描述了IndexWriter执行了增删改的操作后，将修改后的索引信息写入磁盘的时机（实际是存入磁盘缓存，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bcommit%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之commit（一）<i class="fas fa-external-link-alt"></i></a>中关于<code>执行同步磁盘工作</code>的介绍）。</p>
+<p>  Lucene7.5.0版本中，有且仅有一个FlushPolicy：FlushByRamOrCountsPolicy，可以看文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>中关于FlushByRamOrCountsPolicy的详细介绍。</p>
+<h3 id="ramperthreadhardlimitmb"><a class="markdownIt-Anchor" href="#ramperthreadhardlimitmb"></a> RAMPerThreadHardLimitMB</h3>
+<p>  该配置在后面介绍可变配置中的MaxBufferedDocs、RAMBufferSizeMB时一起介绍。</p>
+<h3 id="infostream"><a class="markdownIt-Anchor" href="#infostream"></a> InfoStream</h3>
+<p>  InfoStream用来在对Lucene进行调试时实现debug输出信息，在业务中打印debug信息会降低Lucene的性能，故在业务中使用默认值就行，即不输出debug信息。</p>
+<p>  InfoStream可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setInfoStream(InfoStream infoStream)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/InfoStream.java" >NoOutput<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="indexsort"><a class="markdownIt-Anchor" href="#indexsort"></a> IndexSort</h3>
+<p>  IndexSort描述了在索引阶段如何对segment内的文档进行排序，排序的好处及其实现方式见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0814/Collector%EF%BC%88%E4%B8%89%EF%BC%89" >Collector（三）<i class="fas fa-external-link-alt"></i></a>中的<strong>预备知识</strong>及文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中的<strong>sortMap</strong>。</p>
+<p>  IndexSort可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setIndexSort(Sort sort)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为null。</p>
+<h3 id="softdeletesfield"><a class="markdownIt-Anchor" href="#softdeletesfield"></a> SoftDeletesField</h3>
+<p>  SoftDeletesField用来定义哪些域为软删除的域，关于软删除的概念在后面的文章中会用多篇文章的篇幅介绍，这里暂不展开。</p>
+<p>  IndexSort可以通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setSoftDeletesField(String softDeletesField)<i class="fas fa-external-link-alt"></i></a>方法设置，默认值为null。</p>
+<h2 id="可变配置"><a class="markdownIt-Anchor" href="#可变配置"></a> 可变配置</h2>
+<p>  可变配置包含的内容有：MergePolicy、MaxBufferedDocs、RAMBufferSizeMB、MergedSegmentWarmer、UseCompoundFile、CommitOnClose、CheckPendingFlushUpdate。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  基于篇幅，我们将在下一篇文章中介绍可变配置的内容。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/IndexWriter/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/indexWriter/">indexWriter</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2019/1114/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%8C%EF%BC%89/"
+                                   title="构造IndexWriter对象（二）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">构造IndexWriter对象（二）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/1031/%E6%89%A7%E8%A1%8C%E6%AE%B5%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%94%EF%BC%89/"
+                                   title="执行段的合并（五）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">执行段的合并（五）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B4%A2%E5%BC%95%E7%9B%AE%E5%BD%95directory"><span class="nav-number">1.</span> <span class="nav-text"> 设置索引目录Directory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEindexwriter%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AFindexwriterconfig"><span class="nav-number">2.</span> <span class="nav-text"> 设置IndexWriter的配置信息IndexWriterConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text"> 不可变配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openmode"><span class="nav-number">2.1.1.</span> <span class="nav-text"> OpenMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexdeletionpolicy"><span class="nav-number">2.1.2.</span> <span class="nav-text"> IndexDeletionPolicy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexcommit"><span class="nav-number">2.1.3.</span> <span class="nav-text"> IndexCommit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#similarity"><span class="nav-number">2.1.4.</span> <span class="nav-text"> Similarity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mergescheduler"><span class="nav-number">2.1.5.</span> <span class="nav-text"> MergeScheduler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codec"><span class="nav-number">2.1.6.</span> <span class="nav-text"> Codec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#documentswriterperthreadpool"><span class="nav-number">2.1.7.</span> <span class="nav-text"> DocumentsWriterPerThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readerpooling"><span class="nav-number">2.1.8.</span> <span class="nav-text"> ReaderPooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushpolicy"><span class="nav-number">2.1.9.</span> <span class="nav-text"> FlushPolicy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ramperthreadhardlimitmb"><span class="nav-number">2.1.10.</span> <span class="nav-text"> RAMPerThreadHardLimitMB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#infostream"><span class="nav-number">2.1.11.</span> <span class="nav-text"> InfoStream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexsort"><span class="nav-number">2.1.12.</span> <span class="nav-text"> IndexSort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softdeletesfield"><span class="nav-number">2.1.13.</span> <span class="nav-text"> SoftDeletesField</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text"> 可变配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B4%A2%E5%BC%95%E7%9B%AE%E5%BD%95directory"><span class="nav-number">1.</span> <span class="nav-text"> 设置索引目录Directory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEindexwriter%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AFindexwriterconfig"><span class="nav-number">2.</span> <span class="nav-text"> 设置IndexWriter的配置信息IndexWriterConfig</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text"> 不可变配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openmode"><span class="nav-number">2.1.1.</span> <span class="nav-text"> OpenMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexdeletionpolicy"><span class="nav-number">2.1.2.</span> <span class="nav-text"> IndexDeletionPolicy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexcommit"><span class="nav-number">2.1.3.</span> <span class="nav-text"> IndexCommit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#similarity"><span class="nav-number">2.1.4.</span> <span class="nav-text"> Similarity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mergescheduler"><span class="nav-number">2.1.5.</span> <span class="nav-text"> MergeScheduler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codec"><span class="nav-number">2.1.6.</span> <span class="nav-text"> Codec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#documentswriterperthreadpool"><span class="nav-number">2.1.7.</span> <span class="nav-text"> DocumentsWriterPerThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readerpooling"><span class="nav-number">2.1.8.</span> <span class="nav-text"> ReaderPooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushpolicy"><span class="nav-number">2.1.9.</span> <span class="nav-text"> FlushPolicy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ramperthreadhardlimitmb"><span class="nav-number">2.1.10.</span> <span class="nav-text"> RAMPerThreadHardLimitMB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#infostream"><span class="nav-number">2.1.11.</span> <span class="nav-text"> InfoStream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexsort"><span class="nav-number">2.1.12.</span> <span class="nav-text"> IndexSort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softdeletesfield"><span class="nav-number">2.1.13.</span> <span class="nav-text"> SoftDeletesField</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text"> 可变配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

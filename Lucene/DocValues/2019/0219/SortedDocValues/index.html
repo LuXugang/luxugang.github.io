@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            SortedDocValues |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        SortedDocValues
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-02-19 00:00:00</span>
+                <span class="mobile">2019-02-19 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 16:01:30 GMT+0800">2023-10-09 16:01:30</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/DocValues/">DocValues</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DocValues/">DocValues</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.4k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>SortedDocValues同NumericDocValues、SortedNumericDocValues一样，在实际应用中最多的场景用于提供给搜索结果一个排序规则。本篇文章只讲述使用了SortedDocValues后，其在.dvd、.dvm文件中的索引结构。在以后的介绍例如 facet、join、group等功能时，会详细介绍如何根据.dvd、dvm中的索引数据进行查询的过程。</p>
+<h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
+<p>下面出现的变量名皆为源码中的同名变量名。</p>
+<h2 id="termid"><a class="markdownIt-Anchor" href="#termid"></a> TermId</h2>
+<p>在索引阶段，根据IndexWriter中添加的document的顺序，有序的处理每一个document中的SortedDocValuesField。并且对每一个SortedDocValuesField的域值赋予一个从0开始递增的termId，相同的域值具有相同的termId。<br />
+图1：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/1.png"><br />
+域值与termId的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">域值</th>
+<th>aa</th>
+<th>cc</th>
+<th>bb</th>
+<th>ff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">termId</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="currentvalues数组"><a class="markdownIt-Anchor" href="#currentvalues数组"></a> currentValues[]数组</h2>
+<p>currentValues[]数组中，下标值为文档号docId，数组元素为termId。在索引阶段，由于处理的数据是按照IndexWriter中添加的document的顺序进行的，即按照第一篇文档(document)，文档号为0，文档号递增的顺序。所以在这个过程中，就可以实现通过数组方式来记录 文档号(docId) 跟 termId 的映射关系<br />
+图2：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/2.png"></p>
+<h2 id="sortedvalues数组-ord"><a class="markdownIt-Anchor" href="#sortedvalues数组-ord"></a> sortedValues[]数组 &amp;&amp; ord</h2>
+<p>sortedValues[]数组中的数组元素是termId，数组下标是ord值。下面的一句话很重要：数组元素是有序的，但是排序规则不是根据termId的值，而是根据termId对应的域值的字典序。<br />
+图3：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/3.png"></p>
+<h2 id="ordmap数组"><a class="markdownIt-Anchor" href="#ordmap数组"></a> ordMap[]数组</h2>
+<p>sortedValues[]数组中实现了 数组下标ord 到 数组元素termId的映射，而ordMap[]数组则是实现了 数组下标termId 到 数组元素 ord的映射。<br />
+图4：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/4.png"></p>
+<h1 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h1>
+<h2 id="dvd"><a class="markdownIt-Anchor" href="#dvd"></a> dvd</h2>
+<p>图5：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/5.png"></p>
+<h3 id="dociddata"><a class="markdownIt-Anchor" href="#dociddata"></a> DocIdData</h3>
+<p>DocIdData中记录包含当前域的文档号。<br />
+如果IndexWriter添加的document中不都包含当前域，那么需要将包含当前域的文档号记录到DocIdData中，并且使用IndexedDISI类来存储文档号，<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI<i class="fas fa-external-link-alt"></i></a>存储文档号后生成的数据结构单独的作为一篇文章介绍，在这里不赘述。</p>
+<h3 id="ords"><a class="markdownIt-Anchor" href="#ords"></a> Ords</h3>
+<p>Ords记录了每一篇文档中SortedDocValuesField的域值对应的ord值。这里的ord值即上文中的预备知识中的ord值。</p>
+<h3 id="termsdict"><a class="markdownIt-Anchor" href="#termsdict"></a> TermsDict</h3>
+<p>TermsDict中根据域值大小，并且按块处理，存储所有的SortedDocValuesField域值。<br />
+图6：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/6.png"></p>
+<h4 id="block"><a class="markdownIt-Anchor" href="#block"></a> Block</h4>
+<p>存储SortedDocValuesField的域值时，按照域值从小到大的顺序，并且按块处理所有的域值，相同的域值不会重复存储。<br />
+每16个域值按照一个块（block）处理，在一个块内，只存储第1个域值的完整值，对于剩余的15个域值，只存储与前一个域值不相同后缀的部分值（所以需要按照域值大小顺序存储才能尽可能减少空间占用），即前缀存储。<br />
+图7：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/7.png"></p>
+<h5 id="firsttermlength"><a class="markdownIt-Anchor" href="#firsttermlength"></a> FirstTermLength</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每个block的第1个域值的长度。</span><br></pre></td></tr></table></figure>
+<h5 id="firsttermvalue"><a class="markdownIt-Anchor" href="#firsttermvalue"></a> FirstTermValue</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每个block的第1个域值的完整值。</span><br></pre></td></tr></table></figure>
+<h5 id="prefixlength-suffixlength"><a class="markdownIt-Anchor" href="#prefixlength-suffixlength"></a> PrefixLength &amp;&amp; SuffixLength</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prefixLength是当前域值与前一个域值相同前缀的长度，如果当前当前是第10个域值，那么它跟第9个域值进行prefixLength的计算。</span><br><span class="line">suffixLength是除去相同前缀的剩余部分的长度。</span><br></pre></td></tr></table></figure>
+<h5 id="suffixvalue"><a class="markdownIt-Anchor" href="#suffixvalue"></a> SuffixValue</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">除去相同前缀的剩余部分的域值。</span><br></pre></td></tr></table></figure>
+<h4 id="blockindex"><a class="markdownIt-Anchor" href="#blockindex"></a> BlockIndex</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BlockIndex中记录了每一个block相对于第一个block的在.dvd文件中的偏移，在读取阶段，如果需要读取第n个block的数据，那么只要计算 第n个和第n+1个的blockIndex的差值，就可以获得第n个block在.dvd文件中的数据区间，实现随机访问。每一个block的blockIndex采用PackedInts进行压缩存储。</span><br></pre></td></tr></table></figure>
+<h4 id="block与ord的关系"><a class="markdownIt-Anchor" href="#block与ord的关系"></a> Block与ord的关系</h4>
+<p>由于域值是从小到大写入到所有Block中， 而在上文中的预备知识中得知，sortedValues[]数组的ord的值正是描述了域值的大小关系，所以写入到block中的第1个域值就是对应ord的值0，第8个域值就是对应ord的值7，ord的值从0开始递增。<br />
+下面的例子描述了我们搜索后的结果只要返回Top3，并且比较规则是根据SortedDocValuesField的域值进行比较。<br />
+图8：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/8.png"><br />
+但是满足搜索要求的文档只会将docId传入到Collector类的collect(int doc)方法中，即我们只能知道文档号的信息，无法获得当前文档中SortedDocValuesField的域值来做排序比较。<br />
+这时候我们可以根据文档号docId从IndexedDISI中找到<strong>段内编号（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI<i class="fas fa-external-link-alt"></i></a>）</strong>。段内编号作为currentValues[]数组下标值，取出数组元素，即termId，然后termId作为ordMap[]数组下标值，取出数组元素，即ord值。根据ord值我们就可以找到当前文档中的 SortedDocValuesField的域值在对应的Block中，然后遍历Block中的16个域值，直到找到我们想要的域值。<br />
+图9：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/9.png"></p>
+<h3 id="termsindex"><a class="markdownIt-Anchor" href="#termsindex"></a> TermsIndex</h3>
+<p>TermsDict中每遍历16个域值就处理为一个block，而在TermsIndex中则是每遍历1024个域值就记录一个域值的前缀值。<br />
+图10：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/10.png"></p>
+<h4 id="prefixvalue"><a class="markdownIt-Anchor" href="#prefixvalue"></a> PrefixValue</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">与上一个域值的相同的前缀值 加上 后缀值的第一个字节。</span><br></pre></td></tr></table></figure>
+<p>例如第1个域值为 “ab”、第1023个域值为&quot;<strong>abc</strong>dasdfsaf&quot; 、第1024个域值为&quot;<strong>abce</strong>ftn&quot;、第2047个域值为 “<strong>abcefto</strong>p” 、第2048个域值为 “<strong>abceftoq</strong>e”，那么存储到TermsIndex的数据如下：<br />
+图11：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/11.png"></p>
+<h4 id="prefixvalueindex"><a class="markdownIt-Anchor" href="#prefixvalueindex"></a> PrefixValueIndex</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrefixValueIndex中记录了每一个prefixValue相对于第一个prefixValue的在.dvd文件中的偏移，在读取阶段，如果需要读取第n个prefixValue的数据，那么只要计算 第n个和第n+1个的PrefixValueIndex的差值，就可以获得第n个prefixValue在.dvd文件中的数据区间，实现随机访问。每一个prefixValue的PrefixValueIndex采用PackedInts进行压缩存储。</span><br></pre></td></tr></table></figure>
+<h4 id="prefixvalue有什么用"><a class="markdownIt-Anchor" href="#prefixvalue有什么用"></a> PrefixValue有什么用</h4>
+<p>在TermsDict中，我们可以根据文档号在TermsDict找到对应的SortedDocValuesField的域值，但是通过TermsIndex我们就可以判断 某个域值是不是在SortedDocValuesField中。<br />
+例如我们需要判断域值 “abcef” 是否为SortedDocValuesField的一个域值，那么就可以使用二分法遍历PrefixValue，每次跟&quot;abcef&quot;比较，根据上面的例子，我们可以知道 “<strong>abce</strong>f” 大于““<strong>abce</strong>”，并且小于&quot;<strong>abceft</strong>oq”。<br />
+图12：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/12.png"><br />
+所以我们接着根据两个ord值去TermsDict中继续查找，同样的的使用二分法去遍历Block。</p>
+<h2 id="dvm"><a class="markdownIt-Anchor" href="#dvm"></a> dvm</h2>
+<p>图13：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/13.png"></p>
+<h3 id="fieldnumber"><a class="markdownIt-Anchor" href="#fieldnumber"></a> FieldNumber</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域的编号</span><br></pre></td></tr></table></figure>
+<h3 id="docvaluestype"><a class="markdownIt-Anchor" href="#docvaluestype"></a> DocvaluesType</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Docvalues的类型，本文中，这个值就是 SORTED。</span><br></pre></td></tr></table></figure>
+<h3 id="docidindex"><a class="markdownIt-Anchor" href="#docidindex"></a> DocIdIndex</h3>
+<p>DocIdIndex是对.dvd文件的一个索引，用来描述 .dvd文件中DocIdData在.dvd文件中的开始跟结束位置。</p>
+<h4 id="情况1"><a class="markdownIt-Anchor" href="#情况1"></a> 情况1：</h4>
+<p>图14：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/14.png"><br />
+如果IndexWriter添加的document中都包含当前域，那么只需要在DocIdIndex中添加标志信息即可。</p>
+<h4 id="情况2"><a class="markdownIt-Anchor" href="#情况2"></a> 情况2：</h4>
+<p>图15：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/15.png"><br />
+如果IndexWriter添加的document中不都包含当前域，那么.dvd文件中需要将包含当前的域的文档号信息都记录下来。</p>
+<h5 id="offset"><a class="markdownIt-Anchor" href="#offset"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.dvd文件中存放文档号的DocIdData在文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length"><a class="markdownIt-Anchor" href="#length"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为DocIdData在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<p>在读取阶段，通过offset跟length就可以获得所有的DocIdData数据。</p>
+<h3 id="numdocswithfield"><a class="markdownIt-Anchor" href="#numdocswithfield"></a> numDocsWithField</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">包含当前域的文档的个数。</span><br></pre></td></tr></table></figure>
+<h3 id="ordsindex"><a class="markdownIt-Anchor" href="#ordsindex"></a> OrdsIndex</h3>
+<h4 id="情况1-2"><a class="markdownIt-Anchor" href="#情况1-2"></a> 情况1：</h4>
+<p>图16：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/16.png"><br />
+如果只有一种类型的域值，那么写入固定的标志信息即可。</p>
+<h4 id="情况2-2"><a class="markdownIt-Anchor" href="#情况2-2"></a> 情况2：</h4>
+<p>图17：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/17.png"></p>
+<h5 id="numberofbitsperord"><a class="markdownIt-Anchor" href="#numberofbitsperord"></a> numberOfBitsPerOrd</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numberOfBitsPerOrd描述了存储ord值的固定bit位个数。</span><br></pre></td></tr></table></figure>
+<h5 id="offset-2"><a class="markdownIt-Anchor" href="#offset-2"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.dvd文件中存放ord的Ords在文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length-2"><a class="markdownIt-Anchor" href="#length-2"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为Ords在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<h3 id="termsdictmeta"><a class="markdownIt-Anchor" href="#termsdictmeta"></a> TermsDictMeta</h3>
+<p>图18：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/18.png"></p>
+<h4 id="termsdictsize"><a class="markdownIt-Anchor" href="#termsdictsize"></a> TermsDictSize</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域值的种类个数(不是域值的个数)</span><br></pre></td></tr></table></figure>
+<h4 id="termsdictblockshift"><a class="markdownIt-Anchor" href="#termsdictblockshift"></a> TermsDictBlockShift</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">描述了一个block中有多少个域值。</span><br></pre></td></tr></table></figure>
+<h4 id="direct_monotonic_block_shift"><a class="markdownIt-Anchor" href="#direct_monotonic_block_shift"></a> DIRECT_MONOTONIC_BLOCK_SHIFT</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIRECT_MONOTONIC_BLOCK_SHIFT用来在初始化byte buffer[]的大小，buffer数组用来存放BlockIndex。</span><br></pre></td></tr></table></figure>
+<h4 id="min"><a class="markdownIt-Anchor" href="#min"></a> Min</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记录一个最小值，在读取阶段用于解码。Min的含义请看我的源码注释。</span><br></pre></td></tr></table></figure>
+<h4 id="avginc"><a class="markdownIt-Anchor" href="#avginc"></a> AvgInc</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记录一个AvgInc，在读取阶段用于解码。AvgInc的含义请看我的源码注释。</span><br></pre></td></tr></table></figure>
+<h4 id="length-3"><a class="markdownIt-Anchor" href="#length-3"></a> Length</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BlockIndex的数据总长度</span><br></pre></td></tr></table></figure>
+<h4 id="bitsrequired"><a class="markdownIt-Anchor" href="#bitsrequired"></a> BitsRequired</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">经过DirectMonotonicWriter的数据平缓操作后，每个数据需要的固定bit位个数。</span><br></pre></td></tr></table></figure>
+<h4 id="maxlength"><a class="markdownIt-Anchor" href="#maxlength"></a> MaxLength</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域值的最大长度</span><br></pre></td></tr></table></figure>
+<h4 id="blockmeta"><a class="markdownIt-Anchor" href="#blockmeta"></a> BlockMeta</h4>
+<p>图19：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/19.png"></p>
+<h5 id="offset-3"><a class="markdownIt-Anchor" href="#offset-3"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Block在.dvd文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length-4"><a class="markdownIt-Anchor" href="#length-4"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为Block在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<p>在读取阶段，通过offset跟length就可以获得所有的所有Block数据。</p>
+<h4 id="blockindexmeta"><a class="markdownIt-Anchor" href="#blockindexmeta"></a> BlockIndexMeta</h4>
+<p>图20：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/20.png"></p>
+<h5 id="offset-4"><a class="markdownIt-Anchor" href="#offset-4"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BlockIndex在.dvd文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length-5"><a class="markdownIt-Anchor" href="#length-5"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为BlockIndex在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<p>在读取阶段，通过offset跟length就可以获得所有BlockIndex数据。</p>
+<h3 id="termsindexmeta"><a class="markdownIt-Anchor" href="#termsindexmeta"></a> TermsIndexMeta</h3>
+<p>图21：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/21.png"></p>
+<h4 id="terms_dict_reverse_index_shift"><a class="markdownIt-Anchor" href="#terms_dict_reverse_index_shift"></a> TERMS_DICT_REVERSE_INDEX_SHIFT</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">描述每遍历多少个域值，保存一次PrefixValue。当前版本为1024。</span><br></pre></td></tr></table></figure>
+<h4 id="min-2"><a class="markdownIt-Anchor" href="#min-2"></a> Min</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记录一个最小值，在读取阶段用于解码。Min的含义请看我的源码注释。</span><br></pre></td></tr></table></figure>
+<h4 id="avginc-2"><a class="markdownIt-Anchor" href="#avginc-2"></a> AvgInc</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记录一个AvgInc，在读取阶段用于解码。AvgInc的含义请看我的源码注释。</span><br></pre></td></tr></table></figure>
+<h4 id="length-6"><a class="markdownIt-Anchor" href="#length-6"></a> Length</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrefixValueIndex的数据总长度</span><br></pre></td></tr></table></figure>
+<h4 id="bitsrequired-2"><a class="markdownIt-Anchor" href="#bitsrequired-2"></a> BitsRequired</h4>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">经过DirectMonotonicWriter的数据平缓操作后，每个数据需要的固定bit位个数。</span><br></pre></td></tr></table></figure>
+<h4 id="prefixvaluemeta"><a class="markdownIt-Anchor" href="#prefixvaluemeta"></a> PrefixValueMeta</h4>
+<p>图22：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/22.png"></p>
+<h5 id="offset-5"><a class="markdownIt-Anchor" href="#offset-5"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrefixValue在.dvd文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length-7"><a class="markdownIt-Anchor" href="#length-7"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为PrefixValue在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<p>在读取阶段，通过offset跟length就可以获得所有PrefixValue数据。</p>
+<h4 id="prefixvalueindexmeta"><a class="markdownIt-Anchor" href="#prefixvalueindexmeta"></a> PrefixValueIndexMeta</h4>
+<p>图23：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedDocValues1/23.png"></p>
+<h5 id="offset-6"><a class="markdownIt-Anchor" href="#offset-6"></a> offset</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrefixValueIndex在.dvd文件中的开始位置。</span><br></pre></td></tr></table></figure>
+<h5 id="length-8"><a class="markdownIt-Anchor" href="#length-8"></a> length</h5>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length为PrefixValueIndex在.dvd文件中的数据长度。</span><br></pre></td></tr></table></figure>
+<p>在读取阶段，通过offset跟length就可以获得所有PrefixValueIndex数据。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>本文详细介绍了SortedDocValues在.dvd、.dvm文件中的数据结构，并简单介绍了为什么要写入TermsDict、TermsIndex的数据。SortedDocValues跟SortedSetDocValues是在所有DocValues中数据结构最为复杂的。另外在预备知识中提到的几个数组，它们都是在SortedDocValuesWriter类中生成，大家可以可看我的源码注释来加快SortedDocValuesWriter类的理解，源码地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SortedDocValuesWriter.java" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/SortedDocValuesWriter.java<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/DocValues/">DocValues</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="FST（一）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">FST（一）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2019/0218/BytesRefHash/"
+                                   title="BytesRefHash"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">BytesRefHash</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#termid"><span class="nav-number">1.1.</span> <span class="nav-text"> TermId</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#currentvalues%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text"> currentValues[]数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sortedvalues%E6%95%B0%E7%BB%84-ord"><span class="nav-number">1.3.</span> <span class="nav-text"> sortedValues[]数组 &amp;&amp; ord</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ordmap%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text"> ordMap[]数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dvd"><span class="nav-number">2.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dociddata"><span class="nav-number">2.1.1.</span> <span class="nav-text"> DocIdData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ords"><span class="nav-number">2.1.2.</span> <span class="nav-text"> Ords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsdict"><span class="nav-number">2.1.3.</span> <span class="nav-text"> TermsDict</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#block"><span class="nav-number">2.1.3.1.</span> <span class="nav-text"> Block</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#firsttermlength"><span class="nav-number">2.1.3.1.1.</span> <span class="nav-text"> FirstTermLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#firsttermvalue"><span class="nav-number">2.1.3.1.2.</span> <span class="nav-text"> FirstTermValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#prefixlength-suffixlength"><span class="nav-number">2.1.3.1.3.</span> <span class="nav-text"> PrefixLength &amp;&amp; SuffixLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#suffixvalue"><span class="nav-number">2.1.3.1.4.</span> <span class="nav-text"> SuffixValue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockindex"><span class="nav-number">2.1.3.2.</span> <span class="nav-text"> BlockIndex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#block%E4%B8%8Eord%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.3.3.</span> <span class="nav-text"> Block与ord的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindex"><span class="nav-number">2.1.4.</span> <span class="nav-text"> TermsIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalue"><span class="nav-number">2.1.4.1.</span> <span class="nav-text"> PrefixValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalueindex"><span class="nav-number">2.1.4.2.</span> <span class="nav-text"> PrefixValueIndex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalue%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="nav-number">2.1.4.3.</span> <span class="nav-text"> PrefixValue有什么用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dvm"><span class="nav-number">2.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldnumber"><span class="nav-number">2.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluestype"><span class="nav-number">2.2.2.</span> <span class="nav-text"> DocvaluesType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docidindex"><span class="nav-number">2.2.3.</span> <span class="nav-text"> DocIdIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51"><span class="nav-number">2.2.3.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52"><span class="nav-number">2.2.3.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">2.2.4.</span> <span class="nav-text"> numDocsWithField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ordsindex"><span class="nav-number">2.2.5.</span> <span class="nav-text"> OrdsIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51-2"><span class="nav-number">2.2.5.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52-2"><span class="nav-number">2.2.5.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numberofbitsperord"><span class="nav-number">2.2.5.2.1.</span> <span class="nav-text"> numberOfBitsPerOrd</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-2"><span class="nav-number">2.2.5.2.2.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-2"><span class="nav-number">2.2.5.2.3.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsdictmeta"><span class="nav-number">2.2.6.</span> <span class="nav-text"> TermsDictMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#termsdictsize"><span class="nav-number">2.2.6.1.</span> <span class="nav-text"> TermsDictSize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termsdictblockshift"><span class="nav-number">2.2.6.2.</span> <span class="nav-text"> TermsDictBlockShift</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">2.2.6.3.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min"><span class="nav-number">2.2.6.4.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#avginc"><span class="nav-number">2.2.6.5.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length-3"><span class="nav-number">2.2.6.6.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bitsrequired"><span class="nav-number">2.2.6.7.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maxlength"><span class="nav-number">2.2.6.8.</span> <span class="nav-text"> MaxLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockmeta"><span class="nav-number">2.2.6.9.</span> <span class="nav-text"> BlockMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-3"><span class="nav-number">2.2.6.9.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-4"><span class="nav-number">2.2.6.9.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockindexmeta"><span class="nav-number">2.2.6.10.</span> <span class="nav-text"> BlockIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-4"><span class="nav-number">2.2.6.10.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-5"><span class="nav-number">2.2.6.10.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindexmeta"><span class="nav-number">2.2.7.</span> <span class="nav-text"> TermsIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#terms_dict_reverse_index_shift"><span class="nav-number">2.2.7.1.</span> <span class="nav-text"> TERMS_DICT_REVERSE_INDEX_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-2"><span class="nav-number">2.2.7.2.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#avginc-2"><span class="nav-number">2.2.7.3.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length-6"><span class="nav-number">2.2.7.4.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bitsrequired-2"><span class="nav-number">2.2.7.5.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvaluemeta"><span class="nav-number">2.2.7.6.</span> <span class="nav-text"> PrefixValueMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-5"><span class="nav-number">2.2.7.6.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-7"><span class="nav-number">2.2.7.6.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalueindexmeta"><span class="nav-number">2.2.7.7.</span> <span class="nav-text"> PrefixValueIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-6"><span class="nav-number">2.2.7.7.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-8"><span class="nav-number">2.2.7.7.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#termid"><span class="nav-number">1.1.</span> <span class="nav-text"> TermId</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#currentvalues%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text"> currentValues[]数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sortedvalues%E6%95%B0%E7%BB%84-ord"><span class="nav-number">1.3.</span> <span class="nav-text"> sortedValues[]数组 &amp;&amp; ord</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ordmap%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text"> ordMap[]数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dvd"><span class="nav-number">2.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dociddata"><span class="nav-number">2.1.1.</span> <span class="nav-text"> DocIdData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ords"><span class="nav-number">2.1.2.</span> <span class="nav-text"> Ords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsdict"><span class="nav-number">2.1.3.</span> <span class="nav-text"> TermsDict</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#block"><span class="nav-number">2.1.3.1.</span> <span class="nav-text"> Block</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#firsttermlength"><span class="nav-number">2.1.3.1.1.</span> <span class="nav-text"> FirstTermLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#firsttermvalue"><span class="nav-number">2.1.3.1.2.</span> <span class="nav-text"> FirstTermValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#prefixlength-suffixlength"><span class="nav-number">2.1.3.1.3.</span> <span class="nav-text"> PrefixLength &amp;&amp; SuffixLength</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#suffixvalue"><span class="nav-number">2.1.3.1.4.</span> <span class="nav-text"> SuffixValue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockindex"><span class="nav-number">2.1.3.2.</span> <span class="nav-text"> BlockIndex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#block%E4%B8%8Eord%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.3.3.</span> <span class="nav-text"> Block与ord的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindex"><span class="nav-number">2.1.4.</span> <span class="nav-text"> TermsIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalue"><span class="nav-number">2.1.4.1.</span> <span class="nav-text"> PrefixValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalueindex"><span class="nav-number">2.1.4.2.</span> <span class="nav-text"> PrefixValueIndex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalue%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="nav-number">2.1.4.3.</span> <span class="nav-text"> PrefixValue有什么用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dvm"><span class="nav-number">2.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldnumber"><span class="nav-number">2.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluestype"><span class="nav-number">2.2.2.</span> <span class="nav-text"> DocvaluesType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docidindex"><span class="nav-number">2.2.3.</span> <span class="nav-text"> DocIdIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51"><span class="nav-number">2.2.3.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52"><span class="nav-number">2.2.3.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">2.2.4.</span> <span class="nav-text"> numDocsWithField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ordsindex"><span class="nav-number">2.2.5.</span> <span class="nav-text"> OrdsIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51-2"><span class="nav-number">2.2.5.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52-2"><span class="nav-number">2.2.5.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numberofbitsperord"><span class="nav-number">2.2.5.2.1.</span> <span class="nav-text"> numberOfBitsPerOrd</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-2"><span class="nav-number">2.2.5.2.2.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-2"><span class="nav-number">2.2.5.2.3.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsdictmeta"><span class="nav-number">2.2.6.</span> <span class="nav-text"> TermsDictMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#termsdictsize"><span class="nav-number">2.2.6.1.</span> <span class="nav-text"> TermsDictSize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termsdictblockshift"><span class="nav-number">2.2.6.2.</span> <span class="nav-text"> TermsDictBlockShift</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">2.2.6.3.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min"><span class="nav-number">2.2.6.4.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#avginc"><span class="nav-number">2.2.6.5.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length-3"><span class="nav-number">2.2.6.6.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bitsrequired"><span class="nav-number">2.2.6.7.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maxlength"><span class="nav-number">2.2.6.8.</span> <span class="nav-text"> MaxLength</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockmeta"><span class="nav-number">2.2.6.9.</span> <span class="nav-text"> BlockMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-3"><span class="nav-number">2.2.6.9.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-4"><span class="nav-number">2.2.6.9.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blockindexmeta"><span class="nav-number">2.2.6.10.</span> <span class="nav-text"> BlockIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-4"><span class="nav-number">2.2.6.10.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-5"><span class="nav-number">2.2.6.10.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindexmeta"><span class="nav-number">2.2.7.</span> <span class="nav-text"> TermsIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#terms_dict_reverse_index_shift"><span class="nav-number">2.2.7.1.</span> <span class="nav-text"> TERMS_DICT_REVERSE_INDEX_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-2"><span class="nav-number">2.2.7.2.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#avginc-2"><span class="nav-number">2.2.7.3.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length-6"><span class="nav-number">2.2.7.4.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bitsrequired-2"><span class="nav-number">2.2.7.5.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvaluemeta"><span class="nav-number">2.2.7.6.</span> <span class="nav-text"> PrefixValueMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-5"><span class="nav-number">2.2.7.6.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-7"><span class="nav-number">2.2.7.6.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prefixvalueindexmeta"><span class="nav-number">2.2.7.7.</span> <span class="nav-text"> PrefixValueIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-6"><span class="nav-number">2.2.7.7.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-8"><span class="nav-number">2.2.7.7.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

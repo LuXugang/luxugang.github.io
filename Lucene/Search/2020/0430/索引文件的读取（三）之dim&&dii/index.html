@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件的读取（三）之dim&amp;&amp;dii（Lucene 8.4.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件的读取（三）之dim&amp;&amp;dii（Lucene 8.4.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-04-30 00:00:00</span>
+                <span class="mobile">2020-04-30 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 13:09:47 GMT+0800">2023-10-09 13:09:47</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.8k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0428/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的读取（二）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>继续介绍剩余的内容，下面先给出读取索引文件.dim&amp;&amp;dii的流程图：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/1.png">
+<p><a href="">点击</a>查看大图</p>
+<h2 id="读取索引文件dimdii"><a class="markdownIt-Anchor" href="#读取索引文件dimdii"></a> 读取索引文件.dim&amp;&amp;dii</h2>
+<h3 id="判断节点与查询条件的边界关系"><a class="markdownIt-Anchor" href="#判断节点与查询条件的边界关系"></a> 判断节点与查询条件的边界关系</h3>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/2.png">
+<p>  当前节点与查询条件的边界关系即CELL_INSIDE_QUERY、CELL_OUTSIDE_QUERY、CELL_CROSSES_QUERY共三种关系（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0427/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的读取（一）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>）。</p>
+<h4 id="cell_outside_query"><a class="markdownIt-Anchor" href="#cell_outside_query"></a> CELL_OUTSIDE_QUERY</h4>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/3.png">
+<p>  如果当前节点为根节点，并且根节点中的点数据的数值范围跟查询条件的数值范围的边界关系为CELL_OUTSIDE_QUERY，意味着BKD树中没有任何点数据满足查询条件，此时就可以直接跳过（skip）当前点数据域的查询，故可以结束BKD树的读取。</p>
+<p>  如果当前节点不是根节点，不管它是内部节点（非叶节点）还是叶子节点，我们都不用继续读取这个节点的信息以及以这个节点为祖先节点的所有子节点，故返回到上一层递归继续处理。</p>
+<h4 id="cell_inside_query"><a class="markdownIt-Anchor" href="#cell_inside_query"></a> CELL_INSIDE_QUERY</h4>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/4.png">
+<p>  如果当前节点为根节点，并且根节点中的点数据的数值范围跟查询条件的数值范围的边界关系为CELL_INSIDE_QUERY，意味着BKD树中所有的点数据都满足查询条件，那么直接通过深度遍历统计BKD树中的所有叶子节点中的文档信息，注意的是在深度遍历的过程中当遍历到一个内部节点时，只需要获取该节点的左右子树在索引文件.dim中位置即可，直到遍历到叶子节点，最后统计所有叶子节点中点数据对应的文档号，最后退出。</p>
+<p>  另外要提下的是，在图1的流程点<code>是否段中的文档都满足查询条件？</code>中，满足的条件之一是 BKD树中的点数据数量跟段中的文档数量一致，当这个前提不满足时并且根节点中的点数据的数值范围跟查询条件的数值范围的边界关系为CELL_INSIDE_QUERY，就会执行图4的流程。</p>
+<p>  如果当前节点是内部节点，处理的方式跟根节点的是一样的，差别在于处理完当前节点后是返回到上一层递归。</p>
+<p>  如果当前节点是叶子节点，那么读取该节点中的文档信息后返回到上一层递归。</p>
+<p>  在上面的描述中，我们至少会有以下两个疑问：</p>
+<ul>
+<li>
+<p>问题一：如何获得当前节点的左右子树节点在索引文件.dim中的起始读取位置</p>
+</li>
+<li>
+<p>问题二：如何读取叶子节点中的文档信息</p>
+</li>
+</ul>
+<p>  如果你没有看过文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >索引文件之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>，建议跳过这一段。</p>
+<p>  <strong>问题一：如何获得当前节点的左右子树节点在索引文件.dim中的起始读取位置</strong></p>
+<p>  由于BKD树的遍历方式为深度遍历，故我们以根节点为例来作介绍：</p>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/5.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/node__packedindexvalue.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（十四）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们介绍了描述节点（内部节点/叶子节点）的信息在索引文件.dim中的位置，由于生成BKD树也是深度遍历的方式，那么读取完根节点的信息后，<strong>索引文件.dim的下一个字节就是左子树（左节点）的起始读取位置</strong>，对于右节点，描述根节点信息的<strong>RightSubtreeHasNotLeafChild</strong>字段中的leftNumBytes值，它描述的是根节点的所有子孙节点（<strong>不包括叶子节点</strong>）在索引文件.dim占用的字节数，<strong>那么通过leftNumBytes的值，就可以找到根节点的右子树在索引文件.dim中的起始读取位置</strong>。</p>
+<p>  在图5中，读取完根节点的信息，即RightSubtreeHasNotLeafChild之后，索引文件.dim的下一个字节就是根节点的左子树信息的起始读取位置，随后跳过leftNumBytes个字节，就是根节点的右子树信息的起始读取位置。</p>
+<p>  <strong>问题二：如何读取叶子节点中的文档信息</strong></p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0427/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的读取（一）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中我们了解到，通过读取索引文件.dii的IndexFP字段，获取的信息是**内部节点（非叶节点）**信息在索引文件.dim中的起始读取位置，在索引文件.dii中并没有其他的提供叶子节点信息在索引文件.dim中的位置，如下所示：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/6.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/node__packedindexvalue.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  实际上叶子节点信息在索引文件.dim中的起始读取位置是通过叶子节点的父节点获得的，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0424/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdim&amp;&amp;dii" >索引文件之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中，我们介绍了存储内部节点（非叶节点）信息一共有四种数据结构：</p>
+<ul>
+<li>非叶节点的子树是叶子节点，并且它是父节点的左子树：LeftSubtreeHasLeafChild</li>
+<li>非叶节点的子树是叶子节点，并且它是父节点的右子树：RightSubtreeHasLeafChild</li>
+<li>非叶节点的子树不是叶子节点，并且它是父节点的左子树：LeftSubtreeHasNotLeafChild</li>
+<li>非叶节点的子树不是叶子节点，并且它是父节点的右子树：RightSubtreeHasNotLeafChild</li>
+</ul>
+<h5 id="rightsubtreehasleafchild"><a class="markdownIt-Anchor" href="#rightsubtreehasleafchild"></a> RightSubtreeHasLeafChild</h5>
+<p>  RightSubtreeHasLeafChild描述的是当前内部节点的左右子树都是叶子节点，并且该节点是父节点的<strong>右子树</strong>，RightSubtreeHasLeafChild中通过LeftLeafBlockFP、RightLeafBlockFP分别存放了它的左右节点信息在索引文件.dim中的起始读取位置，如下图所示：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/7.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/rightsubtreehasleafchild.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<h5 id="leftsubtreehasleafchild"><a class="markdownIt-Anchor" href="#leftsubtreehasleafchild"></a> LeftSubtreeHasLeafChild</h5>
+<p>  LeftSubtreeHasLeafChild描述的是当前内部节点的左右子树都是叶子节点，并且该节点是父节点的<strong>左子树</strong>，通过LeftSubtreeHasLeafChild中的RightLeafBlockFP字段获得右子树在索引文件.dim中的起始读取位置，并且<strong>通过该节点的某个祖先节点传递左子树在索引文件.dim中的起始读取位置</strong>。</p>
+<p>  <strong>哪个祖先节点传递左子树在索引文件.dim中的起始读取位置</strong></p>
+<p>  该祖先节点满足的要求条件是：该节点是它的父节点的右子树（右节点），即节点的数据结构为RightSubtreeHasNotLeafChild，并且是<strong>最近的</strong>。例如下图中，传递左子树在索引文件.dim中的起始读取位置的祖先节点就是根节点， 存储根节点的数据结构正是RightSubtreeHasNotLeafChild，在深度遍历的过程中，根节点对应的RightSubtreeHasNotLeafChild中的LeftLeafBlockFP一层一层往下传递，如下图所示：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/8.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/leftsubtreehasleafchild.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  为了便于理解，我们再给出另一个数据结构类型为LeftSubtreeHasLeafChild的节点：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（三）/9.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/leftsubtreehasleafchild2.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  在介绍了如何获得叶子节点的信息在索引文件.dim中的起始读取位置之后，我们就可以开始读取叶子节点中的文档号信息了，基于篇幅，读取文档号的逻辑将在介绍图1的流程点<code>收集叶子节点中满足查询条件的文档号</code>时展开。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  无</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%89%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/index/">index</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dim/">dim</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dii/">dii</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2020/0506/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii/"
+                                   title="索引文件的读取（四）之dim&amp;&amp;dii（Lucene 8.4.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的读取（四）之dim&amp;&amp;dii（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Search/2020/0428/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii/"
+                                   title="索引文件的读取（二）之dim&amp;&amp;dii（Lucene 8.4.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的读取（二）之dim&amp;&amp;dii（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dimdii"><span class="nav-number">1.</span> <span class="nav-text"> 读取索引文件.dim&amp;&amp;dii</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E8%8A%82%E7%82%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%BE%B9%E7%95%8C%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> 判断节点与查询条件的边界关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cell_outside_query"><span class="nav-number">1.1.1.</span> <span class="nav-text"> CELL_OUTSIDE_QUERY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cell_inside_query"><span class="nav-number">1.1.2.</span> <span class="nav-text"> CELL_INSIDE_QUERY</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#rightsubtreehasleafchild"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> RightSubtreeHasLeafChild</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#leftsubtreehasleafchild"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> LeftSubtreeHasLeafChild</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dimdii"><span class="nav-number">1.</span> <span class="nav-text"> 读取索引文件.dim&amp;&amp;dii</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E8%8A%82%E7%82%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%BE%B9%E7%95%8C%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> 判断节点与查询条件的边界关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cell_outside_query"><span class="nav-number">1.1.1.</span> <span class="nav-text"> CELL_OUTSIDE_QUERY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cell_inside_query"><span class="nav-number">1.1.2.</span> <span class="nav-text"> CELL_INSIDE_QUERY</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#rightsubtreehasleafchild"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> RightSubtreeHasLeafChild</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#leftsubtreehasleafchild"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> LeftSubtreeHasLeafChild</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

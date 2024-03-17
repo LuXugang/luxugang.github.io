@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            BooleanQuery |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        BooleanQuery
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2018-12-11 00:00:00</span>
+                <span class="mobile">2018-12-11 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 15:23:18 GMT+0800">2023-10-09 15:23:18</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>BooleanQuery常用来对实现多个Query子类对象的进行组合，这些Query子类对象会组成一个Cluase实现组合查询。每一个Query都有四种可选，分别描述了匹配的文档需要满足的要求，定义在 BooleanClause类中，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Occur</span> &#123;</span><br><span class="line">    <span class="comment">/** Use this operator for clauses that &lt;i&gt;must&lt;/i&gt; appear in the matching documents. */</span></span><br><span class="line">    MUST     &#123; <span class="meta">@Override</span> <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="string">&quot;+&quot;</span>; &#125; &#125;,</span><br><span class="line">    <span class="comment">/** Like &#123;<span class="doctag">@link</span> #MUST&#125; except that these clauses do not participate in scoring. */</span></span><br><span class="line">    FILTER   &#123; <span class="meta">@Override</span> <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>; &#125; &#125;,</span><br><span class="line">    <span class="comment">/** Use this operator for clauses that &lt;i&gt;should&lt;/i&gt; appear in the </span></span><br><span class="line"><span class="comment">     * matching documents. For a BooleanQuery with no &lt;code&gt;MUST&lt;/code&gt; </span></span><br><span class="line"><span class="comment">     * clauses one or more &lt;code&gt;SHOULD&lt;/code&gt; clauses must match a document </span></span><br><span class="line"><span class="comment">     * for the BooleanQuery to match.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> BooleanQuery.Builder#setMinimumNumberShouldMatch</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    SHOULD   &#123; <span class="meta">@Override</span> <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;  &#125; &#125;,</span><br><span class="line">    <span class="comment">/** Use this operator for clauses that &lt;i&gt;must not&lt;/i&gt; appear in the matching documents.</span></span><br><span class="line"><span class="comment">     * Note that it is not possible to search for queries that only consist</span></span><br><span class="line"><span class="comment">     * of a &lt;code&gt;MUST_NOT&lt;/code&gt; clause. These clauses do not contribute to the</span></span><br><span class="line"><span class="comment">     * score of documents. */</span></span><br><span class="line">    MUST_NOT &#123; <span class="meta">@Override</span> <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="string">&quot;-&quot;</span>; &#125; &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="must"><a class="markdownIt-Anchor" href="#must"></a> MUST (+)</h3>
+<p>满足查询要求的文档中必须包含查询的关键字。</p>
+<h3 id="should"><a class="markdownIt-Anchor" href="#should"></a> SHOULD (&quot; &quot;)</h3>
+<p>满足查询要求的文档中包含一个或多个查询的关键字。</p>
+<h3 id="filter"><a class="markdownIt-Anchor" href="#filter"></a> FILTER (#)</h3>
+<p>满足查询要求的文档中必须包含查询的关键字，但是这个Query不会参与文档的打分。</p>
+<h3 id="must_not-"><a class="markdownIt-Anchor" href="#must_not-"></a> MUST_NOT (-)</h3>
+<p>满足查询要求的文档中必须不能包含查询的关键字。</p>
+<h3 id="组合查询"><a class="markdownIt-Anchor" href="#组合查询"></a> 组合查询</h3>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：“+a b -c d”</span><br></pre></td></tr></table></figure>
+<p>转化为代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BooleanQuery.<span class="type">Builder</span> <span class="variable">query</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder();</span><br><span class="line">query.add(<span class="keyword">new</span> <span class="title class_">TermQuery</span>(<span class="keyword">new</span> <span class="title class_">Term</span>(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;a&quot;</span>)), BooleanClause.Occur.MUST);</span><br><span class="line">query.add(<span class="keyword">new</span> <span class="title class_">TermQuery</span>(<span class="keyword">new</span> <span class="title class_">Term</span>(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;b&quot;</span>)), BooleanClause.Occur.SHOULD);</span><br><span class="line">query.add(<span class="keyword">new</span> <span class="title class_">TermQuery</span>(<span class="keyword">new</span> <span class="title class_">Term</span>(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;c&quot;</span>)), BooleanClause.Occur.MUST_NOT);</span><br><span class="line">query.add(<span class="keyword">new</span> <span class="title class_">TermQuery</span>(<span class="keyword">new</span> <span class="title class_">Term</span>(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;d&quot;</span>)), BooleanClause.Occur.SHOULD);</span><br></pre></td></tr></table></figure>
+<p>满足查询要求的文档必须包含 “a”,，不能包含“c”,，可以包含“b”，“d”中一个或者多个，包含的越多，文档的分数越高</p>
+<h1 id="booleanquery的方法"><a class="markdownIt-Anchor" href="#booleanquery的方法"></a> BooleanQuery的方法</h1>
+<h2 id="设置minimumnumbershouldmatch"><a class="markdownIt-Anchor" href="#设置minimumnumbershouldmatch"></a> 设置minimumNumberShouldMatch</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Builder <span class="title function_">setMinimumNumberShouldMatch</span><span class="params">(<span class="type">int</span> min)</span> &#123;</span><br><span class="line">    ......</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>当查询有多个SHOULD的Query对象时，满足查询要求的文档中必须包含minimumNumberShouldMatch个Query的关键字</p>
+<h2 id="构建createweight对象"><a class="markdownIt-Anchor" href="#构建createweight对象"></a> 构建CreateWeight对象</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Weight <span class="title function_">createWeight</span><span class="params">(IndexSearcher searcher, <span class="type">boolean</span> needsScores, <span class="type">float</span> boost)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BooleanWeight</span>(query, searcher, needsScores, boost);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Query对象的子类都会重写这个方法。对于BooleanQuery的createWeight(…)实现，只是调用了对象组合中的所有Query子类的createWeight(…)方法分别生成Weight对象，然后将这些对象封装到BooleanWeight对象中。TermQuery的createWeight()的具体实现看博客的文章 TermQuery。</p>
+<h2 id="重写query"><a class="markdownIt-Anchor" href="#重写query"></a> 重写Query</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Query <span class="title function_">rewrite</span><span class="params">(IndexReader reader)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>BooleanQuery的rewrite(…)跟createWeight(…)相同的是都是调用对象组合中所有Query子类的rewrite(…)方法，但是并不是所有的Query都需要重写。比如TermQuery，他就没有重写父类的rewrite(…)方法，而对于PrefixQuery(前缀查询)，则必须要重写, 重写后的PrefixQuery会生成多个TermQuery，最后组合成BooleanQuery。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：前缀查询关键字  &quot;ca*&quot;, 重写后，会变成 &quot;car&quot;, &quot;cat&quot;, ...每一个关键字作为TermQuery，组合成BooleanQuery进行查询，所以一般都禁用PreFixQuery，容易抛出TooManyClause的异常。</span><br></pre></td></tr></table></figure>
+<p>BooleanQuery的rewrite(…)实现中一共有9个逻辑(下面的会对每一种逻辑进行标注，比如说 逻辑一)，根据BooleanQuery中的不同的组合(MUST, SHOULD, MUST_NOT, FILTER的任意组合), 会至少执行1个多个重写逻辑，我们对最常用的组合来描述重写的过程。</p>
+<h3 id="只有一个should或must的termquery"><a class="markdownIt-Anchor" href="#只有一个should或must的termquery"></a> 只有一个SHOULD或MUST的TermQuery</h3>
+<h4 id="重写第一步"><a class="markdownIt-Anchor" href="#重写第一步"></a> 重写第一步</h4>
+<p>直接返回。。。不需要重写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑一</span></span><br><span class="line"><span class="keyword">if</span> (clauses.size() == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="type">BooleanClause</span> <span class="variable">c</span> <span class="operator">=</span> clauses.get(<span class="number">0</span>);</span><br><span class="line">      <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> c.getQuery();</span><br><span class="line">      <span class="keyword">if</span> (minimumNumberShouldMatch == <span class="number">1</span> &amp;&amp; c.getOccur() == Occur.SHOULD) &#123;</span><br><span class="line">        <span class="keyword">return</span> query;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (minimumNumberShouldMatch == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (c.getOccur()) &#123;</span><br><span class="line">          <span class="keyword">case</span> SHOULD:</span><br><span class="line">          <span class="keyword">case</span> MUST:</span><br><span class="line">          <span class="comment">// 直接返回原Query。</span></span><br><span class="line">            <span class="keyword">return</span> query;</span><br><span class="line">          <span class="keyword">case</span> FILTER:</span><br><span class="line">            <span class="comment">// no scoring clauses, so return a score of 0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BoostQuery</span>(<span class="keyword">new</span> <span class="title class_">ConstantScoreQuery</span>(query), <span class="number">0</span>);</span><br><span class="line">          <span class="keyword">case</span> MUST_NOT:</span><br><span class="line">            <span class="comment">// no positive clauses</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MatchNoDocsQuery</span>(<span class="string">&quot;pure negative BooleanQuery&quot;</span>);</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">AssertionError</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多个should的termquery"><a class="markdownIt-Anchor" href="#多个should的termquery"></a> 多个SHOULD的TermQuery</h3>
+<h4 id="重写第一步-2"><a class="markdownIt-Anchor" href="#重写第一步-2"></a> 重写第一步</h4>
+<p>首先遍历BooleanQuery中的所有Query对象，调用他们自身的重写方法，由于TermQuery不需要重写，所以直接返回自身。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑二</span></span><br><span class="line">&#123; </span><br><span class="line">    <span class="comment">// 重新生成一个BooleanQuery的构建器，准备对重写后的Query进行组合。</span></span><br><span class="line">    BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder();</span><br><span class="line">    <span class="comment">// 设置一样的MinimumNumberShouldMatch。</span></span><br><span class="line">    builder.setMinimumNumberShouldMatch(getMinimumNumberShouldMatch());</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">actuallyRewritten</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (BooleanClause clause : <span class="built_in">this</span>) &#123;</span><br><span class="line">      <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> clause.getQuery();</span><br><span class="line">      <span class="comment">// 调用Query子类的rewrite(...)方法</span></span><br><span class="line">      <span class="comment">// 我们的例子中都是TermQuery，所以直接返回自身this。</span></span><br><span class="line">      <span class="type">Query</span> <span class="variable">rewritten</span> <span class="operator">=</span> query.rewrite(reader);</span><br><span class="line">      <span class="keyword">if</span> (rewritten != query) &#123;</span><br><span class="line">        actuallyRewritten = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      builder.add(rewritten, clause.getOccur());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 由于我们例子中的的BooleanQuery的Query子类都是TermQuery，不需要重写，所以就不用生成新的BooleanQuery对象</span></span><br><span class="line">    <span class="keyword">if</span> (actuallyRewritten) &#123;</span><br><span class="line">      <span class="keyword">return</span> builder.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重写第二步可选"><a class="markdownIt-Anchor" href="#重写第二步可选"></a> 重写第二步(可选)</h4>
+<p>如果minimumNumberShouldMatch的值 &lt;= 1那么需要执行第二步。<br />
+当有多个相同的TermQuery，并且是SHOULD，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑七</span></span><br><span class="line"><span class="comment">// 这段代码的逻辑跟 逻辑八 一毛一样，往下找一找^-^,就不赘述了</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.SHOULD).size() &gt; <span class="number">0</span> &amp;&amp; minimumNumberShouldMatch &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">      Map&lt;Query, Double&gt; shouldClauses = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span> (Query query : clauseSets.get(Occur.SHOULD)) &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">boost</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (query <span class="keyword">instanceof</span> BoostQuery) &#123;</span><br><span class="line">          <span class="type">BoostQuery</span> <span class="variable">bq</span> <span class="operator">=</span> (BoostQuery) query;</span><br><span class="line">          boost *= bq.getBoost();</span><br><span class="line">          query = bq.getQuery();</span><br><span class="line">        &#125;</span><br><span class="line">        shouldClauses.put(query, shouldClauses.getOrDefault(query, <span class="number">0d</span>) + boost);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (shouldClauses.size() != clauseSets.get(Occur.SHOULD).size()) &#123;</span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder()</span><br><span class="line">            .setMinimumNumberShouldMatch(minimumNumberShouldMatch);</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Query,Double&gt; entry : shouldClauses.entrySet()) &#123;</span><br><span class="line">          <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">          <span class="type">float</span> <span class="variable">boost</span> <span class="operator">=</span> entry.getValue().floatValue();</span><br><span class="line">          <span class="keyword">if</span> (boost != <span class="number">1f</span>) &#123;</span><br><span class="line">            query = <span class="keyword">new</span> <span class="title class_">BoostQuery</span>(query, boost);</span><br><span class="line">          &#125;</span><br><span class="line">          builder.add(query, Occur.SHOULD);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (clause.getOccur() != Occur.SHOULD) &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/3.png" style="zoom:50%"></p>
+<h3 id="should至少一个和must至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must至少一个的termquery"></a> SHOULD(至少一个)和MUST(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-3"><a class="markdownIt-Anchor" href="#重写第一步-3"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步可选-2"><a class="markdownIt-Anchor" href="#重写第二步可选-2"></a> 重写第二步(可选)</h4>
+<p>同样先要执行 逻辑七，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/2.png" style="zoom:50%"></p>
+<h4 id="重写第三步"><a class="markdownIt-Anchor" href="#重写第三步"></a> 重写第三步</h4>
+<p>当有多个相同的TermQuery，并且是MUST，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑八</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.MUST).size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      Map&lt;Query, Double&gt; mustClauses = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">      <span class="comment">// 这里遍历所有的MUST的Clause，如果有重复的Clause，boost值就加1，描述了这个关键字的重要性</span></span><br><span class="line">      <span class="keyword">for</span> (Query query : clauseSets.get(Occur.MUST)) &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">boost</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (query <span class="keyword">instanceof</span> BoostQuery) &#123;</span><br><span class="line">          <span class="type">BoostQuery</span> <span class="variable">bq</span> <span class="operator">=</span> (BoostQuery) query;</span><br><span class="line">          boost *= bq.getBoost();</span><br><span class="line">          query = bq.getQuery();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 调用getOrDefault()查看是否有相同的clause，如果有，那么取出boost，然后对boost进行+1后，覆盖已经存在的clause。</span></span><br><span class="line">        mustClauses.put(query, mustClauses.getOrDefault(query, <span class="number">0d</span>) + boost);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 运行至此，如果BooleanQuery有相同的query，并且是MUST，那么将这些MUST的query合并为一个query，并且增加boost的值。</span></span><br><span class="line">      <span class="comment">// if语句为true：说明有重复的clause(MUST), 那么需要对boost不等于1的query重写，然后跟其他的query一起写到新的BooleanQuery中。</span></span><br><span class="line">      <span class="keyword">if</span> (mustClauses.size() != clauseSets.get(Occur.MUST).size()) &#123;</span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder()</span><br><span class="line">                .setMinimumNumberShouldMatch(minimumNumberShouldMatch);</span><br><span class="line">        <span class="comment">// 这个for循环是将那些boost值不等于1的query重写为BoostQuery。</span></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Query,Double&gt; entry : mustClauses.entrySet()) &#123;</span><br><span class="line">          <span class="type">Query</span> <span class="variable">query</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">          <span class="type">float</span> <span class="variable">boost</span> <span class="operator">=</span> entry.getValue().floatValue(); </span><br><span class="line">          <span class="keyword">if</span> (boost != <span class="number">1f</span>) &#123;</span><br><span class="line">            <span class="comment">// 重写为BoostQuery。</span></span><br><span class="line">            query = <span class="keyword">new</span> <span class="title class_">BoostQuery</span>(query, boost);</span><br><span class="line">          &#125;</span><br><span class="line">          builder.add(query, Occur.MUST);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把其他不是MUST的clause重写添加到新的BooleanQuery中。</span></span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (clause.getOccur() != Occur.MUST) &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/1.png" style="zoom:50%"></p>
+<h3 id="多个must的termquery"><a class="markdownIt-Anchor" href="#多个must的termquery"></a> 多个MUST的TermQuery</h3>
+<h4 id="重写第一步-4"><a class="markdownIt-Anchor" href="#重写第一步-4"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步"><a class="markdownIt-Anchor" href="#重写第二步"></a> 重写第二步</h4>
+<p>当有多个相同的TermQuery，并且是MUST，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。然后执行逻辑八，已说明，不赘述。</p>
+<h3 id="must至少一个和must_not至少一个的termquery"><a class="markdownIt-Anchor" href="#must至少一个和must_not至少一个的termquery"></a> MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-5"><a class="markdownIt-Anchor" href="#重写第一步-5"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步-2"><a class="markdownIt-Anchor" href="#重写第二步-2"></a> 重写第二步</h4>
+<p>如果在这个逻辑中返回了，那么就会返回一个MatchNoDocsQuery对象，也就是不会搜索到任何结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑四</span></span><br><span class="line"> <span class="keyword">final</span> Collection&lt;Query&gt; mustNotClauses = clauseSets.get(Occur.MUST_NOT);</span><br><span class="line">    <span class="keyword">if</span> (!mustNotClauses.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">final</span> Predicate&lt;Query&gt; p = clauseSets.get(Occur.MUST)::contains;</span><br><span class="line">      <span class="comment">// 判断是否MUST_NOT跟MUST或FILTER是否有相同的term</span></span><br><span class="line">      <span class="keyword">if</span> (mustNotClauses.stream().anyMatch(p.or(clauseSets.get(Occur.FILTER)::contains)))     &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MatchNoDocsQuery</span>(<span class="string">&quot;FILTER or MUST clause also in MUST_NOT&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="comment">// 判断是否有MatchAllDocsQuery的Query</span></span><br><span class="line">      <span class="keyword">if</span> (mustNotClauses.contains(<span class="keyword">new</span> <span class="title class_">MatchAllDocsQuery</span>())) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MatchNoDocsQuery</span>(<span class="string">&quot;MUST_NOT clause is MatchAllDocsQuery&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重写第三步-2"><a class="markdownIt-Anchor" href="#重写第三步-2"></a> 重写第三步</h4>
+<p>当有多个相同的TermQuery，并且是MUST，会将这些相同的TermQuery封住成一个BoostQuery，增加boost的值。然后执行逻辑八，已说明，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/4.png" style="zoom:50%"></p>
+<h3 id="should至少一个和must_not至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must_not至少一个的termquery"></a> SHOULD(至少一个)和MUST_NOT(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-6"><a class="markdownIt-Anchor" href="#重写第一步-6"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步-3"><a class="markdownIt-Anchor" href="#重写第二步-3"></a> 重写第二步</h4>
+<p>执行逻辑四，不赘述。</p>
+<h4 id="重写第三步可选"><a class="markdownIt-Anchor" href="#重写第三步可选"></a> 重写第三步(可选)</h4>
+<p>执行逻辑七，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/5.png" style="zoom:50%"></p>
+<h3 id="should至少一个和must至少一个和must_not至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和must至少一个和must_not至少一个的termquery"></a> SHOULD(至少一个)和MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-7"><a class="markdownIt-Anchor" href="#重写第一步-7"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步-4"><a class="markdownIt-Anchor" href="#重写第二步-4"></a> 重写第二步</h4>
+<p>执行逻辑四，不赘述。</p>
+<h4 id="重写第三步可选-2"><a class="markdownIt-Anchor" href="#重写第三步可选-2"></a> 重写第三步(可选)</h4>
+<p>执行逻辑七，不赘述。</p>
+<h4 id="重写第四步"><a class="markdownIt-Anchor" href="#重写第四步"></a> 重写第四步</h4>
+<p>执行逻辑八，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/6.png" style="zoom:50%"></p>
+<h3 id="should至少一个和filter至少一个的termquery"><a class="markdownIt-Anchor" href="#should至少一个和filter至少一个的termquery"></a> SHOULD(至少一个)和FILTER(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-8"><a class="markdownIt-Anchor" href="#重写第一步-8"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步-5"><a class="markdownIt-Anchor" href="#重写第二步-5"></a> 重写第二步</h4>
+<p>因为对于FILTER的Query中的term，他只是不参与打分，但是搜索结果必须包含这个term，如果SHOULD的Query中也有这个term，那么将这个Query的SHOULD改为MUST, 然后minShouldMatch的值就必须少一个，注意的是FILTER的这个Query没有放到新的BooleanQuery中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑六</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.SHOULD).size() &gt; <span class="number">0</span> &amp;&amp; clauseSets.get(Occur.FILTER).size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">final</span> Collection&lt;Query&gt; filters = clauseSets.get(Occur.FILTER);</span><br><span class="line">      <span class="keyword">final</span> Collection&lt;Query&gt; shoulds = clauseSets.get(Occur.SHOULD);</span><br><span class="line"></span><br><span class="line">      Set&lt;Query&gt; intersection = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(filters);</span><br><span class="line">      <span class="comment">// 在intersection中保留 FILTER跟SHOUL有相同的term的Query</span></span><br><span class="line">      intersection.retainAll(shoulds);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// if语句为真：说明至少有一个term，他即有FILTER又有SHOULD的Query</span></span><br><span class="line">      <span class="keyword">if</span> (intersection.isEmpty() == <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 需要重新生成一个BooleanQuery</span></span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder();</span><br><span class="line">        <span class="type">int</span> <span class="variable">minShouldMatch</span> <span class="operator">=</span> getMinimumNumberShouldMatch();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (intersection.contains(clause.getQuery())) &#123;</span><br><span class="line">            <span class="keyword">if</span> (clause.getOccur() == Occur.SHOULD) &#123;</span><br><span class="line">            <span class="comment">// 将SHOULD 改为 MUST</span></span><br><span class="line">              builder.add(<span class="keyword">new</span> <span class="title class_">BooleanClause</span>(clause.getQuery(), Occur.MUST));</span><br><span class="line">              <span class="comment">// 对minShouldMatch的值减一，因为这个SHOULD的Query的term，同样是FILTER的term，满足匹配要求的文档必须包含这个term</span></span><br><span class="line">              minShouldMatch--;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 更新minShouldMatch</span></span><br><span class="line">        builder.setMinimumNumberShouldMatch(Math.max(<span class="number">0</span>, minShouldMatch));</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重写第三步可选-3"><a class="markdownIt-Anchor" href="#重写第三步可选-3"></a> 重写第三步(可选)</h4>
+<p>执行逻辑七，不赘述。</p>
+<h4 id="重写第四步-2"><a class="markdownIt-Anchor" href="#重写第四步-2"></a> 重写第四步</h4>
+<p>执行逻辑八，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/7.png" style="zoom:50%"></p>
+<h3 id="must至少一个和filter至少一个的termquery"><a class="markdownIt-Anchor" href="#must至少一个和filter至少一个的termquery"></a> MUST(至少一个)和FILTER(至少一个)的TermQuery</h3>
+<h4 id="重写第一步-9"><a class="markdownIt-Anchor" href="#重写第一步-9"></a> 重写第一步</h4>
+<p>同样先要执行 逻辑二，不赘述。</p>
+<h4 id="重写第二步-6"><a class="markdownIt-Anchor" href="#重写第二步-6"></a> 重写第二步</h4>
+<p>判断是否存在一个term对应的Query即是 MUST又是FILTER，如果存在，那么移除FILTER的Query。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逻辑六</span></span><br><span class="line"><span class="keyword">if</span> (clauseSets.get(Occur.MUST).size() &gt; <span class="number">0</span> &amp;&amp; clauseSets.get(Occur.FILTER).size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">// 获得所有的FILTER的Query</span></span><br><span class="line">      <span class="keyword">final</span> Set&lt;Query&gt; filters = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;Query&gt;(clauseSets.get(Occur.FILTER));</span><br><span class="line">      <span class="type">boolean</span> <span class="variable">modified</span> <span class="operator">=</span> filters.remove(<span class="keyword">new</span> <span class="title class_">MatchAllDocsQuery</span>());</span><br><span class="line">      <span class="comment">// 从filters中移除既是FILTER又是MUST的Query</span></span><br><span class="line">      modified |= filters.removeAll(clauseSets.get(Occur.MUST));</span><br><span class="line">      <span class="keyword">if</span> (modified) &#123;</span><br><span class="line">        BooleanQuery.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BooleanQuery</span>.Builder();</span><br><span class="line">        builder.setMinimumNumberShouldMatch(getMinimumNumberShouldMatch());</span><br><span class="line">        <span class="keyword">for</span> (BooleanClause clause : clauses) &#123;</span><br><span class="line">          <span class="keyword">if</span> (clause.getOccur() != Occur.FILTER) &#123;</span><br><span class="line">            builder.add(clause);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Query filter : filters) &#123;</span><br><span class="line">          builder.add(filter, Occur.FILTER);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重写第三步-3"><a class="markdownIt-Anchor" href="#重写第三步-3"></a> 重写第三步</h4>
+<p>执行逻辑八，不赘述。<br />
+下图中左边是重写前的BooleanQuery，右边是重写后的BooleanQuery。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BooleanQuery/8.png" style="zoom:50%"></p>
+<h3 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h3>
+<p>BooleanQuery类中最重要的方法就是rewrite()方法，上面的例子中列举了最常用的几种BooleanQuery的情况，MUST，SHOULD，FILTER，MUST_NOT的他们之间不同数量的组合有着不一样的rewrite过程，无法一一详细列出。BooleanQuery中的rewrite一共有9个逻辑，都在关键处给出了注释，大家可以到我们的GitHub看这个类的源码<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/BooleanQuery.java%E3%80%82" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/BooleanQuery.java。<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/BooleanQuery/BooleanQuery.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/query/">query</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2018/1217/%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6%EF%BC%88SHOULD%EF%BC%89/"
+                                   title="文档号合并（SHOULD）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档号合并（SHOULD）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2018/1209/IntBlockPool/"
+                                   title="IntBlockPool"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">IntBlockPool</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#must"><span class="nav-number">1.</span> <span class="nav-text"> MUST (+)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should"><span class="nav-number">2.</span> <span class="nav-text"> SHOULD (&quot; &quot;)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter"><span class="nav-number">3.</span> <span class="nav-text"> FILTER (#)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must_not-"><span class="nav-number">4.</span> <span class="nav-text"> MUST_NOT (-)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text"> 组合查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#booleanquery%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number"></span> <span class="nav-text"> BooleanQuery的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEminimumnumbershouldmatch"><span class="nav-number"></span> <span class="nav-text"> 设置minimumNumberShouldMatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAcreateweight%E5%AF%B9%E8%B1%A1"><span class="nav-number"></span> <span class="nav-text"> 构建CreateWeight对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%86%99query"><span class="nav-number"></span> <span class="nav-text"> 重写Query</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AAshould%E6%88%96must%E7%9A%84termquery"><span class="nav-number">1.</span> <span class="nav-text"> 只有一个SHOULD或MUST的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text"> 重写第一步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AAshould%E7%9A%84termquery"><span class="nav-number">2.</span> <span class="nav-text"> 多个SHOULD的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-2"><span class="nav-number">2.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%8F%AF%E9%80%89"><span class="nav-number">2.2.</span> <span class="nav-text"> 重写第二步(可选)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">3.</span> <span class="nav-text"> SHOULD(至少一个)和MUST(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-3"><span class="nav-number">3.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%8F%AF%E9%80%89-2"><span class="nav-number">3.2.</span> <span class="nav-text"> 重写第二步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-number">3.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AAmust%E7%9A%84termquery"><span class="nav-number">4.</span> <span class="nav-text"> 多个MUST的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-4"><span class="nav-number">4.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="nav-number">4.2.</span> <span class="nav-text"> 重写第二步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">5.</span> <span class="nav-text"> MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-5"><span class="nav-number">5.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-2"><span class="nav-number">5.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5-2"><span class="nav-number">5.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">6.</span> <span class="nav-text"> SHOULD(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-6"><span class="nav-number">6.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-3"><span class="nav-number">6.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89"><span class="nav-number">6.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">7.</span> <span class="nav-text"> SHOULD(至少一个)和MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-7"><span class="nav-number">7.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-4"><span class="nav-number">7.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89-2"><span class="nav-number">7.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-number">7.4.</span> <span class="nav-text"> 重写第四步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cfilter%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">8.</span> <span class="nav-text"> SHOULD(至少一个)和FILTER(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-8"><span class="nav-number">8.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-5"><span class="nav-number">8.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89-3"><span class="nav-number">8.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E5%9B%9B%E6%AD%A5-2"><span class="nav-number">8.4.</span> <span class="nav-text"> 重写第四步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cfilter%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">9.</span> <span class="nav-text"> MUST(至少一个)和FILTER(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-9"><span class="nav-number">9.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-6"><span class="nav-number">9.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5-3"><span class="nav-number">9.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">10.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#must"><span class="nav-number">1.</span> <span class="nav-text"> MUST (+)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should"><span class="nav-number">2.</span> <span class="nav-text"> SHOULD (&quot; &quot;)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter"><span class="nav-number">3.</span> <span class="nav-text"> FILTER (#)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must_not-"><span class="nav-number">4.</span> <span class="nav-text"> MUST_NOT (-)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text"> 组合查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#booleanquery%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number"></span> <span class="nav-text"> BooleanQuery的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEminimumnumbershouldmatch"><span class="nav-number"></span> <span class="nav-text"> 设置minimumNumberShouldMatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAcreateweight%E5%AF%B9%E8%B1%A1"><span class="nav-number"></span> <span class="nav-text"> 构建CreateWeight对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%86%99query"><span class="nav-number"></span> <span class="nav-text"> 重写Query</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AAshould%E6%88%96must%E7%9A%84termquery"><span class="nav-number">1.</span> <span class="nav-text"> 只有一个SHOULD或MUST的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text"> 重写第一步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AAshould%E7%9A%84termquery"><span class="nav-number">2.</span> <span class="nav-text"> 多个SHOULD的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-2"><span class="nav-number">2.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%8F%AF%E9%80%89"><span class="nav-number">2.2.</span> <span class="nav-text"> 重写第二步(可选)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">3.</span> <span class="nav-text"> SHOULD(至少一个)和MUST(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-3"><span class="nav-number">3.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%8F%AF%E9%80%89-2"><span class="nav-number">3.2.</span> <span class="nav-text"> 重写第二步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-number">3.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AAmust%E7%9A%84termquery"><span class="nav-number">4.</span> <span class="nav-text"> 多个MUST的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-4"><span class="nav-number">4.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="nav-number">4.2.</span> <span class="nav-text"> 重写第二步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">5.</span> <span class="nav-text"> MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-5"><span class="nav-number">5.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-2"><span class="nav-number">5.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5-2"><span class="nav-number">5.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">6.</span> <span class="nav-text"> SHOULD(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-6"><span class="nav-number">6.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-3"><span class="nav-number">6.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89"><span class="nav-number">6.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cmust_not%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">7.</span> <span class="nav-text"> SHOULD(至少一个)和MUST(至少一个)和MUST_NOT(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-7"><span class="nav-number">7.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-4"><span class="nav-number">7.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89-2"><span class="nav-number">7.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-number">7.4.</span> <span class="nav-text"> 重写第四步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#should%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cfilter%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">8.</span> <span class="nav-text"> SHOULD(至少一个)和FILTER(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-8"><span class="nav-number">8.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-5"><span class="nav-number">8.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%8F%AF%E9%80%89-3"><span class="nav-number">8.3.</span> <span class="nav-text"> 重写第三步(可选)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E5%9B%9B%E6%AD%A5-2"><span class="nav-number">8.4.</span> <span class="nav-text"> 重写第四步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E5%92%8Cfilter%E8%87%B3%E5%B0%91%E4%B8%80%E4%B8%AA%E7%9A%84termquery"><span class="nav-number">9.</span> <span class="nav-text"> MUST(至少一个)和FILTER(至少一个)的TermQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%80%E6%AD%A5-9"><span class="nav-number">9.1.</span> <span class="nav-text"> 重写第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%BA%8C%E6%AD%A5-6"><span class="nav-number">9.2.</span> <span class="nav-text"> 重写第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AC%AC%E4%B8%89%E6%AD%A5-3"><span class="nav-number">9.3.</span> <span class="nav-text"> 重写第三步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">10.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

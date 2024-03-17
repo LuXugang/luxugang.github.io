@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            IntBlockPool |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        IntBlockPool
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2018-12-09 00:00:00</span>
+                <span class="mobile">2018-12-09 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 21:06:27 GMT+0800">2023-10-08 21:06:27</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/invertedIndex/">invertedIndex</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>在索引阶段，使用IntBlockPool来存储term(域值)的信息，在MemoryIndex中，使用此类对term在文档中的位置、payload数据进行存储，它即MemoryIndex中的倒排表，它的数据就是用这个类的对象存储的。在介绍IntBlockPool类时，我们根据这个类在MemoryIndex中实际使用过程来讲解。</p>
+<h3 id="如何介绍intblockpool类"><a class="markdownIt-Anchor" href="#如何介绍intblockpool类"></a> 如何介绍IntBlockPool类</h3>
+<p>首先会贴出这个类中几个重要的方法，详细的说明方法中的逻辑过程，在讲解MemoryIndex类时，会使用图文方法来演示一个例子。IntBlockPool类的详细代码注释在这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/IntBlockPool.java" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/IntBlockPool.java<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="intblockpool的方法和变量"><a class="markdownIt-Anchor" href="#intblockpool的方法和变量"></a> IntBlockPool的方法和变量</h3>
+<h4 id="几个基本的变量说明"><a class="markdownIt-Anchor" href="#几个基本的变量说明"></a> 几个基本的变量说明</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存储term的位置，词频，payload，默认是由10个大小为 INT_BLOCK_SIZE大小的一维数组组成的。</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span>[][] buffers = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>][];</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">INT_BLOCK_SHIFT</span> <span class="operator">=</span> <span class="number">13</span>;</span><br><span class="line"><span class="comment">// 一维数组的大小。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">INT_BLOCK_SIZE</span> <span class="operator">=</span> <span class="number">1</span> &lt;&lt; INT_BLOCK_SHIFT;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">INT_BLOCK_MASK</span> <span class="operator">=</span> INT_BLOCK_SIZE - <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 用来表示我们正在使用第几个一维数组(前面定义了一个包含10个一维数组的二维数组)。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="variable">bufferUpto</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line"><span class="comment">// 用来表示一维数组中可以使用的位置(偏移)。</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="variable">intUpto</span> <span class="operator">=</span> INT_BLOCK_SIZE;</span><br><span class="line"><span class="comment">// 同一时刻只选取二维数组中的一个一维数组进行数据的存储跟读取，buffer用来表示我们正在使用的那个一维数组。</span></span><br><span class="line"><span class="comment">// 这个buffer又称为 head buffer。</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] buffer;</span><br><span class="line"><span class="comment">// 用来表示在二维数组中可以使用的位置(偏移)。</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="variable">intOffset</span> <span class="operator">=</span> -INT_BLOCK_SIZE;</span><br><span class="line"><span class="comment">// 分层的级别，代表下次分配新的分片(slice)的级别(层级)，数组元素越大，分片大小越大，数组元素用来作为LEVEL_SIZE_ARRAY[]数组的下标值。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span>[] NEXT_LEVEL_ARRAY = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// 数组元素表示新的分片的大小。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span>[] LEVEL_SIZE_ARRAY = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>, <span class="number">64</span>, <span class="number">128</span>, <span class="number">256</span>, <span class="number">512</span>, <span class="number">1024</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="获得新的分片slice"><a class="markdownIt-Anchor" href="#获得新的分片slice"></a> 获得新的分片(slice)</h3>
+<p>在MemoryIndex中，对于有相同域名的不同域值，这些域值的倒排表信息都是存放到同一个二维数组中，每个域值都会被分配一个固定大小的分片，用来存储域值(即term)的信息，并且相同的域值会被存储多次(因为在文档中的的位置不同导致偏移值和payload的不同)。另外多个相同的域值，他们的数据不是连续存放的，通过分层的方式分布在二维数组的不同位置(稍后会作出解释)。下面获取一个新的分片的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要分配size大小的分片。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">newSlice</span><span class="params">(<span class="keyword">final</span> <span class="type">int</span> size)</span> &#123;</span><br><span class="line">    <span class="comment">// 判断当前的head buffer空间是否充足，如果不够的话，就用分配新的head buffer来存储。</span></span><br><span class="line">    <span class="keyword">if</span> (intUpto &gt; INT_BLOCK_SIZE-size) &#123;</span><br><span class="line">      <span class="comment">// 空间不足的话，分配一个新的一维数组。</span></span><br><span class="line">      nextBuffer();</span><br><span class="line">      <span class="keyword">assert</span> <span class="title function_">assertSliceBuffer</span><span class="params">(buffer)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">upto</span> <span class="operator">=</span> intUpto;</span><br><span class="line">    <span class="comment">// 分配size个大小的数组空间给这次的存储,然后intUpto更新。</span></span><br><span class="line">    intUpto += size;</span><br><span class="line">    <span class="comment">// 指定下次分片的级别。</span></span><br><span class="line">    buffer[intUpto-<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> upto;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">nextBuffer</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 判断二维数组是否存储已满，那么就扩容，并且扩容结束后，迁移数据。</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span>+bufferUpto == buffers.length) &#123;</span><br><span class="line">      <span class="type">int</span>[][] newBuffers = <span class="keyword">new</span> <span class="title class_">int</span>[(<span class="type">int</span>) (buffers.length*<span class="number">1.5</span>)][];</span><br><span class="line">      System.arraycopy(buffers, <span class="number">0</span>, newBuffers, <span class="number">0</span>, buffers.length);</span><br><span class="line">      buffers = newBuffers;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 生成一个新的一维数组。</span></span><br><span class="line">    buffer = buffers[<span class="number">1</span>+bufferUpto] = allocator.getIntBlock();</span><br><span class="line">    <span class="comment">// 更新bufferUpto，这个值描述了我们当前正在使用第bufferUpto个一维数组。</span></span><br><span class="line">    bufferUpto++;</span><br><span class="line">    <span class="comment">// head buffer数组的可使用位置(下标值)置为0。</span></span><br><span class="line">    intUpto = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 更新intOffset的值，表示在二维数组中可用的位置。</span></span><br><span class="line">    intOffset += INT_BLOCK_SIZE;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="往分片slice中写数据"><a class="markdownIt-Anchor" href="#往分片slice中写数据"></a> 往分片(slice)中写数据</h3>
+<p>通过SliceWriter对象将数据写入到分片中。</p>
+<h4 id="slicewriter类的部分方法和变量"><a class="markdownIt-Anchor" href="#slicewriter类的部分方法和变量"></a> SliceWriter类的部分方法和变量</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 描述在二维数组中的位置。</span></span><br><span class="line"> <span class="keyword">private</span> <span class="type">int</span> offset;</span><br></pre></td></tr></table></figure>
+<p>将value值写入到分片中，如果分片剩余空间不足，那么重写分配一个新的分片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeInt</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="comment">// 获得head buffer这个一维数组, offset &gt;&gt; INT_BLOCK_SHIFT的值就是head buffer在二维数组中的行数。</span></span><br><span class="line">      <span class="type">int</span>[] ints = pool.buffers[offset &gt;&gt; INT_BLOCK_SHIFT];</span><br><span class="line">      <span class="keyword">assert</span> ints != <span class="literal">null</span>;</span><br><span class="line">      <span class="comment">// 获得在head buffer这个一维数组组内的偏移。</span></span><br><span class="line">      <span class="type">int</span> <span class="variable">relativeOffset</span> <span class="operator">=</span> offset &amp; INT_BLOCK_MASK;</span><br><span class="line">      <span class="comment">// if语句为真，说明分片剩余空间不足，我们需要分配新的分片(slice), 当前数组位置存储的是分片的层级。</span></span><br><span class="line">      <span class="keyword">if</span> (ints[relativeOffset] != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//  分配一个新的分片，并且返回可以存放value的下标值。  </span></span><br><span class="line">        relativeOffset = pool.allocSlice(ints, relativeOffset);</span><br><span class="line">        <span class="comment">// 更新下ints变量和offset变量，因为调用pool.allocSlice()后，head buffer发生了变化。</span></span><br><span class="line">        ints = pool.buffer;</span><br><span class="line">        offset = relativeOffset + pool.intOffset;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 存储value的值。</span></span><br><span class="line">      ints[relativeOffset] = value;</span><br><span class="line">      offset++; </span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">allocSlice</span><span class="params">(<span class="keyword">final</span> <span class="type">int</span>[] slice, <span class="keyword">final</span> <span class="type">int</span> sliceOffset)</span> &#123;</span><br><span class="line">    <span class="comment">// 取出分片的层级。</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> slice[sliceOffset];</span><br><span class="line">    <span class="comment">// 获得新的分片的层级。</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">newLevel</span> <span class="operator">=</span> NEXT_LEVEL_ARRAY[level-<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 根据新的分片的层级，获得新分片的大小。</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">newSize</span> <span class="operator">=</span> LEVEL_SIZE_ARRAY[newLevel];</span><br><span class="line">    <span class="comment">// 判断是否需要分配一个新的一维数组。</span></span><br><span class="line">    <span class="keyword">if</span> (intUpto &gt; INT_BLOCK_SIZE-newSize) &#123;</span><br><span class="line">      nextBuffer();</span><br><span class="line">      <span class="keyword">assert</span> <span class="title function_">assertSliceBuffer</span><span class="params">(buffer)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获得当前在head buffer中下一个可以使用的位置。</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">newUpto</span> <span class="operator">=</span> intUpto;</span><br><span class="line">    <span class="comment">// 记录下一个数组下标位置(这个位置的值在二维数组中的位置)。</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">offset</span> <span class="operator">=</span> newUpto + intOffset;</span><br><span class="line">    <span class="comment">// 更新head buffer中下一个可以使用的位置。</span></span><br><span class="line">    intUpto += newSize;</span><br><span class="line">    <span class="comment">// Write forwarding address at end of last slice:</span></span><br><span class="line">    <span class="comment">// 将sliceOffset位置的数组值替换为offset, 目的就是在读取数据时，被告知应该跳转到数组的哪一个位置继续找这个term的其他偏移值(在文本中的偏移量)跟payload值。</span></span><br><span class="line">    <span class="comment">// 换句话如果一篇文档的某个term出现多次，那么记录这个term的在文本中的所有偏移值跟payload并不是连续存储的。</span></span><br><span class="line">    slice[sliceOffset] = offset;       </span><br><span class="line">    <span class="comment">// 记录新的分片层级。</span></span><br><span class="line">    buffer[intUpto-<span class="number">1</span>] = newLevel;</span><br><span class="line">    <span class="comment">// 返回可以写入数据的位置。</span></span><br><span class="line">    <span class="keyword">return</span> newUpto;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>存储一个新的域值时候需要调用下面的方法来分配一个分片(仅在MemoryIndex中会调用此方法,Lucene 7.5.0)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">startNewSlice</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">// offset的值是 head buffer这个一维数组组内的偏移量 + head buffer这个一维数组在二维数组中的偏移量。</span></span><br><span class="line">      <span class="type">return</span> <span class="variable">offset</span> <span class="operator">=</span> pool.newSlice(FIRST_LEVEL_SIZE) + pool.intOffset;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>写入的域值跟上一个处理的域值不一样，并且已经在分片存储过，那么写入之前需要调用下面方法另offset的值为这个域值上次在分片中的结束位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reset</span><span class="params">(<span class="type">int</span> sliceOffset)</span> &#123;</span><br><span class="line">     <span class="built_in">this</span>.offset = sliceOffset;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="从分片slice中读数据"><a class="markdownIt-Anchor" href="#从分片slice中读数据"></a> 从分片(slice)中读数据</h3>
+<p>通过SliceReader对象从分片中读取数据</p>
+<h4 id="slicereader类的部分方法和变量"><a class="markdownIt-Anchor" href="#slicereader类的部分方法和变量"></a> SliceReader类的部分方法和变量</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前读取的位置。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> upto;</span><br><span class="line"><span class="comment">// 指定了二维数组的某个一维数组。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> bufferUpto;</span><br><span class="line"><span class="comment">// 一维数组的第一个元素在二维数组中的偏移量(位置)。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> bufferOffset;</span><br><span class="line"><span class="comment">// 当前正在读取数据的一维数组。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span>[] buffer;</span><br><span class="line"><span class="comment">// limit作为下标描述了下一个存储当前term信息的位置。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> limit;</span><br><span class="line"><span class="comment">// 获得分片的层级。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> level;</span><br><span class="line"><span class="comment">// 这个term的最后一个信息的位置。</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> end;</span><br></pre></td></tr></table></figure>
+<p>从当前分片中读取一个term的数据，如果没有完全读取，那么跳转到其他分片中继续读取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">readInt</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="keyword">assert</span> !endOfSlice();</span><br><span class="line">      <span class="keyword">assert</span> upto &lt;= limit;</span><br><span class="line">      <span class="comment">// if语句为真，那么去下一个分片中继续读取。</span></span><br><span class="line">      <span class="keyword">if</span> (upto == limit)</span><br><span class="line">        nextSlice();</span><br><span class="line">      <span class="keyword">return</span> buffer[upto++];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">nextSlice</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">// Skip to our next slice</span></span><br><span class="line">      <span class="comment">// 找到下一个存储term信息的位置。</span></span><br><span class="line">      <span class="keyword">final</span> <span class="type">int</span> <span class="variable">nextIndex</span> <span class="operator">=</span> buffer[limit];</span><br><span class="line">      <span class="comment">// 获得分片的层级。</span></span><br><span class="line">      level = NEXT_LEVEL_ARRAY[level-<span class="number">1</span>];</span><br><span class="line">      <span class="comment">// 获得分片的大小。</span></span><br><span class="line">      <span class="keyword">final</span> <span class="type">int</span> <span class="variable">newSize</span> <span class="operator">=</span> LEVEL_SIZE_ARRAY[level];</span><br><span class="line">      <span class="comment">// 计算出在二维数组中的第几层。</span></span><br><span class="line">      bufferUpto = nextIndex / INT_BLOCK_SIZE;</span><br><span class="line">      <span class="comment">// 当前的一维数组的第一个元素在二维数组中的位置。</span></span><br><span class="line">      bufferOffset = bufferUpto * INT_BLOCK_SIZE;</span><br><span class="line">      <span class="comment">// 取出 head buffer。</span></span><br><span class="line">      buffer = pool.buffers[bufferUpto];</span><br><span class="line">      <span class="comment">// 计算出在head buffer中的起始位置。</span></span><br><span class="line">      upto = nextIndex &amp; INT_BLOCK_MASK;</span><br><span class="line">      <span class="comment">// 更新limit的值。</span></span><br><span class="line">      <span class="keyword">if</span> (nextIndex + newSize &gt;= end) &#123;</span><br><span class="line">        <span class="comment">// We are advancing to the final slice</span></span><br><span class="line">        <span class="comment">// 已经读到最后一个slice。</span></span><br><span class="line">        <span class="keyword">assert</span> end - nextIndex &gt; <span class="number">0</span>;</span><br><span class="line">        limit = end - bufferOffset;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// This is not the final slice (subtract 4 for the</span></span><br><span class="line">        <span class="comment">// forwarding address at the end of this new slice)</span></span><br><span class="line">        <span class="comment">// 还有其他的slice没有读取到, 将limit的值置为下一个slice的起始位置。</span></span><br><span class="line">        limit = upto+newSize-<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
+<p>在MemoryIndex的storeTerms(…)的方法中，其逻辑就是通过IntBlockPool类依次存储一篇文档中的每一个域值的在文档中的分词位置posIncr，域值的起始位置startOffset，结束为止endOffset，负载值payload，下面是名词解释。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文档A中包含的内容： “Tales of Tales James”， 分词器：WhiteSpaceAnalyzer，分词后的tokenStream中包含了下面4个term： “Tales”，“of”，“Tales”，“James”。</span><br></pre></td></tr></table></figure>
+<h5 id="posincr"><a class="markdownIt-Anchor" href="#posincr"></a> posIncr</h5>
+<p>   term是tokenStream的第几个token。例如 ”of“ 的posIncr的值是1，”Tales“的posIncr是0跟2，”James“的posIncr是3。</p>
+<h5 id="startoffset"><a class="markdownIt-Anchor" href="#startoffset"></a> startOffset</h5>
+<p>   term的第一个字符的位置。例如 “of” 的startOffset的值是6， ”James“的startOffset值是15。</p>
+<h5 id="endoffset"><a class="markdownIt-Anchor" href="#endoffset"></a> endOffset</h5>
+<p>   term的最后一个字符的位置的后一个位置。例如”of“的endOffset的值是8，endOffset与startOffset的差值就是term包含的字符个数。</p>
+<h5 id="payload"><a class="markdownIt-Anchor" href="#payload"></a> payload</h5>
+<p>   payload，负载值，这个值用来标注一个term，你可以给这个term标注任意信息，比如可以将业务数据作为payload。如果没有指定payload的值，那么payload的值为-1。在这个例子中，所有term的payload值都是-1。</p>
+<hr />
+<p>文档A中的term需要保存的数据如下图</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">term</th>
+<th style="text-align:center">poslncr</th>
+<th style="text-align:center">startOffset</th>
+<th style="text-align:center">endOffset</th>
+<th style="text-align:center">payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Tales</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">of</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">Tales</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">James</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">-1</td>
+</tr>
+</tbody>
+</table>
+<h5 id="添加第一个termtales"><a class="markdownIt-Anchor" href="#添加第一个termtales"></a> 添加第一个term：Tales</h5>
+<p>“Tales” 第一次添加到二维数组 buffers中，那么先分配一个大小2的分片(slice)，并将posIncr添加到buffers中，由于在MemoryIndex中，存储startOffset，endOffset，payload是可选项，所以当只要存放posIncr时，只要分配2个数组元素大小的分片即可，如下图：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/1.png" style="zoom:50%">
+<p>上图中，level的值指的是当需要继续添加“Tales”的其他数据时，我们需要再分配新的分片，并且下一个新分片的大小等级是1, 作为 LEVEL_SIZE_ARRAY[] 中的下标值，那么新的分片的大小就是4，我们继续添加“Tales”的其他数据。<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/2.png" style="zoom:50%"></p>
+<p>上图中，数组下标值为1对应的元素值由1改成了2，表示新的分片起始位置是2(下标值)。由于同一个term的多个分片分散在二维数组的不同位置，在搜索阶段，当我们读取完一个分片后，通过这个分片的最后一个值来确定下一个分片在二维数组中的位置。接着依次把startOffset，endOffset，payload的值分别存放进去。新分片的最后一个值还是用来存放分片等级。</p>
+<h5 id="添加第二个termof"><a class="markdownIt-Anchor" href="#添加第二个termof"></a> 添加第二个term：of</h5>
+<p>“of”同样是第一次添加，所以分配一个大小为2个的分片，然后将posIncr跟分片等级level写入分片中，如下图：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/3.png" style="zoom:50%"></p>
+<p>然后将“of”的其他数据继续写入， 同样的，需要分配新的分片，并且更改数组下标值7对应的元素值，由1变为8，表示新的分片从下标值8的位置开始，并且另新的分片的最后一个元素(下标值为11)值为1(分片层级)，如下图：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/4.png" style="zoom:50%"></p>
+<h5 id="添加第三个termtales"><a class="markdownIt-Anchor" href="#添加第三个termtales"></a> 添加第三个term：Tales</h5>
+<p>“Tales”已经存储过了，所以我们找到最后一个分片中最后一个使用的位置(在上图中就是下标值为5的位置)。这时候我们我们的分片没有剩余空间了，那么需要分配一个新的分片，并且这个新分配的位置是在下标值为12的地方，如下图：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/5.png" style="zoom:50%"></p>
+<p>当我们给“Tales”分配了一个新的分片，并且成功的将posIncr，startOffset，endOffset写入到分片中，但是没有多余的空间存储payload了，所以我们这时候还要再分配一个分片级别为1(大小为4)的新分片，如下图：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/6.png" style="zoom:50%"></p>
+<p>payload成功的存储到新的分片中，下标值17跟18位置的数组元素用来存放下一个“Tales”的数据(如果有的话)。</p>
+<h5 id="添加第四个termjames"><a class="markdownIt-Anchor" href="#添加第四个termjames"></a> 添加第四个term：James</h5>
+<p>“James”同样是第一次添加，所以分配一个大小为2个的分片，然后由于要添加startOffset，endOffset，payload又要再分配大小为4的分片，过程跟添加“of”是一样的，所以最后一个term添加后的图如下：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/IntBlockPool/7.png" style="zoom:50%"></p>
+<h5 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h5>
+<p>上面的例子中，还有一些问题，如果感兴趣可以结合MemoryIndex的索引跟查询来了解，比如说，如何知道 “Tales of Tales James” 中的第一个“Tales”是第一次存储，如何知道第二个“Tales”已经存储过了，还有就是添加“of”跟“James”时，如何知道应该从二维数组中的哪个位置开始存储。</p>
+<p>至于读取二维数组的过程就不通过例子赘述了，从写入的逻辑就很容易看出如何读取。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/IntBlockPool/IntBlockPool.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/invertedIndex/">invertedIndex</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2018/1211/BooleanQuery/"
+                                   title="BooleanQuery"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">BooleanQuery</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/2018/0927/%E5%89%8D%E5%AF%BC/"
+                                   title="前导"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">前导</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BB%8B%E7%BB%8Dintblockpool%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> 如何介绍IntBlockPool类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intblockpool%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text"> IntBlockPool的方法和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text"> 几个基本的变量说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%96%B0%E7%9A%84%E5%88%86%E7%89%87slice"><span class="nav-number">3.</span> <span class="nav-text"> 获得新的分片(slice)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%80%E5%88%86%E7%89%87slice%E4%B8%AD%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text"> 往分片(slice)中写数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slicewriter%E7%B1%BB%E7%9A%84%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">4.1.</span> <span class="nav-text"> SliceWriter类的部分方法和变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%88%86%E7%89%87slice%E4%B8%AD%E8%AF%BB%E6%95%B0%E6%8D%AE"><span class="nav-number">5.</span> <span class="nav-text"> 从分片(slice)中读数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slicereader%E7%B1%BB%E7%9A%84%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">5.1.</span> <span class="nav-text"> SliceReader类的部分方法和变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">6.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#posincr"><span class="nav-number">6.0.1.</span> <span class="nav-text"> posIncr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#startoffset"><span class="nav-number">6.0.2.</span> <span class="nav-text"> startOffset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#endoffset"><span class="nav-number">6.0.3.</span> <span class="nav-text"> endOffset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#payload"><span class="nav-number">6.0.4.</span> <span class="nav-text"> payload</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%80%E4%B8%AAtermtales"><span class="nav-number">6.0.5.</span> <span class="nav-text"> 添加第一个term：Tales</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E4%B8%AAtermof"><span class="nav-number">6.0.6.</span> <span class="nav-text"> 添加第二个term：of</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E4%B8%AAtermtales"><span class="nav-number">6.0.7.</span> <span class="nav-text"> 添加第三个term：Tales</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E5%9B%9B%E4%B8%AAtermjames"><span class="nav-number">6.0.8.</span> <span class="nav-text"> 添加第四个term：James</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.0.9.</span> <span class="nav-text"> 结语</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BB%8B%E7%BB%8Dintblockpool%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> 如何介绍IntBlockPool类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intblockpool%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text"> IntBlockPool的方法和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text"> 几个基本的变量说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E6%96%B0%E7%9A%84%E5%88%86%E7%89%87slice"><span class="nav-number">3.</span> <span class="nav-text"> 获得新的分片(slice)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%80%E5%88%86%E7%89%87slice%E4%B8%AD%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text"> 往分片(slice)中写数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slicewriter%E7%B1%BB%E7%9A%84%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">4.1.</span> <span class="nav-text"> SliceWriter类的部分方法和变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%88%86%E7%89%87slice%E4%B8%AD%E8%AF%BB%E6%95%B0%E6%8D%AE"><span class="nav-number">5.</span> <span class="nav-text"> 从分片(slice)中读数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slicereader%E7%B1%BB%E7%9A%84%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">5.1.</span> <span class="nav-text"> SliceReader类的部分方法和变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">6.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#posincr"><span class="nav-number">6.0.1.</span> <span class="nav-text"> posIncr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#startoffset"><span class="nav-number">6.0.2.</span> <span class="nav-text"> startOffset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#endoffset"><span class="nav-number">6.0.3.</span> <span class="nav-text"> endOffset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#payload"><span class="nav-number">6.0.4.</span> <span class="nav-text"> payload</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%80%E4%B8%AAtermtales"><span class="nav-number">6.0.5.</span> <span class="nav-text"> 添加第一个term：Tales</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E4%B8%AAtermof"><span class="nav-number">6.0.6.</span> <span class="nav-text"> 添加第二个term：of</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E4%B8%AAtermtales"><span class="nav-number">6.0.7.</span> <span class="nav-text"> 添加第三个term：Tales</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E5%9B%9B%E4%B8%AAtermjames"><span class="nav-number">6.0.8.</span> <span class="nav-text"> 添加第四个term：James</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.0.9.</span> <span class="nav-text"> 结语</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            PackedInts（一） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        PackedInts（一）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-12-17 00:00:00</span>
+                <span class="mobile">2019-12-17 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 13:04:59 GMT+0800">2023-10-08 13:04:59</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.1k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  为了能节省空间，Lucene使用<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/packed/PackedInts.java" >PackedInts类<i class="fas fa-external-link-alt"></i></a>对long类型的数据进行压缩存储，基于内存使用率（memory-efficient）跟解压速度（读取速度），提供了多种压缩方法，我们先通过类图预览下这些压缩方法。</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/1.png">
+<p>  图1中MutableImpl类是PackedInts的内部类，其中Packed64SingleBlock是一个抽象类，它的实现如下所示：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/2.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89/2.png" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<h2 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h2>
+<p>  在介绍PackedInts提供的压缩方法前，我们先介绍下几个预备知识。</p>
+<h3 id="数据类型压缩"><a class="markdownIt-Anchor" href="#数据类型压缩"></a> 数据类型压缩</h3>
+<p>  根据待处理的数据的取值范围，选择占用字节更小的数据类型来表示原数据类型。</p>
+<p>数组一：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span>[] oldValues = &#123;<span class="number">10</span>, <span class="number">130</span>, <span class="number">7</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>  long类型的数组，每个数组元素都占用8个字节，压缩前存储该数组需要24个字节（只考虑数组元素的大小），即三个数组元素的占用字节总数，它们的二进制表示如下所示：</p>
+<p>表一：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数组元素</th>
+<th style="text-align:center">二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>00001010</font></td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>01100110</font></td>
+</tr>
+<tr>
+<td style="text-align:center">130</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>10000010</font></td>
+</tr>
+</tbody>
+</table>
+<p>  从表一可以看出，这三个值有效的数据位最多只在低8位，故可以使用字节数组来存储这三个数据：</p>
+<p>数组二：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span>[] newValues = &#123;<span class="number">10</span>, <span class="number">130</span>, <span class="number">7</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>  那么压缩后的数组只需要占用3个字节。</p>
+<h3 id="固定位数按字节存储"><a class="markdownIt-Anchor" href="#固定位数按字节存储"></a> 固定位数按字节存储</h3>
+<p>  在数据类型压缩的前提下，待处理的数据集使用相同的固定的bit位存储，bit位的个数由数据集中的最大值，它的数据有效bit位决定，例如有如下的数组：</p>
+<p>数组三：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span>[] oldValues = &#123;<span class="number">10</span>, <span class="number">290</span>, <span class="number">7</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>  三个数组元素的二进制表示如下所示：</p>
+<p>表二：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数组元素</th>
+<th style="text-align:center">二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>00000000_00001010</font></td>
+</tr>
+<tr>
+<td style="text-align:center">290</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>00000001_00100010</font></td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">00000000_00000000_00000000_00000000_00000000_00000000_<font color=Red>00000000_00000111</font></td>
+</tr>
+</tbody>
+</table>
+<p>  上表中，最大的数组元素是290，它的有效数据位为低16位，它是所有数组元素中有效数据位占用bit位最多的，那么在进行数据类型压缩后，新的数据类型既要保证数值290的精度，同时还要使得占用字节最小，故只能选择short类型的数组，并且数组元素10、7都需要跟290一样，需要存储2个字节的大小，尽管它们两个只需要1个字节就可以表示：</p>
+<p>数组四：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span>[] newValues = &#123;<span class="number">10</span>, <span class="number">290</span>, <span class="number">7</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>  压缩后的数组只需要占用6个字节。</p>
+<p><strong>为什么要选用固定字节</strong>：</p>
+<p>  能让所有数据用同一种数据类型表示，并且任何数据不会出现精度缺失问题，尽管压缩率不是最高，但是读取速度是非常快的。</p>
+<h3 id="固定位数按位存储"><a class="markdownIt-Anchor" href="#固定位数按位存储"></a> 固定位数按位存储</h3>
+<p>  上文中，数组三在使用了<code>固定位数按字节存储</code>以及<code>数据类型压缩</code>之后，生成了数组四，此时三个数组元素的二进制表示如下所示：</p>
+<p>表三：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数组元素</th>
+<th style="text-align:center">二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><font color=Red>0000000</font>0_00001010</td>
+</tr>
+<tr>
+<td style="text-align:center">290</td>
+<td style="text-align:center"><font color=Red>0000000</font>1_00100010</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><font color=Red>0000000</font>0_00000111</td>
+</tr>
+</tbody>
+</table>
+<p>  表三中，我们可以发现，在使用<code>固定位数按字节存储</code>的前提下，仍然有高7个bit位是无效数据，那么可以通过固定位数按位存储的方式来进一步提高压缩率，该方法不会使用数据类型的压缩，只是将所有数据的有效数据位进行拼接，当拼接后的bit位达到64位时，即生成一个long值，剩余的有效数据继续拼接并生成一个新的long值，例如我们有下面的数组：</p>
+<p>数组五：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span>[] oldValues = &#123;<span class="number">10</span>, <span class="number">290</span>, <span class="number">7</span>, <span class="number">18</span>, <span class="number">32</span>, <span class="number">23</span>, <span class="number">45</span>, <span class="number">35</span>, <span class="number">89</span>, <span class="number">291</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>  在使用固定位数按位存储之后，生成的新的数组如下所示：</p>
+<p>数组六：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span>[] newValues = &#123;<span class="number">380695872922475610</span>, <span class="number">2534621417262022656</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/3.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89/3.png" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  图3中，由于数组五中的最大值为291，它的有效数据占用9个bit位，所以其他的数组元素也使用9个bit位表示，那么就可以使用一个long类型的来表示7个完整的数值，由于7个数值一共占用7*9 =63个bit位，剩余的1个bit位为数组元素35的最高位0（红色虚线左侧的0），35的低8位只能存放到第二个long值中，故在读取阶段，需要读取两个long才能得到35这个数值，那么原本需要10*8=80个字节存储，现在只需要2*8=16个字节。</p>
+<h3 id="block"><a class="markdownIt-Anchor" href="#block"></a> block</h3>
+<p>  block在源码中用来描述一块数据区域，在这块数据可以存放一个或多个数值，block使用数组来实现，也就是说数组的一个数组元素称为一个block，并且这个数组元素可以存放一个或多个数值。</p>
+<p>  例如上文中的数组三，它是一个short类型的数组，它有三个block，并且每一个block中存放了一个数值，而在数组六中，它有两个block，第一个block存放了7个完整的数值，以及1个不完整的数值(7*9 + 1)，第二个block最多可以存放6个完整的数值，以及2个不完整的数值(8 + 6*9 + 2 = 64)。</p>
+<h2 id="压缩实现"><a class="markdownIt-Anchor" href="#压缩实现"></a> 压缩实现</h2>
+<p>  图1跟图2展示的是PackedInts提供的所有压缩实现，我们先对这些实现进行分类：</p>
+<p>表4：</p>
+<table>
+ <col width=87 style='width:65pt'>
+ <col width=116 style='mso-width-source:userset;mso-width-alt:3712;width:87pt'>
+ <col width=132 style='mso-width-source:userset;mso-width-alt:4224;width:99pt'>
+ <col width=176 style='mso-width-source:userset;mso-width-alt:5632;width:132pt'>
+ <tr height=21 style='height:16.0pt'>
+  <td height=21 width=87 style='height:16.0pt;width:65pt'>数据分布</td>
+  <td width=116 style='width:87pt'>是否有填充bit</td>
+  <td width=132 style='width:99pt'>是否单block单值</td>
+  <td width=176 style='width:132pt'>实现类</td>
+ </tr>
+ <tr height=101 style='mso-height-source:userset;height:76.0pt'>
+  <td rowspan=2 height=418 class=xl65 style='height:314.0pt'>一个block</td>
+  <td class=xl65>否</td>
+  <td class=xl65>是</td>
+  <td class=xl66 width=176 style='width:132pt'>Direct8<br>
+    Direct16<br>
+    Direct32<br>
+    Direct64</td>
+ </tr>
+ <tr height=317 style='height:238.0pt'>
+  <td height=317 class=xl65 style='height:238.0pt'>是</td>
+  <td class=xl65>否</td>
+  <td class=xl66 width=176 style='width:132pt'>Packed64SingleBlock1<br>
+    Packed64SingleBlock2<br>
+    Packed64SingleBlock3<br>
+    Packed64SingleBlock4<br>
+    Packed64SingleBlock5<br>
+    Packed64SingleBlock6<br>
+    Packed64SingleBlock7<br>
+    Packed64SingleBlock8<br>
+    Packed64SingleBlock9<br>
+    Packed64SingleBlock10<br>
+    Packed64SingleBlock12<br>
+    Packed64SingleBlock16<br>
+    Packed64SingleBlock21<br>
+    Packed64SingleBlock32</td>
+ </tr>
+ <tr height=21 style='height:16.0pt'>
+  <td height=21 class=xl65 style='height:16.0pt'>两个block</td>
+  <td class=xl65>否</td>
+  <td class=xl65>否</td>
+  <td class=xl65>Packed64</td>
+ </tr>
+ <tr class=xl65 height=45 style='height:34.0pt'>
+  <td height=45 class=xl65 style='height:34.0pt'>三个block</td>
+  <td class=xl65>否</td>
+  <td class=xl65>-</td>
+  <td class=xl66 width=176 style='width:132pt'>Packed8ThreeBlocks<br>
+    Packed16ThreeBlocks</td>
+</table>
+<p>  我们先对表4的内容做一些介绍：</p>
+<ul>
+<li>数据分布：该列名描述的是一个数值的信息是否可能分布在不同的block中，例如图3中的数值35，它用9个bit位来描述，其中最高位存储在第一个block，而低8位存储在第二个block中，又比如上文中的数组二跟数组四，每个数值都存储在一个block中</li>
+<li>是否有填充bit：例如图3中的数值35，在第一个block中存储了7个完整的数据后，该block仅剩余1个bit位，如果该bit位不存储数值35的最高位，那么该bit位就是填充bit，也就是说，如果使用了填充bit，那么一个block中不会有不完整的数值，当然内存使用率会降低</li>
+<li>是否单block单值：该列描述的是一个block中是否只存储一个数值，例如数组4，每一个block只存储一个short类型的数值，例如数组六，第一个block存储了7个完整的数值以及一个不完整的数值</li>
+</ul>
+<p>  <strong>接下来我们先介绍下每种实现中使用哪种数据类型来存储数据，然后再介绍下为什么Lucene提供这么多的压缩，以及如何选择，最后再介绍几个例子</strong>。</p>
+<h3 id="direct"><a class="markdownIt-Anchor" href="#direct"></a> Direct*</h3>
+<p>  该系列分别使用不同的数据类型来实现一个block存储一个数值，它们属于上文中提到的<code>固定位数按字节存储</code>：</p>
+<ul>
+<li>Direct8：使用byte[]数组存储</li>
+<li>Direct16：使用short[]数组存储</li>
+<li>Direct32：使用int[]数组存储</li>
+<li>Direct64：使用long[]数组存储</li>
+</ul>
+<h3 id="packed8threeblocks-packed16threeblocks"><a class="markdownIt-Anchor" href="#packed8threeblocks-packed16threeblocks"></a> Packed8ThreeBlocks、Packed16ThreeBlocks</h3>
+<p>  该系列使用三个block来存储一个数值：</p>
+<ul>
+<li>Packed8ThreeBlocks：使用byte[]数组存储</li>
+<li>Packed16ThreeBlocks：使用short[]数组存储</li>
+</ul>
+<h3 id="packed64singleblock"><a class="markdownIt-Anchor" href="#packed64singleblock"></a> Packed64SingleBlock*</h3>
+<p>  该系列使用一个block来存储一个或多个数值，并且可能存在填充bit，它们属于上文中提到的<code>固定位数按位存储</code>，所有的实现使用long[]数组存储。</p>
+<h3 id="packed64"><a class="markdownIt-Anchor" href="#packed64"></a> Packed64</h3>
+<p>  Packed64使用一个block来存储一个或多个数值，不会存在填充bit，它属于上文中提到的<code>固定位数按位存储</code>，使用long[]数组存储。</p>
+<p><strong>为什么Lucene提供这么多的压缩实现：</strong></p>
+<p>  这些压缩实现分别提供不同的内存使用率以及解压速度（读取速度），下面几张图是Lucene的核心贡献者<a class="link"   target="_blank" rel="noopener" href="https://github.com/jpountz" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>提供的测试数据，它使用了三台机器来测试压缩实现的压缩性能以及解压性能：</p>
+<p>  测试一：</p>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/4.png">
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/5.png">
+<p>  测试二：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/6.png">
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/7.png">
+<p>  测试三：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/8.png">
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/PackedInts/PackedInts（一）/9.png">
+<p>  图中的曲线对应的压缩实现如下所示：</p>
+<ul>
+<li><font color=Blue>蓝色曲线Packed</font>：Packed64</li>
+<li><font color=Red>红色曲线Single</font>：Packed64SingleBlock*</li>
+<li><font color=Gold>黄色曲线Three</font>：Packed8ThreeBlocks、Packed16ThreeBlocks</li>
+<li><font color=Green>黄色曲线Direct</font>：Direct*</li>
+</ul>
+<p>  我们先观察下Direct*与Packed64的读取速度，这两种压缩实现无论在哪一台都表现出两个极端，即Packed64读取最慢，而Direct*读取最快，而从表4我们可以看出，Packed64使用连续的bit位存储数据，待存储的数据如果没有突兀的数据，那么相对于Direct*能有很高的压缩率，例如存储连续递增的文档号，并且只存储文档差值，那么只需要1个bit位就能表示一个文档号。</p>
+<p>  在Lucene 4.0.0版本之前，只有Direct8、Direct16、Direct32、Direct64、Packed64、Packed32（该压缩算实现考虑的是对32位平台，我们这里不作介绍）可供选择，在这个版本中，当计算出待处理的数据集中最大值的数据有效位的bit个数后，我们称之为bitsPerValue，如果bitsPerValue为8，那么选择Direct8，如果bitsPerValue为32，那么选择Direct32，以此类推，即如果bitsPerValue不是8、16、32、64，那么就选择Packed64。</p>
+<p>  也就说在Lucene 4.0.0版本之前，只有bitsPerValue是8、16、32、64时，才能使用Direct*，我们考虑这么一种假设，如果bitsPerValue的值是21，并且使用Direct32存储，那么我们就能获得较好的性能，但是这么做会造成（32-21）/ 32 = 35%的空间浪费，故<a class="link"   target="_blank" rel="noopener" href="https://github.com/jpountz" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>使用long类型数组来存储，那么64个bit位的long类型可以存放3个bitsPerValue为21的数值，并且剩余的一个bit位作为填充bit，该填充bit不存储有效数据，那么我们只要读取一个block，就能读取/写入一个数值，而Packed64需要读取两个block，因为读取/写入的数值可能分布在两个block中，那么自然性能比Packed64好，而这正是空间换时间的设计，每存储3个bitsPerValue为21的数值，需要1个bit额外的空间开销，即每个数值需要1/3个bit的额外开销。</p>
+<p>  上述的原内容见：<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-4062" >https://issues.apache.org/jira/browse/LUCENE-4062<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p>  上述方式即Packed64SingleBlock*压缩实现，bitsPerValue为21的数值即对应Packed64SingleBlock21，同样<a class="link"   target="_blank" rel="noopener" href="https://github.com/jpountz" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>基于这种方式做了测试，他通过10000000个bitsPerValue为21的数值使用Packed64SingleBlock21进行压缩存储，相比较使用Packed64，额外空间开销为2%，但是速度提升了44%，故使用了Packed64SingleBlock*之后，bitsPerValue不为8、16、32、64的部分bitsPerValue通过空间换时间的思想，提高了性能，在图4~图9中也能通过曲线看出来。</p>
+<p><strong>为什么只有部分bitsPerValue实现了Packed64SingleBlock*压缩</strong>：</p>
+<p>  从表4中可以发现，只有bitsPerValue为1，2，3，4，5，6，7，8，9，10，12，16，21，32实现了Packed64SingleBlock*压缩，我们通过一个block可存放的数值个数来介绍原因：</p>
+<ul>
+<li>1个数值：bitsPerValue为64才能使得额外空间开销最小，每个数值的空间开销为（64-64*1）/（1）= 0，它其实就是Direct64</li>
+<li>2个数值：bitsPerValue为32才能使得额外空间开销最小，每个数值的空间开销为（64-32*2）/（2）= 0</li>
+<li>3个数值：bitsPerValue为21才能使得额外空间开销最小，每个数值的空间开销为（64-21*3）/（3）= 0.33</li>
+<li>4个数值：bitsPerValue为16才能使得额外空间开销最小，每个数值的空间开销为（64-16*4）/（4）= 0</li>
+<li>5个数值：bitsPerValue为12才能使得额外空间开销最小，每个数值的空间开销为（64-12*5）/（5）= 0.8</li>
+<li>6个数值：bitsPerValue为10才能使得额外空间开销最小，每个数值的空间开销为（64-10*6）/（6）= 0.66</li>
+<li>7个数值：bitsPerValue为9才能使得额外空间开销最小，每个数值的空间开销为（64-9*7）/（7）= 0.14</li>
+<li>8个数值：bitsPerValue为8才能使得额外空间开销最小，每个数值的空间开销为（64-8*8）/（8）= 0</li>
+<li>
+<pre><code>                              。。。 。。。
+</code></pre>
+</li>
+</ul>
+<p>  可以看出那些实现了Packed64SingleBlock*压缩的bitsPerValue都是基于空间开销下的最优解。</p>
+<p><strong>如何选择压缩方式</strong>：</p>
+<p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  无</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/PackedInts/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/yasuocunchu/2019/1218/PackedInts%EF%BC%88%E4%BA%8C%EF%BC%89/"
+                                   title="PackedInts（二）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">PackedInts（二）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2019/1212/RamUsageEstimator/"
+                                   title="RamUsageEstimator"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">RamUsageEstimator</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.1.</span> <span class="nav-text"> 数据类型压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E4%BD%8D%E6%95%B0%E6%8C%89%E5%AD%97%E8%8A%82%E5%AD%98%E5%82%A8"><span class="nav-number">1.2.</span> <span class="nav-text"> 固定位数按字节存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E4%BD%8D%E6%95%B0%E6%8C%89%E4%BD%8D%E5%AD%98%E5%82%A8"><span class="nav-number">1.3.</span> <span class="nav-text"> 固定位数按位存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">1.4.</span> <span class="nav-text"> block</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#direct"><span class="nav-number">2.1.</span> <span class="nav-text"> Direct*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed8threeblocks-packed16threeblocks"><span class="nav-number">2.2.</span> <span class="nav-text"> Packed8ThreeBlocks、Packed16ThreeBlocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64singleblock"><span class="nav-number">2.3.</span> <span class="nav-text"> Packed64SingleBlock*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64"><span class="nav-number">2.4.</span> <span class="nav-text"> Packed64</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.1.</span> <span class="nav-text"> 数据类型压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E4%BD%8D%E6%95%B0%E6%8C%89%E5%AD%97%E8%8A%82%E5%AD%98%E5%82%A8"><span class="nav-number">1.2.</span> <span class="nav-text"> 固定位数按字节存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E4%BD%8D%E6%95%B0%E6%8C%89%E4%BD%8D%E5%AD%98%E5%82%A8"><span class="nav-number">1.3.</span> <span class="nav-text"> 固定位数按位存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">1.4.</span> <span class="nav-text"> block</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 压缩实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#direct"><span class="nav-number">2.1.</span> <span class="nav-text"> Direct*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed8threeblocks-packed16threeblocks"><span class="nav-number">2.2.</span> <span class="nav-text"> Packed8ThreeBlocks、Packed16ThreeBlocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64singleblock"><span class="nav-number">2.3.</span> <span class="nav-text"> Packed64SingleBlock*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packed64"><span class="nav-number">2.4.</span> <span class="nav-text"> Packed64</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text"> 结语</span></a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

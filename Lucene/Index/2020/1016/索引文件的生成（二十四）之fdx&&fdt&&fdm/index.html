@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件的生成（二十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件的生成（二十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-10-16 00:00:00</span>
+                <span class="mobile">2020-10-16 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 11 2023 14:22:48 GMT+0800">2023-10-11 14:22:48</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容，先给出生成索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的流程图：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/1.png">
+<h2 id="索引阶段"><a class="markdownIt-Anchor" href="#索引阶段"></a> 索引阶段</h2>
+<h3 id="是否生成一个chunk"><a class="markdownIt-Anchor" href="#是否生成一个chunk"></a> 是否生成一个chunk</h3>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/2.png">
+<p>  在上一篇文章中我们知道，在索引阶段，每处理一篇文档会将存储域的域值写入到bufferedDoc[ ]数组中并且增量统计存储域的信息，其中一个信息就是numBufferedDocs，它描述了在生成一个chunk之前，当前已经处理的文档数量。当前流程点的判断条件就依赖上文的描述，由于该条件的判断方式比较简单，故直接给出源码：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/3.png">
+<p>  图3中，bufferedDocs.getPosition( )方法描述了存储在bufferedDoc[ ]数组中的域值长度（占用字节数量），chunkSize是一个阈值，达到阈值后即满足第一种生成一个chunk的条件，chunkSize的值有两个可选项：16384跟61440，他们分别对应两种生成索引文件.fdt的模式：FAST跟HIGH_COMPRESSION模式，这两种模式描述了对bufferedDoc[ ]数组中的域值使用不同的压缩算法，分别是<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4<i class="fas fa-external-link-alt"></i></a>跟JDK中的Deflater。生成索引文件.fdt的模式可以通过实现抽象类<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/codecs/Codec.java" >Codec<i class="fas fa-external-link-alt"></i></a>来自定义。</p>
+<p>  第二种满足生成的条件为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mi>B</mi><mi>u</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>D</mi><mi>o</mi><mi>c</mi><mi>s</mi><mo>&gt;</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mi>D</mi><mi>o</mi><mi>c</mi><mi>s</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>C</mi><mi>h</mi><mi>u</mi><mi>n</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">numBufferedDocs &gt;= maxDocsPerChunk</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">h</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，其中maxDocsPerChunk也是一个阈值，同样有两个可选项：128跟512，分别对应上文中的生成索引文件.fdt的模式。</p>
+<p>  故图3中满足流程点<code>是否生成一个chunk</code>的条件就是，目前处理的域值长度或者处理的文档数量是否超过阈值。</p>
+<h3 id="生成一个chunk"><a class="markdownIt-Anchor" href="#生成一个chunk"></a> 生成一个chunk</h3>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/4.png">
+<p>  在当前流程点<code>生成一个chunk</code>中，我们将把目前已经处理的信息（域值信息、存储域的信息）生成一个chunk，完成下面几个工作：</p>
+<ul>
+<li>记录chunk的两个信息</li>
+<li>docBase、numBufferedDocs写入到索引文件.fdt中</li>
+<li>存储域的信息写入到索引文件.fdt中</li>
+<li>域值信息写入到索引文件.fdt中</li>
+</ul>
+<h4 id="记录chunk的两个信息"><a class="markdownIt-Anchor" href="#记录chunk的两个信息"></a> 记录chunk的两个信息</h4>
+<p>  此流程中会使用两个临时文件记录这个即将生成的chunk的两个信息：</p>
+<ul>
+<li>chunk在索引文件.fdt中起始读取位置</li>
+<li>chunk中的文档数量</li>
+</ul>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/5.png">
+<p>  图5中的两个临时文件会统计<strong>一个段</strong>中所有chunk的两个信息，在图1的flush阶段，将分别用于<code>生成NumDocs的信息</code>、<code>生成startPoints的信息</code>这两个流程点。</p>
+<p>  至于chunk的这两个信息的作用，我们随后将在<code>索引文件的读取之fdx&amp;&amp;fdt&amp;&amp;fdm</code>的文章中详细展开。</p>
+<h4 id="docbase-numbuffereddocs写入到索引文件fdt中"><a class="markdownIt-Anchor" href="#docbase-numbuffereddocs写入到索引文件fdt中"></a> docBase、numBufferedDocs写入到索引文件.fdt中</h4>
+<p>  docBase是chunk中第一个文档的<strong>段内文档号</strong>、将被写入到索引文件.fdt的DocBase字段，numBufferedDocs将被写入到索引文件.fdt的ChunkDos字段，ChunkDos字段中还包含了sliceBit，该值是一个布尔类型，在下文中会具体介绍，故numBufferedDocs和sliceBit将作为一个组合值被写入到ChunkDos字段中，组合方式为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mi>u</mi><mi>m</mi><mi>B</mi><mi>u</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>D</mi><mi>o</mi><mi>c</mi><mi>s</mi><mo>&lt;</mo><mo>&lt;</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mi>s</mi><mi>l</mi><mi>i</mi><mi>c</mi><mi>e</mi><mi>B</mi><mi>i</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">(numBufferedDocs &lt;&lt; 1 )| sliceBit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">∣</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span></span></span></span>，即ChunkDos的最低位用来存储布尔类型的sliceBit，如下所示：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/6.png">
+<h4 id="存储域的信息写入到索引文件fdt中"><a class="markdownIt-Anchor" href="#存储域的信息写入到索引文件fdt中"></a> 存储域的信息写入到索引文件.fdt中</h4>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中我们知道，存储域的信息在内存中使用numStoredFields[ ]数组，endOffsets[ ]数组存储，他们分别将被写入到DocFieldCounts字段跟DocLengths字段，如下所示：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/7.png">
+<p>  numStoredFields[ ]数组，endOffsets[ ]数组中的信息被写入到索引文件.fdt之前，会先进行编码压缩处理，不同的处理方式使得DocFieldCounts、DocLengths有不同的数据结构，该内容在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>已经介绍，不赘述。</p>
+<h4 id="域值信息写入到索引文件fdt中"><a class="markdownIt-Anchor" href="#域值信息写入到索引文件fdt中"></a> 域值信息写入到索引文件.fdt中</h4>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中我们知道、域值信息在内存中使用bufferedDocs[ ]数组存储，它将被写入到CompressedDocs字段，如下所示：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/8.png">
+<p>  域值信息被写入到索引文件.fdt之前，会根据域值的总长度（占用字节数量）判断是否需要进行切片压缩，判断条件如下：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/9.png">
+<p>  图9中，当域值长度满足条件后，需要对域值进行切片压缩，将域值按照chunkSize划分为每一个切片，然后对每个切片使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/0226/LZ4" >LZ4算法（上）<i class="fas fa-external-link-alt"></i></a>算法进行压缩处理。</p>
+<p>  至此，在索引阶段生成索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的流程点介绍完毕。从上文的介绍可以发现，有可能存在这么一种情况，添加完最后一篇文档后，还未满足图2中<code>是否生成一个chunk</code>的条件，也就是说，还有一些文档的域值信息、存储域信息未被写入到索引文件.fdt中，那么这些未处理的文档将会在flush阶段完成。</p>
+<h2 id="flush阶段"><a class="markdownIt-Anchor" href="#flush阶段"></a> flush阶段</h2>
+<p>  在flush阶段，一方面将处理上文中说的未处理的文档的域值信息、存储域信息，另一方面还会根据图5中的两个临时文件中的信息生成索引文件.fdx、fdm。</p>
+<p>  图1中flush阶段的流程在执行<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >flush<i class="fas fa-external-link-alt"></i></a>（IndexWriter.flush()）的流程中的位置如下所示：</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/10.png">
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/uploads/lucene/index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89/flush.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<p>  注意的是图10中除了图1中的流程，其他的流程都是基于Lucene 7.5.0，与Lucene 8.6.0可能会有些差异，但是生成索引文件fdx&amp;&amp;fdt&amp;&amp;fdm在flush阶段的时机点是相同的。</p>
+<h3 id="生成一个chunk-2"><a class="markdownIt-Anchor" href="#生成一个chunk-2"></a> 生成一个chunk</h3>
+<p>  这里生成一个chunk的逻辑跟图4中的流程点是一样，区别在于当前即将生成的chunk中的域值长度以及文档数量是不满足图2中的条件的，在执行完当前流程后，会统计增量统计一个变量numDirtyChunks，它随后将被写入到索引文件.fdt中。</p>
+<h3 id="生成numdocs的信息"><a class="markdownIt-Anchor" href="#生成numdocs的信息"></a> 生成NumDocs的信息</h3>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/11.png">
+<p>  在图1的索引阶段，使用了图5中的临时文件_0_Lucene85FieldsIndex-doc_ids_0.tmp存储了一个段中每个chunk中包含的文档数量，从上文的描述我们可以知道，一个chunk中的文档数量可能因为域值的长度而各不相同。</p>
+<p>  处理过程为读取每一个chunk中的文档数量，每处理1024（2 &lt;&lt; blockshift（blockshift的介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>））个chunk就生成一个NumDocsBlock，然后写入到索引文件.fdx中：</p>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/12.png">
+<p>  图12中NumDoc字段为某个chunk中的文档数量，最后NumDocsBlock会<strong>先进行编码再使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>进行压缩处理</strong>后再写入到索引文件.fdx中。</p>
+<p>  上文中说到每处理2 &lt;&lt; blockshift个chunk就生成一个NumDocsBlock，此时还会生成NumDocMeta信息来记录编码信息，使得在读取阶段能通过NumDocMeta中的编码信息恢复成原数据NumDoc，NumDocMeta信息会被写入到索引文件.fdm中：</p>
+<p>图13：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/13.png">
+<p>  图13中Min、AvgInc、Offset、BitRequired为编码信息，其编码逻辑本文不会展开，编码的目的是为了能降低索引文件的文件大小，另外图13中的其他字段的介绍可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="生成startpoints的信息"><a class="markdownIt-Anchor" href="#生成startpoints的信息"></a> 生成StartPoints的信息</h3>
+<p>图14：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/14.png">
+<p>  在图1的索引阶段，使用了图5中的临时文件_0_Lucene85FieldsIndexfile_pointers_1.tmp存储了一个chunk对应的数据块在索引文件.fdt中的起始读取位置。</p>
+<p>  处理过程为读取每一个chunk中的对应的数据块在索引文件.fdt中起始读取位置，每处理1024（2 &lt;&lt; blockshift（blockshift的介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>））个chunk就生成一个StartPointBlock，然后写入到索引文件.fdx中：</p>
+<p>图15：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/15.png">
+<p>  图15中StartPoint为某个chunk对应的数据块在索引文件.fdt中的起始读取位置。同样的，StartPointBlock会<strong>先进行编码再使用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>进行压缩处理</strong>后再写入到索引文件.fdx中。</p>
+<p>  跟NumDocsBlock一样，每处理2 &lt;&lt; blockshift个chunk就生成一个StartPointBlock，此时还会生成StartPointMeta信息来描述编码信息，使得在读取阶段能通过StartPointMeta中的编码信息恢复成原数据StartPoint，StartPointMeta信息会被写入到索引文件.fdm中：</p>
+<p>图16：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（二十四）/16.png">
+<p>  图16中Min、AvgInc、Offset、BitRequired为编码信息，其编码逻辑本文不会展开。另外图13中的其他字段的介绍可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  至此，生成<strong>索引文件fdx&amp;&amp;fdt&amp;&amp;fdm</strong>过程介绍完毕，在随后介绍<strong>读取索引文件fdx&amp;&amp;fdt&amp;&amp;fdm</strong>文章中，我们将对比Lucene 7.5.0版本的索引文件fdx&amp;&amp;fdt，介绍数据结构的差异以及优化。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fdx/">fdx</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fdt/">fdt</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fdm/">fdm</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&amp;kdi&amp;kdm/"
+                                   title="索引文件之kdd&amp;kdi&amp;kdm（Lucene 8.6.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件之kdd&amp;kdi&amp;kdm（Lucene 8.6.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm/"
+                                   title="索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text"> 索引阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk"><span class="nav-number">1.1.</span> <span class="nav-text"> 是否生成一个chunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk"><span class="nav-number">1.2.</span> <span class="nav-text"> 生成一个chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95chunk%E7%9A%84%E4%B8%A4%E4%B8%AA%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 记录chunk的两个信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docbase-numbuffereddocs%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.2.</span> <span class="nav-text"> docBase、numBufferedDocs写入到索引文件.fdt中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%9F%9F%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.3.</span> <span class="nav-text"> 存储域的信息写入到索引文件.fdt中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%80%BC%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.4.</span> <span class="nav-text"> 域值信息写入到索引文件.fdt中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flush%E9%98%B6%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text"> flush阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk-2"><span class="nav-number">2.1.</span> <span class="nav-text"> 生成一个chunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90numdocs%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text"> 生成NumDocs的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90startpoints%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text"> 生成StartPoints的信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text"> 索引阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk"><span class="nav-number">1.1.</span> <span class="nav-text"> 是否生成一个chunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk"><span class="nav-number">1.2.</span> <span class="nav-text"> 生成一个chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95chunk%E7%9A%84%E4%B8%A4%E4%B8%AA%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 记录chunk的两个信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docbase-numbuffereddocs%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.2.</span> <span class="nav-text"> docBase、numBufferedDocs写入到索引文件.fdt中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%9F%9F%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.3.</span> <span class="nav-text"> 存储域的信息写入到索引文件.fdt中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%80%BC%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdt%E4%B8%AD"><span class="nav-number">1.2.4.</span> <span class="nav-text"> 域值信息写入到索引文件.fdt中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flush%E9%98%B6%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text"> flush阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAchunk-2"><span class="nav-number">2.1.</span> <span class="nav-text"> 生成一个chunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90numdocs%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text"> 生成NumDocs的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90startpoints%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text"> 生成StartPoints的信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

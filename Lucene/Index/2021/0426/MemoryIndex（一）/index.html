@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            MemoryIndex（一）（Lucene 8.8.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        MemoryIndex（一）（Lucene 8.8.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2021-04-26 00:00:00</span>
+                <span class="mobile">2021-04-26 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 11 2023 15:06:54 GMT+0800">2023-10-11 15:06:54</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/memoryIndex/">memoryIndex</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.4k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  从本篇文章开始介绍Lucene中提供的基于内存的搜索引擎的内容。我们通过MemoryIndex类的注释简单的了解下。</p>
+<p>图1：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/1.png">
+<p>  图1中中包含了两个重点内容：</p>
+<ul>
+<li>单文档：使用MemoryIndex生成的索引是单文档（single-document）的，所有的索引数据都在同一篇文档中</li>
+<li>使用场景：不适用于数量大并且需要持久化的数据场景；适用于数量较小、瞬时实时的数据、查询频繁的场景，在随后的文章中，我们会介绍MemoryIndex在Elasticsearch中的应用场景</li>
+</ul>
+<h2 id="内存索引"><a class="markdownIt-Anchor" href="#内存索引"></a> 内存索引</h2>
+<p>图2：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/2.png">
+<p>  从图1中可以看出，内存索引的层次结构首先按照域名划分，属于同一个域名的索引又按照Posting、Terms、PointValues、FIeldInfo、Norm、DocValues划分（<strong>只列出了部分关键内容</strong>）。</p>
+<p>  在源码层面，使用了一个Map来存放所有的内存索引：</p>
+<p>图3：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/3.png">
+<p>  图3中的TreeMap的key跟value跟图2中的关系如下所示，即域名为key，该域名对应的索引信息为value，在代码中用Info对象存储：</p>
+<p>图4：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/4.png">
+<h2 id="内存索引的数据结构"><a class="markdownIt-Anchor" href="#内存索引的数据结构"></a> 内存索引的数据结构</h2>
+<p>  接着我们对图4中用<font color=Blue>蓝色虚线框</font>标注的几个不同类型索引信息分别介绍下其数据结构。</p>
+<h3 id="posting"><a class="markdownIt-Anchor" href="#posting"></a> Posting</h3>
+<p>  Posting中存放的是倒排信息，基于磁盘的索引中的倒排信息包含了文档号docId、词频frequency、位置position、偏移offset（offset是一个二元组，即startOffset、endOffset）、负载payload共五类信息，由于我们在上文中说到生成的索引在一篇文档中，所以基于内存的索引中只要存储除去文档号docId的其他四种信息即可。</p>
+<p>  在源码中，使用了<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2018/1209/IntBlockPool" >IntBlockPool<i class="fas fa-external-link-alt"></i></a>类来存储Posting的位置position、偏移offset、负载payload这三类信息，而词频frequency则是使用一个额外的数组存放，在下文中介绍termId时再展开介绍。</p>
+<p>  对于IntBlockPool类，实际上使用了一个int类型的二维数组buffers来存储Posting。</p>
+<p>  对于某个域名对应的Posting，其数据结构如下：</p>
+<p>图5：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/5.png">
+<p>  由于偏移offset、负载payload可以分别使用参数来决定是否存储，如下所示。故在不同参数下，一共有图5中三种Posting的数据结构。</p>
+<p>图6：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/6.png">
+<p>  另外在图5中可以看到，并没有真正的存储payload的值，而是存放了一个索引值payloadIndex，该索引值指向另一个数据结构中的某个位置，在那个位置存放着payload的值，后面的文章中会详细展开。如果没有payload值，那么payloadIndex的值置为-1。</p>
+<h4 id="哨兵值"><a class="markdownIt-Anchor" href="#哨兵值"></a> 哨兵值</h4>
+<p>  将term的Posing信息写入到二维数组buffers之前，会在二维数组buffers中预分配一段空间连续的分片，哨兵值位于分片中的最后一个位置。</p>
+<p>  哨兵值有两个作用：</p>
+<ul>
+<li>作用一：用来描述<strong>当前分片</strong>是否无法再存储更多的Posting信息。在写入到分片的过程中，如果遇到了哨兵值，说明需要再分配一个新的分片
+<ul>
+<li>二维数组buffers中每个数组元素都会被初始化为0，而哨兵值是一个非0的值，故可以通过判断即将写入的位置的数组元素是否为0</li>
+</ul>
+</li>
+<li>作用二：哨兵值用来描述新分配的分片大小</li>
+</ul>
+<h5 id="新的分片大小的分配规则"><a class="markdownIt-Anchor" href="#新的分片大小的分配规则"></a> 新的分片大小的分配规则</h5>
+<p>  在存储域值时，会使用到ByteBlockPool对象存储，该对象中也有相同的哨兵值的概念，其分配规则也是类似，在后面的文章中我们再详细展开。在本文中，我们只需要知道。除了第一次分配的分配大小为2，随后新的分片的大小总是为4，其原因同样会在后面的文章中展开。</p>
+<h4 id="termid"><a class="markdownIt-Anchor" href="#termid"></a> termId</h4>
+<p>  termId是从0开始的递增值，用来唯一代表一个term。termId从0开始递增，每处理一个新的term，termId执行+1操作，新的termId即代表这个term。</p>
+<p>  如果我们<strong>依次处理</strong>Jack， Jay， Jay，lily， lucy， lily 这几个term，那么这些term对应的termId如下所示：</p>
+<p>表一：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">term</th>
+<th style="text-align:center">termId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Jack</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">Jay</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">Jay</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">lily</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">lucy</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">lily</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<p>  在介绍了termId之后，我们就可以介绍上文中提到的term的词频frequency的存储方式。</p>
+<p>  由于有了termId的概念，故使用了一个名字为freq的int 类型的数组存储即可。其中数组下标为termId，数组元素为term的词频frequency。该数组在代码中的定义如下所示：</p>
+<p>图7：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/7.png">
+<p>  图7中的SliceByteStartArray对象实际也是Info（见图4）对象中的一个变量。</p>
+<p>  SliceByteStartArray对象中的另外两个数组，start[ ]跟end[ ]数组，他们的<strong>数组下标同样是termId</strong>，数组元素分别描述了term的Posting信息在二维数组buffers（见图5）的开始跟结束位置。因为<strong>所有term</strong>的Posting信息都存放在同一个二维数组buffers中，故在读取阶段，通过start[ ]跟end[ ]数组获得某个term的Posting信息在二维数组buffers中的起始读取位置跟结束位置。下文会通过例子详细介绍SliceByteStartArray对象。</p>
+<h4 id="bytesrefhash"><a class="markdownIt-Anchor" href="#bytesrefhash"></a> BytesRefHash</h4>
+<p>  上文中介绍了term的词频frequency、位置position、偏移offset、负载payload的存储方式，term自身的值也是需要存储的，它使用BytesRefHash对象存储。在读取阶段，根据termId就能从BytesRefHash对象中获得term的值。其写入跟读取的方式在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0218/ByteRefHash" >ByteRefHash<i class="fas fa-external-link-alt"></i></a>中已经详细介绍，故本文不赘述。</p>
+<h4 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h4>
+<p>  我们通过一个例子来介绍term的倒排信息是如何存储的。</p>
+<p>图8：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/8.png">
+<p>  图8中，<font color=Red>红框标注</font>的两个参数都是true，意思是存储偏移offset跟负载payload的值。</p>
+<h5 id="写入逻辑"><a class="markdownIt-Anchor" href="#写入逻辑"></a> 写入逻辑</h5>
+<p>  在介绍例子之前，我们先概述下写入的逻辑的核心过程：</p>
+<ul>
+<li>分片<strong>预分配</strong>：如果term从未处理过，那么在二维数组buffers中预分配一个分片，然后写入term的Posting信息
+<ul>
+<li>预分配的分片，<strong>第一次分配的分片大小只有2个数组元素大小</strong>。因为在图8中两个参数都为false的情况下，只需要存储位置position，那么再上哨兵值，故只需要2个数组</li>
+</ul>
+</li>
+<li>分片<strong>再分配</strong>：如果分片无法再存储更多的Posting信息，那么重新分配一个新的分片
+<ul>
+<li>在往分片写入的过程中，如果遇到了哨兵值，说明<strong>当前分片</strong>无法存储更多的信息，需要再分配一个新的分片。<strong>注意的是新的分片不一定在当前分片的下一个位置</strong>，故将<strong>当前分片</strong>的哨兵值改为一个索引值，即二维数组buffers的下标值，该值对应的位置即新的分片在二维数组中的起始位置。下文的例子中会介绍这种情况</li>
+</ul>
+</li>
+<li>Posting写入顺序：位置position --&gt; 偏移Offset（startOffset、endOffset）–&gt; 负载payload</li>
+</ul>
+<p>  根据图8的代码的，域名为&quot;author&quot;的域值在分词后将会生成四个term，并且处理的顺序分别为 jay --&gt; lily --&gt; jay --&gt; lucy。那么首先这几个term对应的termId以及Posting信息如下表所示：</p>
+<p>表二：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Term</th>
+<th style="text-align:center">TermId</th>
+<th style="text-align:center">词频frequency</th>
+<th style="text-align:center">偏移Offset</th>
+<th style="text-align:center">位置position</th>
+<th style="text-align:center">负载payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">jay</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">[0, 3], [9, 12]</td>
+<td style="text-align:center">0， 2</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">lily</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">[4, 8]</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td style="text-align:center">lucy</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">[13, 17]</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">-1</td>
+</tr>
+</tbody>
+</table>
+<p>  表二中，为了便于介绍，我们直接列出了所有term 的倒排信息。另外图8中的例子中没有设置负载payload，所以对应的payloadIndex为-1。在实际处理过程中，是通过分词器获取的。</p>
+<h5 id="添加第一个termjay"><a class="markdownIt-Anchor" href="#添加第一个termjay"></a> 添加第一个term：jay</h5>
+<p>  由于jay这个term第一次处理，故在二维数组buffers中预分配大小为2个数组元素大小的连续空间：</p>
+<p>图9：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/9.png">
+<h6 id="写入位置position"><a class="markdownIt-Anchor" href="#写入位置position"></a> 写入位置position</h6>
+<p>图10：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/10.png">
+<h6 id="写入偏移offset-payload"><a class="markdownIt-Anchor" href="#写入偏移offset-payload"></a> 写入偏移Offset、payload</h6>
+<p>  由于当前分片的下一个写入位置是个哨兵值，故先进行分片再分配，新的分片的大小固定为4个数组元素大小。接着当前分片的哨兵值被替换为一个索引值index，用来描述新的分片在二维数组buffers中的起始位置，即2，然后写入偏移Offset的startOffset跟endOffset：</p>
+<p>图11：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/11.png">
+<h6 id="写入slicebytestartarray"><a class="markdownIt-Anchor" href="#写入slicebytestartarray"></a> 写入SliceByteStartArray</h6>
+<p>  在写入Posting的过程中，会将当前处理的term在二维数组buffers中的起始、结束位置、词频frequency写入到SliceByteStartArray对象（见图7）中：</p>
+<p>图12：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/12.png">
+<h5 id="添加termlily"><a class="markdownIt-Anchor" href="#添加termlily"></a> 添加term：lily</h5>
+<p>  添加的过程跟添加第一个jay是一样的，故直接给出结果：</p>
+<p>图13：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/13.png">
+<h5 id="添加第二个termjay"><a class="markdownIt-Anchor" href="#添加第二个termjay"></a> 添加第二个term：jay</h5>
+<h6 id="写入位置position-2"><a class="markdownIt-Anchor" href="#写入位置position-2"></a> 写入位置position</h6>
+<p>  由图13可知，当前分片无法存储更多的数据，故先分配一个新的固定大小为4的分片，当前分片的哨兵值更新为12，然后写入位置position。注意的是SliceByteStartArray对象中的信息在写完便宜offset、负载payload后才更新</p>
+<p>图14：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/14.png">
+<h6 id="写入偏移offset-payload-2"><a class="markdownIt-Anchor" href="#写入偏移offset-payload-2"></a> 写入偏移Offset、payload</h6>
+<p>  由图3可知，写入偏移offset、payload需要3个数组元素大小，故在写完偏移offset后，先分配新的分配，修改哨兵值为16，然后写入payloadIndex，最后更新SliceByteStartArray中的end、freq数组：</p>
+<p>图15：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/15.png">
+<h5 id="添加termlucy"><a class="markdownIt-Anchor" href="#添加termlucy"></a> 添加term：lucy</h5>
+<p>emsp; 添加的过程跟添加第一个jay是一样的，故直接给出结果：</p>
+<p>图16：</p>
+<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/MemoryIndex/MemoryIndex（一）/16.png">
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  本文简单的介绍了MemoryIndex的概念，以及如何存储倒排信息的内容。在随后的文章将进一步介绍term自身的值、负载payload，以及其他类型索引文件的内容。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/attachment/Lucene/Index/MemoryIndex/MemoryIndex%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/index/">index</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/memoryIndex/">memoryIndex</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2021/0527/ForceMerge%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="ForceMerge（一）（Lucene 8.8.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ForceMerge（一）（Lucene 8.8.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2021/0218/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%BD%BD%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm/"
+                                   title="索引文件的载入（一）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0、8.6.0、8.7.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的载入（一）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0、8.6.0、8.7.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%B4%A2%E5%BC%95"><span class="nav-number">1.</span> <span class="nav-text"> 内存索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 内存索引的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#posting"><span class="nav-number">2.1.</span> <span class="nav-text"> Posting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%A8%E5%85%B5%E5%80%BC"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 哨兵值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E5%88%86%E7%89%87%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%88%86%E9%85%8D%E8%A7%84%E5%88%99"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> 新的分片大小的分配规则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termid"><span class="nav-number">2.1.2.</span> <span class="nav-text"> termId</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bytesrefhash"><span class="nav-number">2.1.3.</span> <span class="nav-text"> BytesRefHash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.4.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E9%80%BB%E8%BE%91"><span class="nav-number">2.1.4.1.</span> <span class="nav-text"> 写入逻辑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%80%E4%B8%AAtermjay"><span class="nav-number">2.1.4.2.</span> <span class="nav-text"> 添加第一个term：jay</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E4%BD%8D%E7%BD%AEposition"><span class="nav-number">2.1.4.2.1.</span> <span class="nav-text"> 写入位置position</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E5%81%8F%E7%A7%BBoffset-payload"><span class="nav-number">2.1.4.2.2.</span> <span class="nav-text"> 写入偏移Offset、payload</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5slicebytestartarray"><span class="nav-number">2.1.4.2.3.</span> <span class="nav-text"> 写入SliceByteStartArray</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0termlily"><span class="nav-number">2.1.4.3.</span> <span class="nav-text"> 添加term：lily</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E4%B8%AAtermjay"><span class="nav-number">2.1.4.4.</span> <span class="nav-text"> 添加第二个term：jay</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E4%BD%8D%E7%BD%AEposition-2"><span class="nav-number">2.1.4.4.1.</span> <span class="nav-text"> 写入位置position</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E5%81%8F%E7%A7%BBoffset-payload-2"><span class="nav-number">2.1.4.4.2.</span> <span class="nav-text"> 写入偏移Offset、payload</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0termlucy"><span class="nav-number">2.1.4.5.</span> <span class="nav-text"> 添加term：lucy</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%B4%A2%E5%BC%95"><span class="nav-number">1.</span> <span class="nav-text"> 内存索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 内存索引的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#posting"><span class="nav-number">2.1.</span> <span class="nav-text"> Posting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%A8%E5%85%B5%E5%80%BC"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 哨兵值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E5%88%86%E7%89%87%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%88%86%E9%85%8D%E8%A7%84%E5%88%99"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> 新的分片大小的分配规则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termid"><span class="nav-number">2.1.2.</span> <span class="nav-text"> termId</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bytesrefhash"><span class="nav-number">2.1.3.</span> <span class="nav-text"> BytesRefHash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.4.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E9%80%BB%E8%BE%91"><span class="nav-number">2.1.4.1.</span> <span class="nav-text"> 写入逻辑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%80%E4%B8%AAtermjay"><span class="nav-number">2.1.4.2.</span> <span class="nav-text"> 添加第一个term：jay</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E4%BD%8D%E7%BD%AEposition"><span class="nav-number">2.1.4.2.1.</span> <span class="nav-text"> 写入位置position</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E5%81%8F%E7%A7%BBoffset-payload"><span class="nav-number">2.1.4.2.2.</span> <span class="nav-text"> 写入偏移Offset、payload</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5slicebytestartarray"><span class="nav-number">2.1.4.2.3.</span> <span class="nav-text"> 写入SliceByteStartArray</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0termlily"><span class="nav-number">2.1.4.3.</span> <span class="nav-text"> 添加term：lily</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E4%B8%AAtermjay"><span class="nav-number">2.1.4.4.</span> <span class="nav-text"> 添加第二个term：jay</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E4%BD%8D%E7%BD%AEposition-2"><span class="nav-number">2.1.4.4.1.</span> <span class="nav-text"> 写入位置position</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E5%81%8F%E7%A7%BBoffset-payload-2"><span class="nav-number">2.1.4.4.2.</span> <span class="nav-text"> 写入偏移Offset、payload</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0termlucy"><span class="nav-number">2.1.4.5.</span> <span class="nav-text"> 添加term：lucy</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

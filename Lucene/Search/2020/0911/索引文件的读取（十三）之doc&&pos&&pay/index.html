@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件的读取（十三）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件的读取（十三）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-09-11 00:00:00</span>
+                <span class="mobile">2020-09-11 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 14:16:45 GMT+0800">2023-10-09 14:16:45</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/doc/">doc</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pos/">pos</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/pay/">pay</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay" >索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容。索引文件.doc、.pos、.pay的读取过程相比索引文件.tim&amp;&amp;.tip较为简单，核心部分为如何通过读取这三个索引文件，<strong>生成一个PostingsEnum对象</strong>，该对象中描述了term在一篇文档中的词频frequency、位置position、在文档中的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89" >偏移offset<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java" >负载payload<i class="fas fa-external-link-alt"></i></a>以及该文档的文档号docId，其中docId和frequency通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件.doc<i class="fas fa-external-link-alt"></i></a>获得、position通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >索引文件.pos<i class="fas fa-external-link-alt"></i></a>获得、offset和payload通过<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >索引文件.pay<i class="fas fa-external-link-alt"></i></a>获得。</p>
+<h2 id="postingsenum"><a class="markdownIt-Anchor" href="#postingsenum"></a> PostingsEnum</h2>
+<p>  PostingsEnum是一个抽象类，其子类的实现有很多，本文中仅仅介绍在<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/codecs/lucene84/Lucene84PostingsReader.java" >Lucene84PostingsReader<i class="fas fa-external-link-alt"></i></a>类中的子类，如下所示：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/1.png">
+<p>  图1中共有5个子类实现，用<font color=red>红框</font>标注，在搜索阶段，通过下面两个条件来选择其中一种实现：</p>
+<ul>
+<li>条件一：Flag</li>
+<li>条件二：打分模式ScoreMode</li>
+</ul>
+<h3 id="flag"><a class="markdownIt-Anchor" href="#flag"></a> Flag</h3>
+<p>  Flag描述了在搜索阶段中，我们需要获取term在文档中的哪些信息。这里的信息即上文中提到的frequency、position、offset以及payload。由于不是所有的查询都需要所有的这些信息，选择性（optional）的获取这些信息能降低搜索阶段的内存开销，同时减少读取索引文件时产生的磁盘I/O，下文中会详细介绍。</p>
+<p>  Flag的可选值如下所示：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/2.png">
+<h3 id="打分模式scoremode"><a class="markdownIt-Anchor" href="#打分模式scoremode"></a> 打分模式ScoreMode</h3>
+<p>  ScoreMode描述的是搜索模式，正如源码中的注释：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/3.png">
+<p>  本文中我们不展开ScoreMode的详细介绍，我们仅仅看下图3中<font color=red>红框</font>标注的TOP_SCORES，该值影响了上文中PostingsEnum子类的选择，该注释源码大意为：在搜索阶段，不会匹配所有满足查询条件的文档，会跳过那些不具竞争力的文档。其原理就是利用了索引文件.doc中的<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay" >Impacts字段<i class="fas fa-external-link-alt"></i></a>实现的，这里简单提下，在以后介绍<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-4100?jql=text%20~%20%22WAND%22" >WAND（weak and）算法<i class="fas fa-external-link-alt"></i></a>时候再详细介绍。</p>
+<h3 id="选择postingsenum的实现类"><a class="markdownIt-Anchor" href="#选择postingsenum的实现类"></a> 选择PostingsEnum的实现类</h3>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/4.png">
+<p>  图4的流程图描述了如何根据Flag跟打分模式选择PostingsEnum的实现类。<code>是否有跳表信息</code>的判断依据为：如果包含term的文档数量小于128，即一个block的大小，那么在生成索引文件.doc阶段就不会有跳表信息（不懂？见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）之跳表SkipList<i class="fas fa-external-link-alt"></i></a>）;在读取阶段由于是先读取索引文件.tim，故通过该索引文件中的DocFreq字段来获取包含term的文档数量，如下图红框标注的字段：</p>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/5.png">
+<p>  图5索引文件.tim的字段介绍以及生成过程可以分别阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >索引文件tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0804/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8Btim&amp;&amp;tip" >索引文件的读取（七）之tim&amp;&amp;tip<i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="postingsenum中的信息"><a class="markdownIt-Anchor" href="#postingsenum中的信息"></a> PostingsEnum中的信息</h3>
+<p>  我们先直接列出每个实现类中包含的数据，随后介绍获取这些信息的方式。</p>
+<ul>
+<li>BlockDocsEnum：
+<ul>
+<li>docId集合</li>
+<li>frequency集合</li>
+</ul>
+</li>
+<li>EverythingEnum：
+<ul>
+<li>docId集合</li>
+<li>frequency集合</li>
+<li>position集合</li>
+<li>offset集合</li>
+<li>payload集合</li>
+</ul>
+</li>
+<li>BlockImpactsDocsEnum：
+<ul>
+<li>docId集合</li>
+<li>frequency集合</li>
+<li>impactData信息</li>
+</ul>
+</li>
+<li>BlockImpactsPostingsEnum：
+<ul>
+<li>docId集合</li>
+<li>frequency集合</li>
+<li>position集合</li>
+<li>impactData信息</li>
+</ul>
+</li>
+<li>BlockImpactsEverythingEnum：
+<ul>
+<li>docId集合</li>
+<li>frequency集合</li>
+<li>position集合</li>
+<li>offset集合</li>
+<li>payload集合</li>
+<li>impactData信息</li>
+</ul>
+</li>
+</ul>
+<p>  无论哪一种PostingsEnum的实现类，在读取过程中，<strong>每次总是从索引文件.doc、pos、pay只读取一个block的信息</strong>，并把block中的信息写入到多个数组中（下文会介绍这些数组），这些数组用来描述上文中docId集合、frequency集合、position集合、offset集合、payload集合、impactData信息。</p>
+<p><strong>如何读取一个block中的信息</strong></p>
+<p>  为了便于描述，我们不考虑<strong>没有生成跳表</strong>以及**不满128条信息的block（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >索引文件之doc<i class="fas fa-external-link-alt"></i></a>中VIntBlocks的介绍）**的读取，只介绍生成跳表后的读取方式。</p>
+<p>  在读取了跳表SkipList之后（读取过程见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0106/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（四）之跳表SkipList<i class="fas fa-external-link-alt"></i></a>），我们就获得了一个SkipDatum的信息。</p>
+<p>  这里需要简单说明下，在生成跳表SkipList的过程中，在第0层中每当处理skipInterval（默认值为128）篇文档就生成一个SkipDatum，另外每生成skipMultiplier（默认值为8）个SkipDatum就在上一层，即第1层，生成一个SkipDatum。注意的是第1层的该SkipDatum中包含的指针信息是指向第0层中最后一个SKipDatum的<strong>结束读取位置</strong>，同时意味着指针信息指向了第0层的最后一个SkipDatum的下一个<strong>待写入</strong>的SkipDatum的<strong>起始读取位置</strong>，如果不了解这段描述，请阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0103/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E8%B7%B3%E8%A1%A8SkipList" >索引文件的生成（三）之跳表SkipList<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  <strong>那么此时问题来了，在读取阶段，最高层的第一个跳表是如何读取的；term的第一个docId信息、frequency信息、position信息、offset信息、payload信息是如何获得的呢</strong>？</p>
+<ul>
+<li>通过图5中索引文件.tim中的TermMetadata字段中的SkipOffset获得最高层的第一个跳表信息，通过DocStartFP、PosStartFP、PayStartFP获取term的第一个docId信息、frequency信息、position信息、offset信息、payload信息分别在索引文件.doc、.pos、.pay中的起始读取位置。</li>
+</ul>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/6.png">
+<p>  在SkipDatum字段包含的信息中，DocFPSkip描述了存储docId跟frequency的block在索引文件.doc中的起始读取位置，PosFPSkip描述了存储position的block在索引文件.pos中的起始读取位置，PosBlockOffset描述了block中的块内偏移（不明白的话，请阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）之doc&amp;&amp;pay&amp;&amp;pos<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1227/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（二）之doc&amp;&amp;pay&amp;&amp;pos<i class="fas fa-external-link-alt"></i></a>）剩余的字段同理，下文中会进一步介绍，最终读取后的信息写入到上文提到的各种集合中：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/7.png">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89/point.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
+<h4 id="docid集合-frequency集合"><a class="markdownIt-Anchor" href="#docid集合-frequency集合"></a> docId集合、frequency集合</h4>
+<p>  在源码中，使用docBuffer[ ]、freqBuffer[ ]两个数组来描述在内存中一个block中的的docId、frequency集合信息，从下面的定义也可以看出这两个数组都只存储一个block大小的信息：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/8.png">
+<p>  通过读取索引文件.doc的TermFreqs字段中的PackedDocDeltaBlock跟PackedFreqBlock字段，就可以获得docId集合跟frequency集合，并将这两个字段的信息分别写入到docBuffer[ ]、freqBuffer[ ]中：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/9.png">
+<p>  这里要特别说明的是，在读取block时，总是会将PackedDocDeltaBlock的信息，即文档号信息，写入到docBuffer[ ]中，而PackeddFreqBlock的信息，即frequency词频信息，则是采用<strong>read lazily</strong>，它描述的是在索引阶段存储了文档的frequency信息（基于<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/index/IndexOptions.java" >IndexOptions<i class="fas fa-external-link-alt"></i></a>选项），但是在搜索阶段，某种查询并不需要frequency信息，那么只有在需要frequency信息时候才读取PackedFreqBlock，并且写入到freqBuffer[ ]中。</p>
+<h4 id="position集合-offset集合-payload集合"><a class="markdownIt-Anchor" href="#position集合-offset集合-payload集合"></a> position集合、offset集合、payload集合</h4>
+<p>  在源码中，使用posDeltaBuffer[ ]描述position信息；使用offsetStartDeltaBuffer[ ]、offsetLengthBuffer[ ]描述offset信息；使用payloadLengthBuffer[ ]、payloadBytes[ ]描述payload信息：</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/10.png">
+<p>  对于这三个信息的读取相比较读取文档号跟词频稍微复杂，原因在于term在一篇文档中的这三个信息可能分布在一个或多个block（图7中的PackedPosBlock、packedPayBlock）中、甚至有可能在同一个PackedPosBlock中，保存term在两篇文档或更多篇文档的position信息，并且这些文档的属于不同的SkipDatum管理。例如term在一篇文档中的词频为386次，由于每128个位置信息就生成一个PackedPosBlock，故需要3个block存储。</p>
+<p>  对于上述的情况，我们以position为例，通过SkipDatum中的PosFPSkip先从索引文件.pos中找到block，即PackedPosBlock，的起始读取位置，然后将PosBlockOffset作为<strong>块内偏移</strong>找到在block中的起始读取位置即可。</p>
+<p>  由于position信息、offset信息、payload信息的数量总是保持一致的，即term在文档中的某个位置，必定对应有一个offset以及payload（可以为空），所以存储这些信息的posDeltaBuffer[ ]、offsetStartDeltaBuffer[ ]、offsetLengthBuffer[ ]、payloadLengthBuffer[ ]这四个数组的数组下标是保持一致的，注意的是payloadLengthBuffer[ ]描述的是在某个位置的term的payload长度length，根据这个长度去payloadBytes[ ]读取payload数据：</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/索引文件的读取/索引文件的读取（十三）/11.png">
+<h4 id="impactdata信息"><a class="markdownIt-Anchor" href="#impactdata信息"></a> impactData信息</h4>
+<p>  最后剩余读取impactData信息就相对简单了，在源码中，用二维数组impactData[ ] [ ]、impactDataLength[ ]来描述所有层的Impacts信息（Impacts的概念见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay" >索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay<i class="fas fa-external-link-alt"></i></a>）、图6中，先读取ImpactLength字段，确定Impacts字段的读取区间，然后将Impacts字段的信息写入到这两个数组中，这两个数组跟存储payload信息的两个数组用法一致，不赘述。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  关于索引文件.doc、.pos、.pay的一些基本的读取逻辑就暂时介绍到这里，在后面的文章介绍<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-4100?jql=text%20~%20%22WAND%22" >WAND（weak and）算法<i class="fas fa-external-link-alt"></i></a>时，我们再进一步展开几个方法，例如advance( )、nextDoc( )、slowAdvance( )、advanceShallow( )等等，这些方法更细节的实现了读取索引文件.doc、.pos、.pay的过程。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/index/">index</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/doc/">doc</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/pos/">pos</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/pay/">pay</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2020/0916/block-max-WAND%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="block-max WAND（一）（Lucene 8.4.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">block-max WAND（一）（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay/"
+                                   title="索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的读取（十二）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#postingsenum"><span class="nav-number">1.</span> <span class="nav-text"> PostingsEnum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flag"><span class="nav-number">1.1.</span> <span class="nav-text"> Flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%88%86%E6%A8%A1%E5%BC%8Fscoremode"><span class="nav-number">1.2.</span> <span class="nav-text"> 打分模式ScoreMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9postingsenum%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text"> 选择PostingsEnum的实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postingsenum%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text"> PostingsEnum中的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docid%E9%9B%86%E5%90%88-frequency%E9%9B%86%E5%90%88"><span class="nav-number">1.4.1.</span> <span class="nav-text"> docId集合、frequency集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position%E9%9B%86%E5%90%88-offset%E9%9B%86%E5%90%88-payload%E9%9B%86%E5%90%88"><span class="nav-number">1.4.2.</span> <span class="nav-text"> position集合、offset集合、payload集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#impactdata%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.3.</span> <span class="nav-text"> impactData信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#postingsenum"><span class="nav-number">1.</span> <span class="nav-text"> PostingsEnum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flag"><span class="nav-number">1.1.</span> <span class="nav-text"> Flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%88%86%E6%A8%A1%E5%BC%8Fscoremode"><span class="nav-number">1.2.</span> <span class="nav-text"> 打分模式ScoreMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9postingsenum%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text"> 选择PostingsEnum的实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postingsenum%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text"> PostingsEnum中的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docid%E9%9B%86%E5%90%88-frequency%E9%9B%86%E5%90%88"><span class="nav-number">1.4.1.</span> <span class="nav-text"> docId集合、frequency集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position%E9%9B%86%E5%90%88-offset%E9%9B%86%E5%90%88-payload%E9%9B%86%E5%90%88"><span class="nav-number">1.4.2.</span> <span class="nav-text"> position集合、offset集合、payload集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#impactdata%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.3.</span> <span class="nav-text"> impactData信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            文档的增删改（五） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        文档的增删改（五）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-07-09 00:00:00</span>
+                <span class="mobile">2019-07-09 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Tue Oct 10 2023 17:11:09 GMT+0800">2023-10-10 17:11:09</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/document/">document</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.9k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>继续介绍文档的增删改，是文档的增删改系列的最后一篇文章，另外下文中如果出现未展开介绍的变量名，说明在先前的文章中已经给出介绍，不赘述。</p>
+<h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
+<h2 id="三个重要的容器对象"><a class="markdownIt-Anchor" href="#三个重要的容器对象"></a> 三个重要的容器对象</h2>
+<p>  以下介绍的几个容器对理解 添加/更新 跟 flush是并行操作、索引占用内存大小控制起关键的作用。</p>
+<h3 id="fullflushbuffer"><a class="markdownIt-Anchor" href="#fullflushbuffer"></a> fullFlushBuffer</h3>
+<p>  定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> List&lt;DocumentsWriterPerThread&gt; fullFlushBuffer = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>  当全局flush触发时，意味着该flush之前所有添加的文档都在该flush的作用范围内，那么需要将DWPTP中所有持有DWPT对象引用，并且DWPT的私有变量numDocsInRAM 需要大于 0（numDocsInRAM 的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>已介绍），即该DWPT处理过文档的所有ThreadState置为flushPending，他们所持有的DWPT随后将其收集到的索引信息各自生成一个段，在此之前DWPT先存放到fullFlushBuffer链表中。</p>
+<h3 id="blockedflushes"><a class="markdownIt-Anchor" href="#blockedflushes"></a> blockedFlushes</h3>
+<p>  定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Queue&lt;BlockedFlush&gt; blockedFlushes = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>  在介绍blockedFlushes前，先补充一个ThreadState的知识点，ThreadState类实际是继承了可重入锁ReentrantLock类的子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ThreadState</span> <span class="keyword">extends</span> <span class="title class_">ReentrantLock</span> &#123;</span><br><span class="line">    ... ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>的文章中我们知道，一个线程总是从DWPTP中获得一个ThreadState，然后执行添加/更新文档的操作，当成功获得ThreadState，该线程就获得了ThreadState的锁，直到处理完文档后才会释放锁。如果在处理文档期间（未释放锁），有其他线程触发了全局的flush，并且ThreadState中持有的DWPT对象达到了flush的条件（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>中介绍ThreadState失去DWPT引用的章节），那么该DWPT会被添加到blockedFlushes中，并且在blockedFlushes中的DWPT<code>优先</code>fullFlushBuffer中的所有DWPT去执行doFlush( )(每个DWPT中收集的索引信息生成索引文件，或者说生成一个段)。</p>
+<p>  为什么blockedFlushes中的DWPT优先执行doFlush( )，这个问题可以拆分两个小问题：</p>
+<ul>
+<li>为什么要优先执行doFlush( )：该ThreadState被置为flushingPending状态，其中一种情况是因为某个DWPT添加/更新文档数量达到阈值maxBufferedDocs（用户设定通过indexWriterConfig设定文档个数作为flush的条件），由于仅仅是通过文档个数来控制flush，而不考虑这些文档对应的索引信息总量，所以可能会出现及时文档个数很小，但是占用的内存很大的情况，无法估计实际的内存占用，为了安全起见，所以该DWPT必须优先flush，正如源码中的注释说道：only for safety reasons if a DWPT is close to the RAM limit，而如果通过indexWriterConfig设定通过ramBufferSizeMB作为flush的条件时，由于能掌握索引占用的内存量，无需通过这种方式来优先执行doFlush( )</li>
+<li>为什么使用一个额外的队列blockedFlushes存放该DWPT：为了能保证blockedFlushes中的DWPT能优先添加到flushQueue中，这里先简单的提一句，具体的原因在介绍flush时候会展开，这里留个坑，称为一号坑</li>
+</ul>
+<p>  blockedFlushes除了上述描述的作用外，在另一种情况下的也需要暂时存放DWPT，但并不是因为安全问题，这里先不展开，在介绍flush时会解释，同样地留个坑，称为二号坑。</p>
+<h3 id="flushingwriters"><a class="markdownIt-Anchor" href="#flushingwriters"></a> flushingWriters</h3>
+<p>  定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> IdentityHashMap&lt;DocumentsWriterPerThread, Long&gt; flushingWriters = <span class="keyword">new</span> <span class="title class_">IdentityHashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>  flushingWriters容器的key为DWPT的引用，value为DWPT收集的索引信息占用的内存大小，flushingWriters中元素的个数描述了当前待flush的DWPT的个数，所有元素的value的和值描述了当前内存中的flushBytes（flushBytes的概念在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a>已经介绍）。</p>
+<h3 id="flushqueue"><a class="markdownIt-Anchor" href="#flushqueue"></a> flushQueue</h3>
+<p>  flushQueue的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Queue&lt;DocumentsWriterPerThread&gt; flushQueue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>  flushQueue中存放了待执行doFlush( )的DWPT集合。</p>
+<h3 id="fullflushbuffer-blockedflushes-flushingwriters-flushqueue之间的关联"><a class="markdownIt-Anchor" href="#fullflushbuffer-blockedflushes-flushingwriters-flushqueue之间的关联"></a> fullFlushBuffer、blockedFlushes、flushingWriters、flushQueue之间的关联</h3>
+<p>  当全局flush触发，fullFlushBuffer跟blockedFlushes中DWPT都会被添加进flushQueue，触发全局flush的线程总是<code>只从</code>flushQueue中依次取出每一个DWPT，当执行完doFlush( )的操作后，将该DWPT占用的内存大小从flushingWriters中移除，这里只是简单的概述下，详细的过程在介绍flush时展开。</p>
+<h2 id="flushdeletes"><a class="markdownIt-Anchor" href="#flushdeletes"></a> flushDeletes</h2>
+<p>  flushDeletes的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">AtomicBoolean</span> <span class="variable">flushDeletes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicBoolean</span>(<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<p>  每当将删除信息添加到DeleteQueue后，如果DeleteQueue中的删除信息使用的内存量超过ramBufferSizeMB，flushDeletes会被置为true。</p>
+<h1 id="文档的增删改流程图"><a class="markdownIt-Anchor" href="#文档的增删改流程图"></a> 文档的增删改流程图</h1>
+<p>  我们继续介绍最后的 删除文档的<code>处理删除信息</code>与添加/更新文档的<code>处理文档后的工作</code>的流程点，添加/更新文档的<code>处理删除信息</code>的内容已经在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>介绍了。</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/1.png">
+<h2 id="删除文档之处理删除信息"><a class="markdownIt-Anchor" href="#删除文档之处理删除信息"></a> 删除文档之<code>处理删除信息</code></h2>
+<p>  删除文档即deleteDocuments(Querys)、deleteDocuments(Terms)，不同于添加/更新文档，删除文档没有DWPT的概念，即没有私有DeleteSlice的概念。</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/2.png">
+<h3 id="添加删除信息到deletequeue中"><a class="markdownIt-Anchor" href="#添加删除信息到deletequeue中"></a> 添加删除信息到DeleteQueue中</h3>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/3.png">
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>中我们已经介绍了如何将一个删除信息添加到DeleteQueue中，故这里不赘述。</p>
+<h3 id="执行flush策略设置flushdeletes"><a class="markdownIt-Anchor" href="#执行flush策略设置flushdeletes"></a> 执行flush策略，设置flushDeletes</h3>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/4.png">
+<p>  如果更新文档、删除文档的操作较多，堆积的删除信息占用的内存也不能被忽视，所以在添加到DeleteQueue后，需要判断DeleteQueue中的删除信息大小是否超过ramBufferSizeMB（ramBufferSizeMB描述了索引信息被写入到磁盘前暂时缓存在内存中允许的最大使用内存值，可以通过LiveIndexWriterConfig自定义配置），如果超过那么设置flushDeletes为True。</p>
+<h3 id="记录待处理的删除信息"><a class="markdownIt-Anchor" href="#记录待处理的删除信息"></a> 记录待处理的删除信息</h3>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/5.png">
+<p>  如果此时其他线程已经触发了全局flush，那么该线程会处理删除信息，故当前线程就不用重复的处理删除信息了，否则将删除信息添加到<code>待处理队列</code>中，生成一个<code>事件</code>，之后IndexWriter会处理该事件，<code>待处理队列</code>跟<code>事件</code>的概念在介绍flush时候会展开。</p>
+<h2 id="添加更新之处理文档后的工作"><a class="markdownIt-Anchor" href="#添加更新之处理文档后的工作"></a> 添加/更新之<code>处理文档后的工作</code></h2>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/6.png">
+<p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 3）/添加_更新之处理文档后的工作.html)查看大图</p>
+<h3 id="统计处理文档占用的内存使用量"><a class="markdownIt-Anchor" href="#统计处理文档占用的内存使用量"></a> 统计处理文档占用的内存使用量</h3>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/7.png">
+<p>  DWPT处理完一篇文档后，需要将这篇文档对应的索引信息占用的内存添加到全局的flushBytes或activeBytes，如果ThreadState被置为flushPending了，那么添加到flushBytes，否则添加到activeBytes。</p>
+<p>  为什么在这个流程点，ThreadState可能是flushPending的状态：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这种情况只发生在索引占用的内存(包括删除信息)达到ramBufferSizeMB的情况，如果线程1中的ThreadState处理完一篇文档后，索引占用的内存超过阈值，那么会从DWPTP中找到一个持有DWPT，并且该DWPT收集的索引信息量最大的ThreadState，将其置为flushPending，如果此时正好线程2开始执行添加/更新的操作，那么可能会从DWPTP中取出该ThreadState。</span><br></pre></td></tr></table></figure>
+<h3 id="执行flush策略"><a class="markdownIt-Anchor" href="#执行flush策略"></a> 执行flush策略</h3>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/8.png">
+<p>  如果当前的ThreadState没有被置为flushPending(内存索引未达到ramBufferSizeMB前ThreadState都是flushPending为false的状态)，那么需要执行flush策略，目前Lucene7.5.0中有且仅有一种flush策略：FlushByRamOrCountsPolicy。用户可以实现自己的flush策略并通过IndexWriterConfig自定义设置。</p>
+<p>  flush策略用来判断执行完增删改的操作后，是否要执行flush，这里的介绍是对<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>的补充：</p>
+<ul>
+<li>添加操作：如果设置了flushOnDocCount，那么判断DWPT处理的文档个数是否达到maxBufferedDocs，满足条件则将ThreadState置为flushPending，否则判断activeBytes与deleteRamByteUsed的和值是否达到ramBufferSizeMB，如果达到阈值，那么从DWPTP中找到一个持有DWPT，并且该DWPT收集的索引信息量最大的ThreadState，将其置为flushPending。</li>
+<li>删除操作：判断deleteRamByteUsed是否达到ramBufferSizeMB，满足条件则另flushDeletes为true</li>
+<li>更新操作：更新操作实际是执行删除跟添加的操作</li>
+</ul>
+<p>  另外每一个DWPT允许收集的索引信息量最大值为perThreadHardLimitMB （默认值为1945MB），当达到该阈值时，ThreadState会被置为flushPending，同样的可以通过IndexWriterConfig自定义设置，所以即使ramBufferSizeMB设置的很大时，也有可能因为达到了perThreadHardLimitMB而自动触发flush。</p>
+<h3 id="将当前threadstate持有的dwpt添加到blockedflushes中"><a class="markdownIt-Anchor" href="#将当前threadstate持有的dwpt添加到blockedflushes中"></a> 将当前ThreadState持有的DWPT添加到blockedFlushes中</h3>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/9.png">
+<p>  此时其他线程触发了全局flush，那么当前ThreadState如果没有被置为flushPending，说明其持有的DWPT没有达到flush的条件，ThreadState在随后释放锁后，其DWPT会被其他线程添加到fullFlushBuffer中，等待执行doFlush( )，否则该DWPT被添加到blockedFlushes中，然后从flushQueue中取出一个DWPT，目的就是尽可能先让flushQueue中的DWPT执行doFlush( )，只有这样，blockedFlushes中的DWPT才能随着尽快执行doFlush( )。</p>
+<h3 id="取出当前threadstate持有的dwpt"><a class="markdownIt-Anchor" href="#取出当前threadstate持有的dwpt"></a> 取出当前ThreadState持有的DWPT</h3>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/10.png">
+<p>  全局flush未被触发，如果当前ThreadState被置为flushPending，那么取出其持有的DWPT，在随后执行doFlush( )操作。</p>
+<h3 id="处理删除信息"><a class="markdownIt-Anchor" href="#处理删除信息"></a> 处理删除信息</h3>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/11.png">
+<p>  添加/更新操在处理完文档后，需要跟删除操作之<code>处理删除信息</code>一样，因为更新操作、其他线程的删除操作都会改变DeleteQueue。这一段逻辑在上文中已介绍，不赘述。</p>
+<h3 id="dwpt为空的情况"><a class="markdownIt-Anchor" href="#dwpt为空的情况"></a> DWPT为空的情况</h3>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/12.png">
+<p>  这里的描述不太好，在上面的流程中DWPT收集的索引信息未达到flush要求，故不需要处理该DWPT，故描述为DWPT为空，下图中的红线是DWPT为空的流程线。</p>
+<p>图13：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/13.png">
+<p>  如果DWPT为空，那么我们这个线程需要&quot;帮助&quot;(help out)那些已经可以生成一个段的DWPT执行doFlush( )。帮助的方式是先尝试从flushQueue中找到一个DWPT，如果没有，那么从DWPTP中找，前提是其他线程没有触发全局flush，因为在全局flush的情况下，执行全局flush的线程会去DWPTP中找到所有已经收集过文档的DWPT，无论DWPT对应的ThreadState是否被置为flushPending，所以如果此时能从DWPTP中得到一个被置为flushPending的ThreadState，说明在其他线程中的ThreadState持有的DWPT刚刚执行完添加文档的任务，就被当前线程”抢夺“了DWPT，让DWPT提前执行了doFlush()。在DocumentsWriterFlushControl.java的tryCheckoutForFlush()方法抢夺了&quot;DWPT&quot;。方法定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> DocumentsWriterPerThread <span class="title function_">tryCheckoutForFlush</span><span class="params">(</span></span><br><span class="line"><span class="params">    ThreadState perThread)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> perThread.flushPending ? internalTryCheckOutForFlush(perThread) : <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dwpt不为空的情况"><a class="markdownIt-Anchor" href="#dwpt不为空的情况"></a> DWPT不为空的情况</h3>
+<p>图14：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/14.png">
+<p>  DWPT不为空也就是下图中的两种情况，那么随后执行DWPT的doFlush( )：</p>
+<p>图15：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/15.png">
+<h3 id="完整的单文档操作流程图"><a class="markdownIt-Anchor" href="#完整的单文档操作流程图"></a> 完整的单文档操作流程图</h3>
+<p>结合前几篇文章，单文档操作的流程图如下：</p>
+<p>图16：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 3）/16.png">
+<p>[点击](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 3）/单文档操作全图.html)查看大图</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  文档的增删改系列正式介绍完毕，如果你准备深入源码理解，那么必须结合全局flush的源码一起看，否则有些流程点很难理解，比如说上文中提高的三个容器，还有为什么ThreadState设计成继承可重入锁的类等等。</p>
+<p>  在下一篇介绍flush的文章中，当前系列的内容还会被反复提及，所以关心flush流程的朋友，需要先了解文档的增删改的流程。</p>
+<p>[点击下载](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/attachment/Lucene/Index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 3）/文档的增删改（下）（part 3）.zip)附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/document/">document</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe/"
+                                   title="索引文件之cfs&amp;&amp;cfe"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件之cfs&amp;&amp;cfe</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89/"
+                                   title="文档的增删改（四）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档的增删改（四）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%AE%B9%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text"> 三个重要的容器对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fullflushbuffer"><span class="nav-number">1.1.1.</span> <span class="nav-text"> fullFlushBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#blockedflushes"><span class="nav-number">1.1.2.</span> <span class="nav-text"> blockedFlushes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushingwriters"><span class="nav-number">1.1.3.</span> <span class="nav-text"> flushingWriters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushqueue"><span class="nav-number">1.1.4.</span> <span class="nav-text"> flushQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fullflushbuffer-blockedflushes-flushingwriters-flushqueue%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-number">1.1.5.</span> <span class="nav-text"> fullFlushBuffer、blockedFlushes、flushingWriters、flushQueue之间的关联</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flushdeletes"><span class="nav-number">1.2.</span> <span class="nav-text"> flushDeletes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 文档的增删改流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3%E4%B9%8B%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text"> 删除文档之处理删除信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E5%88%B0deletequeue%E4%B8%AD"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 添加删除信息到DeleteQueue中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cflush%E7%AD%96%E7%95%A5%E8%AE%BE%E7%BD%AEflushdeletes"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 执行flush策略，设置flushDeletes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E5%BE%85%E5%A4%84%E7%90%86%E7%9A%84%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 记录待处理的删除信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9B%B4%E6%96%B0%E4%B9%8B%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A3%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text"> 添加&#x2F;更新之处理文档后的工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A3%E5%8D%A0%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 统计处理文档占用的内存使用量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cflush%E7%AD%96%E7%95%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text"> 执行flush策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%BD%93%E5%89%8Dthreadstate%E6%8C%81%E6%9C%89%E7%9A%84dwpt%E6%B7%BB%E5%8A%A0%E5%88%B0blockedflushes%E4%B8%AD"><span class="nav-number">2.2.3.</span> <span class="nav-text"> 将当前ThreadState持有的DWPT添加到blockedFlushes中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%87%BA%E5%BD%93%E5%89%8Dthreadstate%E6%8C%81%E6%9C%89%E7%9A%84dwpt"><span class="nav-number">2.2.4.</span> <span class="nav-text"> 取出当前ThreadState持有的DWPT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dwpt%E4%B8%BA%E7%A9%BA%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.2.6.</span> <span class="nav-text"> DWPT为空的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dwpt%E4%B8%8D%E4%B8%BA%E7%A9%BA%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.2.7.</span> <span class="nav-text"> DWPT不为空的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E5%8D%95%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.2.8.</span> <span class="nav-text"> 完整的单文档操作流程图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%AE%B9%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text"> 三个重要的容器对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fullflushbuffer"><span class="nav-number">1.1.1.</span> <span class="nav-text"> fullFlushBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#blockedflushes"><span class="nav-number">1.1.2.</span> <span class="nav-text"> blockedFlushes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushingwriters"><span class="nav-number">1.1.3.</span> <span class="nav-text"> flushingWriters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushqueue"><span class="nav-number">1.1.4.</span> <span class="nav-text"> flushQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fullflushbuffer-blockedflushes-flushingwriters-flushqueue%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-number">1.1.5.</span> <span class="nav-text"> fullFlushBuffer、blockedFlushes、flushingWriters、flushQueue之间的关联</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flushdeletes"><span class="nav-number">1.2.</span> <span class="nav-text"> flushDeletes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 文档的增删改流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3%E4%B9%8B%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text"> 删除文档之处理删除信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E5%88%B0deletequeue%E4%B8%AD"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 添加删除信息到DeleteQueue中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cflush%E7%AD%96%E7%95%A5%E8%AE%BE%E7%BD%AEflushdeletes"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 执行flush策略，设置flushDeletes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E5%BE%85%E5%A4%84%E7%90%86%E7%9A%84%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 记录待处理的删除信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9B%B4%E6%96%B0%E4%B9%8B%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A3%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text"> 添加&#x2F;更新之处理文档后的工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A3%E5%8D%A0%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 统计处理文档占用的内存使用量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cflush%E7%AD%96%E7%95%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text"> 执行flush策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%BD%93%E5%89%8Dthreadstate%E6%8C%81%E6%9C%89%E7%9A%84dwpt%E6%B7%BB%E5%8A%A0%E5%88%B0blockedflushes%E4%B8%AD"><span class="nav-number">2.2.3.</span> <span class="nav-text"> 将当前ThreadState持有的DWPT添加到blockedFlushes中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%87%BA%E5%BD%93%E5%89%8Dthreadstate%E6%8C%81%E6%9C%89%E7%9A%84dwpt"><span class="nav-number">2.2.4.</span> <span class="nav-text"> 取出当前ThreadState持有的DWPT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dwpt%E4%B8%BA%E7%A9%BA%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.2.6.</span> <span class="nav-text"> DWPT为空的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dwpt%E4%B8%8D%E4%B8%BA%E7%A9%BA%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.2.7.</span> <span class="nav-text"> DWPT不为空的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E5%8D%95%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.2.8.</span> <span class="nav-text"> 完整的单文档操作流程图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

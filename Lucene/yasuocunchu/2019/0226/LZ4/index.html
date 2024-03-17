@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            LZ4 |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        LZ4
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-02-26 00:00:00</span>
+                <span class="mobile">2019-02-26 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 13:01:19 GMT+0800">2023-10-08 13:01:19</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/lz4/">lz4</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <h2 id="lz4"><a class="markdownIt-Anchor" href="#lz4"></a> <a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/" >LZ4<i class="fas fa-external-link-alt"></i></a></h2>
+<p>LZ4是一种无损数据压缩算法，着重于压缩和解压的速度，并且应用广泛。在Hadoop、Linux内核、文件系统都有应用，而在Lucene中，则是使用LZ4对倒排表的数据以及词向量（termVector）进行压缩存储。在本篇文章中，介绍LZ4Fast的压缩逻辑在Lucene中的Java实现。</p>
+<h2 id="两种实现"><a class="markdownIt-Anchor" href="#两种实现"></a> 两种实现</h2>
+<p>Lucene中提供了两种LZ4的算法实现，分别是LZ4Fast跟LZ4High：</p>
+<h3 id="lz4fast"><a class="markdownIt-Anchor" href="#lz4fast"></a> LZ4Fast</h3>
+<p>本文介绍的就是LZ4Fast，它是原生的LZ4算法的实现，性能跟内存开销小于LZ4High，最多使用16KB的内存。</p>
+<h3 id="lz4high"><a class="markdownIt-Anchor" href="#lz4high"></a> LZ4High</h3>
+<p>LZ4High相比较LZ4Fast，它的压缩速度较慢，并且占用更多的内存(每个线程占用~256KB)，但是它提供了更高的压缩比，处理很大的数据时更能体现压缩比的优势。可能会随后的博客中更新：）。</p>
+<h4 id="流程简介"><a class="markdownIt-Anchor" href="#流程简介"></a> 流程简介</h4>
+<p>压缩过程分为两步</p>
+<h5 id="步骤一计算hash找到相同的数据区间"><a class="markdownIt-Anchor" href="#步骤一计算hash找到相同的数据区间"></a> 步骤一：计算hash，找到相同的数据区间</h5>
+<h5 id="步骤二将相同的数据区间进行压缩存储"><a class="markdownIt-Anchor" href="#步骤二将相同的数据区间进行压缩存储"></a> 步骤二：将相同的数据区间进行压缩存储</h5>
+<h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
+<p>我们通过一个例子，来介绍LZ4Fast的压缩的实现：<br />
+图1：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/1.png"><br />
+图2：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/2.png"></p>
+<h3 id="找到第一个锚点anchor"><a class="markdownIt-Anchor" href="#找到第一个锚点anchor"></a> 找到第一个锚点（anchor）</h3>
+<p>刚开始处理时，下标值为0的地方为第一个锚点</p>
+<h3 id="找到第二个锚点anchor"><a class="markdownIt-Anchor" href="#找到第二个锚点anchor"></a> 找到第二个锚点（anchor）</h3>
+<p>第一个锚点的值为0，我们最终目的是获得第二个锚点的值，第二个锚点跟第一个锚点之间的数据进行压缩处理。在这个区间的数据，有两个子区间的数据是一样的，那么需要对这两个子区间进行压缩存储。由于注意的是，两个字区间可能有重叠部分。</p>
+<h4 id="处理下标值为0的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为0的数组元素"></a> 处理下标值为0的数组元素</h4>
+<p>图3：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/3.png"><br />
+encodeArray[] 数组是经过压缩处理的数组。<br />
+取出下标值为0以及后面的三个数组元素，4个字节组成一个int类型的数值，对这个数值进行散列，如果发生冲突，说明可能之前散列过相同的值，由于这里是第一个数据，所以不会发生这种情况。</p>
+<h4 id="处理下标值为1的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为1的数组元素"></a> 处理下标值为1的数组元素</h4>
+<p>图4：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/4.png"><br />
+同上一步操作，类似滑动窗口的操作，窗口大小为4个字节，每一次右移一个字节，然后我们计算下标值1~下标值4的数组元素组成的int值，同样进行散列。</p>
+<h4 id="处理下标值为2-3-4的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为2-3-4的数组元素"></a> 处理下标值为2、3、4的数组元素</h4>
+<p>同样的，还是没有发生hash冲突。</p>
+<h4 id="处理下标值为5的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为5的数组元素"></a> 处理下标值为5的数组元素</h4>
+<p>图5：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/5.png"><br />
+此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值0<sub>3的数组元素对应的int值是否跟下标值5</sub>8的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
+<h5 id="找出相同数据的最大区间"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间"></a> 找出相同数据的最大区间</h5>
+<p>目前我们找到了 数组中下标值0~3跟 5~8两个相同的区间R1、R2，接着扩大这两个区间，直到满足两个区间数据相同，且是最大的区间。<br />
+图6：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/6.png"><br />
+注意的是，这里两个区间有重叠的区域，即下标值5~9的区域。</p>
+<h5 id="计算token值"><a class="markdownIt-Anchor" href="#计算token值"></a> 计算token值</h5>
+<p>matchOff：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即5。</span><br></pre></td></tr></table></figure>
+<p>literalLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值0）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值Wie0，所以literalLen的值为5。</span><br></pre></td></tr></table></figure>
+<p>matchLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchLen描述了两个相同区间R1跟R2相同数据的个数，即 10。</span><br></pre></td></tr></table></figure>
+<p>token值是literalLen跟matchLen的组合值，利用组合存储</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">token</span> <span class="operator">=</span> (Math.min(literalLen, <span class="number">0x0F</span>) &lt;&lt; <span class="number">4</span>) | Math.min(matchLen - <span class="number">4</span>, <span class="number">0x0F</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的literalLen跟matchLen-4的值没有大于0x0F,所以token = (5 &lt;&lt; 4) | (10 - 4), 即 86，二进制就是0b01010110。后面的处理过程中会有literalLen跟matchLen-4的值大于0x0F的情况。</span><br></pre></td></tr></table></figure>
+<p>matchDec：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 5 - 0 = 5。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
+<h5 id="写入token值-anchor至matchoff的数据-matchdec"><a class="markdownIt-Anchor" href="#写入token值-anchor至matchoff的数据-matchdec"></a> 写入token值、anchor至matchOff的数据、matchDec</h5>
+<p>图7：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/7.png"><br />
+上图中 原始数据即anchor至matchOff之间的数据。</p>
+<h3 id="找到第三个锚点anchor"><a class="markdownIt-Anchor" href="#找到第三个锚点anchor"></a> 找到第三个锚点（anchor）</h3>
+<p>上面的流程结束后，更新第二个锚点的值为15。按照同样的逻辑找到第三个锚点。</p>
+<h4 id="处理下标值为15~41的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为15~41的数组元素"></a> 处理下标值为15~41的数组元素</h4>
+<p>都没有发生hash冲突的情况。</p>
+<h4 id="处理下标值为42的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为42的数组元素"></a> 处理下标值为42的数组元素</h4>
+<p>图8：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/8.png"><br />
+此时发生冲突，由于不同的值可能会有相同的hash值，所以这里还要继续判断下标值1<sub>4的数组元素对应的int值是否跟下标值42</sub>45的数组元素对应的int值是否一样。在这里，的确这两个区间R1、R2的数据是一模一样的，那么需要开始进行压缩存储。</p>
+<h5 id="找出相同数据的最大区间-2"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间-2"></a> 找出相同数据的最大区间</h5>
+<p>然后下标值5跟下表值46的数组元素就不相同了，所以相同数据的最大区间如下图的R1跟R2<br />
+图9：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/9.png"></p>
+<h5 id="计算token值-2"><a class="markdownIt-Anchor" href="#计算token值-2"></a> 计算token值</h5>
+<p>matchOff：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即42。</span><br></pre></td></tr></table></figure>
+<p>literalLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值15）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值为15，所以literalLen的值为27。</span><br></pre></td></tr></table></figure>
+<p>matchLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchLen描述了两个相同区间R1跟R2相同数据的个数，即 4。</span><br></pre></td></tr></table></figure>
+<p>token值是literalLen跟matchLen的组合值，利用组合存储</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">token</span> <span class="operator">=</span> (Math.min(literalLen, <span class="number">0x0F</span>) &lt;&lt; <span class="number">4</span>) | Math.min(matchLen - <span class="number">4</span>, <span class="number">0x0F</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的literalLen大于0x0F ,所以token = (15 &lt;&lt; 4) | (4 - 4), 即 240，二进制就是0b11110000。</span><br></pre></td></tr></table></figure>
+<p>matchDec：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 42 - 1 = 41。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
+<h5 id="写入token值-anchor至matchoff的数据-matchdec-2"><a class="markdownIt-Anchor" href="#写入token值-anchor至matchoff的数据-matchdec-2"></a> 写入token值、anchor至matchOff的数据、matchDec</h5>
+<p>图10：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/10.png"><br />
+注意encodeArray[]数组中下标值为9的数组元素，由于token值只有高4位用来表示原始数据的长度，即最大值为15，所以literalLen的值超出的部分需要额外的一个字节存储，当前literalLen的值为27，所以额外的值为 27 - 15 = 12。</p>
+<h3 id="找到第四个锚点anchor"><a class="markdownIt-Anchor" href="#找到第四个锚点anchor"></a> 找到第四个锚点（anchor）</h3>
+<p>上面的流程结束后，更新第三个锚点的值为46。按照同样的逻辑找到第四个锚点</p>
+<h4 id="处理下标值为46的数组元素"><a class="markdownIt-Anchor" href="#处理下标值为46的数组元素"></a> 处理下标值为46的数组元素</h4>
+<p>图11：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/11.png"></p>
+<h5 id="找出相同数据的最大区间-3"><a class="markdownIt-Anchor" href="#找出相同数据的最大区间-3"></a> 找出相同数据的最大区间</h5>
+<p>图12：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/12.png"></p>
+<h5 id="计算token值-3"><a class="markdownIt-Anchor" href="#计算token值-3"></a> 计算token值</h5>
+<p>matchOff：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该值是相同数据区间R2的第一个元素的下标值，即46。</span><br></pre></td></tr></table></figure>
+<p>literalLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于直到matchOff位置才开始有相同的数据区间，所以anchor（当前值46）至matchOff的区间的数据需要原封不动的写入到encodeArray[]数组中，而literalLen代表了这段数据的长度。matchOff与anchor的差值就是literalLen，即 literalLen = matchOff- anchor，当前锚点anchor的值为46，所以literalLen的值为0。说明不用写原始数据到encodeArray[]数组中</span><br></pre></td></tr></table></figure>
+<p>matchLen：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchLen描述了两个相同区间R1跟R2相同数据的个数，即 22。</span><br></pre></td></tr></table></figure>
+<p>token值是literalLen跟matchLen的组合值，利用组合存储</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">token</span> <span class="operator">=</span> (Math.min(literalLen, <span class="number">0x0F</span>) &lt;&lt; <span class="number">4</span>) | Math.min(matchLen - <span class="number">4</span>, <span class="number">0x0F</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前的matchLen为22，大于0x0F ,所以token = (0 &lt;&lt; 4) | 15, 即 15，二进制就是0b00001111。matchLen多出来的部分需要再用一个字节存储。</span><br></pre></td></tr></table></figure>
+<p>matchDec：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matchDec是R2跟R1的两个区间第一个元素所在下标值的差值，即 46 - 15 = 31。这个值在解压的时候会作为遍历的一个条件。由于matchDec是个int类型，并且这个值不会大于（1 &lt;&lt; 16）,所以需要两个字节分别存储低8位跟高8位在解压时，根据matchDec跟matchLen的大小，恢复数据的过程略有不同，后面会介绍。</span><br></pre></td></tr></table></figure>
+<p>图13：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/13.png"><br />
+注意encodeArray[]数组中下标值为42的数组元素，由于token值只有低4位用来表示原始数据matchLen的长度，即最大值为15，所以matchLen的值超出的部分需要额外的一个字节存储，当前matchLen的值为22，所以额外的值为 22 - 15 - 4 = 3。<br />
+另外literalLen的值为0，说明这个区间内的数据已经存储过了。</p>
+<h3 id="最后5个字节的处理"><a class="markdownIt-Anchor" href="#最后5个字节的处理"></a> 最后5个字节的处理</h3>
+<p>最后5个字节在上面的流程中不会被处理，LZ4Fast算法会对最后5个字节单独处理。上面的流程结束后，更新第三个锚点的值为68。同样需要存储token，不过token的值的计算方式为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">token</span> <span class="operator">=</span> Math.min(literalLen, <span class="number">0x0F</span>) &lt;&lt; <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="计算token值-4"><a class="markdownIt-Anchor" href="#计算token值-4"></a> 计算token值</h5>
+<p>还有最后5个字节，所以literalLen的值为5，所以token的值为 （5 &lt;&lt; 4）= 80。</p>
+<h5 id="写入token值-最后5个字节的原始数据"><a class="markdownIt-Anchor" href="#写入token值-最后5个字节的原始数据"></a> 写入token值、最后5个字节的原始数据</h5>
+<p>图14：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/14.png"><br />
+至此，array[]数组压缩成encodeArray[]数组的过程结束。</p>
+<h2 id="压缩后的数据结构如下"><a class="markdownIt-Anchor" href="#压缩后的数据结构如下"></a> 压缩后的数据结构如下：</h2>
+<p>图15：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/压缩存储/LZ4/15.png"></p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>本文通过一个例子实现了LZ4Fast的压缩过程，由于篇幅原因上文中如何计算hash的过程并没有给出，并且没有理解源码中提供的hash函数的含义，以及为什么要留最后的5个字节单独处理。在随后的博客中，会介绍解压过程。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/FST/FST.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/lz4/">lz4</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/suoyinwenjian/2019/0301/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&amp;&amp;fdt/"
+                                   title="索引文件之fdx&amp;&amp;fdt"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件之fdx&amp;&amp;fdt</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89/"
+                                   title="倒排表（上）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">倒排表（上）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lz4"><span class="nav-number">1.</span> <span class="nav-text"> LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4fast"><span class="nav-number">2.1.</span> <span class="nav-text"> LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4high"><span class="nav-number">2.2.</span> <span class="nav-text"> LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E8%AE%A1%E7%AE%97hash%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text"> 步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text"> 步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.4.</span> <span class="nav-text"> 找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.5.</span> <span class="nav-text"> 找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2-3-4%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text"> 处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.6.</span> <span class="nav-text"> 找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15~41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.6.2.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.6.2.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec-2"><span class="nav-number">2.6.2.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.7.</span> <span class="nav-text"> 找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text"> 处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-3"><span class="nav-number">2.7.1.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.7.1.2.</span> <span class="nav-text"> 计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text"> 最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-4"><span class="nav-number">2.8.0.1.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text"> 写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lz4"><span class="nav-number">1.</span> <span class="nav-text"> LZ4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 两种实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4fast"><span class="nav-number">2.1.</span> <span class="nav-text"> LZ4Fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lz4high"><span class="nav-number">2.2.</span> <span class="nav-text"> LZ4High</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 流程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%E8%AE%A1%E7%AE%97hash%E6%89%BE%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4"><span class="nav-number">2.2.1.1.</span> <span class="nav-text"> 步骤一：计算hash，找到相同的数据区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%B0%86%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">2.2.1.2.</span> <span class="nav-text"> 步骤二：将相同的数据区间进行压缩存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.4.</span> <span class="nav-text"> 找到第一个锚点（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.5.</span> <span class="nav-text"> 找到第二个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA0%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理下标值为0的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA1%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理下标值为1的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA2-3-4%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 处理下标值为2、3、4的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA5%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.4.</span> <span class="nav-text"> 处理下标值为5的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4"><span class="nav-number">2.5.4.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC"><span class="nav-number">2.5.4.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec"><span class="nav-number">2.5.4.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.6.</span> <span class="nav-text"> 找到第三个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA15~41%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 处理下标值为15~41的数组元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA42%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 处理下标值为42的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-2"><span class="nav-number">2.6.2.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-2"><span class="nav-number">2.6.2.2.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-anchor%E8%87%B3matchoff%E7%9A%84%E6%95%B0%E6%8D%AE-matchdec-2"><span class="nav-number">2.6.2.3.</span> <span class="nav-text"> 写入token值、anchor至matchOff的数据、matchDec</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E5%9B%9B%E4%B8%AA%E9%94%9A%E7%82%B9anchor"><span class="nav-number">2.7.</span> <span class="nav-text"> 找到第四个锚点（anchor）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8B%E6%A0%87%E5%80%BC%E4%B8%BA46%E7%9A%84%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.7.1.</span> <span class="nav-text"> 处理下标值为46的数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%8C%BA%E9%97%B4-3"><span class="nav-number">2.7.1.1.</span> <span class="nav-text"> 找出相同数据的最大区间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-3"><span class="nav-number">2.7.1.2.</span> <span class="nav-text"> 计算token值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.8.</span> <span class="nav-text"> 最后5个字节的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97token%E5%80%BC-4"><span class="nav-number">2.8.0.1.</span> <span class="nav-text"> 计算token值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E5%85%A5token%E5%80%BC-%E6%9C%80%E5%90%8E5%E4%B8%AA%E5%AD%97%E8%8A%82%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.8.0.2.</span> <span class="nav-text"> 写入token值、最后5个字节的原始数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 压缩后的数据结构如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

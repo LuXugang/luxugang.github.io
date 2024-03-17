@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            文档提交之flush（四） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        文档提交之flush（四）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-07-30 00:00:00</span>
+                <span class="mobile">2019-07-30 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Tue Oct 10 2023 17:44:12 GMT+0800">2023-10-10 17:44:12</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/flush/">flush</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/commit/">commit</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.3k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
+<p>  先给出文档提交之flush的整体流程图：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/1.png">
+<p>图2是文档提交之flush中的<code>执行DWPT的doFlush()</code>的流程图，在前面的文章中，我们介绍到了此流程图中<code>将DWPT中收集的索引信息生成一个段newSegment</code>的流程点，在本篇文章中会将<code>执行DWPT的doFlush()</code>中剩余的流程点介绍完毕：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/2.png">
+<h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
+<h2 id="flushticket"><a class="markdownIt-Anchor" href="#flushticket"></a> FlushTicket</h2>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>中，我们简单的介绍了FlushTicket类，类中包含的主要变量如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">FlushTicket</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FrozenBufferedUpdates frozenUpdates;</span><br><span class="line">    <span class="keyword">private</span> FlushedSegment segment;</span><br><span class="line">    ... ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  frozenUpdates是一个包含删除信息且作用于其他段中的文档的全局FrozenBufferedUpdate对象（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>），而segment则是图2中的流程点<code>将DWPT中收集的索引信息生成一个段newSegment</code>执行结束后生成的FlushedSegment对象，它至少包含了一个DWPT处理的文档对应的索引信息（SegmentCommitInfo）、段中被删除的文档信息（<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >FixedBitSet<i class="fas fa-external-link-alt"></i></a>对象）、未处理的删除信息FrozenBufferedUpdates（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）、Sorter.DocMap对象，以上内容在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>的文章中已介绍。</p>
+<p>  <strong>为什么FlushTicket中生成FrozenBufferedUpdates跟FlushedSegment是两个有先后关系的流程</strong></p>
+<ul>
+<li>如果FrozenBufferedUpdates未能正确生成，那么FlushedSegment也不会生成，即全局的删除信息跟DWPT收集的文档就无法生成索引文件，但是如果FrozenBufferedUpdates正确生成（只有第一个DWPT会生成不为null的FrozenBufferedUpdates，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>），而FlushedSegment没有生成，那删除信息还能正确的作用（apply）到索引目录中的所有段，即只丢失添加的文档的信息，不会丢失删除信息</li>
+</ul>
+<p>  <strong>如何处理DWPT未能正确的生成一个FlushedSegment对象的情况</strong>：</p>
+<ul>
+<li>在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中我们了解到，如果DWPT在收集文档索引信息阶段（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0521/%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8B%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5" >两阶段生成索引文件之第一阶段<i class="fas fa-external-link-alt"></i></a>），那么出错的文档的文档号会被标记在索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>中，而如果DWPT因某种原因（在介绍IndexWriter的异常处理时会展开）导致没有完成图2中的<code>将DWPT中收集的索引信息生成一个段newSegment</code>流程点，那么需要删除该DWPT中的对应的所有索引数据（如果已经生成的索引文件的话）</li>
+</ul>
+<h2 id="queueflushticket-queue"><a class="markdownIt-Anchor" href="#queueflushticket-queue"></a> Queue&lt;FlushTicket&gt; queue</h2>
+<p>  该队列用来存放FlushTicket对象，每一个DWPT执行doFlush后，都会生成一个FlushTicket对象，并同步的添加到Queue&lt;FlushTicket&gt; queue中。</p>
+<h2 id="queueevent-eventqueue"><a class="markdownIt-Anchor" href="#queueevent-eventqueue"></a> Queue&lt;Event&gt; eventQueue</h2>
+<p>  eventQueue队列用来存放事件（Event），Event类是一个添加了@FunctionalInterface注解的类，每一个Event对象用来描述一个函数调用，通过函数调用实现一个事件的执行。</p>
+<p>  在多线程下，每个线程同步的从eventQueue队列中取出一个事件，即执行该事件对应的函数调用。</p>
+<p>  在eventQueue队列中，<strong>事件间</strong>（Between Event）执行结束的先后顺序是无法保证的，不过可以根据<strong>事件内</strong>（Inner Event）的同步机制实现某些<strong>事件间</strong>的同步。</p>
+<p>  <strong>什么时候会添加事件到eventQueue</strong>：</p>
+<ul>
+<li>在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中我们提到，如果通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig.setUseCompoundFile(boolean)<i class="fas fa-external-link-alt"></i></a>设置了使用复合索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0710/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bcfs&amp;&amp;cfe" >cfs&amp;&amp;cfe<i class="fas fa-external-link-alt"></i></a>存储文档的索引信息，那么在生成完复合索引文件后，需要删除那些非复合索引文件，而删除操作就会作为一个事件会添加到eventQueue中</li>
+<li>上文中提到DWPT可能无法正确的生成一个FlushedSegment对象，那么需要删除该DWPT中的对应的所有索引数据（如果已经生成的索引文件的话），而删除操作就会作为一个事件会添加到eventQueue中</li>
+<li>从Queue&lt;FlushTicket&gt; queue中取出每一个FlushTicket去执行某个操作，该操作也会作为一个事件添加到eventQueue中，该操作会在后面的流程中介绍</li>
+<li>还有一些其他的需要添加到eventQueue会在后面的流程中提及</li>
+</ul>
+<p>  <strong>为什么要将事件添加到eventQueue中处理</strong>：</p>
+<ul>
+<li>在后面的介绍中我们将会了解到，文档提交之flush的整个流程中部分逻辑（包括异常）是可以并行执行的，如果将逻辑拆分成多个事件，那么可以充分利用多线程来并行的执行这些事件，<strong>其中一个作用可以使得主动flush的操作能优先、尽快完成</strong>，因为在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>中我们知道，如果flush的速度慢于添加/更新文档的操作，那么会阻塞添加/更新文档的操作。比如说在主动flush期间，如果此时其他线程触发了自动flush时，那么该线程执行完自动flush后，会去执行eventQueue中的事件（自动flush的有些操作也会作为事件添加到eventQueue中），基于队列FIFO的性质，如果此时队列中还有主动flush时添加的事件，那么就可以&quot;帮助&quot;主动flush先尽快完成</li>
+<li>如果事件之间（Between Event）需要同步，可以通过事件内部（Inner Event）的同步机制来实现，比如说当一个类中的两个方法作为两个事件时，可以通过对象锁synchronized实现同步，不同类中的两个方法可以使用ReentrantLock可重入锁实现同步。在上文中<code>删除非复合索引文件</code>跟<code>从Queue&lt;FlushTicket&gt; queue中取出每一个FlushTicket去执行某个操作</code>就属于可以并行的两个事件（其实两个方法中的部分代码块还是需要同步的）</li>
+</ul>
+<p>  <strong>什么时候会执行eventQueue中的事件</strong>：</p>
+<ul>
+<li>执行了添加事件到eventQueue中的操作的线程最终都会执行eventQueue中的事件，并且直到eventQueue中不存在事件才会退出</li>
+</ul>
+<h2 id="发布publish生成的段"><a class="markdownIt-Anchor" href="#发布publish生成的段"></a> 发布（publish）生成的段</h2>
+<p>  发布生成的段的过程描述的是依次从Queue&lt;FlushTicket&gt; queue中取出FlushTicket，将其包含全局删除信息的FrozenBufferedUpdates对象作用到当前索引目录中已有的段的过程，同时还是对FlushedSegment对象进行最终处理的过程，比如找出未处理的删除信息（在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>中我们只找出了部分删除的文档）等一些操作，这里先简单的提一下，因为发布生成的段的逻辑篇幅较长，会在下一篇的文章中展开介绍。</p>
+<p>  <code>发布生成的段</code>还可以划分成两种类型，即<code>强制发布生成的段</code>和<code>尝试发布生成的段</code>，图1跟图2中均有该流程点：</p>
+<ul>
+<li>在多线程下，多个线程可能同时执行<code>发布生成的段</code>的逻辑，如果线程调用的是<code>尝试发布生成的段</code>，那么当发现有其他线程正在执行<code>发布生成的段</code>的操作，当前线程就不等待，继续执行后面的流程，否则等待其他线程执行结束，即等待Queue&lt;FlushTicket&gt; queue中的所有FlushTicket都被处理结束</li>
+</ul>
+<p>  <strong>源码中是如何实现的</strong>：</p>
+<ul>
+<li>通过tryLock()跟lock()分别实现<code>尝试发布生成的段</code>跟<code>强制发布生成的段</code></li>
+</ul>
+<p>  <strong>为什么要划分<code>强制发布生成的段</code>和<code>尝试发布生成的段</code></strong>：</p>
+<ul>
+<li>为了缓解堆积（backlog）问题。下文中会具体介绍</li>
+</ul>
+<h1 id="执行dwpt的doflush"><a class="markdownIt-Anchor" href="#执行dwpt的doflush"></a> 执行DWPT的doFlush( )</h1>
+<p>  继续介绍执行DWPT的doFlush()中的剩余流程点。</p>
+<h2 id="添加删除文件事件到eventqueue"><a class="markdownIt-Anchor" href="#添加删除文件事件到eventqueue"></a> 添加删除文件事件到eventQueue</h2>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/3.png">
+<p>  该流程即将删除非复合索引文件的操作作为一个事件添到eventQueue中，如果此时有其他线程正在处理eventQueue中的事件，那么删除非复合索引文件的操作可能会被马上执行。</p>
+<h2 id="堆积backlog处理"><a class="markdownIt-Anchor" href="#堆积backlog处理"></a> 堆积（backlog）处理</h2>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/4.png">
+<p>  发生堆积情况即flush（主动或者自动flush）的速度慢于添加/更新文档的操作，判断是否堆积的条件如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticketQueue.getTicketCount() &gt;= perThreadPool.getActiveThreadStateCount()</span><br></pre></td></tr></table></figure>
+<p>  其中**ticketQueue.getTicketCount( )<strong>描述的是Queue&lt;FlushTicket&gt; queue中FlushTicket的个数，该个数即当前等待flush为一个段的段的个数（可能包含出错的FlushTicket，见下文介绍），而</strong>perThreadPool.getActiveThreadStateCount( )**描述的是线程池DWPTP中ThreadState的个数（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>  <strong>为什么通过上面的方式能判断是否发生堆积</strong>：</p>
+<ul>
+<li>上文中我们知道了FlushTicket的个数即DWPT的个数，又因为在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>中，我们了解到，一个ThreadState中持有一个DWPT的引用之后，才去执行文档的添加/更新操作，当DWPT中收集的索引量满足自动flush的条件（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0709/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%94%EF%BC%89" >文档的增删改（五）<i class="fas fa-external-link-alt"></i></a>）后，DWPT进入图1中<code>自动flush</code>的流程点，开始生成一个段，最后释放DWPT对象，而ThreadState对象则是回到DWPTP中，故在单线程下，DWPT的个数总是小于等于DWPTP中ThreadState的个数。在多线程下，ThreadState对象回到DWPTP之后，又有新的线程执行添加/更新的操作，那么ThreadState会再次持有新的DWPT对象去执行任务，如果再次出发自动flush，当flush的速度（即DWPT生成一个段）较慢时，就会满足ticketQueue.getTicketCount() &gt;= perThreadPool.getActiveThreadStateCount()的条件，即发生了堆积</li>
+<li>上一条中，<code>DWPT满足自动flush后进入生成一个段</code>与<code>ThreadState回到DWPTP</code>体现了flush跟添加/更新 文件是并行操作，另外主动flush的情况也是一样的，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>  <strong>上文中为什么说Queue&lt;FlushTicket&gt; queue中可能包含出错的FlushTicket</strong>：</p>
+<ul>
+<li>在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0718/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89" >文档提交之flush（二）<i class="fas fa-external-link-alt"></i></a>中我们知道，FlushTicket在成功生成了FrozenBufferedUpdates对象frozenUpdates之后，FlushTicket就添加到了Queue&lt;FlushTicket&gt; queue中，此时的FlushTicket中还没有生成FlushedSegment对象segment，如果在后续流程中未能正确生成一个FlushedSegment对象，那么FlushTicket被认为是未能正确生成的，即出错的FlushTicket，当然了如果未能生成FrozenBufferedUpdates对象，FlushTicket就不会被添加到Queue&lt;FlushTicket&gt; queue中</li>
+</ul>
+<h3 id="添加强制发布生成的段的事件到eventqueue中"><a class="markdownIt-Anchor" href="#添加强制发布生成的段的事件到eventqueue中"></a> 添加<code>强制发布生成的段</code>的事件到eventQueue中</h3>
+<p>  发生堆积后，通过该流程点使得所有执行flush的线程必须等待Queue&lt;FlushTicket&gt; queue中所有的FlushTicket处理结束后才能去执行新的添加/更新文档的任务来处理堆积问题。</p>
+<h2 id="执行完doflush后的工作"><a class="markdownIt-Anchor" href="#执行完doflush后的工作"></a> 执行完doFLush后的工作</h2>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/5.png">
+<p>  到此流程点，我们需要更新几个全局的信息，以下的内容在前面的文章中已经介绍，不详细展开：</p>
+<ul>
+<li>flushingWriters：见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0709/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%94%EF%BC%89" >文档的增删改（五）<i class="fas fa-external-link-alt"></i></a></li>
+<li>flushBytes：见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a></li>
+<li>执行updateStallState( )方法：见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="尝试发布生成的段"><a class="markdownIt-Anchor" href="#尝试发布生成的段"></a> 尝试发布生成的段</h2>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/6.png">
+<p>  <code>尝试发布生成的段</code>的概念在上文关于<code>发布（publish）生成的段</code>的内容中已作介绍，不赘述，其详细的发布过程在下一篇文章会展开。</p>
+<ul>
+<li>主动flush：当flushQueue中的DWPT都处理结束，就可以执行下一个流程点<code>尝试发布生成的段</code></li>
+<li>自动flush：除了满足图6中的条件，另外如果出现堆积问题，那么该线程就不再取新的DWPT执行，目的很明确，即缓解堆积问题</li>
+</ul>
+<h2 id="处理删除信息"><a class="markdownIt-Anchor" href="#处理删除信息"></a> 处理删除信息</h2>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（四）/7.png">
+<p>  当前内存中的删除信息如果超过阈值的一半，那么需要处理删除信息，阈值即通过<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/IndexWriterConfig.java" >IndexWriterConfig setRAMBufferSizeMB<i class="fas fa-external-link-alt"></i></a>设置允许缓存在内存的索引量（包括删除信息）的最大值，当超过该阈值，会触发自动flush（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>  <strong>为什么内存中的删除信息如果超过阈值的一半，需要处理删除信息</strong>：</p>
+<ul>
+<li>触发自动flush的其中一个条件如下所示：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activeBytes + deleteBytesUsed &gt;= ramBufferSizeMB</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中activeBytes描述的是当前内存中所有DWPT收集的索引总量，deleteBytesUsed描述的是当前内存中删除信息的总量，ramBufferSizeMB描述的是即允许缓存在内存的索引量的最大值。</li>
+<li>根据公式可以看出如果不处理删除信息，那么使得触发自动flush的频率更高，这样可能会产生很多的小段（Tiny Segment），即处理删除信息的目的</li>
+</ul>
+<p>  <strong>如何处理删除信息</strong>：</p>
+<ul>
+<li>如图7中所示，执行<code>添加处理删除信息事件到eventQueue</code>即可，处理删除信息事件实际是将<code>强制发布生成的段</code>作为一个事件添加到eventQueue中。</li>
+</ul>
+<p>  <strong>为什么通过<code>强制发布生成的段</code>能用来处理删除信息</strong></p>
+<ul>
+<li>使得所有执行flush的线程必须等待Queue&lt;FlushTicket&gt; queue中所有的FlushTicket处理结束后才能去执行新的添加/更新文档、删除的任务，等待删除信息从内存写到磁盘（<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>索引文件），同时放慢触发自动flush的速度。</li>
+</ul>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  至此我们介绍完了图1中逻辑相对最复杂的<code>执行DWPT的doFlush()</code>的流程。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%9B%9B%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/flush/">flush</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/commit/">commit</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2019/0801/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%94%EF%BC%89/"
+                                   title="文档提交之flush（五）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档提交之flush（五）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89/"
+                                   title="文档提交之flush（三）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档提交之flush（三）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flushticket"><span class="nav-number">1.1.</span> <span class="nav-text"> FlushTicket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queueflushticket-queue"><span class="nav-number">1.2.</span> <span class="nav-text"> Queue&lt;FlushTicket&gt; queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queueevent-eventqueue"><span class="nav-number">1.3.</span> <span class="nav-text"> Queue&lt;Event&gt; eventQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83publish%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5"><span class="nav-number">1.4.</span> <span class="nav-text"> 发布（publish）生成的段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush"><span class="nav-number">2.</span> <span class="nav-text"> 执行DWPT的doFlush( )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%88%B0eventqueue"><span class="nav-number">2.1.</span> <span class="nav-text"> 添加删除文件事件到eventQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%A7%AFbacklog%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text"> 堆积（backlog）处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%BA%E5%88%B6%E5%8F%91%E5%B8%83%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%B0eventqueue%E4%B8%AD"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 添加强制发布生成的段的事件到eventQueue中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%AE%8Cdoflush%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text"> 执行完doFLush后的工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E5%8F%91%E5%B8%83%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5"><span class="nav-number">2.4.</span> <span class="nav-text"> 尝试发布生成的段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flushticket"><span class="nav-number">1.1.</span> <span class="nav-text"> FlushTicket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queueflushticket-queue"><span class="nav-number">1.2.</span> <span class="nav-text"> Queue&lt;FlushTicket&gt; queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queueevent-eventqueue"><span class="nav-number">1.3.</span> <span class="nav-text"> Queue&lt;Event&gt; eventQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83publish%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5"><span class="nav-number">1.4.</span> <span class="nav-text"> 发布（publish）生成的段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush"><span class="nav-number">2.</span> <span class="nav-text"> 执行DWPT的doFlush( )</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%88%B0eventqueue"><span class="nav-number">2.1.</span> <span class="nav-text"> 添加删除文件事件到eventQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%A7%AFbacklog%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text"> 堆积（backlog）处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%BA%E5%88%B6%E5%8F%91%E5%B8%83%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%B0eventqueue%E4%B8%AD"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 添加强制发布生成的段的事件到eventQueue中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%AE%8Cdoflush%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text"> 执行完doFLush后的工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E5%8F%91%E5%B8%83%E7%94%9F%E6%88%90%E7%9A%84%E6%AE%B5"><span class="nav-number">2.4.</span> <span class="nav-text"> 尝试发布生成的段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

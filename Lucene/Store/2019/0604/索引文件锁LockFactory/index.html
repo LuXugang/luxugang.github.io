@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件锁LockFactory |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件锁LockFactory
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-06-04 00:00:00</span>
+                <span class="mobile">2019-06-04 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 21:40:50 GMT+0800">2023-10-08 21:40:50</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Store/">Store</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/directory/">directory</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/lock/">lock</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  LockFactory在Lucene中用来对索引文件所在的目录进行加锁，使得同一时间总是只有一个IndexWriter对象可以更改索引文件，即保证单进程内(single in-process)多个不同IndexWriter对象互斥更改（多线程持有相同引用的IndexWriter对象视为一个IndexWriter不会受制于LockFactory，而是受制于对象锁（synchronized(this)）、多进程内(multi-processes)多个对象互斥更改。</p>
+<h1 id="lockfactory的具体实现类"><a class="markdownIt-Anchor" href="#lockfactory的具体实现类"></a> LockFactory的具体实现类</h1>
+<p>  LockFactory是一个抽象类，提供了以下几种子类，即NoLockFactory、SingleInstanceLockFactory、SimpleFSLockFactory、NativeFSLockFactory、VerifyingLockFactory，下面一一介绍。</p>
+<p>图1：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/1.png"></p>
+<h2 id="nolockfactory"><a class="markdownIt-Anchor" href="#nolockfactory"></a> NoLockFactory</h2>
+<p>  该类的功能同类名一样，即不会对索引文件进行加锁，如果使用者有把握（certain）使得IndexWriter对象总是能互斥更改索引文件，那么可以不对索引文件所在的目录进行加锁。</p>
+<h2 id="singleinstancelockfactory"><a class="markdownIt-Anchor" href="#singleinstancelockfactory"></a> SingleInstanceLockFactory</h2>
+<p>  该类是RAMDirectory默认使用的索引文件锁，RAMDirectory属于Directory类的子类，Directory类描述了索引文件所在目录的一些信息，以后会有文章介绍Directory类。</p>
+<p>  对于拥有相同RAMDirectory对象的多个IndexWriter对象，实现不同IndexWriter之间对索引文件的互斥更改。</p>
+<h3 id="获得索引文件锁"><a class="markdownIt-Anchor" href="#获得索引文件锁"></a> 获得索引文件锁</h3>
+<p>  该过程十分的简单，故给出完整的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> HashSet&lt;String&gt; locks = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试获得索引文件锁，如果已经占用则抛出异常</span></span><br><span class="line"><span class="keyword">public</span> Lock <span class="title function_">obtainLock</span><span class="params">(Directory dir, String lockName)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">  <span class="keyword">synchronized</span> (locks) &#123;</span><br><span class="line">    <span class="keyword">if</span> (locks.add(lockName)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SingleInstanceLock</span>(lockName);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">LockObtainFailedException</span>(<span class="string">&quot;lock instance already obtained: (dir=&quot;</span> + dir + <span class="string">&quot;, lockName=&quot;</span> + lockName + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  在IndexWriter类中，定义了一个不可更改的lockName，使得无论哪个线程通过IndexWriter来获得索引文件锁时，lockName的值都是相同的，这样就能通过判断该lockName是否在locks容器中来实现互斥，lockName在IndexWriter类中的定义如下：</p>
+<p>图2：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Store/LockFactory/2.png"></p>
+<h3 id="释放索引文件锁"><a class="markdownIt-Anchor" href="#释放索引文件锁"></a> 释放索引文件锁</h3>
+<p>  释放锁的过程即从locks容器(HashSet对象)中移除键值为write.lock的元素。</p>
+<h2 id="fslockfactory"><a class="markdownIt-Anchor" href="#fslockfactory"></a> FSLockFactory</h2>
+<p>  FSLockFactory是一个抽象类，它有两个子类分别是SimpleFSLockFactory，NativeFSLockFactory，用来专门指定给FSDirectory类提供索引文件锁(can only be used with FSDirectory subclasses)。</p>
+<h3 id="simplefslockfactory"><a class="markdownIt-Anchor" href="#simplefslockfactory"></a> SimpleFSLockFactory</h3>
+<p>  该类只能用于FSDirectory，FSDirectory跟RAMDirectory一样是Directory的子类。</p>
+<p>  该类通过在索引文件所在目录创建一个名为<code>write.lock</code>文件的方式来实现索引文件锁，该方法的缺点在于如果JVM异常退出，那么索引文件锁可能无法被释放，即没有删除<code>write.lock</code>文件。</p>
+<p>  解决的方法只能是通过手动删除<code>write.lock</code>文件，注意是，手动删除前用户得自己保证(certain)目前没有IndexWriter正在写入，否则非常容易破坏（corrupt）索引文件，比如说由于删除了<code>write.lock</code>文件，使得多个IndexWriter对象同时更改了索引文件。</p>
+<h4 id="获得索引文件锁-2"><a class="markdownIt-Anchor" href="#获得索引文件锁-2"></a> 获得索引文件锁</h4>
+<p>  在索引文件所在目录生成一个<code>write.lock</code>文件，并且记录该文件的创建时间，目的是在任意阶段可以检查该文件是否被外在力量（external force）篡改了，从而判定该锁的合法性(valid)，在该类中，如果发现被篡改，那么就抛出异常。</p>
+<p>  比如每次添加一篇文档（Document）后，将该Document的信息写入索引文件之前会做检查（调用该类的ensureValid( )方法），如果此时发现<code>write.lock</code>被篡改了（比如说被删除了），那么这次写入就会失败，后续的处理会在以后介绍IndexWriter时详细介绍。</p>
+<h4 id="释放索引文件锁-2"><a class="markdownIt-Anchor" href="#释放索引文件锁-2"></a> 释放索引文件锁</h4>
+<p>  释放锁的过程即删除<code>write.lock</code>文件，如果发现<code>write.lock</code>文件的创建时间跟获得该锁的时间不同，那么就抛出异常来让用户决定如何处理这种情况，使用Files.delete(Path path)的方法来尝试删除<code>write.lock</code>文件，如果出错了，那么同样地抛出异常让用户决定如何处理这种情况。</p>
+<h3 id="nativefslockfactory"><a class="markdownIt-Anchor" href="#nativefslockfactory"></a> NativeFSLockFactory</h3>
+<p>  NativeFSLockFactory同SimpleFSLockFactory一样，只能用于FSDirectory，它是Directory<strong>默认使用的LockFactory</strong>的，同样的通过在索引文件所在目录生成一个<code>write.lock</code>文件，但是该类还使用了<a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/nio/channels/FileChannel.html" >FileChannel<i class="fas fa-external-link-alt"></i></a>来管理<code>write.lock</code>文件。</p>
+<h4 id="获得索引文件锁-3"><a class="markdownIt-Anchor" href="#获得索引文件锁-3"></a> 获得索引文件锁</h4>
+<p>  NativeFSLockFactory获得索引文件锁的过程分为两步：</p>
+<ul>
+<li>第一步：判断<code>write.lock</code>文件是否已经被**进程内(in-process)**的其他线程的不同IndexWriter对象占有，通过一个线程安全的同步Set容器(Collection.synchronizedSet())实现，最先到的(first come)的线程会将<code>write.lock</code>文件的绝对路径写入到同步Set容器中，后来的线程尝试添加路径时会抛出异常</li>
+<li>第二步：使用<a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/nio/channels/FileChannel.html" >FileChannel<i class="fas fa-external-link-alt"></i></a>来尝试获得**进程间（inter-process）**级别的文件锁<a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/nio/channels/FileLock.html" >FileLock<i class="fas fa-external-link-alt"></i></a>，即判断<code>write.lock</code>文件是否被其他进程占用，如果占用则直接抛出异常。</li>
+</ul>
+<p>  另外也会记录<code>write.lock</code>文件的创建时间，用法跟SimpleFSLockFactory一样。</p>
+<p>  同SimpleFSLockFactory一样，在运行过程中，当更改索引文件时（添加文档、更新、commit、flush等变更索引文件的操作），依次判断下面的条件，任意一个条件不满足时说明当前索引文件锁是不合法的：</p>
+<ul>
+<li>条件1：进程内的某个线程调用了close()，如果该线程继续执行更改索引操作，会抛出异常</li>
+<li>条件2：如果同步Set容器不包含<code>write.lock</code>文件的绝对路径，会抛出异常</li>
+<li>条件3：FileChannel的锁FileLock是不合法的状态，这种情况是未知的外部力量（external force）导致的， 会抛出异常</li>
+<li>条件4：FileChannel中的channel的值不是0，Lucene不会对write.lock文件写入任何数据，所以如果发现该文件中被添加了数据则抛出异常</li>
+<li>条件5：当前<code>write.lock</code>文件的创建时间跟获得锁时的创建时间不一致，说明被未知的（external force）修改了，会抛出异常</li>
+</ul>
+<h4 id="释放索引文件锁-3"><a class="markdownIt-Anchor" href="#释放索引文件锁-3"></a> 释放索引文件锁</h4>
+<p>  该类释放锁的过程分两步走：</p>
+<ul>
+<li>释放<code>write.lock</code>文件的FileLock</li>
+<li>清空同步Set容器中的内容</li>
+</ul>
+<h3 id="simplefslockfactory与nativefslockfactory各自的特点"><a class="markdownIt-Anchor" href="#simplefslockfactory与nativefslockfactory各自的特点"></a> SimpleFSLockFactory与NativeFSLockFactory各自的特点</h3>
+<p>  尽管NativeFSLockFactory是默认的FSDirectory的索引文件锁，但基于实际场景，有时候使用SimpleFSLockFactory能更好的工作(work perfectly)。</p>
+<ul>
+<li>NativeFSLockFactory基于 java.nio.*来获得FileLock，但在某些文件系统下可能会受限，比如说在NFS下可能无法获得FileLock(the lock can incorrectly be double acquired)，此时使用SimpleFSLockFactory就不会有这个问题</li>
+<li>当JVM异常退出时，残留的（leftover）write.lock文件无法删除，如果使用SimpleFSLockFactory需要手动的去删除该文件，否则尝试获得索引文件锁时就直接抛出异常，而使用NativeFSLockFactory时，不用关心当前write.lock文件是否被正确删除，因为它只关心write.lock是否被其他进程占用，而JVM异常退出后，会自动释放FileLock(操作系统会释放FileLock)，所以不能通过判断write.lock文件在索引文件的目录中就认为索引文件被锁定了(locked)，Lucene从不会因为异常去删除write.lock文件</li>
+</ul>
+<h2 id="verifyinglockfactory"><a class="markdownIt-Anchor" href="#verifyinglockfactory"></a> VerifyingLockFactory</h2>
+<p>  该类不同于上面提到的NoLockFactory、SingleInstanceLockFactory、SimpleFSLockFactory、NativeFSLockFactory，如果上述这些索引文件锁在实际业务还是无法正确的工作(not working properly)，那么可以使用VerifyingLockFactory封装上述的LockFactory，通过一个开启一个LockVerifyServer（单独的服务）来实现认证(verify)，保证不会发生同一时间两个进程同时获得锁的情况。</p>
+<h3 id="认证方法"><a class="markdownIt-Anchor" href="#认证方法"></a> 认证方法</h3>
+<p>  Lucene7.5.0中通过Socket向LockVerifyServer发送特定的字节来尝试获得锁，同样的通过发送特定字节来释放锁，由于源码中的实现过于简单，一般不会直接使用，故不详细介绍。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  本文介绍了实现互斥访问索引文件的索引文件锁LockFactory。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Store/LockFactory/LockFactory.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/directory/">directory</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/lock/">lock</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/suoyinwenjian/2019/0605/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bsi/"
+                                   title="索引文件之si"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件之si</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0519/MergeScheduler/"
+                                   title="MergeScheduler"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">MergeScheduler</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lockfactory%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> LockFactory的具体实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nolockfactory"><span class="nav-number">1.1.</span> <span class="nav-text"> NoLockFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singleinstancelockfactory"><span class="nav-number">1.2.</span> <span class="nav-text"> SingleInstanceLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fslockfactory"><span class="nav-number">1.3.</span> <span class="nav-text"> FSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefslockfactory"><span class="nav-number">1.3.1.</span> <span class="nav-text"> SimpleFSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-2"><span class="nav-number">1.3.1.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-2"><span class="nav-number">1.3.1.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nativefslockfactory"><span class="nav-number">1.3.2.</span> <span class="nav-text"> NativeFSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-3"><span class="nav-number">1.3.2.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-3"><span class="nav-number">1.3.2.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefslockfactory%E4%B8%8Enativefslockfactory%E5%90%84%E8%87%AA%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.3.</span> <span class="nav-text"> SimpleFSLockFactory与NativeFSLockFactory各自的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#verifyinglockfactory"><span class="nav-number">1.4.</span> <span class="nav-text"> VerifyingLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 认证方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lockfactory%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> LockFactory的具体实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nolockfactory"><span class="nav-number">1.1.</span> <span class="nav-text"> NoLockFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singleinstancelockfactory"><span class="nav-number">1.2.</span> <span class="nav-text"> SingleInstanceLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fslockfactory"><span class="nav-number">1.3.</span> <span class="nav-text"> FSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefslockfactory"><span class="nav-number">1.3.1.</span> <span class="nav-text"> SimpleFSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-2"><span class="nav-number">1.3.1.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-2"><span class="nav-number">1.3.1.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nativefslockfactory"><span class="nav-number">1.3.2.</span> <span class="nav-text"> NativeFSLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-3"><span class="nav-number">1.3.2.1.</span> <span class="nav-text"> 获得索引文件锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E9%94%81-3"><span class="nav-number">1.3.2.2.</span> <span class="nav-text"> 释放索引文件锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simplefslockfactory%E4%B8%8Enativefslockfactory%E5%90%84%E8%87%AA%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.3.</span> <span class="nav-text"> SimpleFSLockFactory与NativeFSLockFactory各自的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#verifyinglockfactory"><span class="nav-number">1.4.</span> <span class="nav-text"> VerifyingLockFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 认证方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

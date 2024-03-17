@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            block-max WAND（一）（Lucene 8.4.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        block-max WAND（一）（Lucene 8.4.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-09-16 00:00:00</span>
+                <span class="mobile">2020-09-16 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Oct 09 2023 15:20:40 GMT+0800">2023-10-09 15:20:40</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/optimization/">optimization</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/search/">search</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/wand/">wand</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  从Lucene 8.0.0开始，Lucene新增了block-max WAND（Weak AND）算法，用于优化TopN的查询。该算法的引入可谓是一波三折，可以查看作者<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/cn/blog/author/adrien-grand" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>对该算法的介绍：<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/cn/blog/faster-retrieval-of-top-hits-in-elasticsearch-with-block-max-wand%EF%BC%8C%E4%B8%8B%E6%96%87%E4%B8%AD%E5%B0%86%E5%9B%B4%E7%BB%95%E8%BF%99%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%B1%95%E5%BC%80%E4%BB%8B%E7%BB%8D%E3%80%82" >https://www.elastic.co/cn/blog/faster-retrieval-of-top-hits-in-elasticsearch-with-block-max-wand，下文中将围绕这篇博客展开介绍。<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="topn查询lucene-750"><a class="markdownIt-Anchor" href="#topn查询lucene-750"></a> TopN查询（Lucene 7.5.0）</h2>
+<p>  我们先介绍下在Lucene 8.0.0之前，如果实现TopN查询，假设有以下的搜索条件：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/1.png">
+<p>  图1中，第57行、58行、59行描述了只要文档中至少包含一个域名为&quot;author&quot;、域值为&quot;lily&quot;或者&quot;lucy&quot;的信息，那么该文档就满足查询条件；第60行代码描述了，我们只需要根据文档打分返回Top3的结果。</p>
+<p>  假设索引目录中一共有六篇文档，每篇文档的打分如下所示：</p>
+<p>表一：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文档号</th>
+<th style="text-align:center">Score1（lily）</th>
+<th>Score2（Lucy）</th>
+<th style="text-align:center">文档打分值（总分）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td>0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5</td>
+<td>4</td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">6</td>
+<td>7</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td>8</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td>6</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">3</td>
+<td>3</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table>
+<p>  表一中，Score1描述的是域名为&quot;author&quot;、域值为&quot;lily&quot;对应的文档打分值，同理Score2，最终文档的打分值为Score1跟Score2的和值。</p>
+<p>  结合图1跟表一可知，当我们处理到文档3，已经获得了Top3的搜索结果，即文档1、文档2、文档3。然而在Lucene 8.0.0之前，需要对所有满足图1的查询条件的文档进行打分，然后在Collector中使用根据score排序的优先级队列来维护Top3（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>）。</p>
+<p>  通过上文的描述我们可以知道， 在查询过程中，一些打分值很低的文档号也被处理了，那有没有什么方式可以使得尽量跳过那些打分值较低的文档。</p>
+<h2 id="maxscore"><a class="markdownIt-Anchor" href="#maxscore"></a> MAXSCORE</h2>
+<p>  在2012，Stefan Pohl介绍了<a class="link"   target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1016/0306-4573%2895%2900020-H" >MaxScore<i class="fas fa-external-link-alt"></i></a>算法，该算法大意为：如果我们想查找一些文档，查询条件为这些文档中至少包含&quot;elasticsearch&quot;或者&quot;kibana&quot;，并且根据文档打分值排序获得Top10。如果<strong>能知道</strong>根据elasticsearch关键字的文档打分<strong>最大值</strong>为3、根据kibana关键字的文档打分最大值为5，当Top10中的第10篇文档，即分数最低的那篇文档的的打分值为3时，那么在随后的处理中，我们就<strong>只需要</strong>处理包含&quot;kibana&quot;的文档集合（因为那些<strong>只</strong>包含&quot;elasticsearch&quot;的文档肯定是进不了Top10的），并且只需要判断&quot;elasticsearch&quot;是否在这些文档集合中，如果在那么参与打分，并且可能更新Top10。</p>
+<p>  实现该算法需要两个集合：</p>
+<ul>
+<li>第一个集合：该集合中的任意一个term，该term在文档中的打分最高值比TopN中的最小值大
+<ul>
+<li>这些term用来确定遍历的文档集合，即只需要处理包含第一个集合中的term的文档集合，例如上文中的&quot;kibana&quot;</li>
+</ul>
+</li>
+<li>第二个集合：该集合中的任意一个term，该term在文档中的打分值最高值比TopN中的最小值小
+<ul>
+<li>这些term用来对文档打分， 用于更新TopN中的最低分</li>
+</ul>
+</li>
+</ul>
+<p>  随着更多的文档的被处理，TopN中最低的文档打分值如果变高了，那么对于第一个集合中的某些term，如果它们在文档中的打分最高值比TopN中的最小值小，就将它们从第一个集合中移除，并添加到第二个集合中，这样使得进一步减少待处理的文档数量。</p>
+<p>  该算法在Lucene中无法直接应用，原因如下所示：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stefan didn&#x27;t only describe the algorithm. A couple days before the conference, he opened a ticket against Lucene, where he shared a prototype that he had built. This contribution was exciting but also challenging to integrate because we would need a way to compute the maximum score for every term in the index. In particular, scores depend on index statistics such as document frequency (total number of documents that contain a given term), so adding more documents to an index also changes the maximum score of postings in existing segments. Stefan&#x27;s prototype had worked around this issue by requiring a rewrite of the index, which meant this optimization would only work for static indexes in practice. This is a limitation that we weren&#x27;t happy with, but addressing it would require a lot of work.</span><br></pre></td></tr></table></figure>
+<p>  上文中，Lucene团队不接受这种Stefan提出的issues主要是该算法需要在索引（index）阶段需要计算所有term在所有包含它的文档的文档打分值、需要变更已经生成的段文件。</p>
+<p>  感兴趣的同学可以看这里的详细介绍：<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-4100" >https://issues.apache.org/jira/browse/LUCENE-4100<i class="fas fa-external-link-alt"></i></a> 。</p>
+<h2 id="wand"><a class="markdownIt-Anchor" href="#wand"></a> WAND</h2>
+<p>  WAND（Weak AND）同样是一种可用于查询TopN的算法，然而该算法的实现同Lucene中的MinShouldMatchSum（minShouldMatch &gt; 1）是相同的。我们简单的介绍下MinShouldMatchSum的实现方式，例如以下的查询条件将会使用MinShouldMatchSum：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/2.png">
+<p>  图2中的查询条件有三个子查询组成，描述的是：满足查询条件的文档中必须至少域名为&quot;author&quot;，域值为&quot;lily&quot;、“lucy”、&quot;good&quot;中的任意2个（即代码64行设置的minShouldMatch为2）。</p>
+<p>  MinShouldMatchSum算法实现中有三个核心的容器，分别是lead、head、tail，由于源码中关于这几个容器的注释，我怎么翻译都感觉不行😅，随意还是贴上原文朋友们自己品下：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/3.png">
+<p>  图3中，sub scorers中的每一个scorer可以简单的理解为满足某个子查询的文档信息，以图2为例，对于代码61行的子查询，他对应的scorer描述的是包含域名为&quot;author&quot;、域值为&quot;lily&quot;的文档信息。</p>
+<p>  在继续介绍之前，我们先理解下源码中的这么一段注释：</p>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/4.png">
+<p>  图4的源码中说到，如果有n个SHOULD查询（比如图2中就是3个SHOULD查询），其中minShouldMatch的值为m，那么这种查询的开销为 n - m + 1个scorer的遍历开销，即我们不需要遍历n个scorer的文档信息就可以获得查询结果。另外图4中的某个查询的cost描述的是满足该查询的文档数量。</p>
+<p>  其推导思想说的是，包含n个子查询c1，c2，… cn且minShouldMatch为m的BooleanQuery，它可以转化为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(c1 AND (c2..cn | msm = m - 1)) OR (!c1 AND (c2..cn | msm = m))，两块部分通过&quot;或的关系&quot;（OR）组合而成</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(c1 AND (c2…cn|msm=m-1)) ：第一块部分描述了满足BooleanQuery查询要求的文档，如果<strong>满足</strong>子查询c1，那么必须（AND）至少满足c2…cn中任意m-1个子查询</li>
+<li>(!c1 AND (c2…cn|msm=m))：第二块部分描述了满足BooleanQuery查询要求的文档，如果<strong>不满足</strong>子查询c1，那么必须（AND）至少满足c2…cn中任意m个子查询
+<ul>
+<li>根据两块部分的组合关系（OR），<strong>BooleanQuery的开销cost是这两部分的开销和</strong></li>
+</ul>
+</li>
+<li>假设子查询c1，c2，… cn是按照cost（上文中已经介绍，即满足子查询的文档数量）<strong>升序排序</strong>的，那么对于第一块部分(c1 AND (c2…cn|msm=m-1)) ，由于c1的cost最小，并且必须满足c1的查询条件，那么我们只需要遍历满足ci的文档集合即可（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2018/1218/%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6%EF%BC%88MUST%EF%BC%89" >文档号合并（MUST）<i class="fas fa-external-link-alt"></i></a>），<strong>所以第一块部分的开销就是c1的开销</strong></li>
+<li>对于第二块部分(!c1 AND (c2…cn|msm=m))，它可以转化为一个包含 n -1 个子查询c2，… cn且minShouldMatch为m的<strong>子BooleanQuery</strong>，所以它又可以转化为(c2 AND (c3…cn|msm=m-1)) OR (!c2 AND (c3…cn|msm=m))</li>
+<li>完整的类推如下所示：</li>
+</ul>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/5.png">
+<p>  图5的推导图中的最后一个步骤中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">!</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msub><mtext> </mtext><mi>A</mi><mi>N</mi><mi>D</mi><mtext> </mtext><mo stretchy="false">(</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mtext> </mtext><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>c</mi><mi>n</mi></msub><mtext> </mtext><mi mathvariant="normal">∣</mi><mtext> </mtext><mi>m</mi><mi>s</mi><mi>m</mi><mo>=</mo><mi>m</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(!c_{n-m}\ AND\ (c_{n-m+1}\ ... c_n\ |\ msm=m))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mclose">!</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.25833100000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace"> </span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">m</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">∣</span><span class="mspace"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>描述的是一个包含 m 个子查询且minShouldMatch为m的子BooleanQuery，那么很明显我们只要遍历任意1个子查询对应的文档集合即可。</p>
+<p>  故最后得出我们只需要处理 n - m + 1个scorer。</p>
+<p>  基于这个理论就设计出了上文中说到的head跟tail，我们先看下源码中如何定义这两个容器：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/6.png">
+<p>  我们不用关心DisiWrapper跟DisiPriorityQueue是什么，统称为容器即可。初始化head时的容器大小即 n - m + 1（scorers.size() - minShouldMatch + 1），而tail的大小为 m - 1，即剩余的scorer丢到tail中，head跟size中的元素数量和为n。</p>
+<p>  结合上文介绍跟图3的注释就可以明白了，head中存放了用于遍历的scorers（注释中的in order to move quickly to the next candidate正说明了这点），而lead中存放了head中每一个scorer目前正在处理的相同的文档信息，并计算相同的文档信息的数量，如果该值大于等于minShouldMatch的值的话，说明文档满足查询条件。</p>
+<p>  上文的描述只是粗略的介绍了MinShouldMatchSum，在后面的文章中会详细介绍。在本中我们只需要理解为什么要设计head、tail既可以。</p>
+<h2 id="block-max-wand"><a class="markdownIt-Anchor" href="#block-max-wand"></a> block-max WAND</h2>
+<p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  无</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/block-max-WAND/block-max-WAND%EF%BC%88%E4%B8%80%EF%BC%89/block-max-WAND%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/optimization/">optimization</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/search/">search</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/wand/">wand</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/yasuocunchu/2020/1009/FST%EF%BC%88%E4%BA%8C%EF%BC%89/"
+                                   title="FST（二）（Lucene 8.4.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">FST（二）（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Search/2020/0911/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay/"
+                                   title="索引文件的读取（十三）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的读取（十三）之doc&amp;&amp;pos&amp;&amp;pay（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#topn%E6%9F%A5%E8%AF%A2lucene-750"><span class="nav-number">1.</span> <span class="nav-text"> TopN查询（Lucene 7.5.0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxscore"><span class="nav-number">2.</span> <span class="nav-text"> MAXSCORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wand"><span class="nav-number">3.</span> <span class="nav-text"> WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-max-wand"><span class="nav-number">4.</span> <span class="nav-text"> block-max WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#topn%E6%9F%A5%E8%AF%A2lucene-750"><span class="nav-number">1.</span> <span class="nav-text"> TopN查询（Lucene 7.5.0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxscore"><span class="nav-number">2.</span> <span class="nav-text"> MAXSCORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wand"><span class="nav-number">3.</span> <span class="nav-text"> WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-max-wand"><span class="nav-number">4.</span> <span class="nav-text"> block-max WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

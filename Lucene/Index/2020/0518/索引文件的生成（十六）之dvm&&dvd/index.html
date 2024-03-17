@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            索引文件的生成（十六）之dvm&amp;&amp;dvd（Lucene 8.4.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        索引文件的生成（十六）之dvm&amp;&amp;dvd（Lucene 8.4.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2020-05-18 00:00:00</span>
+                <span class="mobile">2020-05-18 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 11 2023 13:59:21 GMT+0800">2023-10-11 13:59:21</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvd/">dvd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dvm/">dvm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.8k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>中，我们介绍了在索引（index）阶段收集文档的NumericDocValues信息的内容，随后在flush阶段，会根据收集到的信息生成索引文件.dvd&amp;&amp;.dvm。如果已经阅读了文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>，那么能快的理解本文的内容，注意的是那篇文章中，是基于Lucene 7.5.0，下文中的内容基于Lucene 8.4.0，不一致（优化）的地方会特别说明。</p>
+<h2 id="生成索引文件dvd-dvm之numericdocvalues的流程图"><a class="markdownIt-Anchor" href="#生成索引文件dvd-dvm之numericdocvalues的流程图"></a> 生成索引文件.dvd、.dvm之NumericDocValues的流程图</h2>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/1.png">
+<h3 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h3>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/2.png">
+<p>  根据在索引阶段收集的文档的NumericDocValuses信息（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0507/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd" >索引文件的生成（十五）之dvm&amp;&amp;dvd<i class="fas fa-external-link-alt"></i></a>），在当前流程点需要执行一些准备工作，即计算出下面的信息：</p>
+<ul>
+<li>gcd（greatest common divisor）</li>
+<li>minMax和blockMinMax</li>
+<li>uniqueValues</li>
+<li>numDocsWithValue</li>
+</ul>
+<p>  在流程点<code>准备工作</code>中，通过<strong>遍历每一个包含NumericDocValues信息的文档</strong>来完成上述信息的计算。</p>
+<h4 id="gcdgreatest-common-divisor"><a class="markdownIt-Anchor" href="#gcdgreatest-common-divisor"></a> gcd（greatest common divisor）</h4>
+<p>  gcd即最大公约数，获得所有NumericDocValues的域值的最大公约数，根据数学知识可知，最大公约数的最小为1。</p>
+<p>  <strong>为什么要计算gcd：</strong></p>
+<p>  在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>中已经作出了解释，本文中再详细的介绍一次，其实目的很简单：降低存储开销。</p>
+<p>  例如我们有以下的域值集合：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;150、140、135&#125;</span><br></pre></td></tr></table></figure>
+<p>  上述三个域值的最大公约数为5，即gcd的值为5，按照下面的公式我们计算出编码后的域值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(v - min) / gcd</span><br></pre></td></tr></table></figure>
+<p>  上述公式中，v为编码前的域值，min为域值集合中的最小值，在本例子中，min的值为135，编码后的域值集合如下所示：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;3, 1, 0&#125;</span><br></pre></td></tr></table></figure>
+<p>  可见编码后的域值集合中，最大值为3，当使用<code>固定位数按位存储</code>（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2019/1217/PackedInts%EF%BC%88%E4%B8%80%EF%BC%89" >PackedInts（一）<i class="fas fa-external-link-alt"></i></a>）时，只需要6个bit存储即可，在读取阶段，根据min、gcd的值就可以获得编码前的域值集合。</p>
+<h4 id="minmax-blockminmax"><a class="markdownIt-Anchor" href="#minmax-blockminmax"></a> minMax、blockMinMax</h4>
+<p>  minMax跟blockMinMax在源码中都是<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/codecs/lucene80/Lucene80DocValuesConsumer.java" >类MinMaxTracker<i class="fas fa-external-link-alt"></i></a>的对象，都是用来收集下面的信息：</p>
+<ul>
+<li>min：域值集合中的最小值</li>
+<li>max：域值集合中的最大值</li>
+<li>numValues：域值集合中的元素数量</li>
+<li>spaceInBits：存储域值占用的bit数量
+<ul>
+<li>spaceInBits的计算方式：(bitCount(max - min)) * num，其中num指的是域值的数量，bitCount( )方法描述的是域值占用的有效bit数量，例如bitCount(3) = 2，数值3的二进制为0b000000<font color=Red>11</font>，有效的bit数量为2个</li>
+</ul>
+</li>
+</ul>
+<p>  两个信息的区别在于，minMax收集的是域值集合中全量数据下的min、max、spaceInBits，而blockMinMax则是将域值集合分为N个block，每处理<strong>4096个域值</strong>就作为一个block，每个block单独收集min、max、spaceInBits。</p>
+<p>  <strong>为什么要计算minMax、blockMinMax</strong></p>
+<p>  为了判断出使用单个block和多个block存储域值时，哪一种方式有更低的存储开销。</p>
+<p>  例如我们有以下域值集合，为了便于描述，计算blockMinMax时，每处理<strong>3个域值</strong>就作为一个block。</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/3.png">
+<p>  图2中，对于minMax，域值集合的全量数据下的min、max分别为1、18，并且有9个，那么spaceInBits = (bitCount(18 - 1)) * 9，数值17的二进制为0b000<font color=Red>10001</font>，有效的bit数量为5个，故spaceInBits的值为5*9 = 45。</p>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/4.png">
+<p>  图3中，对于blockMinMax，域值集合被分为3个block，每个block的spaceInBits的和值作为blockMinMax的spaceInBits，故spaceInBits = (bitCount(2 -1)) * 3 + (bitCount(18 -16)) * 3 + (bitCount(8 -5)) * 3 = 3 + 6 + 9 = 18。</p>
+<p>  源码中，如果blockMinMax和minMax的spaceInBits满足下面的条件，那么就使用多个block存储域值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="type">double</span>) blockMinMax.spaceInBits / minMax.spaceInBits &lt;= <span class="number">0.9</span></span><br></pre></td></tr></table></figure>
+<p>  显而易见，上述的例子将会使用多个block存储域值。当然了，当前的流程点是<code>准备工作</code>，仅仅判断出存储域值的方式，其具体的存储域值逻辑将在后面的流程中执行。</p>
+<h4 id="uniquevalues"><a class="markdownIt-Anchor" href="#uniquevalues"></a> uniqueValues</h4>
+<p>  uniqueValues是一个Set&lt;Long&gt;对象，用来统计域值的种类，uniqueValues将在后续的流程点<code>是否使用域值映射存储</code>作为判断的依据，在本文中不展开介绍，我们只需要知道收集域值种类的时机点即可，例如图3中的域值集合，在执行完流程点<code>准备工作</code>后，uniqueValues中的内容如下所示：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;1, 2, 3, 5, 8, 16, 17, 18&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="numdocswithvalue"><a class="markdownIt-Anchor" href="#numdocswithvalue"></a> numDocsWithValue</h4>
+<p>  numDocsWithValue用来描述包含当前域名的文档数量，在后面的流程中它将作为一个判断条件，用于选择使用哪种数据结构来存储包含当前域的文档号集合。</p>
+<h3 id="写入文档号信息"><a class="markdownIt-Anchor" href="#写入文档号信息"></a> 写入文档号信息</h3>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/5.png">
+<p>  文档号信息包含两个信息：</p>
+<ul>
+<li>文档号的值信息：文档号的值将被写入到索引文件dvd中</li>
+<li>文档号的索引信息：文档号索引信息将被写入到索引文件.dvm中，在读取阶段根据文档号的索引信息来读取在索引文件.dvd中的文档号的值区间，下文中会详细说明</li>
+</ul>
+<p>  另外根据在流程点<code>准备工作</code>中计算出的numDocsWithValue，对应有三种数据结构存储文档号索引信息。</p>
+<h4 id="0-numdocswithvalue-maxdoc"><a class="markdownIt-Anchor" href="#0-numdocswithvalue-maxdoc"></a> 0 &lt; numDocsWithValue &lt; maxDoc</h4>
+<p>  maxDoc的值为段中的文档数量，在下文中会介绍该值，如果numDocsWithValue的值在区间(0, maxDoc)，文档索引信息将会被存储到索引文件.dvm中的DocIdIndex字段，文档号的值信息将被存储到索引文件.dvd中的DocIdData字段：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/6.png">
+<p>   图6中，文档号的索引信息包含offset跟length，它们描述了文档号的值信息在索引文件.dvd中的值区间，其他字段的解释见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>，我们再看Lucene 8.4.0中的数据结构：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/7.png">
+<p>   在Lucene 8.4.0版本中，DocIdIndex字段中多了jumpTableEntryCount跟denseRankPower两个信息，在读取阶段，通过这两个信息能获得查找表（lookup table）的信息，jumpTableEntryCount跟denseRankPower以及查找表的概念在系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI<i class="fas fa-external-link-alt"></i></a>已经介绍，这里不赘述。</p>
+<h4 id="numdocswithvalue-0"><a class="markdownIt-Anchor" href="#numdocswithvalue-0"></a> numDocsWithValue == 0</h4>
+<p>  如果numDocsWithValue == 0，那么将固定的信息写入到索引文件.dvm中，固定信息在索引文件.dvm中的位置如下所示：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/8.png">
+<p>  图8中，offset跟length被置为固定信息，在读取阶段，当读取到offset的值为-2时，就知道numDocsWithValue == 0，下面给出Lucene 8.4.0的索引文件.dvm，由于numDocsWithValue == 0，文档号的值信息不用写入到索引文件.dvd中：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/9.png">
+<p>  同样的查找表的信息用固定信息填充。</p>
+<h4 id="numdocswithvalue-maxdoc"><a class="markdownIt-Anchor" href="#numdocswithvalue-maxdoc"></a> numDocsWithValue == maxDoc</h4>
+<p>  如果numDocsWithValue == maxDoc，说明正在执行flush的段中的每篇文档都包含当前域的信息，意味着我们也不用存储文档号的值信息，因为在读取阶段，文档号的值就是 [0, maxDoc]区间内的所有值，故同样只要将固定的信息写入到索引文件.dvm中：</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/10.png">
+<p>  在读取阶段，当读取到offset的值为-1时，就知道numDocsWithValue == maxDoc，同样地给出Lucene 8.4.0的数据结构：</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/11.png">
+<p>  在写入了文档号信息之后，将域值数量写入到索引文件.dvm中，域值数量在上文中的minMax中numValues获得，如下所示：</p>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的生成/索引文件的生成（十六）/12.png">
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dvd/">dvd</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/dvm/">dvm</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2020/0526/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%E4%B9%8Bdvm&amp;&amp;dvd/"
+                                   title="索引文件的生成（十七）之dvm&amp;&amp;dvd（Lucene 8.4.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件的生成（十七）之dvm&amp;&amp;dvd（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2020/0514/IndexedDISI%EF%BC%88%E4%BA%8C%EF%BC%89/"
+                                   title="IndexedDISI（二）（Lucene 8.4.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">IndexedDISI（二）（Lucene 8.4.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dvd-dvm%E4%B9%8Bnumericdocvalues%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 生成索引文件.dvd、.dvm之NumericDocValues的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gcdgreatest-common-divisor"><span class="nav-number">1.1.1.</span> <span class="nav-text"> gcd（greatest common divisor）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#minmax-blockminmax"><span class="nav-number">1.1.2.</span> <span class="nav-text"> minMax、blockMinMax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniquevalues"><span class="nav-number">1.1.3.</span> <span class="nav-text"> uniqueValues</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue"><span class="nav-number">1.1.4.</span> <span class="nav-text"> numDocsWithValue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E6%A1%A3%E5%8F%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text"> 写入文档号信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-numdocswithvalue-maxdoc"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 0 &lt; numDocsWithValue &lt; maxDoc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue-0"><span class="nav-number">1.2.2.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue-maxdoc"><span class="nav-number">1.2.3.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6dvd-dvm%E4%B9%8Bnumericdocvalues%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 生成索引文件.dvd、.dvm之NumericDocValues的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gcdgreatest-common-divisor"><span class="nav-number">1.1.1.</span> <span class="nav-text"> gcd（greatest common divisor）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#minmax-blockminmax"><span class="nav-number">1.1.2.</span> <span class="nav-text"> minMax、blockMinMax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniquevalues"><span class="nav-number">1.1.3.</span> <span class="nav-text"> uniqueValues</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue"><span class="nav-number">1.1.4.</span> <span class="nav-text"> numDocsWithValue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E6%A1%A3%E5%8F%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text"> 写入文档号信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-numdocswithvalue-maxdoc"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 0 &lt; numDocsWithValue &lt; maxDoc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue-0"><span class="nav-number">1.2.2.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; 0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#numdocswithvalue-maxdoc"><span class="nav-number">1.2.3.</span> <span class="nav-text"> numDocsWithValue &#x3D;&#x3D; maxDoc</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

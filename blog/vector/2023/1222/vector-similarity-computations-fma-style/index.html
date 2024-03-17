@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            Vector Similarity Computations FMA- style |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        Vector Similarity Computations FMA- style
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2023-12-22 00:00:00</span>
+                <span class="mobile">2023-12-22 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Fri Dec 22 2023 11:59:31 GMT+0800">2023-12-22 11:59:31</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/blog/">blog</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/blog/vector/">vector</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/simd/">simd</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fma/">fma</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/vector/">vector</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  介绍下一篇基于FMA（Fused Multiply-Add）利用SIMD的文章。</p>
+<p>  原文地址：<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/search-labs/blog/articles/vector-similarity-computations-fma-style" >https://www.elastic.co/search-labs/blog/articles/vector-similarity-computations-fma-style<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="原文"><a class="markdownIt-Anchor" href="#原文"></a> 原文</h2>
+<p>In Lucene 9.7.0 we added support that <a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/blog/accelerating-vector-search-simd-instructions" >leverages SIMD instructions<i class="fas fa-external-link-alt"></i></a> to perform data-parallelization of vector similarity computations. Now we’re pushing this even further with the use of Fused Multiply-Add (FMA).</p>
+<h3 id="what-is-fma"><a class="markdownIt-Anchor" href="#what-is-fma"></a> <strong>What is FMA</strong></h3>
+<p>Multiply and add is a common operation that computes the product of two numbers and adds that product with a third number. These types of operations are performed over and over during vector similarity computations.</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/1.png">
+<p>Fused multiply-add (FMA) is a single operation that performs both the multiply and add operations in one - the multiplication and addition are said to be “fused” together. FMA is typically faster than a separate multiplication and addition because most CPUs model it as a single instruction.</p>
+<p>FMA also produces more accurate results. Separate multiply and add operations on floating-point numbers have two rounds; one for the multiplication, and one for the addition, since they are separate instructions that need to produce separate results. That is effectively,</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/2.png">
+<p>Whereas FMA has a single rounding, which applies only to the combined result of the multiplication and addition. That is effectively,</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/3.png">
+<p>Within the FMA instruction the <code>a * b</code> produces an infinite precision intermediate result that is added with <code>c</code>, before the final result is rounded. This eliminates a single round, when compared to separate multiply and add operations, which results in more accuracy.</p>
+<h3 id="under-the-hood"><a class="markdownIt-Anchor" href="#under-the-hood"></a> Under the hood</h3>
+<p>So what has actually changed? In Lucene we have replaced the separate multiply and add operations with a single FMA operation. The scalar variants now use <a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html#fma(float,float,float)" >Math::fma<i class="fas fa-external-link-alt"></i></a>, while the Panama vectorized variants use <a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/21/docs/api/jdk.incubator.vector/jdk/incubator/vector/FloatVector.html#fma(jdk.incubator.vector.Vector,jdk.incubator.vector.Vector)" >FloatVector::fma<i class="fas fa-external-link-alt"></i></a>.</p>
+<p>If we look at the disassembly we can see the effect that this change has had. Previously we saw this kind of code pattern for the Panama vectorized implementation of dot product.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vmovdqu32 zmm0,ZMMWORD PTR [rcx+r10</span><br><span class="line">4+0x10]</span><br><span class="line">*vmulps zmm0,zmm0,ZMMWORD PTR [rdx+r10*</span><br><span class="line">4+0x10]</span><br><span class="line">vaddps zmm4,zmm4,zmm0</span><br></pre></td></tr></table></figure>
+<p>The <code>vmovdqu32</code> instruction loads 512 bits of packed doubleword values from a memory location into the <code>zmm0</code> register. The <code>vmulps</code> instruction then multiplies the values in <code>zmm0</code> with the corresponding packed values from a memory location, and stores the result in <code>zmm0</code>. Finally, the <code>vaddps</code> instruction adds the 16 packed single precision floating-point values in <code>zmm0</code> with the corresponding values in <code>zmm4</code>, and stores the result in <code>zmm4</code>.</p>
+<p>With the change to use <code>FloatVector::fma</code>, we see the following pattern:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vmovdqu32 zmm0,ZMMWORD PTR [rdx+r11</span><br><span class="line">4+0xd0]</span><br><span class="line">*vfmadd231ps zmm4,zmm0,ZMMWORD PTR [rcx+r11*4+0xd0]</span><br></pre></td></tr></table></figure>
+<p>Again, the first instruction is similar to the previous example, where it loads 512 bits of packed doubleword values from a memory location into the <code>zmm0</code> register. The <code>vfmadd231ps</code> (this is the FMA instruction), multiplies the values in <code>zmm0</code> with the corresponding packed values from a memory location, adds that intermediate result to the values in <code>zmm4</code>, performs rounding and stores the resulting 16 packed single precision floating-point values in <code>zmm4</code>.</p>
+<p>The <code>vfmadd231ps</code> instruction is doing quite a lot! It’s a clear signal of intent to the CPU about the nature of the computations that the code is running. Given this, the CPU can make smarter decisions about how this is done, which typically results in improved performance (and accuracy as previously described).</p>
+<h3 id="is-it-fast"><a class="markdownIt-Anchor" href="#is-it-fast"></a> Is it fast</h3>
+<p>In general, the use of FMA typically results in improved performance. But as always you need to benchmark! Thankfully, Lucene deals with quite a bit of complexity when determining whether to use FMA or not, so you don’t have to. Things like, whether the CPU even has support for FMA, if FMA is enabled in the Java Virtual Machine, and only enabling FMA on architectures that have proven to be faster than separate multiply and add operations. As you can probably tell, this heuristic is not perfect, but goes a long way to making the out-of-the-box experience good. While accuracy is improved with FMA, we see no negative effect on pre-existing similarity computations when FMA is not enabled.</p>
+<p>Along with the use of FMA, the suite of vector similarity functions got some (more) love. All of dot product, square, and cosine distance, both the scalar and Panama vectorized variants have been updated. Optimizations have been applied based on the inspection of disassembly and empirical experiments, which have brought improvements that help fill the pipeline keeping the CPU busy; mostly through more consistent and targeted loop unrolling, as well as removal of data dependencies within loops.</p>
+<p>It’s not straightforward to put concrete performance improvement numbers on this change, since the effect spans multiple similarity functions and variants, but we see positive throughput improvements, from single digit percentages in floating-point dot product, to higher double digit percentage improvements in cosine. The byte based similarity functions also show similar throughput improvements.</p>
+<h3 id="wrapping-up"><a class="markdownIt-Anchor" href="#wrapping-up"></a> Wrapping Up</h3>
+<p>In Lucene 9.7.0, we added the ability to enable an alternative faster implementation of the low-level primitive operations used by Vector Search through SIMD instructions. In the upcoming Lucene 9.9.0 we built upon this to leverage faster FMA instructions, as well as to apply optimization techniques more consistently across all the similarity functions. Previous versions of Elasticsearch are already benefiting from SIMD, and the upcoming Elasticsearch 8.12.0 will have the FMA improvements.</p>
+<p>Finally, I’d like to call out Lucene PMC member <a class="link"   target="_blank" rel="noopener" href="https://github.com/rmuir" >Robert Muir<i class="fas fa-external-link-alt"></i></a> for continuing to make improvements in this area, and for the enjoyable and productive collaboration.</p>
+<h2 id="译文"><a class="markdownIt-Anchor" href="#译文"></a> 译文</h2>
+<p>  在Lucene 9.7.0中，我们新增了支持，利用SIMD指令来执行数据并行化的向量相似度计算（vector Similarity）。现在，我们更进一步地使用了融合乘法加法（Fused Multiply-Add，FMA）。</p>
+<h3 id="what-is-fma-2"><a class="markdownIt-Anchor" href="#what-is-fma-2"></a> What is FMA</h3>
+<p>  乘法跟加法是一种常见的操作，它计算两个数字的乘积，并将该乘积与第三个数字相加。在向量相似度计算过程中，这些类型的操作会一次又一次地执行。</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/1.png">
+<p>  FMA是种单一操作，它在一次操作中执行了乘法和加法 - 乘法和加法被“融合”在一起。FMA通常比分开的乘法和加法更快，因为大多数CPU将其建模为单一指令。</p>
+<p>  FMA还能产生更准确的结果。分开的浮点数乘法和加法操作需要两轮，一轮用于乘法，一轮用于加法，因为它们是分开的指令，需要产生不同的结果。而FMA只有一轮舍入（round），这仅适用于乘法和加法的合并结果。这消除了与分开的乘法和加法操作相比的单一舍入，从而提高了准确性。</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/2.png">
+<p>  然而，FMA只进行一次舍入，而这个舍入只适用于乘法和加法的合并结果。相当于：</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/blog/vector-similarity-computations-fma-style/3.png">
+<p>  在FMA指令中，<code>a * b</code>会产生一个无限精度的中间结果，然后与c相加，最后对最终结果进行舍入。与分开的乘法和加法操作相比，这消除了一次舍入，从而提高了准确性。</p>
+<h3 id="under-the-hood-2"><a class="markdownIt-Anchor" href="#under-the-hood-2"></a> Under the hood</h3>
+<p>  那么发生了什么真正的改变呢？我们用单个FMA操作替换了分开的乘法和加法操作。scalar variants现在使用Math::fma，而Panama vectorized variants则使用FloatVector::fma。</p>
+<p>  如果观察下反汇编的结果，我们可以看到其发生的变化。之前对于这类代码模式，Panama对于点积的实现如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vmovdqu32 zmm0,ZMMWORD PTR [rcx+r10</span><br><span class="line">4+0x10]</span><br><span class="line">*vmulps zmm0,zmm0,ZMMWORD PTR [rdx+r10*</span><br><span class="line">4+0x10]</span><br><span class="line">vaddps zmm4,zmm4,zmm0</span><br></pre></td></tr></table></figure>
+<p>  <code>vmovdqu32</code> 指令从内存位置加载512位 packed doubleword到<code>zmm0</code>寄存器中。接着，<code>vmulps</code> 指令将<code>zmm0</code>的值与来自内存位置的相应packed value相乘，并将结果存储在<code>zmm0</code>中。最后，<code>vaddps</code> 指令将<code>zmm0</code>中的16个packed 单精度的浮点值与<code>zmm4</code>中的相应值相加，并将结果存储在<code>zmm4</code>中。</p>
+<p>  使用<code>FloatVector::fma</code>后的变化，我们可以看下下面的模式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vmovdqu32 zmm0,ZMMWORD PTR [rdx+r11</span><br><span class="line">4+0xd0]</span><br><span class="line">*vfmadd231ps zmm4,zmm0,ZMMWORD PTR [rcx+r11*4+0xd0]</span><br></pre></td></tr></table></figure>
+<p>  再次的，第一条指令与之前的示例相似，它从内存位置加载512位packed doubleword values到<code>zmm0</code>寄存器中。然后，<code>vfmadd231ps</code>（这是FMA指令）将<code>zmm0</code>中的值与来自内存位置的相应packed values相乘，将中间结果添加到<code>zmm4</code>中，执行舍入，并将结果存储在<code>zmm4</code>中的16位packed single precision floating-point values。</p>
+<p>  <code>vfmadd231ps</code>指令执行了多个操作，明确告诉CPU代码正在运行的计算性质。基于这一信息，CPU可以更明智地决定如何执行操作，通常会导致性能改进（如前面所述）和更高的准确性。</p>
+<h3 id="is-it-fast-2"><a class="markdownIt-Anchor" href="#is-it-fast-2"></a> Is it fast</h3>
+<p>  总的来说，使用FMA通常会导致性能提升，但仍需要进行基准测试。不过Lucene在确定是否使用FMA时处理了许多复杂性（有些情况下不允许使用FMA，后续介绍向量搜索时会提到），因此用户不需要担心这些细节。这包括CPU是否支持FMA，Java虚拟机是否启用FMA，以及仅在已证明比分开的乘法和加法操作更快的架构上启用FMA。尽管可以看出这种启发式方法并不完美，但它在提供良好的开箱即用体验方面已经做了很多。使用FMA可以提高准确性，而未启用FMA时，现有的相似性计算没有负面影响。</p>
+<p>  除了使用FMA，向量相似性函数相关的内容（the suite of similarity functions）也进行了改进。 dot product、square 和 cosine distance 和Panama向量化都已更新。通过查看反汇编和实验经验应用了（apply）一些优化措施，这些措施带来了改进，有助于保持CPU忙碌的状态，主要通过更加的一致性和有针对性的循环展开（loop unrolling），以及消除循环内的数据依赖性。</p>
+<ul>
+<li>
+<p>mostly through more consistent and targeted loop unrolling：这是一种优化技术，通过增加循环体中代码的实例数量来减少循环的迭代次数。这种方法可以提高程序的执行效率，因为它减少了循环控制逻辑的开销，并可能使得更多的数据在单个循环迭代中被处理。</p>
+</li>
+<li>
+<p>在循环内移除数据依赖（removal of data dependencies within loops）：这是指修改循环中的代码，以减少或消除数据依赖，从而提高性能。数据依赖可能会导致循环迭代之间的延迟，因为后续的迭代可能需要等待前一个迭代完成数据处理。通过重构代码来减少这种依赖，可以使循环的不同迭代更加独立，从而提高运行效率。综合来看，这些技术有助于提高程序处理循环时的性能，特别是在涉及大量数据和复杂计算时。</p>
+</li>
+</ul>
+<p>  具体的性能提升没那么直接通过数据来确定，因为影响涵盖了multiple similarity functions and variants，但我们看到了吞吐量方面的提升，从浮点型数值的点积操作的个位数百分比的提升到cosine操作的两位数百分比的提高。基于字节的相似性函数也显示出类似的吞吐量的提升。</p>
+<h3 id="wrapping-up-2"><a class="markdownIt-Anchor" href="#wrapping-up-2"></a> Wrapping Up</h3>
+<p>  在Lucene 9.7.0中，我们添加了通过SIMD指令来启用low-level primitive操作用于向量搜索。在即将发布的Lucene 9.9.0中，我们进一步利用更快的FMA指令，并更一致地应用于所有相似性函数的优化技术。早期版本的Elasticsearch已经受益于SIMD，即将发布的Elasticsearch 8.12.0将获得FMA改进。最后，我要感谢Lucene PMC成员Robert Muir在这个领域持续改进，并为愉快而富有成效的合作表示赞扬。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/simd/">simd</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fma/">fma</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/vector/">vector</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/suoyinwenjian/2023/1225/vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex/"
+                                   title="索引文件之vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex（Lucene 9.9.0）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">索引文件之vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex（Lucene 9.9.0）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2023/1128/NumericUtils/"
+                                   title="NumericUtils（Lucene 9.8.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">NumericUtils（Lucene 9.8.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text"> 原文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-fma"><span class="nav-number">1.1.</span> <span class="nav-text"> What is FMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#under-the-hood"><span class="nav-number">1.2.</span> <span class="nav-text"> Under the hood</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-it-fast"><span class="nav-number">1.3.</span> <span class="nav-text"> Is it fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapping-up"><span class="nav-number">1.4.</span> <span class="nav-text"> Wrapping Up</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%91%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text"> 译文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-fma-2"><span class="nav-number">2.1.</span> <span class="nav-text"> What is FMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#under-the-hood-2"><span class="nav-number">2.2.</span> <span class="nav-text"> Under the hood</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-it-fast-2"><span class="nav-number">2.3.</span> <span class="nav-text"> Is it fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapping-up-2"><span class="nav-number">2.4.</span> <span class="nav-text"> Wrapping Up</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text"> 原文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-fma"><span class="nav-number">1.1.</span> <span class="nav-text"> What is FMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#under-the-hood"><span class="nav-number">1.2.</span> <span class="nav-text"> Under the hood</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-it-fast"><span class="nav-number">1.3.</span> <span class="nav-text"> Is it fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapping-up"><span class="nav-number">1.4.</span> <span class="nav-text"> Wrapping Up</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%91%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text"> 译文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-fma-2"><span class="nav-number">2.1.</span> <span class="nav-text"> What is FMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#under-the-hood-2"><span class="nav-number">2.2.</span> <span class="nav-text"> Under the hood</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-it-fast-2"><span class="nav-number">2.3.</span> <span class="nav-text"> Is it fast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapping-up-2"><span class="nav-number">2.4.</span> <span class="nav-text"> Wrapping Up</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

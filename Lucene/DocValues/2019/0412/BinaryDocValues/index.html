@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            BinaryDocValues |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        BinaryDocValues
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-04-12 00:00:00</span>
+                <span class="mobile">2019-04-12 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Thu Sep 28 2023 14:32:26 GMT+0800">2023-09-28 14:32:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/DocValues/">DocValues</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DocValues/">DocValues</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  BinaryDocValues同 SortedDocValues、SortedNumericDocValues一样，在实际应用中最多的场景用于提供给搜索结果一个排序规则。在搜索结果的排序阶段，实际是按照BinaryDocValuesFiled的域值根据字典序进行比较，而SortedDocValues则是比较域值对应的ord值来作比较，所以BinaryDocValues在排序上性能远不如SortedDocValues，当然BinaryDocValues最突出的优点对固定长度域值的索引最大化的优化，看完下面的介绍后就明白了。在后面的文章中会详细介绍BinaryDocValues的应用，在这里重点是讲述其生成的索引文件数据结构。</p>
+<h1 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h1>
+<h2 id="dvd"><a class="markdownIt-Anchor" href="#dvd"></a> dvd</h2>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/1.png">
+<h3 id="termsvalue"><a class="markdownIt-Anchor" href="#termsvalue"></a> TermsValue</h3>
+<p>  BinaryDocValuesFiled同SortedDocValuesFiled一样都是单值域，即一篇文档中只能有一个相同域名的域值，所以TermsValue中记录的就是每篇文档中的完整域值，并且不使用前缀存储，这里强调的是，TermsValue只记录域值，即所有的域值都是挨个写入到.dvd文件中，不同其他索引文件，一般索引文件都会先记录一个域值的长度，然后再记录域值的值，这样在读取阶段才能明确在.dvd文件中读取的数据区间。BinaryDocValues则是通过TermsIndex字段来映射，随后会介绍。</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/2.png">
+<h4 id="term"><a class="markdownIt-Anchor" href="#term"></a> Term</h4>
+<p>  每个BinaryDocValuesFiled的完整域值，并且可能有重复的域值。</p>
+<h3 id="dociddata"><a class="markdownIt-Anchor" href="#dociddata"></a> DocIdData</h3>
+<p>  DocIdData中记录包含当前域的文档号。</p>
+<p>  如果IndexWriter添加的document中不都包含当前域，那么需要将包含当前域的文档号记录到DocIdData中，并且使用IndexedDISI类来存储文档号，IndexedDISI存储文档号后生成的数据结构单独的作为一篇文章介绍，在这里不赘述。</p>
+<h3 id="termsindex"><a class="markdownIt-Anchor" href="#termsindex"></a> TermsIndex</h3>
+<p>  TermsIndex中记录了TermsValue中每一个域值相对于第一个域值的在.dvd文件中的偏移，在读取阶段，如果需要读取第n个域值的数据，那么只要计算 第n个和第n+1个的TermsIndex的差值，就可以获得第n个域值在.dvd文件中的数据区间，实现随机访问。源码中实际是一个下标值为文档号，数组元素是TermsIndex的数组结构，每一个域值的TermsIndex采用PackedInts进行压缩存储。其数据结构在其他DocValues的文章中有介绍，这里不赘述。</p>
+<h2 id="dvm"><a class="markdownIt-Anchor" href="#dvm"></a> dvm</h2>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/3.png">
+<h3 id="fieldnumber"><a class="markdownIt-Anchor" href="#fieldnumber"></a> FieldNumber</h3>
+<p>  域的编号。</p>
+<h3 id="docvaluestype"><a class="markdownIt-Anchor" href="#docvaluestype"></a> DocvaluesType</h3>
+<p>  Docvalues的类型，本文中，这个值就是 BINARY。</p>
+<h3 id="termsvaluemeta"><a class="markdownIt-Anchor" href="#termsvaluemeta"></a> TermsValueMeta</h3>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/4.png">
+<h4 id="offset"><a class="markdownIt-Anchor" href="#offset"></a> offset</h4>
+<p>  .dvd文件中TermsValue在文件中的开始位置。</p>
+<h4 id="length"><a class="markdownIt-Anchor" href="#length"></a> length</h4>
+<p>  length为 TermsValue在.dvd文件中的数据长度。</p>
+<p>  在读取阶段，通过offset跟length就可以获得所有的 TermsValue数据。</p>
+<h3 id="docidindex"><a class="markdownIt-Anchor" href="#docidindex"></a> DocIdIndex</h3>
+<p>  DocIdIndex是对.dvd文件的一个索引，用来描述 .dvd文件中DocIdData在.dvd文件中的开始跟结束位置。</p>
+<h4 id="情况1"><a class="markdownIt-Anchor" href="#情况1"></a> 情况1：</h4>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/5.png">
+<p>  如果IndexWriter添加的document中都包含当前域，那么只需要在DocIdIndex中添加标志信息即可。</p>
+<h4 id="情况2"><a class="markdownIt-Anchor" href="#情况2"></a> 情况2：</h4>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/6.png">
+<p>  如果IndexWriter添加的document中不都包含当前域，那么.dvd文件中需要将包含当前的域的文档号信息都记录下来。</p>
+<h5 id="offset-2"><a class="markdownIt-Anchor" href="#offset-2"></a> offset</h5>
+<p>  .dvd文件中存放文档号的DocIdData在文件中的开始位置。</p>
+<h5 id="length-2"><a class="markdownIt-Anchor" href="#length-2"></a> length</h5>
+<p>  length为DocIdData在.dvd文件中的数据长度。</p>
+<p>  在读取阶段，通过offset跟length就可以获得所有的DocIdData数据。</p>
+<h3 id="numdocswithfield"><a class="markdownIt-Anchor" href="#numdocswithfield"></a> numDocsWithField</h3>
+<p>  包含当前域的文档的个数。</p>
+<h3 id="minlength"><a class="markdownIt-Anchor" href="#minlength"></a> MinLength</h3>
+<p>  记录所有域值长度最小的。</p>
+<h3 id="maxlength"><a class="markdownIt-Anchor" href="#maxlength"></a> MaxLength</h3>
+<p>  记录所有域值长度最大的。</p>
+<p>  记录MinLength跟MaxLength目的在于，如果两个值相同，那么就不需要.dvd文件中的TermsIndex字段、.dvm文件中的TermIndexMeta字段。因为在读取阶段，所有的域值的长度都相同，那么TermsValue中的数据是等分的。就很容易并且随机访问找到每篇文档中的域值。</p>
+<h3 id="termsindexmeta"><a class="markdownIt-Anchor" href="#termsindexmeta"></a> TermsIndexMeta</h3>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/BinaryDocValues/7.png">
+<h4 id="offset-3"><a class="markdownIt-Anchor" href="#offset-3"></a> Offset</h4>
+<p>  TermsIndex数据段在.dvd文件的开始位置。</p>
+<h4 id="direct_monotonic_block_shift"><a class="markdownIt-Anchor" href="#direct_monotonic_block_shift"></a> DIRECT_MONOTONIC_BLOCK_SHIFT</h4>
+<p>  DIRECT_MONOTONIC_BLOCK_SHIFT用来在初始化byte buffer[]的大小，buffer数组用来存放每一个域值TermsIndex。</p>
+<h4 id="min-avginc-length-bitsrequired"><a class="markdownIt-Anchor" href="#min-avginc-length-bitsrequired"></a> Min、AvgInc、Length、BitsRequired</h4>
+<p>  图2中的TermsValue中所有域值都是连续存储，那么还需要增加TermsIndex信息来描述一个term的长度，才能在读取阶段分离出每一个term。而TermsIndex的信息会经过编码然后压缩存储，这四个字段是用于解码的参数，详细的介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&amp;&amp;Reader" >DirectMonotonicWriter&amp;&amp;Reader<i class="fas fa-external-link-alt"></i></a>。</p>
+<h4 id="termsindexlength"><a class="markdownIt-Anchor" href="#termsindexlength"></a> TermsIndexLength</h4>
+<p>  TermsIndex数据段在.dvd文件的数据长度。</p>
+<p>  TermsIndexLength结合Offset，就可以确定 TermsIndex在.dvd文件中的数据区间。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  BinaryDocValues在处理域值时，不做跟ord值的映射，不做前缀存储，在特定场景下存储固定域值长度，域值长度较小时，查询域值速度优于SortedDocValues，排序性能接近SortedDocValues。<br />
+这是DocValues类型的关于.dvd、.dvm文件构造的最后一篇文章，我们只有在了解每一个DocValues的构造原理后，才能结合实际应用，使用合适的DocValues类型。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/DocValues/">DocValues</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Search/2019/0415/FieldComparator&amp;&amp;LeafFieldComparator/"
+                                   title="FieldComparator&amp;&amp;LeafFieldComparator"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">FieldComparator&amp;&amp;LeafFieldComparator</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/DocValues/2019/0412/SortedSetDocValues/"
+                                   title="SortedSetDocValues"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SortedSetDocValues</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dvd"><span class="nav-number">1.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termsvalue"><span class="nav-number">1.1.1.</span> <span class="nav-text"> TermsValue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#term"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> Term</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dociddata"><span class="nav-number">1.1.2.</span> <span class="nav-text"> DocIdData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindex"><span class="nav-number">1.1.3.</span> <span class="nav-text"> TermsIndex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dvm"><span class="nav-number">1.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldnumber"><span class="nav-number">1.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluestype"><span class="nav-number">1.2.2.</span> <span class="nav-text"> DocvaluesType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsvaluemeta"><span class="nav-number">1.2.3.</span> <span class="nav-text"> TermsValueMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offset"><span class="nav-number">1.2.3.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length"><span class="nav-number">1.2.3.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docidindex"><span class="nav-number">1.2.4.</span> <span class="nav-text"> DocIdIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51"><span class="nav-number">1.2.4.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52"><span class="nav-number">1.2.4.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-2"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-2"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.5.</span> <span class="nav-text"> numDocsWithField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minlength"><span class="nav-number">1.2.6.</span> <span class="nav-text"> MinLength</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxlength"><span class="nav-number">1.2.7.</span> <span class="nav-text"> MaxLength</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindexmeta"><span class="nav-number">1.2.8.</span> <span class="nav-text"> TermsIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offset-3"><span class="nav-number">1.2.8.1.</span> <span class="nav-text"> Offset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">1.2.8.2.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-avginc-length-bitsrequired"><span class="nav-number">1.2.8.3.</span> <span class="nav-text"> Min、AvgInc、Length、BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termsindexlength"><span class="nav-number">1.2.8.4.</span> <span class="nav-text"> TermsIndexLength</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dvd"><span class="nav-number">1.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#termsvalue"><span class="nav-number">1.1.1.</span> <span class="nav-text"> TermsValue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#term"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> Term</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dociddata"><span class="nav-number">1.1.2.</span> <span class="nav-text"> DocIdData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindex"><span class="nav-number">1.1.3.</span> <span class="nav-text"> TermsIndex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dvm"><span class="nav-number">1.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fieldnumber"><span class="nav-number">1.2.1.</span> <span class="nav-text"> FieldNumber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docvaluestype"><span class="nav-number">1.2.2.</span> <span class="nav-text"> DocvaluesType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsvaluemeta"><span class="nav-number">1.2.3.</span> <span class="nav-text"> TermsValueMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offset"><span class="nav-number">1.2.3.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length"><span class="nav-number">1.2.3.2.</span> <span class="nav-text"> length</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docidindex"><span class="nav-number">1.2.4.</span> <span class="nav-text"> DocIdIndex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51"><span class="nav-number">1.2.4.1.</span> <span class="nav-text"> 情况1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52"><span class="nav-number">1.2.4.2.</span> <span class="nav-text"> 情况2：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#offset-2"><span class="nav-number">1.2.4.2.1.</span> <span class="nav-text"> offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length-2"><span class="nav-number">1.2.4.2.2.</span> <span class="nav-text"> length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.5.</span> <span class="nav-text"> numDocsWithField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minlength"><span class="nav-number">1.2.6.</span> <span class="nav-text"> MinLength</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxlength"><span class="nav-number">1.2.7.</span> <span class="nav-text"> MaxLength</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#termsindexmeta"><span class="nav-number">1.2.8.</span> <span class="nav-text"> TermsIndexMeta</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offset-3"><span class="nav-number">1.2.8.1.</span> <span class="nav-text"> Offset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">1.2.8.2.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-avginc-length-bitsrequired"><span class="nav-number">1.2.8.3.</span> <span class="nav-text"> Min、AvgInc、Length、BitsRequired</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#termsindexlength"><span class="nav-number">1.2.8.4.</span> <span class="nav-text"> TermsIndexLength</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

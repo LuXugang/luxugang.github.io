@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            文档的增删改（四） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        文档的增删改（四）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-07-04 00:00:00</span>
+                <span class="mobile">2019-07-04 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Tue Oct 10 2023 11:40:27 GMT+0800">2023-10-10 11:40:27</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/document/">document</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a>继续介绍文档的增删改，为了能深入理解，还是得先介绍下几个预备知识。</p>
+<h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
+<h2 id="node类"><a class="markdownIt-Anchor" href="#node类"></a> Node类</h2>
+<p>  下面是Node类中仅有的两个成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Node</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">volatile</span> Node&lt;?&gt; next;</span><br><span class="line">    <span class="keyword">final</span> T item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  多个Node对象通过next实现了队列结构，其中item为队列中某个结点(Node)的删除信息，每当DWPT处理一个删除信息，就会将该删除信息作为一个item加入到队列中，即deleteQueue。</p>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>我们已经介绍了删除的几种方式，其删除信息会生成不同的Node子类：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/1.png">
+<ul>
+<li>QueryArrayNode：deleteDocuments(Querys)</li>
+<li>TermArrayNode：deleteDocuments(Terms)</li>
+<li>DocValuesUpdatesNode：updateBinaryDocValue( )、updateNumericDocValue( )、updateDocValues( )、softUpdateDocument( )、softUpdateDocuments( )</li>
+<li>TermNode：updateDocument(Term, Document)、updateDocuments( Term, Documents)</li>
+</ul>
+<h2 id="deletequeue"><a class="markdownIt-Anchor" href="#deletequeue"></a> deleteQueue</h2>
+<p>  在多线程（持有相同IndexWriter对象的引用）执行删除操作时，多个DWPT将自己携带的删除信息生成Node对象，并添加到deleteQueue中，deleteQueue是一个全局的变量：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/2.png">
+<p>  为什么上图的队列有 &quot;多线程&quot;的前提：因为单线程的话每当添加一个Node到队列中，该Node的信息会马上被添加到BufferedUpdates（下文中会介绍）中，故在单线程下，不会出现结点数量大于1个的队列。</p>
+<h2 id="tail"><a class="markdownIt-Anchor" href="#tail"></a> tail</h2>
+<p>  该变量的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> Node&lt;?&gt; tail;</span><br></pre></td></tr></table></figure>
+<p>  tail用来指向deleteQueue中最后一个Node结点，也就是最新的一个删除操作(latest delete operation)。</p>
+<h2 id="deleteslice类"><a class="markdownIt-Anchor" href="#deleteslice类"></a> DeleteSlice类</h2>
+<p>  下面是DeleteSlice仅有的两个成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">DeleteSlice</span> &#123;</span><br><span class="line">    Node&lt;?&gt; sliceHead;</span><br><span class="line">    Node&lt;?&gt; sliceTail;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  DeleteSlice中的sliceHead、sliceTail指向deleteQueue中的Node结点。</p>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0628/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%8C%EF%BC%89" >文档的增删改（二）<i class="fas fa-external-link-alt"></i></a>中我们知道，每一个执行添加/更新操作的线程会先从DWPTP获得一个ThreadState，如果ThreadState中没有持有DWPT的对象引用，那么需要生成一个新的DWPT对象让其持有，并且每一个DWPT对象中都拥有一个私有的DeleteSlice对象，并且在初始化DeleteSlice对象，会让DeleteSlice对象的sliceHead、sliceTail同时指向tail指向的deleteQueue对象中的Node结点，即最新的一个删除操作，DeleteSlice类的构造函数如下，其中参数currentTail为tail：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DeleteSlice(Node&lt;?&gt; currentTail) &#123;</span><br><span class="line">    <span class="comment">// 另sliceHead、sliceTail与currentTail有相同的对象引用</span></span><br><span class="line">    sliceHead = sliceTail = currentTail;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  为什么sliceHead、sliceTail指向最后一个删除操作：因为最后一个删除操作只能对该删除操作执行前的添加的所有文档（满足删除要求的）进行删除，并且每一个DWPT中的索引信息最终会flush为一个段(在后面介绍flush时会详细介绍)，而DWPT的私有DeleteSlice对象记录了DWPT添加的第一篇文档（最后一个删除操作不能作用于该文档及后面的所有文档）到生成一个段这段时间内所有的删除操作，该操作包括自己跟其他线程的删除操作，这些删除信息在flush时需要作用于(apply)该DWPT对应的段中的文档，即删除段中满足删除要求的所有文档。</p>
+<p>  上面的解释有点绕。。。自己看着都有些变扭。</p>
+<p>  所以简单的表述就是sliceHead、sliceTail必须指向最后一个删除操作的目的就是不让该操作及之前的删除操作添加到DWPT私有的DeleteSlice对象中，因为这些操作不能作用于后生成的新的文档。</p>
+<h3 id="例子1"><a class="markdownIt-Anchor" href="#例子1"></a> 例子1</h3>
+<p>  有两个线程ThreadA、ThreadB，他们分别调用了updateDocument(Term, Document)和deleteDocuments(Querys)，即分别会生成TermNode和QueryArrayNode。我们这里假设两个线程从DWPTP中获得的ThreadState对象持有的DWPT引用都是新生成的，并且当前DeleteQueue为空，并且假设（实际添加到deleteQueue顺序是不可确定的，下文会介绍）ThreadA先往deleteQueue中添加。</p>
+<h4 id="threada添加结点"><a class="markdownIt-Anchor" href="#threada添加结点"></a> ThreadA添加结点</h4>
+<ul>
+<li>步骤一：获得一个ThreadState，新生成一个DWPT对象，初始化私有的DeleteSlice，由于deleteQueue未添加任何的删除结点，所以此时的deleteQueue的状态如下图, <strong>其中红圈 tail、sliceHead (ThreadA)、sliceTail (ThreadA) 三个具有相同的对象引用：</strong></li>
+</ul>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/3.png">
+<ul>
+<li>步骤二：添加TermNode结点到deleteQueue中，sliceTail (ThreadA) 跟tail 的对象引用更新为TermNode对象</li>
+</ul>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/4.png">
+<h4 id="threadb添加结点"><a class="markdownIt-Anchor" href="#threadb添加结点"></a> ThreadB添加结点</h4>
+<ul>
+<li>获得一个ThreadState，新生成一个DWPT对象，初始化私有的DeleteSlice，即让sliceHead(ThreadB)、sliceTail(ThreadB)跟tail指向相同的对象。</li>
+</ul>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/5.png">
+<ul>
+<li>添加QueryArrayNode结点到deleteQueue中,sliceTail (ThreadB) 跟tail 的对象引用更新为QueryArrayNode的对象</li>
+</ul>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/6.png">
+<p>  图6中，deleteQueue反映了两个情况：</p>
+<ul>
+<li>情况1：ThreadA的删除操作，即TermNode不会作用于ThreadB添加的文档</li>
+<li>情况2：ThreadB的删除操作，即QueryArrayNode会作用于ThreadA添加的文档（在介绍flush时会展开介绍作用（apply）的过程）</li>
+</ul>
+<p>  情况1是因为删除操作不能作用于后新增的文档，情况2是因为删除操作要作用于该删除操作前已添加的所有文档。</p>
+<h3 id="例子2"><a class="markdownIt-Anchor" href="#例子2"></a> 例子2：</h3>
+<p>  由于DWPT初始化私有的DeleteSlice跟添加到删除结点到deleteQueue 这两个操作不是一个临界区内的两个操作，只有添加到deleteQueue是线程同步操作（synchronized），所以根据CPU调度的不同，同样是例子1中两个线程的删除操作，生成的deleteQueue不总是一样，下面例子的一个假设前提是deleteQueue为空。</p>
+<p>  例如图7跟图8是ThreadA跟ThreadB初始化各自私有的DeleteSlice，并且DeleteQueue还没有删除结点，ThreadA和ThreadB<code>分别先</code>将删除结点添加到DeleteQueue中：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/7.png">
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/8.png">
+<h2 id="bufferedupdates类"><a class="markdownIt-Anchor" href="#bufferedupdates类"></a> BufferedUpdates类</h2>
+<p>  上文中提到一个DWPT从生成到flush到一个段，在这段期间其私有的DeleteSlice会记录所有的删除操作，这些删除操作会作用于(apply)DWPT添加的文档，即删除那些满足删除要求的文档，然而对于某一个删除操作来说，它只能作用于该删除操作前DWPT已添加的文档，其随后新添加的文档不能被apply，BufferedUpdates类就是通过以下几个Map对象来描述 某一个删除操作的作用范围(apply scope)：</p>
+<ul>
+<li>Map&lt;Term,Integer&gt; deleteTerms</li>
+<li>Map&lt;Query,Integer&gt; deleteQueries</li>
+<li>Map&lt;String,LinkedHashMap&lt;Term,NumericDocValuesUpdate&gt;&gt; numericUpdates：暂不作介绍</li>
+<li>Map&lt;String,LinkedHashMap&lt;Term,BinaryDocValuesUpdate&gt;&gt; binaryUpdate：暂不作介绍</li>
+</ul>
+<p>  numericUpdates、binaryUpdate的介绍 见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0616/%E8%BD%AF%E5%88%A0%E9%99%A4softDeletes%EF%BC%88%E4%B8%80%EF%BC%89" >软删除softDeletes（一）<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>  在deleteTerms中，该Map的key为Term，表示包含该Term的文档都会被删除，value为一个哨兵值，描述了该删除操作的作用范围，即只能作用于文档号小于哨兵值的文档，这里需要补充一个概念：</p>
+<ul>
+<li>numDocsInRAM：该值是每一个DWPT的私有变量。DWPT每添加一个文档，会为该文档赋予一个文档号，文档号是从0开始递增的值，numDocsInRAM描述了当前添加的文档数量</li>
+</ul>
+<p>  在deleteQueries中，该Map的key为Query，表示满足该查询要求的文档都会被删除，value的概念同deleteTerms。</p>
+<p>  哨兵值怎么用：</p>
+<ul>
+<li>在deleteTerms中：在DWPT将索引信息生成索引文件<code>期间</code>，利用<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89" >倒排表<i class="fas fa-external-link-alt"></i></a>中的信息找到包含该Term的所有文档的文档号，文档号小于哨兵值的文档都会删除，当然所谓的&quot;“删除”&quot;其实是将被删除的文档号从文档号集合（docId Set，0 ~ (numDocsInRAM - 1)的文档号集合）中剔除，在处理完所有的删除(比如下文中的deleteQueries)后，该集合会生成<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >索引文件.liv<i class="fas fa-external-link-alt"></i></a></li>
+<li>在deleteQueries中：在DWPT将索引信息生成索引文件<code>之后</code>，通过查询的方式找出满足删除要求的文档号，然后从文档号集合中剔除这些文档号</li>
+</ul>
+<p>  处理被删除的文档号的详细过程在介绍flush时会详细展开。</p>
+<h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
+<p>  下面的例子介绍了当出现多个更新操作，并且存在相同删除操作的情况下，deleteTerms如何处理：</p>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/9.png">
+<ul>
+<li>第一个更新操作：第87行，需要删除包含term1的文档，此时deleteTerms中key为term1，value为1,因为当前添加了两篇文档（注意：更新操作是 先添加 后删除 的操作，故此时文档1已经被添加），value的值为1，表示该删除作用范围是文档号在[0, 1)左闭右开的区间内的文档</li>
+<li>第二个更新操作：第97行，需要删除包含term2的文档，此时deleteTerms中key为还是term1（term1跟term2的hash值是一样的），value<code>更新</code>为3，表示该删除作用范围是文档号在[0, 3)左闭右开的区间内的文档</li>
+<li>第三个更新操作：第102行，需要删除包含term3的文档，此时deleteTerms相比较前两次更新操作，新增了一个key为term3，value为4的元素，表示该删除作用范围是文档号在[0, 4)左闭右开的区间内的文档，当然了我们用肉眼看一下，这个操作不会删除任何文档，因为[0, 4)的文档没有一篇文档满足删除要求。</li>
+</ul>
+<p>  故最终deleteTerms中包含了两条删除信息：<br />
+图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/10.png">
+<h1 id="文档的增删改流程图"><a class="markdownIt-Anchor" href="#文档的增删改流程图"></a> 文档的增删改流程图</h1>
+<p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0626/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%80%EF%BC%89" >文档的增删改（一）<i class="fas fa-external-link-alt"></i></a>的文章中，我们给出了文档的增删改流程图，我们紧接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89" >文档的增删改（三）<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的两个流程点：处理删除信息、处理文档后的工作。</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/11.png">
+<h2 id="处理删除信息"><a class="markdownIt-Anchor" href="#处理删除信息"></a> 处理删除信息</h2>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/12.png">
+<p>  文档的增删改都需要处理删除信息。</p>
+<h3 id="添加文档"><a class="markdownIt-Anchor" href="#添加文档"></a> 添加文档</h3>
+<h4 id="添加文档处理删除信息的流程图"><a class="markdownIt-Anchor" href="#添加文档处理删除信息的流程图"></a> 添加文档处理删除信息的流程图</h4>
+<p>图13：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/13.png">
+<h5 id="更新deleteslice"><a class="markdownIt-Anchor" href="#更新deleteslice"></a> 更新DeleteSlice</h5>
+<p>图14：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/14.png">
+<p>  检查其他线程是否新增了删除操作，这些删除操作要作用于DWPT已经添加的文档，判断方式通过判断DWPT的私有DeleteSlice对象中的sliceTail是否跟tail有相同的对象引用，如果不是，那么更新私有DeleteSlice，即另sliceTail引用跟tail相同的对象。</p>
+<h5 id="重置deleteslice"><a class="markdownIt-Anchor" href="#重置deleteslice"></a> 重置DeleteSlice</h5>
+<p>图15：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/15.png">
+<p>  通过DWPT的numDocsInRAM是否大于0来判断是否已经添加过文档：</p>
+<ul>
+<li>没有添加过文档：只有DWPT第一次执行添加/更新的操作，该值才会为0，由于上一个流程点，该DWPT的私有DeleteSlice可能被更新了，但由于DWPT中没有添加过任何的文档，所以私有DeleteSlice中不需要删除信息，故需要重置DeleteSlice，重置的方法即将另私有DeleteSlice的sliceHead引用跟sliceTail相同的对象，当sliceHead跟sliceTail引用相同的对象时，表示DWPT的私有DeleteSlice没有删除信息</li>
+<li>添加过文档：如果上一个流程点没有更新私有DeleteSlice，那么就不要更新BufferedUpdates，否则需要将新增的删除信息添加到BufferedUpdates中，这些新增的删除信息作用于DWPT已经收集的所有文档（不包含本次添加的文档）更新BufferedUpdates的过程已在上文BufferedUpdate类中介绍，不赘述</li>
+</ul>
+<h5 id="更新numdocsinram"><a class="markdownIt-Anchor" href="#更新numdocsinram"></a> 更新numDocsInRAM</h5>
+<p>图16：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/16.png">
+<p>  到达此流程点说明我们添加了一篇文档，故更新numDocsInRAM的值，即执行numDocsInRAM++的操作。</p>
+<h3 id="更新文档"><a class="markdownIt-Anchor" href="#更新文档"></a> 更新文档</h3>
+<h4 id="添加文档处理删除信息的流程图-2"><a class="markdownIt-Anchor" href="#添加文档处理删除信息的流程图-2"></a> 添加文档处理删除信息的流程图</h4>
+<p>图17：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档的增删改/文档的增删改（下）（part 2）/17.png">
+<p>  将DWPT自己的删除信息添加到DeleteQueue中，然后更新BufferedUpdates，注意的是，在上文中我们知道，当前DWPT添加到DeleteQueue时可能有其他的线程先添加了新的删除信息，故可能会更新自己以及其他线程的删除信息到BufferedUpdates。</p>
+<h3 id="删除文档"><a class="markdownIt-Anchor" href="#删除文档"></a> 删除文档</h3>
+<p>  由于删除文档的<code>处理删除信息</code>的流程与添加/更新文档的<code>处理文档后的工作</code>的流程有很多的相似点，又因为剩余的内容会导致本篇文章的篇幅过长，故在下一篇文章中展开。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>  无</p>
+<p>[点击下载](<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%88part" >http://www.amazingkoala.com.cn/attachment/Lucene/Index/文档的增删改/文档的增删改（下）（part<i class="fas fa-external-link-alt"></i></a> 2）/文档的增删改（下）（part 2）.zip)附件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/document/">document</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/Index/2019/0709/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%BA%94%EF%BC%89/"
+                                   title="文档的增删改（五）"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档的增删改（五）</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Index/2019/0701/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E4%B8%89%EF%BC%89/"
+                                   title="文档的增删改（三）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档的增删改（三）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#node%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> Node类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deletequeue"><span class="nav-number">1.2.</span> <span class="nav-text"> deleteQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tail"><span class="nav-number">1.3.</span> <span class="nav-text"> tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deleteslice%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text"> DeleteSlice类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 例子1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#threada%E6%B7%BB%E5%8A%A0%E7%BB%93%E7%82%B9"><span class="nav-number">1.4.1.1.</span> <span class="nav-text"> ThreadA添加结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#threadb%E6%B7%BB%E5%8A%A0%E7%BB%93%E7%82%B9"><span class="nav-number">1.4.1.2.</span> <span class="nav-text"> ThreadB添加结点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%902"><span class="nav-number">1.4.2.</span> <span class="nav-text"> 例子2：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bufferedupdates%E7%B1%BB"><span class="nav-number">1.5.</span> <span class="nav-text"> BufferedUpdates类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.5.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 文档的增删改流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text"> 处理删除信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 添加文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> 添加文档处理删除信息的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0deleteslice"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text"> 更新DeleteSlice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E7%BD%AEdeleteslice"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text"> 重置DeleteSlice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0numdocsinram"><span class="nav-number">2.1.1.1.3.</span> <span class="nav-text"> 更新numDocsInRAM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE-2"><span class="nav-number">2.1.2.1.</span> <span class="nav-text"> 添加文档处理删除信息的流程图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 删除文档</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#node%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text"> Node类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deletequeue"><span class="nav-number">1.2.</span> <span class="nav-text"> deleteQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tail"><span class="nav-number">1.3.</span> <span class="nav-text"> tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deleteslice%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text"> DeleteSlice类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 例子1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#threada%E6%B7%BB%E5%8A%A0%E7%BB%93%E7%82%B9"><span class="nav-number">1.4.1.1.</span> <span class="nav-text"> ThreadA添加结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#threadb%E6%B7%BB%E5%8A%A0%E7%BB%93%E7%82%B9"><span class="nav-number">1.4.1.2.</span> <span class="nav-text"> ThreadB添加结点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%902"><span class="nav-number">1.4.2.</span> <span class="nav-text"> 例子2：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bufferedupdates%E7%B1%BB"><span class="nav-number">1.5.</span> <span class="nav-text"> BufferedUpdates类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.5.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 文档的增删改流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text"> 处理删除信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 添加文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> 添加文档处理删除信息的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0deleteslice"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text"> 更新DeleteSlice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E7%BD%AEdeleteslice"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text"> 重置DeleteSlice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0numdocsinram"><span class="nav-number">2.1.1.1.3.</span> <span class="nav-text"> 更新numDocsInRAM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE-2"><span class="nav-number">2.1.2.1.</span> <span class="nav-text"> 添加文档处理删除信息的流程图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 删除文档</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

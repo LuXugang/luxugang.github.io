@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            倒排表（上） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        倒排表（上）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-02-22 00:00:00</span>
+                <span class="mobile">2019-02-22 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Thu Sep 28 2023 16:37:03 GMT+0800">2023-09-28 16:37:03</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/posting/">posting</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/inverted-index/">inverted index</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.2k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>本篇文章介绍如何生成倒排表，通过一个简单的例子来讲解倒排表的底层存储结构。文章中不会给出详细的源码介绍，只有一些必要的对象，感兴趣的朋友可以看我的GitHub，对构建倒排表的源码给出了详细的注释：<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DefaultIndexingChain.java" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/index/DefaultIndexingChain.java<i class="fas fa-external-link-alt"></i></a> ，此类中的该方法是开始构建倒排表的入口。<br />
+另外如果某些域使用了词向量(TermVector)，它会额外的生成倒排表，虽然写入的逻辑是类似的，但最终的倒排表的数据结构还是有区别，在后面的文章中会详细介绍。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invert</span><span class="params">(IndexableField field, <span class="type">boolean</span> first)</span> <span class="keyword">throws</span> IOException &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h1>
+<p>图1：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/1.png"><br />
+上图说明：</p>
+<ul>
+<li>代码第42行表示倒排表中会存放 文档号、词频、位置、偏移信息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码第46行表示我们为域名为&quot;content&quot;的域值分词后&quot;book&quot;添加一个值为&quot;hi&quot;的 payload值，而域名为&quot;title&quot;的中的&quot;book&quot;以及其他term都没有payload信息，</li>
+<li>通过自定义分词器来实现payload，当前例子中的分词器代码可以看<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java" >PayloadAnalyzer<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们也可以为不同的term提供不同的payload。</span><br></pre></td></tr></table></figure>
+<h1 id="三个关键类"><a class="markdownIt-Anchor" href="#三个关键类"></a> 三个关键类</h1>
+<p>构建倒排表的过程中，主要用到下面三个类：</p>
+<h2 id="byteblockpool类"><a class="markdownIt-Anchor" href="#byteblockpool类"></a> ByteBlockPool类</h2>
+<p>此类中用一个二维数组用来存放term的倒排表数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">byte</span>[][] buffers;</span><br></pre></td></tr></table></figure>
+<h2 id="intblockpool类"><a class="markdownIt-Anchor" href="#intblockpool类"></a> IntBlockPool类</h2>
+<p>此类中同样用一个二维数组来存储索引信息，由于所有term的倒排表数据都紧凑的存放在ByteBlockPool对象的buffers[][]二维数组中，并且一个term的倒排表数据并非存储在一块连续的空间中，所以我们需要IntBlockPool对象中的一个二维数组来存储映射到ByteBlockPool对象的索引。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">byte</span>[][] buffers;</span><br></pre></td></tr></table></figure>
+<h2 id="parallelpostingsarray类"><a class="markdownIt-Anchor" href="#parallelpostingsarray类"></a> ParallelPostingsArray类</h2>
+<p>在这个类中我们只要关心下面几个重要的数组。该类的对象用来处理同一种域名的数据，有几种域名就有对应数量的ParallelPostingsArray对象，也就是说下面的数组对于不同文档的相同的域是共用的，这点很重要。<br />
+<strong><u>下面所有的数组的下标值都是termID，termID用来区分不同term的唯一标识，它是一个从0开始递增的值，每个term按照处理的先后顺序获得一个termID</u></strong>。</p>
+<h4 id="int-termfreqs"><a class="markdownIt-Anchor" href="#int-termfreqs"></a> int[] termFreqs；</h4>
+<p>记录每一个term在一篇文档中的词频frequencies。</p>
+<h4 id="int-lastdocids"><a class="markdownIt-Anchor" href="#int-lastdocids"></a> int[] lastDocIDs；</h4>
+<p>记录每一个term上次出现是在哪一个文档中。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于同一个term来说，在某一篇文档中，只有所有该term都被处理结束才会写到倒排表中去，否则的话，term在当前文档中的词频frequencies无法正确统计。所以每次处理同一个term时，根据它目前所属的文档跟它上一次所属的文档来判断当前的操作是统计词频还是将它写入到倒排表。</span><br><span class="line">另外包含某个term的所有文档号是用差值存储，该数组用来计算差值。</span><br></pre></td></tr></table></figure>
+<h3 id="int-lastdoccodes"><a class="markdownIt-Anchor" href="#int-lastdoccodes"></a> int[] lastDocCodes；</h3>
+<p>记录每一个term上一次出现是在哪一个文档中。跟lastDocIDs[]数组不同的是，数组元素是一个组合值，相同的是当term在新的文档中出现后，才将它上一次的文档号写入到倒排表中。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基于压缩存储，如果一个term在一篇文档中的词频只有1，那么文档号跟词频的信息组合存储，否则文档号跟词频分开存储。</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文档号5中某个term的词频为1，那么组合存储，将文档号左移一位，然后跟1执行或操作</span><br><span class="line">(5 &lt;&lt; 1) | 1 == 11。</span><br></pre></td></tr></table></figure>
+<p>图2：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/2.png"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文档号5中某个term的词频为6，将文档号左移一位，5 &lt;&lt; 1 = 10, 然后分开存储。</span><br></pre></td></tr></table></figure>
+<p>图3：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/3.png"></p>
+<h3 id="int-lastpositions"><a class="markdownIt-Anchor" href="#int-lastpositions"></a> int[] lastPositions；</h3>
+<p>记录每一个term在当前文档中上一次出现的位置。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">基于压缩存储，倒排表中的位置(position)信息是一个差值，这个值指的是在同一篇文档中，当前term的位置和上一次出现的位置的差值。</span><br><span class="line">每次获得一个term的位置信息，就马上写入到倒排表中。</span><br><span class="line">注意的是，实际存储到倒排表时，跟存储文档号一样是一个组合值，不过这个编码值是用来描述当前位置的term是否有payload信息。</span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有payload信息, 将位置的值左移1位：8 &lt;&lt; 1, 在读取倒排表时，如果position的二进制值最低位为0，说明没有payload的信息。</span><br></pre></td></tr></table></figure>
+<p>图4：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/4.png"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">带有payload信息, 将位置的值左移1位,并与1执行或操作：(8 &lt;&lt; 1)| 1, 在读取倒排表时，如果position的二进制值最低位为1，说明带有payload的信息。</span><br></pre></td></tr></table></figure>
+<p>图5：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/5.png"></p>
+<h3 id="int-textstarts"><a class="markdownIt-Anchor" href="#int-textstarts"></a> int[] textStarts；</h3>
+<p>每一个term在ByteBlockPool对象的buffers [ ] [ ]二维数组中的起始位置。</p>
+<h3 id="int-intstarts"><a class="markdownIt-Anchor" href="#int-intstarts"></a> int[] intStarts；</h3>
+<p>数组元素为每一个term在IntBlockPool对象的buffers[ ] [ ] 二维数组中的位置。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">写倒排表时候，IntBlockPool对象的buffers[][] 二维数组中的数据描述了对于某一个term我们应该往ByteBlockPool对象的buffers[][] 二维数组中的哪个位置写，而intStarts[]则是描述我们如何通过termID找到在IntBlockPool对象的buffers[][] 二维数组中的数据。</span><br></pre></td></tr></table></figure>
+<p>在这里还需要重复的时候， 我们在当前文档第一次处理某个term时，才会将这个term上次出现的文档号跟词频写入到倒排表中， 而这个term的位置跟payload，则是马上写入。</p>
+<h2 id="存储空间的分配和扩容"><a class="markdownIt-Anchor" href="#存储空间的分配和扩容"></a> 存储空间的分配和扩容</h2>
+<p>每次处理一个term，需要考虑分配跟扩容问题。</p>
+<h3 id="分配"><a class="markdownIt-Anchor" href="#分配"></a> 分配</h3>
+<p>该term第一次处理，那么需要新分配一个连续的固定大小的存储空间，分配规则如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">总是预分配两块大小都为<span class="number">5</span>个字节的分片，其中第一块分片存放term的文档号、词频信息，第二块分片存放term的位置、payload、offset信息。</span><br><span class="line"><span class="comment">// 分片层级</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span>[] NEXT_LEVEL_ARRAY = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// 分片大小</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">int</span>[] LEVEL_SIZE_ARRAY = &#123;<span class="number">5</span>, <span class="number">14</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">40</span>, <span class="number">80</span>, <span class="number">80</span>, <span class="number">120</span>, <span class="number">200</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="例子-2"><a class="markdownIt-Anchor" href="#例子-2"></a> 例子</h4>
+<p>图6：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/6.png" ></p>
+<h3 id="扩容"><a class="markdownIt-Anchor" href="#扩容"></a> 扩容</h3>
+<p>在图6中，对于存储position、payload、offset信息的分片，如果前4个字节都被记录了，那么此时就会遇到哨兵值16，表示我们需要扩容了。<br />
+图7：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/7.png" ><br />
+根据分片规则，扩容后获得的新分片大小为14，所以上图中下标值14~27的部分为新的分片。<br />
+并且旧分片中下标值10~13这四个字节作为一个索引值，在读取阶段，通过读取该索引值就可以知道下一个分片在ByteBlockPool对象的buffers [ ] [ ]二维数组中的偏移位置。</p>
+<h2 id="写入过程"><a class="markdownIt-Anchor" href="#写入过程"></a> 写入过程</h2>
+<h3 id="处理文档0"><a class="markdownIt-Anchor" href="#处理文档0"></a> 处理文档0</h3>
+<h4 id="处理域名content"><a class="markdownIt-Anchor" href="#处理域名content"></a> 处理域名“content”</h4>
+<p>例子使用的是自定义分词器<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/LuceneDemo/src/main/java/lucene/AnalyzerTest/PayloadAnalyzer.java" >PayloadAnalyzer<i class="fas fa-external-link-alt"></i></a>,所以对于域名“content”来说，我们需要处理 “book”、“is”、&quot;book&quot;共三个term。</p>
+<h5 id="处理-book"><a class="markdownIt-Anchor" href="#处理-book"></a> 处理 “book”</h5>
+<p>图8：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/8.png" ></p>
+<h6 id="byteblockpool对象的buffers数组"><a class="markdownIt-Anchor" href="#byteblockpool对象的buffers数组"></a> ByteBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值0~4：文档0中第一个&quot;book&quot;的长度以及对应的ASCII</li>
+<li>下标值10：第一个&quot;book&quot;在文档0中的位置，即0，由于有payload信息，组合存储后，位置值为（0 &lt;&lt; 1 | 1）,即1</li>
+<li>下标值11~14：索引值</li>
+<li>下标值15~17：payload的长度以及对应的ASCII</li>
+<li>下标值18~19：文档0中第一个&quot;book&quot;在文档0中的偏移位置以及term的长度</li>
+</ul>
+<h6 id="intblockpool对象的buffers数组"><a class="markdownIt-Anchor" href="#intblockpool对象的buffers数组"></a> IntBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值0：包含&quot;book&quot;的文档号、词频信息在ByteBlockPool对象的buffers数组写入的起始位置</li>
+<li>下标值1：下一次遇到&quot;book&quot;时，它的position、payload、offset信息在ByteBlockPool对象的buffers数组写入的起始位置</li>
+</ul>
+<h6 id="lastpositions数组"><a class="markdownIt-Anchor" href="#lastpositions数组"></a> lastPositions[]数组</h6>
+<ul>
+<li>lastPositions[]数组下标值为&quot;book&quot;的termId(0)的数组元素更新为0。</li>
+</ul>
+<h6 id="termfreq数组"><a class="markdownIt-Anchor" href="#termfreq数组"></a> termFreq[]数组</h6>
+<ul>
+<li>termFreq[]数组下标值为&quot;book&quot;的termId(0)的数组元素更新为2。</li>
+</ul>
+<h6 id="注意点"><a class="markdownIt-Anchor" href="#注意点"></a> 注意点</h6>
+<ul>
+<li>由于文档0中的所有term没有都处理结束，所以我们还不知道&quot;book&quot;在文档0中的词频，所以上图中并没有记录 文档号、词频信息（组合存储）。</li>
+</ul>
+<h5 id="处理book"><a class="markdownIt-Anchor" href="#处理book"></a> 处理“book”</h5>
+<p>图9：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/9.png"></p>
+<h6 id="byteblockpool对象的buffers数组-2"><a class="markdownIt-Anchor" href="#byteblockpool对象的buffers数组-2"></a> ByteBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值20：第二个&quot;book&quot;在文档0中的位置，根据图8中，上一个&quot;book&quot;的位置是0，所以差值存储就是 (1 - 0) = 1，带有payload，位置信息即为 (1 &lt;&lt; 1 | 1)，即3，并且 lastPositions[]数组下标值为当前term的termId(0)的数组元素更新为1。</li>
+<li>下标值21~23：payload的长度以及对应的ASCII</li>
+<li>下标值24~25：第二个&quot;book&quot;在文档0中的偏移位置以及term的长度</li>
+</ul>
+<h6 id="intblockpool对象的buffers数组-2"><a class="markdownIt-Anchor" href="#intblockpool对象的buffers数组-2"></a> IntBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值值1：下一次遇到&quot;book&quot;时，它的position、payload、offset信息在ByteBlockPool对象的buffers数组写入的起始位置**(下文不赘述这个数组的更新)**</li>
+</ul>
+<h6 id="lastpositions数组-2"><a class="markdownIt-Anchor" href="#lastpositions数组-2"></a> lastPositions[]数组</h6>
+<ul>
+<li>lastPositions[]数组下标值为&quot;book&quot;的termId(0)的数组元素更新为1 <strong>(下文不赘述这个数组的更新)</strong></li>
+</ul>
+<h6 id="termfreq数组-2"><a class="markdownIt-Anchor" href="#termfreq数组-2"></a> termFreq[]数组</h6>
+<ul>
+<li>termFreq[]数组下标值为&quot;book&quot;的termId(0)的数组元素更新为2 <strong>(下文不赘述这个数组的更新)</strong></li>
+</ul>
+<h5 id="处理is"><a class="markdownIt-Anchor" href="#处理is"></a> 处理“is”</h5>
+<p>图10：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/10.png"></p>
+<h6 id="byteblockpool对象的buffers数组-3"><a class="markdownIt-Anchor" href="#byteblockpool对象的buffers数组-3"></a> ByteBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值29~31：文档0中的&quot;is&quot;的长度以及对应的ASCII</li>
+<li>下标值37：&quot;is&quot;在文档中的位置，即2，由于没有payload，位置信息即为 (2 &lt;&lt; 1 | 0)，即4</li>
+<li>下标值38~39：&quot;is&quot;在文档0中的偏移位置以及term的长度</li>
+</ul>
+<h4 id="处理域名author"><a class="markdownIt-Anchor" href="#处理域名author"></a> 处理域名“author”</h4>
+<h5 id="处理book-2"><a class="markdownIt-Anchor" href="#处理book-2"></a> 处理“book”</h5>
+<p>图11：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/11.png" ></p>
+<h6 id="byteblockpool对象的buffers数组-4"><a class="markdownIt-Anchor" href="#byteblockpool对象的buffers数组-4"></a> ByteBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值42~46：文档0中的域名&quot;title的&quot;book&quot;的长度以及对应的ASCII</li>
+<li>下标值52：&quot;book&quot;在文档中的位置，即0，由于没有payload，位置信息即为 (0 &lt;&lt; 1 | 0)，即4</li>
+<li>下标值53~54：域名&quot;title的&quot;book&quot;在文档0中的偏移位置以及term的长度</li>
+</ul>
+<h5 id="注意点-2"><a class="markdownIt-Anchor" href="#注意点-2"></a> 注意点</h5>
+<p>由于是文档0中的另一个域&quot;title&quot;，所以即使在&quot;content&quot;中我们处理过&quot;book&quot;，在&quot;title&quot;域中属于一个新的term。即域之间的倒排表是独立的，尽管数据都存放在同一个ByteBlockPool对象的buffers数组中</p>
+<h3 id="处理文档1"><a class="markdownIt-Anchor" href="#处理文档1"></a> 处理文档1</h3>
+<h4 id="处理域名content-2"><a class="markdownIt-Anchor" href="#处理域名content-2"></a> 处理域名“content”</h4>
+<h5 id="处理book-3"><a class="markdownIt-Anchor" href="#处理book-3"></a> 处理“book”</h5>
+<p>图12：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/构建倒排表/12.png"></p>
+<h6 id="byteblockpool对象的buffers数组-5"><a class="markdownIt-Anchor" href="#byteblockpool对象的buffers数组-5"></a> ByteBlockPool对象的buffers数组</h6>
+<ul>
+<li>下标值5~6：由于文档0已经处理结束，所以&quot;book&quot;在文档0中的词频也确定了，故可以将&quot;book&quot;在文档0中的文档号跟词频freq写入到倒排表中，由于词频值为2，故不需要组合存储，用两个字节分别存储文档号跟词频。</li>
+<li>下标值25<sub>28：从图11中我们可以看出只剩下下标值26、27两个字节，无法存储&quot;tem&quot;在当前文档1中的position、payload、offset的信息，故需要扩容，获得的新的分片的范围为下标值57</sub>76的区间，故下标值25~28的4个字节成为一个索引(index)，并且索引值为57。由于在图11中下标值25记录了一个length的值，所以需要把这个值放到新的分片中，即下标值57的位置。</li>
+<li>下标值58：&quot;book&quot;在文档1中的位置，即0，由于有payload信息，组合存储后，位置值为（0 &lt;&lt; 1 | 1）,即1</li>
+<li>下标值59~61：payload的长度以及对应的ASCII</li>
+<li>下标值62~63：&quot;book&quot;在文档1中的偏移位置以及term的长度</li>
+</ul>
+<h6 id="termfreq数组-3"><a class="markdownIt-Anchor" href="#termfreq数组-3"></a> termFreq[]数组</h6>
+<ul>
+<li>termFreq[]数组下标值为&quot;book&quot;的termId(0)的数组元素由图11中的2更新为1，因为这里开始存储&quot;book&quot;在文档1中的词频值了。</li>
+</ul>
+<h6 id="注意点-3"><a class="markdownIt-Anchor" href="#注意点-3"></a> 注意点</h6>
+<ul>
+<li>从图12中，文档0中&quot;is&quot;跟&quot;title&quot;域中的&quot;book&quot;的文档号跟词频信息还没有写入到倒排表中，那是因为还没有在新的文档中遇到&quot;is&quot;跟&quot;title&quot;中的&quot;book&quot;。</li>
+</ul>
+<h3 id="文档处理结束"><a class="markdownIt-Anchor" href="#文档处理结束"></a> 文档处理结束</h3>
+<p>从图12中，文档0中&quot;is&quot;跟&quot;title&quot;域中的&quot;book&quot;的文档号跟词频信息还没有写入到倒排表中，那是因为还没有在新的文档中遇到&quot;is&quot;跟&quot;title&quot;中的&quot;book&quot;。但是这些信息都保存在ParallelPostingsArray类数组中，所以不用写入到倒排表中。</p>
+<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<p>本篇文章介绍了如何构建倒排表，逻辑简单易懂，尽管我们只添加了两篇文档，但是倒排表的所有逻辑都已经涉及了。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%9E%84%E5%BB%BA%E5%80%92%E6%8E%92%E8%A1%A8/%E5%80%92%E6%8E%92%E8%A1%A8.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文件</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/posting/">posting</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/inverted-index/">inverted index</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/yasuocunchu/2019/0226/LZ4/"
+                                   title="LZ4"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">LZ4</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/yasuocunchu/2019/0220/FST%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="FST（一）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">FST（一）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E5%85%B3%E9%94%AE%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> 三个关键类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#byteblockpool%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text"> ByteBlockPool类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intblockpool%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text"> IntBlockPool类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parallelpostingsarray%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text"> ParallelPostingsArray类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#int-termfreqs"><span class="nav-number">2.3.0.1.</span> <span class="nav-text"> int[] termFreqs；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int-lastdocids"><span class="nav-number">2.3.0.2.</span> <span class="nav-text"> int[] lastDocIDs；</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-lastdoccodes"><span class="nav-number">2.3.1.</span> <span class="nav-text"> int[] lastDocCodes；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-lastpositions"><span class="nav-number">2.3.2.</span> <span class="nav-text"> int[] lastPositions；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-textstarts"><span class="nav-number">2.3.3.</span> <span class="nav-text"> int[] textStarts；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-intstarts"><span class="nav-number">2.3.4.</span> <span class="nav-text"> int[] intStarts；</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%88%86%E9%85%8D%E5%92%8C%E6%89%A9%E5%AE%B9"><span class="nav-number">2.4.</span> <span class="nav-text"> 存储空间的分配和扩容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="nav-number">2.4.1.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 扩容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text"> 写入过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A30"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理文档0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dcontent"><span class="nav-number">2.5.1.1.</span> <span class="nav-text"> 处理域名“content”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86-book"><span class="nav-number">2.5.1.1.1.</span> <span class="nav-text"> 处理 “book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#intblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.2.</span> <span class="nav-text"> IntBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastpositions%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.3.</span> <span class="nav-text"> lastPositions[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.4.</span> <span class="nav-text"> termFreq[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.5.1.1.1.5.</span> <span class="nav-text"> 注意点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book"><span class="nav-number">2.5.1.1.2.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#intblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.2.</span> <span class="nav-text"> IntBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastpositions%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.3.</span> <span class="nav-text"> lastPositions[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.4.</span> <span class="nav-text"> termFreq[]数组</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86is"><span class="nav-number">2.5.1.1.3.</span> <span class="nav-text"> 处理“is”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-3"><span class="nav-number">2.5.1.1.3.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dauthor"><span class="nav-number">2.5.1.2.</span> <span class="nav-text"> 处理域名“author”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book-2"><span class="nav-number">2.5.1.2.1.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-4"><span class="nav-number">2.5.1.2.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="nav-number">2.5.1.2.2.</span> <span class="nav-text"> 注意点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A31"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理文档1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dcontent-2"><span class="nav-number">2.5.2.1.</span> <span class="nav-text"> 处理域名“content”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book-3"><span class="nav-number">2.5.2.1.1.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-5"><span class="nav-number">2.5.2.1.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84-3"><span class="nav-number">2.5.2.1.1.2.</span> <span class="nav-text"> termFreq[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-3"><span class="nav-number">2.5.2.1.1.3.</span> <span class="nav-text"> 注意点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 文档处理结束</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E5%85%B3%E9%94%AE%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> 三个关键类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#byteblockpool%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text"> ByteBlockPool类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intblockpool%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text"> IntBlockPool类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parallelpostingsarray%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text"> ParallelPostingsArray类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#int-termfreqs"><span class="nav-number">2.3.0.1.</span> <span class="nav-text"> int[] termFreqs；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int-lastdocids"><span class="nav-number">2.3.0.2.</span> <span class="nav-text"> int[] lastDocIDs；</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-lastdoccodes"><span class="nav-number">2.3.1.</span> <span class="nav-text"> int[] lastDocCodes；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-lastpositions"><span class="nav-number">2.3.2.</span> <span class="nav-text"> int[] lastPositions；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-textstarts"><span class="nav-number">2.3.3.</span> <span class="nav-text"> int[] textStarts；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int-intstarts"><span class="nav-number">2.3.4.</span> <span class="nav-text"> int[] intStarts；</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%88%86%E9%85%8D%E5%92%8C%E6%89%A9%E5%AE%B9"><span class="nav-number">2.4.</span> <span class="nav-text"> 存储空间的分配和扩容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="nav-number">2.4.1.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 扩容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text"> 写入过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A30"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 处理文档0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dcontent"><span class="nav-number">2.5.1.1.</span> <span class="nav-text"> 处理域名“content”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86-book"><span class="nav-number">2.5.1.1.1.</span> <span class="nav-text"> 处理 “book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#intblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.2.</span> <span class="nav-text"> IntBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastpositions%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.3.</span> <span class="nav-text"> lastPositions[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84"><span class="nav-number">2.5.1.1.1.4.</span> <span class="nav-text"> termFreq[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.5.1.1.1.5.</span> <span class="nav-text"> 注意点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book"><span class="nav-number">2.5.1.1.2.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#intblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.2.</span> <span class="nav-text"> IntBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastpositions%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.3.</span> <span class="nav-text"> lastPositions[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84-2"><span class="nav-number">2.5.1.1.2.4.</span> <span class="nav-text"> termFreq[]数组</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86is"><span class="nav-number">2.5.1.1.3.</span> <span class="nav-text"> 处理“is”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-3"><span class="nav-number">2.5.1.1.3.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dauthor"><span class="nav-number">2.5.1.2.</span> <span class="nav-text"> 处理域名“author”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book-2"><span class="nav-number">2.5.1.2.1.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-4"><span class="nav-number">2.5.1.2.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="nav-number">2.5.1.2.2.</span> <span class="nav-text"> 注意点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%87%E6%A1%A31"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 处理文档1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9F%9F%E5%90%8Dcontent-2"><span class="nav-number">2.5.2.1.</span> <span class="nav-text"> 处理域名“content”</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86book-3"><span class="nav-number">2.5.2.1.1.</span> <span class="nav-text"> 处理“book”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#byteblockpool%E5%AF%B9%E8%B1%A1%E7%9A%84buffers%E6%95%B0%E7%BB%84-5"><span class="nav-number">2.5.2.1.1.1.</span> <span class="nav-text"> ByteBlockPool对象的buffers数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#termfreq%E6%95%B0%E7%BB%84-3"><span class="nav-number">2.5.2.1.1.2.</span> <span class="nav-text"> termFreq[]数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-3"><span class="nav-number">2.5.2.1.1.3.</span> <span class="nav-text"> 注意点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 文档处理结束</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

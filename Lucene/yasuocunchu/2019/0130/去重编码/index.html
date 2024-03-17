@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            去重编码 |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        去重编码
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2019-01-30 00:00:00</span>
+                <span class="mobile">2019-01-30 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sun Oct 08 2023 12:23:59 GMT+0800">2023-10-08 12:23:59</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>去重编码是Lucene中对int类型数据的一种压缩存储方式，在FacetsConfig类中用到此方法来处理int类型数据。其优点在于，存储一个原本需要固定4个字节空间大小的int类型的数据，最好的情况下只要1个字节，最差的情况下需要5个字节。</p>
+<h2 id="处理过程"><a class="markdownIt-Anchor" href="#处理过程"></a> 处理过程</h2>
+<p>去重编码的过程主要分三步：</p>
+<ol>
+<li>排序</li>
+<li>去重</li>
+<li>差值存储</li>
+</ol>
+<h2 id="关系图"><a class="markdownIt-Anchor" href="#关系图"></a> 关系图</h2>
+<p>根据int数值的大小，在去重编码后存储该数值所需要的字节大小关系图如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数值范围（指数）</th>
+<th style="text-align:center">数值范围（10进制）</th>
+<th style="text-align:center">字节大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0 ~ (2^7 - 1)</td>
+<td style="text-align:center">0 ~ 127</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2^7 ~ (2^14 - 1)</td>
+<td style="text-align:center">128 ~ 16383</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2^14 ~ (2^21 - 1)</td>
+<td style="text-align:center">16384 ~ 2097151</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">2^21 ~ (2^28 - 1)</td>
+<td style="text-align:center">2097152 ~ 268435455</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">2^28 ~ *</td>
+<td style="text-align:center">268435456 ~ *</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">去重编码中最重要的一点是差值存储，从上图可以看出，我们在存储一组有序的数值时，除第一个数值外，其他的数值如果只存储跟它前面数值的差值，那么可以使得达到最大的压缩比。这种方式在存储大数值时的有点更明显。</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如我们有一组数据：&#123;17832，17842，17844&#125;，如果我们直接对3个数值进行存储(不存储差值)，那么最终需要9个字节才能存储这三个数值，而如果我们进行差值存储，那么我们需要存储的数据就变为： &#123;17832，10，2&#125;，其中10是17842跟17832的差值，2是17844跟17842的差值，那么最终只需要5个字节存储即可。</span><br></pre></td></tr></table></figure>
+<h2 id="去重编码源码"><a class="markdownIt-Anchor" href="#去重编码源码"></a> 去重编码源码</h2>
+<p>相比较源码，删除了代码中的IntsRef类，便于理解</p>
+<h4 id="encode"><a class="markdownIt-Anchor" href="#encode"></a> encode</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConvertIntToByteRef</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> BytesRef <span class="title function_">dedupAndEncode</span><span class="params">(<span class="type">int</span>[] ordinals)</span> &#123;</span><br><span class="line">    <span class="comment">// 对 ordinal[]数组排序，目的是为了去重跟计算差值</span></span><br><span class="line">    Arrays.sort(ordinals, <span class="number">0</span>, ordinals.length);</span><br><span class="line">    <span class="comment">// 先给每一个int类型分配5个字节大小的空间, 每个字节中只有7位是有效字节(描述数值),最高位是个定界符, 所以一个int类型最多要5个字节</span></span><br><span class="line">    <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">5</span>*ordinals.length];</span><br><span class="line">    <span class="comment">// 记录上次处理的值，用于去重判断</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">lastOrd</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">upto</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 遍历处理每一个int数值</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;ordinals.length;i++) &#123;</span><br><span class="line">      <span class="type">int</span> <span class="variable">ord</span> <span class="operator">=</span> ordinals[i];</span><br><span class="line">      <span class="comment">// ord could be == lastOrd, so we must dedup:</span></span><br><span class="line">      <span class="comment">// 去重操作，当前处理的数值跟上一个如果一样的话，skip</span></span><br><span class="line">      <span class="keyword">if</span> (ord &gt; lastOrd) &#123;</span><br><span class="line">        <span class="comment">// 存储差值的变量</span></span><br><span class="line">        <span class="type">int</span> delta;</span><br><span class="line">        <span class="keyword">if</span> (lastOrd == -<span class="number">1</span>) &#123;</span><br><span class="line">          <span class="comment">// 处理第一个值, 只能储存原始的数值</span></span><br><span class="line">          delta = ord;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// 处理非第一个值，就可以储存这个值与前一个值的差值</span></span><br><span class="line">          delta = ord - lastOrd;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if语句为真说明delta是 0~(2^7 - 1)内的值, 需要1个字节存储</span></span><br><span class="line">        <span class="keyword">if</span> ((delta &amp; ~<span class="number">0x7F</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">// 注意的是第8位是0(位数从0计数), 一个byte的最高位如果是0，表示是数值的最后一个byte</span></span><br><span class="line">          bytes[upto] = (<span class="type">byte</span>) delta;</span><br><span class="line">          upto++;</span><br><span class="line">          <span class="comment">// if语句为真说明delta是 2^7 ~ (2^14 - 1)内的值, 需要2个字节存储</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((delta &amp; ~<span class="number">0x3FFF</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">// 这个字节的最高位是1, 表示下一个byte字节和当前字节属于同一个int类型的一部分</span></span><br><span class="line">          bytes[upto] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x3F80</span>) &gt;&gt; <span class="number">7</span>));</span><br><span class="line">          <span class="comment">// 这个字节的最高位是0, 表示表示是数值的最后一个byte</span></span><br><span class="line">          bytes[upto + <span class="number">1</span>] = (<span class="type">byte</span>) (delta &amp; <span class="number">0x7F</span>);</span><br><span class="line">          upto += <span class="number">2</span>;</span><br><span class="line">          <span class="comment">// if语句为真说明delta是 2^14 ~ (2^21 - 1)内的值, 需要3个字节存储</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((delta &amp; ~<span class="number">0x1FFFFF</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">// 这个字节的最高位是1, 表示下一个byte字节和当前字节属于同一个int类型的一部分</span></span><br><span class="line">          bytes[upto] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x1FC000</span>) &gt;&gt; <span class="number">14</span>));</span><br><span class="line">          <span class="comment">// 这个字节的最高位是1, 表示下一个byte字节和当前字节属于同一个int类型的一部分</span></span><br><span class="line">          bytes[upto + <span class="number">1</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x3F80</span>) &gt;&gt; <span class="number">7</span>));</span><br><span class="line">          <span class="comment">// 这个字节的最高位是0, 表示表示是数值的最后一个byte</span></span><br><span class="line">          bytes[upto + <span class="number">2</span>] = (<span class="type">byte</span>) (delta &amp; <span class="number">0x7F</span>);</span><br><span class="line">          upto += <span class="number">3</span>;</span><br><span class="line">          <span class="comment">// if语句为真说明delta是 2^21 ~ (2^28 - 1)内的值, 需要4个字节存储</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((delta &amp; ~<span class="number">0xFFFFFFF</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">          bytes[upto] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0xFE00000</span>) &gt;&gt; <span class="number">21</span>));</span><br><span class="line">          bytes[upto + <span class="number">1</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x1FC000</span>) &gt;&gt; <span class="number">14</span>));</span><br><span class="line">          bytes[upto + <span class="number">2</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x3F80</span>) &gt;&gt; <span class="number">7</span>));</span><br><span class="line">          bytes[upto + <span class="number">3</span>] = (<span class="type">byte</span>) (delta &amp; <span class="number">0x7F</span>);</span><br><span class="line">          upto += <span class="number">4</span>;</span><br><span class="line">          <span class="comment">// delta是 2^28 ~ *内的值, 需要5个字节存储</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          bytes[upto] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0xF0000000</span>) &gt;&gt; <span class="number">28</span>));</span><br><span class="line">          bytes[upto + <span class="number">1</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0xFE00000</span>) &gt;&gt; <span class="number">21</span>));</span><br><span class="line">          bytes[upto + <span class="number">2</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x1FC000</span>) &gt;&gt; <span class="number">14</span>));</span><br><span class="line">          bytes[upto + <span class="number">3</span>] = (<span class="type">byte</span>) (<span class="number">0x80</span> | ((delta &amp; <span class="number">0x3F80</span>) &gt;&gt; <span class="number">7</span>));</span><br><span class="line">          bytes[upto + <span class="number">4</span>] = (<span class="type">byte</span>) (delta &amp; <span class="number">0x7F</span>);</span><br><span class="line">          upto += <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 这里将ord保存下来是为了去重</span></span><br><span class="line">        lastOrd = ord;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BytesRef</span>(bytes, <span class="number">0</span>, upto);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] array = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">12</span>&#125;;</span><br><span class="line">    <span class="type">BytesRef</span> <span class="variable">ref</span> <span class="operator">=</span> ConvertIntToByteRef.dedupAndEncode(array);</span><br><span class="line">    System.out.println(ref.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终结果用BytesRef对象表示，上面的输出结果：[2 1 5 4]</p>
+<h4 id="decode"><a class="markdownIt-Anchor" href="#decode"></a> decode</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConvertByteRefToInt</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">decode</span><span class="params">(BytesRef bytesRef)</span>&#123;</span><br><span class="line">    <span class="type">byte</span>[] bytes = bytesRef.bytes;</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> bytesRef.offset + bytesRef.length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">ord</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">offset</span> <span class="operator">=</span> bytesRef.offset;</span><br><span class="line">    <span class="type">int</span> <span class="variable">prev</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (offset &lt; end) &#123;</span><br><span class="line">      <span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> bytes[offset++];</span><br><span class="line">      <span class="comment">// if语句为真：byte字节的最高位是0，decode结束</span></span><br><span class="line">      <span class="keyword">if</span> (b &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// ord的值为差值，所以(真实值 = 差值(ord) + 前面一个值(prev))</span></span><br><span class="line">        prev = ord = ((ord &lt;&lt; <span class="number">7</span>) | b) + prev;</span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        System.out.println(ord);</span><br><span class="line">        ord = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// decode没有结束，需要继续拼接</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 每次处理一个byte</span></span><br><span class="line">        ord = (ord &lt;&lt; <span class="number">7</span>) | (b &amp; <span class="number">0x7F</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] array = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">12</span>&#125;;</span><br><span class="line">    <span class="comment">// 去重编码</span></span><br><span class="line">    <span class="type">BytesRef</span> <span class="variable">ref</span> <span class="operator">=</span> ConvertIntToByteRef.dedupAndEncode(array);</span><br><span class="line">    <span class="comment">// 解码</span></span><br><span class="line">    ConvertByteRefToInt.decode(ref);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>去重编码(dedupAndEncode)是Lucene中的压缩存储的方式之一，还有VInt，VLong等数据类型都是属于压缩存储，在后面的博客中会一一介绍。demo看这里：<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/tree/master/LuceneDemo/src/main/java/lucene/compress/dedupAndEncodeTest" >https://github.com/luxugang/Lucene-7.5.0/tree/master/LuceneDemo/src/main/java/lucene/compress/dedupAndEncodeTest<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/util/">util</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/encode/">encode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/decode/">decode</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Lucene/yasuocunchu/2019/0213/BulkOperationPacked/"
+                                   title="BulkOperationPacked"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">BulkOperationPacked</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/Search/2018/1218/%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6%EF%BC%88MUST%EF%BC%89/"
+                                   title="文档号合并（MUST）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文档号合并（MUST）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text"> 处理过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D%E7%BC%96%E7%A0%81%E6%BA%90%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text"> 去重编码源码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#encode"><span class="nav-number">3.0.1.</span> <span class="nav-text"> encode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#decode"><span class="nav-number">3.0.2.</span> <span class="nav-text"> decode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">316k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text"> 处理过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text"> 关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D%E7%BC%96%E7%A0%81%E6%BA%90%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text"> 去重编码源码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#encode"><span class="nav-number">3.0.1.</span> <span class="nav-text"> encode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#decode"><span class="nav-number">3.0.2.</span> <span class="nav-text"> decode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
