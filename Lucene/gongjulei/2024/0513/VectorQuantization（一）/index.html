@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Mon May 13 2024 17:08:56 GMT+0800">2024-05-13 17:08:56</span>
+                <span class="pc" data-updated="Tue May 14 2024 23:31:10 GMT+0800">2024-05-14 23:31:10</span>
             </span>
         
 
@@ -262,13 +262,13 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/hnsw/">hnsw</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/sq/">sq</a></li>
-                        
-                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/scalar/">scalar</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/quantization/">quantization</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/sq/">sq</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/vector/">vector</a></li>
@@ -281,7 +281,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
             </span>
         
         
@@ -312,7 +312,7 @@
 </ul>
 <p>当然这通常是以“有损”的方式进行的，意味着在处理过程中会丢失一些原始数据信息，但与此同时，它能显著减少存储数据所需的空间。</p>
 <h2 id="实现原理"><a class="markdownIt-Anchor" href="#实现原理"></a> 实现原理</h2>
-<p>VQ的实现方式在源码中核心代码为一个名为<strong>ScalarQuantizer</strong>类，它提供了以下两个关键的功能：float32-&gt;int8、校正偏移（Corrective Offset）。</p>
+<p>VQ的实现方式参考的是<strong>qdrant</strong>的子项目<a class="link"   target="_blank" rel="noopener" href="https://github.com/qdrant/quantization" >quantization<i class="fas fa-external-link-alt"></i></a>，在Lucene源码中核心代码为一个名为<strong>ScalarQuantizer</strong>类，它提供了以下两个关键的功能：float32-&gt;int8、校正偏移（Corrective Offset）。</p>
 <h3 id="float32-int8"><a class="markdownIt-Anchor" href="#float32-int8"></a> float32-&gt;int8</h3>
 <p>float32-&gt;int8描述的是将32位的浮点型数值用一个8位的整数表示，即使用[0, 127]的整数来代替浮点数，最终用<code>byte</code>类型存储。其量化公式也不是很复杂，由于在flush阶段已知了向量数据集中的最大跟最小值，因此使用了<a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)" >min-max normalization <i class="fas fa-external-link-alt"></i></a>方法。</p>
 <p>图1：</p>
@@ -328,7 +328,7 @@
 <p>以点积（<a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dot_product" >dot_product<i class="fas fa-external-link-alt"></i></a>）为例，如果向量的维度为<code>dim</code>，那么向量距离就是这<code>dim</code>个浮点数的乘积的和值，如下所示：</p>
 <p>图4：</p>
 <img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/VectorQuantization/VectorQuantization（一）/4.png">
-<p>从图4可以看出，两个量化后的float32向量除了<code>dotProduct(int8, int8')</code>部分，其他部分都可以提前计算，可以直接存放在索引中，或者在查询期间只计算一次（见<a class="link"   target="_blank" rel="noopener" href="https://qdrant.tech/articles/scalar-quantization/" >qdrant<i class="fas fa-external-link-alt"></i></a>中的介绍）。 然而在Lucene的实现中，我们只需要计算量化后的向量距离，而图4中其他部分对于打分的影响则是通过校正偏移来实现。</p>
+<p>从图4可以看出，两个量化后的float32向量除了<code>dotProduct(int8, int8')</code>部分，其他部分都可以提前计算，可以直接存放在索引中，或者在查询期间只计算一次。（见<a class="link"   target="_blank" rel="noopener" href="https://github.com/qdrant/quantization" >quantization<i class="fas fa-external-link-alt"></i></a>中如何计算存储）。 然而在Lucene的实现中，我们只需要计算量化后的向量距离，而图4中其他部分对于打分的影响则是通过校正偏移来实现。</p>
 <h3 id="校正偏移corrective-offset"><a class="markdownIt-Anchor" href="#校正偏移corrective-offset"></a> 校正偏移（Corrective Offset）</h3>
 <p>由于图4中只计算了量化后的距离，因此相比较量化前的距离，是存在精度损失的。校正偏移用于调整最终的文档打分（注意的是，在遍历图中节点时，两个节点的距离计算只使用点积或其他相关度算法，不需要考虑校正偏移，另外简单提下，最终的文档打分也需要考虑查询向量在量化后的校正偏移值），在对向量进行量化期间实现，向量的每个维度在float32转化为int8时都会产生校正偏移值，并且这个向量总的校正偏移值是每个维度的校正偏移值总和。</p>
 <p>校正偏移的定义不在本文中展开，可以见该部分源码<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/search-labs/author/benjamin-trent" >作者<i class="fas fa-external-link-alt"></i></a>的这几篇文章的介绍：<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/search-labs/blog/vector-db-optimized-scalar-quantization" >Scalar Quantization Optimized for Vector Databases<i class="fas fa-external-link-alt"></i></a>。</p>
@@ -357,15 +357,15 @@
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/sq/">sq</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/scalar/">scalar</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/quantization/">quantization</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/sq/">sq</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -586,7 +586,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">317k</span>
+                    <span class="item-value border-box word">317.1k</span>
                 </span>
             
 
