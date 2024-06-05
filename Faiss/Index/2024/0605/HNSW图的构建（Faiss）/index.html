@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            HNSW图的构建（Faiss 1.8.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        HNSW图的构建（Faiss 1.8.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2024-06-05 00:00:00</span>
+                <span class="mobile">2024-06-05 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Jun 05 2024 23:44:47 GMT+0800">2024-06-05 23:44:47</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Faiss/">Faiss</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Faiss/Index/">Index</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/hnsw/">hnsw</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.6k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>本篇介绍下<a class="link"   target="_blank" rel="noopener" href="https://github.com/facebookresearch/faiss/wiki" >Faiss<i class="fas fa-external-link-alt"></i></a>中如何基于HNSW图存储向量，同样基于论文：<a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1603.09320" >Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs [2018]<i class="fas fa-external-link-alt"></i></a>，建议先看下在Lucene中实现：<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/Index/2024/0118/HNSW%E5%9B%BE%E7%9A%84%E6%9E%84%E5%BB%BA/" >HNSW图的构建（Lucene 9.8.0）<i class="fas fa-external-link-alt"></i></a>，因此一些NHSW中的通用概念不在本文中赘述，例如<strong>入口节点</strong>、<strong>目标层级</strong>等等。<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/Index/2024/0118/HNSW%E5%9B%BE%E7%9A%84%E6%9E%84%E5%BB%BA/" >HNSW图的构建（Lucene 9.8.0）<i class="fas fa-external-link-alt"></i></a>偏向于理论的介绍（很重要），而本篇文章更多会介绍代码中的一些数据结构。</p>
+<p>NSW图的构建流程图如下所示：</p>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/1.png"  width="600">
+<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/2.png"  width="500">
+<p>节点（向量）插入到图中之前，需要初始化一些数据结构，了解这些数据结构才能掌握写入/读取节点以及节点邻居的过程。需要初始化的结构有以下几个Vector容器：</p>
+<ul>
+<li><strong><code>std::vector&lt;int32_t&gt; neighbors</code></strong>：当所有的节点添加到HNSW图中后，所有节点在所有层的邻居使用<code>neighbors</code>容器保存，每个节点的所有层的邻居使用<code>neighbors</code>中一个<strong>连续</strong>的区间保存，容器元素默认值为<code>-1</code>。如下所示：
+<ul>
+<li>图3：</li>
+</ul>
+</li>
+</ul>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/3.png">
+<ul>
+<li>
+<p><strong><code>std::vector&lt;int&gt; cum_nneighbor_per_level</code></strong>：初始化后，用来获取每一层中，节点的最大邻居数量。其中第0层为<code>2*M</code>，其他层为<code>M</code>，<code>M</code>的默认值为32</p>
+<ul>
+<li>
+<p>图4：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/4.png"   width="500"></p>
+</li>
+<li>
+<p>解释下这个数组：获取每一层中节点的最大邻居数量的计算方式如下所示，其中<code>layer_no</code>为<strong>目标层级</strong>：</p>
+</li>
+<li>
+<pre class="highlight"><code class="">cum_nneighbor_per_level[layer_no + 1] - cum_nneighbor_per_level[layer_no]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 因此如果要获取第0层的最大邻居数量，即：</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    cum_nneighbor_per_level[1] - cum_nneighbor_per_level[0] = 64 - 0 = 64，即64个邻居</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li>
+<p><strong>这个容器另外一个作用是可以根据某个节点的目标层级获取这个节点在所有层中的所有最大邻居数量的总和，而这个和值正是图3中连续区间的长度</strong>。没错，它用来定位某个节点在<code>neighbors</code>中的邻居位置信息，下文会进行介绍</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::vector&lt;int&gt; levels</code></strong>：初始化后，用来获取每一个节点的<strong>目标层级</strong>。</p>
+<ul>
+<li>
+<p>图5：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/5.png"   width="500"></p>
+</li>
+<li>
+<p>图5中描述的是：初始化N+1个待插入的节点，它们各自的目标层级</p>
+<ul>
+<li><strong>注意的是，为了方便介绍，文章中levels记录的是目标层级，而在源码中则是会在目标层级的基础上额外加+1，其目的不影响介绍其实现原理，因此需要提及下</strong></li>
+<li>图6：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/6.png"   width="500"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::vector&lt;size_t&gt; offsets</code></strong>：初始化后，可以根据节点编号获取该节点的第一个邻居（第0层）在<code>neighbors</code>中的起始位置，其中数组下标为<strong>节点编号</strong></p>
+<ul>
+<li>
+<p>图7：<br />
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/7.png"  ></p>
+</li>
+<li>
+<p><code>offsets</code>容器的初始化过程不在文中展开，可以查看<code>NHSW.cpp</code>中的<code>prepare_level_tab(...)</code>方法，简单来说就是根据节点编号、<code>levels</code>容器、<code>cum_nneighbor_per_level</code>就可以完成<code>offsets</code>容器的初始化。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::vector&lt;int&gt; order(n)</code></strong>：使用该容器将节点根据其目标层级进行分桶，调整节点的处理先后顺序。</p>
+<ul>
+<li>例如[0, 223]为从0层开始插入的节点，[224, 779]为从1层开始插入的节点，[780, 999]为从2层开始插入的节点。</li>
+<li>随后从目标层数最高的节点开始，依次插入到HNSW图中</li>
+</ul>
+</li>
+</ul>
+<h3 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h3>
+<p>接下来我们通过一个例子介绍下当我们找到了某个节点在某一层的N个邻居节点后，如何通过上文中介绍的容器之间的配合，将这些邻居节点添加到neighbors中。</p>
+<p>下图中描述的是，节点编号为0的节点，在第2层找到了3个邻居节点，分别是2232、23、110，添加到neighbors的示意图。</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/8.png"  >
+<p>图8中，根据节点编号以及层数，结合<code>offsets</code>以及<code>cum_nneighbor_per_level</code>容器就可以获取在<code>neighbors</code>容器中的一个<font color=red>红色标注</font>的区间，区间范围为[begin, end)，随后依次写入2232、23、110这三个邻居。</p>
+<h2 id="入口节点"><a class="markdownIt-Anchor" href="#入口节点"></a> 入口节点</h2>
+<p>图9：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/9.png"   width="600" >
+<p>图9中，依次处理每一个节点，直到所有的节点都添加到HNSW图中。每个节点在添加到HNSW图之前会先确定好目标层级，如果目标层级为3，那么这个节点会从高到低依次添加到第3、2、1、0层中，并在每一层中寻找邻居并建立连接。</p>
+<p>图10：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/10.png" width="500">
+<p>图10中，如果目标层级小于等于当前层级，那么我们需要从当前层级（当前层级的入口节点为<strong>全局入口节点</strong>）开始，到达目标层级之前，从上往下依次找到每一层中跟新节点最近的节点，并作为下一层的入口节点，这个期间不需要建立连接。当到达目标层级时，目标层级的入口节点会被更新为上一层中与新节点最近的节点。</p>
+<p>以图10为例，目标层级1的入口节点会被更新为在层级2中与新节点最近的节点。</p>
+<p>在图10的流程中，基于入口节点查找某一层中与新节点最近的节点的代码为<code>HNSW.cpp</code>中的<code>greedy_update_nearest(...)</code>方法。流程点<code>更新目标层级的入口节点</code>如下所示：</p>
+<p>图11：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/11.png" width="600">
+<p>图11中，简单总结，依次处理当前层级与目标层级之间的层，在每一层中：</p>
+<p>步骤一：根据入口节点的节点编号以及层数，从<code>neighbors</code>容器中找到入口节点在这一层的所有邻居（即图8中的方法）。</p>
+<p>步骤二：依次计算这些邻居与新节点的距离，与新节点最接近的邻居如果比入口节点还要接近新节点，那么将入口节点更新为该邻居。如果入口节点被更新为邻居，基于贪心算法继续执行步骤一。</p>
+<h2 id="与邻居建立连接"><a class="markdownIt-Anchor" href="#与邻居建立连接"></a> 与邻居建立连接</h2>
+<p>图12：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/12.png" width="400">
+<p>在Faiss中，由于上文中提到的<code>order</code>容器，节点插入的先后顺序是按照节点的目标层级由大到小依次处理，即目标层级大的先插入到HNSW图中，意味着在图11的流程中，目标层级只会等于当前层级，不会出现大于当前层级的情况。</p>
+<h3 id="找到每一层的邻居并建立连接"><a class="markdownIt-Anchor" href="#找到每一层的邻居并建立连接"></a> 找到每一层的邻居并建立连接</h3>
+<p>图13：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/13.png" width="500">
+<p>从目标层级开始，将新节点添加到每一层中并与邻居建立连接，直到所有层处理完毕。</p>
+<h4 id="找出本层中最多efconstruction个邻居"><a class="markdownIt-Anchor" href="#找出本层中最多efconstruction个邻居"></a> 找出本层中最多efConstruction个邻居</h4>
+<p>图14：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/14.png" width="500">
+<p>这个流程点的处理过程如下所示：</p>
+<p>图15：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/15.png" width="700">
+<p>该流程是贪心算法的搜索过程，它从入口节点开始，首先将其作为看起来最接近新节点的节点，如果一个节点的邻居看起来更接近新插入的节点，算法会转向那个邻居节点，并继续探索其邻居。最终找到最多efConstruction个距离<strong>较近</strong>（这些节点不一定是离新节点<strong>最近</strong>的）的节点。</p>
+<p><code>候选邻居集合</code>是一个最多拥有efConstruction个节点的最大堆，堆顶元素描述的是<code>候选邻居集合</code>中离新节点最远的节点。这是一个临时的邻居集合，efConstruction是一个可配置的值，该值的大小有以下的考量：</p>
+<ul>
+<li><strong>高</strong> <strong>efConstruction</strong> <strong>值</strong>：
+<ul>
+<li><strong>优点</strong>：增加构建图的精度，最终的图更接近于真实的 k-NN 图。因为在每次插入新节点时，搜索过程会考虑更多的候选节点，从而找到更优质的邻居。</li>
+<li><strong>缺点</strong>：构建时间更长，因为在每次插入节点时需要处理更多的候选节点。</li>
+</ul>
+</li>
+<li><strong>低</strong> <strong>efConstruction</strong> <strong>值</strong>：
+<ul>
+<li><strong>优点</strong>：构建速度更快，因为每次插入节点时需要处理的候选节点更少。</li>
+<li><strong>缺点</strong>：降低构建图的精度，可能导致搜索结果的质量下降。</li>
+</ul>
+</li>
+</ul>
+<h3 id="根据多样性检查以及本层最大邻居数量筛选节点"><a class="markdownIt-Anchor" href="#根据多样性检查以及本层最大邻居数量筛选节点"></a> 根据多样性检查以及本层最大邻居数量筛选节点</h3>
+<p>图16：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/16.png" width="500">
+<p>由于每一层允许连接的邻居数量是有限的，第0层为<code>2*M</code>，其他层为<code>M</code>，<code>M</code>的默认值为32。因此在上一步收集了<code>efConstruction</code>个邻居后，如果<code>efConstruction</code>的值超过了限制，则需要根据<code>多样性</code>筛选。</p>
+<h4 id="多样性检查"><a class="markdownIt-Anchor" href="#多样性检查"></a> 多样性检查</h4>
+<p>多样性检查的目的是确保每个节点的邻居列表中包含多样且合适的节点，避免重复或过于接近的邻居，从而提高 HNSW 图的质量和搜索效率。多样性检查的算法为：</p>
+<ul>
+<li>从上文中<code>候选邻居集合</code>的堆顶元素开始，比较它与集合中其他邻居的距离<code>d(邻居，新节点的其他邻居)</code>，如果至少存在一个其他邻居使得<code>d(邻居，新节点的其他邻居)</code>小于<code>d(邻居，新节点)</code>，则不满足多样性。</li>
+</ul>
+<h3 id="新节点与邻居相互连接"><a class="markdownIt-Anchor" href="#新节点与邻居相互连接"></a> 新节点与邻居相互连接</h3>
+<p>图17：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/17.png" width="500">
+<p>在代码中，两个节点的连接实现为<code>HNSW.cpp</code>中的<code>add_link(...)</code>方法。这两个流程点分别调用这个方法实现连接。</p>
+<p>两个节点的连接流程图如下所示：将目标节点<code>dest</code>添加到源节点<code>src</code>的邻居集合中，即上文中提到的<code>neighbors</code>容器中。</p>
+<p>图18：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/18.png" width="500">
+<p>图18中，如果源节点<code>src</code>的邻居数量没有达到本层的最大邻居数量，那么直接追加到<code>neighbors</code>容器中即可，其添加过程见图8.</p>
+<p>否则，我们需要对源节点<code>src</code>现有的邻居加上目标节点<code>dest</code>进行多样性检查。注意的是，可能会有一个或多个邻居被移除。最后将筛选后的邻居集合覆盖原来的邻居集合。</p>
+<p>这里你会发现，这种处理方式可能会导致节点的单向连接，但这在HNSW中是允许的：</p>
+<ul>
+<li>
+<p><strong>多层次图结构</strong>：HNSW 图由多层次图组成，每个层次都有不同的邻居集。这种设计使得即使在某个层次上存在单向连接，整体图的搜索性能依然可以得到保证。</p>
+</li>
+<li>
+<p><strong>搜索效率</strong>：单向连接不会显著影响搜索效率，因为在高层次图中，节点之间的连接主要负责长距离跳跃，而在低层次图中，节点之间的连接则负责短距离搜索。</p>
+</li>
+</ul>
+<h2 id="全景流程图"><a class="markdownIt-Anchor" href="#全景流程图"></a> 全景流程图</h2>
+<p>图19：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/19.png" width="500">
+<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/Faiss/index/HNSW/overall.html" >点击<i class="fas fa-external-link-alt"></i></a>查看高清图。</p>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/hnsw/">hnsw</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Lucene/gongjulei/2024/0513/VectorQuantization%EF%BC%88%E4%B8%80%EF%BC%89/"
+                                   title="Vector Quantization（一）（Lucene 9.10.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Vector Quantization（一）（Lucene 9.10.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text"> 入口节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E%E9%82%BB%E5%B1%85%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text"> 与邻居建立连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E6%AF%8F%E4%B8%80%E5%B1%82%E7%9A%84%E9%82%BB%E5%B1%85%E5%B9%B6%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text"> 找到每一层的邻居并建立连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E6%9C%AC%E5%B1%82%E4%B8%AD%E6%9C%80%E5%A4%9Aefconstruction%E4%B8%AA%E9%82%BB%E5%B1%85"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 找出本层中最多efConstruction个邻居</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5%E4%BB%A5%E5%8F%8A%E6%9C%AC%E5%B1%82%E6%9C%80%E5%A4%A7%E9%82%BB%E5%B1%85%E6%95%B0%E9%87%8F%E7%AD%9B%E9%80%89%E8%8A%82%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text"> 根据多样性检查以及本层最大邻居数量筛选节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 多样性检查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%8A%82%E7%82%B9%E4%B8%8E%E9%82%BB%E5%B1%85%E7%9B%B8%E4%BA%92%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.3.</span> <span class="nav-text"> 新节点与邻居相互连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%99%AF%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text"> 全景流程图</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">319.7k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text"> 入口节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E%E9%82%BB%E5%B1%85%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text"> 与邻居建立连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E6%AF%8F%E4%B8%80%E5%B1%82%E7%9A%84%E9%82%BB%E5%B1%85%E5%B9%B6%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text"> 找到每一层的邻居并建立连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E6%9C%AC%E5%B1%82%E4%B8%AD%E6%9C%80%E5%A4%9Aefconstruction%E4%B8%AA%E9%82%BB%E5%B1%85"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 找出本层中最多efConstruction个邻居</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5%E4%BB%A5%E5%8F%8A%E6%9C%AC%E5%B1%82%E6%9C%80%E5%A4%A7%E9%82%BB%E5%B1%85%E6%95%B0%E9%87%8F%E7%AD%9B%E9%80%89%E8%8A%82%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text"> 根据多样性检查以及本层最大邻居数量筛选节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 多样性检查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%8A%82%E7%82%B9%E4%B8%8E%E9%82%BB%E5%B1%85%E7%9B%B8%E4%BA%92%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.3.</span> <span class="nav-text"> 新节点与邻居相互连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%99%AF%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text"> 全景流程图</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
