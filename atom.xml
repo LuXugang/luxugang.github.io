@@ -41,11 +41,11 @@
     
     <category term="hnsw" scheme="http://example.com/tags/hnsw/"/>
     
+    <category term="sq" scheme="http://example.com/tags/sq/"/>
+    
     <category term="scalar" scheme="http://example.com/tags/scalar/"/>
     
     <category term="quantization" scheme="http://example.com/tags/quantization/"/>
-    
-    <category term="sq" scheme="http://example.com/tags/sq/"/>
     
     <category term="vector" scheme="http://example.com/tags/vector/"/>
     
