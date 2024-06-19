@@ -228,7 +228,7 @@
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Mon Oct 09 2023 15:20:40 GMT+0800">2023-10-09 15:20:40</span>
+                <span class="pc" data-updated="Wed Jun 19 2024 16:04:37 GMT+0800">2024-06-19 16:04:37</span>
             </span>
         
 
@@ -275,7 +275,7 @@
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3 Words</span>
             </span>
         
         
@@ -297,126 +297,7 @@
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p>  从Lucene 8.0.0开始，Lucene新增了block-max WAND（Weak AND）算法，用于优化TopN的查询。该算法的引入可谓是一波三折，可以查看作者<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/cn/blog/author/adrien-grand" >Adrien Grand<i class="fas fa-external-link-alt"></i></a>对该算法的介绍：<a class="link"   target="_blank" rel="noopener" href="https://www.elastic.co/cn/blog/faster-retrieval-of-top-hits-in-elasticsearch-with-block-max-wand%EF%BC%8C%E4%B8%8B%E6%96%87%E4%B8%AD%E5%B0%86%E5%9B%B4%E7%BB%95%E8%BF%99%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%B1%95%E5%BC%80%E4%BB%8B%E7%BB%8D%E3%80%82" >https://www.elastic.co/cn/blog/faster-retrieval-of-top-hits-in-elasticsearch-with-block-max-wand，下文中将围绕这篇博客展开介绍。<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="topn查询lucene-750"><a class="markdownIt-Anchor" href="#topn查询lucene-750"></a> TopN查询（Lucene 7.5.0）</h2>
-<p>  我们先介绍下在Lucene 8.0.0之前，如果实现TopN查询，假设有以下的搜索条件：</p>
-<p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/1.png">
-<p>  图1中，第57行、58行、59行描述了只要文档中至少包含一个域名为&quot;author&quot;、域值为&quot;lily&quot;或者&quot;lucy&quot;的信息，那么该文档就满足查询条件；第60行代码描述了，我们只需要根据文档打分返回Top3的结果。</p>
-<p>  假设索引目录中一共有六篇文档，每篇文档的打分如下所示：</p>
-<p>表一：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">文档号</th>
-<th style="text-align:center">Score1（lily）</th>
-<th>Score2（Lucy）</th>
-<th style="text-align:center">文档打分值（总分）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td>0</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">5</td>
-<td>4</td>
-<td style="text-align:center">9</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">6</td>
-<td>7</td>
-<td style="text-align:center">13</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">3</td>
-<td>8</td>
-<td style="text-align:center">11</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">2</td>
-<td>6</td>
-<td style="text-align:center">8</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">3</td>
-<td>3</td>
-<td style="text-align:center">6</td>
-</tr>
-</tbody>
-</table>
-<p>  表一中，Score1描述的是域名为&quot;author&quot;、域值为&quot;lily&quot;对应的文档打分值，同理Score2，最终文档的打分值为Score1跟Score2的和值。</p>
-<p>  结合图1跟表一可知，当我们处理到文档3，已经获得了Top3的搜索结果，即文档1、文档2、文档3。然而在Lucene 8.0.0之前，需要对所有满足图1的查询条件的文档进行打分，然后在Collector中使用根据score排序的优先级队列来维护Top3（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2019/0813/Collector%EF%BC%88%E4%BA%8C%EF%BC%89" >Collector（二）<i class="fas fa-external-link-alt"></i></a>）。</p>
-<p>  通过上文的描述我们可以知道， 在查询过程中，一些打分值很低的文档号也被处理了，那有没有什么方式可以使得尽量跳过那些打分值较低的文档。</p>
-<h2 id="maxscore"><a class="markdownIt-Anchor" href="#maxscore"></a> MAXSCORE</h2>
-<p>  在2012，Stefan Pohl介绍了<a class="link"   target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1016/0306-4573%2895%2900020-H" >MaxScore<i class="fas fa-external-link-alt"></i></a>算法，该算法大意为：如果我们想查找一些文档，查询条件为这些文档中至少包含&quot;elasticsearch&quot;或者&quot;kibana&quot;，并且根据文档打分值排序获得Top10。如果<strong>能知道</strong>根据elasticsearch关键字的文档打分<strong>最大值</strong>为3、根据kibana关键字的文档打分最大值为5，当Top10中的第10篇文档，即分数最低的那篇文档的的打分值为3时，那么在随后的处理中，我们就<strong>只需要</strong>处理包含&quot;kibana&quot;的文档集合（因为那些<strong>只</strong>包含&quot;elasticsearch&quot;的文档肯定是进不了Top10的），并且只需要判断&quot;elasticsearch&quot;是否在这些文档集合中，如果在那么参与打分，并且可能更新Top10。</p>
-<p>  实现该算法需要两个集合：</p>
-<ul>
-<li>第一个集合：该集合中的任意一个term，该term在文档中的打分最高值比TopN中的最小值大
-<ul>
-<li>这些term用来确定遍历的文档集合，即只需要处理包含第一个集合中的term的文档集合，例如上文中的&quot;kibana&quot;</li>
-</ul>
-</li>
-<li>第二个集合：该集合中的任意一个term，该term在文档中的打分值最高值比TopN中的最小值小
-<ul>
-<li>这些term用来对文档打分， 用于更新TopN中的最低分</li>
-</ul>
-</li>
-</ul>
-<p>  随着更多的文档的被处理，TopN中最低的文档打分值如果变高了，那么对于第一个集合中的某些term，如果它们在文档中的打分最高值比TopN中的最小值小，就将它们从第一个集合中移除，并添加到第二个集合中，这样使得进一步减少待处理的文档数量。</p>
-<p>  该算法在Lucene中无法直接应用，原因如下所示：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stefan didn&#x27;t only describe the algorithm. A couple days before the conference, he opened a ticket against Lucene, where he shared a prototype that he had built. This contribution was exciting but also challenging to integrate because we would need a way to compute the maximum score for every term in the index. In particular, scores depend on index statistics such as document frequency (total number of documents that contain a given term), so adding more documents to an index also changes the maximum score of postings in existing segments. Stefan&#x27;s prototype had worked around this issue by requiring a rewrite of the index, which meant this optimization would only work for static indexes in practice. This is a limitation that we weren&#x27;t happy with, but addressing it would require a lot of work.</span><br></pre></td></tr></table></figure>
-<p>  上文中，Lucene团队不接受这种Stefan提出的issues主要是该算法需要在索引（index）阶段需要计算所有term在所有包含它的文档的文档打分值、需要变更已经生成的段文件。</p>
-<p>  感兴趣的同学可以看这里的详细介绍：<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-4100" >https://issues.apache.org/jira/browse/LUCENE-4100<i class="fas fa-external-link-alt"></i></a> 。</p>
-<h2 id="wand"><a class="markdownIt-Anchor" href="#wand"></a> WAND</h2>
-<p>  WAND（Weak AND）同样是一种可用于查询TopN的算法，然而该算法的实现同Lucene中的MinShouldMatchSum（minShouldMatch &gt; 1）是相同的。我们简单的介绍下MinShouldMatchSum的实现方式，例如以下的查询条件将会使用MinShouldMatchSum：</p>
-<p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/2.png">
-<p>  图2中的查询条件有三个子查询组成，描述的是：满足查询条件的文档中必须至少域名为&quot;author&quot;，域值为&quot;lily&quot;、“lucy”、&quot;good&quot;中的任意2个（即代码64行设置的minShouldMatch为2）。</p>
-<p>  MinShouldMatchSum算法实现中有三个核心的容器，分别是lead、head、tail，由于源码中关于这几个容器的注释，我怎么翻译都感觉不行😅，随意还是贴上原文朋友们自己品下：</p>
-<p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/3.png">
-<p>  图3中，sub scorers中的每一个scorer可以简单的理解为满足某个子查询的文档信息，以图2为例，对于代码61行的子查询，他对应的scorer描述的是包含域名为&quot;author&quot;、域值为&quot;lily&quot;的文档信息。</p>
-<p>  在继续介绍之前，我们先理解下源码中的这么一段注释：</p>
-<p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/4.png">
-<p>  图4的源码中说到，如果有n个SHOULD查询（比如图2中就是3个SHOULD查询），其中minShouldMatch的值为m，那么这种查询的开销为 n - m + 1个scorer的遍历开销，即我们不需要遍历n个scorer的文档信息就可以获得查询结果。另外图4中的某个查询的cost描述的是满足该查询的文档数量。</p>
-<p>  其推导思想说的是，包含n个子查询c1，c2，… cn且minShouldMatch为m的BooleanQuery，它可以转化为：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(c1 AND (c2..cn | msm = m - 1)) OR (!c1 AND (c2..cn | msm = m))，两块部分通过&quot;或的关系&quot;（OR）组合而成</span><br></pre></td></tr></table></figure>
-<ul>
-<li>(c1 AND (c2…cn|msm=m-1)) ：第一块部分描述了满足BooleanQuery查询要求的文档，如果<strong>满足</strong>子查询c1，那么必须（AND）至少满足c2…cn中任意m-1个子查询</li>
-<li>(!c1 AND (c2…cn|msm=m))：第二块部分描述了满足BooleanQuery查询要求的文档，如果<strong>不满足</strong>子查询c1，那么必须（AND）至少满足c2…cn中任意m个子查询
-<ul>
-<li>根据两块部分的组合关系（OR），<strong>BooleanQuery的开销cost是这两部分的开销和</strong></li>
-</ul>
-</li>
-<li>假设子查询c1，c2，… cn是按照cost（上文中已经介绍，即满足子查询的文档数量）<strong>升序排序</strong>的，那么对于第一块部分(c1 AND (c2…cn|msm=m-1)) ，由于c1的cost最小，并且必须满足c1的查询条件，那么我们只需要遍历满足ci的文档集合即可（见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2018/1218/%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6%EF%BC%88MUST%EF%BC%89" >文档号合并（MUST）<i class="fas fa-external-link-alt"></i></a>），<strong>所以第一块部分的开销就是c1的开销</strong></li>
-<li>对于第二块部分(!c1 AND (c2…cn|msm=m))，它可以转化为一个包含 n -1 个子查询c2，… cn且minShouldMatch为m的<strong>子BooleanQuery</strong>，所以它又可以转化为(c2 AND (c3…cn|msm=m-1)) OR (!c2 AND (c3…cn|msm=m))</li>
-<li>完整的类推如下所示：</li>
-</ul>
-<p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/5.png">
-<p>  图5的推导图中的最后一个步骤中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">!</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msub><mtext> </mtext><mi>A</mi><mi>N</mi><mi>D</mi><mtext> </mtext><mo stretchy="false">(</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mtext> </mtext><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>c</mi><mi>n</mi></msub><mtext> </mtext><mi mathvariant="normal">∣</mi><mtext> </mtext><mi>m</mi><mi>s</mi><mi>m</mi><mo>=</mo><mi>m</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(!c_{n-m}\ AND\ (c_{n-m+1}\ ... c_n\ |\ msm=m))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mclose">!</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.25833100000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace"> </span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">m</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">∣</span><span class="mspace"> </span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>描述的是一个包含 m 个子查询且minShouldMatch为m的子BooleanQuery，那么很明显我们只要遍历任意1个子查询对应的文档集合即可。</p>
-<p>  故最后得出我们只需要处理 n - m + 1个scorer。</p>
-<p>  基于这个理论就设计出了上文中说到的head跟tail，我们先看下源码中如何定义这两个容器：</p>
-<p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/block-max-WAND/block-max-WAND（一）/6.png">
-<p>  我们不用关心DisiWrapper跟DisiPriorityQueue是什么，统称为容器即可。初始化head时的容器大小即 n - m + 1（scorers.size() - minShouldMatch + 1），而tail的大小为 m - 1，即剩余的scorer丢到tail中，head跟size中的元素数量和为n。</p>
-<p>  结合上文介绍跟图3的注释就可以明白了，head中存放了用于遍历的scorers（注释中的in order to move quickly to the next candidate正说明了这点），而lead中存放了head中每一个scorer目前正在处理的相同的文档信息，并计算相同的文档信息的数量，如果该值大于等于minShouldMatch的值的话，说明文档满足查询条件。</p>
-<p>  上文的描述只是粗略的介绍了MinShouldMatchSum，在后面的文章中会详细介绍。在本中我们只需要理解为什么要设计head、tail既可以。</p>
-<h2 id="block-max-wand"><a class="markdownIt-Anchor" href="#block-max-wand"></a> block-max WAND</h2>
-<p>  基于篇幅，剩余的内容将在下一篇文章中展开。</p>
-<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
-<p>  无</p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/block-max-WAND/block-max-WAND%EF%BC%88%E4%B8%80%EF%BC%89/block-max-WAND%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
+                    <p>更新中。。。</p>
 
                 </div>
 
@@ -614,7 +495,7 @@
             <div class="pc-post-toc left-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#topn%E6%9F%A5%E8%AF%A2lucene-750"><span class="nav-number">1.</span> <span class="nav-text"> TopN查询（Lucene 7.5.0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxscore"><span class="nav-number">2.</span> <span class="nav-text"> MAXSCORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wand"><span class="nav-number">3.</span> <span class="nav-text"> WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-max-wand"><span class="nav-number">4.</span> <span class="nav-text"> block-max WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+        
     </div>
 </div>
 
@@ -669,7 +550,7 @@
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.7k</span>
+                    <span class="item-value border-box word">317.4k</span>
                 </span>
             
 
@@ -807,7 +688,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#topn%E6%9F%A5%E8%AF%A2lucene-750"><span class="nav-number">1.</span> <span class="nav-text"> TopN查询（Lucene 7.5.0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxscore"><span class="nav-number">2.</span> <span class="nav-text"> MAXSCORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wand"><span class="nav-number">3.</span> <span class="nav-text"> WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-max-wand"><span class="nav-number">4.</span> <span class="nav-text"> block-max WAND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text"> 结语</span></a></li></ol>
+        
     </div>
 </div>
 
