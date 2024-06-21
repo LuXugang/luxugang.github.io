@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lu Xugang">
+    
+    <title>
+        
+            Block-Max-Maxscore（Lucene 9.10.0） |
+        
+        Lu Xugang的小屋
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/koala.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Lu Xugang的小屋
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        Block-Max-Maxscore（Lucene 9.10.0）
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/luxugang.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Lu Xugang</span>
+                                
+                                    <span class="author-label">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2024-06-21 00:00:00</span>
+                <span class="mobile">2024-06-21 00:00</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Fri Jun 21 2024 16:11:49 GMT+0800">2024-06-21 16:11:49</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                            <li class="category-item">
+                                
+                                <a href="/categories/Lucene/">Lucene</a>
+                            </li>
+                        
+                    
+                            <li class="category-item">
+                                
+                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
+                                
+                                <a href="/categories/Lucene/Search/">Search</a>
+                            </li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/block-max/">block-max</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/maxscore/">maxscore</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/wand/">wand</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            </span>
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>Lucene中基于论文：<a class="link"   target="_blank" rel="noopener" href="http://engineering.nyu.edu/~suel/papers/bmm.pdf" >Optimizing Top-k Document Retrieval Strategies for Block-Max Indexes <i class="fas fa-external-link-alt"></i></a>实现了Block-Max-Maxscore (BMM) 算法，用来优化关键字之间只有OR关系，并且minShouldMatch &lt;= 1时的查询。比如有查询条件为：<code>term1 OR term2 OR term3</code>，那么文档中至少包含其中一个<code>term</code>就认为是满足查询条件。</p>
+<h2 id="算法概述"><a class="markdownIt-Anchor" href="#算法概述"></a> 算法概述</h2>
+<p>该算法通过对每个term的倒排表排序，排序规则为<code>最大分数/倒排表长度</code>，将高分倒排表作为必要倒排表，低分倒排表作为非必要倒排表。先遍历必要倒排表的文档ID，计算部分评分，如果部分评分加上非必要倒排表的最大分数之和仍低于阈值，则跳过该文档。否则，进行完整评分，包括非必要倒排表的评分。这样，算法减少了不必要的计算操作，因为它避免了对所有文档进行评分，只关注最有可能进入top-k结果的文档。</p>
+<p>Lucene中BMM算法的处理逻辑基本跟论文中是一致的，结合上文的算法概述，我们通过以下三个步骤介绍该算法在Lucene中的实现：</p>
+<ol>
+<li><strong>计算最大分数（Maxscore）</strong></li>
+<li><strong>选择必要倒排表（essential posting）跟非必要倒排表（non-essential posting）</strong></li>
+<li><strong>遍历必要倒排表中的文档，选择合适的文档号</strong></li>
+</ol>
+<h2 id="算法实现"><a class="markdownIt-Anchor" href="#算法实现"></a> 算法实现</h2>
+<h3 id="计算最大分数maxscore"><a class="markdownIt-Anchor" href="#计算最大分数maxscore"></a> 计算最大分数（Maxscore）</h3>
+<p>算法名<code>Block-Max-Maxscore</code>中的<code>block-max</code>指的就是将倒排表划分为多个连续区间，每个区间即一个<code>block</code>，<code>最大分数</code>就是在每个<code>block</code>中最大的文档打分值。</p>
+<p>由于在<strong>查询期间</strong>计算这个区间内<strong>所有的</strong>文档打分值然后选出最大值是昂贵的，因此Lucene提供了<strong>Impact</strong>机制，使得在<strong>索引期间</strong>先挑选出<strong>部分</strong>候选者，能保证最高的文档打分值只会出现于这些候选者中。在<strong>查询期间</strong>计算这些候选者，找出<strong>最大分数</strong>。</p>
+<p>关于Impact的完整介绍可以阅读文章：<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/Search/2020/0904/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pos&amp;&amp;pay/" >索引文件的读取（十二）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/Search/2023/0804/ImpactsDISI/" >ImpactsDISI<i class="fas fa-external-link-alt"></i></a>。本文中我们简述下Impact机制。</p>
+<h4 id="impact"><a class="markdownIt-Anchor" href="#impact"></a> Impact</h4>
+<p>图1：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/1.png">
+<p>从Lucene打分公式的注释可以看出：</p>
+<ul>
+<li>如果norm相等，那么freq较大对应的文档打分值会相等或者更高</li>
+<li>如果freq相等，那么norm较小对应的文档打分值会相等或者更高</li>
+</ul>
+<p>因此在索引期间，<strong>我们不需要真正的调用打分公式，而是简单的比较term在每一篇文档中的freq和norm</strong>，就可以筛选出<strong>候选者</strong>。也就是freq相等时，norm最小，或者norm相等时，freq最大的文档作为<strong>候选者</strong>，将他们的freq跟norm信息写入到索引文件中：</p>
+<p>图2：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/2.png">
+<p>随后在查询阶段，我们就可以根据索引文件中所有的freq和norm，调用图1的打分公式，计算出最终的<strong>最大分数</strong>。</p>
+<h3 id="选择必要倒排表essential-posting跟非必要倒排表non-essential-posting"><a class="markdownIt-Anchor" href="#选择必要倒排表essential-posting跟非必要倒排表non-essential-posting"></a> 选择必要倒排表（essential posting）跟非必要倒排表（non-essential posting）</h3>
+<p>我们先直接介绍在Lucene中选择的实现方式，最后给出<strong>必要倒排表</strong>跟<strong>非必要倒排表</strong>的定义。</p>
+<p>每一个term都有一个倒排表，在查询时，依次处理所有term的倒排表同一个区间的block（比如处理文档号0~2048这个区间的文档号），每次根据下面的规则对block排序，按照rule值从小到大排序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rule = maxScore / cost</span><br></pre></td></tr></table></figure>
+<p><code>maxScore</code>即<code>block</code>中最大分数，<code>cost</code>为倒排表的长度。</p>
+<p>选择必要倒排表跟非必要倒排表的代码如图3所示</p>
+<p>图3：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/3.png">
+<p>在图3中，从最小rule值的倒排表开始，依次累加倒排表的最大分数Maxscore（即图3中的maxWindowScore），如果<code>maxScoreSumFloat</code>未达到阈值<code>minCompetitiveScore</code>，则将倒排表添加到<code>allScorer</code>数组的头部，否则剩余的倒排表添加到<code>allScorer</code>的尾部。最后在<code>allScorer</code> 数组中，小于索引值<code>firstEssentialScorer</code>的倒排表都是<strong>非必要倒排表（non-essential posting）</strong>，数组中其他的倒排表都是<strong>必要倒排表（essential posting）</strong>。</p>
+<p>最后将必要倒排表中所有的倒排表塞入到优先级队列<code>essentialQueue</code>中，排序规则为比较每个倒排表中第一个文档号，堆顶元素为最小的文档号：</p>
+<p>图4：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/4.png">
+<p>因此，这两类倒排表的定义如下：</p>
+<ul>
+<li><strong>非必要倒排表</strong>：在对倒排表集合排序后，最大分数（maxscore）的总和小于当前阈值的倒排表集合</li>
+<li><strong>必要倒排表</strong>：在对倒排表集合排序后，最大分数（maxscore）的总和大于等于当前阈值的倒排表集合</li>
+</ul>
+<p>再次回顾下图3，如果所有的倒排表都是非必要倒排表，那么这个block中所有文档都可以Skip，而这正是该算法的核心之一。</p>
+<p><strong>为什么要区分必要倒排表（essential posting）跟非必要倒排表（non-essential posting）</strong></p>
+<ul>
+<li><strong>必要倒排表中的文档号将用来遍历</strong>
+<ul>
+<li>非必要倒排表中最大分数的总和小于当前阈值，那么如果只使用这些倒排表中的文档，是无法进入Top-K，如果想要进入Top-K，必须包含一个必要倒排表</li>
+<li>必要倒排表的最大分数比较高，那么能更早的找到高评分的文档</li>
+</ul>
+</li>
+<li><strong>非必要倒排表用来完整文档打分值</strong>
+<ul>
+<li>在遍历必要倒排表中的文档时，如果非必要倒排表有相同的文档，需要贡献打分值</li>
+</ul>
+</li>
+</ul>
+<h3 id="遍历必要倒排表中的文档选择合适的文档号"><a class="markdownIt-Anchor" href="#遍历必要倒排表中的文档选择合适的文档号"></a> 遍历必要倒排表中的文档，选择合适的文档号</h3>
+<p>该步骤的过程可以简述为：依次遍历必要倒排表的文档号，计算文档打分值，如果在非必要倒排表中存在相同的文档号，则累加文档打分值。</p>
+<p>详细的处理过程可以分为两个步骤：</p>
+<ul>
+<li>
+<p><strong>确定参与打分的文档号</strong></p>
+<ul>
+<li>确定哪些文档号<strong>可能可以</strong>进入Top-k，实现文档号的Skip</li>
+</ul>
+</li>
+<li>
+<p><strong>累加文档打分值</strong>。</p>
+</li>
+</ul>
+<p>另外在<strong>确定参与打分的文档号</strong>这个步骤中，基于必要倒排表中倒排表数量有各自的实现方式来优化性能。</p>
+<h4 id="确定参与打分的文档号"><a class="markdownIt-Anchor" href="#确定参与打分的文档号"></a> 确定参与打分的文档号</h4>
+<h5 id="必要倒排表中有多个倒排表"><a class="markdownIt-Anchor" href="#必要倒排表中有多个倒排表"></a> 必要倒排表中有多个倒排表</h5>
+<p>依次遍历必要倒排表中的多个倒排表，将它们的文档号写入到位图中，完成<strong>参与打分的文档号</strong>这一步骤。</p>
+<ul>
+<li>对应代码中的MaxScoreBulkScorer#scoreInnerWindowMultipleEssentialClauses(…)方法</li>
+</ul>
+<p>在源码中，使用一个名为<code>windowMatches</code>的long类型数组描述文档号，long占用64个bit，每一个bit用来表示一个文档号。</p>
+<p>下面的例子中展示了将文档集合为[3, 66, 122]写入到位图中，计算公式为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> docId &gt;&gt;&gt; <span class="number">6</span></span><br><span class="line"><span class="type">int</span> <span class="variable">offset</span> <span class="operator">=</span> <span class="number">1L</span> &lt;&lt; docId</span><br><span class="line">windowMatches[index] |= offset </span><br></pre></td></tr></table></figure>
+<p>图5：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/5.png">
+<h6 id="优化"><a class="markdownIt-Anchor" href="#优化"></a> 优化</h6>
+<p>上文中我们说到，使用了优先级队列<code>essentialQueue</code>对必要倒排表中的倒排表排序。在这一步骤中如果堆中前2个倒排表满足下面的关系，则会进行优化，而不是使用位图：</p>
+<ul>
+<li>
+<pre class="highlight"><code class="">top2.doc - INNER_WINDOW_SIZE / 2 &gt;= top.doc
+</code></pre>
+</li>
+</ul>
+<p><code>top.doc</code>描述的是，第一个倒排表中最小的文档号<br />
+<code>top2.doc</code>描述的是，第二个倒排表中最小的文档号<br />
+<code>INNER_WINDOW_SIZE</code> 可以简单的理解block中最多的文档数量，默认是2048</p>
+<p>当满足这个关系后，则这次只按照第一个倒排表中的文档号遍历，遍历范围为[top.doc, top2.doc]</p>
+<ul>
+<li>对应的代码为MaxScoreBulkScorer#scoreInnerWindowSingleEssentialClause(…)</li>
+</ul>
+<h5 id="必要倒排表中只有一个倒排表"><a class="markdownIt-Anchor" href="#必要倒排表中只有一个倒排表"></a> 必要倒排表中只有一个倒排表</h5>
+<p>如果只有一个倒排表，那么直接将这个倒排表中的文档号作为参与打分的文档号即可。</p>
+<ul>
+<li>对应的代码为MaxScoreBulkScorer#scoreInnerWindowSingleEssentialClause(…)</li>
+</ul>
+<h6 id="优化-2"><a class="markdownIt-Anchor" href="#优化-2"></a> 优化</h6>
+<p>但是在某些场景下还可以进一步优化，源码中也给出了解释：</p>
+<p>图6：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/6.png">
+<p>这个注释描述的是，non-essential中除去最佳的那个倒排表，其他倒排表的最大分数累加值跟essential中的那个唯一的倒排表的最大分数相加后，如果和值小于<code>minCompetitiveScore</code>，说明<strong>同时</strong>出现在essential的倒排表和non-essential最佳的倒排表中的文档号才有可能进入Top-K。如下所示：</p>
+<p>图7：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/7.png">
+<p>图7中，所有的non-essential按照上文中提到的<code>rule</code>排序，其中<code> non-essential4</code>就是<code> non-essential</code>中最佳的那个倒排表。</p>
+<p>也就是说完成<code>确定参与打分的文档号</code>后，其文档号集合为<code>essential</code>和<code>non-essential4</code>的文档号交集（交集意味着后续需要处理更少的文档数量）</p>
+<p>在图7的基础上，还可以进一步判断是否要计算<code>non-essential3</code>的交集：</p>
+<p>图8：</p>
+<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/Block-Max-Maxscore/8.png">
+<p>如果满足图8中的条件，那么完成<code>确定参与打分的文档号</code>后，其文档号集合为<code>essential</code>和<code>non-essential4</code>、<code>non-essential3</code>的文档号交集。以此类推，可以获得更少的待遍历的文档数量</p>
+<p>当确定好non-essential中需要参与交集的倒排表后，跟essential的交集操作相对简单，可以自行参考源码。</p>
+<ul>
+<li>对应的代码为MaxScoreBulkScorer#scoreInnerWindowAsConjunction(…)方法</li>
+</ul>
+<h4 id="累加文档打分值"><a class="markdownIt-Anchor" href="#累加文档打分值"></a> 累加文档打分值</h4>
+<p>上文中，我们只是通过最大分数MaxScore确定哪些文档号是可能可以进Top-k，具体到某一篇文档的实际打分值则是在当前步骤<code>累加文档打分值</code>完成。</p>
+<p>该步骤的逻辑就非常简单了，可以简述为：</p>
+<ul>
+<li>根据从上一步骤获取到的文档号，计算该文档号在必要倒排表中对应的文档分数，如果非必要倒排表中存在相同的文档号，则累加文档的打分值，得出文档的实际打分值。如果实际打分值达不到minCompetitiveScore，那么这个文档号不会被<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/Search/2019/0812/Collector%EF%BC%88%E4%B8%80%EF%BC%89/" >Collecter<i class="fas fa-external-link-alt"></i></a>收集。</li>
+</ul>
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/block-max/">block-max</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/maxscore/">maxscore</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/wand/">wand</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    <div class="reward-author-container border-box flex-center">
+    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Buy me a coffee"
+            data-tooltip-img-url="/images/buymeacoffee.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -8px;"
+    >
+        <i class="fa-solid fa-hand-holding-heart"></i>
+    </div>
+</div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/Faiss/Index/2024/0605/HNSW%E5%9B%BE%E7%9A%84%E6%9E%84%E5%BB%BA%EF%BC%88Faiss%EF%BC%89/"
+                                   title="HNSW图的构建（Faiss 1.8.0）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">HNSW图的构建（Faiss 1.8.0）</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script >
+
+          if (!window?.__getGiscusTheme) {
+            window.__getGiscusTheme = () => {
+              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
+            };
+          }
+
+          if (!window?.__changeGiscusTheme) {
+            window.__changeGiscusTheme = () => {
+              const iframe = document.querySelector("iframe.giscus-frame");
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: __getGiscusTheme()
+                  }
+                }
+              }, "https://giscus.app");
+            };
+          }
+
+          if (!window?.__loadGiscus) {
+            window.__loadGiscus = () => {
+              const script = document.createElement("script");
+              script.async = true;
+              script.src = "https://giscus.app/client.js";
+              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
+              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
+              script.setAttribute("data-category", 'Announcements');
+              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
+              script.setAttribute("data-reactions-enabled", '0');
+              script.setAttribute("data-lang", 'en');
+              script.setAttribute("data-mapping", "pathname");
+              script.setAttribute("data-strict", "0");
+              script.setAttribute("data-emit-metadata", "0");
+              script.setAttribute("data-input-position", "top");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("loading", "lazy");
+              script.setAttribute("data-theme", __getGiscusTheme());
+              document.querySelector(".giscus-comments-container").appendChild(script);
+
+              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
+              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
+                __changeGiscusTheme();
+              });
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              __loadGiscus();
+            }, 1000);
+          } else {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                __loadGiscus();
+              }, 1000);
+            });
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 算法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%80%E5%A4%A7%E5%88%86%E6%95%B0maxscore"><span class="nav-number">2.1.</span> <span class="nav-text"> 计算最大分数（Maxscore）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#impact"><span class="nav-number">2.1.1.</span> <span class="nav-text"> Impact</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8essential-posting%E8%B7%9F%E9%9D%9E%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8non-essential-posting"><span class="nav-number">2.2.</span> <span class="nav-text"> 选择必要倒排表（essential posting）跟非必要倒排表（non-essential posting）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%96%87%E6%A1%A3%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.3.</span> <span class="nav-text"> 遍历必要倒排表中的文档，选择合适的文档号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E5%8F%82%E4%B8%8E%E6%89%93%E5%88%86%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.3.1.</span> <span class="nav-text"> 确定参与打分的文档号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%80%92%E6%8E%92%E8%A1%A8"><span class="nav-number">2.3.1.1.</span> <span class="nav-text"> 必要倒排表中有多个倒排表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text"> 优化</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%80%92%E6%8E%92%E8%A1%A8"><span class="nav-number">2.3.1.2.</span> <span class="nav-text"> 必要倒排表中只有一个倒排表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-2"><span class="nav-number">2.3.1.2.1.</span> <span class="nav-text"> 优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%AF%E5%8A%A0%E6%96%87%E6%A1%A3%E6%89%93%E5%88%86%E5%80%BC"><span class="nav-number">2.3.2.</span> <span class="nav-text"> 累加文档打分值</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+                <div class="icp-info info-item default">
+                    <a class=""
+                       target="_blank"
+                       href="https://beian.miit.gov.cn"
+                    >
+                        苏ICP备18064214号-1
+                    </a>
+                </div>
+            
+
+            
+                <div class="deploy-info info-item default">
+                    
+                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
+                        
+                </div>
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">319.8k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 算法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text"> 算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%80%E5%A4%A7%E5%88%86%E6%95%B0maxscore"><span class="nav-number">2.1.</span> <span class="nav-text"> 计算最大分数（Maxscore）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#impact"><span class="nav-number">2.1.1.</span> <span class="nav-text"> Impact</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8essential-posting%E8%B7%9F%E9%9D%9E%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8non-essential-posting"><span class="nav-number">2.2.</span> <span class="nav-text"> 选择必要倒排表（essential posting）跟非必要倒排表（non-essential posting）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%96%87%E6%A1%A3%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.3.</span> <span class="nav-text"> 遍历必要倒排表中的文档，选择合适的文档号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E5%8F%82%E4%B8%8E%E6%89%93%E5%88%86%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.3.1.</span> <span class="nav-text"> 确定参与打分的文档号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%80%92%E6%8E%92%E8%A1%A8"><span class="nav-number">2.3.1.1.</span> <span class="nav-text"> 必要倒排表中有多个倒排表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text"> 优化</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E5%80%92%E6%8E%92%E8%A1%A8%E4%B8%AD%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%80%92%E6%8E%92%E8%A1%A8"><span class="nav-number">2.3.1.2.</span> <span class="nav-text"> 必要倒排表中只有一个倒排表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-2"><span class="nav-number">2.3.1.2.1.</span> <span class="nav-text"> 优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%AF%E5%8A%A0%E6%96%87%E6%A1%A3%E6%89%93%E5%88%86%E5%80%BC"><span class="nav-number">2.3.2.</span> <span class="nav-text"> 累加文档打分值</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- code-block -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
