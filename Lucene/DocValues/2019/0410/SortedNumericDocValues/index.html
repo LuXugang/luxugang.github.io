@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             SortedNumericDocValues |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         SortedNumericDocValues
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2019-04-10 00:00:00</span>
-                <span class="mobile">2019-04-10 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-04-10 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Thu Sep 28 2023 15:19:36 GMT+0800">2023-09-28 15:19:36</span>
+                <span class="datetime" data-updated="Thu Sep 28 2023 15:19:36 GMT+0800">2023-09-28 15:19:36</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/DocValues/">DocValues</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/DocValues/">DocValues</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DocValues/">DocValues</a></li>
                         
@@ -268,15 +216,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>993 Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -288,7 +228,7 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>SortedNumericDocValues的索引结构跟<a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/Lucene/DocValues/2019/0409/NumericDocValues" >NumericDocValues<i class="fas fa-external-link-alt"></i></a>几乎是一致的，所以本文不会赘述跟NumericDocValues相同部分的内容，只介绍不同的部分数据结构。两种DocValue的最常用的使用场景就是对搜索结果进行排序，使用SortedNumericDocValues相比较NumericDocValues的优点在于，一篇文档中可以设置多个相同域名不同域值的SortedNumericDocValuesField，而NumericDocValuesField在一篇文档中只允许有一个相同域名的域。因此我们可以在不更改现有索引的情况下，只修改搜索的条件（更改Sort对象）就可以获得不同的排序结果，在以后介绍facet时会详细介绍这部分内容。</p>
@@ -296,36 +236,36 @@
 <h3 id="dvd"><a class="markdownIt-Anchor" href="#dvd"></a> dvd</h3>
 <p>先给出NumericDocValues的.dvd文件的数据结构。<br />
 图1：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/1.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/1.png"  ><br />
 再给出SortedNumericDocValues的.dvd文件的数据结构。<br />
 图2：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/2.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/2.png"  ><br />
 两个DocValues的DocIdData跟FieldValues部分的数据结构是一样的，因为源码中他们实际调用的是同一个方法来写入这两块的数据。下面介绍不同之处DocValueCount。</p>
 <h4 id="docvaluecount"><a class="markdownIt-Anchor" href="#docvaluecount"></a> DocValueCount</h4>
 <p>在上文中提到，索引阶段使用SortedNumericDocValues的话，一篇文档中可以有多个相同域名不同域值的SortedNumericDocValuesField，而NumericDocValues只能有一个相同域名的NumericDocValuesFIeld，如下图所示。<br />
 图3：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/3.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/3.png"  ><br />
 图4：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/4.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/4.png"  ><br />
 DocValueCount描述的信息即每篇文档中包含的相同域名不同域值的域的个数。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这些信息使用了DirectMonotonicWriter类进行了 趋势分解操作，然后使用PackedInts进行了压缩存储。DirectMonotonicWriter中的趋势分解的目的是尽可能减少空间的使用，它用来将 单调递增的整数序列(monotonically-increasing sequences of integers)进行平缓操作，使得在使用PackedInts进行压缩存储时，每一个数值能使用最少的固定bit位存储。</span><br></pre></td></tr></table></figure>
 <p>这里不赘述DirectMonotonicWriter中的趋势分解过程，可以看我的源码注释来理解这个过程：[<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/packed/DirectMonotonicWriter.java" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/util/packed/DirectMonotonicWriter.java<i class="fas fa-external-link-alt"></i></a>]。</p>
 <h3 id="dvm"><a class="markdownIt-Anchor" href="#dvm"></a> dvm</h3>
 <p>先给出NumericDocValues的.dvm文件的数据结构。<br />
 图5：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/5.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/5.png"  ><br />
 再给出SortedNumericDocValues的.dvm文件的数据结构。<br />
 图6：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/6.png"><br />
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/6.png"  ><br />
 上图中，除了红框标出的DocValueCountMeteData， 其他信息都是与NumericDocValues一致的。</p>
 <h4 id="docvaluecountmetedata"><a class="markdownIt-Anchor" href="#docvaluecountmetedata"></a> DocValueCountMeteData</h4>
 <p>图7：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/7.png"></p>
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/7.png"  ></p>
 <h5 id="numdocswithfield"><a class="markdownIt-Anchor" href="#numdocswithfield"></a> NumDocsWithField</h5>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NumDocsWithField描述了包含当前域的文档个数。注意的是如果.dvm中记录的NumValues值，描述的是当前域的域值个数，如果NumDocsWithField与NumValues的值相等，说明每篇文档中只有一个相同域名的SortedNumericDocValuesField，这种情况下就不用记录.dvd文件中的DocValueCount信息，并且此时NumDocsWithField跟SortedNumericDocValues在应用上几乎是一样的。</span><br></pre></td></tr></table></figure>
 <p>NumDocsWithField与NumValues相同的情况下 , 最终的.dvm文件如下图所示：<br />
 图8：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/8.png"></p>
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/DocValues/SortedNumericDocValues/8.png"  ></p>
 <h5 id="offset"><a class="markdownIt-Anchor" href="#offset"></a> Offset</h5>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Offset描述了DocValueCount信息在.dvd文件中的开始位置。</span><br></pre></td></tr></table></figure>
 <h5 id="direct_monotonic_block_shift"><a class="markdownIt-Anchor" href="#direct_monotonic_block_shift"></a> DIRECT_MONOTONIC_BLOCK_SHIFT</h5>
@@ -344,7 +284,6 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 <p>由于SortedNumericDocValues与NumericDocValues的索引文件数据结构非常类似，所以本篇介绍篇幅很小。SortedNumericDocValues这个名词中的Sorted的含义只有在一篇文档中包含多个相同域名不同域值的情况下才有价值体现。在以后介绍SortedNumericDocValues的应用时，会详细介绍它跟NumericDocValues的区别，本篇文章只是介绍在.dvd、.dvm文件中的索引数据结构。</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -361,59 +300,24 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/DocValues/2019/0412/SortedSetDocValues/"
                                    title="SortedSetDocValues"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">SortedSetDocValues</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -421,7 +325,7 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/DocValues/2019/0409/NumericDocValues/"
@@ -431,8 +335,8 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
                                         <span class="post-nav-title-item text-ellipsis">NumericDocValues</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -444,81 +348,6 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -528,78 +357,33 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dvd"><span class="nav-number">1.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docvaluecount"><span class="nav-number">1.1.1.</span> <span class="nav-text"> DocValueCount</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dvm"><span class="nav-number">1.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docvaluecountmetedata"><span class="nav-number">1.2.1.</span> <span class="nav-text"> DocValueCountMeteData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.1.1.</span> <span class="nav-text"> NumDocsWithField</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#offset"><span class="nav-number">1.2.1.2.</span> <span class="nav-text"> Offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">1.2.1.3.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#min"><span class="nav-number">1.2.1.4.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#avginc"><span class="nav-number">1.2.1.5.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length"><span class="nav-number">1.2.1.6.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsrequired"><span class="nav-number">1.2.1.7.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#datalength"><span class="nav-number">1.2.1.8.</span> <span class="nav-text"> DataLength</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -607,23 +391,19 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -642,7 +422,7 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -656,15 +436,7 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -688,48 +460,8 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text"> 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dvd"><span class="nav-number">1.1.</span> <span class="nav-text"> dvd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docvaluecount"><span class="nav-number">1.1.1.</span> <span class="nav-text"> DocValueCount</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dvm"><span class="nav-number">1.2.</span> <span class="nav-text"> dvm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docvaluecountmetedata"><span class="nav-number">1.2.1.</span> <span class="nav-text"> DocValueCountMeteData</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#numdocswithfield"><span class="nav-number">1.2.1.1.</span> <span class="nav-text"> NumDocsWithField</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#offset"><span class="nav-number">1.2.1.2.</span> <span class="nav-text"> Offset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#direct_monotonic_block_shift"><span class="nav-number">1.2.1.3.</span> <span class="nav-text"> DIRECT_MONOTONIC_BLOCK_SHIFT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#min"><span class="nav-number">1.2.1.4.</span> <span class="nav-text"> Min</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#avginc"><span class="nav-number">1.2.1.5.</span> <span class="nav-text"> AvgInc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#length"><span class="nav-number">1.2.1.6.</span> <span class="nav-text"> Length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsrequired"><span class="nav-number">1.2.1.7.</span> <span class="nav-text"> BitsRequired</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#datalength"><span class="nav-number">1.2.1.8.</span> <span class="nav-text"> DataLength</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -743,7 +475,9 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -751,13 +485,6 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -772,28 +499,29 @@ DocValueCount描述的信息即每篇文档中包含的相同域名不同域值�
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

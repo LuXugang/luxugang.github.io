@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             文档提交之flush（二） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         文档提交之flush（二）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2019-07-18 00:00:00</span>
-                <span class="mobile">2019-07-18 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-07-18 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Tue Oct 10 2023 17:17:40 GMT+0800">2023-10-10 17:17:40</span>
+                <span class="datetime" data-updated="Tue Oct 10 2023 17:17:40 GMT+0800">2023-10-10 17:17:40</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Index/">Index</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/flush/">flush</a></li>
                         
@@ -271,15 +219,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.9k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -291,26 +231,26 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="文档提交之flush的流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的流程图"></a> 文档提交之flush的流程图</h1>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/1.png"  >
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89/flush.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h2 id="执行dwpt的doflush"><a class="markdownIt-Anchor" href="#执行dwpt的doflush"></a> 执行DWPT的doFlush()</h2>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/2.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/2.png"  >
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>的文章中，我们知道，执行主动flush并完成流程点<code>收集所有达到flush条件的DWPT</code>之后，具有相同删除队列deleteQueue的DWPT都被添加到了flushQueue中，而在当前流程点中，则是从flushQueue中依次去取出每一个DWPT，执行doFlush( )操作。</p>
 <p>  从图1中可以知道除了主动flush，自动flush的DWPT也会执行doFlush( )，由于两种情况使用同一个流程点，但实际流程点中的具体逻辑还是有所区别。</p>
 <h3 id="执行dwpt的doflush的流程图"><a class="markdownIt-Anchor" href="#执行dwpt的doflush的流程图"></a> 执行DWPT的doFlush()的流程图</h3>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/3.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/3.png"  >
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89/____dwpt_doflush__.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <h4 id="取出一个dwpt"><a class="markdownIt-Anchor" href="#取出一个dwpt"></a> 取出一个DWPT</h4>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/4.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/4.png"  >
 <p>  图4中，尽管主动flush跟自动flush都是执行DWPT的doFlush( )，但是DWPT的来源是不一样的。</p>
 <p>  在全局flush触发的情况下，如果此时自动flush处理的DWPT跟全局flush的DWPT类型不一致（只可能存在两种不同类型的DWPT，见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>），那么主动flush跟自动flush的线程不能同时进入<code>执行DWPT的doFlush()的流程图</code>（该流程点的入口对应源码中DocumentsWriter.doFlush(DocumentsWriterPerThread)），反之如果自动flush处理的DWPT跟全局flush的DWPT类型是一致的，那么允许并发的执行<code>执行DWPT的doFlush()</code>。</p>
 <p>  <strong>什么情况下自动flush处理的DWPT跟全局flush的DWPT类型会不一致：</strong></p>
@@ -342,11 +282,11 @@
 </ul>
 <h4 id="更新拖延状态"><a class="markdownIt-Anchor" href="#更新拖延状态"></a> 更新拖延状态</h4>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/5.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/5.png"  >
 <p>  如果是从flushQueue中取出的DWPT，说明正在执行主动flush或者刚刚结束，那么需要更新拖延状态，其更新的原因在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/74.html" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>文章关于updateStallState的概念已经作了介绍，不赘述。</p>
 <h4 id="处理全局bufferedupdates-更新dwpt的私有bufferedupdates"><a class="markdownIt-Anchor" href="#处理全局bufferedupdates-更新dwpt的私有bufferedupdates"></a> 处理全局BufferedUpdates、更新DWPT的私有BufferedUpdates</h4>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/6.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/6.png"  >
 <p>  从图5中的流程点<code>是否新增删除信息</code>可以看出，这个流程点只针对于自动flush，因为在主动flush阶段，新增的删除信息会被添加到新的全局删除队列newQueue中（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89" >文档提交之flush（一）<i class="fas fa-external-link-alt"></i></a>），所以主动flush使用的删除队列flushingQueue不会新增删除信息。</p>
 <p>  首先回顾下之前讲的内容，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>的文章中我们提到，每个DWPT有一个私有的deleteSlice，该deleteSlice描述了作用于DWPT中的文档的删除信息，该删除信息最后会保存在DWPT的私有BufferedUpdates中，另外我们还介绍了一个全局的删除队列deleteQueue，它描述了所有的删除信息，该删除信息会被保存在全局BufferedUpdates（源码中的变量名是globalBufferedUpdates）中。</p>
 <h5 id="生成frozenbufferedupdates并清空全局bufferedupdates"><a class="markdownIt-Anchor" href="#生成frozenbufferedupdates并清空全局bufferedupdates"></a> 生成FrozenBufferedUpdates并清空全局BufferedUpdates</h5>
@@ -373,10 +313,10 @@
 <p>  有两个线程ThreadA、ThreadB，他们都是执行添加文档的操作，并且假设他们在执行完添加操作后两个线程中的DWPT都会生成一个段，并且全局删除队列deleteQueue为空。</p>
 <p>  ThreadA在执行完添加操作之后，其他线程新增了一个删除信息（对应图6中的TermNode）到全局删除队列deleteQueue中，当ThreadA中的DWPT执行doFlush时，更新DWPT私有的deleteSlice（即更新deleteSlice中的sliceTail，deleteSlice的概念见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>），并且全局的删除信息会被冻结到全局FrozenBufferedUpdates（包含TermNode对应的删除信息），我们称之为F1，即删除信息TermNode将要作用于<strong>已有的段中的文档</strong>。</p>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/7.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/7.png"  >
 <p>ThreadB在执行完添加操作之后，其他线程新增了一个删除信息（对应图7中的QueryArrayNode）到全局删除队列deleteQueue中，当ThreadB中的DWPT执行doFlush时，更新DWPT私有的deleteSlice，并且全局的删除信息会被冻结到全局FrozenBufferedUpdates（包含QueryArrayNode、TermNode对应的删除信息），我们称之为F2，即删除信息QueryArrayNode、TermNode将要作用于<strong>已有的段中的文档</strong>。</p>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/8.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（二）/8.png"  >
 <p>  如果此时ThreadB优先ThreadA先生成一个段，那么F2中的删除信息，即QueryNode无法作用于ThreadA中的DWPT对应的段中的文档，并且在上面的例子中，F1中的删除信息还会错误的作用到ThreadB中的DWPT对应的段中的文档。</p>
 <p>  如果能同步两个线程的操作，那么在上面的例子中ThreadA中的DWPT会先生成一个段，并且F1中的删除信息TermNode作用于已有的段中的文档，然后清空全局BufferedUpdates，接着ThreadB中的DWPT会先生成一个段，并且F2中的删除信息QueryArrayNode（注意F2包含的删除信息只有一个QueryArrayNode）能作用于ThreadA中的DWPT对应生成的段以及其他已有的段中的文档，最后清空全局BufferedUpdates。</p>
 <p>  上面的描述同时解释了为什么不允许主动flush跟自动flush同时进入<code>执行DWPT的doFlush()的流程图</code>这个流程点，自动flush中的删除信息可能会无法作用于主动flush中所有的DWPT对应的段中的文档。</p>
@@ -385,7 +325,6 @@
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%BA%8C%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -406,59 +345,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89/"
                                    title="文档提交之flush（三）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">文档提交之flush（三）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -466,7 +370,7 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/Index/2019/0716/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%80%EF%BC%89/"
@@ -476,8 +380,8 @@
                                         <span class="post-nav-title-item text-ellipsis">文档提交之flush（一）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -489,81 +393,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -573,78 +402,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 文档提交之flush的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush"><span class="nav-number">1.1.</span> <span class="nav-text"> 执行DWPT的doFlush()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 执行DWPT的doFlush()的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E5%87%BA%E4%B8%80%E4%B8%AAdwpt"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 取出一个DWPT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%8B%96%E5%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 更新拖延状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%85%A8%E5%B1%80bufferedupdates-%E6%9B%B4%E6%96%B0dwpt%E7%9A%84%E7%A7%81%E6%9C%89bufferedupdates"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"> 处理全局BufferedUpdates、更新DWPT的私有BufferedUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%9F%E6%88%90frozenbufferedupdates%E5%B9%B6%E6%B8%85%E7%A9%BA%E5%85%A8%E5%B1%80bufferedupdates"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text"> 生成FrozenBufferedUpdates并清空全局BufferedUpdates</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#flushticket%E6%B7%BB%E5%8A%A0%E5%88%B0ticketqueue"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text"> FlushTicket添加到TicketQueue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0dwpt%E7%9A%84%E7%A7%81%E6%9C%89bufferedupdates"><span class="nav-number">1.1.1.3.3.</span> <span class="nav-text"> 更新DWPT的私有BufferedUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.1.3.3.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -652,23 +436,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -687,7 +467,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -701,15 +481,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -733,48 +505,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 文档提交之flush的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush"><span class="nav-number">1.1.</span> <span class="nav-text"> 执行DWPT的doFlush()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cdwpt%E7%9A%84doflush%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 执行DWPT的doFlush()的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E5%87%BA%E4%B8%80%E4%B8%AAdwpt"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 取出一个DWPT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%8B%96%E5%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 更新拖延状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%85%A8%E5%B1%80bufferedupdates-%E6%9B%B4%E6%96%B0dwpt%E7%9A%84%E7%A7%81%E6%9C%89bufferedupdates"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"> 处理全局BufferedUpdates、更新DWPT的私有BufferedUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%9F%E6%88%90frozenbufferedupdates%E5%B9%B6%E6%B8%85%E7%A9%BA%E5%85%A8%E5%B1%80bufferedupdates"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text"> 生成FrozenBufferedUpdates并清空全局BufferedUpdates</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#flushticket%E6%B7%BB%E5%8A%A0%E5%88%B0ticketqueue"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text"> FlushTicket添加到TicketQueue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0dwpt%E7%9A%84%E7%A7%81%E6%9C%89bufferedupdates"><span class="nav-number">1.1.1.3.3.</span> <span class="nav-text"> 更新DWPT的私有BufferedUpdates</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.1.3.3.1.</span> <span class="nav-text"> 例子</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -788,7 +520,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -796,13 +530,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -817,28 +544,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

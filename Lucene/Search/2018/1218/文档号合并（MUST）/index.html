@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             文档号合并（MUST） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         文档号合并（MUST）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2018-12-18 00:00:00</span>
-                <span class="mobile">2018-12-18 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2018-12-18 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Mon Oct 09 2023 09:48:38 GMT+0800">2023-10-09 09:48:38</span>
+                <span class="datetime" data-updated="Mon Oct 09 2023 09:48:38 GMT+0800">2023-10-09 09:48:38</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Search/">Search</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/MUST/">MUST</a></li>
                         
@@ -271,15 +219,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>979 Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -291,55 +231,54 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  这种Query组合的文档号合并的代码是在ConjunctionDISI类中实现。本文通过一个例子来介绍文档号合并逻辑，这篇文章中对于每个关键字如何获得包含它的文档号，不作详细描述，大家可以去看我添加了详细注释的ConjunctionDISI类，相信能一目了然。GitHub地址是：<a class="link"   target="_blank" rel="noopener" href="https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/ConjunctionDISI.java%E3%80%82" >https://github.com/luxugang/Lucene-7.5.0/blob/master/solr-7.5.0/lucene/core/src/java/org/apache/lucene/search/ConjunctionDISI.java。<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h2>
 <p>  添加10篇文档到索引中。如下图：</p>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/1.png"  >
 <p>  使用WhiteSpaceAnalyzer进行分词。</p>
 <p>  查询条件如下图，<strong>MUST描述了满足查询要求的文档必须包含&quot;a&quot;、“b”、“c”、“e” 四个关键字。</strong></p>
 <p>图2：<br />
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/2.png"></p>
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/2.png"  ></p>
 <h2 id="文档号合并"><a class="markdownIt-Anchor" href="#文档号合并"></a> 文档号合并</h2>
 <p>  将包含各个关键字的文档分别放入到各自的数组中，数组元素是文档号。</p>
 <h4 id="包含a的文档号"><a class="markdownIt-Anchor" href="#包含a的文档号"></a> 包含“a”的文档号</h4>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/3.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/3.png"  >
 <h4 id="包含b的文档号"><a class="markdownIt-Anchor" href="#包含b的文档号"></a> 包含“b”的文档号</h4>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/4.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/4.png"  >
 <h4 id="包含c的文档号"><a class="markdownIt-Anchor" href="#包含c的文档号"></a> 包含“c”的文档号</h4>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/5.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/5.png"  >
 <h4 id="包含e的文档号"><a class="markdownIt-Anchor" href="#包含e的文档号"></a> 包含“e”的文档号</h4>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/6.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/6.png"  >
 <p>  <strong>由于满足查询要求的文档中必须都包含&quot;a&quot;、“b”、“c”、“e” 四个关键字，所以满足查询要求的文档个数最多是上面几个数组中最小的数组大小</strong>。</p>
 <p>  所以合并的逻辑即遍历数组大小最小的那个，在上面的例子中，即包含&quot;b&quot;的文档号的数组。每次遍历一个数组元素后，再去其他数组中匹配是否也包含这个文档号。遍历其他数组的顺序同样的按照数组元素大小从小到大的顺序，即包含**&quot;e&quot;的文档号 —&gt; 包含&quot;a&quot;的文档号 —&gt; 包含&quot;c&quot;的文档号**。</p>
 <h2 id="合并过程"><a class="markdownIt-Anchor" href="#合并过程"></a> 合并过程</h2>
 <p>  从包含&quot;b&quot;的文档号的数组中取出第一个文档号doc1的值 1，然后从包含&quot;e&quot;的文档号的数组中取出第一个不小于 doc1 (1)的文档号doc2的值，也就是5。</p>
 <p>  比较的结果就是 doc1 (1) ≠ doc2 (5)，那么没有必要继续跟其他数组作比较了。因为文档号1中不包含关键字&quot;e&quot;。</p>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/7.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/7.png"  >
 <p>  接着继续从包含&quot;b&quot;的文档号的数组中取出不小于doc2 (5)的值（<strong>在图7的比较过程中，我们已经确定文档号1~文档号5中都不同时包含关键字&quot;b&quot;跟&quot;e&quot;，所以下一个比较的文档号并不是直接从包含&quot;b&quot;的文档号的数组中取下一个值，即2，而是根据包含&quot;e&quot;的文档号的数组中的doc2(5)的值，从包含&quot;b&quot;的文档号的数组中取出不小于5的值，即9</strong>），也就是 9，doc1更新为9，然后再包含&quot;e&quot;的文档号的数组中取出不小于doc1(9)，也就是doc2的值被更新为 9：</p>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/8.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/8.png"  >
 <p>  比较的结果就是 doc1 (9) = doc2 (9), 那么我们就需要继续跟剩余的其他数组元素进行比较了，从包含&quot;a&quot;的文档号数组中取出不小于doc1 (9)的 文档号doc3的值，也就是 9：</p>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/9.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/9.png"  >
 <p>  这时候由于 doc1 (9) = doc3 (9)，所以需要继续跟包含&quot;c&quot;的文档号的数组中的元素进行比较，从包含&quot;c&quot;的文档号的数组中取出不小于doc1 (9)的文档号doc4的值，也就是9:</p>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/10.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/多个MUST文档号合并/10.png"  >
 <p>  至此所有的数组都遍历结束，并且文档号9都在在所有数组中出现，即文档号9满足查询要求。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  本文介绍了使用BooleanQuery并且所有的TermQuery之间是MUST关系的文档号合并原理，在后面的文章中会依次介绍 SHOULD、MUST、MUST_NOT、FILTER的TermQuery的文档号合并原理。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/%E5%A4%9A%E4%B8%AAMUST%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6/%E5%A4%9A%E4%B8%AAMUST%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6.zip" >点击下载<i class="fas fa-external-link-alt"></i></a>Markdown文档</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -360,59 +299,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/yasuocunchu/2019/0130/%E5%8E%BB%E9%87%8D%E7%BC%96%E7%A0%81/"
                                    title="去重编码"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">去重编码</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -420,7 +324,7 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/Search/2018/1217/%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6%EF%BC%88SHOULD%EF%BC%89/"
@@ -430,8 +334,8 @@
                                         <span class="post-nav-title-item text-ellipsis">文档号合并（SHOULD）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -443,81 +347,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -527,78 +356,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6"><span class="nav-number">2.</span> <span class="nav-text"> 文档号合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABa%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 包含“a”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABb%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.2.</span> <span class="nav-text"> 包含“b”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABc%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.3.</span> <span class="nav-text"> 包含“c”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABe%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.4.</span> <span class="nav-text"> 包含“e”的文档号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 合并过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -606,23 +390,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -641,7 +421,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -655,15 +435,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -687,48 +459,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text"> 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8F%B7%E5%90%88%E5%B9%B6"><span class="nav-number">2.</span> <span class="nav-text"> 文档号合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABa%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 包含“a”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABb%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.2.</span> <span class="nav-text"> 包含“b”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABc%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.3.</span> <span class="nav-text"> 包含“c”的文档号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABe%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7"><span class="nav-number">2.0.4.</span> <span class="nav-text"> 包含“e”的文档号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text"> 合并过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -742,7 +474,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -750,13 +484,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -771,28 +498,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

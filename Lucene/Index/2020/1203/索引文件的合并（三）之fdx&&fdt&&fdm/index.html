@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             索引文件的合并（三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         索引文件的合并（三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2020-12-03 00:00:00</span>
-                <span class="mobile">2020-12-03 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-12-03 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Wed Oct 11 2023 15:23:52 GMT+0800">2023-10-11 15:23:52</span>
+                <span class="datetime" data-updated="Wed Oct 11 2023 15:23:52 GMT+0800">2023-10-11 15:23:52</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Index/">Index</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
                         
@@ -277,15 +225,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.8k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -297,16 +237,16 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  本文承接文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1202/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>，继续介绍剩余的内容，下面先给出索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图。</p>
 <h2 id="索引文件fdxfdtfdm的合并流程图"><a class="markdownIt-Anchor" href="#索引文件fdxfdtfdm的合并流程图"></a> 索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图</h2>
 <p>图1：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/1.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/1.png"  >
 <h3 id="未配置indexsort"><a class="markdownIt-Anchor" href="#未配置indexsort"></a> 未配置IndexSort</h3>
 <p>图2：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/2.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/2.png"  >
 <p>  如果当前执行合并操作的IndexWriter中没有配置<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89" >IndexSort<i class="fas fa-external-link-alt"></i></a>，那么依次读取每一个待合并的段，依次读取段中的每篇文档的索引信息即可。回顾下在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1202/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中，当IndexWriter设置了IndexSort，处理过程为从一个优先级队列中的待合并的段中选出一个优先级最高的段，并从这个段的选出一篇文档作为下一次处理的候选者。</p>
 <p>  根据<strong>当前正在处理的某个待合并的段的一些信息</strong>，下文中我们称这个段为**“旧段”**，去匹配图2中的两个条件来选择不同的合并方式。合并方式描述的是如何读取旧的索引文件以及如何生成新的索引文件。</p>
 <h4 id="满足bulk-merge的条件"><a class="markdownIt-Anchor" href="#满足bulk-merge的条件"></a> 满足bulk merge的条件</h4>
@@ -324,11 +264,11 @@
 </ul>
 <p>  这三个条件的判断对应源码 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/codecs/compressing/CompressingStoredFieldsWriter.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/solr-8.4.0/lucene/core/src/java/org/apache/lucene/codecs/compressing/CompressingStoredFieldsWriter.java<i class="fas fa-external-link-alt"></i></a> 中的下面的代码：</p>
 <p>图3：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/3.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/3.png"  >
 <p>  图3中，matchingFieldReader为null说明旧段不是CompressingStoredFieldsReader对象，即557行代码的注释中所谓的other format。</p>
 <p><strong>还有哪些其他的format：</strong></p>
 <p>图4：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/4.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/4.png"  >
 <p>  图4中读取段的reader在Lucene core的模块中主要有两种读取方式，对应上述的两种StoredFieldsReader的实现。</p>
 <p>  当满足条件一后，旧段中所有文档对应的合并方式都是用naive merge，该合并方式在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/1202/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>中已经介绍，不赘述。</p>
 <h5 id="是否满足条件2"><a class="markdownIt-Anchor" href="#是否满足条件2"></a> 是否满足条件2？</h5>
@@ -351,7 +291,7 @@
 </li>
 </ul>
 <p>    图5：</p>
-<p>    <img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/5.png"></p>
+<p>    <img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/5.png"  ></p>
 <ul>
 <li>子条件四：旧段中不能有被标记为删除的文档，如果没有那么满足子条件四
 <ul>
@@ -367,7 +307,7 @@
 <h5 id="第二步将chunk的信息写入到新的索引文件中"><a class="markdownIt-Anchor" href="#第二步将chunk的信息写入到新的索引文件中"></a> 第二步：将Chunk的信息写入到新的索引文件中</h5>
 <p>  获取了一个Chunk在旧段中的开始跟结束位置之后，就可以通过字节流拷贝实现所谓的bulk merge：</p>
 <p>图6：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/6.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/6.png"  >
 <p>  bulk merge与naive merge/optimized merge相比，它不用读取Chunk中的内容，意味着免除了Chunk中各个字段的解压解码的过程，即不需要额外的内存来暂存解压解码后的Chunk的信息。关于Chunk中各个字段的编码压缩的介绍见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm" >索引文件的读取（十五）之fdx&amp;&amp;fdt&amp;&amp;fdm<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>  我们回顾下满足bulk merge的条件2，合并后的索引文件.fdx在读取阶段如果不满足子条件一、子条件二，那么会因为不同的压缩模式无法读取域值信息；如果不满足子条件三，那么会因为不同的压缩算法无法读取Chunk中的DocFieldCounts跟DocLengths字段；如果不满足子条件四，源码中给出的解释为：its not worth fine-graining this if there are deletions，个人感觉是为了符合索引文件合并的设计初衷之一：处理被删除的信息、LSM的设计原则？或者是需要额外生成一个新段对应的索引文件.liv来记录删除信息是not worth fine-graining的？这个我没有深刻的明白这个子条件的用意；</p>
 <h4 id="子条件五"><a class="markdownIt-Anchor" href="#子条件五"></a> 子条件五</h4>
@@ -384,16 +324,16 @@
 </li>
 </ul>
 <p>    图7：</p>
-<p>    <img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/7.png"></p>
+<p>    <img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/7.png"  ></p>
 <p>   图7中，candidate描述的就是待合并的某个段。</p>
 <h6 id="dirty-docs"><a class="markdownIt-Anchor" href="#dirty-docs"></a> dirty docs</h6>
 <p>  每当DWPT生成一个段或者合并后生成的新段后，会统计一个dirty docs的数量，它将被写入到索引文件中：</p>
 <p>图8：</p>
-<img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/8.png">
+<img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/8.png"  >
 <p>  <strong>如何计算dirty docs的数量</strong></p>
 <p>  先给出在源码中的计算公式：</p>
 <p>    图9：</p>
-<p>    <img src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/9.png"></p>
+<p>    <img     src="https://www.amazingkoala.com.cn/uploads/lucene/index/索引文件的合并/索引文件的合并（三）/9.png"  ></p>
 <p>  图9的公式中：</p>
 <ul>
 <li>maxDocsPerChunk描述的是一个Chunk中最多允许存储的文档数量</li>
@@ -409,7 +349,6 @@
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/attachment/Lucene/Index/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%B8%89%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -438,59 +377,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Index/2020/1208/ReaderPool%EF%BC%88%E4%B8%80%EF%BC%89/"
                                    title="ReaderPool（一）（Lucene 8.7.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">ReaderPool（一）（Lucene 8.7.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -498,18 +402,18 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/Lucene/Index/2020/1202/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bfdx&amp;&amp;fdt&amp;&amp;fdm/"
+                                   href="/Lucene/Index/2020/1202/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/"
                                    title="索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0）"
                                 >
                                     <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">索引文件的合并（二）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.7.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -521,81 +425,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -605,78 +434,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdxfdtfdm%E7%9A%84%E5%90%88%E5%B9%B6%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%85%8D%E7%BD%AEindexsort"><span class="nav-number">1.1.</span> <span class="nav-text"> 未配置IndexSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%A1%E8%B6%B3bulk-merge%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 满足bulk merge的条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B61"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 是否满足条件1？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B62"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 是否满足条件2？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cbulk-merge"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 执行bulk merge</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E4%BB%8E%E6%97%A7%E6%AE%B5%E4%B8%AD%E6%89%BE%E5%88%B0chunk%E5%9C%A8%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdx%E4%B8%AD%E5%BC%80%E5%A7%8B%E8%B7%9F%E7%BB%93%E6%9D%9F%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> 第一步：从旧段中找到Chunk在索引文件.fdx中开始跟结束位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%B0%86chunk%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E6%96%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> 第二步：将Chunk的信息写入到新的索引文件中</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E6%9D%A1%E4%BB%B6%E4%BA%94"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 子条件五</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dirty-chunk"><span class="nav-number">1.1.3.1.</span> <span class="nav-text"> dirty chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#dirty-docs"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text"> dirty docs</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -684,23 +468,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -719,7 +499,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -733,15 +513,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -765,48 +537,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdxfdtfdm%E7%9A%84%E5%90%88%E5%B9%B6%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的合并流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%85%8D%E7%BD%AEindexsort"><span class="nav-number">1.1.</span> <span class="nav-text"> 未配置IndexSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%A1%E8%B6%B3bulk-merge%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 满足bulk merge的条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B61"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 是否满足条件1？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B62"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 是否满足条件2？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cbulk-merge"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 执行bulk merge</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E4%BB%8E%E6%97%A7%E6%AE%B5%E4%B8%AD%E6%89%BE%E5%88%B0chunk%E5%9C%A8%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6fdx%E4%B8%AD%E5%BC%80%E5%A7%8B%E8%B7%9F%E7%BB%93%E6%9D%9F%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> 第一步：从旧段中找到Chunk在索引文件.fdx中开始跟结束位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%B0%86chunk%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%88%B0%E6%96%B0%E7%9A%84%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> 第二步：将Chunk的信息写入到新的索引文件中</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E6%9D%A1%E4%BB%B6%E4%BA%94"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 子条件五</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dirty-chunk"><span class="nav-number">1.1.3.1.</span> <span class="nav-text"> dirty chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#dirty-docs"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text"> dirty docs</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -820,7 +552,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -828,13 +562,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -849,28 +576,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

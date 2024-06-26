@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -33,10 +33,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -45,15 +45,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -61,17 +59,17 @@
     <div class="page-main-content border-box is-home">
         <div class="page-main-content-top">
             
-<header class="header-wrapper transparent-1">
+<header class="header-wrapper">
 
     <div class="border-box header-content">
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -79,56 +77,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -140,29 +112,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
-                <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/">首页</a>
-                </li>
-            
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -178,25 +139,25 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
                     <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list border-box">
+    
+    <ul class="home-post-list border-box">
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/DocValues/2020/1121/BinaryDocValues-8-7-0/">
                             BinaryDocValues（Lucene 8.7.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在文章BinaryDocValues中我们介绍了Lucene 7.5.0版本的数据结构，并且在文章索引文件的生成（二十一）之dvm&amp;&amp;dvd中介绍了Lucene 8.4.0中其数据结构的生成。阅读本文前建议先看下上述的两篇文章，因...
                         
@@ -204,49 +165,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Thu Sep 28 2023 14:42:35 GMT+0800">2023-09-28 14:42:35</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/DocValues/">DocValues</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Sep 28 2023 14:42:35 GMT+0800"
+                >2023-09-28 14:42:35</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DocValues/">DocValues</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -256,26 +188,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/DocValues/2020/1121/BinaryDocValues-8-7-0/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/DocValues/2020/1121/BinaryDocValues-8-7-0/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/suoyinwenjian/2020/1117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvd&&tvx&&tvm/">
                             索引文件之tvd&amp;&amp;tvx&amp;&amp;tvm（Lucene 8.7.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在索引（Indexing）阶段，当某个域被设置为需要记录词向量（term vector）信息后，那么随后在flush阶段，该域对应的词向量将被写入到索引文件.tvd&amp;&amp;tvx&amp;&amp;tvm三个文件中。
 图1：
@@ -286,61 +218,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 14:06:52 GMT+0800">2023-09-30 14:06:52</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Sep 30 2023 14:06:52 GMT+0800"
+                >2023-09-30 14:06:52</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvd/">tvd</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvx/">tvx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tvm/">tvm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -350,26 +241,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvd&&tvx&&tvm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1117/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btvd&&tvx&&tvm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
                             索引文件的读取（十五）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本文承接文章索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm，继续介绍剩余的内容。为了更好的理解下文中的内容，建议先阅读文章DirectMonotonicWriter&amp;&amp;Reader。下面先给出读...
                         
@@ -377,58 +268,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 14:31:31 GMT+0800">2023-10-09 14:31:31</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 14:31:31 GMT+0800"
+                >2023-10-09 14:31:31</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -438,26 +291,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2020/1113/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/2020/1106/Changes-8-7-0/">
                             Changes（Lucene 8.7.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               2020年11月3号，Lucene发布了最新的版本8.7.0，本篇文章将会对Change Log中几个变更展开介绍下。
  LUCENE-9510
@@ -468,41 +321,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Thu Sep 28 2023 16:20:57 GMT+0800">2023-09-28 16:20:57</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Sep 28 2023 16:20:57 GMT+0800"
+                >2023-09-28 16:20:57</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Changes/">Changes</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -512,26 +344,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/2020/1106/Changes-8-7-0/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/2020/1106/Changes-8-7-0/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
                             索引文件的读取（十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.4.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在前几篇索引文件的读取的系列文章中，我们介绍索引文件tim&amp;&amp;tip的读取时机点时说到，在生成StandardDirectoryReader对象期间，会生成SegmentReader对象，该对象中的StoredFieldsRead...
                         
@@ -539,58 +371,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 14:26:11 GMT+0800">2023-10-09 14:26:11</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 14:26:11 GMT+0800"
+                >2023-10-09 14:26:11</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -600,26 +394,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2020/1102/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&&Reader/">
                             DirectMonotonicWriter&amp;&amp;Reader
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                              DirectMonotonicWriter&amp;&amp;Reader
   DirectMonotonicWriter类用来存储单调递增的整数序列（monotonically-increasing sequences of integers），...
@@ -628,55 +422,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 12:32:34 GMT+0800">2023-10-08 12:32:34</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Oct 08 2023 12:32:34 GMT+0800"
+                >2023-10-08 12:32:34</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/encode/">encode</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/decode/">decode</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -686,26 +445,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&&Reader/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/yasuocunchu/2020/1030/DirectMonotonicWriter&&Reader/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&kdi&kdm/">
                             索引文件之kdd&amp;kdi&amp;kdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               从Lucene8.6.0开始，用于存储点数据（point value）的索引文件由原先的两个索引文件dim&amp;&amp;dii，改为三个索引文件kdd&amp;kdi&amp;kdm。由于生成kdd&amp;kdi&amp;kdm的过程基本...
                         
@@ -713,61 +472,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 13:28:14 GMT+0800">2023-09-30 13:28:14</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Sep 30 2023 13:28:14 GMT+0800"
+                >2023-09-30 13:28:14</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdd/">kdd</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdi/">kdi</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/kdm/">kdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -777,26 +495,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&kdi&kdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1027/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bkdd&kdi&kdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Index/2020/1016/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
                             索引文件的生成（二十四）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本文承接文章索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm，继续介绍剩余的内容，先给出生成索引文件fdx&amp;&amp;fdt&amp;&amp;fdm的流程图：
 图1：
@@ -808,55 +526,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 14:22:48 GMT+0800">2023-10-11 14:22:48</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Oct 11 2023 14:22:48 GMT+0800"
+                >2023-10-11 14:22:48</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -866,26 +549,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/1016/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/1016/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">
                             索引文件的生成（二十三）之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               从本篇文章开始介绍用于描述存储域（存储域的概念见文章索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm）的索引文件.fdx、.fdt、.fdm的生成过程，直接给出流程图：
 图1：
@@ -896,55 +579,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 18:07:37 GMT+0800">2023-10-11 18:07:37</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Oct 11 2023 18:07:37 GMT+0800"
+                >2023-10-11 18:07:37</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -954,26 +602,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2020/1015/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">
                             索引文件之fdx&amp;&amp;fdt&amp;&amp;fdm（Lucene 8.6.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在索引阶段，如果某个域的属性中包含store，意味着该域的域值信息将被写入到索引文件fdx&amp;&amp;fdt&amp;&amp;fdm中，域的属性可以通过FieldType来设置，如下所示：
 图1：
@@ -984,61 +632,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sat Sep 30 2023 00:10:46 GMT+0800">2023-09-30 00:10:46</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/suoyinwenjian/">suoyinwenjian</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Sep 30 2023 00:10:46 GMT+0800"
+                >2023-09-30 00:10:46</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/indexFile/">indexFile</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdx/">fdx</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdt/">fdt</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fdm/">fdm</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -1048,7 +655,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/suoyinwenjian/2020/1013/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bfdx&&fdt&&fdm/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -1090,63 +697,27 @@
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -1167,7 +738,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -1205,35 +776,6 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
     
@@ -1250,7 +792,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -1259,13 +803,6 @@
 
 <!-- local-search -->
 
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
-
 
 <!-- lazyload -->
 
@@ -1273,12 +810,21 @@
 <div class="">
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

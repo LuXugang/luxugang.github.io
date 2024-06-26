@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             HNSW图的构建（Lucene 9.8.0） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         HNSW图的构建（Lucene 9.8.0）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2024-01-18 00:00:00</span>
-                <span class="mobile">2024-01-18 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-01-18 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Fri Jan 19 2024 13:56:18 GMT+0800">2024-01-19 13:56:18</span>
+                <span class="datetime" data-updated="Fri Jan 19 2024 13:56:18 GMT+0800">2024-01-19 13:56:18</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Index/">Index</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/vec/">vec</a></li>
                         
@@ -289,15 +237,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.5k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -309,13 +249,13 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  Lucene基于论文<a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1603.09320" >Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs [2018]<i class="fas fa-external-link-alt"></i></a>实现了HNSW的逻辑，本篇文章结合<a class="link"   target="_blank" rel="noopener" href="https://chat.openai.com/share/04690eb3-4b9d-4382-a796-2efa381b443f" >ChatGPT-4<i class="fas fa-external-link-alt"></i></a>跟Lucene源码介绍构建过程中的实现细节，另外构建HNSW使用的索引数据结构可以参考文章<a class="link"   target="_blank" rel="noopener" href="https://amazingkoala.com.cn/Lucene/suoyinwenjian/2023/1023/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bvec&amp;vem&amp;vex/" >索引文件之vec&amp;vem&amp;vex（Lucene 9.8.0）<i class="fas fa-external-link-alt"></i></a>。</p>
 <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/1.png"  width="300">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/1.png"    width="300">
 <p>  我们先通过论文中的这张图，简要的介绍下构建完成的HNSW图的一些基本知识：</p>
 <ol>
 <li><strong>层次结构</strong>：HNSW图具有多层结构，每一层都是一个独立的图。层数通常是根据数据集的大小和复杂性确定的。在最高层（即图中的layer=2），节点数量最少，但每个节点覆盖的范围最广；而在最低层（即图中的layer=0），节点数量最多，但每个节点覆盖的范围相对较小。</li>
@@ -326,14 +266,14 @@
 <h2 id="实现原理"><a class="markdownIt-Anchor" href="#实现原理"></a> 实现原理</h2>
 <p>  我们通过一个新节点的添加/插入过程来介绍下Lucene中HNSW图的构建：</p>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/2.png"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/2.png"    width="800">
 <h3 id="新节点"><a class="markdownIt-Anchor" href="#新节点"></a> 新节点</h3>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/3.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/3.png"    width="500">
 <p>  Lucene中每一个Document只能有一个相同域名的向量，并且按照添加顺序为每一个向量映射一个节点编号（nodeId），它是一个从0开始递增的值。新节点在源码中即节点编号，当我们需要计算两个节点之间的距离时，就可以通过映射关系找到节点对应的向量值进行计算。</p>
 <h3 id="计算目标层级"><a class="markdownIt-Anchor" href="#计算目标层级"></a> 计算目标层级</h3>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/4.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/4.png"    width="500">
 <p>  目标层级是通过一个遵循指数分布计算出的随机数。</p>
 <p>  HNSW图具有多层结构，目标层级意味着新节点将被添加到哪些层中，并且在每一层与其他节点建立连接。</p>
 <p>  例如目标层级为3，那么这个节点将被依次添加到第3、2、1、0层中。</p>
@@ -342,11 +282,11 @@
 <p>  使用该公式基于的理论以及实验基础在论文有详细的介绍，本文不详细展开。</p>
 <h3 id="是否还有未处理的层级"><a class="markdownIt-Anchor" href="#是否还有未处理的层级"></a> 是否还有未处理的层级？</h3>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/5.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/5.png"    width="500">
 <p>  计算出目标层级后，将从最高层开始，从上往下逐层处理，直到新节点添加到所有层并建立与其他节点的连接，就完成了新节点的插入。</p>
 <h3 id="获取入口节点"><a class="markdownIt-Anchor" href="#获取入口节点"></a> 获取入口节点</h3>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/6.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/6.png"    width="500">
 <p>  入口节点（entry point）是指导新节点插入到某一层中的起始点（可能存在多个入口节点，见下文介绍）。</p>
 <p>  将新节点插入到某一层的目的是建立它在这层中跟其他节点的连接。因此一方面<strong>首先</strong>跟入口节点进行连接，另一方面基于贪心算法尝试与入口节点的邻居、入口节点的邻居的邻居等等建立连接。其过程将会在流程点<code>找出当前层的候选邻居</code>中详细展开。</p>
 <h4 id="入口节点的类型"><a class="markdownIt-Anchor" href="#入口节点的类型"></a> 入口节点的类型</h4>
@@ -358,7 +298,7 @@
 <h4 id="获取层级入口节点概述"><a class="markdownIt-Anchor" href="#获取层级入口节点概述"></a> 获取层级入口节点概述</h4>
 <p>  获取层级入口节点可以概括为两种情况，如下所示：</p>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/7.png"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/7.png"    width="800">
 <ul>
 <li><strong>目标层级 &gt; 当前层级（图中最高层）</strong>：在层级4、3、2中，添加新节点引入了新层，因此直接将新节点添加到这几层即可。添加过程中不需要考虑获取入口节点的问题；在层级1、0中，获取方式跟下面的另一种情况相同</li>
 <li><strong>目标层级 &lt;= 当前层级</strong>：
@@ -389,10 +329,10 @@
 </ul>
 <h3 id="找出当前层的候选邻居"><a class="markdownIt-Anchor" href="#找出当前层的候选邻居"></a> 找出当前层的候选邻居</h3>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/8.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/8.png"    width="500">
 <p>  <code>找出当前层的候选邻居</code>是一个贪心算法的<strong>搜索过程</strong>，它从入口节点卡开始，首先将其作为看起来最接近新节点的节点，如果一个节点的邻居看起来更接近新插入的节点，算法会转向那个邻居节点，并继续探索其邻居。最终找到TopN个距离<strong>较近</strong>（TopN中不一定是离新节点<strong>最近</strong>的节点），流程图如下：</p>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/9.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/9.png"    width="500">
 <h4 id="候选邻居集合"><a class="markdownIt-Anchor" href="#候选邻居集合"></a> 候选邻居集合</h4>
 <p>  候选节点集合的数据结构是一个最小堆，按照<code>节点距离</code>打分值排序，距离越近，打分值越高。<code>节点距离</code>描述的是新节点跟候选邻居的距离。</p>
 <h5 id="贪心算法的搜索过程中的一些知识点"><a class="markdownIt-Anchor" href="#贪心算法的搜索过程中的一些知识点"></a> 贪心算法的搜索过程中的一些知识点</h5>
@@ -412,7 +352,7 @@
 </ul>
 <h3 id="基于多样性筛选候选邻居"><a class="markdownIt-Anchor" href="#基于多样性筛选候选邻居"></a> 基于多样性筛选候选邻居</h3>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/10.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/10.png"    width="500">
 <p>  尽管在上一个流程点<code>找出当前层的候选邻居</code>中已经找到了TopN个&quot;足够近&quot;的邻居，但基于下面几个因素考虑，我们还要对这些邻居进行多样性的考察，不满足多样性的邻居则不会进行连接，并且通过计算邻居之间的距离实现多样性的检查：</p>
 <ul>
 <li>覆盖不同区域：如果一个节点的邻居彼此之间距离较远，这意味着它们覆盖了该节点周围的不同区域。这种分布有助于在搜索过程中快速定位到不同的区域，从而提高搜索的效率和准确性。</li>
@@ -425,13 +365,13 @@
 <h4 id="多样性检查"><a class="markdownIt-Anchor" href="#多样性检查"></a> 多样性检查</h4>
 <p>  检查流程图如下所示：</p>
 <p>图11：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/11.png"  width="600">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/11.png"    width="600">
 <h5 id="邻居集合"><a class="markdownIt-Anchor" href="#邻居集合"></a> 邻居集合</h5>
 <p>  邻居集合中的元素是从候选邻居集合中进行多样性检查后，筛选出的N个节点，它们将做新节点的正式邻居。</p>
 <p>  注意的是，第0层中，节点最多可以连接<code>2*maxConn</code>个邻居节点，其他层最多可以连接<code>maxConn</code>个，也就是邻居集合的大小。其中<code>maxConn</code>的默认值为16。</p>
 <p>  源码中通过NeighborArray对象来表示节点的邻居信息：</p>
 <p>图12：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/12.png"  width="600">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/12.png"    width="600">
 <ul>
 <li><strong>size</strong>：邻居的数量</li>
 <li><strong>score</strong>：节点跟邻居的距离打分值数组</li>
@@ -445,7 +385,7 @@
 <p>  从<code>scratch</code>中距离<strong>打分值最高</strong>的元素开始，比较它与邻居集合中<strong>每一个</strong>邻居的距离<code>d(邻居，新节点的其他邻居)</code>，如果至少存在一个其他邻居使得<code>d(邻居，新节点)</code>小于<code>d(邻居，新节点的其他邻居)</code>，则不满足多样性，如果满足则把这个候选邻居节点添加到邻居集合中，它将作为新节点在该层中的正式邻居。</p>
 <h3 id="尝试将新节点作为它邻居的新邻居"><a class="markdownIt-Anchor" href="#尝试将新节点作为它邻居的新邻居"></a> 尝试将新节点作为它邻居的新邻居</h3>
 <p>图13：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/13.png"  width="600">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/13.png"    width="600">
 <p>  这个流程点与图的更新策略密切相关。当新节点被添加到图中时，需要根据特定的规则或策略来更新图的结构。这包括上文中已经介绍的新节点的邻居列表应该包括哪些节点以及决定哪些现有节点应该将新节点加入其邻居列表。这些更新策略通常考虑以下几个方面：</p>
 <ul>
 <li><strong>保持图的连通性</strong>：更新策略旨在保持图的良好连通性，确保可以从任一节点有效地导航到其他节点。</li>
@@ -455,13 +395,12 @@
 <li><strong>适应数据变化</strong>：在动态变化的数据集中，更新策略有助于图适应新数据的加入，保持其反映数据集当前状态的能力。</li>
 </ul>
 <p>图14：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/14.png"  width="700">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/HNSW图的构建/14.png"    width="700">
 <p>  邻居集合中包含了新节点的正式邻居，并且已经跟他们建立了<strong>单向的</strong>连接。如果新节点的邻居的邻居列表还未达到连接数上限，即第0层的<code>2*maxConn</code>和其它层的<code>maxConn</code>，那么新节点就可以作为它邻居的邻居。否则先添加到邻居的邻居列表后，再进行多样性检查（检查逻辑同上文中的描述），移除多样性最差的节点，当然这个最差的节点可能是新节点，也有可能是其他节点。</p>
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  无</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -506,59 +445,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Index/2024/0126/ConstructinganHNSWGraph-html/"
                                    title="Constructing an HNSW Graph（Lucene 9.8.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">Constructing an HNSW Graph（Lucene 9.8.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -566,18 +470,18 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/Lucene/suoyinwenjian/2023/1225/vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex/"
+                                   href="/Lucene/suoyinwenjian/2023/1225/vec&vem&vemf&vemq&veq&vex/"
                                    title="索引文件之vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex（Lucene 9.9.0）"
                                 >
                                     <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">索引文件之vec&amp;vem&amp;vemf&amp;vemq&amp;veq&amp;vex（Lucene 9.9.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -589,81 +493,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -673,78 +502,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text"> 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%8A%82%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text"> 新节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%AE%E6%A0%87%E5%B1%82%E7%BA%A7"><span class="nav-number">2.2.</span> <span class="nav-text"> 计算目标层级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 计算公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84%E5%B1%82%E7%BA%A7"><span class="nav-number">2.3.</span> <span class="nav-text"> 是否还有未处理的层级？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text"> 获取入口节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 入口节点的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B1%82%E7%BA%A7%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9%E6%A6%82%E8%BF%B0"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 获取层级入口节点概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%90%E5%B1%82%E4%B8%8B%E9%99%8D%E8%80%8C%E4%B8%8D%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%88%B0%E8%BE%BE%E7%9B%AE%E6%A0%87%E5%B1%82%E7%BA%A7"><span class="nav-number">2.4.3.</span> <span class="nav-text"> 为什么逐层下降，而不是直接到达目标层级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E5%BD%93%E5%89%8D%E5%B1%82%E7%9A%84%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85"><span class="nav-number">2.5.</span> <span class="nav-text"> 找出当前层的候选邻居</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 候选邻居集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E6%90%9C%E7%B4%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.5.1.1.</span> <span class="nav-text"> 贪心算法的搜索过程中的一些知识点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%B3%E5%A4%9F%E8%BF%91%E7%9A%84%E9%82%BB%E5%B1%85%E5%92%8C%E7%BB%9D%E5%AF%B9%E6%9C%80%E8%BF%91%E7%9A%84%E9%82%BB%E5%B1%85"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 足够近的邻居和绝对最近的邻居</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%A0%B7%E6%80%A7%E7%AD%9B%E9%80%89%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85"><span class="nav-number">2.6.</span> <span class="nav-text"> 基于多样性筛选候选邻居</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 多样性检查</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88"><span class="nav-number">2.6.1.1.</span> <span class="nav-text"> 邻居集合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="nav-number">2.6.1.2.</span> <span class="nav-text"> 候选邻居集合排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E8%BF%9B%E8%A1%8C%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">2.6.1.3.</span> <span class="nav-text"> 逐个候选邻居进行多样性检查</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E5%B0%86%E6%96%B0%E8%8A%82%E7%82%B9%E4%BD%9C%E4%B8%BA%E5%AE%83%E9%82%BB%E5%B1%85%E7%9A%84%E6%96%B0%E9%82%BB%E5%B1%85"><span class="nav-number">2.7.</span> <span class="nav-text"> 尝试将新节点作为它邻居的新邻居</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -752,23 +536,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -787,7 +567,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -801,15 +581,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -833,48 +605,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text"> 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%8A%82%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text"> 新节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%AE%E6%A0%87%E5%B1%82%E7%BA%A7"><span class="nav-number">2.2.</span> <span class="nav-text"> 计算目标层级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 计算公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%98%E6%9C%89%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84%E5%B1%82%E7%BA%A7"><span class="nav-number">2.3.</span> <span class="nav-text"> 是否还有未处理的层级？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text"> 获取入口节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 入口节点的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B1%82%E7%BA%A7%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9%E6%A6%82%E8%BF%B0"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 获取层级入口节点概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%90%E5%B1%82%E4%B8%8B%E9%99%8D%E8%80%8C%E4%B8%8D%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%88%B0%E8%BE%BE%E7%9B%AE%E6%A0%87%E5%B1%82%E7%BA%A7"><span class="nav-number">2.4.3.</span> <span class="nav-text"> 为什么逐层下降，而不是直接到达目标层级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E5%BD%93%E5%89%8D%E5%B1%82%E7%9A%84%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85"><span class="nav-number">2.5.</span> <span class="nav-text"> 找出当前层的候选邻居</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 候选邻居集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E6%90%9C%E7%B4%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.5.1.1.</span> <span class="nav-text"> 贪心算法的搜索过程中的一些知识点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%B3%E5%A4%9F%E8%BF%91%E7%9A%84%E9%82%BB%E5%B1%85%E5%92%8C%E7%BB%9D%E5%AF%B9%E6%9C%80%E8%BF%91%E7%9A%84%E9%82%BB%E5%B1%85"><span class="nav-number">2.5.2.</span> <span class="nav-text"> 足够近的邻居和绝对最近的邻居</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A4%9A%E6%A0%B7%E6%80%A7%E7%AD%9B%E9%80%89%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85"><span class="nav-number">2.6.</span> <span class="nav-text"> 基于多样性筛选候选邻居</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 多样性检查</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88"><span class="nav-number">2.6.1.1.</span> <span class="nav-text"> 邻居集合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="nav-number">2.6.1.2.</span> <span class="nav-text"> 候选邻居集合排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E5%80%99%E9%80%89%E9%82%BB%E5%B1%85%E8%BF%9B%E8%A1%8C%E5%A4%9A%E6%A0%B7%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="nav-number">2.6.1.3.</span> <span class="nav-text"> 逐个候选邻居进行多样性检查</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E5%B0%86%E6%96%B0%E8%8A%82%E7%82%B9%E4%BD%9C%E4%B8%BA%E5%AE%83%E9%82%BB%E5%B1%85%E7%9A%84%E6%96%B0%E9%82%BB%E5%B1%85"><span class="nav-number">2.7.</span> <span class="nav-text"> 尝试将新节点作为它邻居的新邻居</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -888,7 +620,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -896,13 +630,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -917,28 +644,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

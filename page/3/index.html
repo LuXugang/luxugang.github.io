@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -33,10 +33,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -45,15 +45,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -61,17 +59,17 @@
     <div class="page-main-content border-box is-home">
         <div class="page-main-content-top">
             
-<header class="header-wrapper transparent-1">
+<header class="header-wrapper">
 
     <div class="border-box header-content">
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -79,56 +77,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -140,29 +112,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
-                <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/">首页</a>
-                </li>
-            
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -178,25 +139,25 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
                     <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list border-box">
+    
+    <ul class="home-post-list border-box">
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0902/GeoQuery%EF%BC%88%E4%BA%8C%EF%BC%89/">
                             GeoQuery（二）（Lucene 8.8.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                              GeoQuery（二）（Lucene 8.8.0）
   在上一篇文章GeoQuery（一）中，我们基于下面的例子介绍了在GeoHash编码在Elasticsearch中的部分实现，我们继续介绍其剩余内容。
@@ -206,58 +167,20 @@
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 16:18:07 GMT+0800">2023-10-09 16:18:07</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 16:18:07 GMT+0800"
+                >2023-10-09 16:18:07</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/geo/">geo</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -267,26 +190,26 @@
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0902/GeoQuery%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0902/GeoQuery%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0817/GeoQuery%EF%BC%88%E4%B8%80%EF%BC%89/">
                             GeoQuery（一）（Lucene 8.8.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本系列文章将介绍下Elasticsearch中提供的几个地理查询（Geo Query）在Lucene层的相关内容。Elasticsearch 7.13版本中提供了以下的Geo Queries：
 
@@ -297,58 +220,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 16:15:41 GMT+0800">2023-10-09 16:15:41</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 16:15:41 GMT+0800"
+                >2023-10-09 16:15:41</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/geo/">geo</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dim/">dim</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/dii/">dii</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -358,26 +243,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0817/GeoQuery%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0817/GeoQuery%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0804/DisjunctionMaxQuery%EF%BC%88%E4%B8%80%EF%BC%89/">
                             DisjunctionMaxQuery（Lucene 8.9.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本系列的内容将会先介绍DisjunctionMaxQuery在Lucene中的实现原理，随后再介绍在Elasticsearch中的应用。我们先直接通过图1中DisjunctionMaxQuery的注释跟图2的构造函数来简单了解下这个Query的功...
                         
@@ -385,52 +270,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 15:51:19 GMT+0800">2023-10-09 15:51:19</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 15:51:19 GMT+0800"
+                >2023-10-09 15:51:19</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DisjunctionMaxQuery/">DisjunctionMaxQuery</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -440,26 +293,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0804/DisjunctionMaxQuery%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0804/DisjunctionMaxQuery%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0710/IndexOrDocValuesQuery/">
                             IndexOrDocValuesQuery（Lucene 8.9.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本篇文章介绍下Lucene中用于优化范围（数值类型point或者term类型）查询的Query：IndexOrDocValuesQuery。
   我们先通过这篇BLOG（如果链接失效，可以查看附件中的PDF）来概述下为什么会设计IndexOrDo...
@@ -468,52 +321,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Mon Oct 09 2023 16:28:47 GMT+0800">2023-10-09 16:28:47</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Oct 09 2023 16:28:47 GMT+0800"
+                >2023-10-09 16:28:47</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IndexOrDocValuesQuery/">IndexOrDocValuesQuery</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -523,26 +344,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0710/IndexOrDocValuesQuery/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0710/IndexOrDocValuesQuery/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0629/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%BA%8C%EF%BC%89/">
                             查询TopN的优化之NumericDocValues（二）（Lucene 8.9.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在上一篇文章的结尾，我们总结了使用NumericDocValues优化查询TopN的原理：假设查询TopN的排序规则为按照正排值从小大小的顺序，即正排值越小，优先级越高。故在开启优化后，当收集器收到一个文档号，先根据文档号从正排索引中拿到正排值，...
                         
@@ -550,58 +371,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 22:29:57 GMT+0800">2023-10-08 22:29:57</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Oct 08 2023 22:29:57 GMT+0800"
+                >2023-10-08 22:29:57</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/optimization/">optimization</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/topN/">topN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NumericDocValues/">NumericDocValues</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -611,26 +394,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0629/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0629/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/gongjulei/2021/0623/DocIdSet/">
                             DocIdSet（Lucene 8.9.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               本篇文章将介绍Lucene中用于存储文档号的数据结构DocIdSet，该抽象类的具体实现有以下几种，我们将一一介绍。
 图1：
@@ -641,55 +424,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 14:55:08 GMT+0800">2023-10-08 14:55:08</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/gongjulei/">gongjulei</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Oct 08 2023 14:55:08 GMT+0800"
+                >2023-10-08 14:55:08</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/disi/">disi</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docId/">docId</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docIdSet/">docIdSet</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -699,26 +447,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/gongjulei/2021/0623/DocIdSet/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/gongjulei/2021/0623/DocIdSet/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Search/2021/0621/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%B8%80%EF%BC%89/">
                             查询TopN的优化之NumericDocValues（一）（Lucene 8.9.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在索引阶段，我们可以在每一篇文档中添加一条或多条DocValues信息（正排），使得在查询阶段，当收集器Collector收集到满足查询条件的文档号后，可以根据文档号找到对应的正排信息，并依据正排信息对查询结果进行排序。
 图1：
@@ -729,58 +477,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Sun Oct 08 2023 22:25:21 GMT+0800">2023-10-08 22:25:21</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Oct 08 2023 22:25:21 GMT+0800"
+                >2023-10-08 22:25:21</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/query/">query</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/optimization/">optimization</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/topN/">topN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NumericDocValues/">NumericDocValues</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -790,26 +500,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Search/2021/0621/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Search/2021/0621/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Index/2021/0603/ForceMerge%EF%BC%88%E4%BA%8C%EF%BC%89/">
                             ForceMerge（二）（Lucene 8.8.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               我们紧接文章ForceMerge（一），继续介绍剩余的内容，先给出强制合并的流程图：
 图1：
@@ -823,52 +533,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:54:00 GMT+0800">2023-10-11 15:54:00</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Oct 11 2023 15:54:00 GMT+0800"
+                >2023-10-11 15:54:00</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/forceMerge/">forceMerge</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -878,26 +556,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2021/0603/ForceMerge%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2021/0603/ForceMerge%EF%BC%88%E4%BA%8C%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Index/2021/0527/ForceMerge%EF%BC%88%E4%B8%80%EF%BC%89/">
                             ForceMerge（一）（Lucene 8.8.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               在执行了flush、commit等方法后，Lucene会基于段的合并策略对索引目录中的段集合进行合并操作。Lucene在IndexWriter类中也提供了额外的方法允许用户可以主动去执行段的合并操作。
  ForceMerge概述
@@ -907,52 +585,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:49:56 GMT+0800">2023-10-11 15:49:56</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Oct 11 2023 15:49:56 GMT+0800"
+                >2023-10-11 15:49:56</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/merge/">merge</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/forceMerge/">forceMerge</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -962,26 +608,26 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2021/0527/ForceMerge%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2021/0527/ForceMerge%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
                 </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <div class="home-article-item-bottom border-box">
+                <div class="home-post-item-bottom border-box">
                     
-                    <h3 class="home-article-title border-box">
+                    <h3 class="home-post-title border-box">
                         <a href="/Lucene/Index/2021/0426/MemoryIndex%EF%BC%88%E4%B8%80%EF%BC%89/">
                             MemoryIndex（一）（Lucene 8.8.0）
                         </a>
                     </h3>
 
-                    <div class="home-article-content keep-markdown-body">
+                    <div class="home-post-content keep-markdown-body">
                         
                               从本篇文章开始介绍Lucene中提供的基于内存的搜索引擎的内容。我们通过MemoryIndex类的注释简单的了解下。
 图1：
@@ -994,52 +640,20 @@ ge...
 
                     
 
-<div class="article-meta-info-container border-box home">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-article-history" data-updated="Wed Oct 11 2023 15:06:54 GMT+0800">2023-10-11 15:06:54</span>
-            </span>
-        
-
-
-        
-
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
-                        
-                    
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
-                        
-                    
-                </ul>
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Oct 11 2023 15:06:54 GMT+0800"
+                >2023-10-11 15:06:54</span>
             </span>
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/index/">index</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/memoryIndex/">memoryIndex</a></li>
-                        
-                    
-                </ul>
-            </span>
+
+        
+
         
 
         
@@ -1049,7 +663,7 @@ ge...
     </div>
 
     
-        <a class="home-read-more" href="/Lucene/Index/2021/0426/MemoryIndex%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angles-right"></i></a>
+        <a class="home-read-more" href="/Lucene/Index/2021/0426/MemoryIndex%EF%BC%88%E4%B8%80%EF%BC%89/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -1091,63 +705,27 @@ ge...
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -1168,7 +746,7 @@ ge...
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -1206,35 +784,6 @@ ge...
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
     
@@ -1251,7 +800,9 @@ ge...
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -1260,13 +811,6 @@ ge...
 
 <!-- local-search -->
 
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
-
 
 <!-- lazyload -->
 
@@ -1274,12 +818,21 @@ ge...
 <div class="">
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

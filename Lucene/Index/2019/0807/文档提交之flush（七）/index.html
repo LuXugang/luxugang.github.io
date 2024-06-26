@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             文档提交之flush（七） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         文档提交之flush（七）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2019-08-07 00:00:00</span>
-                <span class="mobile">2019-08-07 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-08-07 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Tue Oct 10 2023 21:25:31 GMT+0800">2023-10-10 21:25:31</span>
+                <span class="datetime" data-updated="Tue Oct 10 2023 21:25:31 GMT+0800">2023-10-10 21:25:31</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Index/">Index</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Index/">Index</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/flush/">flush</a></li>
                         
@@ -271,15 +219,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.8k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -291,13 +231,13 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  本文承接<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>，继续依次介绍每一个流程点。</p>
 <h1 id="文档提交之flush的整体流程图"><a class="markdownIt-Anchor" href="#文档提交之flush的整体流程图"></a> 文档提交之flush的整体流程图</h1>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/1.png"  >
 <h1 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h1>
 <h2 id="setfrozenbufferedupdates-update"><a class="markdownIt-Anchor" href="#setfrozenbufferedupdates-update"></a> Set&lt;FrozenBufferedUpdates&gt; update</h2>
 <p>  update中存放的是FrozenBufferedUpdates的集合，在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>中FrozenBufferedUpdates获得nextGen的值之后，它会被添加到update容器中，在FrozenBufferedUpdates中的删除信息作用到段之后，从update中移除。</p>
@@ -311,7 +251,7 @@
 </ul>
 <h2 id="处理删除信息的流程图"><a class="markdownIt-Anchor" href="#处理删除信息的流程图"></a> 处理删除信息的流程图</h2>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/2.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/2.png"  >
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/uploads/lucene/index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89/%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF.html" >点击<i class="fas fa-external-link-alt"></i></a>查看大图</p>
 <p>  该流程在以下三种情况下会被调用：</p>
 <ul>
@@ -322,7 +262,7 @@
 <p>  上述的三种情况会发生并发执行同一个FrozenBufferedUpdates的作用（apply）删除信息工作。</p>
 <h3 id="是否已经处理过当前删除信息"><a class="markdownIt-Anchor" href="#是否已经处理过当前删除信息"></a> 是否已经处理过当前删除信息</h3>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/3.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/3.png"  >
 <p>  如上文中介绍，多线程可能同时执行同一个FrozenBufferedUpdates的作用（apply）删除信息的工作，即图2的流程，但只允许一个线程执行，否则会重复的处理删除信息，其他线程会被阻塞直到获得锁的线程执行完图2的流程。</p>
 <p>  <strong>通过什么方式判断其他线程已经处理过当前删除信息</strong>：</p>
 <ul>
@@ -334,11 +274,11 @@
 </ul>
 <h3 id="获得当前已经完成段合并的计数mergegenstart"><a class="markdownIt-Anchor" href="#获得当前已经完成段合并的计数mergegenstart"></a> 获得当前已经完成段合并的计数mergeGenStart</h3>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/4.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/4.png"  >
 <p>  执行段合并的线程在执行完一次段合并之后，会递增一个计数，即mergeGenStart，该值会在后面的流程介绍，这里只要知道获得mergeGenStart所在的流程点位置。</p>
 <h3 id="获得被作用的段集合infos"><a class="markdownIt-Anchor" href="#获得被作用的段集合infos"></a> 获得被作用的段集合infos</h3>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/5.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/5.png"  >
 <p>  在<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89" >文档提交之flush（六）<i class="fas fa-external-link-alt"></i></a>中我们了解到，描述新生成的段以及旧段的索引信息SegmentCommitInfo都存放在IndexWriter的全局变量SegmentInfos中，此流程从SegmentInfos找到那些将要被作用删除信息的段的集合，根据当前处理的FrozenBufferedUpdates是全局还是段内，获取的方式有点区别：</p>
 <ul>
 <li>全局FrozenBufferedUpdates：取出SegmentInfos中所有的SegmentCommitInfo</li>
@@ -351,7 +291,7 @@
 </ul>
 <h3 id="获取infos中所有segmentcommitinfo的信息"><a class="markdownIt-Anchor" href="#获取infos中所有segmentcommitinfo的信息"></a> 获取infos中所有SegmentCommitInfo的信息</h3>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/6.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/6.png"  >
 <p>  获取的信息被保存到SegmentState[ ]数组中，在介绍数组元素包含的信息前，得先说明只有满足下列要求的SegmentCommitInfo才会将其信息保存到SegmentState[ ]数组中：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bufferedDeletesGen &lt;= delGen &amp;&amp; alreadySeenSegments.contains(SegmentCommitInfo) == <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -378,7 +318,7 @@
 </ul>
 <h3 id="处理删除信息-2"><a class="markdownIt-Anchor" href="#处理删除信息-2"></a> 处理删除信息</h3>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/7.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/7.png"  >
 <p>  图7中，处理TermDeletes即处理删除信息TermArrayNode、TermNode；处理QueryDeletes即处理删除信息QueryArrayNode；处理DocValuesUpdates即处理删除信息DocValuesUpdatesNode。其删除信息的介绍看<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0704/%E6%96%87%E6%A1%A3%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%EF%BC%88%E5%9B%9B%EF%BC%89" >文档的增删改（四）<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>  上文中我们获得了SegmentReader，该值使得我们能获得段中的索引信息，包括文档的信息：</p>
 <ul>
@@ -390,7 +330,7 @@
 <p>  如果图2中处理的是段内FrozenBufferedUpdates，那么是不用处理<code>处理TermDeletes</code>的，因为删除信息TermArrayNode、TermNode在生成索引文件<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0401/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Btim&amp;&amp;tip" >.tim、.tip<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bdoc" >.doc<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0324/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bpos&amp;&amp;pay" >.pos、.pay<i class="fas fa-external-link-alt"></i></a>阶段就被处理了（见<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/0725/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%89%EF%BC%89" >文档提交之flush（三）<i class="fas fa-external-link-alt"></i></a>）。</p>
 <h3 id="处理完删除信息后的工作"><a class="markdownIt-Anchor" href="#处理完删除信息后的工作"></a> 处理完删除信息后的工作</h3>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/8.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/8.png"  >
 <p>  在处理完删除信息后，我们需要以下的工作：</p>
 <ul>
 <li>减少段集合中的所有索引文件计数引用：我们不再需要引用段，故减少段对应的索引文件的计数引用，如果计数值为0，那么删除这些索引文件，同时说明该段被合并了</li>
@@ -399,21 +339,21 @@
 </ul>
 <h3 id="再次处理docvaluesupdates"><a class="markdownIt-Anchor" href="#再次处理docvaluesupdates"></a> 再次处理DocValuesUpdates</h3>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/9.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/9.png"  >
 <p>  该流程会在后面介绍软删除的文章中展开介绍，这里只要知道其流程所在位置即可。</p>
 <h3 id="是否为段内删除信息"><a class="markdownIt-Anchor" href="#是否为段内删除信息"></a> 是否为段内删除信息？</h3>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/10.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/10.png"  >
 <p>  图2如果到达此流程点，并且段内FrozenBufferedUpdates的流程，那么我们已经成功的处理了段内的删除信息，故可以直接进入其下一个流程，该流程点在下文会介绍。</p>
 <h3 id="没有并发的段合并操作"><a class="markdownIt-Anchor" href="#没有并发的段合并操作"></a> 没有并发的段合并操作</h3>
 <p>图11：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/11.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/11.png"  >
 <p>  在上文的<code>获得当前已经完成段合并的计数mergeGenStart</code>中，我们获得了mergeGenStart，并且在当前流程点再次去获得段合并的计数mergeGenCur，如果mergeGenCur 与 mergeGenStart相等，说明图2的流程从开始到现在这段期间，<em>没有其他线程执行段合并</em> 或者 <strong>某些段合并操作还未结束</strong>，否则我们需要重新执行图2的流程，原因是索引目录中的段已经发生了变化，我们需要重新将全局的FrozenBufferedUpdates作用到索引目录中的段。</p>
 <p>  从上面的流程可以看出，这种处理逻辑即乐观锁的一种实现方式。</p>
 <p>  由于执行段合并的段集合只是索引目录中的部分段，所以有些段并没有发生变化，并且这些段已经被作用（apply）了删除信息，故可以存放到上文中提到的alreadySeenSegments中，使得在下一轮的图2流程中，不会重复作用删除信息。</p>
 <h3 id="处理frozenbufferedupdates"><a class="markdownIt-Anchor" href="#处理frozenbufferedupdates"></a> 处理FrozenBufferedUpdates</h3>
 <p>图12：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/12.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/index/文档提交/文档提交之flush（七）/12.png"  >
 <p>  <code>处理FrozenBufferedUpdates</code>的流程点逻辑跟图11中的是一致的，在退出图2流程之前，我们总是需要<code>处理FrozenBufferedUpdates</code>。只有mergeGenCur 与 mergeGenStart相等后才属于<code>正确的处理删除信息</code>，在其他流程点进入该流程点都属于未能正确处理删除信息。</p>
 <p>  处理FrozenBufferedUpdates的工作如下，仅列出跟本篇文章有关的工作：</p>
 <ul>
@@ -425,7 +365,6 @@
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Index/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E4%B8%83%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -446,59 +385,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Index/2019/0812/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AB%EF%BC%89/"
                                    title="文档提交之flush（八）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">文档提交之flush（八）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -506,7 +410,7 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/Index/2019/0805/%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%EF%BC%88%E5%85%AD%EF%BC%89/"
@@ -516,8 +420,8 @@
                                         <span class="post-nav-title-item text-ellipsis">文档提交之flush（六）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -529,81 +433,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -613,78 +442,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%E7%9A%84%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 文档提交之flush的整体流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setfrozenbufferedupdates-update"><span class="nav-number">2.1.</span> <span class="nav-text"> Set&lt;FrozenBufferedUpdates&gt; update</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexwriter%E5%A4%84%E7%90%86%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text"> IndexWriter处理事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">3.2.</span> <span class="nav-text"> 处理删除信息的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E5%A4%84%E7%90%86%E8%BF%87%E5%BD%93%E5%89%8D%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 是否已经处理过当前删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E5%BD%93%E5%89%8D%E5%B7%B2%E7%BB%8F%E5%AE%8C%E6%88%90%E6%AE%B5%E5%90%88%E5%B9%B6%E7%9A%84%E8%AE%A1%E6%95%B0mergegenstart"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 获得当前已经完成段合并的计数mergeGenStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E8%A2%AB%E4%BD%9C%E7%94%A8%E7%9A%84%E6%AE%B5%E9%9B%86%E5%90%88infos"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 获得被作用的段集合infos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96infos%E4%B8%AD%E6%89%80%E6%9C%89segmentcommitinfo%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.4.</span> <span class="nav-text"> 获取infos中所有SegmentCommitInfo的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF-2"><span class="nav-number">3.2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%AE%8C%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.2.6.</span> <span class="nav-text"> 处理完删除信息后的工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%8D%E6%AC%A1%E5%A4%84%E7%90%86docvaluesupdates"><span class="nav-number">3.2.7.</span> <span class="nav-text"> 再次处理DocValuesUpdates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E4%B8%BA%E6%AE%B5%E5%86%85%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.8.</span> <span class="nav-text"> 是否为段内删除信息？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%B9%B6%E5%8F%91%E7%9A%84%E6%AE%B5%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.9.</span> <span class="nav-text"> 没有并发的段合并操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86frozenbufferedupdates"><span class="nav-number">3.2.10.</span> <span class="nav-text"> 处理FrozenBufferedUpdates</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -692,23 +476,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -727,7 +507,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -741,15 +521,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -773,48 +545,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%8F%90%E4%BA%A4%E4%B9%8Bflush%E7%9A%84%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text"> 文档提交之flush的整体流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text"> 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setfrozenbufferedupdates-update"><span class="nav-number">2.1.</span> <span class="nav-text"> Set&lt;FrozenBufferedUpdates&gt; update</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexwriter%E5%A4%84%E7%90%86%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text"> IndexWriter处理事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">3.2.</span> <span class="nav-text"> 处理删除信息的流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E5%A4%84%E7%90%86%E8%BF%87%E5%BD%93%E5%89%8D%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 是否已经处理过当前删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E5%BD%93%E5%89%8D%E5%B7%B2%E7%BB%8F%E5%AE%8C%E6%88%90%E6%AE%B5%E5%90%88%E5%B9%B6%E7%9A%84%E8%AE%A1%E6%95%B0mergegenstart"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 获得当前已经完成段合并的计数mergeGenStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97%E8%A2%AB%E4%BD%9C%E7%94%A8%E7%9A%84%E6%AE%B5%E9%9B%86%E5%90%88infos"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 获得被作用的段集合infos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96infos%E4%B8%AD%E6%89%80%E6%9C%89segmentcommitinfo%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.4.</span> <span class="nav-text"> 获取infos中所有SegmentCommitInfo的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF-2"><span class="nav-number">3.2.5.</span> <span class="nav-text"> 处理删除信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%AE%8C%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.2.6.</span> <span class="nav-text"> 处理完删除信息后的工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%8D%E6%AC%A1%E5%A4%84%E7%90%86docvaluesupdates"><span class="nav-number">3.2.7.</span> <span class="nav-text"> 再次处理DocValuesUpdates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E4%B8%BA%E6%AE%B5%E5%86%85%E5%88%A0%E9%99%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.8.</span> <span class="nav-text"> 是否为段内删除信息？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%B9%B6%E5%8F%91%E7%9A%84%E6%AE%B5%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.9.</span> <span class="nav-text"> 没有并发的段合并操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86frozenbufferedupdates"><span class="nav-number">3.2.10.</span> <span class="nav-text"> 处理FrozenBufferedUpdates</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -828,7 +560,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -836,13 +570,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -857,28 +584,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

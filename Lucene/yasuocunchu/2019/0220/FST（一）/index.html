@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             FST（一） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         FST（一）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2019-02-20 00:00:00</span>
-                <span class="mobile">2019-02-20 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-02-20 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sun Oct 08 2023 12:53:57 GMT+0800">2023-10-08 12:53:57</span>
+                <span class="datetime" data-updated="Sun Oct 08 2023 12:53:57 GMT+0800">2023-10-08 12:53:57</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/yasuocunchu/">yasuocunchu</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/util/">util</a></li>
                         
@@ -277,15 +225,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.5k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -297,7 +237,7 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  FST（Finite State Transducer）算法的概念在这篇博客中并不涉及，网上有太多的资料啦，写的都非常的不错。这里推荐这位网友的介绍：<a class="link"   target="_blank" rel="noopener" href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/" >https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/<i class="fas fa-external-link-alt"></i></a> 。如果链接失效了，可以看附件中的副本。本文中，我们基于一个例子来介绍在Lucene中如何构建FST。感谢网友<strong>关新全</strong>的分享，基于他的分享使得我在看源码的时候事半功倍，在此基础上，增加一些更加贴近源码的内容。同样的，关新全同学分享的文章在附件中。</p>
@@ -309,16 +249,16 @@
 <p>  在下文的介绍中使用节点跟弧（边），即有向无环图的概念来描述生成的过程，Node之间使用<strong>一个</strong>Arc连接，一个Node跟<strong>一个或多个</strong>Node连接。</p>
 <p>  Node还具有两种<strong>状态</strong>：UnCompiledNode和CompiledNode。在源码中，使用两个对象来描述这两种状态，如下所示：</p>
 <p>图0：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0.png"  >
 <p>  当开始处理某个输入值时，会将它的信息生成Node跟Arc，此时Node的状态为UnCompiledNode，当Node以及它的出度对应的Arc（出边）的信息写入到current[ ]之后，Node的状态转变为CompiledNode。 例如图1中当开始处理的输入值为mop时，会生成4个状态为UnCompiledNode的Node以及3个Arc，其中Node1的出边为arc1，以此类推。我们给出源码中UnCompiledNode类的定义来理解Node跟Arc的关系：</p>
 <p>图0-1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0-1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0-1.png"  >
 <p>图0-2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0-2.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/0-2.png"  >
 <p>  图0-2描述的是Arc在源码中的定义，由图0-1可知，一个状态为UnCompiledNode的Node使用Arc&lt;T&gt;数组来描述它的出度的值，可以见该值是大于等于0的，即一个状态为UnCompiledNode的Node中可以包含多个Arc。</p>
 <p>  图0-1跟图0-2中的其他变量的概念在下文中我们会根据需要一一介绍。</p>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/1.png"  >
 <h5 id="label-target"><a class="markdownIt-Anchor" href="#label-target"></a> label、target</h5>
 <p>  基于图1我们先介绍下图0-2中Arc类的两个成员域：label和target，假设有一个输入值 “mop”，会使用三个Arc&lt;T&gt;对象来分别描述“m”，“o”，“p”的三个字符的信息，并且这三个对象分别是三个状态为UnCompiledNode的Node的出边。描述“m”的Arc&lt;T&gt;对象arc1，它是Node1的出边，对象arc1中的label的值是 109，即“m”的ASCII值；对象arc1的target的值即Node2，这里暂时不讨论isFinal、nextFinalOutput的含义，后面会涉及。<strong>另外如果Node没有任何的出度，那么它是一个终止节点</strong>。</p>
 <h5 id="output"><a class="markdownIt-Anchor" href="#output"></a> output</h5>
@@ -326,11 +266,11 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：输入为 “mop”、“mt”，附加值分别是100、91。</span><br></pre></td></tr></table></figure>
 <h6 id="处理mop-100"><a class="markdownIt-Anchor" href="#处理mop-100"></a> 处理“mop”， 100</h6>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/2.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/2.png"  >
 <p>  只处理输入&quot;mop&quot;时，附加值是放在“m”的arc中。</p>
 <h6 id="处理mt-91"><a class="markdownIt-Anchor" href="#处理mt-91"></a> 处理“mt”， 91</h6>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/3.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/3.png"  >
 <p>  上图中我们能发现，如果后面的输入跟前一个输入有相同的前缀，那么相同前缀对应的每一个arc的output都有可能被更新，在这个例子中，&quot;mop&quot;的附加值100被拆分为91跟9，因为“mt”的附加值是91，取两者的较小值来更新封装了“m”的arc中的output值。<br />
 另外上图中封装了“p”的arc怎么没有了，多出了一个值2 ？这里我们暂时不用关心，下文会解释。</p>
 <h4 id="current-数组-2"><a class="markdownIt-Anchor" href="#current-数组-2"></a> current[ ]数组</h4>
@@ -412,7 +352,7 @@
 <h3 id="输入mop"><a class="markdownIt-Anchor" href="#输入mop"></a> 输入mop</h3>
 <p>  这是第一个输入，所以没有写入current[]数组的操作。将&quot;mop&quot;以及附加值100生成Node跟Arc即可，即步骤二。</p>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/4.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/4.png"  >
 <h3 id="输入moth"><a class="markdownIt-Anchor" href="#输入moth"></a> 输入moth</h3>
 <p>  输入moth后的执行步骤如下：</p>
 <ul>
@@ -421,14 +361,14 @@
 <li>步骤三：更新Node1中&quot;m&quot;的附加值，由100变成91。并且&quot;p&quot;的附加值由0变为9。</li>
 </ul>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/5.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/5.png"  >
 <h3 id="输入pop"><a class="markdownIt-Anchor" href="#输入pop"></a> 输入pop</h3>
 <p>  输入pop后，与上一个值&quot;moth&quot;没有相同的节点，所以我们要将图5中的Node2、Node3、Node4、终止节点的所有arc信息写入到current[]数组中，即执行步骤一，<strong>注意的是Node1中的所有arc只有在所有输入处理结束后才会处理</strong>。</p>
 <p>  处理的顺序为：<strong>节点间按照从后往前，节点内的arc按照写入到该节点的顺序</strong>，在当前情况下，根据图5，处理的arc顺序应该是： 终止节点 --&gt; Node4（h） --&gt; Node3（p --&gt; t） --&gt; Node2(o)，我们一一介绍：</p>
 <h4 id="处理终止节点"><a class="markdownIt-Anchor" href="#处理终止节点"></a> 处理终止节点</h4>
 <p>  终止节点返回值为固定值-1，并更新<strong>lastFrozenNode为 -1</strong>，current[]数组不变。</p>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/6.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/6.png"  >
 <h4 id="处理node4-h"><a class="markdownIt-Anchor" href="#处理node4-h"></a> 处理Node4 （h）</h4>
 <p>  Node4中只有“h”对应的arc，根据flag的定义，该arc满足以下几个flag：</p>
 <ul>
@@ -439,7 +379,7 @@
 </ul>
 <p>  所以flag的值为  BIT_LAST_ARC（2）+ BIT_TARGET_NEXT（4） + BIT_FINAL_ARC（1） +  BIT_STOP_NODE（8） = 15，然后将flag跟“h”的ASCII值，即四元组信息的flag跟label值，写入到current[]数组中，最后更新lastFrozenNode的值为2，该值为flag在current[]数组中的下标值。</p>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/7.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/7.png"  >
 <h4 id="处理node3p-t"><a class="markdownIt-Anchor" href="#处理node3p-t"></a> 处理Node3（p -&gt; t）</h4>
 <p>  根据上文的内容，我们知道Node3包含了两个arc，并且&quot;p&quot;对应的arc先于&quot;t&quot;对应的arc添加到frontier[ ]数组中，根据上文中提到的节点内的处理顺序，我们先处理&quot;p&quot;对应的arc。</p>
 <h5 id="处理-p"><a class="markdownIt-Anchor" href="#处理-p"></a> 处理 “p”</h5>
@@ -459,7 +399,7 @@
 <p>  所以flag的值为 BIT_LAST_ARC（2）+ BIT_TARGET_NEXT（4） = 6。由于Node3中所有的arc处理结束，那么更新lastFronzenNode的值为7，7是Node3的第一个arc的四元组信息的flag值在current[]数组中的下标，如图8所示。</p>
 <p>  <strong>这里有个注意点就是，当按照 p -&gt; t的顺序处理结束后，会对刚才存储的数据执行逆置操作。所以“t”跟“p”对应的arc的数据在current[]数组中的位置如下图所示，这么做的目的是为了在读取阶段能正确的解码：</strong></p>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/8.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/8.png"  >
 <h4 id="处理node2o"><a class="markdownIt-Anchor" href="#处理node2o"></a> 处理Node2（o）</h4>
 <p>  &quot;o&quot;对应的arc，满足以下几个flag：</p>
 <ul>
@@ -471,17 +411,17 @@
 <p>  <strong>为什么要将&quot;m&quot;对应的arc的target会被更新为9</strong></p>
 <p>  为了在读取阶段能正确的解码，不过具体的原因将会在下一篇文章中才会展开。</p>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/9.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/9.png"  >
 <p>  步骤一执行结束后，接着执行步骤二，即把&quot;pop&quot;以及附加值72生成Node跟Arc即可，添加到frontier[ ]数组中，如下图：</p>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/10.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/10.png"  >
 <h3 id="输入star"><a class="markdownIt-Anchor" href="#输入star"></a> 输入star</h3>
 <p>  输入star后，与上一个输入值&quot;pop&quot;没有相同的节点，所以我们要将Node2、Node3、终止节点的所有arc信息写入到current[]数组中。同样的，<strong>Node1中的所有arc只有在所有输入处理结束后才会处理</strong>。</p>
 <p>  处理的顺序为：节点间按照从后往前，节点内的arc按照写入到该节点时候的顺序，在当前情况下，处理的arc顺序应该是： 终止节点 --&gt; Node3（p）–&gt;Node2（o）</p>
 <h4 id="处理终止节点-2"><a class="markdownIt-Anchor" href="#处理终止节点-2"></a> 处理终止节点</h4>
 <p>  终止节点返回值为固定值-1，并更新lastFrozenNode为 -1，current[]数组不变</p>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/9.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/9.png"  >
 <h4 id="处理node3p"><a class="markdownIt-Anchor" href="#处理node3p"></a> 处理Node3（p）</h4>
 <p>  &quot;p&quot;对应的arc，满足以下几个flag：</p>
 <ul>
@@ -492,18 +432,18 @@
 </ul>
 <p>  所以flag的值为 BIT_FINAL_ARC(1) + BIT_LAST_ARC(2) + BIT_TARGET_NEXT(4) + BIT_STOP_NODE(8) = 15。更新lastFronzenNode的值为11， 11是Node3的第一个arc的flag在current[]数组中的下标，如图11所示。</p>
 <p>图11：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/11.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/11.png"  >
 <h4 id="处理node2-o"><a class="markdownIt-Anchor" href="#处理node2-o"></a> 处理Node2 （o）</h4>
 <p>  这个过程就不赘述，跟上面的逻辑没区别。</p>
 <p>图12：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/12.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/12.png"  >
 <p>  步骤一执行结束后，接着执行步骤二，即把&quot;star&quot;以及附加值83生成Node跟Arc即可，添加到frontier[ ]数组中，如下图：</p>
 <p>图13：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/13.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/13.png"  >
 <h3 id="输入stop"><a class="markdownIt-Anchor" href="#输入stop"></a> 输入stop</h3>
 <p>  这个过程就不赘述了，跟上面的逻辑没区别。</p>
 <p>图14：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/14.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/14.png"  >
 <h3 id="输入top"><a class="markdownIt-Anchor" href="#输入top"></a> 输入top</h3>
 <p>  输入top后，与上一个值&quot;stop&quot;没有相同的节点，所以我们要将图14中的Node2、Node3、Node4、终止节点的所有arc信息写入到current[]数组中，同样的，<strong>Node1中的所有arc只有在所有输入处理结束后才会处理</strong>。</p>
 <p>  处理的顺序为：节点间按照从后往前，节点内的arc按照写入到该节点时候的顺序，在当前情况下，处理的arc顺序应该是： 终止节点–&gt;Node4（p） --&gt; Node3（a --&gt; o） --&gt;Node2（t）。</p>
@@ -536,25 +476,24 @@
 </ul>
 <p>  所以flag的值为 BIT_LAST_ARC(2) + BIT_TARGET_NEXT(4) = 6。最后更新lastFrozenNode的值为24。24是Node2的第一个arc的flag在current[]数组中的下标。</p>
 <p>图15：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/15.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/15.png"  >
 <p>  步骤一执行结束后，接着执行步骤二，即把&quot;top&quot;以及附加值55生成Node跟Arc即可，添加到frontier[ ]数组中，如下图：</p>
 <p>图16：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/16.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/16.png"  >
 <h3 id="处理top"><a class="markdownIt-Anchor" href="#处理top"></a> 处理top</h3>
 <p>  “top”是最后的输入，所以在将“top”写入到frontier[]数组后，直接处理，处理过程不赘述，跟上面的逻辑没什么区别, 由于“top”跟“pop”有2个相同的后缀值，所以处理完“top”后，current[]数组没有变化。</p>
 <p>图17：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/17.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/17.png"  >
 <h3 id="最后处理node1节点"><a class="markdownIt-Anchor" href="#最后处理node1节点"></a> 最后处理Node1节点</h3>
 <p>  不赘述，跟前面的逻辑是差不多的。</p>
 <p>图18：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/18.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/utils/FST/18.png"  >
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  本篇博客介绍了FST的构建过程，并且只介绍了current[ ]数组中的四元组信息的生成方式，相信看完之后，同学们还存在一的疑惑，但是在下一篇文章介绍了读取current[ ]解码内容后，即读取过程，相信定能豁然开朗。</p>
 <p>  另外该例子的demo见：<a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/util/FSTTest.java%E3%80%82" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/util/FSTTest.java。<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/utils/FST/FST.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -583,59 +522,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Index/2019/0222/%E5%80%92%E6%8E%92%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89/"
                                    title="倒排表（上）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">倒排表（上）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -643,7 +547,7 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/DocValues/2019/0219/SortedDocValues/"
@@ -653,8 +557,8 @@
                                         <span class="post-nav-title-item text-ellipsis">SortedDocValues</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -666,81 +570,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -750,78 +579,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#current-%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.1.</span> <span class="nav-text"> current[ ]数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node%E8%8A%82%E7%82%B9-arc%E5%BC%A7-%E8%BE%B9"><span class="nav-number">1.0.2.</span> <span class="nav-text"> Node（节点）、Arc（弧、边）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#label-target"><span class="nav-number">1.0.2.1.</span> <span class="nav-text"> label、target</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#output"><span class="nav-number">1.0.2.2.</span> <span class="nav-text"> output</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86mop-100"><span class="nav-number">1.0.2.2.1.</span> <span class="nav-text"> 处理“mop”， 100</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86mt-91"><span class="nav-number">1.0.2.2.2.</span> <span class="nav-text"> 处理“mt”， 91</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#current-%E6%95%B0%E7%BB%84-2"><span class="nav-number">1.0.3.</span> <span class="nav-text"> current[ ]数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#index"><span class="nav-number">1.0.3.1.</span> <span class="nav-text"> index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#output-2"><span class="nav-number">1.0.3.2.</span> <span class="nav-text"> output</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#label"><span class="nav-number">1.0.3.3.</span> <span class="nav-text"> label</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#flag"><span class="nav-number">1.0.3.4.</span> <span class="nav-text"> flag</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nodehasht%E7%B1%BB"><span class="nav-number">1.0.4.</span> <span class="nav-text"> NodeHash&lt;T&gt;类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uncompilednodet-frontier"><span class="nav-number">1.0.5.</span> <span class="nav-text"> UnCompiledNode&lt;T&gt;[ ] frontier</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lastfrozennode"><span class="nav-number">1.1.</span> <span class="nav-text"> lastFrozenNode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text"> 算法基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5mop"><span class="nav-number">3.1.</span> <span class="nav-text"> 输入mop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5moth"><span class="nav-number">3.2.</span> <span class="nav-text"> 输入moth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5pop"><span class="nav-number">3.3.</span> <span class="nav-text"> 输入pop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node4-h"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 处理Node4 （h）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3p-t"><span class="nav-number">3.3.3.</span> <span class="nav-text"> 处理Node3（p -&gt; t）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86-p"><span class="nav-number">3.3.3.1.</span> <span class="nav-text"> 处理 “p”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86t"><span class="nav-number">3.3.3.2.</span> <span class="nav-text"> 处理“t”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2o"><span class="nav-number">3.3.4.</span> <span class="nav-text"> 处理Node2（o）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5star"><span class="nav-number">3.4.</span> <span class="nav-text"> 输入star</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9-2"><span class="nav-number">3.4.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3p"><span class="nav-number">3.4.2.</span> <span class="nav-text"> 处理Node3（p）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2-o"><span class="nav-number">3.4.3.</span> <span class="nav-text"> 处理Node2 （o）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5stop"><span class="nav-number">3.5.</span> <span class="nav-text"> 输入stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5top"><span class="nav-number">3.6.</span> <span class="nav-text"> 输入top</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9-3"><span class="nav-number">3.6.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node4-p"><span class="nav-number">3.6.2.</span> <span class="nav-text"> 处理Node4 （p）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3-a-o"><span class="nav-number">3.6.3.</span> <span class="nav-text"> 处理Node3 （a -&gt; o）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86a"><span class="nav-number">3.6.3.1.</span> <span class="nav-text"> 处理“a”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86o"><span class="nav-number">3.6.3.2.</span> <span class="nav-text"> 处理“o”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2-t"><span class="nav-number">3.6.4.</span> <span class="nav-text"> 处理Node2 （t）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86top"><span class="nav-number">3.7.</span> <span class="nav-text"> 处理top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E5%A4%84%E7%90%86node1%E8%8A%82%E7%82%B9"><span class="nav-number">3.8.</span> <span class="nav-text"> 最后处理Node1节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -829,23 +613,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -864,7 +644,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -878,15 +658,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -910,48 +682,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#current-%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.1.</span> <span class="nav-text"> current[ ]数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node%E8%8A%82%E7%82%B9-arc%E5%BC%A7-%E8%BE%B9"><span class="nav-number">1.0.2.</span> <span class="nav-text"> Node（节点）、Arc（弧、边）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#label-target"><span class="nav-number">1.0.2.1.</span> <span class="nav-text"> label、target</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#output"><span class="nav-number">1.0.2.2.</span> <span class="nav-text"> output</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86mop-100"><span class="nav-number">1.0.2.2.1.</span> <span class="nav-text"> 处理“mop”， 100</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86mt-91"><span class="nav-number">1.0.2.2.2.</span> <span class="nav-text"> 处理“mt”， 91</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#current-%E6%95%B0%E7%BB%84-2"><span class="nav-number">1.0.3.</span> <span class="nav-text"> current[ ]数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#index"><span class="nav-number">1.0.3.1.</span> <span class="nav-text"> index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#output-2"><span class="nav-number">1.0.3.2.</span> <span class="nav-text"> output</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#label"><span class="nav-number">1.0.3.3.</span> <span class="nav-text"> label</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#flag"><span class="nav-number">1.0.3.4.</span> <span class="nav-text"> flag</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nodehasht%E7%B1%BB"><span class="nav-number">1.0.4.</span> <span class="nav-text"> NodeHash&lt;T&gt;类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uncompilednodet-frontier"><span class="nav-number">1.0.5.</span> <span class="nav-text"> UnCompiledNode&lt;T&gt;[ ] frontier</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lastfrozennode"><span class="nav-number">1.1.</span> <span class="nav-text"> lastFrozenNode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text"> 算法基本步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text"> 例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5mop"><span class="nav-number">3.1.</span> <span class="nav-text"> 输入mop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5moth"><span class="nav-number">3.2.</span> <span class="nav-text"> 输入moth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5pop"><span class="nav-number">3.3.</span> <span class="nav-text"> 输入pop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node4-h"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 处理Node4 （h）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3p-t"><span class="nav-number">3.3.3.</span> <span class="nav-text"> 处理Node3（p -&gt; t）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86-p"><span class="nav-number">3.3.3.1.</span> <span class="nav-text"> 处理 “p”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86t"><span class="nav-number">3.3.3.2.</span> <span class="nav-text"> 处理“t”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2o"><span class="nav-number">3.3.4.</span> <span class="nav-text"> 处理Node2（o）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5star"><span class="nav-number">3.4.</span> <span class="nav-text"> 输入star</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9-2"><span class="nav-number">3.4.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3p"><span class="nav-number">3.4.2.</span> <span class="nav-text"> 处理Node3（p）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2-o"><span class="nav-number">3.4.3.</span> <span class="nav-text"> 处理Node2 （o）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5stop"><span class="nav-number">3.5.</span> <span class="nav-text"> 输入stop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5top"><span class="nav-number">3.6.</span> <span class="nav-text"> 输入top</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BB%88%E6%AD%A2%E8%8A%82%E7%82%B9-3"><span class="nav-number">3.6.1.</span> <span class="nav-text"> 处理终止节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node4-p"><span class="nav-number">3.6.2.</span> <span class="nav-text"> 处理Node4 （p）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node3-a-o"><span class="nav-number">3.6.3.</span> <span class="nav-text"> 处理Node3 （a -&gt; o）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86a"><span class="nav-number">3.6.3.1.</span> <span class="nav-text"> 处理“a”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86o"><span class="nav-number">3.6.3.2.</span> <span class="nav-text"> 处理“o”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86node2-t"><span class="nav-number">3.6.4.</span> <span class="nav-text"> 处理Node2 （t）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86top"><span class="nav-number">3.7.</span> <span class="nav-text"> 处理top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E5%A4%84%E7%90%86node1%E8%8A%82%E7%82%B9"><span class="nav-number">3.8.</span> <span class="nav-text"> 最后处理Node1节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -965,7 +697,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -973,13 +707,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -994,28 +721,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

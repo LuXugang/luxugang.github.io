@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             RangeField（一）（Lucene 8.4.0） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         RangeField（一）（Lucene 8.4.0）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2020-07-23 00:00:00</span>
-                <span class="mobile">2020-07-23 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-07-23 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Tue Oct 10 2023 11:00:16 GMT+0800">2023-10-10 11:00:16</span>
+                <span class="datetime" data-updated="Tue Oct 10 2023 11:00:16 GMT+0800">2023-10-10 11:00:16</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Search/">Search</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/point/">point</a></li>
                         
@@ -280,15 +228,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -300,7 +240,7 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  本文将介绍Lucene中提供的范围域（RangeField），以及基于该域实现的范围查询。</p>
@@ -310,18 +250,18 @@
 <li>1 dimensions：该维度的域描述了一条直线上的一段长度，如果有如下的定义：</li>
 </ul>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/1.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/1.png"  >
 <p>  用图形来描述这个域的话如下所示：</p>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/2.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/2.png"  >
 <ul>
 <li>2 dimensions：该维度的域描述了平面上的一个矩形，如果有如下的定义：</li>
 </ul>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/3.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/3.png"  >
 <p>  用图形来描述这个域的话如下所示：</p>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/4.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/4.png"  >
 <ul>
 <li>
 <p>3 dimensions：该维度的域描述了空间中的一个立方体</p>
@@ -335,7 +275,7 @@
 <p>  在Lucene 8.2.0版本中，新增了<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-8362" >BinaryRangeDocValuesField<i class="fas fa-external-link-alt"></i></a>，使得能根据范围域实现范围查找，在之前的版本中，已经提供了一些跟范围域的相关操作，即IntRange、DoubleRange、FloatRange类中相关的方法，在后面的文章中，将会介绍这几个类，并且将介绍它们与BinaryRangeDocValuesField在存储，查询上的差异。</p>
 <h3 id="实现类"><a class="markdownIt-Anchor" href="#实现类"></a> 实现类</h3>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/5.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/5.png"  >
 <p>  图5中BinaryRangeDocValuesField继承了BinaryDocValuesField，同时有四个实现类，故可以了解到，通过BinaryRangeDocValuesField存储的范围域的信息最终使用DocValues存储，即索引信息存储在索引文件.dvd&amp;&amp;.dvm中。</p>
 <h3 id="域值编码encode"><a class="markdownIt-Anchor" href="#域值编码encode"></a> 域值编码（encode）</h3>
 <p>  以图3为例，域名为&quot;level&quot;，域值为两个int类型数组min1、max1，Lucene中所有数值类型的域值都会被重新编码为一个字节数组，并且该字节数组可以用于排序，同时字节数组之间的排序关系跟对应数值之间的排序关系是一致的，编码的过程在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2020/0329/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8Bdim&amp;&amp;dii" >索引文件的生成（八）之dim&amp;&amp;dii<i class="fas fa-external-link-alt"></i></a>中已经介绍过了，不赘述。</p>
@@ -343,51 +283,51 @@
 <h3 id="范围查询"><a class="markdownIt-Anchor" href="#范围查询"></a> 范围查询</h3>
 <p>  以图3中的IntRangeDocValuesField为例，通过调用IntRangeDocValuesField类中的newSlowIntersectsQuery方法生成一个Query，我们看下源码中该方法的注释：</p>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/6.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/6.png"  >
 <p>  图6的注释大意为：使用DocValues找到所有与查询条件（查询条件也是一个范围域）相交（intersect）的范围域，在下文的图16中我们会介绍如何相交的判定方式。</p>
 <p>  最后使用IndexSearcher.search()方法实现范围查询，其核心的流程图如下所示：</p>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/7.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/7.png"  >
 <h4 id="两阶段遍历twophaseiterator"><a class="markdownIt-Anchor" href="#两阶段遍历twophaseiterator"></a> 两阶段遍历（TwoPhaseIterator）</h4>
 <p>  在介绍图6的流程图之前，先介绍下Lucene中的两阶段遍历TwoPhaseIterator，我们先看下源码中关于两阶段遍历的注释：</p>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/8.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/8.png"  >
 <p>  图7的注释大意为：先通过DocIdSetIterator对象获取一个文档号集合，该集合中不一定都满足查询条件，即所谓的approximation，通过nextDoc()或者advance()方法遍历该文档号集合（第一阶段），将每一个文档通过matches()方法（第二阶段），在该方法中能真正的确定文档号是否满足查询条件。</p>
 <p>  图6的流程中正是使用了两阶段遍历的方式，<strong>其中流程点<code>文档集合</code>即通过DocIdSetIterator对象获得，流程点<code>是否还有未处理的文档号？</code>中为两阶段遍历的第一个阶段，接着在流程点<code>是否满足查询条件？</code>通过matches()方法判断是否满足查询条件进行所谓的两阶段遍历的第二个阶段</strong>。</p>
 <p>  当前版本中，无论是哪种类型的查询，都是通过遍历DocIdSetIterator对象中的文档号来获取满足查询条件的文档号，但是当DocIdSetIterator对象中的文档集合只是所谓的approximation，那么就需要使用两阶段遍历来处理了。</p>
 <p>  如果我们有以下的查询条件：</p>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/9.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/9.png"  >
 <p>  图9中查询条件为两个TermQuery的组合，在系列文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Index/2019/1226/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bdoc&amp;&amp;pay&amp;&amp;pos" >索引文件的生成（一）<i class="fas fa-external-link-alt"></i></a>中我们知道，通过域名&quot;author&quot;跟域值能直接在索引文件中准确的定位到满足条件的文档号，那么上图中的这种查询就能获得一个DocIdSetIterator对象，并且它包含的文档号不是所谓的approximation，故就不要两阶段遍历的处理方式了。</p>
 <h4 id="两阶段遍历的第一个阶段"><a class="markdownIt-Anchor" href="#两阶段遍历的第一个阶段"></a> 两阶段遍历的第一个阶段</h4>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/10.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/10.png"  >
 <p>  由于BinaryRangeDocValuesField使用DocValues存储，故跟其他DocValues一样，以图3为例，包含域名为&quot;level&quot;的所有BinaryRangeDocValuesField的文档号存储在索引文件.dvd的DocIdData字段，如下所示：</p>
 <p>图11：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/11.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/11.png"  >
 <p>  DocIdData字段在内存中用IndexedDISI来描述，而<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI<i class="fas fa-external-link-alt"></i></a>是继承DocIdSetIterator的子类，如下所示，故流程点<code>文档集合</code>中的文档集合即上文中我们提到的DocIdSetIterator对象中的文档集合，随后开始每一个文档号，执行两阶段遍历的第一个阶段。</p>
 <p>图12：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/12.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/12.png"  >
 <p>  另外读取图10的DocIdData字段的过程可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0714/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8Bdvd&amp;&amp;dvm" >索引文件的读取（五）之dvd&amp;&amp;dvm<i class="fas fa-external-link-alt"></i></a>，而如何从IndexedDISI获取文档号可以阅读文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0511/IndexedDISI%EF%BC%88%E4%B8%80%EF%BC%89" >IndexedDISI（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2020/0514/IndexedDISI%EF%BC%88%E4%BA%8C%EF%BC%89" >IndexedDISI（二）<i class="fas fa-external-link-alt"></i></a>。</p>
 <h4 id="根据文档号取出域值"><a class="markdownIt-Anchor" href="#根据文档号取出域值"></a> 根据文档号取出域值</h4>
 <p>图13：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/13.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/13.png"  >
 <p>  从IndexedDISI中获取了一个文档号之后，我们需要根据这个文档号找到对应的域值，以图3为例，即域名&quot;level&quot;对应的域值，在文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2020/0715/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Bdvd&amp;&amp;dvm" >索引文件的读取（六）之dvd&amp;&amp;dvm<i class="fas fa-external-link-alt"></i></a>中我们详细的介绍了如何根据文档号从图10的索引文件中找到对应的域值，这里不赘述。</p>
 <h4 id="两阶段遍历的第二个阶段"><a class="markdownIt-Anchor" href="#两阶段遍历的第二个阶段"></a> 两阶段遍历的第二个阶段</h4>
 <p>图14：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/14.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/14.png"  >
 <p>  我们通过一个例子来说明流程点<code>是否满足查询条件</code>的判断过程，该例子的完整demo见 <a class="link"   target="_blank" rel="noopener" href="https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/lucene/DcoValues/rangeField/IntRangeDocValuesFieldTest.java" >https://github.com/LuXugang/Lucene-7.5.0/blob/master/LuceneDemo8.4.0/src/main/java/io/lucene/DcoValues/rangeField/IntRangeDocValuesFieldTest.java<i class="fas fa-external-link-alt"></i></a> ：</p>
 <p>图15：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/15.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/15.png"  >
 <p>  图形化图14中的范围域以及查询条件后如下所示：</p>
 <p>图16：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/16.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/16.png"  >
 <p>  在上文中我们说到，图15中第77行的newSlowIntersectsQuery方法会找到所有与查询条件（查询条件也是一个范围域）相交（intersect）的范围域，图15中第75、76行定义了查询条件的范围域，即图16中根据lowQueryRange跟highQueryRange围成的一个<font color=green>绿色</font>的框，另外图16中<font color=red>红框</font>、<font color=blue>蓝框</font>、<font color=yellow>黄框</font>、<font color=skyblue>天蓝色</font>分别对应图15中的四篇文章中的范围域，显而易见，<font color=red>红框</font>、<font color=blue>蓝框</font>、<font color=yellow>黄框</font>跟<font color=green>绿框</font>的是相交的，意味着文档0、文档1、文档2满足查询条件。</p>
 <p>  图16中，第三个RangeField跟查询条件也是相交的，相交部分为一个点。</p>
 <p>  上文中通过图形很容易看出是否相交，接着我们介绍在代码中是如何判断相交的，判断是否相交的代码在matches()方法中实现，即两阶段遍历的第二个阶段。</p>
 <p>  由于判断相交的代码比较简单，故我们直接贴出来：</p>
 <p>图17：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/17.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/17.png"  >
 <p>  可以看出，判断方式为逐个比较每个维度，当<strong>所有维度</strong>都满足<strong>某个条件</strong>，那么就认为是相交的，对于图15的例子，有两个维度，即图16中X、Y轴，这里的<strong>某个条件</strong>描述是两个子条件的组合，并且它们需要同时满足：</p>
 <ul>
 <li>子条件1：某个维度下，查询条件在该维度下的最大值必须<strong>大约等于</strong>范围域在该维度下的最小值</li>
@@ -397,13 +337,12 @@
 <p>  在流程点<code>是否满足查询条件？</code>完成两阶段遍历的第二个阶段，最后文档号将被Collector收集。</p>
 <p>  基于上文中判断相交的逻辑，使得在定义一个RangeField的min跟max数组时会有一定的限制，该要求就是在每一个维度上，min数组在这个维度上的值必须<strong>小于</strong>max数组在这个维度上的值，否则在索引阶段会抛出下面的异常：</p>
 <p>图18：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/18.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/RangeField/RangeField（一）/18.png"  >
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>  在下一篇文章中，我们将介绍IntRange、DoubleRange、FloatRange类中跟范围域相关的内容。</p>
 <p><a class="link"   target="_blank" rel="noopener" href="http://www.amazingkoala.com.cn/attachment/Lucene/Search/RangeField/RangeField%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -436,59 +375,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/gongjulei/2020/0727/Automaton%EF%BC%88%E4%BA%8C%EF%BC%89/"
                                    title="Automaton（二）（Lucene 8.4.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">Automaton（二）（Lucene 8.4.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -496,18 +400,18 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/Lucene/Search/2020/0715/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Bdvd&amp;&amp;dvm/"
+                                   href="/Lucene/Search/2020/0715/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8Bdvd&&dvm/"
                                    title="索引文件的读取（六）之dvd&amp;&amp;dvm（Lucene 8.4.0）"
                                 >
                                     <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">索引文件的读取（六）之dvd&amp;&amp;dvm（Lucene 8.4.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -519,81 +423,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -603,78 +432,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E5%9F%9Frangefield"><span class="nav-number">1.</span> <span class="nav-text"> 范围域（RangeField）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binaryrangedocvaluesfield"><span class="nav-number">2.</span> <span class="nav-text"> BinaryRangeDocValuesField</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text"> 实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%80%BC%E7%BC%96%E7%A0%81encode"><span class="nav-number">2.2.</span> <span class="nav-text"> 域值编码（encode）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text"> 范围查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86twophaseiterator"><span class="nav-number">2.3.1.</span> <span class="nav-text"> 两阶段遍历（TwoPhaseIterator）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">2.3.2.</span> <span class="nav-text"> 两阶段遍历的第一个阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E6%A1%A3%E5%8F%B7%E5%8F%96%E5%87%BA%E5%9F%9F%E5%80%BC"><span class="nav-number">2.3.3.</span> <span class="nav-text"> 根据文档号取出域值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">2.3.4.</span> <span class="nav-text"> 两阶段遍历的第二个阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -682,23 +466,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -717,7 +497,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -731,15 +511,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -763,48 +535,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E5%9F%9Frangefield"><span class="nav-number">1.</span> <span class="nav-text"> 范围域（RangeField）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binaryrangedocvaluesfield"><span class="nav-number">2.</span> <span class="nav-text"> BinaryRangeDocValuesField</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text"> 实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%80%BC%E7%BC%96%E7%A0%81encode"><span class="nav-number">2.2.</span> <span class="nav-text"> 域值编码（encode）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text"> 范围查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86twophaseiterator"><span class="nav-number">2.3.1.</span> <span class="nav-text"> 两阶段遍历（TwoPhaseIterator）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">2.3.2.</span> <span class="nav-text"> 两阶段遍历的第一个阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E6%A1%A3%E5%8F%B7%E5%8F%96%E5%87%BA%E5%9F%9F%E5%80%BC"><span class="nav-number">2.3.3.</span> <span class="nav-text"> 根据文档号取出域值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-number">2.3.4.</span> <span class="nav-text"> 两阶段遍历的第二个阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -818,7 +550,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -826,13 +560,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -847,28 +574,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 

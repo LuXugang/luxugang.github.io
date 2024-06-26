@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Lu Xugang">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             BulkScorer（一）（Lucene 9.6.0） |
         
-        Lu Xugang的小屋
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -35,10 +35,10 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"style":{"primary_color":"#0066cc","logo":"/images/koala.jpg","favicon":"/images/logo.svg","avatar":"/images/luxugang.jpg","first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"明月几时有 把酒问青天||不知道天上宫阙 今夕是何年","hitokoto":false},"scroll":{"progress_bar":true,"percent":false}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"luxugang","github_admins":null,"repository":"luxugang-comments","client_id":"854bbd89fef1537d3af5","client_secret":"dc309b20e38535d86307f485f575855a93bf766b","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":"LuXugang/luxugang.github.io","repo_id":"R_kgDOKY7V7g","category":"Announcements","category_id":"DIC_kwDOKY7V7s4CaCS9","reactions_enabled":false}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/buymeacoffee.jpg","text":"Buy me a coffee"}},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":"ture","page_pv":true}},"version":"3.8.1"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -47,15 +47,13 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
 </div>
 
 
-<main class="page-container border-box">
 
+<main class="page-container border-box">
     <!-- home first screen  -->
     
 
@@ -69,11 +67,11 @@
         <div class="left border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/koala.jpg">
+                    <img src="/images/logo.svg">
                 </a>
             
             <a class="site-name border-box" href="/">
-               Lu Xugang的小屋
+               Keep Theme
             </a>
         </div>
 
@@ -81,56 +79,30 @@
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/"
                             >
-                                首页
+                                
+                                HOME
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                
+                                ARCHIVES
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                标签
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                分类
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                关于
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
                     
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -142,29 +114,18 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/"
+                    >HOME</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">分类</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">关于</a>
+                       href="/archives"
+                    >ARCHIVES</a>
                 </li>
             
         </ul>
@@ -180,74 +141,62 @@
         <div class="page-main-content-middle border-box">
 
             <div class="main-content border-box">
-
                 
 
-                    <div class="fade-in-down-animation">
+                    
+<div class="fade-in-down-animation">
     <div class="post-page-container border-box">
-
-        <div class="article-content-container border-box">
-
+        <div class="post-content-container border-box">
             
 
-            <div class="article-content-bottom border-box">
+            <div class="post-content-bottom border-box">
                 
-                    <div class="article-title">
+                    <div class="post-title">
                         BulkScorer（一）（Lucene 9.6.0）
                     </div>
                 
 
                 
-                    <div class="article-header border-box">
+                    <div class="post-header border-box">
                         
                             <div class="avatar-box border-box">
-                                <img src="/images/luxugang.jpg">
+                                <img src="/images/avatar.svg">
                             </div>
                         
                         <div class="info-box">
-                            <div class="author">
-                                <span class="name">Lu Xugang</span>
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
                                 
-                                    <span class="author-label">Lv6</span>
+                                    <span class="author-badge">Lv6</span>
                                 
                             </div>
                             <div class="meta-info border-box">
                                 
 
-<div class="article-meta-info-container border-box post">
-    <div class="article-meta-info border-box">
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
 
-
         
-            <span class="meta-info-item article-create-date">
-                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2023-07-07 00:00:00</span>
-                <span class="mobile">2023-07-07 00:00</span>
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-07-07 00:00:00</span>
             </span>
 
-            <span class="meta-info-item article-update-date">
+            <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Mon Oct 09 2023 15:29:31 GMT+0800">2023-10-09 15:29:31</span>
+                <span class="datetime" data-updated="Mon Oct 09 2023 15:29:31 GMT+0800">2023-10-09 15:29:31</span>
             </span>
         
 
         
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="category-item">
-                                
-                                <a href="/categories/Lucene/">Lucene</a>
-                            </li>
+                            <li class="category-item"><a href="/categories/Lucene/">Lucene</a></li>
                         
                     
-                            <li class="category-item">
-                                
-                                    <span class="category-separator"><i class="icon fas fa-angle-right"></i></span>
-                                
-                                <a href="/categories/Lucene/Search/">Search</a>
-                            </li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/Lucene/Search/">Search</a></li>
                         
                     
                 </ul>
@@ -255,9 +204,8 @@
         
 
         
-            <span class="article-tag meta-info-item border-box">
-                <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/bulkScorer/">bulkScorer</a></li>
                         
@@ -268,15 +216,7 @@
 
         
         
-            <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
-            </span>
         
-        
-        
-            <span class="meta-info-item article-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
         
     </div>
 
@@ -288,17 +228,17 @@
                     </div>
                 
 
-                <div class="article-content keep-markdown-body">
+                <div class="post-content keep-markdown-body ">
                     
 
                     <p>  本篇文章介绍在查询阶段，<a class="link"   target="_blank" rel="noopener" href="https://github.com/apache/lucene/blob/f527eb3b12df6d052d1b6dd107b56ab705a95ab1/lucene/core/src/java/org/apache/lucene/search/BulkScorer.java" >BulkScorer<i class="fas fa-external-link-alt"></i></a>相关的知识点，在查询流程中的流程点如下<font color="red">红框</font>所示：</p>
 <p>图1：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/1.png"  width="700">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/1.png"    width="700">
 <h2 id="父类bulkscorer"><a class="markdownIt-Anchor" href="#父类bulkscorer"></a> 父类BulkScorer</h2>
 <p>  BulkScorer类的定位是一个对满足查询条件的所有文档号进行收集的最初入口。在执行完该类的方法一后，Lucene就完成了一个段中文档号的收集工作。我们仅关注下BulkScorer类中下面的两个方法，如下所示：</p>
 <h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一</h3>
 <p>图2：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/2.png"   width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/2.png"     width="800">
 <p>  该方法说的是在某个文档号区间内，即参数<code>min</code>和<code>max</code>组成的区间，进行文档号的收集，同时使用参数<code>acceptDocs</code>过滤掉被删除的文档号，最终满足查询条件的文档号使用参数<code>collector</code>收集存储。</p>
 <h4 id="acceptdocs"><a class="markdownIt-Anchor" href="#acceptdocs"></a> acceptDocs</h4>
 <p>  <code>acceptDocs</code>是一个基于<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/gongjulei/2019/0404/FixedBitSet" >位图<i class="fas fa-external-link-alt"></i></a>实现，用来描述被删除的文档号信息的对象。由于在Lucene中执行删除文档操作时，并不会去修改现有的索引文件，而是额外的在名为<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/suoyinwenjian/2019/0425/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E4%B9%8Bliv" >.liv<i class="fas fa-external-link-alt"></i></a>的索引文件中记录被删除的文档号。</p>
@@ -309,19 +249,19 @@
 <p>  min和max用于指定一个待遍历的文档号区间，在有些子类实现中如果根据某些条件可以尽可能的降低区间的范围，那么可以降低整个查询时间（在介绍ReqExclBulkScorer时会介绍）。默认的实现中，min的值为0，max的值为Integer.MAX_VALUE。</p>
 <h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
 <p>图3：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/3.png" width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/3.png"   width="800">
 <p>  该方法描述的是遍历所有满足查询条件的文档号的开销，这个取决于不同的BulkScorer子类实现，在下文中再展开介绍。</p>
 <h2 id="bulkscorer的子类"><a class="markdownIt-Anchor" href="#bulkscorer的子类"></a> BulkScorer的子类</h2>
 <p>  主要介绍下这几个最常见的子类：</p>
 <p>图4：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/4.png"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/4.png"    width="800">
 <h3 id="defaultbulkscorer"><a class="markdownIt-Anchor" href="#defaultbulkscorer"></a> DefaultBulkScorer</h3>
 <p>  DefaultBulkScorer子类中实现图2中方法一的流程图如下所示：</p>
 <p>图5：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/5.png"  align = "left"  >
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/5.png"    align = "left"  >
 <h4 id="从scorer中获取scoreriterator"><a class="markdownIt-Anchor" href="#从scorer中获取scoreriterator"></a> 从Scorer中获取scorerIterator</h4>
 <p>图6：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/6.png"   width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/6.png"     width="500">
 <p>  Scorer的概念会在以后的文章中详细介绍，在本篇文章中我们只需要暂时知道，该对象会提供一个DocIdSetIterator抽象类（<strong>下文中简称为DISI</strong>）的对象scorerIterator，通过该对象我们就可以获取到满足查询条件的所有文档号，并且在DocIdSetIterator类的不同实现中，获取每一个文档号的逻辑也是不同的。</p>
 <h5 id="docidsetiterator"><a class="markdownIt-Anchor" href="#docidsetiterator"></a> DocIdSetIterator</h5>
 <p>  DISI是一个有状态的，对non-decreasing类型的文档号集合进行遍历的迭代器，并且集合中的文档号都是满足查询条件的（被删除的文档号也在集合中）。non-decreasing指的是集合中的每个文档号都大于等于排在它前面的文档号。例如下面的集合就是non-decreasing：</p>
@@ -329,32 +269,32 @@
 <p>  这个类中有四个核心的方法：</p>
 <h6 id="方法一disi"><a class="markdownIt-Anchor" href="#方法一disi"></a> 方法一（DISI）</h6>
 <p>图7：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/7.png"   width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/7.png"     width="800">
 <p>  该方法体现出DISI是具有状态的，它返回DISI当前的状态值，即目前遍历到的文档号。</p>
 <p>  注释中说到，如果在调用<code>nextDoc()</code>或者<code>advance(int)</code>方法前就调用当前方法，会返回-1，意思是DISI的最初的状态值是-1，也就是文档号为-1，当然了，该值不是一个合法的文档号。另外如果遍历完所有的文档号，那么当前方法会返回一个<code>NO_MORE_DOCS</code>作为结束标志，该值即Integer.MAX_VALUE。</p>
 <p>图11：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/11.png" width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/11.png"   width="800">
 <h6 id="方法二disi"><a class="markdownIt-Anchor" href="#方法二disi"></a> 方法二（DISI）</h6>
 <p>图8：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/8.png"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/8.png"    width="800">
 <p>  该方法会基于<code>docID()</code>中的文档号（当前状态值），返回在集合中排在它后面，下一个位置的文档号，随后将状态值更新为该位置的文档号。</p>
 <p>  如果DISI当前的状态值已经是集合中的最后一个文档号，那么调用该方法会返回<code>NO_MORE_DOCS</code>，并且将状态值更新为<code>NO_MORE_DOCS</code>。注意的是，不应该在这种情况下继续调用该方法，否则会导致不可预测行为。</p>
 <h6 id="方法三disi"><a class="markdownIt-Anchor" href="#方法三disi"></a> 方法三（DISI）</h6>
 <p>图9：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/9.png"  align = "middle"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/9.png"    align = "middle"  width="800">
 <p>  该方法会返回集合中第一个大于等于target的文档号，并且将状态值更新为这个文档号。</p>
 <p>  如果未在集合中找到，那么会返回<code>NO_MORE_DOCS</code>。并且将状态值更新为<code>NO_MORE_DOCS</code>。</p>
 <h6 id="方法四disi"><a class="markdownIt-Anchor" href="#方法四disi"></a> 方法四（DISI）</h6>
 <p>图10：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/10.png"  width="800">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/10.png"    width="800">
 <p>  该方法描述的是遍历DISI中的文档号集合的开销，在有些子类实现中该值就是集合中文档号数量的一个准确值，然而在有些实现则是一个估计值。</p>
 <h5 id="docidsetiterator的子类"><a class="markdownIt-Anchor" href="#docidsetiterator的子类"></a> DocIdSetIterator的子类</h5>
 <p>  下图给出的是实现比较简单的一个子类：</p>
 <p>图12：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/12.png" align = "middle"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/12.png"   align = "middle"  width="500">
 <h4 id="是否可以获取实现skip-docs的disi"><a class="markdownIt-Anchor" href="#是否可以获取实现skip-docs的disi"></a> 是否可以获取实现Skip Docs的DISI？</h4>
 <p>图13：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/13.png"  width="500">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/13.png"    width="500">
 <p>  如果从数据集的角度去思考如何提高查询性能，通常可以通过以下两种方式实现：</p>
 <ol>
 <li>减少数据集的规模</li>
@@ -367,11 +307,11 @@
 <p>  目前Lucene中有基于BKD树（<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-9280" >LUCENE-9280<i class="fas fa-external-link-alt"></i></a>）以及基于倒排（<a class="link"   target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/LUCENE-10633" >LUCENE-10633<i class="fas fa-external-link-alt"></i></a>）来获得competitiveIterator。见文章<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2021/0621/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%B8%80%EF%BC%89" >查询TopN的优化之NumericDocValues（一）<i class="fas fa-external-link-alt"></i></a>、<a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/Lucene/Search/2021/0629/%E6%9F%A5%E8%AF%A2TopN%E7%9A%84%E4%BC%98%E5%8C%96%E4%B9%8BNumericDocValues%EF%BC%88%E4%BA%8C%EF%BC%89" >查询TopN的优化之NumericDocValues（二）<i class="fas fa-external-link-alt"></i></a>了解基于BKD树获取competitiveIterator。</p>
 <p>  下面的例子中，<strong>主要是表达优化思想，并不是真实的实现逻辑</strong>：</p>
 <p>图14：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/14.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/14.png"  >
 <p>  图14中假设是Top3的查询，如果没能获取competitiveIterator，那么需要遍历集合中所有的文档号。优化后，在收集完Top3后，根据Top3中的竞争力最小的信息（基于排序规则对应的域值）获取一个集合为[7, 99]的competitiveIterator，意思是根据排序规则，在这个集合区间范围外的文档是没有竞争力（non-competitive），也就是没有必要去处理这些文档号。随后在处理完第56篇文档号，再次更新了competitiveIterator。</p>
 <h4 id="遍历filterediterator"><a class="markdownIt-Anchor" href="#遍历filterediterator"></a> 遍历filteredIterator</h4>
 <p>图15：</p>
-<img src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/15.png">
+<img     src="http://www.amazingkoala.com.cn/uploads/lucene/Search/BulkScorer/BulkScorer（一）/15.png"  >
 <h5 id="docid是否在区间内"><a class="markdownIt-Anchor" href="#docid是否在区间内"></a> docId是否在区间内</h5>
 <p>  这里的区间指的是<a href="###%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a>中参数<code>max</code>跟<code>min</code>组成的区间，由于从filteredIterator中依次获得的文档号是递增的，所以当出现文档号不在区间内时，就可以直接退出遍历。</p>
 <h5 id="docid不是被删除的文档号并且满足二阶段遍历"><a class="markdownIt-Anchor" href="#docid不是被删除的文档号并且满足二阶段遍历"></a> docId不是被删除的文档号并且满足二阶段遍历？</h5>
@@ -385,7 +325,6 @@
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.amazingkoala.com.cn/attachment/Lucene/Search/BulkScorer/BulkScorer%EF%BC%88%E4%B8%80%EF%BC%89.zip" >点击<i class="fas fa-external-link-alt"></i></a>下载附件</p>
 
                 </div>
-
                 
 
                 <div class="post-bottom-tags-and-share border-box">
@@ -402,59 +341,24 @@
                     </div>
                     <div>
                         
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
                     </div>
                 </div>
 
                 
-                    <div class="reward-author-container border-box flex-center">
-    <div class="reward-btn keep-button border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Buy me a coffee"
-            data-tooltip-img-url="/images/buymeacoffee.jpg"
-            data-tooltip-img-trigger="click"
-            data-tooltip-img-style="top: -8px;"
-    >
-        <i class="fa-solid fa-hand-holding-heart"></i>
-    </div>
-</div>
 
                 
-
-                
-                    <div class="article-nav">
+                    <div class="post-nav border-box">
                         
-                            <div class="article-prev">
+                            <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
                                    href="/Lucene/Search/2023/0724/BulkScorer%EF%BC%88%E4%BA%8C%EF%BC%89/"
                                    title="BulkScorer（二）（Lucene 9.6.0）"
                                 >
                                     <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left"></i>
                                     </span>
-                                            <span class="title flex-center">
+                                    <span class="title flex-center">
                                         <span class="post-nav-title-item text-ellipsis">BulkScorer（二）（Lucene 9.6.0）</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
@@ -462,7 +366,7 @@
                             </div>
                         
                         
-                            <div class="article-next">
+                            <div class="next-post">
                                 <a class="next"
                                    rel="next"
                                    href="/Lucene/Search/2023/0626/%E6%AE%B5%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%80%EF%BC%89/"
@@ -472,8 +376,8 @@
                                         <span class="post-nav-title-item text-ellipsis">段的多线程查询（一）（Lucene 9.6.0）</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
@@ -485,81 +389,6 @@
                     
 
 
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;Comments
-        </div>
-        
-            
-
-    <div class="giscus-comments-container">
-        <div class="giscus" id="giscus"></div>
-        <script >
-
-          if (!window?.__getGiscusTheme) {
-            window.__getGiscusTheme = () => {
-              return document.body.classList.contains("dark-mode") ? "dark_dimmed" : "light_tritanopia";
-            };
-          }
-
-          if (!window?.__changeGiscusTheme) {
-            window.__changeGiscusTheme = () => {
-              const iframe = document.querySelector("iframe.giscus-frame");
-              iframe && iframe.contentWindow.postMessage({
-                giscus: {
-                  setConfig: {
-                    theme: __getGiscusTheme()
-                  }
-                }
-              }, "https://giscus.app");
-            };
-          }
-
-          if (!window?.__loadGiscus) {
-            window.__loadGiscus = () => {
-              const script = document.createElement("script");
-              script.async = true;
-              script.src = "https://giscus.app/client.js";
-              script.setAttribute("data-repo", 'LuXugang/luxugang.github.io');
-              script.setAttribute("data-repo-id", 'R_kgDOKY7V7g');
-              script.setAttribute("data-category", 'Announcements');
-              script.setAttribute("data-category-id", 'DIC_kwDOKY7V7s4CaCS9');
-              script.setAttribute("data-reactions-enabled", '0');
-              script.setAttribute("data-lang", 'en');
-              script.setAttribute("data-mapping", "pathname");
-              script.setAttribute("data-strict", "0");
-              script.setAttribute("data-emit-metadata", "0");
-              script.setAttribute("data-input-position", "top");
-              script.setAttribute("crossorigin", "anonymous");
-              script.setAttribute("loading", "lazy");
-              script.setAttribute("data-theme", __getGiscusTheme());
-              document.querySelector(".giscus-comments-container").appendChild(script);
-
-              const toggleThemeBtn = document.querySelector(".tool-dark-light-toggle");
-              toggleThemeBtn && toggleThemeBtn.addEventListener("click", () => {
-                __changeGiscusTheme();
-              });
-            }
-          }
-
-          if ('false' === "true") {
-            setTimeout(() => {
-              __loadGiscus();
-            }, 1000);
-          } else {
-            window.addEventListener("DOMContentLoaded", () => {
-              setTimeout(() => {
-                __loadGiscus();
-              }, 1000);
-            });
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -569,78 +398,33 @@
         </div>
 
         
-            <div class="pc-post-toc left-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%B6%E7%B1%BBbulkscorer"><span class="nav-number">1.</span> <span class="nav-text"> 父类BulkScorer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text"> 方法一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#acceptdocs"><span class="nav-number">1.1.1.</span> <span class="nav-text"> acceptDocs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collector"><span class="nav-number">1.1.2.</span> <span class="nav-text"> collector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-max"><span class="nav-number">1.1.3.</span> <span class="nav-text"> min、max</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text"> 方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bulkscorer%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> BulkScorer的子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultbulkscorer"><span class="nav-number">2.1.</span> <span class="nav-text"> DefaultBulkScorer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8Escorer%E4%B8%AD%E8%8E%B7%E5%8F%96scoreriterator"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 从Scorer中获取scorerIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docidsetiterator"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> DocIdSetIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80disi"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text"> 方法一（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8Cdisi"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text"> 方法二（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89disi"><span class="nav-number">2.1.1.1.3.</span> <span class="nav-text"> 方法三（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9Bdisi"><span class="nav-number">2.1.1.1.4.</span> <span class="nav-text"> 方法四（DISI）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#docidsetiterator%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="nav-number">2.1.1.2.</span> <span class="nav-text"> DocIdSetIterator的子类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%AE%9E%E7%8E%B0skip-docs%E7%9A%84disi"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 是否可以获取实现Skip Docs的DISI？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#filterediterator%E7%9A%84%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="nav-number">2.1.2.1.</span> <span class="nav-text"> filteredIterator的实现逻辑</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86filterediterator"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 遍历filteredIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docid%E6%98%AF%E5%90%A6%E5%9C%A8%E5%8C%BA%E9%97%B4%E5%86%85"><span class="nav-number">2.1.3.1.</span> <span class="nav-text"> docId是否在区间内</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#docid%E4%B8%8D%E6%98%AF%E8%A2%AB%E5%88%A0%E9%99%A4%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7%E5%B9%B6%E4%B8%94%E6%BB%A1%E8%B6%B3%E4%BA%8C%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.3.2.</span> <span class="nav-text"> docId不是被删除的文档号并且满足二阶段遍历？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.3.2.1.</span> <span class="nav-text"> 二阶段遍历</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#collector%E6%94%B6%E9%9B%86docid"><span class="nav-number">2.1.3.3.</span> <span class="nav-text"> collector收集docId</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
     </div>
 </div>
 
 
                 
             </div>
-
         </div>
 
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
-    <div class="border-box website-info-box default">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
-            <div class="copyright-info info-item default">
-                &copy;&nbsp;<span>2018</span>&nbsp;-&nbsp;2024
-                
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Lu Xugang</a>
-                
-            </div>
-
-            <div class="theme-info info-item default">
-                Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-            </div>
-
-            
-                <div class="icp-info info-item default">
-                    <a class=""
-                       target="_blank"
-                       href="https://beian.miit.gov.cn"
-                    >
-                        苏ICP备18064214号-1
-                    </a>
-                </div>
-            
-
-            
-                <div class="deploy-info info-item default">
-                    
-                        This site is deployed on <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span>
-                        
-                </div>
-            
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
         
-
-        <div class="count-item info-item default">
-            
-                <span class="count-box border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">319.8k</span>
-                </span>
-            
-
-            
-                <span class="count-box border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
-
-            
-        </div>
     </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
 </footer>
 
         </div>
@@ -648,23 +432,19 @@
 
     <!-- post tools -->
     
-        <div class="post-tools left-toc">
+        <div class="post-tools right-toc">
             <div class="post-tools-container border-box">
     <ul class="tools-list border-box">
         <!-- PC TOC show toggle -->
         
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
     </ul>
 </div>
 
@@ -683,7 +463,7 @@
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -697,15 +477,7 @@
 
     <ul class="exposed-tools-list border-box">
         
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -729,48 +501,8 @@
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- tablet toc -->
-    
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%B6%E7%B1%BBbulkscorer"><span class="nav-number">1.</span> <span class="nav-text"> 父类BulkScorer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text"> 方法一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#acceptdocs"><span class="nav-number">1.1.1.</span> <span class="nav-text"> acceptDocs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collector"><span class="nav-number">1.1.2.</span> <span class="nav-text"> collector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#min-max"><span class="nav-number">1.1.3.</span> <span class="nav-text"> min、max</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text"> 方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bulkscorer%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> BulkScorer的子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultbulkscorer"><span class="nav-number">2.1.</span> <span class="nav-text"> DefaultBulkScorer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8Escorer%E4%B8%AD%E8%8E%B7%E5%8F%96scoreriterator"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 从Scorer中获取scorerIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docidsetiterator"><span class="nav-number">2.1.1.1.</span> <span class="nav-text"> DocIdSetIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80disi"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text"> 方法一（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8Cdisi"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text"> 方法二（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89disi"><span class="nav-number">2.1.1.1.3.</span> <span class="nav-text"> 方法三（DISI）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9Bdisi"><span class="nav-number">2.1.1.1.4.</span> <span class="nav-text"> 方法四（DISI）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#docidsetiterator%E7%9A%84%E5%AD%90%E7%B1%BB"><span class="nav-number">2.1.1.2.</span> <span class="nav-text"> DocIdSetIterator的子类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%AE%9E%E7%8E%B0skip-docs%E7%9A%84disi"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 是否可以获取实现Skip Docs的DISI？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#filterediterator%E7%9A%84%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="nav-number">2.1.2.1.</span> <span class="nav-text"> filteredIterator的实现逻辑</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86filterediterator"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 遍历filteredIterator</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#docid%E6%98%AF%E5%90%A6%E5%9C%A8%E5%8C%BA%E9%97%B4%E5%86%85"><span class="nav-number">2.1.3.1.</span> <span class="nav-text"> docId是否在区间内</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#docid%E4%B8%8D%E6%98%AF%E8%A2%AB%E5%88%A0%E9%99%A4%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%B7%E5%B9%B6%E4%B8%94%E6%BB%A1%E8%B6%B3%E4%BA%8C%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.3.2.</span> <span class="nav-text"> docId不是被删除的文档号并且满足二阶段遍历？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8C%E9%98%B6%E6%AE%B5%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.3.2.1.</span> <span class="nav-text"> 二阶段遍历</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#collector%E6%94%B6%E9%9B%86docid"><span class="nav-number">2.1.3.3.</span> <span class="nav-text"> collector收集docId</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text"> 结语</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
     
 </main>
 
@@ -784,7 +516,9 @@
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -792,13 +526,6 @@
 
 
 <!-- local-search -->
-
-    
-<script src="/js/local-search.js"></script>
-
-
-
-<!-- code-block -->
 
 
 <!-- lazyload -->
@@ -813,28 +540,29 @@
 
         <!-- toc -->
         
-            
-<script src="/js/post/toc.js"></script>
-
-        
 
         <!-- copyright-info -->
         
 
         <!-- share -->
         
-            
-<script src="/js/post/share.js"></script>
-
-        
     
 
-    <!-- category-page -->
+    <!-- categories page -->
     
 
-    <!-- links-page -->
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
+
+<!-- mermaid -->
+
 
 <!-- pjax -->
 
