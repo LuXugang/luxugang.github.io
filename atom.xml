@@ -97,13 +97,13 @@
     
     <category term="hnsw" scheme="http://example.com/tags/hnsw/"/>
     
-    <category term="sq" scheme="http://example.com/tags/sq/"/>
-    
     <category term="scalar" scheme="http://example.com/tags/scalar/"/>
     
     <category term="quantization" scheme="http://example.com/tags/quantization/"/>
     
     <category term="vector" scheme="http://example.com/tags/vector/"/>
+    
+    <category term="sq" scheme="http://example.com/tags/sq/"/>
     
   </entry>
   
@@ -256,9 +256,9 @@
     
     <category term="simd" scheme="http://example.com/tags/simd/"/>
     
-    <category term="vector" scheme="http://example.com/tags/vector/"/>
-    
     <category term="fma" scheme="http://example.com/tags/fma/"/>
+    
+    <category term="vector" scheme="http://example.com/tags/vector/"/>
     
   </entry>
   
